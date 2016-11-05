@@ -13,6 +13,6 @@
 <description>Domain models of parts</description>
     <artifactId>domain</artifactId>
 
-
+    <version>${parent.version}</version>
 
 </project>
