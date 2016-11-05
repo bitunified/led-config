@@ -1,0 +1,22 @@
+package com.bitunified.ledconfig.domain;
+
+
+public class Dimension {
+
+    public Integer width;
+    public Integer height;
+    public Integer depth;
+    public Unit unit;
+
+    public Dimension(Integer width, Integer height,Integer depth) {
+        this.width=width;
+        this.height=height;
+        this.depth=depth;
+
+    }
+
+    public Dimension(Integer width, Integer height) {
+        this.width=width;
+        this.height=height;
+    }
+}
