@@ -20,7 +20,11 @@ import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.domain.composedproduct.ComposedProduct;
 import com.bitunified.ledconfig.domain.message.Message;
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
+import com.bitunified.ledconfig.domain.product.PCB.types.DecoLedStrip;
 import com.bitunified.ledconfig.domain.product.PCB.types.RGBLedStrip;
+import com.bitunified.ledconfig.domain.product.cable.Cable;
+import com.bitunified.ledconfig.domain.product.cover.types.Resin;
+import com.bitunified.ledconfig.domain.product.cover.types.ResinClear;
 import com.bitunified.ledconfig.domain.product.profile.Profile;
 import org.kie.api.KieServices;
 import org.kie.api.event.rule.DebugAgendaEventListener;
@@ -72,23 +76,40 @@ public class LedConfig {
 
         // The application can insert facts into the session
 
-        final Profile profile = new Profile(new Dimension(20,20));
-        final RGBLedStrip ledStrip=new RGBLedStrip(new Dimension(null,null,null));
-        ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(20);
+        final Profile profile = new Profile(new Dimension(100,200));
+        profile.setName("L20");
+        //final RGBLedStrip ledStrip=new RGBLedStrip(new Dimension(null,null,null));
+        final DecoLedStrip ledStrip=new DecoLedStrip(new Dimension(100));
+        LedStrip.SECTION.setValue(1000);
+        ledStrip.getProperty(DecoLedStrip.COLOR).setValue("ROOD");
         ledStrip.getDimension().width=199;
 
         final ComposedProduct composedProduct = new ComposedProduct(300,null);
         composedProduct.addProducts(profile);
         composedProduct.addProducts(ledStrip);
 
-        ksession.insert( composedProduct );
+
+
+        final ResinClear resin=new ResinClear(null);
+
+        final Cable cable=new Cable(new Dimension(4000));
+        Cable.TYPE.setValue("2-aderig");
+
+
+
+
+        ksession.insert(composedProduct);
         ksession.insert(profile);
         ksession.insert(ledStrip);
-
+        ksession.insert(resin);
+        ksession.insert(cable);
         // and fire the rules
         ksession.fireAllRules();
 
-        System.out.println(messages);
+        for (Message message:messages){
+
+            System.out.println(message);
+        }
         // Remove comment if using logging
         // logger.close();
 

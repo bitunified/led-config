@@ -1,19 +1,22 @@
 package com.bitunified.ledconfig.domain;
 
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class Model {
     private String name;
 
 
-    private Set<Property> properies=new HashSet<Property>();
+    private Map<String,Property> properies=new HashMap<String,Property>();
 
 
 
-    public void addProperty(Property property){
-        this.properies.add(property);
+    public Property addProperty(Property property){
+        this.properies.put(property.getName(),property);
+        return property;
     }
 
     public String getName() {
@@ -25,15 +28,16 @@ public class Model {
     }
 
     public Property getProperty(String propName) {
-        for (Property prop:properies){
-            if (prop.getName().equalsIgnoreCase(propName)){
-                return prop;
-            }
-        }
-        return null;
+        return properies.get(propName);
+
     }
 
-    public Set<Property> getProperies() {
-        return properies;
+    public Set getProperies() {
+        return properies.entrySet();
+    }
+
+    @Override
+    public String toString() {
+        return "name:"+this.name+" props:"+properies.toString();
     }
 }

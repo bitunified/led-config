@@ -6,11 +6,17 @@
 package com.bitunified.ledconfig;
  
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
-import com.bitunified.ledconfig.domain.Property;
+
 import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.domain.composedproduct.ComposedProduct;
 import com.bitunified.ledconfig.domain.message.Message
-import ch.qos.logback.core.net.SyslogOutputStream;
+import com.bitunified.ledconfig.domain.product.cover.types.ResinClear;
+import com.bitunified.ledconfig.domain.product.cover.types.Resin;
+import com.bitunified.ledconfig.domain.product.PCB.types.RGBLedStrip;
+import com.bitunified.ledconfig.domain.product.PCB.types.DecoLedStrip;
+import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
+import com.bitunified.ledconfig.domain.product.cable.Cable;
+import com.bitunified.ledconfig.domain.Property;
 global java.util.List<Message> messages
  
 rule "Led strip section modulo"
@@ -18,12 +24,9 @@ rule "Led strip section modulo"
     when
         
         cp : LedStrip( props:properies )
-
         exists(
         Property(name==LedStrip.SECTION_WIDTH,(value!=null) && ((value % cp.dimension.width)!=0))
          from props)
-
-
     then
 
     messages.add(new Message("Ledstrip lengte moet een veelvoud zijn van sectielengte."));
@@ -39,3 +42,32 @@ rule "Totale lengte"
     messages.add(new Message("Totale lengte moet minimaal."));
 
      end
+
+
+
+rule "Kap en gieting"
+
+    when
+        Resin()
+        DecoLedStrip(COLOR_PROP.value=="ROOD")
+    then
+        messages.add(new Message("Rood met giethars niet mogelijk" ));
+
+end
+
+rule "Minimale lengte groter dan section lengte"
+
+    when
+
+        LedStrip(dimension.width<SECTION.value);
+    then
+        messages.add(new Message("Lengte ledstrip kan niet kleiner zijn dan sectie lengte."));
+end
+
+rule "Kabeltype moet overeenkomen met PCB type"
+    when
+        DecoLedStrip();
+        Cable(TYPE.value!="2-aderig");
+    then
+        messages.add(new Message("Let op: kabeltype past niet bij PCB."));
+    end

@@ -5,10 +5,10 @@ import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.domain.Property;
 import com.bitunified.ledconfig.domain.product.cover.Covering;
 
-public class Resin extends Covering {
+public class ResinClear extends Resin {
 
-    public Resin(Dimension dimension) {
+    public ResinClear(Dimension dimension) {
         super(dimension);
-
+        TRANSLUCENCY.setValue("CLEAR");
     }
 }

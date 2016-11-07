@@ -9,11 +9,11 @@ public class LedStrip extends RealModel {
 
 
     public static final String SECTION_WIDTH = "section";
-    public static final String COLOR = "color";
 
+    public static final Property SECTION=new Property(SECTION_WIDTH,"");
     public LedStrip(Dimension dimension) {
         super(dimension);
-        addProperty(new Property(SECTION_WIDTH,""));
-        addProperty(new Property(COLOR,""));
+        addProperty(SECTION);
+
     }
 }

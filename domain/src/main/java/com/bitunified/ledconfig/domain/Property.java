@@ -19,8 +19,13 @@ public class Property {
         return name;
     }
 
-    public void setValue(Object value) {
+    public Property setValue(Object value) {
         this.value=value;
+        return this;
+    }
 
+    @Override
+    public String toString() {
+        return "key:"+name+" value:"+value;
     }
 }
