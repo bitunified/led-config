@@ -80,22 +80,18 @@ public class LedConfig {
         profile.setName("L20");
         //final RGBLedStrip ledStrip=new RGBLedStrip(new Dimension(null,null,null));
         final DecoLedStrip ledStrip=new DecoLedStrip(new Dimension(100));
-        LedStrip.SECTION.setValue(1000);
+        LedStrip.SECTION.setValue(10);
+
         ledStrip.getProperty(DecoLedStrip.COLOR).setValue("ROOD");
-        ledStrip.getDimension().width=199;
-
-        final ComposedProduct composedProduct = new ComposedProduct(300,null);
-        composedProduct.addProducts(profile);
-        composedProduct.addProducts(ledStrip);
-
-
 
         final ResinClear resin=new ResinClear(null);
 
         final Cable cable=new Cable(new Dimension(4000));
         Cable.TYPE.setValue("2-aderig");
 
-
+        final ComposedProduct composedProduct = new ComposedProduct(300,null);
+        composedProduct.addProducts(profile);
+        composedProduct.addProducts(ledStrip);
 
 
         ksession.insert(composedProduct);

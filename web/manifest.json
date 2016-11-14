@@ -1,0 +1,7 @@
+{
+  "name": "led-config-web",
+  "short_name": "led-config-web",
+  "description": "Led config WebApp",
+  "start_url": "/",
+  "display": "standalone"
+}
