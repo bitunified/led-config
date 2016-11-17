@@ -16,7 +16,8 @@ import com.bitunified.ledconfig.domain.product.PCB.types.RGBLedStrip;
 import com.bitunified.ledconfig.domain.product.PCB.types.DecoLedStrip;
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 import com.bitunified.ledconfig.domain.product.cable.Cable;
-import com.bitunified.ledconfig.domain.Property;
+import com.bitunified.ledconfig.domain.Property
+import com.bitunified.ledconfig.domain.product.accessoires.Clips;
 global java.util.List<Message> messages
  
 rule "Led strip section modulo"
@@ -35,13 +36,13 @@ end
 
 rule "Totale lengte"
     when
-    ledstrip:LedStrip(props:properies,afmetingen:dimension)
-    composedproduct:ComposedProduct(width<(afmetingen.width+10+5))
+        ledstrip:LedStrip(props:properies,afmetingen:dimension)
+        composedproduct:ComposedProduct(width<(afmetingen.width+10+5))
 
     then
-    messages.add(new Message("Totale lengte moet minimaal."));
+        messages.add(new Message("Totale lengte moet minimaal."));
 
-     end
+end
 
 
 
@@ -70,4 +71,18 @@ rule "Kabeltype moet overeenkomen met PCB type"
         Cable(TYPE.value!="2-aderig");
     then
         messages.add(new Message("Let op: kabeltype past niet bij PCB."));
+    end
+
+rule "Aantal clips is evenredig aan lengte"
+    when
+        composedproduct:ComposedProduct();
+    then
+        countClips=(int)Math.ceil(composedproduct.width/500);
+        if (countClips<2){
+            countClips=2;
+        }
+        for (int i=0;i<countClips;i++){
+        composedproduct.addProducts(new Clips());
+        }
+
     end

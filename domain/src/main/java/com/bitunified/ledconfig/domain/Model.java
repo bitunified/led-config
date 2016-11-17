@@ -1,12 +1,14 @@
 package com.bitunified.ledconfig.domain;
 
 
+import com.bitunified.ledconfig.domain.description.Descriptive;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class Model {
+public class Model extends Descriptive {
     private String name;
 
 
