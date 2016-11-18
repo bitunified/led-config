@@ -2,19 +2,240 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="647bd766-1da8-4701-9575-1a4d1e717993" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/parts/Part.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/composedproduct/ComposedProduct.java" afterPath="$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/composedproduct/ComposedProduct.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-11017A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-11017B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-11019A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-11019B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13018A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13018B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13058A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13058B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13097A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13097B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13130A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13130B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13153A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13153B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13213A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13213B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13239A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13239B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13240A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13240B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13241A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13241B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13256A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13256B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13260A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13260B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13262A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13262B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13263A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13263B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13264A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13264B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13265A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13265B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13266A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13266B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13267A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13267B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13268A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13268B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13269A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13269B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13270A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13270B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13271A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13271B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13272A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13272B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13273A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13273B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13274A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13274B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13275A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13275B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13276A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13276B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13277A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13277B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13278A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13278B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13279A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13279B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13280A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13280B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13282A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13282B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13285A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13285B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13286A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13286B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13288A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13288B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13289A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13289B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13290A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13290B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13291A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13291B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13292A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13292B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14133A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14133B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14146A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14146B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14152A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14152B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14153A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14153B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14154A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14154B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14155A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14155B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14157A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14157B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14158A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14158B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14159A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14159B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14160A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14160B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14215A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14215B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14216A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14216B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14217A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14217B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-15041A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-15041B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-15068A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-15068B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-15103A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-15103B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23069A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23069B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23073A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23073B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23169A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23169B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23171A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23171B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23172A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23172B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23173A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23173B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23174A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23174B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23176A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23176B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23177A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23177B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23178A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23178B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23179A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23179B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23180A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23180B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23198A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23198B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23225A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23225B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23226A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23226B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23227A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23227B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23228A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23228B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23229A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23229B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23230A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23230B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-24097A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-24097B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-24098A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-24098B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-24099A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-24099B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-24101A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-24101B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-24102A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-24102B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-25058A.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-25058B.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ladies_outerwear.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ladies_tshirts.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/mens_outerwear.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/mens_tshirts.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/shop-icon-128.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/shop-icon-192.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/shop-icon-32.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/shop-icon-384.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/engine.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app.yaml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/ladies_outerwear.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/ladies_tshirts.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/mens_outerwear.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/mens_tshirts.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/sample_error_response.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/sample_success_response.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/polymer.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/service-worker.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/lazy-resources.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-404-warning.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-analytics.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-app.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-button.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-cart-data.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-cart-item.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-cart-modal.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-cart.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-category-data.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-checkbox.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-checkout.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-common-styles.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-detail.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-form-styles.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-home.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-icons.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-image.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-input.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-list-item.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-list.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-network-warning.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-ripple-container.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-select.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-snackbar.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-tab.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-tabs-overlay.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-tabs.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/sw-precache-config.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/test/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/test/shop-home.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/build/bundled/bower_components/polymer-bootstrap/polymer-bootstrap.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/build/bundled/bower_components/webcomponentsjs/webcomponents-lite.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/build/unbundled/bower_components/polymer-bootstrap/polymer-bootstrap.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/build/unbundled/bower_components/webcomponentsjs/webcomponents-lite.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/domain.iml" afterPath="$PROJECT_DIR$/domain/domain.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/pom.xml" afterPath="$PROJECT_DIR$/domain/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/.project" afterPath="$PROJECT_DIR$/engine/.project" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/led-config.iml" afterPath="$PROJECT_DIR$/engine/led-config.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/pom.xml" afterPath="$PROJECT_DIR$/engine/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/src/main/java/com/bitunified/ledconfig/LedConfig.java" afterPath="$PROJECT_DIR$/engine/src/main/java/com/bitunified/ledconfig/LedConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/src/main/resources/com.bitunified.ledconfig/LedConfig.drl" afterPath="$PROJECT_DIR$/engine/src/main/resources/com.bitunified.ledconfig/LedConfig.drl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/target/checkstyle.log" afterPath="$PROJECT_DIR$/engine/target/checkstyle.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/pom.xml" afterPath="$PROJECT_DIR$/web/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/.gitignore" afterPath="$PROJECT_DIR$/web/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/README.md" afterPath="$PROJECT_DIR$/web/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/bower.json" afterPath="$PROJECT_DIR$/web/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/bower_components/polymer/.bower.json" afterPath="$PROJECT_DIR$/web/bower_components/polymer/.bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/bower_components/webcomponentsjs/.bower.json" afterPath="$PROJECT_DIR$/web/bower_components/webcomponentsjs/.bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/build/bundled/bower.json" afterPath="$PROJECT_DIR$/web/build/bundled/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/build/bundled/index.html" afterPath="$PROJECT_DIR$/web/build/bundled/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/build/bundled/service-worker.js" afterPath="$PROJECT_DIR$/web/build/bundled/service-worker.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/build/bundled/src/led-config-web-app/led-config-web-app.html" afterPath="$PROJECT_DIR$/web/build/bundled/src/led-config-web-app/led-config-web-app.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/build/unbundled/bower.json" afterPath="$PROJECT_DIR$/web/build/unbundled/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/build/unbundled/index.html" afterPath="$PROJECT_DIR$/web/build/unbundled/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/build/unbundled/service-worker.js" afterPath="$PROJECT_DIR$/web/build/unbundled/service-worker.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/build/unbundled/src/led-config-web-app/led-config-web-app.html" afterPath="$PROJECT_DIR$/web/build/unbundled/src/led-config-web-app/led-config-web-app.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.html" afterPath="$PROJECT_DIR$/web/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/manifest.json" afterPath="$PROJECT_DIR$/web/manifest.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/led-config-web-app/led-config-web-app.html" afterPath="$PROJECT_DIR$/web/src/led-config-web-app/led-config-web-app.html" />
     </list>
     <ignored path="drools-examples.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,104 +260,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LedConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/src/main/java/com/bitunified/ledconfig/LedConfig.java">
+      <file leaf-file-name="shrine-app.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/bower_components/app-layout/templates/shrine/src/shrine-app.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="95" column="42" selection-start-line="95" selection-start-column="42" selection-end-line="95" selection-end-column="42" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2435#2444#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="123" column="0" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+            <state relative-caret-position="165">
+              <caret line="245" column="81" selection-start-line="245" selection-start-column="81" selection-end-line="245" selection-end-column="81" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/pom.xml">
+      <file leaf-file-name="shop-app.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/src/shop-app.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+            <state relative-caret-position="4250">
+              <caret line="268" column="41" selection-start-line="268" selection-start-column="41" selection-end-line="268" selection-end-column="41" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/domain/pom.xml">
+      <file leaf-file-name="shop-checkout.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/src/shop-checkout.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="374">
+              <caret line="128" column="38" selection-start-line="128" selection-start-column="38" selection-end-line="128" selection-end-column="38" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="oldconfig.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/oldconfig.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-6239">
-              <caret line="2329" column="26" selection-start-line="2329" selection-start-column="26" selection-end-line="2329" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Part.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/parts/Part.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#316#317#0" expanded="true" />
-                <element signature="e#352#353#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LedConfig.drl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/src/main/resources/com.bitunified.ledconfig/LedConfig.drl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="746">
-              <caret line="86" column="44" selection-start-line="86" selection-start-column="44" selection-end-line="86" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ComposedProduct.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/composedproduct/ComposedProduct.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#334#340#0" expanded="true" />
-                <element signature="e#502#503#0" expanded="true" />
-                <element signature="e#537#538#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -189,8 +338,6 @@
         <option value="$PROJECT_DIR$/engine/src/main/resources/logback.xml" />
         <option value="$PROJECT_DIR$/web/build/unbundled/index.html" />
         <option value="$PROJECT_DIR$/web/bower.json" />
-        <option value="$PROJECT_DIR$/web/index.html" />
-        <option value="$PROJECT_DIR$/web/src/led-config-web-app/led-config-web-app.html" />
         <option value="$PROJECT_DIR$/engine/oldconfig.js" />
         <option value="$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/description/Descriptive.java" />
         <option value="$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/Model.java" />
@@ -207,8 +354,15 @@
         <option value="$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/composedproduct/ComposedProduct.java" />
         <option value="$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/composedproduct/ComposedProduct.java" />
         <option value="$PROJECT_DIR$/engine/src/main/resources/com.bitunified.ledconfig/LedConfig.drl" />
-        <option value="$PROJECT_DIR$/engine/src/main/java/com/bitunified/ledconfig/LedConfig.java" />
         <option value="$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/parts/Part.java" />
+        <option value="$PROJECT_DIR$/engine/src/main/java/com/bitunified/ledconfig/LedConfig.java" />
+        <option value="$PROJECT_DIR$/web/src/led-config-web-app/led-config-web-app.html" />
+        <option value="$PROJECT_DIR$/web/index.html" />
+        <option value="$PROJECT_DIR$/web/README.md" />
+        <option value="$PROJECT_DIR$/web/manifest.json" />
+        <option value="$PROJECT_DIR$/web/bower_components/app-layout/templates/shrine/src/shrine-app.html" />
+        <option value="$PROJECT_DIR$/web/src/shop-app.html" />
+        <option value="$PROJECT_DIR$/web/src/shop-checkout.html" />
       </list>
     </option>
   </component>
@@ -217,6 +371,13 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -303,10 +464,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-4" />
-    <option name="y" value="-4" />
-    <option name="width" value="1928" />
-    <option name="height" value="1044" />
+    <option name="width" value="1920" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -333,6 +492,20 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane />
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -375,224 +548,16 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="led-config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="led-config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
+              <option name="myItemId" value="web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="led-config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="led-config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.bitunified.ledconfig" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="led-config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="led-config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ledconfig" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="led-config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="led-config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="domain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="led-config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="led-config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="domain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ledconfig" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="led-config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="led-config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="domain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ledconfig" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="led-config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="led-config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="domain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ledconfig" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="domain" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane />
-      </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -600,26 +565,27 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="H:\Program Files\nodejs\node.exe" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="nodejs_interpreter_path" value="H:/Program Files/nodejs/node" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.bitunified.ledconfig.domain.product.accessoires" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="I:\bitunified\projects\led-config\engine\src\main\resources\com.bitunified.ledconfig" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.bitunified.ledconfig" />
       <recent name="org.drools.examples.state" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="I:\bitunified\projects\led-config\engine\src\main\resources\com.bitunified.ledconfig" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.bitunified.ledconfig.domain.product.accessoires" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.LedConfig">
+  <component name="RunManager" selected="Tomcat Server.Tomcat Led Config Engine">
     <configuration default="false" name="HelloWorldExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -708,9 +674,9 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="com.bitunified.ledconfig.LedConfig" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
@@ -720,57 +686,21 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
+      <deployment />
+      <server-settings />
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <method />
+    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
-      <module name="" />
-      <option name="DEPLOY" value="true" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="PM_INSTALL_OPTIONS" value="" />
-      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="DEBUGGER_TYPE" value="Java" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <Java />
-      <Profilers>
-        <option name="GAPID_DISABLE_PCS" value="false" />
-      </Profilers>
-      <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="EXTRA_OPTIONS" value="" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="DEBUGGER_TYPE" value="Java" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <Java />
-      <Profilers>
-        <option name="GAPID_DISABLE_PCS" value="false" />
-      </Profilers>
       <method />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -1064,12 +994,45 @@
       </MavenSettings>
       <method />
     </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="ScalaTestRunConfiguration" factoryName="ScalaTest">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Specs2RunConfiguration" factoryName="Specs2">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
@@ -1150,18 +1113,119 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
     <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
       <method />
     </configuration>
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Application.HelloWorldExample" />
-      <item index="1" class="java.lang.String" itemvalue="Application.BankingExamplesApp" />
-      <item index="2" class="java.lang.String" itemvalue="Application.StateExampleUsingSalience" />
-      <item index="3" class="java.lang.String" itemvalue="Application.HelloWorldExample (1)" />
-      <item index="4" class="java.lang.String" itemvalue="Application.LedConfig" />
+    <configuration default="true" type="uTestRunConfiguration" factoryName="utest">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Tomcat Led Config Engine" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.0.M13" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="engine">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_led-config" />
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="64757" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method>
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="engine" />
+        </option>
+      </method>
+    </configuration>
+    <list size="6">
+      <item index="0" class="java.lang.String" itemvalue="Tomcat Server.Tomcat Led Config Engine" />
+      <item index="1" class="java.lang.String" itemvalue="Application.HelloWorldExample" />
+      <item index="2" class="java.lang.String" itemvalue="Application.BankingExamplesApp" />
+      <item index="3" class="java.lang.String" itemvalue="Application.StateExampleUsingSalience" />
+      <item index="4" class="java.lang.String" itemvalue="Application.HelloWorldExample (1)" />
+      <item index="5" class="java.lang.String" itemvalue="Application.LedConfig" />
     </list>
     <recent_temporary>
       <list size="5">
@@ -1202,41 +1266,43 @@
       <workItem from="1479198275442" duration="196000" />
       <workItem from="1479417190134" duration="3960000" />
       <workItem from="1479469430704" duration="8058000" />
+      <workItem from="1479502400021" duration="5636000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45708000" />
+    <option name="totallyTimeSpent" value="51344000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="1928" height="1044" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1040" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3362162" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2113951" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32756758" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25452608" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899022" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33590308" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32929516" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21344087" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3270925" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25430107" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899022" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39935064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39935064" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1259,231 +1325,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/engine/src/main/resources/org/bitunified/examples/circularTms/circular.drl" />
-    <entry file="file://$PROJECT_DIR$/engine/src/main/resources/org/bitunified/examples/buspass/jtms/Policy.drl" />
-    <entry file="file://$PROJECT_DIR$/engine/src/main/resources/org/bitunified/examples/buspass/jtms/BusPassJTMS.drl" />
-    <entry file="file://$PROJECT_DIR$/engine/src/main/resources/org/bitunified/examples/buspass/good/BusPassGood.drl" />
-    <entry file="file://$PROJECT_DIR$/engine/src/main/resources/org/bitunified/examples/birdsfly/fly.drl" />
-    <entry file="file://$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/message/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/src/main/resources/org/bitunified/examples/cashflow/CashFlow.drl" />
-    <entry file="file://$PROJECT_DIR$/engine/src/main/resources/META-INF/kmodule.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/src/main/resources/META-INF/drools.rulebase.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/src/main/resources/META-INF/OrderWorkDefinitions.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/src/main/resources/logback.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/led-config.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://MAVEN/com.bitunified.ledconfig:parent:1.0-SNAPSHOT">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>MAVEN</ID>
-          <OriginalElement>com.bitunified.ledconfig:parent:1.0-SNAPSHOT</OriginalElement>
-          <nodes>
-            <node x="0.0" y="35.0">com.bitunified.ledconfig:parent:1.0-SNAPSHOT</node>
-            <node x="172.0" y="0.0">junit:junit:jar:4.12</node>
-            <node x="334.0" y="7.5">junit:junit:jar:4.12/org.hamcrest:hamcrest-core:jar:1.3</node>
-            <node x="148.0" y="70.0">org.mockito:mockito-core:jar:1.10.19</node>
-            <node x="348.0" y="77.5">org.mockito:mockito-core:jar:1.10.19/org.objenesis:objenesis:jar:2.1</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="org.mockito:mockito-core:jar:1.10.19" target="junit:junit:jar:4.12/org.hamcrest:hamcrest-core:jar:1.3">
-              <point x="53.0" y="-7.5" />
-              <point x="-55.5" y="7.5" />
-            </edge>
-            <edge source="com.bitunified.ledconfig:parent:1.0-SNAPSHOT" target="org.mockito:mockito-core:jar:1.10.19">
-              <point x="34.0" y="7.5" />
-              <point x="-53.0" y="-0.0" />
-            </edge>
-            <edge source="org.mockito:mockito-core:jar:1.10.19" target="org.mockito:mockito-core:jar:1.10.19/org.objenesis:objenesis:jar:2.1">
-              <point x="53.0" y="7.5" />
-              <point x="-41.5" y="-0.0" />
-            </edge>
-            <edge source="com.bitunified.ledconfig:parent:1.0-SNAPSHOT" target="junit:junit:jar:4.12">
-              <point x="34.0" y="-7.5" />
-              <point x="148.0" y="15.0" />
-              <point x="-29.0" y="-0.0" />
-            </edge>
-            <edge source="junit:junit:jar:4.12" target="junit:junit:jar:4.12/org.hamcrest:hamcrest-core:jar:1.3">
-              <point x="29.0" y="-0.0" />
-              <point x="-55.5" y="-7.5" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="1.0" x="83.0" y="12.0" />
-          <SelectedNodes>
-            <node>com.bitunified.ledconfig:parent:1.0-SNAPSHOT</node>
-          </SelectedNodes>
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>All</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/drools/drools-compiler/6.5.0.Final/drools-compiler-6.5.0.Final.jar!/org/drools/compiler/kie/builder/impl/KieContainerImpl.class" />
-    <entry file="file://$MAVEN_REPOSITORY$/org/drools/drools/6.5.0.Final/drools-6.5.0.Final.pom" />
-    <entry file="file://$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/Dimension.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="37" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/manifest.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/build/unbundled/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/bower_components/polymer-bootstrap/polymer-bootstrap.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1309">
-          <caret line="28" column="6" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/bower.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/test/led-config-web-app/led-config-web-app_test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/bower_components/paper-styles/paper-styles.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/bower_components/paper-input/all-imports.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/led-config-web-app/led-config-web-app.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="553">
-          <caret line="33" column="19" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/product/cover/types/Resin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/product/cover/types/Cover.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/product/cover/types/ResinClear.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/product/profile/Profile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/product/PCB/types/RGBLedStrip.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/product/PCB/types/DecoLedStrip.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/description/Descriptive.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
-          <folding>
-            <element signature="e#136#137#0" expanded="false" />
-            <element signature="e#163#164#0" expanded="false" />
-            <element signature="e#203#204#0" expanded="false" />
-            <element signature="e#235#236#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1508,7 +1353,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1580,7 +1424,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
+        <state relative-caret-position="238">
           <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
           <folding />
         </state>
@@ -1604,23 +1448,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/engine/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
+        <state relative-caret-position="2091">
           <caret line="123" column="0" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/src.zip!/java/lang/Math.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="962">
-          <caret line="1392" column="25" selection-start-line="1392" selection-start-column="25" selection-end-line="1392" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/src.zip!/java/lang/Math.java" />
     <entry file="file://$PROJECT_DIR$/engine/oldconfig.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6239">
+        <state relative-caret-position="39593">
           <caret line="2329" column="26" selection-start-line="2329" selection-start-column="26" selection-end-line="2329" selection-end-column="26" />
           <folding />
         </state>
@@ -1630,38 +1467,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/composedproduct/ComposedProduct.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state relative-caret-position="170">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#334#340#0" expanded="true" />
-            <element signature="e#502#503#0" expanded="true" />
-            <element signature="e#537#538#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/src/main/resources/com.bitunified.ledconfig/LedConfig.drl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="746">
-          <caret line="86" column="44" selection-start-line="86" selection-start-column="44" selection-end-line="86" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/src/main/java/com/bitunified/ledconfig/LedConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="95" column="42" selection-start-line="95" selection-start-column="42" selection-end-line="95" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2435#2444#0" expanded="true" />
+            <element signature="e#413#414#0" expanded="false" />
+            <element signature="e#459#460#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1671,10 +1486,255 @@
         <state relative-caret-position="204">
           <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#316#317#0" expanded="true" />
-            <element signature="e#352#353#0" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/src/main/resources/com.bitunified.ledconfig/LedConfig.drl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="81" column="9" selection-start-line="81" selection-start-column="9" selection-end-line="81" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/led-config-web-app/led-config-web-app.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="19" column="10" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/shop-button.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-463">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/shop-common-styles.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/shop-cart-modal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1326">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/shop-home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1938">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/shop-tab.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-408">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/shop-tabs.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/shop-network-warning.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-608">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/shop-checkbox.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-676">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/src/main/java/com/bitunified/ledconfig/LedConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#4480#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#2437#2446#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/polymer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/manifest.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/mens_outerwear.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-38">
+          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/shop-cart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-765">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/data/images/10-11017B.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/shop-icon-384.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/shop-icon-192.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/shop-icon-128.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/lazy-resources.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-140">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/shop-tabs-overlay.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/sw-precache-config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/shop-icon-32.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/mens_tshirts.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/shop-select.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1313">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/shop-icons.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/shop-category-data.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2129">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/bower_components/app-layout/templates/shrine/src/shrine-app.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="245" column="81" selection-start-line="245" selection-start-column="81" selection-end-line="245" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/shop-app.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4250">
+          <caret line="268" column="41" selection-start-line="268" selection-start-column="41" selection-end-line="268" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/shop-checkout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="128" column="38" selection-start-line="128" selection-start-column="38" selection-end-line="128" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1684,10 +1744,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <last-edited>engine</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

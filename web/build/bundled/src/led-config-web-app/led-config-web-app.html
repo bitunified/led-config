@@ -1,21 +1,32 @@
 <html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/polymer-bootstrap/polymer-bootstrap.html">
-<style include="polymer-bootstrap"></style>
+<link rel="import" href="../../bower_components/paper-input/all-imports.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input-container.html">
+<link rel="import" href="../../bower_components/paper-styles/default-theme.html">
+<link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
 </head><body><dom-module id="led-config-web-app">
   <template>
+
+      <h2>hoi</h2>
+
     <style>
       :host {
         display: block;
       }
     </style>
     <h2>Hello [[prop1]]</h2>
- 
-    
-    <style include="polymer-bootstrap"></style>
-    <style>:host { display: block; }</style>
-    Hi
+
+
+    <paper-input-container always-float-label="" attr-for-value="ssn-input">
+      <label>Productcode</label>
+      <ssn-input class="paper-input-input"></ssn-input>
+      <paper-input-error>SSN invalid!</paper-input-error>
+    </paper-input-container>
+    <paper-button>
+      <button>Check</button>
+    </paper-button>
   </template>
 
-  <script>Polymer({is:"led-config-web-app",properties:{prop1:{type:String,value:"led-config-web-app"}}});</script>
+  <script>Polymer({is:"led-config-web-app",validate_1:function(){console.info("yes")},properties:{prop1:{type:String,value:"led-config-web-app"}}});</script>
 </dom-module>
 </body></html>
