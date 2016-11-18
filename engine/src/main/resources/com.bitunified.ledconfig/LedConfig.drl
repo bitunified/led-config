@@ -8,7 +8,7 @@ package com.bitunified.ledconfig;
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 
 import com.bitunified.ledconfig.domain.Dimension;
-import com.bitunified.ledconfig.domain.composedproduct.ComposedProduct;
+import com.bitunified.ledconfig.composedproduct.ComposedProduct;
 import com.bitunified.ledconfig.domain.message.Message
 import com.bitunified.ledconfig.domain.product.cover.types.ResinClear;
 import com.bitunified.ledconfig.domain.product.cover.types.Resin;
@@ -17,7 +17,9 @@ import com.bitunified.ledconfig.domain.product.PCB.types.DecoLedStrip;
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 import com.bitunified.ledconfig.domain.product.cable.Cable;
 import com.bitunified.ledconfig.domain.Property
-import com.bitunified.ledconfig.domain.product.accessoires.Clips;
+import com.bitunified.ledconfig.domain.product.accessoires.Clips
+import com.bitunified.ledconfig.parts.Part;
+
 global java.util.List<Message> messages
  
 rule "Led strip section modulo"
@@ -76,13 +78,13 @@ rule "Kabeltype moet overeenkomen met PCB type"
 rule "Aantal clips is evenredig aan lengte"
     when
         composedproduct:ComposedProduct();
+    ff:
+    Math.min(2,Integer(Math.ceil(composedproduct.width/500)))
+
     then
-        countClips=(int)Math.ceil(composedproduct.width/500);
-        if (countClips<2){
-            countClips=2;
-        }
-        for (int i=0;i<countClips;i++){
-        composedproduct.addProducts(new Clips());
-        }
+
+
+        composedproduct.addProducts(new Part());
+
 
     end
