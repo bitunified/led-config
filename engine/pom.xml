@@ -6,7 +6,7 @@
   <parent>
     <groupId>com.bitunified.ledconfig</groupId>
     <artifactId>parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
   </parent>
 
   <artifactId>engine</artifactId>
@@ -121,11 +121,7 @@
     </dependency>
 
 
-    <dependency>
-      <groupId>com.bitunified.ledconfig</groupId>
-      <artifactId>domain</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
+
 
   </dependencies>
 </project>

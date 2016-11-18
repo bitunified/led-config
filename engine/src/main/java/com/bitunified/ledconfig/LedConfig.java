@@ -17,15 +17,14 @@
 package com.bitunified.ledconfig;
 
 import com.bitunified.ledconfig.domain.Dimension;
-import com.bitunified.ledconfig.domain.composedproduct.ComposedProduct;
+import com.bitunified.ledconfig.composedproduct.ComposedProduct;
 import com.bitunified.ledconfig.domain.message.Message;
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 import com.bitunified.ledconfig.domain.product.PCB.types.DecoLedStrip;
-import com.bitunified.ledconfig.domain.product.PCB.types.RGBLedStrip;
 import com.bitunified.ledconfig.domain.product.cable.Cable;
-import com.bitunified.ledconfig.domain.product.cover.types.Resin;
 import com.bitunified.ledconfig.domain.product.cover.types.ResinClear;
 import com.bitunified.ledconfig.domain.product.profile.Profile;
+import com.bitunified.ledconfig.parts.Part;
 import org.kie.api.KieServices;
 import org.kie.api.event.rule.DebugAgendaEventListener;
 import org.kie.api.event.rule.DebugRuleRuntimeEventListener;
@@ -90,8 +89,11 @@ public class LedConfig {
         Cable.TYPE.setValue("2-aderig");
 
         final ComposedProduct composedProduct = new ComposedProduct(300,null);
-        composedProduct.addProducts(profile);
-        composedProduct.addProducts(ledStrip);
+        Part profilePart = new Part(profile);
+
+        composedProduct.addProducts(profilePart);
+        Part ledStripPart=new Part(ledStrip);
+        composedProduct.addProducts(ledStripPart);
 
 
         ksession.insert(composedProduct);
