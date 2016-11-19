@@ -126,12 +126,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               on-iron-form-presubmit="_willSendRequest">
 
 
-            <header class="subsection">
+            <header class="subsection" visible="true">
               <h1>Productcode</h1>
               <span>Geef de productcode op</span>
             </header>
 
-            <div class="subsection grid" >
+            <div class="subsection grid" visible="true">
 
               <section>
 
@@ -141,7 +141,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         placeholder="Card Number" required
                         autocomplete="cc-number">
                     <shop-md-decorator error-message="Invalid Card Number" aria-hidden="true">
-                      <label for="ccNumber">Card Number</label>
+                      <label for="ccNumber">Productcode</label>
                       <shop-underline></shop-underline>
                     </shop-md-decorator>
                   </shop-input>
@@ -271,16 +271,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
           this.$.checkoutForm.fire('iron-form-presubmit', null, { bubbles: false });
 
-          this.debounce('_submitForm', function() {
-            this.$.checkoutForm.fire('iron-form-response', {
-              response: {
-                success: 1,
-                successMessage: 'Demo checkout process complete.'
-              }
-            }, { bubbles: false });
-          }, 1000);
+//          this.debounce('_submitForm', function() {
+//            this.$.checkoutForm.fire('iron-form-response', {
+//              response: {
+//                success: 1,
+//                successMessage: 'Demo checkout process complete.'
+//              }
+//            }, { bubbles: false });
+//          }, 1000);
 
-          // this.$.checkoutForm.submit();
+           this.$.checkoutForm.submit();
         }
       },
 

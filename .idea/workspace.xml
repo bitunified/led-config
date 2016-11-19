@@ -2,240 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="647bd766-1da8-4701-9575-1a4d1e717993" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-11017A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-11017B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-11019A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-11019B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13018A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13018B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13058A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13058B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13097A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13097B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13130A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13130B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13153A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13153B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13213A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13213B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13239A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13239B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13240A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13240B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13241A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13241B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13256A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13256B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13260A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13260B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13262A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13262B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13263A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13263B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13264A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13264B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13265A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13265B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13266A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13266B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13267A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13267B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13268A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13268B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13269A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13269B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13270A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13270B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13271A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13271B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13272A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13272B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13273A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13273B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13274A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13274B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13275A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13275B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13276A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13276B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13277A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13277B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13278A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13278B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13279A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13279B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13280A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13280B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13282A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13282B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13285A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13285B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13286A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13286B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13288A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13288B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13289A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13289B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13290A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13290B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13291A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13291B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13292A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-13292B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14133A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14133B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14146A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14146B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14152A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14152B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14153A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14153B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14154A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14154B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14155A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14155B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14157A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14157B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14158A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14158B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14159A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14159B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14160A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14160B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14215A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14215B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14216A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14216B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14217A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-14217B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-15041A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-15041B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-15068A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-15068B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-15103A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-15103B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23069A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23069B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23073A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23073B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23169A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23169B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23171A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23171B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23172A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23172B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23173A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23173B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23174A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23174B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23176A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23176B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23177A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23177B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23178A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23178B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23179A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23179B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23180A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23180B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23198A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23198B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23225A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23225B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23226A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23226B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23227A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23227B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23228A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23228B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23229A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23229B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23230A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-23230B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-24097A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-24097B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-24098A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-24098B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-24099A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-24099B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-24101A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-24101B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-24102A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-24102B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-25058A.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/10-25058B.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ladies_outerwear.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ladies_tshirts.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/mens_outerwear.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/mens_tshirts.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/shop-icon-128.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/shop-icon-192.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/shop-icon-32.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/shop-icon-384.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/engine.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app.yaml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/ladies_outerwear.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/ladies_tshirts.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/mens_outerwear.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/mens_tshirts.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/sample_error_response.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/sample_success_response.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/polymer.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/service-worker.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/lazy-resources.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-404-warning.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-analytics.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-app.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-button.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-cart-data.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-cart-item.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-cart-modal.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-cart.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-category-data.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-checkbox.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-checkout.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-common-styles.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-detail.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-form-styles.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-home.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-icons.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-image.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-input.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-list-item.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-list.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-network-warning.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-ripple-container.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-select.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-snackbar.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-tab.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-tabs-overlay.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/shop-tabs.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/sw-precache-config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/test/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/test/shop-home.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/build/bundled/bower_components/polymer-bootstrap/polymer-bootstrap.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/build/bundled/bower_components/webcomponentsjs/webcomponents-lite.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/build/unbundled/bower_components/polymer-bootstrap/polymer-bootstrap.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/build/unbundled/bower_components/webcomponentsjs/webcomponents-lite.js" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/server_war_exploded.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/Dockerfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/pom.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/server.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/web/WEB-INF/web.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/led-config.iml" afterPath="$PROJECT_DIR$/engine/led-config.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/src/main/java/com/bitunified/ledconfig/LedConfig.java" afterPath="$PROJECT_DIR$/engine/src/main/java/com/bitunified/ledconfig/LedConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/.gitignore" afterPath="$PROJECT_DIR$/web/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/README.md" afterPath="$PROJECT_DIR$/web/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/bower.json" afterPath="$PROJECT_DIR$/web/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/bower_components/polymer/.bower.json" afterPath="$PROJECT_DIR$/web/bower_components/polymer/.bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/bower_components/webcomponentsjs/.bower.json" afterPath="$PROJECT_DIR$/web/bower_components/webcomponentsjs/.bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/build/bundled/bower.json" afterPath="$PROJECT_DIR$/web/build/bundled/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/build/bundled/index.html" afterPath="$PROJECT_DIR$/web/build/bundled/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/build/bundled/service-worker.js" afterPath="$PROJECT_DIR$/web/build/bundled/service-worker.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/build/bundled/src/led-config-web-app/led-config-web-app.html" afterPath="$PROJECT_DIR$/web/build/bundled/src/led-config-web-app/led-config-web-app.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/build/unbundled/bower.json" afterPath="$PROJECT_DIR$/web/build/unbundled/bower.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/build/unbundled/index.html" afterPath="$PROJECT_DIR$/web/build/unbundled/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/build/unbundled/service-worker.js" afterPath="$PROJECT_DIR$/web/build/unbundled/service-worker.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/build/unbundled/src/led-config-web-app/led-config-web-app.html" afterPath="$PROJECT_DIR$/web/build/unbundled/src/led-config-web-app/led-config-web-app.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.html" afterPath="$PROJECT_DIR$/web/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/manifest.json" afterPath="$PROJECT_DIR$/web/manifest.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/led-config-web-app/led-config-web-app.html" afterPath="$PROJECT_DIR$/web/src/led-config-web-app/led-config-web-app.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/shop-checkout.html" afterPath="$PROJECT_DIR$/web/src/shop-checkout.html" />
     </list>
     <ignored path="drools-examples.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -244,6 +26,7 @@
     <ignored path="$PROJECT_DIR$/engine/target/" />
     <ignored path="$PROJECT_DIR$/domain/target/" />
     <ignored path="$PROJECT_DIR$/web/target/" />
+    <ignored path="$PROJECT_DIR$/server/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -263,7 +46,7 @@
       <file leaf-file-name="shrine-app.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/bower_components/app-layout/templates/shrine/src/shrine-app.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
+            <state relative-caret-position="4165">
               <caret line="245" column="81" selection-start-line="245" selection-start-column="81" selection-end-line="245" selection-end-column="81" />
               <folding />
             </state>
@@ -273,18 +56,68 @@
       <file leaf-file-name="shop-app.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/src/shop-app.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4250">
+            <state relative-caret-position="4556">
               <caret line="268" column="41" selection-start-line="268" selection-start-column="41" selection-end-line="268" selection-end-column="41" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shop-checkout.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="shop-checkout.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/src/shop-checkout.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="128" column="38" selection-start-line="128" selection-start-column="38" selection-end-line="128" selection-end-column="38" />
+            <state relative-caret-position="2859">
+              <caret line="282" column="10" selection-start-line="282" selection-start-column="10" selection-end-line="282" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/web/WEB-INF/web.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="15" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Dockerfile" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/Dockerfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="12" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bower.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/bower.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="463">
+              <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -312,9 +145,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/org/drools/examples/honestpolitician/HonestPolitician.drl" />
-        <option value="$PROJECT_DIR$/src/main/resources/META-INF/kmodule.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/org/drools/examples/state/StateExampleUsingSalience.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/bitunified/examples/helloworld/HelloWorldExample.java" />
         <option value="$PROJECT_DIR$/src/main/resources/org/bitunified/examples/helloworld/HelloWorld.drl" />
         <option value="$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/Unit.java" />
@@ -363,6 +193,9 @@
         <option value="$PROJECT_DIR$/web/bower_components/app-layout/templates/shrine/src/shrine-app.html" />
         <option value="$PROJECT_DIR$/web/src/shop-app.html" />
         <option value="$PROJECT_DIR$/web/src/shop-checkout.html" />
+        <option value="$PROJECT_DIR$/server/pom.xml" />
+        <option value="$PROJECT_DIR$/server/web/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/server/Dockerfile" />
       </list>
     </option>
   </component>
@@ -493,19 +326,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane />
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -548,7 +368,61 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="led-config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="led-config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="led-config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="led-config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="led-config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="led-config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -556,7 +430,68 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="led-config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="led-config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="led-config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="led-config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane />
       </pane>
     </panes>
   </component>
@@ -1266,43 +1201,47 @@
       <workItem from="1479198275442" duration="196000" />
       <workItem from="1479417190134" duration="3960000" />
       <workItem from="1479469430704" duration="8058000" />
-      <workItem from="1479502400021" duration="5636000" />
+      <workItem from="1479502400021" duration="5680000" />
+      <workItem from="1479574478955" duration="4974000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51344000" />
+    <option name="totallyTimeSpent" value="56362000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1040" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33590308" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32929516" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21344087" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2155914" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3270925" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25430107" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899022" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39935064" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39935064" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33590308" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3270925" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899022" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1325,74 +1264,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/description/Descriptive.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/Margin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-          <folding>
-            <element signature="e#150#151#0" expanded="false" />
-            <element signature="e#177#178#0" expanded="false" />
-            <element signature="e#218#219#0" expanded="false" />
-            <element signature="e#250#251#0" expanded="false" />
-            <element signature="e#283#284#0" expanded="false" />
-            <element signature="e#311#312#0" expanded="false" />
-            <element signature="e#354#355#0" expanded="false" />
-            <element signature="e#388#389#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/product/accessoires/Clips.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/product/accessoires/Accessoire.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/product/PCB/LedStrip.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/modeltypes/RealModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#445#446#0" expanded="false" />
-            <element signature="e#484#485#0" expanded="false" />
-            <element signature="e#523#524#0" expanded="false" />
-            <element signature="e#555#556#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/modeltypes/ConfigurationModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1400,17 +1275,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#520#521#0" expanded="false" />
-            <element signature="e#547#548#0" expanded="false" />
-            <element signature="e#587#588#0" expanded="false" />
-            <element signature="e#619#620#0" expanded="false" />
-            <element signature="e#751#752#0" expanded="false" />
-            <element signature="e#794#795#0" expanded="false" />
-            <element signature="e#840#841#0" expanded="false" />
-            <element signature="e#911#912#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1418,7 +1282,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="41" selection-start-line="5" selection-start-column="41" selection-end-line="5" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1442,7 +1305,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1450,7 +1312,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2091">
           <caret line="123" column="0" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1459,7 +1320,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="39593">
           <caret line="2329" column="26" selection-start-line="2329" selection-start-column="26" selection-end-line="2329" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1474,10 +1334,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <element signature="e#413#414#0" expanded="false" />
-            <element signature="e#459#460#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1485,9 +1341,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1495,7 +1348,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="81" column="9" selection-start-line="81" selection-start-column="9" selection-end-line="81" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1503,7 +1355,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="107">
           <caret line="19" column="10" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1519,7 +1370,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1527,7 +1377,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1326">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1559,7 +1408,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-608">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1567,7 +1415,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-676">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1575,11 +1422,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
           <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#4480#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#2437#2446#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1587,7 +1429,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1595,7 +1436,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1603,7 +1443,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1616,15 +1455,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-38">
           <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1660,7 +1490,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-140">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1668,7 +1497,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1676,7 +1504,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1694,7 +1521,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1313">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1702,7 +1528,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1716,7 +1541,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/bower_components/app-layout/templates/shrine/src/shrine-app.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
+        <state relative-caret-position="4165">
           <caret line="245" column="81" selection-start-line="245" selection-start-column="81" selection-end-line="245" selection-end-column="81" />
           <folding />
         </state>
@@ -1724,16 +1549,72 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/src/shop-app.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4250">
+        <state relative-caret-position="4556">
           <caret line="268" column="41" selection-start-line="268" selection-start-column="41" selection-end-line="268" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/build/bundled/src/shop-app.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="546" column="7" selection-start-line="546" selection-start-column="7" selection-end-line="546" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/shop-form-styles.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="7" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/src/shop-checkout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="128" column="38" selection-start-line="128" selection-start-column="38" selection-end-line="128" selection-end-column="38" />
+        <state relative-caret-position="2859">
+          <caret line="282" column="10" selection-start-line="282" selection-start-column="10" selection-end-line="282" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="15" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="12" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
           <folding />
         </state>
       </provider>
