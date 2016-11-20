@@ -41,6 +41,12 @@
       <artifactId>jersey-media-json-jackson</artifactId>
       <version>${jersey.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.containers</groupId>
+      <artifactId>jersey-container-servlet</artifactId>
+
+      <version>${jersey.version}</version>
+    </dependency>
   </dependencies>
 </dependencyManagement>
 
