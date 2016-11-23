@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="exploded-war" name="engine">
-    <output-path>$PROJECT_DIR$/out/artifacts/engine</output-path>
-    <root id="root">
-      <element id="module-output" name="led-config" />
-    </root>
-  </artifact>
-</component>

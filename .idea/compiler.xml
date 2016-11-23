@@ -29,7 +29,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="domain" target="1.6" />
-      <module name="led-config" target="1.6" />
+      <module name="engine" target="1.6" />
       <module name="parent" target="1.6" />
       <module name="server" target="1.6" />
       <module name="web" target="1.6" />
