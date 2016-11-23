@@ -75,16 +75,16 @@ rule "Kabeltype moet overeenkomen met PCB type"
         messages.add(new Message("Let op: kabeltype past niet bij PCB."));
     end
 
-rule "Aantal clips is evenredig aan lengte"
-    when
-        composedproduct:ComposedProduct();
-    ff:
-    Math.min(2,Integer(Math.ceil(composedproduct.width/500)))
-
-    then
-
-
-        composedproduct.addProducts(new Part());
-
-
-    end
+//rule "Aantal clips is evenredig aan lengte"
+//    when
+//        composedproduct:ComposedProduct();
+//    ff:
+//    Math.min(2,Integer(Math.ceil(composedproduct.width/500)))
+//
+//    then
+//
+//
+//        composedproduct.addProducts(new Part());
+//
+//
+//    end
