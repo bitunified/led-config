@@ -52,6 +52,12 @@
       <artifactId>domain</artifactId>
       <version>${ledconfig.version}</version>
     </dependency>
+
+    <dependency>
+      <groupId>com.bitunified.ledconfig</groupId>
+      <artifactId>engine</artifactId>
+      <version>${ledconfig.version}</version>
+    </dependency>
   </dependencies>
 </dependencyManagement>
 

@@ -35,6 +35,11 @@
 
         </dependency>
 
+        <dependency>
+            <groupId>com.bitunified.ledconfig</groupId>
+            <artifactId>engine</artifactId>
+
+        </dependency>
     </dependencies>
     <build>
 

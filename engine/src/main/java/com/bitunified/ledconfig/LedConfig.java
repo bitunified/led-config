@@ -41,16 +41,20 @@ import java.util.List;
 public class LedConfig {
 
     public static final void main(final String[] args) {
+        rules(args);
+    }
+    public static final List<Message> rules(final String[] args) {
         // KieServices is the factory for all KIE services 
         KieServices ks = KieServices.Factory.get();
         
         // From the kie services, a container is created from the classpath
         KieContainer kc = ks.getKieClasspathContainer();
 
-        execute( kc );
+        return execute( kc );
+
     }
 
-    public static void execute( KieContainer kc ) {
+    public static List<Message> execute( KieContainer kc ) {
         // From the container, a session is created based on
         // its definition and configuration in the META-INF/kmodule.xml file
         KieSession ksession = kc.newKieSession("LedConfigKS");
@@ -113,6 +117,7 @@ public class LedConfig {
 
         // and then dispose the session
         ksession.dispose();
+        return messages;
     }
 
 
