@@ -12,7 +12,7 @@
 
 <description>Domain models of parts</description>
     <artifactId>domain</artifactId>
-
+    <packaging>pom</packaging>
     <name>Domain</name>
 
 </project>

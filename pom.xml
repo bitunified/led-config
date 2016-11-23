@@ -47,6 +47,11 @@
 
       <version>${jersey.version}</version>
     </dependency>
+    <dependency>
+      <groupId>com.bitunified.ledconfig</groupId>
+      <artifactId>domain</artifactId>
+      <version>${ledconfig.version}</version>
+    </dependency>
   </dependencies>
 </dependencyManagement>
 

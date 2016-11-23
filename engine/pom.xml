@@ -10,7 +10,7 @@
   </parent>
 
   <artifactId>engine</artifactId>
-<packaging>pom</packaging>
+  <packaging>pom</packaging>
   <name>Engine</name>
   <description>Configurator engine for liniLed</description>
 
@@ -122,7 +122,7 @@
     <dependency>
       <groupId>com.bitunified.ledconfig</groupId>
       <artifactId>domain</artifactId>
-<version>${ledconfig.version}</version>
+
     </dependency>
 
 

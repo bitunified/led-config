@@ -121,7 +121,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               id="checkoutForm"
               is="iron-form"
               method="post"
-              action="/rest/engine/data"
+              action="/server/rest/engine/data"
               on-iron-form-response="_didReceiveResponse"
               on-iron-form-presubmit="_willSendRequest">
 
@@ -137,10 +137,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                                 <div class="row input-row">
                   <shop-input>
-                    <input type="tel" id="ccNumber" name="ccNumber" pattern="[\d\s]{15,}"
+                    <input type="tel" id="ccNumber" name="ccNumber"
                         placeholder="Card Number" required
                         autocomplete="cc-number">
-                    <shop-md-decorator error-message="Invalid Card Number" aria-hidden="true">
+                    <shop-md-decorator error-message="Ongeldige code" aria-hidden="true">
                       <label for="ccNumber">Productcode</label>
                       <shop-underline></shop-underline>
                     </shop-md-decorator>
