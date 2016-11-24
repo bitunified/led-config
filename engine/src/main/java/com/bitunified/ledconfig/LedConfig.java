@@ -16,21 +16,14 @@
 
 package com.bitunified.ledconfig;
 
-import com.bitunified.ledconfig.domain.Dimension;
-import com.bitunified.ledconfig.composedproduct.ComposedProduct;
+import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.message.Message;
-import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
-import com.bitunified.ledconfig.domain.product.PCB.types.DecoLedStrip;
-import com.bitunified.ledconfig.domain.product.cable.Cable;
-import com.bitunified.ledconfig.domain.product.cover.types.ResinClear;
-import com.bitunified.ledconfig.domain.product.profile.Profile;
-import com.bitunified.ledconfig.parts.Part;
 import org.kie.api.KieServices;
 import org.kie.api.event.rule.DebugAgendaEventListener;
 import org.kie.api.event.rule.DebugRuleRuntimeEventListener;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
-
+import com.bitunified.ledconfig.configuration.parser.steps.Parser;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,11 +43,12 @@ public class LedConfig {
         // From the kie services, a container is created from the classpath
         KieContainer kc = ks.getKieClasspathContainer();
 
-        return execute( kc );
+
+        return execute( kc, Parser.parse(args[0]));
 
     }
 
-    public static List<Message> execute( KieContainer kc ) {
+    public static List<Message> execute(KieContainer kc, Iterable<? extends Model> modelInserts) {
         // From the container, a session is created based on
         // its definition and configuration in the META-INF/kmodule.xml file
         KieSession ksession = kc.newKieSession("LedConfigKS");
@@ -79,32 +73,16 @@ public class LedConfig {
 
         // The application can insert facts into the session
 
-        final Profile profile = new Profile(new Dimension(100,200));
-        profile.setName("L20");
-        //final RGBLedStrip ledStrip=new RGBLedStrip(new Dimension(null,null,null));
-        final DecoLedStrip ledStrip=new DecoLedStrip(new Dimension(100));
-        LedStrip.SECTION.setValue(10);
-
-        ledStrip.getProperty(DecoLedStrip.COLOR).setValue("ROOD");
-
-        final ResinClear resin=new ResinClear(null);
-
-        final Cable cable=new Cable(new Dimension(4000));
-        Cable.TYPE.setValue("2-aderig");
-
-        final ComposedProduct composedProduct = new ComposedProduct(300,null);
-        Part profilePart = new Part(profile);
-
-        composedProduct.addProducts(profilePart);
-        Part ledStripPart=new Part(ledStrip);
-        composedProduct.addProducts(ledStripPart);
+      for (Model model:modelInserts){
+          ksession.insert(model);
+      }
 
 
-        ksession.insert(composedProduct);
-        ksession.insert(profile);
-        ksession.insert(ledStrip);
-        ksession.insert(resin);
-        ksession.insert(cable);
+//        ksession.insert(composedProduct);
+//        ksession.insert(profile);
+//        ksession.insert(ledStrip);
+//        ksession.insert(resin);
+//        ksession.insert(cable);
         // and fire the rules
         ksession.fireAllRules();
 

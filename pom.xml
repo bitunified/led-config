@@ -58,6 +58,11 @@
       <artifactId>engine</artifactId>
       <version>${ledconfig.version}</version>
     </dependency>
+    <dependency>
+      <groupId>com.bitunified.ledconfig</groupId>
+      <artifactId>configuration</artifactId>
+      <version>${ledconfig.version}</version>
+    </dependency>
   </dependencies>
 </dependencyManagement>
 
@@ -66,7 +71,8 @@
     <module>engine</module>
     <module>domain</module>
     <module>web</module>
-      <module>server</module>
+    <module>server</module>
+    <module>configuration</module>
   </modules>
 
 </project>

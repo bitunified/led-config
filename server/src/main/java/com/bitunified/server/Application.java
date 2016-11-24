@@ -19,7 +19,7 @@ public class Application {
         @Produces(MediaType.APPLICATION_JSON)
         public ServerResponse input(@FormParam("ccNumber") String number) {
                 ServerResponse result= new ServerResponse("yes");
-                List<Message> messages=ledConfig.rules(null);
+                List<Message> messages=ledConfig.rules(new String[]{number});
                 List<String> clientMessages=new ArrayList<String>();
                 for (Message message:messages){
                         clientMessages.add(message.getMessage());
