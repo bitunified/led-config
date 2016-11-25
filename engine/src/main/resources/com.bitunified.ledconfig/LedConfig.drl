@@ -39,7 +39,7 @@ end
 rule "Totale lengte"
     when
         ledstrip:LedStrip(props:properies,afmetingen:dimension)
-        composedproduct:ComposedProduct(width<(afmetingen.width+10+5))
+        composedproduct:ComposedProduct(dimension.width<(afmetingen.width+10+5))
 
     then
         messages.add(new Message("Totale lengte moet minimaal."));

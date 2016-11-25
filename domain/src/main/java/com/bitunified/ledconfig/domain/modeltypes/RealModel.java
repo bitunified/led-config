@@ -5,7 +5,7 @@ import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.domain.Model;
 
 public class RealModel extends Model {
-    private Dimension dimension;
+    private Dimension dimension=new Dimension(null,null);
 
     private Dimension maxDimension;
 

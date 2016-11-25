@@ -12,7 +12,7 @@ public class LedConfigTest {
 
     @Test
     public void testConfig(){
-        String[] args=new String[]{"B1M300"};
+        String[] args=new String[]{"B1M300100"};
         List<Message> messages=LedConfig.rules(args);
         assertEquals("","",messages);
     }

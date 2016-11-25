@@ -29,21 +29,38 @@ public class ParserStep {
     public Model create(String productcode, List<Part> parts) {
         String code=parse(productcode);
         for (Part part : parts) {
-            if (part.getProduct().getClass().getName().equals(modelClass.getName()) && part.getCode().equalsIgnoreCase(code)){
-                RealModel product= part.getProduct();
-                if (dataEnd!=null){
-                    String length=productcode.substring(end,dataEnd);
-                    product.setDimension(new Dimension(new Integer(length)));
+            if (part.getProduct().getClass().getName().equals(modelClass.getName())) {
+                RealModel product = part.getProduct();
+                if (code != null) {
+                    if (part.getCode().equalsIgnoreCase(code)) {
 
+                        if (dataEnd != null) {
+                            String length = productcode.substring(end, dataEnd);
+                            product.setDimension(new Dimension(new Integer(length)));
+
+                        }
+                        return product;
+                    }
+                } else {
+
+                    if (dataEnd != null) {
+                        String length = productcode.substring(end, dataEnd);
+                        product.setDimension(new Dimension(new Integer(length)));
+
+                    }
+                    return product;
                 }
-                return product;
             }
         }
         return null;
     }
 
     private String parse(String productcode) {
-        return productcode.substring(begin,end);
+        if ((begin==null || end==null)||(begin.equals(end))){
+            return null;
+        }
+        return
+                productcode.substring(begin,end);
     }
 
     public String getRegex() {

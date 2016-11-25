@@ -11,7 +11,7 @@ public class ParserTest {
     @Test
     public void testParser() {
         Parser.init();
-        ParsedResult parsedResult = Parser.parse("B1M200");
+        ParsedResult parsedResult = Parser.parse("B1M200300");
 
         Model[] partResult = parsedResult.getParts().toArray(new Model[]{});
         System.out.println(partResult[0]);

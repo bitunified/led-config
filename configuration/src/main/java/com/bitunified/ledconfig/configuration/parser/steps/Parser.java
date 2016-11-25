@@ -2,6 +2,7 @@ package com.bitunified.ledconfig.configuration.parser.steps;
 
 
 
+import com.bitunified.ledconfig.composedproduct.ComposedProduct;
 import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
@@ -41,12 +42,18 @@ public class Parser {
         part=new Part(ledStrip);
         part.setCode("M");
 
+        ComposedProduct composedProduct=new ComposedProduct(null,null);
+
+        part=new Part(composedProduct);
+
+
         parts.add(part);
     }
     public static ParsedResult parse(String productcode){
         List<ParserStep> steps =new ArrayList<ParserStep>();
         steps.add(new ParserStep(1,2,Profile.class,"","Profiel niet geconfigureerd", null));
-        steps.add(new ParserStep(2,3,LedStrip.class,"","Ledstrip niet geconfigureerd", 3+3));
+        steps.add(new ParserStep(2,3,LedStrip.class,"","Ledstrip niet geconfigureerd", 6));
+        steps.add(new ParserStep(6,6,ComposedProduct.class,"","Ledstrip niet geconfigureerd", 9));
         List<Model> models=new ArrayList<Model>();
         List<String> messages=new ArrayList<String>();
         for (ParserStep step:steps){
