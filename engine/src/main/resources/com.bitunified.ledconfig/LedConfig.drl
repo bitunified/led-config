@@ -36,17 +36,25 @@ rule "Led strip section modulo"
 
 end
 
-rule "Totale lengte"
+rule "Totale lengte minimaal"
     when
         ledstrip:LedStrip(props:properies,afmetingen:dimension)
         composedproduct:ComposedProduct(dimension.width<(afmetingen.width+10+5))
 
     then
-        messages.add(new Message("Totale lengte moet minimaal."));
+        messages.add(new Message("Totale lengte is groter dan ledstrip lengte inclusief marges."));
 
 end
 
+rule "Totale lengte is groter dan maximale ledstrip lengte"
+    when
+        ledstrip:LedStrip(props:properies,afmetingen:dimension,maxDim:maxDimension)
+        composedproduct:ComposedProduct(dimension.width>(maxDim.width))
 
+    then
+        messages.add(new Message("Totale lengte is groter dan maximale ledstrip lengte."));
+
+end
 
 rule "Kap en gieting"
 

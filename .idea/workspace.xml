@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="17b1b8a5-9f51-4e67-9d02-85c073d61d7f" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/ParserTest.java" afterPath="$PROJECT_DIR$/configuration/src/test/java/com/bitunified/ledconfig/configuration/parser/steps/ParserTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/engine/src/main/java/com/bitunified/ledconfig/LedConfigTest.java" afterPath="$PROJECT_DIR$/engine/src/test/java/com/bitunified/ledconfig/LedConfigTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/configuration/configuration.iml" afterPath="$PROJECT_DIR$/configuration/configuration.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/Parser.java" afterPath="$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/Parser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/ParserStep.java" afterPath="$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/ParserStep.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/composedproduct/ComposedProduct.java" afterPath="$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/composedproduct/ComposedProduct.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/modeltypes/RealModel.java" afterPath="$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/modeltypes/RealModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/engine.iml" afterPath="$PROJECT_DIR$/engine/engine.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/src/main/resources/com.bitunified.ledconfig/LedConfig.drl" afterPath="$PROJECT_DIR$/engine/src/main/resources/com.bitunified.ledconfig/LedConfig.drl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/npm-debug.log" afterPath="$PROJECT_DIR$/web/npm-debug.log" />
     </list>
@@ -39,29 +32,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LedConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/src/main/java/com/bitunified/ledconfig/LedConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="40" column="43" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="43" />
-              <folding>
-                <element signature="e#1421#1422#0" expanded="true" />
-                <element signature="e#1448#1449#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="132" column="19" selection-start-line="132" selection-start-column="19" selection-end-line="132" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="LedConfigTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/engine/src/test/java/com/bitunified/ledconfig/LedConfigTest.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -74,15 +44,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+            <state relative-caret-position="238">
+              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#518#524#0" expanded="true" />
-                <element signature="e#1942#1950#0" expanded="true" />
+                <element signature="e#1991#1999#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -100,11 +70,40 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="oldconfig.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/engine/oldconfig.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="560">
+              <caret line="1971" column="0" selection-start-line="1971" selection-start-column="0" selection-end-line="1971" selection-end-column="0" />
+              <folding>
+                <marker date="1479460842380" expanded="true" signature="15344:15350" ph="€" />
+                <marker date="1479460842380" expanded="true" signature="18126:18131" ph="®" />
+                <marker date="1479460842380" expanded="true" signature="21785:21791" ph="&amp;nbsp;" />
+                <marker date="1479460842380" expanded="true" signature="22018:22025" ph="–" />
+                <marker date="1479460842380" expanded="true" signature="22368:22379" ph="..." />
+                <marker date="1479460842380" expanded="true" signature="33957:33962" ph="®" />
+                <marker date="1479460842380" expanded="true" signature="36613:36618" ph="®" />
+                <marker date="1479460842380" expanded="true" signature="43359:43364" ph="®" />
+                <marker date="1479460842380" expanded="true" signature="45543:45548" ph="®" />
+                <marker date="1479460842380" expanded="true" signature="45989:45994" ph="®" />
+                <marker date="1479460842380" expanded="true" signature="46435:46440" ph="®" />
+                <marker date="1479460842380" expanded="true" signature="74622:74630" ph="é" />
+                <marker date="1479460842380" expanded="true" signature="74630:74638" ph="é" />
+                <marker date="1479460842380" expanded="true" signature="101616:101622" ph="&amp;nbsp;" />
+                <marker date="1479460842380" expanded="true" signature="101642:101648" ph="&amp;nbsp;" />
+                <marker date="1479460842380" expanded="true" signature="104088:104093" ph="&amp;amp;" />
+                <marker date="1479460842380" expanded="true" signature="112282:112333" ph="..." />
+                <marker date="1479460842380" expanded="true" signature="122943:122994" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ParserStep.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/ParserStep.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state relative-caret-position="816">
+              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
               <folding>
                 <element signature="e#2256#2257#0" expanded="true" />
                 <element signature="e#2291#2292#0" expanded="true" />
@@ -115,11 +114,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LedConfig.drl" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LedConfig.drl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/engine/src/main/resources/com.bitunified.ledconfig/LedConfig.drl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="41" column="55" selection-start-line="41" selection-start-column="55" selection-end-line="41" selection-end-column="55" />
+            <state relative-caret-position="458">
+              <caret line="50" column="83" selection-start-line="50" selection-start-column="83" selection-end-line="50" selection-end-column="83" />
               <folding />
             </state>
           </provider>
@@ -204,11 +203,11 @@
         <option value="$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/composedproduct/ComposedProduct.java" />
         <option value="$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/ParserStep.java" />
         <option value="$PROJECT_DIR$/engine/src/main/java/com/bitunified/ledconfig/LedConfigTest.java" />
-        <option value="$PROJECT_DIR$/engine/src/main/resources/com.bitunified.ledconfig/LedConfig.drl" />
-        <option value="$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/Parser.java" />
         <option value="$PROJECT_DIR$/configuration/src/test/java/com/bitunified/ledconfig/configuration/parser/steps/ParserTest.java" />
         <option value="$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/modeltypes/RealModel.java" />
         <option value="$PROJECT_DIR$/engine/src/test/java/com/bitunified/ledconfig/LedConfigTest.java" />
+        <option value="$PROJECT_DIR$/engine/src/main/resources/com.bitunified.ledconfig/LedConfig.drl" />
+        <option value="$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/Parser.java" />
       </list>
     </option>
   </component>
@@ -1107,7 +1106,7 @@
       <updated>1479664134184</updated>
       <workItem from="1479664136342" duration="2199000" />
       <workItem from="1479848662881" duration="423000" />
-      <workItem from="1480069460154" duration="9386000" />
+      <workItem from="1480069460154" duration="10008000" />
     </task>
     <task id="LOCAL-00001" summary="Parser">
       <created>1480079720477</created>
@@ -1137,21 +1136,37 @@
       <option name="project" value="LOCAL" />
       <updated>1480080791596</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Parser">
+      <created>1480082679690</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1480082679690</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="LedConfigTest - 2016.11.25 at 14h 48m 52s.xml">
-      <configuration name="LedConfigTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="LedConfigTest - 2016.11.25 at 15h 04m 01s.xml">
       <configuration name="LedConfigTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LedConfigTest_testConfig - 2016.11.25 at 14h 45m 02s.xml">
-      <configuration name="LedConfigTest.testConfig" configurationId="JUnit" />
+    <history-entry file="LedConfigTest - 2016.11.25 at 15h 06m 26s.xml">
+      <configuration name="LedConfigTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LedConfigTest_testConfig - 2016.11.25 at 14h 45m 37s.xml">
-      <configuration name="LedConfigTest.testConfig" configurationId="JUnit" />
+    <history-entry file="LedConfigTest - 2016.11.25 at 15h 10m 37s.xml">
+      <configuration name="LedConfigTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LedConfigTest - 2016.11.25 at 15h 11m 01s.xml">
+      <configuration name="LedConfigTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LedConfigTest - 2016.11.25 at 15h 12m 13s.xml">
+      <configuration name="LedConfigTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LedConfigTest - 2016.11.25 at 15h 14m 42s.xml">
+      <configuration name="LedConfigTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LedConfigTest - 2016.11.25 at 15h 14m 52s.xml">
+      <configuration name="LedConfigTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="LedConfigTest_testConfig - 2016.11.25 at 14h 59m 59s.xml">
       <configuration name="LedConfigTest.testConfig" configurationId="JUnit" />
@@ -1162,18 +1177,9 @@
     <history-entry file="LedConfigTest_testConfig - 2016.11.25 at 15h 02m 48s.xml">
       <configuration name="LedConfigTest.testConfig" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ParserTest - 2016.11.25 at 14h 51m 25s.xml">
-      <configuration name="ParserTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ParserTest_testParser - 2016.11.25 at 14h 58m 39s.xml">
-      <configuration name="ParserTest.testParser" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ParserTest_testParser - 2016.11.25 at 14h 59m 19s.xml">
-      <configuration name="ParserTest.testParser" configurationId="JUnit" />
-    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12008000" />
+    <option name="totallyTimeSpent" value="12630000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1928" height="1044" extended-state="6" />
@@ -1298,8 +1304,8 @@
         <state relative-caret-position="534">
           <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
           <folding>
-            <element signature="e#840#841#0" expanded="true" />
-            <element signature="e#916#917#0" expanded="true" />
+            <element signature="e#840#841#0" expanded="false" />
+            <element signature="e#916#917#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1309,33 +1315,6 @@
         <state relative-caret-position="221">
           <caret line="13" column="38" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/oldconfig.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="1951" column="9" selection-start-line="1951" selection-start-column="9" selection-end-line="1951" selection-end-column="9" />
-          <folding>
-            <marker date="1479460842380" expanded="true" signature="15344:15350" ph="€" />
-            <marker date="1479460842380" expanded="true" signature="18126:18131" ph="®" />
-            <marker date="1479460842380" expanded="true" signature="21785:21791" ph="&amp;nbsp;" />
-            <marker date="1479460842380" expanded="true" signature="22018:22025" ph="–" />
-            <marker date="1479460842380" expanded="true" signature="22368:22379" ph="..." />
-            <marker date="1479460842380" expanded="true" signature="33957:33962" ph="®" />
-            <marker date="1479460842380" expanded="true" signature="36613:36618" ph="®" />
-            <marker date="1479460842380" expanded="true" signature="43359:43364" ph="®" />
-            <marker date="1479460842380" expanded="true" signature="45543:45548" ph="®" />
-            <marker date="1479460842380" expanded="true" signature="45989:45994" ph="®" />
-            <marker date="1479460842380" expanded="true" signature="46435:46440" ph="®" />
-            <marker date="1479460842380" expanded="true" signature="74622:74630" ph="é" />
-            <marker date="1479460842380" expanded="true" signature="74630:74638" ph="é" />
-            <marker date="1479460842380" expanded="true" signature="101616:101622" ph="&amp;nbsp;" />
-            <marker date="1479460842380" expanded="true" signature="101642:101648" ph="&amp;nbsp;" />
-            <marker date="1479460842380" expanded="true" signature="104088:104093" ph="&amp;amp;" />
-            <marker date="1479460842380" expanded="true" signature="112282:112333" ph="..." />
-            <marker date="1479460842380" expanded="true" signature="122943:122994" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1407,16 +1386,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/src/test/java/com/bitunified/ledconfig/LedConfigTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/configuration/src/test/java/com/bitunified/ledconfig/configuration/parser/steps/ParserTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -1427,22 +1396,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/Parser.java">
+    <entry file="file://$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/product/PCB/LedStrip.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        <state relative-caret-position="85">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/oldconfig.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="1971" column="0" selection-start-line="1971" selection-start-column="0" selection-end-line="1971" selection-end-column="0" />
+          <folding>
+            <marker date="1479460842380" expanded="true" signature="15344:15350" ph="€" />
+            <marker date="1479460842380" expanded="true" signature="18126:18131" ph="®" />
+            <marker date="1479460842380" expanded="true" signature="21785:21791" ph="&amp;nbsp;" />
+            <marker date="1479460842380" expanded="true" signature="22018:22025" ph="–" />
+            <marker date="1479460842380" expanded="true" signature="22368:22379" ph="..." />
+            <marker date="1479460842380" expanded="true" signature="33957:33962" ph="®" />
+            <marker date="1479460842380" expanded="true" signature="36613:36618" ph="®" />
+            <marker date="1479460842380" expanded="true" signature="43359:43364" ph="®" />
+            <marker date="1479460842380" expanded="true" signature="45543:45548" ph="®" />
+            <marker date="1479460842380" expanded="true" signature="45989:45994" ph="®" />
+            <marker date="1479460842380" expanded="true" signature="46435:46440" ph="®" />
+            <marker date="1479460842380" expanded="true" signature="74622:74630" ph="é" />
+            <marker date="1479460842380" expanded="true" signature="74630:74638" ph="é" />
+            <marker date="1479460842380" expanded="true" signature="101616:101622" ph="&amp;nbsp;" />
+            <marker date="1479460842380" expanded="true" signature="101642:101648" ph="&amp;nbsp;" />
+            <marker date="1479460842380" expanded="true" signature="104088:104093" ph="&amp;amp;" />
+            <marker date="1479460842380" expanded="true" signature="112282:112333" ph="..." />
+            <marker date="1479460842380" expanded="true" signature="122943:122994" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/src/main/resources/com.bitunified.ledconfig/LedConfig.drl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="50" column="83" selection-start-line="50" selection-start-column="83" selection-end-line="50" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/src/test/java/com/bitunified/ledconfig/LedConfigTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#518#524#0" expanded="true" />
-            <element signature="e#1942#1950#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/ParserStep.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="816">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
           <folding>
             <element signature="e#2256#2257#0" expanded="true" />
             <element signature="e#2291#2292#0" expanded="true" />
@@ -1452,11 +1462,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/src/main/resources/com.bitunified.ledconfig/LedConfig.drl">
+    <entry file="file://$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="41" column="55" selection-start-line="41" selection-start-column="55" selection-end-line="41" selection-end-column="55" />
-          <folding />
+        <state relative-caret-position="238">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#518#524#0" expanded="true" />
+            <element signature="e#1991#1999#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

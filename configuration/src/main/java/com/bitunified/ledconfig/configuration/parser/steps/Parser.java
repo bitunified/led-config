@@ -32,15 +32,17 @@ public class Parser {
 
         profile = new Profile(new Dimension(100,200));
         profile.setName("liniLED Aeris Profiel H20");
-
         part = new Part(profile);
         part.setCode("2");
+        parts.add(part);
+
 
         LedStrip ledStrip=new LedStrip(new Dimension(null));
         ledStrip.setName("liniLED RGB Deco");
-        ledStrip.setMaxDimension(new Dimension(300));
+        ledStrip.setMaxDimension(new Dimension(10));
         part=new Part(ledStrip);
         part.setCode("M");
+        parts.add(part);
 
         ComposedProduct composedProduct=new ComposedProduct(null,null);
 
