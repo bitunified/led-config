@@ -9,13 +9,13 @@ import java.util.List;
 public class ParsedResult {
 
     private List<Model> parts=new ArrayList<Model>();
-    private List<String> messages=new ArrayList<String>();
+    private List<ConfigMessage> messages=new ArrayList<ConfigMessage>();
 
-    public List<String> getMessages() {
+    public List<ConfigMessage> getMessages() {
         return messages;
     }
 
-    public void setMessages(List<String> messages) {
+    public void setMessages(List<ConfigMessage> messages) {
         this.messages = messages;
     }
 

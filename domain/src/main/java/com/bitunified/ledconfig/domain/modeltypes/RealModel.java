@@ -2,9 +2,7 @@ package com.bitunified.ledconfig.domain.modeltypes;
 
 
 import com.bitunified.ledconfig.domain.Dimension;
-import com.bitunified.ledconfig.domain.Margin;
 import com.bitunified.ledconfig.domain.Model;
-import com.bitunified.ledconfig.domain.description.Descriptive;
 
 public class RealModel extends Model {
     private Dimension dimension;
@@ -15,7 +13,7 @@ public class RealModel extends Model {
 
     }
     public RealModel(Dimension dimension) {
-       this.dimension=dimension;
+        this.dimension=dimension;
     }
 
     public Dimension getDimension() {
@@ -25,6 +23,9 @@ public class RealModel extends Model {
     public Dimension getMaxDimension() {
         return maxDimension;
     }
+    public void setDimension(Dimension dimension){
+        this.dimension=dimension;
+    }
 
     public void setMaxDimension(Dimension maxDimension) {
         this.maxDimension = maxDimension;
@@ -32,6 +33,6 @@ public class RealModel extends Model {
 
     @Override
     public String toString() {
-        return "["+super.toString()+" MaxDim: "+this.maxDimension+"]";
+        return "["+super.toString()+", Dimension:"+dimension.toString()+" MaxDim: "+this.maxDimension+"]";
     }
 }

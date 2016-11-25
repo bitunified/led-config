@@ -31,11 +31,13 @@ public class Parser {
 
         profile = new Profile(new Dimension(100,200));
         profile.setName("liniLED Aeris Profiel H20");
+
         part = new Part(profile);
         part.setCode("2");
 
         LedStrip ledStrip=new LedStrip(new Dimension(null));
         ledStrip.setName("liniLED RGB Deco");
+        ledStrip.setMaxDimension(new Dimension(300));
         part=new Part(ledStrip);
         part.setCode("M");
 

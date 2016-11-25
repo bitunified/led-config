@@ -16,6 +16,8 @@
 
 package com.bitunified.ledconfig;
 
+import com.bitunified.ledconfig.configuration.parser.steps.ConfigMessage;
+import com.bitunified.ledconfig.configuration.parser.steps.ParsedResult;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.message.Message;
 import org.kie.api.KieServices;
@@ -48,7 +50,7 @@ public class LedConfig {
 
     }
 
-    public static List<Message> execute(KieContainer kc, Iterable<? extends Model> modelInserts) {
+    public static List<Message> execute(KieContainer kc, ParsedResult modelInserts) {
         // From the container, a session is created based on
         // its definition and configuration in the META-INF/kmodule.xml file
         KieSession ksession = kc.newKieSession("LedConfigKS");
@@ -73,7 +75,7 @@ public class LedConfig {
 
         // The application can insert facts into the session
 
-      for (Model model:modelInserts){
+      for (Model model:modelInserts.getParts()){
           ksession.insert(model);
       }
 
@@ -85,7 +87,11 @@ public class LedConfig {
 //        ksession.insert(cable);
         // and fire the rules
         ksession.fireAllRules();
-
+        for (ConfigMessage messageConfig:modelInserts.getMessages()){
+            Message message=new Message();
+            message.setMessage(messageConfig.getMessageText());
+            messages.add(message);
+        }
         for (Message message:messages){
 
             System.out.println(message);

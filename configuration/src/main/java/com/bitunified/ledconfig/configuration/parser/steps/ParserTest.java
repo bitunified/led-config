@@ -15,6 +15,6 @@ public class ParserTest {
 
         Model[] partResult = parsedResult.getParts().toArray(new Model[]{});
         System.out.println(partResult[0]);
-        assertEquals("", "[[[name:liniLED Aeris Profiel L20 props:{}] MaxDim: null], [[name:liniLED RGB Deco props:{section=key:section value:}] MaxDim: [Width:200 Height:null Depth:null Unit:null]]]", parsedResult.getParts().toString());
+        assertEquals("", "[[[name:liniLED Aeris Profiel L20 props:{}], Dimension:[Width:null Height:null Depth:null Unit:null] MaxDim: null], [[name:liniLED RGB Deco props:{section=key:section value:}], Dimension:[Width:200 Height:null Depth:null Unit:null] MaxDim: null]]", parsedResult.getParts().toString());
     }
 }

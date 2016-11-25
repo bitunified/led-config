@@ -33,7 +33,8 @@ public class ParserStep {
                 RealModel product= part.getProduct();
                 if (dataEnd!=null){
                     String length=productcode.substring(end,dataEnd);
-                    product.setMaxDimension(new Dimension(new Integer(length)));
+                    product.setDimension(new Dimension(new Integer(length)));
+
                 }
                 return product;
             }
