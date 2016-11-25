@@ -90,8 +90,8 @@
       <file leaf-file-name="ParserTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/ParserTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="198" selection-start-line="20" selection-start-column="198" selection-end-line="20" selection-end-column="198" />
+            <state relative-caret-position="136">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1014,7 +1014,7 @@
       <updated>1479664134184</updated>
       <workItem from="1479664136342" duration="2199000" />
       <workItem from="1479848662881" duration="423000" />
-      <workItem from="1480069460154" duration="6463000" />
+      <workItem from="1480069460154" duration="6492000" />
     </task>
     <task id="LOCAL-00001" summary="Parser">
       <created>1480079720477</created>
@@ -1023,7 +1023,14 @@
       <option name="project" value="LOCAL" />
       <updated>1480079720478</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Parser">
+      <created>1480079745054</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1480079745054</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1059,7 +1066,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9085000" />
+    <option name="totallyTimeSpent" value="9114000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1928" height="1044" extended-state="6" />
@@ -1121,7 +1128,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/ParserTest.java</url>
-          <line>18</line>
+          <line>15</line>
           <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
@@ -1295,8 +1302,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/ParserTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="198" selection-start-line="20" selection-start-column="198" selection-end-line="20" selection-end-column="198" />
+        <state relative-caret-position="136">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
