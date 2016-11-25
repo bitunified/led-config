@@ -40,6 +40,7 @@ public class Parser {
         LedStrip ledStrip=new LedStrip(new Dimension(null));
         ledStrip.setName("liniLED RGB Deco");
         ledStrip.setMaxDimension(new Dimension(10));
+        ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         part=new Part(ledStrip);
         part.setCode("M");
         parts.add(part);
