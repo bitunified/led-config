@@ -30,5 +30,8 @@ public class RealModel extends Model {
         this.maxDimension = maxDimension;
     }
 
-
+    @Override
+    public String toString() {
+        return "["+super.toString()+" MaxDim: "+this.maxDimension+"]";
+    }
 }

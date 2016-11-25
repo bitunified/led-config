@@ -2,12 +2,13 @@ package com.bitunified.ledconfig.parts;
 
 
 import com.bitunified.ledconfig.domain.Model;
+import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 import com.bitunified.ledconfig.domain.product.profile.Profile;
 
 import java.math.BigDecimal;
 
 public class Part {
-    private Model product;
+    private RealModel product;
     private BigDecimal price;
     private String code;
     private String description;
@@ -15,7 +16,7 @@ public class Part {
     public Part(){
         
     }
-    public Part(Model product) {
+    public Part(RealModel product) {
         this.product=product;
     }
 
@@ -43,7 +44,13 @@ public class Part {
         this.price = price;
     }
 
-    public Model getProduct() {
+    public RealModel getProduct() {
         return product;
+    }
+
+    @Override
+    public String toString() {
+        return "Product:"+product.toString()+", Code: "+code+ " Description: "+description;
+
     }
 }

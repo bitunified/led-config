@@ -40,6 +40,6 @@ public class Model extends Descriptive {
 
     @Override
     public String toString() {
-        return "name:"+this.name+" props:"+properies.toString();
+        return "[name:"+this.name+" props:"+properies.toString()+"]";
     }
 }

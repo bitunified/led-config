@@ -1,7 +1,9 @@
 package com.bitunified.ledconfig.configuration.parser.steps;
 
 
+import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.domain.Model;
+import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 import com.bitunified.ledconfig.parts.Part;
 
 import java.util.List;
@@ -10,22 +12,30 @@ public class ParserStep {
 
 
     private final String regex;
-    private final Class<? extends Model> model;
-    private final Integer end;
+    private final Class<? extends Model> modelClass;
     private final Integer begin;
+    private final Integer end;
+    private final Integer dataEnd;
+    private String errorMessage;
 
-    public ParserStep(Integer begin, Integer end, Class<? extends Model> model, String regex) {
+    public ParserStep(Integer begin, Integer end, Class<? extends Model> model, String regex, String errorMessage, Integer dataEnd) {
         this.begin = begin;
         this.end = end;
-        this.model = model;
+        this.modelClass = model;
         this.regex = regex;
+        this.dataEnd = dataEnd;
     }
 
     public Model create(String productcode, List<Part> parts) {
         String code=parse(productcode);
         for (Part part : parts) {
-            if (part.getProduct().getClass().equals(model) && part.getCode().equalsIgnoreCase(code)){
-                return part.getProduct();
+            if (part.getProduct().getClass().getName().equals(modelClass.getName()) && part.getCode().equalsIgnoreCase(code)){
+                RealModel product= part.getProduct();
+                if (dataEnd!=null){
+                    String length=productcode.substring(end,dataEnd);
+                    product.setMaxDimension(new Dimension(new Integer(length)));
+                }
+                return product;
             }
         }
         return null;
@@ -40,6 +50,14 @@ public class ParserStep {
     }
 
     public Class<? extends Model> getModel() {
-        return model;
+        return modelClass;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
 }

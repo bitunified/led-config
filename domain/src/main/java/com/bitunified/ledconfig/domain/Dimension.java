@@ -23,4 +23,9 @@ public class Dimension {
         this.width=width;
 
     }
+
+    @Override
+    public String toString() {
+        return "[Width:" + width+" Height:"+height+" Depth:"+depth+" Unit:"+unit+"]";
+    }
 }
