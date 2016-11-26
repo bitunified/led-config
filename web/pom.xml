@@ -21,6 +21,12 @@
                 <webXml>web\WEB-INF\web.xml</webXml>
 
                 <failOnMissingWebXml>false</failOnMissingWebXml>
+                <webResources>
+                    <resource>
+                        <!-- this is relative to the pom.xml directory -->
+                        <directory>build/bundled</directory>
+                    </resource>
+                </webResources>
             </configuration>
         </plugin>
 

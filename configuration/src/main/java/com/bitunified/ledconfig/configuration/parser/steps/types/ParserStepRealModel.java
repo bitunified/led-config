@@ -1,6 +1,7 @@
-package com.bitunified.ledconfig.configuration.parser.steps;
+package com.bitunified.ledconfig.configuration.parser.steps.types;
 
 
+import com.bitunified.ledconfig.configuration.parser.steps.ParseStep;
 import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
@@ -8,22 +9,17 @@ import com.bitunified.ledconfig.parts.Part;
 
 import java.util.List;
 
-public class ParserStep {
+public class ParserStepRealModel extends ParseStepBase implements ParseStep {
 
 
-    private final String regex;
-    private final Class<? extends Model> modelClass;
     private final Integer begin;
     private final Integer end;
-    private final Integer dataEnd;
     private String errorMessage;
 
-    public ParserStep(Integer begin, Integer end, Class<? extends Model> model, String regex, String errorMessage, Integer dataEnd) {
+    public ParserStepRealModel(Integer begin, Integer end, Class<? extends Model> model, String regex, String errorMessage) {
+        super(model,regex,errorMessage);
         this.begin = begin;
         this.end = end;
-        this.modelClass = model;
-        this.regex = regex;
-        this.dataEnd = dataEnd;
     }
 
     public Model create(String productcode, List<Part> parts) {
@@ -34,21 +30,8 @@ public class ParserStep {
                 if (code != null) {
                     if (part.getCode().equalsIgnoreCase(code)) {
 
-                        if (dataEnd != null) {
-                            String length = productcode.substring(end, dataEnd);
-                            product.setDimension(new Dimension(new Integer(length)));
-
-                        }
                         return product;
                     }
-                } else {
-
-                    if (dataEnd != null) {
-                        String length = productcode.substring(end, dataEnd);
-                        product.setDimension(new Dimension(new Integer(length)));
-
-                    }
-                    return product;
                 }
             }
         }
@@ -77,5 +60,10 @@ public class ParserStep {
 
     public void setErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
+    }
+
+    @Override
+    public boolean isOptional() {
+        return false;
     }
 }

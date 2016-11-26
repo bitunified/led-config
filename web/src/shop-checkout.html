@@ -128,7 +128,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             <header class="subsection" visible="true">
               <h1>Productcode</h1>
-              <span>Geef de productcode op</span>
+              <span>Bijv.:B1M348D20077778a</span>
             </header>
 
             <div class="subsection grid" visible="true">
@@ -137,7 +137,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                                 <div class="row input-row">
                   <shop-input>
-                    <input type="tel" id="ccNumber" name="ccNumber"
+                    <input type="tel" id="ccNumber" name="ccNumber" pattern="B([321]){1}([MRGBAPCDEF123456])([1470258369])([1-5])([1-8])([CD])(\d{4})((\d{4})?)(([ab])?)+"
                         placeholder="Card Number" required
                         autocomplete="cc-number">
                     <shop-md-decorator error-message="Ongeldige code" aria-hidden="true">
@@ -155,20 +155,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </div>
 
         <!-- Success message UI -->
-        <header state="success">
+        <header state="localhost:8080/checkout/success">
           <h1>Berichten:</h1>
           <p>[[response.messages]]</p>
           <shop-button responsive>
             <a href="/">Terug</a>
           </shop-button>
         </header>
-
+        <header state="/success">
+          <h1>Berichten:</h1>
+          <p>[[response.messages]]</p>
+          <shop-button responsive>
+            <a href="/">Terug</a>
+          </shop-button>
+        </header>
         <!-- Error message UI -->
         <header state="error">
-          <h1>We couldn&acute;t process your order</h1>
-          <p id="errorMessage">[[response.errorMessage]]</p>
+          <h1>Er is een fout opgetreden</h1>
+          <p id="errorMessage">[[response.messages]]</p>
           <shop-button responsive>
-            <a href="/checkout">Try again</a>
+            <a href="/checkout">Terug</a>
+          </shop-button>
+        </header>
+
+        <header >
+          <h1>hoi</h1>
+
+          <shop-button responsive>
+            <a href="/checkout">Terug</a>
           </shop-button>
         </header>
 
@@ -289,6 +303,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        */
       _pushState: function(state) {
         this._validState = state;
+        console.info(this.state);
+        console.info(this.route.path);
         this.set('route.path', state);
       },
 
@@ -396,7 +412,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this._setWaiting(true);
 
         if (response.success) {
-          this._pushState('success');
+          console.info(this.state);
+          this._pushState('localhost:8080/checkout/success');
           this._reset();
           this.fire('clear-cart');
         } else {
