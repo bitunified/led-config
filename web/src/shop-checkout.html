@@ -116,6 +116,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <div class="main-frame">
       <iron-pages selected="[[state]]" attr-for-selected="state">
+
         <div state="init">
           <form
               id="checkoutForm"
@@ -128,7 +129,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             <header class="subsection" visible="true">
               <h1>Productcode</h1>
-              <span>Bijv.:B1M348D20077778a</span>
+              <span>Bijv.:B13714D02000219a</span>
             </header>
 
             <div class="subsection grid" visible="true">
@@ -162,7 +163,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <a href="/">Terug</a>
           </shop-button>
         </header>
-        <header state="/success">
+        <header state="success">
           <h1>Berichten:</h1>
           <p>[[response.messages]]</p>
           <shop-button responsive>
@@ -178,13 +179,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </shop-button>
         </header>
 
-        <header >
-          <h1>hoi</h1>
-
-          <shop-button responsive>
-            <a href="/checkout">Terug</a>
-          </shop-button>
-        </header>
 
       </iron-pages>
 
@@ -407,13 +401,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        */
       _didReceiveResponse: function(e) {
         var response = e.detail.response;
-
+        console.info(response.messages);
         this.response = response;
         this._setWaiting(true);
 
         if (response.success) {
           console.info(this.state);
           this._pushState('localhost:8080/checkout/success');
+          this._pushState('success');
           this._reset();
           this.fire('clear-cart');
         } else {

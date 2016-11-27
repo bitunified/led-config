@@ -10,6 +10,7 @@ import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 import com.bitunified.ledconfig.domain.product.PCB.types.DecoLedStrip;
+import com.bitunified.ledconfig.domain.product.PCB.types.HighPowerLedStrip;
 import com.bitunified.ledconfig.domain.product.cable.Cable;
 import com.bitunified.ledconfig.domain.product.cable.cableconfig.CableEntry;
 import com.bitunified.ledconfig.domain.product.cover.Covering;
@@ -45,7 +46,7 @@ public class Parser {
         parts.add(part);
 
 
-        DecoLedStrip ledStrip=new DecoLedStrip(new Dimension(null));
+        LedStrip ledStrip=new DecoLedStrip(new Dimension(null));
         ledStrip.setName("liniLED RGB Deco");
         ledStrip.setMaxDimension(new Dimension(10));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
@@ -62,18 +63,33 @@ public class Parser {
         part.setCode("R");
         parts.add(part);
 
+        ledStrip=new HighPowerLedStrip(new Dimension(null));
+        ledStrip.setName("High Power");
+        ledStrip.setMaxDimension(new Dimension(10));
+        ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
+        ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("3000");
+        part=new Part(ledStrip);
+        part.setCode("3");
+        parts.add(part);
+
         Cable cable=new Cable(new Dimension(null));
-        cable.setName("cable");
+        cable.setName("PVC with ope end");
         cable.getProperty(Cable.CABLE_TYPE).setValue("PVCopenend");
         part=new Part(cable);
-        part.setCode("M");
+        part.setCode("1");
+        parts.add(part);
+
+        cable=new Cable(new Dimension(null));
+        cable.setName("PUR with liniLed PU Connector set");
+        cable.getProperty(Cable.CABLE_TYPE).setValue("PURconnectorset");
+        part=new Part(cable);
+        part.setCode("7");
+        parts.add(part);
 
         ComposedProduct composedProduct=new ComposedProduct(null,null);
-
         part=new Part(composedProduct);
-
-
         parts.add(part);
+
     }
     //B1M348D20077778a
     //B([321]){1}([MRGBAPCDEF123456])([1470258369])([1-5])([1-8])([CD])(\d{4})((\d{4})?)(([ab])?)
