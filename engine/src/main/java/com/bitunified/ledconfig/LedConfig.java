@@ -89,8 +89,10 @@ public class LedConfig {
         ksession.fireAllRules();
         for (ConfigMessage messageConfig:modelInserts.getMessages()){
             Message message=new Message();
-            message.setMessage(messageConfig.getMessageText());
+            if (messageConfig.getMessageText()!=null) {
+                message.setMessage(messageConfig.getMessageText());
             messages.add(message);
+            }
         }
         for (Message message:messages){
 

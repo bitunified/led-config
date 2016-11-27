@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="17b1b8a5-9f51-4e67-9d02-85c073d61d7f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/product/PCB/types/HighPowerLedStrip.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/Parser.java" afterPath="$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/Parser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/types/ParserStepRealModel.java" afterPath="$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/types/ParserStepRealModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/src/main/java/com/bitunified/ledconfig/LedConfig.java" afterPath="$PROJECT_DIR$/engine/src/main/java/com/bitunified/ledconfig/LedConfig.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/build/bundled/service-worker.js" afterPath="$PROJECT_DIR$/web/build/bundled/service-worker.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/build/unbundled/service-worker.js" afterPath="$PROJECT_DIR$/web/build/unbundled/service-worker.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/shop-checkout.html" afterPath="$PROJECT_DIR$/web/src/shop-checkout.html" />
     </list>
     <ignored path="parent.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,11 +39,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="69" column="58" selection-start-line="69" selection-start-column="58" selection-end-line="69" selection-end-column="58" />
+            <state relative-caret-position="23">
+              <caret line="105" column="35" selection-start-line="105" selection-start-column="35" selection-end-line="105" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LedConfig.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/engine/src/main/java/com/bitunified/ledconfig/LedConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="638">
+              <caret line="93" column="34" selection-start-line="93" selection-start-column="34" selection-end-line="93" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -79,11 +89,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ParserStepRealModelComposed.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ParserStepRealModelComposed.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/types/ParserStepRealModelComposed.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+            <state relative-caret-position="155">
+              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -105,8 +115,8 @@
       <file leaf-file-name="ParserStepRealModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/types/ParserStepRealModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+            <state relative-caret-position="96">
+              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -117,8 +127,8 @@
       <file leaf-file-name="ParseStepBase.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/types/ParseStepBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
+            <state relative-caret-position="155">
+              <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -129,16 +139,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="132">
               <caret line="403" column="27" selection-start-line="403" selection-start-column="27" selection-end-line="403" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/webapp/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -177,7 +177,6 @@
         <option value="$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/ParserTest.java" />
         <option value="$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/ConfigMessage.java" />
         <option value="$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/ParsedResult.java" />
-        <option value="$PROJECT_DIR$/engine/src/main/java/com/bitunified/ledconfig/LedConfig.java" />
         <option value="$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/composedproduct/ComposedProduct.java" />
         <option value="$PROJECT_DIR$/engine/src/main/java/com/bitunified/ledconfig/LedConfigTest.java" />
         <option value="$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/modeltypes/RealModel.java" />
@@ -198,14 +197,15 @@
         <option value="$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/types/ParseStepOptional.java" />
         <option value="$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/ParseStep.java" />
         <option value="$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/types/ParseStepBase.java" />
-        <option value="$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/types/ParserStepRealModel.java" />
         <option value="$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/types/ParserStepRealModelComposed.java" />
         <option value="$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/types/ParserStepRealModelWithLength.java" />
         <option value="$PROJECT_DIR$/server/src/main/webapp/index.html" />
         <option value="$PROJECT_DIR$/web/src/shop-app.html" />
         <option value="$PROJECT_DIR$/web/src/shop-checkout.html" />
         <option value="$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/product/PCB/types/HighPowerLedStrip.java" />
+        <option value="$PROJECT_DIR$/engine/src/main/java/com/bitunified/ledconfig/LedConfig.java" />
         <option value="$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/Parser.java" />
+        <option value="$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/types/ParserStepRealModel.java" />
       </list>
     </option>
   </component>
@@ -1372,7 +1372,7 @@
     </configuration>
     <configuration default="false" name="Tomcat server" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.0.M13" ALTERNATIVE_JRE_ENABLED="false">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/" />
-      <option name="UPDATING_POLICY" value="update-resources" />
+      <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="server:war exploded">
           <settings>
@@ -1485,7 +1485,7 @@
       <workItem from="1479848662881" duration="423000" />
       <workItem from="1480069460154" duration="10184000" />
       <workItem from="1480264548912" duration="597000" />
-      <workItem from="1480274274163" duration="3759000" />
+      <workItem from="1480274274163" duration="8005000" />
     </task>
     <task id="LOCAL-00001" summary="Parser">
       <created>1480079720477</created>
@@ -1565,7 +1565,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30516000" />
+    <option name="totallyTimeSpent" value="34762000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -1580,7 +1580,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5021482" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.49785176" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32842582" sideWeight="0.49570355" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32842582" sideWeight="0.49570355" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33975086" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1589,17 +1589,17 @@
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3997735" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997735" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1628,7 +1628,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/types/ParserStepRealModel.java</url>
-          <line>28</line>
+          <line>27</line>
           <properties />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
@@ -1856,13 +1856,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/src/main/java/com/bitunified/ledconfig/LedConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/product/cable/PVCCable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
@@ -1936,14 +1929,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/shop-app.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="403" column="27" selection-start-line="403" selection-start-column="27" selection-end-line="403" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/ParseStep.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -1952,47 +1937,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/types/ParserStepRealModelWithLength.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="86" column="8" selection-start-line="86" selection-start-column="8" selection-end-line="86" selection-end-column="21" />
-          <folding>
-            <element signature="e#2382#2383#0" expanded="true" />
-            <element signature="e#2410#2411#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/types/ParserStepRealModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/types/ParserStepRealModelComposed.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/src/shop-checkout.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="131">
           <caret line="131" column="42" selection-start-line="131" selection-start-column="42" selection-end-line="131" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/types/ParseStepBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
           <folding />
         </state>
       </provider>
@@ -2013,10 +1961,63 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/types/ParserStepRealModelWithLength.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="86" column="8" selection-start-line="86" selection-start-column="8" selection-end-line="86" selection-end-column="21" />
+          <folding>
+            <element signature="e#2382#2383#0" expanded="true" />
+            <element signature="e#2410#2411#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/src/main/java/com/bitunified/ledconfig/LedConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="638">
+          <caret line="93" column="34" selection-start-line="93" selection-start-column="34" selection-end-line="93" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/types/ParseStepBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="69" column="58" selection-start-line="69" selection-start-column="58" selection-end-line="69" selection-end-column="58" />
+        <state relative-caret-position="23">
+          <caret line="105" column="35" selection-start-line="105" selection-start-column="35" selection-end-line="105" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/shop-app.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="403" column="27" selection-start-line="403" selection-start-column="27" selection-end-line="403" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/types/ParserStepRealModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/types/ParserStepRealModelComposed.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding />
         </state>
       </provider>

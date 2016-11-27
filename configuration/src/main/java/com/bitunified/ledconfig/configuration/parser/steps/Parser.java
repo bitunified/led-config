@@ -99,11 +99,11 @@ public class Parser {
     public static ParsedResult parse(String productcode){
         List<ParseStep> steps =new ArrayList<ParseStep>();
         steps.add(new ParserStepRealModel(1,2,Profile.class,"","Profiel niet geconfigureerd"));
-        steps.add(new ParserStepRealModelWithLength(2,3,LedStrip.class,"","Ledstrip niet geconfigureerd", 6,9));
+        steps.add(new ParserStepRealModelWithLength(2,3,LedStrip.class,"","Ledstrip niet geconfigureerd", 6,10));
         steps.add(new ParserStepRealModel(3,4,Cable.class,"","Kabel niet geconfigureerd"));
         steps.add(new ParserStepRealModel(4,5,CableEntry.class,"","Kabeluiteinde niet geconfigureerd"));
         steps.add(new ParserStepRealModel(5,6,Mounting.class,"","Montage opties niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(5,6,Covering.class,"","Behuizing niet geconfigureerd"));
+        steps.add(new ParserStepRealModel(6,7,Covering.class,"","Behuizing niet geconfigureerd"));
 
         steps.add(new ParserStepRealModelComposed(ComposedProduct.class,"","Ledstrip niet geconfigureerd",10,14));
         List<Model> models=new ArrayList<Model>();
