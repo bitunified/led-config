@@ -16,8 +16,8 @@ public class ParserStepRealModel extends ParseStepBase implements ParseStep {
     private final Integer begin;
     private final Integer end;
 
-    public ParserStepRealModel(Integer begin, Integer end, Class<? extends Model> model, String regex, String errorMessage) {
-        super(model,regex,errorMessage);
+    public ParserStepRealModel(boolean mandatory,Integer begin, Integer end, Class<? extends Model> model, String regex, String errorMessage) {
+        super(mandatory,model,regex,errorMessage);
         this.begin = begin;
         this.end = end;
     }
@@ -47,8 +47,4 @@ public class ParserStepRealModel extends ParseStepBase implements ParseStep {
     }
 
 
-    @Override
-    public boolean isOptional() {
-        return false;
-    }
 }

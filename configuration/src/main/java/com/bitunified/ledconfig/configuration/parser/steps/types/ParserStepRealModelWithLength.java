@@ -22,7 +22,7 @@ public class ParserStepRealModelWithLength extends ParseStepBase implements Pars
 
     private final String errorMessageLength;
     public ParserStepRealModelWithLength(Integer begin, Integer end, Class<? extends Model> model, String regex, String errorMessage, Integer dataBegin, Integer dataEnd,String errorMessageLength) {
-        super(model,regex,errorMessage);
+        super(true,model,regex,errorMessage);
         this.errorMessageLength=errorMessageLength;
         this.begin = begin;
         this.end = end;
@@ -34,7 +34,7 @@ public class ParserStepRealModelWithLength extends ParseStepBase implements Pars
 
 
     public ModelResult create(String productcode, List<Part> parts) {
-        ModelResult result=null;
+
         String code=parse(productcode);
         for (Part part : parts) {
             if (checkModel(part)) {
@@ -78,10 +78,6 @@ public class ParserStepRealModelWithLength extends ParseStepBase implements Pars
         return dataBegin;
     }
 
-    @Override
-    public boolean isOptional() {
-        return false;
-    }
 
     public String getErrorMessageLength() {
         return errorMessageLength;

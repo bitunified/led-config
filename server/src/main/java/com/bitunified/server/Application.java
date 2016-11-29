@@ -1,5 +1,6 @@
 package com.bitunified.server;
 
+import com.bitunified.ledconfig.ConfigResult;
 import com.bitunified.ledconfig.LedConfig;
 import com.bitunified.ledconfig.domain.message.Message;
 import com.bitunified.server.message.ServerResponse;
@@ -19,9 +20,10 @@ public class Application {
         @Produces(MediaType.APPLICATION_JSON)
         public ServerResponse input(@FormParam("ccNumber") String number) {
                 ServerResponse result= new ServerResponse("yes");
-                List<Message> messages=ledConfig.rules(new String[]{number});
+                ConfigResult configResult=ledConfig.rules(new String[]{number});
+
                 List<String> clientMessages=new ArrayList<String>();
-                for (Message message:messages){
+                for (Message message:configResult.getMessages()){
                         clientMessages.add(message.getMessage());
                 }
                 result.setMessages(clientMessages.toArray(new String[]{}));

@@ -18,7 +18,7 @@ public class ParserStepRealModelComposed extends ParseStepBase implements ParseS
 
 
     public ParserStepRealModelComposed( Class<? extends Model> model, String regex, String errorMessage, Integer dataBegin, Integer dataEnd) {
-    super(model,regex,errorMessage);
+    super(false,model,regex,errorMessage);
 
         this.dataBegin = dataBegin;
         this.dataEnd = dataEnd;
@@ -54,8 +54,4 @@ public class ParserStepRealModelComposed extends ParseStepBase implements ParseS
     }
 
 
-    @Override
-    public boolean isOptional() {
-        return true;
-    }
 }

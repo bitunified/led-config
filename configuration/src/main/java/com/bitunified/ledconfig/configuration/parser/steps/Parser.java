@@ -122,22 +122,24 @@ public class Parser {
     //3: Cable type
     public static ParsedResult parse(String productcode){
         List<ParseStep> steps =new ArrayList<ParseStep>();
-        steps.add(new ParserStepRealModel(1,2,Profile.class,"","Stap 1: Profiel niet geconfigureerd"));
+        steps.add(new ParserStepRealModel(true,1,2,Profile.class,"","Stap 1: Profiel niet geconfigureerd"));
         steps.add(new ParserStepRealModelWithLength(2,3,LedStrip.class,"","Stap 2: Ledstrip niet geconfigureerd", 7,11,"Stap 7: Led strip lengte niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(3,4,Cable.class,"","Stap 3: Kabel niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(4,5,CableEntry.class,"","Stap 4: Kabeluiteinde niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(5,6,Mounting.class,"","Stap 5: Montage opties niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(6,7,Covering.class,"","Stap 6: Behuizing niet geconfigureerd"));
+        steps.add(new ParserStepRealModel(true,3,4,Cable.class,"","Stap 3: Kabel niet geconfigureerd"));
+        steps.add(new ParserStepRealModel(true,4,5,CableEntry.class,"","Stap 4: Kabeluiteinde niet geconfigureerd"));
+        steps.add(new ParserStepRealModel(true,5,6,Mounting.class,"","Stap 5: Montage opties niet geconfigureerd"));
+        steps.add(new ParserStepRealModel(true,6,7,Covering.class,"","Stap 6: Behuizing niet geconfigureerd"));
 
-        steps.add(new ParserStepRealModelComposed(ComposedProduct.class,"","Ledstrip niet geconfigureerd",11,15));
+        steps.add(new ParserStepRealModelComposed(ComposedProduct.class,"","Stap 8: Productlengte niet geconfigureerd",11,15));
         List<Model> models=new ArrayList<Model>();
         List<ConfigMessage> messages=new ArrayList<ConfigMessage>();
         for (ParseStep step:steps){
             ModelResult createdModel=step.create(productcode,parts);
-            if (createdModel!=null){
+            if (createdModel!=null && createdModel.getErrorMessage()==null){
                 models.add(createdModel.getModel());
             }else{
-                messages.add(new ConfigMessage(createdModel.getErrorMessage()));
+                if (!step.isMantatory()) {
+                    messages.add(new ConfigMessage(createdModel.getErrorMessage()));
+                }
             }
         }
         ParsedResult parsedResult=new ParsedResult();

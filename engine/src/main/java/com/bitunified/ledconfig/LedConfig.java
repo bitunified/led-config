@@ -20,6 +20,7 @@ import com.bitunified.ledconfig.configuration.parser.steps.ConfigMessage;
 import com.bitunified.ledconfig.configuration.parser.steps.ParsedResult;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.message.Message;
+import com.bitunified.ledconfig.parts.Part;
 import org.drools.core.marshalling.impl.ProtobufMessages;
 import org.kie.api.KieServices;
 import org.kie.api.event.rule.DebugAgendaEventListener;
@@ -42,10 +43,10 @@ import java.util.List;
  */
 public class LedConfig {
 
-    public static final void main(final String[] args) {
+    public final void main(final String[] args) {
         rules(args);
     }
-    public static final List<Message> rules(final String[] args) {
+    public final ConfigResult rules(final String[] args) {
         // KieServices is the factory for all KIE services 
         KieServices ks = KieServices.Factory.get();
         
@@ -63,7 +64,10 @@ public class LedConfig {
 
     }
 
-    public static List<Message> execute(KieContainer kc, ParsedResult modelInserts) {
+    public static ConfigResult execute(KieContainer kc, ParsedResult modelInserts) {
+
+
+
         // From the container, a session is created based on
         // its definition and configuration in the META-INF/kmodule.xml file
         KieSession ksession = kc.newKieSession("LedConfigKS");
@@ -104,20 +108,27 @@ public class LedConfig {
             Message message=new Message();
             if (messageConfig.getMessageText()!=null) {
                 message.setMessage(messageConfig.getMessageText());
-            messages.add(message);
+                messages.add(message);
             }
         }
         for (Message message:messages){
 
             System.out.println(message);
         }
+        for (Model part:modelInserts.getParts()){
+            System.out.println(part);
+        }
         // Remove comment if using logging
         // logger.close();
 
         // and then dispose the session
         ksession.dispose();
+        for (Object obj:ksession.getObjects()){
+            System.out.println(obj);
+        }
 
-        return messages;
+        ConfigResult configResult=new ConfigResult(messages);
+        return configResult;
     }
 
     private static KnowledgeBase readKnowledgeBase() throws Exception {

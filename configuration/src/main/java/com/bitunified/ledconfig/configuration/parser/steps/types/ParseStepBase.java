@@ -11,6 +11,7 @@ public abstract class ParseStepBase {
 
     private final String regex;
     private final Class<? extends Model> modelClass;
+    private final boolean mandatory;
     private String errorMessage;
     protected boolean checkModel(Part part) {
         if (part.getProduct()!=null && isInstance(part.getProduct())){
@@ -29,8 +30,8 @@ public abstract class ParseStepBase {
         return false;
     }
 
-    public ParseStepBase( Class<? extends Model> model, String regex, String errorMessage) {
-
+    public ParseStepBase(boolean mandatory, Class<? extends Model> model, String regex, String errorMessage) {
+        this.mandatory=mandatory;
         this.modelClass = model;
         this.regex = regex;
         this.errorMessage = errorMessage;
@@ -60,4 +61,8 @@ public abstract class ParseStepBase {
     }
 
 
+
+    public boolean isMantatory() {
+        return mandatory;
+    }
 }
