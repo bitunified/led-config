@@ -48,8 +48,10 @@ end
 
 rule "Totale lengte is groter dan maximale ledstrip lengte"
     when
-        ledstrip:LedStrip(props:properies,afmetingen:dimension,maxDim:maxDimension)
-        composedproduct:ComposedProduct(dimension.width>(maxDim.width))
+        LedStrip(maxDim:maxDimension)
+        LedStrip(maxDimension.width!=null)
+        ComposedProduct(productDimension:dimension)
+        ComposedProduct(productDimension.width<maxDim.width)
 
     then
         messages.add(new Message("Totale lengte is groter dan maximale ledstrip lengte."));

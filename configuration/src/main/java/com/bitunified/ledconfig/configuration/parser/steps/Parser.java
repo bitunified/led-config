@@ -86,6 +86,30 @@ public class Parser {
         part.setCode("7");
         parts.add(part);
 
+        CableEntry cableEntry=new CableEntry();
+        cable.setName("Left side via end cap");
+        part=new Part(cableEntry);
+        part.setCode("1");
+        parts.add(part);
+
+        cableEntry=new CableEntry();
+        cableEntry.setName("Left side via bottom");
+        part=new Part(cableEntry);
+        part.setCode("2");
+        parts.add(part);
+
+        Mounting mounting=new Mounting();
+        mounting.setName("No end caps");
+        part=new Part(mounting);
+        part.setCode("1");
+        parts.add(part);
+
+         mounting=new Mounting();
+        mounting.setName("End cap on right side");
+        part=new Part(mounting);
+        part.setCode("2");
+        parts.add(part);
+
         ComposedProduct composedProduct=new ComposedProduct(null,null);
         part=new Part(composedProduct);
         parts.add(part);
@@ -98,22 +122,22 @@ public class Parser {
     //3: Cable type
     public static ParsedResult parse(String productcode){
         List<ParseStep> steps =new ArrayList<ParseStep>();
-        steps.add(new ParserStepRealModel(1,2,Profile.class,"","Profiel niet geconfigureerd"));
-        steps.add(new ParserStepRealModelWithLength(2,3,LedStrip.class,"","Ledstrip niet geconfigureerd", 6,10));
-        steps.add(new ParserStepRealModel(3,4,Cable.class,"","Kabel niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(4,5,CableEntry.class,"","Kabeluiteinde niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(5,6,Mounting.class,"","Montage opties niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(6,7,Covering.class,"","Behuizing niet geconfigureerd"));
+        steps.add(new ParserStepRealModel(1,2,Profile.class,"","Stap 1: Profiel niet geconfigureerd"));
+        steps.add(new ParserStepRealModelWithLength(2,3,LedStrip.class,"","Stap 2: Ledstrip niet geconfigureerd", 7,11,"Stap 7: Led strip lengte niet geconfigureerd"));
+        steps.add(new ParserStepRealModel(3,4,Cable.class,"","Stap 3: Kabel niet geconfigureerd"));
+        steps.add(new ParserStepRealModel(4,5,CableEntry.class,"","Stap 4: Kabeluiteinde niet geconfigureerd"));
+        steps.add(new ParserStepRealModel(5,6,Mounting.class,"","Stap 5: Montage opties niet geconfigureerd"));
+        steps.add(new ParserStepRealModel(6,7,Covering.class,"","Stap 6: Behuizing niet geconfigureerd"));
 
-        steps.add(new ParserStepRealModelComposed(ComposedProduct.class,"","Ledstrip niet geconfigureerd",10,14));
+        steps.add(new ParserStepRealModelComposed(ComposedProduct.class,"","Ledstrip niet geconfigureerd",11,15));
         List<Model> models=new ArrayList<Model>();
         List<ConfigMessage> messages=new ArrayList<ConfigMessage>();
         for (ParseStep step:steps){
-            Model createdModel=step.create(productcode,parts);
+            ModelResult createdModel=step.create(productcode,parts);
             if (createdModel!=null){
-                models.add(createdModel);
+                models.add(createdModel.getModel());
             }else{
-                messages.add(new ConfigMessage(step.getErrorMessage()));
+                messages.add(new ConfigMessage(createdModel.getErrorMessage()));
             }
         }
         ParsedResult parsedResult=new ParsedResult();

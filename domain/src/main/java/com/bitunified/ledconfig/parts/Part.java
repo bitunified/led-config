@@ -9,12 +9,13 @@ import java.math.BigDecimal;
 
 public class Part {
     private RealModel product;
+    private Model configModel;
     private BigDecimal price;
     private String code;
     private String description;
 
-    public Part(){
-        
+    public Part(Model configModel){
+        this.configModel=configModel;
     }
     public Part(RealModel product) {
         this.product=product;
@@ -52,5 +53,13 @@ public class Part {
     public String toString() {
         return "Product:"+product.toString()+", Code: "+code+ " Description: "+description;
 
+    }
+
+    public Model getConfigModel() {
+        return configModel;
+    }
+
+    public void setConfigModel(Model configModel) {
+        this.configModel = configModel;
     }
 }

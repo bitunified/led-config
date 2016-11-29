@@ -9,7 +9,6 @@ import java.util.List;
 
 public interface ParseStep extends ParseStepOptional{
 
-    Model create(String productcode, List<Part> parts);
+    ModelResult create(String productcode, List<Part> parts);
 
-    String getErrorMessage();
 }

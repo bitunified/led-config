@@ -1,6 +1,7 @@
 package com.bitunified.ledconfig.configuration.parser.steps.types;
 
 
+import com.bitunified.ledconfig.configuration.parser.steps.ModelResult;
 import com.bitunified.ledconfig.configuration.parser.steps.ParseStep;
 import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.domain.Model;
@@ -21,20 +22,20 @@ public class ParserStepRealModel extends ParseStepBase implements ParseStep {
         this.end = end;
     }
 
-    public Model create(String productcode, List<Part> parts) {
+    public ModelResult create(String productcode, List<Part> parts) {
         String code=parse(productcode);
         for (Part part : parts) {
-            if (part.getProduct().getClass().getName().equals(modelClass.getName())) {
+            if (checkModel(part)) {
                 RealModel product = part.getProduct();
                 if (code != null) {
                     if (part.getCode().equalsIgnoreCase(code)) {
 
-                        return product;
+                        return new ModelResult(product);
                     }
                 }
             }
         }
-        return null;
+        return new ModelResult(getErrorMessage());
     }
 
     private String parse(String productcode) {
@@ -45,13 +46,7 @@ public class ParserStepRealModel extends ParseStepBase implements ParseStep {
                 productcode.substring(begin,end);
     }
 
-    public String getRegex() {
-        return regex;
-    }
 
-    public Class<? extends Model> getModel() {
-        return modelClass;
-    }
     @Override
     public boolean isOptional() {
         return false;

@@ -1,6 +1,7 @@
 package com.bitunified.ledconfig.configuration.parser.steps.types;
 
 
+import com.bitunified.ledconfig.configuration.parser.steps.ModelResult;
 import com.bitunified.ledconfig.configuration.parser.steps.ParseStep;
 import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.domain.Model;
@@ -18,10 +19,11 @@ public class ParserStepRealModelWithLength extends ParseStepBase implements Pars
 
     private final Integer dataBegin;
     private final Integer dataEnd;
-    private String errorMessage;
 
-    public ParserStepRealModelWithLength(Integer begin, Integer end, Class<? extends Model> model, String regex, String errorMessage, Integer dataBegin, Integer dataEnd) {
+    private final String errorMessageLength;
+    public ParserStepRealModelWithLength(Integer begin, Integer end, Class<? extends Model> model, String regex, String errorMessage, Integer dataBegin, Integer dataEnd,String errorMessageLength) {
         super(model,regex,errorMessage);
+        this.errorMessageLength=errorMessageLength;
         this.begin = begin;
         this.end = end;
 
@@ -29,21 +31,28 @@ public class ParserStepRealModelWithLength extends ParseStepBase implements Pars
         this.dataEnd = dataEnd;
     }
 
-    public Model create(String productcode, List<Part> parts) {
+
+
+    public ModelResult create(String productcode, List<Part> parts) {
+        ModelResult result=null;
         String code=parse(productcode);
         for (Part part : parts) {
-            if (part.getProduct().getClass().getName().equals(modelClass.getName())) {
+            if (checkModel(part)) {
                 RealModel product = part.getProduct();
                 if (code != null) {
                     if (part.getCode().equalsIgnoreCase(code)) {
 
                         if (dataEnd != null) {
                             String length = productcode.substring(dataBegin, dataEnd);
-                            product.setDimension(new Dimension(new Integer(length)));
-
+                            Integer lengthInt=parseInteger(length);
+                            if (lengthInt!=null) {
+                                product.setDimension(new Dimension(lengthInt));
+                            }else{
+                                return new ModelResult(errorMessageLength);
+                            }
                         }
 
-                        return product;
+                        return new ModelResult(product);
                     }
 
 
@@ -54,28 +63,15 @@ public class ParserStepRealModelWithLength extends ParseStepBase implements Pars
         return null;
     }
 
+
+
+
     private String parse(String productcode) {
         if ((begin==null || end==null)||(begin.equals(end))){
             return null;
         }
         return
                 productcode.substring(begin,end);
-    }
-
-    public String getRegex() {
-        return regex;
-    }
-
-    public Class<? extends Model> getModel() {
-        return modelClass;
-    }
-
-    public String getErrorMessage() {
-        return errorMessage;
-    }
-
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
     }
 
     public Integer getDataBegin() {
@@ -85,5 +81,9 @@ public class ParserStepRealModelWithLength extends ParseStepBase implements Pars
     @Override
     public boolean isOptional() {
         return false;
+    }
+
+    public String getErrorMessageLength() {
+        return errorMessageLength;
     }
 }

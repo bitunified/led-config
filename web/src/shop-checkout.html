@@ -156,16 +156,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </div>
 
         <!-- Success message UI -->
-        <header state="localhost:8080/checkout/success">
+       <!-- <header state="localhost:8080/checkout/success">
           <h1>Berichten:</h1>
           <p>[[response.messages]]</p>
+          <template is="dom-repeat" items="[[myarray]]">
+            <span>[[item]]</span>
+          </template>
           <shop-button responsive>
             <a href="/">Terug</a>
           </shop-button>
-        </header>
+        </header>-->
         <header state="success">
           <h1>Berichten:</h1>
-          <p>[[response.messages]]</p>
+          <template is="dom-if" if="{{response.messages.length==0}}">
+           <p> De productcode is correct.</p>
+          </template>
+          <template is="dom-repeat" items="[[response.messages]]">
+            <p>[[item]]</p>
+          </template>
           <shop-button responsive>
             <a href="/">Terug</a>
           </shop-button>
@@ -407,7 +415,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         if (response.success) {
           console.info(this.state);
-          this._pushState('localhost:8080/checkout/success');
+          //this._pushState('localhost:8080/checkout/success');
           this._pushState('success');
           this._reset();
           this.fire('clear-cart');
