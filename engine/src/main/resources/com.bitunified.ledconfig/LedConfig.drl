@@ -17,8 +17,10 @@ import com.bitunified.ledconfig.domain.product.PCB.types.DecoLedStrip;
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 import com.bitunified.ledconfig.domain.product.cable.Cable;
 import com.bitunified.ledconfig.domain.Property
-import com.bitunified.ledconfig.domain.product.accessoires.Clips
+import com.bitunified.ledconfig.domain.product.accessoires.Clip
 import com.bitunified.ledconfig.parts.Part;
+
+
 
 global java.util.List<Message> messages
  
@@ -85,16 +87,17 @@ rule "Kabeltype moet overeenkomen met PCB type"
         messages.add(new Message("Let op: kabeltype past niet bij PCB."));
     end
 
-//rule "Aantal clips is evenredig aan lengte"
-//    when
-//        composedproduct:ComposedProduct();
-//    ff:
-//    Math.min(2,Integer(Math.ceil(composedproduct.width/500)))
-//
-//    then
-//
-//
-//        composedproduct.addProducts(new Part());
-//
-//
-//    end
+rule "Aantal clips is evenredig aan lengte"
+no-loop false
+    when
+        composedproduct:ComposedProduct();
+
+    count : Number(intValue<=composedproduct.dimension.width/100)
+          from accumulate( i : Part( product.class==Clip.class )from composedproduct.products, count( i ) )
+
+    then
+modify(composedproduct){
+ getProducts().add(new Part(new Clip()))
+}
+
+    end

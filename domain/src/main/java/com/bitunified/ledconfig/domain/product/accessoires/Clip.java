@@ -1,5 +1,5 @@
 package com.bitunified.ledconfig.domain.product.accessoires;
 
 
-public class Clips extends Accessoire{
+public class Clip extends Accessoire{
 }

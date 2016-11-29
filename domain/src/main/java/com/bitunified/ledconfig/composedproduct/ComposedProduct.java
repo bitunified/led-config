@@ -21,4 +21,8 @@ public class ComposedProduct extends RealModel {
     public void addProducts(Part model) {
         products.add(model);
     }
+
+    public Set<Part> getProducts() {
+        return products;
+    }
 }

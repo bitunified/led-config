@@ -20,12 +20,19 @@ import com.bitunified.ledconfig.configuration.parser.steps.ConfigMessage;
 import com.bitunified.ledconfig.configuration.parser.steps.ParsedResult;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.message.Message;
+import org.drools.core.marshalling.impl.ProtobufMessages;
 import org.kie.api.KieServices;
 import org.kie.api.event.rule.DebugAgendaEventListener;
 import org.kie.api.event.rule.DebugRuleRuntimeEventListener;
+import org.kie.api.io.ResourceType;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import com.bitunified.ledconfig.configuration.parser.steps.Parser;
+import org.kie.internal.KnowledgeBase;
+import org.kie.internal.KnowledgeBaseFactory;
+import org.kie.internal.builder.*;
+import org.kie.internal.io.ResourceFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +52,13 @@ public class LedConfig {
         // From the kie services, a container is created from the classpath
         KieContainer kc = ks.getKieClasspathContainer();
 
+        KnowledgeBuilderConfiguration kbConfig =
+                KnowledgeBuilderFactory.newKnowledgeBuilderConfiguration();
 
+        kbConfig.setProperty("drools.dialect.mvel.strict", "false");
+
+        KnowledgeBuilder kBuilder =
+                KnowledgeBuilderFactory.newKnowledgeBuilder( kbConfig );
         return execute( kc, Parser.parse(args[0]));
 
     }
@@ -103,9 +116,29 @@ public class LedConfig {
 
         // and then dispose the session
         ksession.dispose();
+
         return messages;
     }
 
+    private static KnowledgeBase readKnowledgeBase() throws Exception {
 
+        KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
+
+        kbuilder.add(ResourceFactory.newClassPathResource("Pune.drl"), ResourceType.DRL);
+        kbuilder.add(ResourceFactory.newClassPathResource("Nagpur.drl"), ResourceType.DRL);
+
+        KnowledgeBuilderErrors errors = kbuilder.getErrors();
+
+        if (errors.size() > 0) {
+            for (KnowledgeBuilderError error: errors) {
+                System.err.println(error);
+            }
+            throw new IllegalArgumentException("Could not parse knowledge.");
+        }
+        KnowledgeBase kbase = KnowledgeBaseFactory.newKnowledgeBase();
+        kbase.addKnowledgePackages(kbuilder.getKnowledgePackages());
+
+        return kbase;
+    }
 
 }
