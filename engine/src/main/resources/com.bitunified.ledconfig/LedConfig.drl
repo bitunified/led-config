@@ -71,9 +71,7 @@ rule "Kap en gieting"
 end
 
 rule "Minimale lengte groter dan section lengte"
-
     when
-
         LedStrip(dimension.width<SECTION.value);
     then
         messages.add(new Message("Lengte ledstrip kan niet kleiner zijn dan sectie lengte."));
@@ -92,12 +90,11 @@ no-loop false
     when
         composedproduct:ComposedProduct();
 
-    count : Number(intValue<=composedproduct.dimension.width/100)
+        count : Number(intValue<=composedproduct.dimension.width/100)
           from accumulate( i : Part( product.class==Clip.class )from composedproduct.products, count( i ) )
 
     then
-modify(composedproduct){
- getProducts().add(new Part(new Clip()))
-}
-
+        modify(composedproduct){
+         getProducts().add(new Part(new Clip()))
+        }
     end
