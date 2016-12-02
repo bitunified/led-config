@@ -96,5 +96,7 @@ no-loop false
     then
         modify(composedproduct){
          getProducts().add(new Part(new Clip()))
+
         }
+        System.out.println("Clip toegevoegd");
     end

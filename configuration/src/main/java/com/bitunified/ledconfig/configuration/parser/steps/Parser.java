@@ -111,6 +111,7 @@ public class Parser {
         parts.add(part);
 
         ComposedProduct composedProduct=new ComposedProduct(null,null);
+        composedProduct.setName("ComposedProduct");
         part=new Part(composedProduct);
         parts.add(part);
 

@@ -25,4 +25,9 @@ public class ComposedProduct extends RealModel {
     public Set<Part> getProducts() {
         return products;
     }
+
+    @Override
+    public String toString() {
+        return "["+super.toString()+"Products: ["+products+"]"+"]";
+    }
 }

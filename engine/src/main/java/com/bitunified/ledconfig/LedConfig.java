@@ -115,14 +115,13 @@ public class LedConfig {
 
             System.out.println(message);
         }
-        for (Model part:modelInserts.getParts()){
-            System.out.println(part);
-        }
+
         // Remove comment if using logging
         // logger.close();
 
         // and then dispose the session
         ksession.dispose();
+
         for (Object obj:ksession.getObjects()){
             System.out.println(obj);
         }
