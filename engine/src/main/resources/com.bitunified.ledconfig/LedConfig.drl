@@ -90,7 +90,7 @@ no-loop false
     when
         composedproduct:ComposedProduct();
 
-        count : Number(intValue<=composedproduct.dimension.width/100)
+        count : Number(intValue<=composedproduct.dimension.width/50)
           from accumulate( i : Part( product.class==Clip.class )from composedproduct.products, count( i ) )
 
     then
