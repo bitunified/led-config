@@ -169,7 +169,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <header state="success">
           <h1>Berichten:</h1>
-          <template is="dom-if" if="{{response.messages.length===0}}">
+          <template is="dom-if" if="{{_isEmpty(response.messages}}">
            <p> De productcode is correct.</p>
           </template>
           <template is="dom-repeat" items="[[response.messages]]">
@@ -178,7 +178,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
           <p>Producten per stap:</p>
           <p>
-          <table style="width:300px">
+          <table >
 
               <template is="dom-repeat" items="{{ _toArray(response.messageMap)}}">
                 <tr>
@@ -477,6 +477,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             value: obj[key]
           };
         });
+      },
+      _isEmpty:function (arr) {
+        if (arr.length==0){
+          return true;
+        }
+        return false;
       }
 
     });

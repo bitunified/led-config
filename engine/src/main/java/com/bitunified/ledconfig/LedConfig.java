@@ -127,6 +127,13 @@ public class LedConfig {
             messageMap.put(model.getStep(),new Message(model.getName()));
         }
 
+        for (Message msg:messages){
+
+            if (msg.getStep()!=null){
+
+                messageMap.put(msg.getStep(),msg);
+            }
+        }
 
 
 

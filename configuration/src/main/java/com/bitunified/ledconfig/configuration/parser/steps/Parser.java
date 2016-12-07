@@ -144,15 +144,15 @@ public class Parser {
     public static ParsedResult parse(String productcode){
         List<ParseStep> steps =new ArrayList<ParseStep>();
         Set<Model> models=new HashSet<Model>();
-        steps.add(new ParserStepRealModel(1,true,1,2,Profile.class,"","Stap 1: Profiel niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(2,true,2,3,LedStrip.class,"","Stap 2: Ledstrip niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(3,true,3,4,Cable.class,"","Stap 3: Kabel niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(4,true,4,5,CableEntry.class,"","Stap 4: Kabeluiteinde niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(5,true,5,6,Mounting.class,"","Stap 5: Montage opties niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(6,true,6,7,Covering.class,"","Stap 6: Behuizing niet geconfigureerd"));
-        steps.add(new ParserStepDimensionModel(7,true,7,11,LedStrip.class,"","Stap 7: Led strip lengte niet geconfigureerd",models));
+        steps.add(new ParserStepRealModel(1,true,1,2,Profile.class,"","Profiel niet geconfigureerd"));
+        steps.add(new ParserStepRealModel(2,true,2,3,LedStrip.class,"","Ledstrip niet geconfigureerd"));
+        steps.add(new ParserStepRealModel(3,true,3,4,Cable.class,"","Kabel niet geconfigureerd"));
+        steps.add(new ParserStepRealModel(4,true,4,5,CableEntry.class,"","Kabeluiteinde niet geconfigureerd"));
+        steps.add(new ParserStepRealModel(5,true,5,6,Mounting.class,"","Montage opties niet geconfigureerd"));
+        steps.add(new ParserStepRealModel(6,true,6,7,Covering.class,"","Behuizing niet geconfigureerd"));
+        steps.add(new ParserStepDimensionModel(7,true,7,11,LedStrip.class,"","Led strip lengte niet geconfigureerd",models));
 
-        steps.add(new ParserStepRealModelComposed(8,ComposedProduct.class,"","Stap 8: Productlengte niet geconfigureerd",11,15));
+        steps.add(new ParserStepRealModelComposed(8,ComposedProduct.class,"","Productlengte niet geconfigureerd",11,15));
 
         for (ParseStep step:steps){
             ModelResult createdModel=step.create(productcode,parts);
