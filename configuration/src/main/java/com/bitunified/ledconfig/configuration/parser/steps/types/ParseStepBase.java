@@ -1,6 +1,7 @@
 package com.bitunified.ledconfig.configuration.parser.steps.types;
 
 
+import com.bitunified.ledconfig.configuration.parser.steps.ModelResult;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 import com.bitunified.ledconfig.parts.Part;
@@ -12,7 +13,31 @@ public abstract class ParseStepBase {
     private final String regex;
     private final Class<? extends Model> modelClass;
     private final boolean mandatory;
+    private final Integer step;
     private String errorMessage;
+    private ModelResult modelResult;
+
+    public ParseStepBase(Integer step,boolean mandatory, Class<? extends Model> model, String regex, String errorMessage) {
+        this.mandatory=mandatory;
+        this.modelClass = model;
+        this.regex = regex;
+        this.errorMessage = errorMessage;
+        this.step=step;
+    }
+    protected Integer parseInteger(String length) {
+        try{
+            return Integer.parseInt(length);
+        }catch(Exception e){
+            return null;
+        }
+    }
+    protected boolean checkModel(Model part) {
+        if (part!=null && isInstance(part)){
+            return true;
+        }
+
+        return false;
+    }
     protected boolean checkModel(Part part) {
         if (part.getProduct()!=null && isInstance(part.getProduct())){
             return true;
@@ -28,20 +53,6 @@ public abstract class ParseStepBase {
             return true;
         }
         return false;
-    }
-
-    public ParseStepBase(boolean mandatory, Class<? extends Model> model, String regex, String errorMessage) {
-        this.mandatory=mandatory;
-        this.modelClass = model;
-        this.regex = regex;
-        this.errorMessage = errorMessage;
-    }
-    protected Integer parseInteger(String length) {
-        try{
-            return Integer.parseInt(length);
-        }catch(Exception e){
-            return null;
-        }
     }
 
     public String getRegex() {
@@ -61,8 +72,30 @@ public abstract class ParseStepBase {
     }
 
 
+    public RealModel createPart(Part part){
+
+        RealModel model= part.getProduct();
+        if (model!=null) {
+            model.setStep(step);
+        }
+        return model;
+    }
 
     public boolean isMantatory() {
         return mandatory;
+    }
+
+    public Integer getStep() {
+        return step;
+    }
+
+
+
+    public ModelResult getModelResult() {
+        return modelResult;
+    }
+
+    public void addModelResult(ModelResult modelResult) {
+        this.modelResult = modelResult;
     }
 }

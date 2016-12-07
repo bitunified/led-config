@@ -33,6 +33,6 @@ public class RealModel extends Model {
 
     @Override
     public String toString() {
-        return "["+super.toString()+", Dimension:"+dimension.toString()+" MaxDim: "+this.maxDimension+"]";
+        return "["+super.toString()+" ,Dimension:"+(dimension!=null?dimension.toString():"")+" MaxDim: "+(this.maxDimension!=null?this.maxDimension.toString():"")+"]";
     }
 }

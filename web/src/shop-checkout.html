@@ -128,7 +128,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
             <header class="subsection" visible="true">
-              <h1>Productcode</h1>
+              <h1>Productcode opgeven</h1>
               <span>Bijv.:B13714D02000219a</span>
             </header>
 
@@ -166,16 +166,31 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <a href="/">Terug</a>
           </shop-button>
         </header>-->
+
         <header state="success">
           <h1>Berichten:</h1>
-          <template is="dom-if" if="{{response.messages.length==0}}">
+          <template is="dom-if" if="{{response.messages.length===0}}">
            <p> De productcode is correct.</p>
           </template>
           <template is="dom-repeat" items="[[response.messages]]">
             <p>[[item]]</p>
           </template>
+
+          <p>Producten per stap:</p>
+          <p>
+          <table style="width:300px">
+
+              <template is="dom-repeat" items="{{ _toArray(response.messageMap)}}">
+                <tr>
+                  <td> Stap {{item.name}}:</td>
+                  <td>{{item.value.message}}</td>
+                </tr>
+              </template>
+
+          </table>
+          </p>
           <shop-button responsive>
-            <a href="/">Terug</a>
+            <a href="/checkout">Terug</a>
           </shop-button>
         </header>
         <!-- Error message UI -->
@@ -409,12 +424,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        */
       _didReceiveResponse: function(e) {
         var response = e.detail.response;
-        console.info(response.messages);
+        //console.info(response);
+        console.info(e);
         this.response = response;
         this._setWaiting(true);
 
         if (response.success) {
-          console.info(this.state);
+          //console.info(this.state);
           //this._pushState('localhost:8080/checkout/success');
           this._pushState('success');
           this._reset();
@@ -452,6 +468,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this._reset();
         // Notify the page's title
         this.fire('change-section', { title: 'Checkout' });
+      },
+
+      _toArray: function(obj) {
+        return Object.keys(obj).map(function(key) {
+          return {
+            name: key,
+            value: obj[key]
+          };
+        });
       }
 
     });

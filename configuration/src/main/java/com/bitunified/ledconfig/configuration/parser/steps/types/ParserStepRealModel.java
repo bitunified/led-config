@@ -16,8 +16,8 @@ public class ParserStepRealModel extends ParseStepBase implements ParseStep {
     private final Integer begin;
     private final Integer end;
 
-    public ParserStepRealModel(boolean mandatory,Integer begin, Integer end, Class<? extends Model> model, String regex, String errorMessage) {
-        super(mandatory,model,regex,errorMessage);
+    public ParserStepRealModel(Integer step,boolean mandatory,Integer begin, Integer end, Class<? extends Model> model, String regex, String errorMessage) {
+        super(step,mandatory,model,regex,errorMessage);
         this.begin = begin;
         this.end = end;
     }
@@ -26,7 +26,7 @@ public class ParserStepRealModel extends ParseStepBase implements ParseStep {
         String code=parse(productcode);
         for (Part part : parts) {
             if (checkModel(part)) {
-                RealModel product = part.getProduct();
+                RealModel product = createPart(part);
                 if (code != null) {
                     if (part.getCode().equalsIgnoreCase(code)) {
 

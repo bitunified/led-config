@@ -16,7 +16,7 @@
 
 package com.bitunified.ledconfig;
 
-import com.bitunified.ledconfig.configuration.parser.steps.ConfigMessage;
+import com.bitunified.ledconfig.configuration.parser.steps.ParseStep;
 import com.bitunified.ledconfig.configuration.parser.steps.ParsedResult;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.message.Message;
@@ -35,8 +35,7 @@ import org.kie.internal.KnowledgeBaseFactory;
 import org.kie.internal.builder.*;
 import org.kie.internal.io.ResourceFactory;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 
 /**
@@ -65,7 +64,7 @@ public class LedConfig {
 
     }
 
-    public static ConfigResult execute(KieContainer kc, ParsedResult modelInserts) {
+    public static ConfigResult execute(KieContainer kc, ParsedResult parsedResult) {
 
 
 
@@ -93,7 +92,7 @@ public class LedConfig {
 
         // The application can insert facts into the session
 
-      for (Model model:modelInserts.getParts()){
+      for (Model model:parsedResult.getModels()){
           ksession.insert(model);
       }
 
@@ -105,17 +104,31 @@ public class LedConfig {
 //        ksession.insert(cable);
         // and fire the rules
         ksession.fireAllRules();
-        for (ConfigMessage messageConfig:modelInserts.getMessages()){
-            Message message=new Message();
-            if (messageConfig.getMessageText()!=null) {
-                message.setMessage(messageConfig.getMessageText());
-                messages.add(message);
-            }
-        }
-        for (Message message:messages){
 
-            System.out.println(message);
+        Map<Integer,Message> messageMap=new HashMap<>();
+
+
+
+
+        for (ParseStep step:parsedResult.getSteps()){
+
+            if (step.getModelResult().getModel()!=null){
+                messageMap.put(step.getStep(),new Message(step.getModelResult().getModel().getName()));
+            }else{
+                messageMap.put(step.getStep(),new Message(step.getErrorMessage()));
+            }
+
         }
+
+        Collection<Model> sortedModels= (Collection<Model>) ksession.getObjects();
+
+        for (Model model:sortedModels){
+
+            messageMap.put(model.getStep(),new Message(model.getName()));
+        }
+
+
+
 
         // Remove comment if using logging
         // logger.close();
@@ -123,12 +136,12 @@ public class LedConfig {
         // and then dispose the session
         ksession.dispose();
 
-        for (Object obj:ksession.getObjects()){
-            System.out.println(obj);
-        }
 
-        ConfigResult configResult=new ConfigResult(messages,ksession.getObjects());
-        return configResult;
+
+
+
+        return new ConfigResult(messages,messageMap,ksession.getObjects());
+
     }
 
     private static KnowledgeBase readKnowledgeBase() throws Exception {

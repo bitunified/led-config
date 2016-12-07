@@ -9,5 +9,14 @@ public interface ParseStep {
 
     ModelResult create(String productcode, List<Part> parts);
 
+
     boolean isMantatory();
+
+    Integer getStep();
+
+    void addModelResult(ModelResult createdModel);
+
+    ModelResult getModelResult();
+
+    String getErrorMessage();
 }

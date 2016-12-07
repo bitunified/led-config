@@ -3,19 +3,24 @@ package com.bitunified.ledconfig.domain.message;
 import java.util.List;
 
 public class Message {
-    public static final int ERROR   = 0;
+    public static final int ERROR = 0;
     public static final int WARNING = 1;
 
-    private String          message;
+    private String message;
 
-    private int             status;
+    private Integer status;
 
     public Message() {
 
     }
 
+    public Message(String message, Integer status) {
+        this.message = message;
+        this.status = status;
+    }
+
     public Message(String message) {
-        this.message=message;
+        this.message = message;
     }
 
     public String getMessage() {
@@ -26,26 +31,18 @@ public class Message {
         this.message = message;
     }
 
-    public int getStatus() {
+    public Integer getStatus() {
         return this.status;
     }
 
-    public void setStatus(final int status) {
+    public void setStatus(final Integer status) {
         this.status = status;
     }
 
-    public static Message doSomething(Message message) {
-        return message;
-    }
 
-    public boolean isSomething(String msg,
-                               List<Object> list) {
-        list.add( this );
-        return this.message.equals( msg );
-    }
 
     @Override
     public String toString() {
-        return "Message: "+this.message + " - Status: " + status;
+        return "Message: " + this.message + " - Status: " + status;
     }
 }

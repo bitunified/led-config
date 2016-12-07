@@ -40,8 +40,10 @@ end
 
 rule "Totale lengte minimaal"
     when
-        ledstrip:LedStrip(props:properies,afmetingen:dimension)
-        composedproduct:ComposedProduct(dimension.width<(afmetingen.width+10+5))
+        LedStrip(afmetingen:dimension)
+        LedStrip(dimension.width!=null)
+        ComposedProduct(dimension.width!=null)
+        ComposedProduct(dimension.width<(afmetingen.width+15))
 
     then
         messages.add(new Message("Totale lengte is groter dan ledstrip lengte inclusief marges."));
@@ -95,6 +97,7 @@ no-loop false
 
     then
         modify(composedproduct){
+
          getProducts().add(new Part(new Clip()))
 
         }

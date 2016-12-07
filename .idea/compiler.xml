@@ -32,9 +32,9 @@
     <bytecodeTargetLevel>
       <module name="configuration" target="1.6" />
       <module name="domain" target="1.6" />
-      <module name="engine" target="1.6" />
+      <module name="engine" target="1.8" />
       <module name="parent" target="1.6" />
-      <module name="server" target="1.6" />
+      <module name="server" target="1.8" />
       <module name="web" target="1.6" />
     </bytecodeTargetLevel>
   </component>

@@ -17,8 +17,8 @@ public class ParserStepRealModelComposed extends ParseStepBase implements ParseS
     private final Integer dataEnd;
 
 
-    public ParserStepRealModelComposed( Class<? extends Model> model, String regex, String errorMessage, Integer dataBegin, Integer dataEnd) {
-    super(false,model,regex,errorMessage);
+    public ParserStepRealModelComposed(Integer step, Class<? extends Model> model, String regex, String errorMessage, Integer dataBegin, Integer dataEnd) {
+    super(step,false,model,regex,errorMessage);
 
         this.dataBegin = dataBegin;
         this.dataEnd = dataEnd;
@@ -28,7 +28,7 @@ public class ParserStepRealModelComposed extends ParseStepBase implements ParseS
 
         for (Part part : parts) {
             if (checkModel(part)) {
-                RealModel product = part.getProduct();
+                RealModel product = createPart(part);
 
 
                         if (dataEnd != null) {

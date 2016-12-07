@@ -12,4 +12,9 @@ public class Covering extends RealModel{
         super(dimension);
         addProperty(TRANSLUCENCY);
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
