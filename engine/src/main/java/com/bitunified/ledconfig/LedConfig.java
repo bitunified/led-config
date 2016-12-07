@@ -21,6 +21,7 @@ import com.bitunified.ledconfig.configuration.parser.steps.ParsedResult;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.message.Message;
 import com.bitunified.ledconfig.parts.Part;
+import org.drools.core.impl.StatefulKnowledgeSessionImpl;
 import org.drools.core.marshalling.impl.ProtobufMessages;
 import org.kie.api.KieServices;
 import org.kie.api.event.rule.DebugAgendaEventListener;
@@ -126,7 +127,7 @@ public class LedConfig {
             System.out.println(obj);
         }
 
-        ConfigResult configResult=new ConfigResult(messages);
+        ConfigResult configResult=new ConfigResult(messages,ksession.getObjects());
         return configResult;
     }
 
