@@ -71,7 +71,14 @@ public abstract class ParseStepBase {
         this.errorMessage = errorMessage;
     }
 
+    public Model createPartModel(Part part){
 
+        Model model= part.getConfigModel();
+        if (model!=null) {
+            model.setStep(step);
+        }
+        return model;
+    }
     public RealModel createPart(Part part){
 
         RealModel model= part.getProduct();

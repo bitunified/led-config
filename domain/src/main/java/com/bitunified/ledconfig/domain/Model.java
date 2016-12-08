@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class Model extends Descriptive implements StepConfig {
-    private String name;
+    private String name="";
 
     private Integer step;
 

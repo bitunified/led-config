@@ -24,19 +24,7 @@ import com.bitunified.ledconfig.domain.message.MessageStatus;
 global java.util.List<Message> messages
 
 
-rule "Led strip section modulo"
-dialect "mvel"
-    when
-        
-        cp : LedStrip( props:properies )
-        exists(
-        Property(name==LedStrip.SECTION_WIDTH,(value!=null) && ((value % cp.dimension.width)!=0))
-         from props)
-    then
 
-    messages.add(new Message("Ledstrip lengte moet een veelvoud zijn van sectielengte."));
-
-end
 
 rule "Totale lengte minimaal"
     when
@@ -86,7 +74,23 @@ rule "Kabeltype moet overeenkomen met PCB type"
     then
         messages.add(new Message("Let op: kabeltype past niet bij PCB."));
     end
+rule "Led strip section modulo"
 
+    when
+
+     ledstrip:LedStrip( sect:getProperty(LedStrip.SECTION_WIDTH),(sect.value % ledstrip.dimension.width)!=0)
+
+//p:Property(name!=null)from ledstrip.getProperies()
+               //sl: Property()from ledstrip.getProperies()
+
+
+  //Property((sect.value % ledstrip.dimension.width)!=0)
+
+    then
+
+    messages.add(new Message("Ledstrip lengte moet een veelvoud zijn van sectielengte."));
+
+end
 rule "Aantal clips is evenredig aan lengte"
 no-loop false
     when

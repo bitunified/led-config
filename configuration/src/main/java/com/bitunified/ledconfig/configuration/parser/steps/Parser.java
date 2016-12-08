@@ -4,6 +4,7 @@ package com.bitunified.ledconfig.configuration.parser.steps;
 
 import com.bitunified.ledconfig.composedproduct.ComposedProduct;
 import com.bitunified.ledconfig.configuration.parser.steps.types.ParserStepDimensionModel;
+import com.bitunified.ledconfig.configuration.parser.steps.types.ParserStepModel;
 import com.bitunified.ledconfig.configuration.parser.steps.types.ParserStepRealModel;
 import com.bitunified.ledconfig.configuration.parser.steps.types.ParserStepRealModelComposed;
 import com.bitunified.ledconfig.domain.Dimension;
@@ -89,7 +90,7 @@ public class Parser {
         parts.add(part);
 
         CableEntry cableEntry=new CableEntry();
-        cable.setName("Left side via end cap");
+        cableEntry.setName("Left side via end cap");
         part=new Part(cableEntry);
         part.setCode("1");
         parts.add(part);
@@ -147,8 +148,8 @@ public class Parser {
         steps.add(new ParserStepRealModel(1,true,1,2,Profile.class,"","Profiel niet geconfigureerd"));
         steps.add(new ParserStepRealModel(2,true,2,3,LedStrip.class,"","Ledstrip niet geconfigureerd"));
         steps.add(new ParserStepRealModel(3,true,3,4,Cable.class,"","Kabel niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(4,true,4,5,CableEntry.class,"","Kabeluiteinde niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(5,true,5,6,Mounting.class,"","Montage opties niet geconfigureerd"));
+        steps.add(new ParserStepModel(4,true,4,5,CableEntry.class,"","Kabeluiteinde niet geconfigureerd"));
+        steps.add(new ParserStepModel(5,true,5,6,Mounting.class,"","Montage opties niet geconfigureerd"));
         steps.add(new ParserStepRealModel(6,true,6,7,Covering.class,"","Behuizing niet geconfigureerd"));
         steps.add(new ParserStepDimensionModel(7,true,7,11,LedStrip.class,"","Led strip lengte niet geconfigureerd",models));
 

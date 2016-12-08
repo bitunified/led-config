@@ -31,7 +31,7 @@ public class ParserStepRealModelComposed extends ParseStepBase implements ParseS
                 RealModel product = createPart(part);
 
 
-                        if (dataEnd != null) {
+                        if (dataEnd != null && dataBegin<productcode.length() && dataEnd<=productcode.length()) {
                             String length = productcode.substring(dataBegin, dataEnd);
                             Integer lengthNumber=parseInteger(length);
                             if (lengthNumber!=null) {
