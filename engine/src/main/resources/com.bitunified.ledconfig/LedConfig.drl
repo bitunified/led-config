@@ -50,17 +50,17 @@ rule "Totale lengte minimaal"
 
 end
 
-//rule "Totale lengte is groter dan maximale ledstrip lengte"
-//    when
-//        LedStrip(maxDim:maxDimension)
-//        LedStrip(maxDimension.width!=null)
-//        ComposedProduct(productDimension:dimension)
-//        ComposedProduct(productDimension.width<maxDim.width)
-//
-//    then
-//        messages.add(new Message("Totale lengte is groter dan maximale ledstrip lengte."));
-//
-//end
+rule "Totale lengte is groter dan maximale ledstrip lengte"
+    when
+        LedStrip(maxDim:maxDimension)
+        LedStrip(maxDimension.width!=null)
+        ComposedProduct(productDimension:dimension)
+        ComposedProduct(productDimension.width<maxDim.width)
+
+    then
+        messages.add(new Message("Totale lengte is groter dan maximale ledstrip lengte."));
+
+end
 
 rule "Kap en gieting"
 

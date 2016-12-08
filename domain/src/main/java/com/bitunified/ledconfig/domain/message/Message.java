@@ -6,7 +6,7 @@ public class Message {
 
     private String message;
 
-    private MessageStatus status=MessageStatus.ERROR;
+    private MessageStatus status=MessageStatus.UNKNOWN;
 
     public Message() {
 

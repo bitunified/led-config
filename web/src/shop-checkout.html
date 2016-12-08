@@ -23,6 +23,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <template>
     <style include="shop-common-styles shop-button shop-form-styles shop-input shop-select shop-checkbox">
 
+
       .main-frame {
         transition: opacity 0.5s;
       }
@@ -169,26 +170,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <header state="success">
           <h1>Berichten:</h1>
-          <template is="dom-if" if="{{_isEmpty(response.messages}}">
-           <p> De productcode is correct.</p>
+          <template is="dom-if" if="[[!response.messages.length]]">
+            De productcode is correct.
           </template>
           <template is="dom-repeat" items="[[response.messages]]">
             <p>[[item]]</p>
           </template>
 
           <p>Producten per stap:</p>
-          <p>
-          <table >
+
+          <table>
 
               <template is="dom-repeat" items="{{ _toArray(response.messageMap)}}">
+                <style>
+                  .message-indication{
+
+                  }
+                  .ERROR{
+                    color:red;
+                  }
+                </style>
                 <tr>
                   <td> Stap {{item.name}}:</td>
-                  <td>{{item.value.message}}</td>
+                  <td class$="{{displayMessageClass(item)}}">{{item.value.message}}</td>
                 </tr>
               </template>
 
           </table>
-          </p>
+
           <shop-button responsive>
             <a href="/checkout">Terug</a>
           </shop-button>
@@ -479,11 +488,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         });
       },
       _isEmpty:function (arr) {
-        if (arr.length==0){
-          return true;
-        }
+
+
         return false;
+      },
+      displayMessage:function(item){
+        if (item.value.status==="UNKNOWN"){
+          return "";
+        }
+        return item.value.status;
+      },
+      displayMessageClass:function(item){
+      if (item.value.status==="UNKNOWN"){
+        return "";
       }
+      return item.value.status;
+    }
 
     });
 
