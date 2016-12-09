@@ -23,6 +23,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <template>
     <style include="shop-common-styles shop-button shop-form-styles shop-input shop-select shop-checkbox">
 
+
       .main-frame {
         transition: opacity 0.5s;
       }
@@ -128,7 +129,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
             <header class="subsection" visible="true">
-              <h1>Productcode</h1>
+              <h1>Productcode opgeven</h1>
               <span>Bijv.:B13714D02000219a</span>
             </header>
 
@@ -166,16 +167,39 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <a href="/">Terug</a>
           </shop-button>
         </header>-->
+
         <header state="success">
           <h1>Berichten:</h1>
-          <template is="dom-if" if="{{response.messages.length==0}}">
-           <p> De productcode is correct.</p>
+          <template is="dom-if" if="[[!response.messages.length]]">
+            De productcode is correct.
           </template>
           <template is="dom-repeat" items="[[response.messages]]">
             <p>[[item]]</p>
           </template>
+
+          <p>Producten per stap:</p>
+
+          <table>
+
+              <template is="dom-repeat" items="{{ _toArray(response.messageMap)}}">
+                <style>
+                  .message-indication{
+
+                  }
+                  .ERROR{
+                    color:red;
+                  }
+                </style>
+                <tr>
+                  <td> Stap {{item.name}}:</td>
+                  <td class$="{{displayMessageClass(item)}}">{{item.value.message}}</td>
+                </tr>
+              </template>
+
+          </table>
+
           <shop-button responsive>
-            <a href="/">Terug</a>
+            <a href="/checkout">Terug</a>
           </shop-button>
         </header>
         <!-- Error message UI -->
@@ -409,12 +433,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        */
       _didReceiveResponse: function(e) {
         var response = e.detail.response;
-        console.info(response.messages);
+        //console.info(response);
+        console.info(e);
         this.response = response;
         this._setWaiting(true);
 
         if (response.success) {
-          console.info(this.state);
+          //console.info(this.state);
           //this._pushState('localhost:8080/checkout/success');
           this._pushState('success');
           this._reset();
@@ -452,7 +477,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this._reset();
         // Notify the page's title
         this.fire('change-section', { title: 'Checkout' });
+      },
+
+      _toArray: function(obj) {
+        return Object.keys(obj).map(function(key) {
+          return {
+            name: key,
+            value: obj[key]
+          };
+        });
+      },
+      _isEmpty:function (arr) {
+
+
+        return false;
+      },
+      displayMessage:function(item){
+        if (item.value.status==="UNKNOWN"){
+          return "";
+        }
+        return item.value.status;
+      },
+      displayMessageClass:function(item){
+      if (item.value.status==="UNKNOWN"){
+        return "";
       }
+      return item.value.status;
+    }
 
     });
 

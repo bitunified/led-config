@@ -26,6 +26,6 @@ public class Dimension {
 
     @Override
     public String toString() {
-        return "[Width:" + width+" Height:"+height+" Depth:"+depth+" Unit:"+unit+"]";
+        return "[Width:" + (width!=null?width:"")+" Height:"+(height!=null?height:"")+"]";
     }
 }

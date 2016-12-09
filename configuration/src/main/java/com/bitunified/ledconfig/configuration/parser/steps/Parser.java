@@ -3,9 +3,10 @@ package com.bitunified.ledconfig.configuration.parser.steps;
 
 
 import com.bitunified.ledconfig.composedproduct.ComposedProduct;
+import com.bitunified.ledconfig.configuration.parser.steps.types.ParserStepDimensionModel;
+import com.bitunified.ledconfig.configuration.parser.steps.types.ParserStepModel;
 import com.bitunified.ledconfig.configuration.parser.steps.types.ParserStepRealModel;
 import com.bitunified.ledconfig.configuration.parser.steps.types.ParserStepRealModelComposed;
-import com.bitunified.ledconfig.configuration.parser.steps.types.ParserStepRealModelWithLength;
 import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
@@ -19,7 +20,9 @@ import com.bitunified.ledconfig.domain.product.profile.Profile;
 import com.bitunified.ledconfig.parts.Part;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Parser {
     private static List<Part> parts=new ArrayList<Part>();
@@ -87,7 +90,7 @@ public class Parser {
         parts.add(part);
 
         CableEntry cableEntry=new CableEntry();
-        cable.setName("Left side via end cap");
+        cableEntry.setName("Left side via end cap");
         part=new Part(cableEntry);
         part.setCode("1");
         parts.add(part);
@@ -110,6 +113,24 @@ public class Parser {
         part.setCode("2");
         parts.add(part);
 
+        mounting=new Mounting();
+        mounting.setName("End caps both side");
+        part=new Part(mounting);
+        part.setCode("4");
+        parts.add(part);
+
+        Covering covering=new Covering(null);
+        covering.setName("Clear");
+        part=new Part(covering);
+        part.setCode("C");
+        parts.add(part);
+
+        covering=new Covering(null);
+        covering.setName("Diffuus");
+        part=new Part(covering);
+        part.setCode("D");
+        parts.add(part);
+
         ComposedProduct composedProduct=new ComposedProduct(null,null);
         composedProduct.setName("ComposedProduct");
         part=new Part(composedProduct);
@@ -123,29 +144,30 @@ public class Parser {
     //3: Cable type
     public static ParsedResult parse(String productcode){
         List<ParseStep> steps =new ArrayList<ParseStep>();
-        steps.add(new ParserStepRealModel(true,1,2,Profile.class,"","Stap 1: Profiel niet geconfigureerd"));
-        steps.add(new ParserStepRealModelWithLength(2,3,LedStrip.class,"","Stap 2: Ledstrip niet geconfigureerd", 7,11,"Stap 7: Led strip lengte niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(true,3,4,Cable.class,"","Stap 3: Kabel niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(true,4,5,CableEntry.class,"","Stap 4: Kabeluiteinde niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(true,5,6,Mounting.class,"","Stap 5: Montage opties niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(true,6,7,Covering.class,"","Stap 6: Behuizing niet geconfigureerd"));
+        Set<Model> models=new HashSet<Model>();
+        steps.add(new ParserStepRealModel(1,true,1,2,Profile.class,"","Profiel niet geconfigureerd"));
+        steps.add(new ParserStepRealModel(2,true,2,3,LedStrip.class,"","Ledstrip niet geconfigureerd"));
+        steps.add(new ParserStepRealModel(3,true,3,4,Cable.class,"","Kabel niet geconfigureerd"));
+        steps.add(new ParserStepModel(4,true,4,5,CableEntry.class,"","Kabeluiteinde niet geconfigureerd"));
+        steps.add(new ParserStepModel(5,true,5,6,Mounting.class,"","Montage opties niet geconfigureerd"));
+        steps.add(new ParserStepRealModel(6,true,6,7,Covering.class,"","Behuizing niet geconfigureerd"));
+        steps.add(new ParserStepDimensionModel(7,true,7,11,LedStrip.class,"","Led strip lengte niet geconfigureerd",models));
 
-        steps.add(new ParserStepRealModelComposed(ComposedProduct.class,"","Stap 8: Productlengte niet geconfigureerd",11,15));
-        List<Model> models=new ArrayList<Model>();
-        List<ConfigMessage> messages=new ArrayList<ConfigMessage>();
+        steps.add(new ParserStepRealModelComposed(8,ComposedProduct.class,"","Productlengte niet geconfigureerd",11,15));
+
         for (ParseStep step:steps){
             ModelResult createdModel=step.create(productcode,parts);
+
             if (createdModel!=null && createdModel.getErrorMessage()==null){
                 models.add(createdModel.getModel());
-            }else{
-                if (!step.isMantatory()) {
-                    messages.add(new ConfigMessage(createdModel.getErrorMessage()));
-                }
+
             }
+            step.addModelResult(createdModel);
         }
         ParsedResult parsedResult=new ParsedResult();
-        parsedResult.setParts(models);
-        parsedResult.setMessages(messages);
+        parsedResult.setModels(models);
+        parsedResult.setParts(parts);
+        parsedResult.setSteps(steps);
         return parsedResult;
     }
 }

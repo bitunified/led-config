@@ -2,14 +2,20 @@ package com.bitunified.ledconfig.configuration.parser.steps;
 
 
 import com.bitunified.ledconfig.domain.Model;
+import com.bitunified.ledconfig.parts.Part;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ParsedResult {
 
-    private List<Model> parts=new ArrayList<Model>();
+    private Set<Model> models=new HashSet<Model>();
     private List<ConfigMessage> messages=new ArrayList<ConfigMessage>();
+
+    private List<Part> parts = new ArrayList<Part>();
+    private List<ParseStep> steps;
 
     public List<ConfigMessage> getMessages() {
         return messages;
@@ -19,11 +25,27 @@ public class ParsedResult {
         this.messages = messages;
     }
 
-    public List<Model> getParts() {
+    public Set<Model> getModels() {
+        return models;
+    }
+
+    public void setModels(Set<Model> models) {
+        this.models = models;
+    }
+
+    public List<Part> getParts() {
         return parts;
     }
 
-    public void setParts(List<Model> parts) {
+    public void setParts(List<Part> parts) {
         this.parts = parts;
+    }
+
+    public void setSteps(List<ParseStep> steps) {
+        this.steps = steps;
+    }
+
+    public List<ParseStep> getSteps() {
+        return steps;
     }
 }

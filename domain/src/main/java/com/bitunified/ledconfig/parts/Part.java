@@ -51,8 +51,8 @@ public class Part {
 
     @Override
     public String toString() {
-        return "Product:"+product.toString()+", Code: "+code+ " Description: "+description;
-
+        //return "Product:"+product.toString()+ ", Code: "+code!=null?code:""+ " Description: "+description;
+    return "part";
     }
 
     public Model getConfigModel() {

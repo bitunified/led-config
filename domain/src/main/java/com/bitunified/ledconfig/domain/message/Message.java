@@ -1,21 +1,28 @@
 package com.bitunified.ledconfig.domain.message;
 
-import java.util.List;
 
 public class Message {
-    public static final int ERROR   = 0;
-    public static final int WARNING = 1;
+    private Integer step=null;
 
-    private String          message;
+    private String message;
 
-    private int             status;
+    private MessageStatus status=MessageStatus.UNKNOWN;
 
     public Message() {
 
     }
+    public Message(String message, Integer step, MessageStatus status) {
+        this.message = message;
+        this.status = status;
+        this.step=step;
+    }
+    public Message(String message, MessageStatus status) {
+        this.message = message;
+        this.status = status;
+    }
 
     public Message(String message) {
-        this.message=message;
+        this.message = message;
     }
 
     public String getMessage() {
@@ -26,26 +33,26 @@ public class Message {
         this.message = message;
     }
 
-    public int getStatus() {
+    public MessageStatus getStatus() {
         return this.status;
     }
 
-    public void setStatus(final int status) {
+    public void setStatus(final MessageStatus status) {
         this.status = status;
     }
 
-    public static Message doSomething(Message message) {
-        return message;
-    }
 
-    public boolean isSomething(String msg,
-                               List<Object> list) {
-        list.add( this );
-        return this.message.equals( msg );
-    }
 
     @Override
     public String toString() {
-        return "Message: "+this.message + " - Status: " + status;
+        return "Message: " + this.message + " - Status: " + status;
+    }
+
+    public Integer getStep() {
+        return step;
+    }
+
+    public void setStep(Integer step) {
+        this.step = step;
     }
 }
