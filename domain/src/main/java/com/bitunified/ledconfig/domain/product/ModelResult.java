@@ -1,18 +1,29 @@
-package com.bitunified.ledconfig.configuration.parser.steps;
+package com.bitunified.ledconfig.domain.product;
 
 
 import com.bitunified.ledconfig.domain.Model;
+import com.bitunified.ledconfig.parts.Part;
 
 public class ModelResult {
 
-    private final String errorMessage;
+    private String errorMessage="";
     private Model model;
+    private Part part;
     public ModelResult(String errorMessageLength) {
         this.errorMessage = errorMessageLength;
     }
     public ModelResult(Model model) {
         this.model = model;
         errorMessage = null;
+    }
+    public ModelResult(Model model, Part part) {
+        this.model = model;
+        this.part=part;
+    }
+    public ModelResult(Model model, Part part, String errorMessageLength) {
+        this.model = model;
+        this.part=part;
+        errorMessage = errorMessageLength;
     }
     public ModelResult(Model model, String errorMessageLength) {
         this.model = model;
@@ -26,5 +37,13 @@ public class ModelResult {
 
     public String getErrorMessage() {
         return errorMessage;
+    }
+
+    public Part getPart() {
+        return part;
+    }
+
+    public void setPart(Part part) {
+        this.part = part;
     }
 }

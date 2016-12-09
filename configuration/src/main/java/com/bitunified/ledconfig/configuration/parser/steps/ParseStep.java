@@ -1,6 +1,7 @@
 package com.bitunified.ledconfig.configuration.parser.steps;
 
 
+import com.bitunified.ledconfig.domain.product.ModelResult;
 import com.bitunified.ledconfig.parts.Part;
 
 import java.util.List;

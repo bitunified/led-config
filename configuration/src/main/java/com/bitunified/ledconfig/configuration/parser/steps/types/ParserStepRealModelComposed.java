@@ -1,25 +1,29 @@
 package com.bitunified.ledconfig.configuration.parser.steps.types;
 
 
-import com.bitunified.ledconfig.configuration.parser.steps.ModelResult;
 import com.bitunified.ledconfig.configuration.parser.steps.ParseStep;
 import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
+import com.bitunified.ledconfig.domain.product.ModelResult;
 import com.bitunified.ledconfig.parts.Part;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ParserStepRealModelComposed extends ParseStepBase implements ParseStep{
 
 
     private final Integer dataBegin;
     private final Integer dataEnd;
+    private  Set<Model> models=new HashSet<Model>();
 
 
-    public ParserStepRealModelComposed(Integer step, Class<? extends Model> model, String regex, String errorMessage, Integer dataBegin, Integer dataEnd) {
+    public ParserStepRealModelComposed(Integer step, Class<? extends Model> model, String regex, String errorMessage, Integer dataBegin, Integer dataEnd,Set<Model> models) {
     super(step,false,model,regex,errorMessage);
 
+        this.models=models;
         this.dataBegin = dataBegin;
         this.dataEnd = dataEnd;
     }
@@ -52,6 +56,8 @@ public class ParserStepRealModelComposed extends ParseStepBase implements ParseS
         }
         return new ModelResult(getErrorMessage());
     }
+
+
 
 
 }

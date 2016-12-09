@@ -9,6 +9,7 @@ import com.bitunified.ledconfig.configuration.parser.steps.types.ParserStepRealM
 import com.bitunified.ledconfig.configuration.parser.steps.types.ParserStepRealModelComposed;
 import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.domain.Model;
+import com.bitunified.ledconfig.domain.product.ModelResult;
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 import com.bitunified.ledconfig.domain.product.PCB.types.DecoLedStrip;
 import com.bitunified.ledconfig.domain.product.PCB.types.HighPowerLedStrip;
@@ -26,6 +27,8 @@ import java.util.Set;
 
 public class Parser {
     private static List<Part> parts=new ArrayList<Part>();
+
+private static ComposedProduct composedProduct;
     static{
        init();
     }
@@ -131,7 +134,7 @@ public class Parser {
         part.setCode("D");
         parts.add(part);
 
-        ComposedProduct composedProduct=new ComposedProduct(null,null);
+        composedProduct=new ComposedProduct(null,null);
         composedProduct.setName("ComposedProduct");
         part=new Part(composedProduct);
         parts.add(part);
@@ -153,7 +156,7 @@ public class Parser {
         steps.add(new ParserStepRealModel(6,true,6,7,Covering.class,"","Behuizing niet geconfigureerd"));
         steps.add(new ParserStepDimensionModel(7,true,7,11,LedStrip.class,"","Led strip lengte niet geconfigureerd",models));
 
-        steps.add(new ParserStepRealModelComposed(8,ComposedProduct.class,"","Productlengte niet geconfigureerd",11,15));
+        steps.add(new ParserStepRealModelComposed(8,ComposedProduct.class,"","Productlengte niet geconfigureerd",11,15,models));
 
         for (ParseStep step:steps){
             ModelResult createdModel=step.create(productcode,parts);
@@ -163,7 +166,9 @@ public class Parser {
 
             }
             step.addModelResult(createdModel);
+            composedProduct.addModelResult(createdModel);
         }
+
         ParsedResult parsedResult=new ParsedResult();
         parsedResult.setModels(models);
         parsedResult.setParts(parts);
