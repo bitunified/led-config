@@ -16,10 +16,12 @@
 
 package com.bitunified.ledconfig;
 
+import com.bitunified.ledconfig.composedproduct.ComposedProduct;
 import com.bitunified.ledconfig.configuration.parser.steps.ParseStep;
 import com.bitunified.ledconfig.configuration.parser.steps.ParsedResult;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.message.Message;
+import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 import com.bitunified.ledconfig.parts.Part;
 import org.drools.core.impl.StatefulKnowledgeSessionImpl;
 import org.drools.core.marshalling.impl.ProtobufMessages;
@@ -119,13 +121,11 @@ public class LedConfig {
                 if (m.getStep()!=null && m.getName()!=null) {
                     messageMap.put(m.getStep(), new Message(m.getName()));
                 }
-
-
+                System.out.println("Model: "+model);
             }
-            for (Part part:parsedResult.getParts()){
-                if (part.getProduct()!=null) {
-                    System.out.println(part.getProduct().getClass());
-                }
+
+            if (model instanceof Part){
+                System.out.println("Part:  "+((Part)model).getProduct());
             }
         }
 
@@ -134,6 +134,9 @@ public class LedConfig {
                 messageMap.put(msg.getStep(), msg);
             }
         }
+
+
+
 
 
         // Remove comment if using logging
@@ -145,27 +148,6 @@ public class LedConfig {
 
         return new ConfigResult(messages, messageMap, ksession.getObjects());
 
-    }
-
-    private static KnowledgeBase readKnowledgeBase() throws Exception {
-
-        KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
-
-        kbuilder.add(ResourceFactory.newClassPathResource("Pune.drl"), ResourceType.DRL);
-        kbuilder.add(ResourceFactory.newClassPathResource("Nagpur.drl"), ResourceType.DRL);
-
-        KnowledgeBuilderErrors errors = kbuilder.getErrors();
-
-        if (errors.size() > 0) {
-            for (KnowledgeBuilderError error : errors) {
-                System.err.println(error);
-            }
-            throw new IllegalArgumentException("Could not parse knowledge.");
-        }
-        KnowledgeBase kbase = KnowledgeBaseFactory.newKnowledgeBase();
-        kbase.addKnowledgePackages(kbuilder.getKnowledgePackages());
-
-        return kbase;
     }
 
 }

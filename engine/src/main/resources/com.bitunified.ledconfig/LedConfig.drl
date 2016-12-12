@@ -94,10 +94,10 @@ no-loop false
           from accumulate( i : Part( product.class==Clip.class )from composedproduct.products, count( i ) )
 
     then
+        Part part=new Part(new Clip());
+        insert(part);
         modify(composedproduct){
-
-         getProducts().add(new Part(new Clip()))
-
+            addProduct(part)
         }
         System.out.println("Clip toegevoegd");
     end

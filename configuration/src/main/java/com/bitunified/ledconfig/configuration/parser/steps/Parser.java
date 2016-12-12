@@ -20,6 +20,7 @@ import com.bitunified.ledconfig.domain.product.mounting.Mounting;
 import com.bitunified.ledconfig.domain.product.profile.Profile;
 import com.bitunified.ledconfig.parts.Part;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -43,11 +44,13 @@ private static ComposedProduct composedProduct;
         profile.setName("liniLED Aeris Profiel L20");
         Part part = new Part(profile);
         part.setCode("1");
+        part.setPrice(BigDecimal.TEN);
         parts.add(part);
 
         profile = new Profile(new Dimension(100,200));
         profile.setName("liniLED Aeris Profiel H20");
         part = new Part(profile);
+        part.setPrice(BigDecimal.TEN);
         part.setCode("2");
         parts.add(part);
 
@@ -58,6 +61,7 @@ private static ComposedProduct composedProduct;
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         part=new Part(ledStrip);
         part.setCode("M");
+        part.setPrice(BigDecimal.valueOf(12));
         parts.add(part);
 
         ledStrip=new DecoLedStrip(new Dimension(null));
@@ -66,6 +70,7 @@ private static ComposedProduct composedProduct;
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(DecoLedStrip.COLOR).setValue("red");
         part=new Part(ledStrip);
+        part.setPrice(BigDecimal.valueOf(13));
         part.setCode("R");
         parts.add(part);
 
@@ -75,6 +80,7 @@ private static ComposedProduct composedProduct;
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("3000");
         part=new Part(ledStrip);
+        part.setPrice(BigDecimal.valueOf(14));
         part.setCode("3");
         parts.add(part);
 
@@ -82,6 +88,7 @@ private static ComposedProduct composedProduct;
         cable.setName("PVC with ope end");
         cable.getProperty(Cable.CABLE_TYPE).setValue("PVCopenend");
         part=new Part(cable);
+        part.setPrice(BigDecimal.valueOf(8));
         part.setCode("1");
         parts.add(part);
 
@@ -89,6 +96,7 @@ private static ComposedProduct composedProduct;
         cable.setName("PUR with liniLed PU Connector set");
         cable.getProperty(Cable.CABLE_TYPE).setValue("PURconnectorset");
         part=new Part(cable);
+        part.setPrice(BigDecimal.valueOf(9));
         part.setCode("7");
         parts.add(part);
 
@@ -96,11 +104,13 @@ private static ComposedProduct composedProduct;
         cableEntry.setName("Left side via end cap");
         part=new Part(cableEntry);
         part.setCode("1");
+        part.setPrice(BigDecimal.valueOf(7));
         parts.add(part);
 
         cableEntry=new CableEntry();
         cableEntry.setName("Left side via bottom");
         part=new Part(cableEntry);
+        part.setPrice(BigDecimal.valueOf(6));
         part.setCode("2");
         parts.add(part);
 
@@ -108,35 +118,41 @@ private static ComposedProduct composedProduct;
         mounting.setName("No end caps");
         part=new Part(mounting);
         part.setCode("1");
+        part.setPrice(BigDecimal.valueOf(5));
         parts.add(part);
 
          mounting=new Mounting();
         mounting.setName("End cap on right side");
         part=new Part(mounting);
         part.setCode("2");
+        part.setPrice(BigDecimal.valueOf(5));
         parts.add(part);
 
         mounting=new Mounting();
         mounting.setName("End caps both side");
         part=new Part(mounting);
         part.setCode("4");
+        part.setPrice(BigDecimal.valueOf(5));
         parts.add(part);
 
         Covering covering=new Covering(null);
         covering.setName("Clear");
         part=new Part(covering);
         part.setCode("C");
+        part.setPrice(BigDecimal.valueOf(3));
         parts.add(part);
 
         covering=new Covering(null);
         covering.setName("Diffuus");
         part=new Part(covering);
         part.setCode("D");
+        part.setPrice(BigDecimal.valueOf(3));
         parts.add(part);
 
         composedProduct=new ComposedProduct(null,null);
         composedProduct.setName("ComposedProduct");
         part=new Part(composedProduct);
+        part.setPrice(BigDecimal.valueOf(20));
         parts.add(part);
 
     }

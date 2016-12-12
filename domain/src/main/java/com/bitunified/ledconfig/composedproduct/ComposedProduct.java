@@ -5,6 +5,7 @@ import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 import com.bitunified.ledconfig.domain.product.ModelResult;
 import com.bitunified.ledconfig.parts.Part;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -33,10 +34,10 @@ public class ComposedProduct extends RealModel {
     }
 
     @Override
-    public String toString() {
-        return "["+super.toString()+"Products: ["+products+"]"+"]";
+    public String toString()
+    {
+        return ToStringBuilder.reflectionToString(this);
     }
-
     public void addModelResult(ModelResult modelResult){
         this.modelResults.add(modelResult);
     }

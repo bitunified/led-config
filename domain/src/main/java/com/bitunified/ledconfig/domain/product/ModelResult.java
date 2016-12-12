@@ -46,4 +46,9 @@ public class ModelResult {
     public void setPart(Part part) {
         this.part = part;
     }
+
+    @Override
+    public String toString() {
+        return "Model: ["+model!=null?model.toString():""+"], Part:["+part!=null?part.toString():""+"] "+super.toString();
+    }
 }

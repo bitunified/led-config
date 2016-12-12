@@ -3,6 +3,7 @@ package com.bitunified.server.message;
 
 import com.bitunified.ledconfig.domain.message.Message;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ public class ServerResponse {
     private String errorMessage;
     private String[] messages;
     private Map<Integer,Message> messageMap=new HashMap<>();
+    private Double totalPrice;
 
     public ServerResponse(String success) {
         this.success = success;
@@ -51,5 +53,13 @@ public class ServerResponse {
 //            messageMap.put((Integer)message.getKey(),((Message)message.getValue()).getMessage());
 //        }
     this.messageMap=messagesMap;
+    }
+
+    public void setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public Double getTotalPrice() {
+        return totalPrice;
     }
 }
