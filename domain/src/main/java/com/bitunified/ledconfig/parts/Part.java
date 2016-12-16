@@ -4,6 +4,7 @@ package com.bitunified.ledconfig.parts;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 import com.bitunified.ledconfig.domain.product.profile.Profile;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.math.BigDecimal;
 
@@ -51,8 +52,7 @@ public class Part {
 
     @Override
     public String toString() {
-        //return "Product:"+product.toString()+ ", Code: "+code!=null?code:""+ " Description: "+description;
-    return "part";
+     return ToStringBuilder.reflectionToString(this);
     }
 
     public Model getConfigModel() {

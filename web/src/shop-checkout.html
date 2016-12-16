@@ -130,7 +130,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             <header class="subsection" visible="true">
               <h1>Productcode opgeven</h1>
-              <span>Bijv.:B13714D02000219a</span>
+              <span>Bijv.:CAGDR11102000300a</span>
             </header>
 
             <div class="subsection grid" visible="true">
@@ -139,7 +139,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                                 <div class="row input-row">
                   <shop-input>
-                    <input type="tel" id="ccNumber" name="ccNumber" pattern="B([321]){1}([MRGBAPCDEF123456])([1470258369])([1-5])([1-8])([CD])(\d{4})((\d{4})?)(([ab])?)+"
+                    <input type="tel" id="ccNumber" name="ccNumber" pattern="C([A-F]){1}([GABHPQ]){1}([DPHN]){1}([RGBA]|[2473456]){1}([1470258369]){1}([1-5])([1-8])(\d{4})((\d{4})?)(([ab])?)+"
                         placeholder="Card Number" required
                         autocomplete="cc-number">
                     <shop-md-decorator error-message="Ongeldige code" aria-hidden="true">
@@ -195,7 +195,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                   <td class$="{{displayMessageClass(item)}}">{{item.value.message}}</td>
                 </tr>
               </template>
-
+              <tr><td>Totaal</td>
+              <td>€ [[response.totalPrice]]</td></tr>
           </table>
 
           <shop-button responsive>

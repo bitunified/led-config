@@ -43,7 +43,7 @@ private static ComposedProduct composedProduct;
         Profile profile = new Profile(new Dimension(null));
         profile.setName("liniLED Aeris Profiel L20");
         Part part = new Part(profile);
-        part.setCode("1");
+        part.setCode("A");
         part.setPrice(BigDecimal.TEN);
         parts.add(part);
 
@@ -51,44 +51,29 @@ private static ComposedProduct composedProduct;
         profile.setName("liniLED Aeris Profiel H20");
         part = new Part(profile);
         part.setPrice(BigDecimal.TEN);
-        part.setCode("2");
+        part.setCode("B");
         parts.add(part);
 
-
-        LedStrip ledStrip=new DecoLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED RGB Deco");
-        ledStrip.setMaxDimension(new Dimension(10));
-        ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
-        part=new Part(ledStrip);
-        part.setCode("M");
-        part.setPrice(BigDecimal.valueOf(12));
+        profile = new Profile(new Dimension(100,200));
+        profile.setName("liniLED Aeris Profiel L30");
+        part = new Part(profile);
+        part.setPrice(BigDecimal.TEN);
+        part.setCode("C");
         parts.add(part);
 
-        ledStrip=new DecoLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED Red Deco");
-        ledStrip.setMaxDimension(new Dimension(10));
-        ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
-        ledStrip.getProperty(DecoLedStrip.COLOR).setValue("red");
-        part=new Part(ledStrip);
-        part.setPrice(BigDecimal.valueOf(13));
-        part.setCode("R");
+        profile = new Profile(new Dimension(100,200));
+        profile.setName("liniLED Aeris Profiel H30");
+        part = new Part(profile);
+        part.setPrice(BigDecimal.TEN);
+        part.setCode("D");
         parts.add(part);
 
-        ledStrip=new HighPowerLedStrip(new Dimension(null));
-        ledStrip.setName("High Power");
-        ledStrip.setMaxDimension(new Dimension(10));
-        ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
-        ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("3000");
-        part=new Part(ledStrip);
-        part.setPrice(BigDecimal.valueOf(14));
-        part.setCode("3");
-        parts.add(part);
 
         Cable cable=new Cable(new Dimension(null));
         cable.setName("PVC with ope end");
         cable.getProperty(Cable.CABLE_TYPE).setValue("PVCopenend");
         part=new Part(cable);
-        part.setPrice(BigDecimal.valueOf(8));
+        part.setPrice(BigDecimal.valueOf(8.9));
         part.setCode("1");
         parts.add(part);
 
@@ -96,7 +81,7 @@ private static ComposedProduct composedProduct;
         cable.setName("PUR with liniLed PU Connector set");
         cable.getProperty(Cable.CABLE_TYPE).setValue("PURconnectorset");
         part=new Part(cable);
-        part.setPrice(BigDecimal.valueOf(9));
+        part.setPrice(BigDecimal.valueOf(9.6));
         part.setCode("7");
         parts.add(part);
 
@@ -104,13 +89,13 @@ private static ComposedProduct composedProduct;
         cableEntry.setName("Left side via end cap");
         part=new Part(cableEntry);
         part.setCode("1");
-        part.setPrice(BigDecimal.valueOf(7));
+        part.setPrice(BigDecimal.valueOf(7.1));
         parts.add(part);
 
         cableEntry=new CableEntry();
         cableEntry.setName("Left side via bottom");
         part=new Part(cableEntry);
-        part.setPrice(BigDecimal.valueOf(6));
+        part.setPrice(BigDecimal.valueOf(6.2));
         part.setCode("2");
         parts.add(part);
 
@@ -118,66 +103,178 @@ private static ComposedProduct composedProduct;
         mounting.setName("No end caps");
         part=new Part(mounting);
         part.setCode("1");
-        part.setPrice(BigDecimal.valueOf(5));
+        part.setPrice(BigDecimal.valueOf(5.4));
         parts.add(part);
 
          mounting=new Mounting();
         mounting.setName("End cap on right side");
         part=new Part(mounting);
         part.setCode("2");
-        part.setPrice(BigDecimal.valueOf(5));
+        part.setPrice(BigDecimal.valueOf(5.35));
         parts.add(part);
 
         mounting=new Mounting();
         mounting.setName("End caps both side");
         part=new Part(mounting);
         part.setCode("4");
-        part.setPrice(BigDecimal.valueOf(5));
+        part.setPrice(BigDecimal.valueOf(5.21));
         parts.add(part);
 
+        //(GABHPQ){1}
         Covering covering=new Covering(null);
-        covering.setName("Clear");
+        covering.setName("Geen kap");
         part=new Part(covering);
-        part.setCode("C");
-        part.setPrice(BigDecimal.valueOf(3));
+        part.setCode("G");
+        //part.setPrice(BigDecimal.valueOf(0));
         parts.add(part);
 
         covering=new Covering(null);
-        covering.setName("Diffuus");
+        covering.setName("Lage kap helder");
         part=new Part(covering);
-        part.setCode("D");
-        part.setPrice(BigDecimal.valueOf(3));
+        part.setCode("A");
+        part.setPrice(BigDecimal.valueOf(3.92));
+        parts.add(part);
+
+        covering=new Covering(null);
+        covering.setName("Lage kap diffuus");
+        part=new Part(covering);
+        part.setCode("B");
+        part.setPrice(BigDecimal.valueOf(3.42));
+        parts.add(part);
+
+        covering=new Covering(null);
+        covering.setName("Hoge kap diffuus");
+        part=new Part(covering);
+        part.setCode("H");
+        part.setPrice(BigDecimal.valueOf(2.12));
+        parts.add(part);
+
+        covering=new Covering(null);
+        covering.setName("PU Helder");
+        part=new Part(covering);
+        part.setCode("P");
+        part.setPrice(BigDecimal.valueOf(4.32));
+        parts.add(part);
+
+        covering=new Covering(null);
+        covering.setName("PU Diffuus");
+        part=new Part(covering);
+        part.setCode("Q");
+        part.setPrice(BigDecimal.valueOf(8.12));
+        parts.add(part);
+
+
+        //(DPHN){1}(RGBA|2473456){1}
+        LedStrip ledStrip=new DecoLedStrip(new Dimension(null));
+        ledStrip.setName("liniLED RGB Deco rood");
+        ledStrip.setMaxDimension(new Dimension(10));
+        ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
+        ledStrip.getProperty(DecoLedStrip.COLOR).setValue("rood");
+        part=new Part(ledStrip);
+        part.setCode("DR");
+        part.setPrice(BigDecimal.valueOf(12.5));
+        parts.add(part);
+
+        ledStrip=new DecoLedStrip(new Dimension(null));
+        ledStrip.setName("liniLED RGB Deco blauw");
+        ledStrip.setMaxDimension(new Dimension(10));
+        ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
+        ledStrip.getProperty(DecoLedStrip.COLOR).setValue("blauw");
+        part=new Part(ledStrip);
+        part.setPrice(BigDecimal.valueOf(13.2));
+        part.setCode("DB");
+        parts.add(part);
+
+        ledStrip=new DecoLedStrip(new Dimension(null));
+        ledStrip.setName("liniLED Power blauw");
+        ledStrip.setMaxDimension(new Dimension(10));
+        ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
+        ledStrip.getProperty(DecoLedStrip.COLOR).setValue("blauw");
+        part=new Part(ledStrip);
+        part.setPrice(BigDecimal.valueOf(13.2));
+        part.setCode("PB");
+        parts.add(part);
+
+        ledStrip=new HighPowerLedStrip(new Dimension(null));
+        ledStrip.setName("liniLED Power 2400K");
+        ledStrip.setMaxDimension(new Dimension(10));
+        ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
+        ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2400");
+        part=new Part(ledStrip);
+        part.setPrice(BigDecimal.valueOf(14.1));
+        part.setCode("P4");
+        parts.add(part);
+
+        ledStrip=new HighPowerLedStrip(new Dimension(null));
+        ledStrip.setName("liniLED HighPower 2000K");
+        ledStrip.setMaxDimension(new Dimension(10));
+        ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
+        ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2000");
+        part=new Part(ledStrip);
+        part.setPrice(BigDecimal.valueOf(14.1));
+        part.setCode("H2");
+        parts.add(part);
+
+        ledStrip=new HighPowerLedStrip(new Dimension(null));
+        ledStrip.setName("liniLED HighPower 2400K");
+        ledStrip.setMaxDimension(new Dimension(10));
+        ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
+        ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2400");
+        part=new Part(ledStrip);
+        part.setPrice(BigDecimal.valueOf(14.1));
+        part.setCode("H4");
+        parts.add(part);
+
+        ledStrip=new HighPowerLedStrip(new Dimension(null));
+        ledStrip.setName("liniLED HighPower 2700K");
+        ledStrip.setMaxDimension(new Dimension(10));
+        ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
+        ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2700");
+        part=new Part(ledStrip);
+        part.setPrice(BigDecimal.valueOf(14.1));
+        part.setCode("H7");
+        parts.add(part);
+
+        ledStrip=new HighPowerLedStrip(new Dimension(null));
+        ledStrip.setName("liniLED Photon 2000K");
+        ledStrip.setMaxDimension(new Dimension(10));
+        ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
+        ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2000");
+        part=new Part(ledStrip);
+        part.setPrice(BigDecimal.valueOf(14.1));
+        part.setCode("N2");
         parts.add(part);
 
         composedProduct=new ComposedProduct(null,null);
         composedProduct.setName("ComposedProduct");
         part=new Part(composedProduct);
-        part.setPrice(BigDecimal.valueOf(20));
+        part.setPrice(BigDecimal.valueOf(20.59));
         parts.add(part);
 
     }
     //B1M348D20077778a
     //B([321]){1}([MRGBAPCDEF123456])([1470258369])([1-5])([1-8])([CD])(\d{4})((\d{4})?)(([ab])?)
-    //1: Profiel (B1)
+    //C([ABCDEF]){1}([GABHPQ]){1}([DPHN]){1}([RGBA]|[2473456]){1}([1470258369])([1-5])([1-8])(\d{4})((\d{4})?)(([ab])?)
+    ///1: Profiel (B1)
     //2: Led Strip type
     //3: Cable type
     public static ParsedResult parse(String productcode){
         List<ParseStep> steps =new ArrayList<ParseStep>();
         Set<Model> models=new HashSet<Model>();
         steps.add(new ParserStepRealModel(1,true,1,2,Profile.class,"","Profiel niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(2,true,2,3,LedStrip.class,"","Ledstrip niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(3,true,3,4,Cable.class,"","Kabel niet geconfigureerd"));
-        steps.add(new ParserStepModel(4,true,4,5,CableEntry.class,"","Kabeluiteinde niet geconfigureerd"));
-        steps.add(new ParserStepModel(5,true,5,6,Mounting.class,"","Montage opties niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(6,true,6,7,Covering.class,"","Behuizing niet geconfigureerd"));
-        steps.add(new ParserStepDimensionModel(7,true,7,11,LedStrip.class,"","Led strip lengte niet geconfigureerd",models));
+        steps.add(new ParserStepRealModel(2,true,2,3,Covering.class,"","Behuizing niet geconfigureerd"));
+        steps.add(new ParserStepRealModel(3,true,3,5,LedStrip.class,"","Kleur niet geconfigureerd"));
+        steps.add(new ParserStepRealModel(4,true,5,6,Cable.class,"","Kabel niet geconfigureerd"));
+        steps.add(new ParserStepModel(5,true,6,7,CableEntry.class,"","Kabeluiteinde niet geconfigureerd"));
+        steps.add(new ParserStepModel(6,true,7,8,Mounting.class,"","Montage opties niet geconfigureerd"));
+        steps.add(new ParserStepDimensionModel(7,true,8,12,LedStrip.class,"","Led strip lengte niet geconfigureerd",models));
 
-        steps.add(new ParserStepRealModelComposed(8,ComposedProduct.class,"","Productlengte niet geconfigureerd",11,15,models));
+        steps.add(new ParserStepRealModelComposed(8,ComposedProduct.class,"","Productlengte niet geconfigureerd",12,16,models));
 
         for (ParseStep step:steps){
             ModelResult createdModel=step.create(productcode,parts);
 
-            if (createdModel!=null && createdModel.getErrorMessage()==null){
+            if (createdModel!=null){
                 models.add(createdModel.getModel());
 
             }
