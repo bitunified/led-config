@@ -16,10 +16,12 @@
 
 package com.bitunified.ledconfig;
 
+import com.bitunified.ledconfig.composedproduct.ComposedProduct;
 import com.bitunified.ledconfig.configuration.parser.steps.ParseStep;
 import com.bitunified.ledconfig.configuration.parser.steps.ParsedResult;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.message.Message;
+import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 import com.bitunified.ledconfig.parts.Part;
 import org.drools.core.impl.StatefulKnowledgeSessionImpl;
 import org.drools.core.marshalling.impl.ProtobufMessages;
@@ -46,10 +48,11 @@ public class LedConfig {
     public final void main(final String[] args) {
         rules(args);
     }
+
     public final ConfigResult rules(final String[] args) {
         // KieServices is the factory for all KIE services 
         KieServices ks = KieServices.Factory.get();
-        
+
         // From the kie services, a container is created from the classpath
         KieContainer kc = ks.getKieClasspathContainer();
 
@@ -59,13 +62,12 @@ public class LedConfig {
         kbConfig.setProperty("drools.dialect.mvel.strict", "false");
 
         KnowledgeBuilder kBuilder =
-                KnowledgeBuilderFactory.newKnowledgeBuilder( kbConfig );
-        return execute( kc, Parser.parse(args[0]));
+                KnowledgeBuilderFactory.newKnowledgeBuilder(kbConfig);
+        return execute(kc, Parser.parse(args[0]));
 
     }
 
     public static ConfigResult execute(KieContainer kc, ParsedResult parsedResult) {
-
 
 
         // From the container, a session is created based on
@@ -75,13 +77,13 @@ public class LedConfig {
         // Once the session is created, the application can interact with it
         // In this case it is setting a global as defined in the
         // org/drools/examples/helloworld/HelloWorld.drl file
-        List<Message> messages=new ArrayList<Message>();
-        ksession.setGlobal( "messages",
-                            messages );
+        List<Message> messages = new ArrayList<Message>();
+        ksession.setGlobal("messages",
+                messages);
 
         // The application can also setup listeners
-        ksession.addEventListener( new DebugAgendaEventListener() );
-        ksession.addEventListener( new DebugRuleRuntimeEventListener() );
+        ksession.addEventListener(new DebugAgendaEventListener());
+        ksession.addEventListener(new DebugRuleRuntimeEventListener());
 
         // To setup a file based audit logger, uncomment the next line
         // KieRuntimeLogger logger = ks.getLoggers().newFileLogger( ksession, "./helloworld" );
@@ -92,48 +94,48 @@ public class LedConfig {
 
         // The application can insert facts into the session
 
-      for (Model model:parsedResult.getModels()){
-          ksession.insert(model);
-      }
+        for (Model model : parsedResult.getModels()) {
+            ksession.insert(model);
+        }
 
-
-//        ksession.insert(composedProduct);
-//        ksession.insert(profile);
-//        ksession.insert(ledStrip);
-//        ksession.insert(resin);
-//        ksession.insert(cable);
-        // and fire the rules
         ksession.fireAllRules();
 
-        Map<Integer,Message> messageMap=new HashMap<>();
+        Map<Integer, Message> messageMap = new HashMap<>();
 
 
+        for (ParseStep step : parsedResult.getSteps()) {
 
-
-        for (ParseStep step:parsedResult.getSteps()){
-
-            if (step.getModelResult().getModel()!=null){
-                messageMap.put(step.getStep(),new Message(step.getModelResult().getModel().getName()));
-            }else{
-                messageMap.put(step.getStep(),new Message(step.getErrorMessage()));
+            if (step.getModelResult() != null && step.getModelResult().getModel() != null) {
+                messageMap.put(step.getStep(), new Message(step.getModelResult().getModel().getName()));
+            } else {
+                messageMap.put(step.getStep(), new Message(step.getErrorMessage()));
             }
 
         }
 
-        Collection<Model> sortedModels= (Collection<Model>) ksession.getObjects();
+        Collection<Model> sortedModels = (Collection<Model>) ksession.getObjects();
 
-        for (Model model:sortedModels){
+        for (Object model : sortedModels) {
+            if (model instanceof Model) {
+                Model m = (Model) model;
+                if (m.getStep()!=null && m.getName()!=null) {
+                    messageMap.put(m.getStep(), new Message(m.getName()));
+                }
+                System.out.println("Model: "+model);
+            }
 
-            messageMap.put(model.getStep(),new Message(model.getName()));
-        }
-
-        for (Message msg:messages){
-
-            if (msg.getStep()!=null){
-
-                messageMap.put(msg.getStep(),msg);
+            if (model instanceof Part){
+                System.out.println("Part:  "+((Part)model).getProduct());
             }
         }
+
+        for (Message msg : messages) {
+            if (msg.getStep() != null) {
+                messageMap.put(msg.getStep(), msg);
+            }
+        }
+
+
 
 
 
@@ -144,32 +146,8 @@ public class LedConfig {
         ksession.dispose();
 
 
+        return new ConfigResult(messages, messageMap, ksession.getObjects());
 
-
-
-        return new ConfigResult(messages,messageMap,ksession.getObjects());
-
-    }
-
-    private static KnowledgeBase readKnowledgeBase() throws Exception {
-
-        KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
-
-        kbuilder.add(ResourceFactory.newClassPathResource("Pune.drl"), ResourceType.DRL);
-        kbuilder.add(ResourceFactory.newClassPathResource("Nagpur.drl"), ResourceType.DRL);
-
-        KnowledgeBuilderErrors errors = kbuilder.getErrors();
-
-        if (errors.size() > 0) {
-            for (KnowledgeBuilderError error: errors) {
-                System.err.println(error);
-            }
-            throw new IllegalArgumentException("Could not parse knowledge.");
-        }
-        KnowledgeBase kbase = KnowledgeBaseFactory.newKnowledgeBase();
-        kbase.addKnowledgePackages(kbuilder.getKnowledgePackages());
-
-        return kbase;
     }
 
 }

@@ -2,6 +2,7 @@ package com.bitunified.ledconfig.domain;
 
 
 import com.bitunified.ledconfig.domain.description.Descriptive;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -40,10 +41,10 @@ public class Model extends Descriptive implements StepConfig {
     }
 
     @Override
-    public String toString() {
-        return "[name:"+this.name+" props:"+properies.toString()+"]";
+    public String toString()
+    {
+        return ToStringBuilder.reflectionToString(this);
     }
-
     @Override
     public Integer getStep() {
         return step;
@@ -67,8 +68,9 @@ public class Model extends Descriptive implements StepConfig {
 
     @Override
     public int hashCode() {
-        int result = name.hashCode();
-        result = 31 * result + step.hashCode();
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (step != null ? step.hashCode() : 0);
+        result = 31 * result + (properies != null ? properies.hashCode() : 0);
         return result;
     }
 }

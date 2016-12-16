@@ -1,12 +1,10 @@
 package com.bitunified.ledconfig.configuration.parser.steps.types;
 
-import com.bitunified.ledconfig.configuration.parser.steps.ModelResult;
 import com.bitunified.ledconfig.configuration.parser.steps.ParseStep;
-import com.bitunified.ledconfig.configuration.parser.steps.types.ParseStepBase;
 import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
-import com.bitunified.ledconfig.domain.product.cover.Covering;
+import com.bitunified.ledconfig.domain.product.ModelResult;
 import com.bitunified.ledconfig.parts.Part;
 
 import java.util.List;
