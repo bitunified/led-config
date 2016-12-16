@@ -34,7 +34,7 @@ rule "Totale lengte minimaal"
         ComposedProduct(dimension.width<(afmetingen.width+15))
 
     then
-        messages.add(new Message("Totale lengte is groter dan ledstrip lengte inclusief marges.",2,MessageStatus.ERROR));
+        messages.add(new Message("Totale lengte is groter dan ledstrip lengte inclusief marges.",8,MessageStatus.ERROR));
 
 end
 
@@ -46,7 +46,7 @@ rule "Totale lengte is groter dan maximale ledstrip lengte"
         ComposedProduct(productDimension.width<maxDim.width)
 
     then
-        messages.add(new Message("Totale lengte is groter dan maximale ledstrip lengte."));
+        messages.add(new Message("Totale lengte is groter dan maximale ledstrip lengte.",4,MessageStatus.ERROR));
 
 end
 
@@ -77,15 +77,7 @@ rule "Kabeltype moet overeenkomen met PCB type"
 rule "Led strip section modulo"
 
     when
-
      ledstrip:LedStrip( sect:getProperty(LedStrip.SECTION_WIDTH),(sect.value % ledstrip.dimension.width)!=0)
-
-//p:Property(name!=null)from ledstrip.getProperies()
-               //sl: Property()from ledstrip.getProperies()
-
-
-  //Property((sect.value % ledstrip.dimension.width)!=0)
-
     then
 
     messages.add(new Message("Ledstrip lengte moet een veelvoud zijn van sectielengte."));
@@ -95,7 +87,6 @@ rule "Aantal clips is evenredig aan lengte"
 no-loop false
     when
         composedproduct:ComposedProduct();
-
         count : Number(intValue<=composedproduct.dimension.width/100)
           from accumulate( i : Part( product.class==Clip.class )from composedproduct.products, count( i ) )
 
