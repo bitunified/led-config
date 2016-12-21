@@ -13,6 +13,9 @@ import com.bitunified.ledconfig.domain.product.ModelResult;
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 import com.bitunified.ledconfig.domain.product.PCB.types.DecoLedStrip;
 import com.bitunified.ledconfig.domain.product.PCB.types.HighPowerLedStrip;
+import com.bitunified.ledconfig.domain.product.accessoires.Accessoire;
+import com.bitunified.ledconfig.domain.product.accessoires.CableChannel;
+import com.bitunified.ledconfig.domain.product.accessoires.Clip;
 import com.bitunified.ledconfig.domain.product.cable.Cable;
 import com.bitunified.ledconfig.domain.product.cable.cableconfig.CableEntry;
 import com.bitunified.ledconfig.domain.product.cover.Covering;
@@ -42,6 +45,7 @@ private ComposedProduct composedProduct;
     private void createParts(){
         Profile profile = new Profile(new Dimension(null));
         profile.setName("liniLED Aeris Profiel L20");
+        profile.setMaxDimension(new Dimension(2750));
         Part part = new Part(profile);
         part.setCode("A");
         part.setPrice(BigDecimal.TEN);
@@ -167,7 +171,7 @@ private ComposedProduct composedProduct;
         //(DPHN){1}(RGBA|2473456){1}
         LedStrip ledStrip=new DecoLedStrip(new Dimension(null));
         ledStrip.setName("liniLED RGB Deco rood");
-        ledStrip.setMaxDimension(new Dimension(10));
+        ledStrip.setMaxDimension(new Dimension(2600));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(DecoLedStrip.COLOR).setValue("rood");
         part=new Part(ledStrip);
@@ -245,11 +249,28 @@ private ComposedProduct composedProduct;
         part.setCode("N2");
         parts.add(part);
 
+        CableChannel cableChannel= new CableChannel(new Dimension(null));
+        cableChannel.setName("Cable channel");
+        part=new Part(cableChannel);
+        part.setPrice(BigDecimal.TEN);
+        part.setCode("b");
+        parts.add(part);
+
+        Clip clip= new Clip();
+        clip.setName("Mounting clip");
+        part=new Part(clip);
+        part.setPrice(BigDecimal.TEN);
+        part.setCode("a");
+        parts.add(part);
+
         composedProduct=new ComposedProduct(null,null);
         composedProduct.setName("ComposedProduct");
         part=new Part(composedProduct);
         part.setPrice(BigDecimal.valueOf(20.59));
         parts.add(part);
+
+
+
 
     }
     //B1M348D20077778a
@@ -270,6 +291,7 @@ private ComposedProduct composedProduct;
         steps.add(new ParserStepDimensionModel(7,true,8,12,LedStrip.class,"","Led strip lengte niet geconfigureerd",models));
 
         steps.add(new ParserStepRealModelComposed(8,ComposedProduct.class,"","Productlengte niet geconfigureerd",12,16,models));
+        steps.add(new ParserStepRealModel(9,true,16,17,Accessoire.class,"","Accessoire opties niet geconfigureerd"));
 
         for (ParseStep step:steps){
             ModelResult createdModel=step.create(productcode,parts);

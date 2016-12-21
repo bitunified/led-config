@@ -1,7 +1,5 @@
 package com.bitunified.ledconfig.composedproduct;
 
-import com.bitunified.ledconfig.domain.Dimension;
-import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 import com.bitunified.ledconfig.domain.product.ModelResult;
 import com.bitunified.ledconfig.parts.Part;

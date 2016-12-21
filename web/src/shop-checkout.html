@@ -180,7 +180,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <header state="success">
           <h1>Berichten:</h1>
 
-            <iron-data-table details-enabled items="{{_toDataTable(response.messageMap)}}">
+            <iron-data-table details-enabled items="{{response.messageTable}}" height="300px">
               <template is="row-detail">
                 <div class="detail">
 
@@ -208,11 +208,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                   <template is="dom-if" if="[[!expanded]]">
 
-                    <template is="dom-repeat" items="[[rowserror]]" as="rowerr" index-as="ix">
-                      {{rowerr}}
+                      <template is="dom-if" if="[[item.error]]">
+                          <style>
+                              .tool-box-icon{
+                                  --iron-icon-fill-color: red;
+                              }
+
+                          </style>
+
+                          <iron-icon class="tool-box-icon" icon="error"></iron-icon>
                       </template>
-
-
 
   </template>
 
@@ -477,7 +482,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         var response = e.detail.response;
         //console.info(response);
         console.info(e);
-        this.response = response;
+        this.response = this._transformResponse(response);
         this._setWaiting(true);
 
         if (response.success) {
@@ -566,23 +571,30 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         console.info("false");
         return false;
       },
+      _transformResponse:function(response){
+
+        var messageTable=this._toDataTable(response.messageMap);
+        response.messageTable=[];
+        response.messageTable=messageTable;
+        return response;
+      },
       _toDataTable:function(obj){
         var arr=[];
 
-        var rowerr=this.rowserror;
+
 
         var cFunc=this._containsError;
 
         Object.keys(obj).map(function(key) {
           console.info(key);
-
+          var isError=false;
           if (obj[key][1]!=undefined) {
             if (obj[key][1].status === "ERROR") {
-              console.info("f");
-              rowerr.push(key);
+              console.info("f"+key);
+              isError=true;
             }
           }
-          var item={"step":key,"msg":obj[key]};
+          var item={"step":key,"msg":obj[key],"error":isError};
           arr.push(item);
         });
         console.info(arr);

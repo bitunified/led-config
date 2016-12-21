@@ -42,7 +42,7 @@ rule "Totale lengte is groter dan maximale ledstrip lengte"
     when
         LedStrip(maxDim:maxDimension)
         LedStrip(maxDimension.width!=null)
-        ComposedProduct(productDimension:dimension)
+        ComposedProduct(productDimension:dimension,productDimension.width!=null)
         ComposedProduct(productDimension.width<maxDim.width)
 
     then
@@ -80,14 +80,14 @@ rule "Led strip section modulo"
      ledstrip:LedStrip( sect:getProperty(LedStrip.SECTION_WIDTH),(sect.value % ledstrip.dimension.width)!=0)
     then
 
-    messages.add(new Message("Ledstrip lengte moet een veelvoud zijn van sectielengte.",7,MessageStatus.ERROR));
+    messages.add(new Message("Ledstrip lengte moet een veelvoud zijn van sectielengte."+ledstrip.getProperty(LedStrip.SECTION_WIDTH).getValue(),7,MessageStatus.ERROR));
 
 end
 rule "Aantal clips is evenredig aan lengte"
 no-loop true
     when
         composedproduct:ComposedProduct();
-
+    ComposedProduct(dimension.width!=null);
        count : Number(intValue<=composedproduct.dimension.width/10)
           from accumulate( i : Part( product.class==Clip.class )from composedproduct.products, count( i ) )
 

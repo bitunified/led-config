@@ -1,7 +1,10 @@
 package com.bitunified.ledconfig.domain.message;
 
 
+import com.bitunified.ledconfig.domain.Model;
+
 public class Message {
+    private Model model;
     private Integer step=null;
 
     private String message;
@@ -10,6 +13,12 @@ public class Message {
 
     public Message() {
 
+    }
+    public Message(String message, Integer step, MessageStatus status,Model model) {
+        this.message = message;
+        this.status = status;
+        this.step=step;
+        this.model=model;
     }
     public Message(String message, Integer step, MessageStatus status) {
         this.message = message;
@@ -24,7 +33,9 @@ public class Message {
     public Message(String message) {
         this.message = message;
     }
-
+    public Message(Model model) {
+        this.model = model;
+    }
     public String getMessage() {
         return this.message;
     }
@@ -54,5 +65,13 @@ public class Message {
 
     public void setStep(Integer step) {
         this.step = step;
+    }
+
+    public Model getModel() {
+        return model;
+    }
+
+    public void setModel(Model model) {
+        this.model = model;
     }
 }

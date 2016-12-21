@@ -16,6 +16,7 @@
 
 package com.bitunified.ledconfig;
 
+import com.bitunified.ledconfig.composedproduct.ComposedProduct;
 import com.bitunified.ledconfig.configuration.parser.steps.ParseStep;
 import com.bitunified.ledconfig.configuration.parser.steps.ParsedResult;
 import com.bitunified.ledconfig.configuration.parser.steps.Parser;
@@ -118,10 +119,10 @@ public class LedConfig {
         Collection<Model> sortedModels = (Collection<Model>) ksession.getObjects();
 
         for (Object model : sortedModels) {
-            if (model instanceof Model) {
+            if (model instanceof Model && !(model instanceof ComposedProduct)) {
                 Model m = (Model) model;
                 if (m.getStep() != null && m.getName() != null) {
-                    messageMap.get(m.getStep()).add(new Message(m.getName()));
+                    messageMap.get(m.getStep()).add(new Message(m));
 
                 }
                 System.out.println("Model: " + model);

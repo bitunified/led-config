@@ -22,7 +22,12 @@ public class ParserStepRealModel extends ParseStepBase implements ParseStep {
     }
 
     public ModelResult create(String productcode, List<Part> parts) {
-        String code=parse(productcode);
+        String code=null;
+        try {
+             code = parse(productcode);
+        }catch(Exception e) {
+            return new ModelResult(getErrorMessage());
+        }
         for (Part part : parts) {
             if (checkModel(part)) {
                 RealModel product = createPart(part);
@@ -34,6 +39,7 @@ public class ParserStepRealModel extends ParseStepBase implements ParseStep {
                 }
             }
         }
+
         return new ModelResult(getErrorMessage());
     }
 
@@ -41,9 +47,16 @@ public class ParserStepRealModel extends ParseStepBase implements ParseStep {
         if ((begin==null || end==null)||(begin.equals(end))){
             return null;
         }
-        return
-                productcode.substring(begin,end);
+        if (begin>productcode.length() || end>productcode.length()){
+            return parseReverse(productcode);
+        }
+        return       productcode.substring(begin,end);
     }
+    private String parseReverse(String productcode) {
 
+        int diff=end-begin;
+        return
+                productcode.substring(productcode.length()-diff,productcode.length());
+    }
 
 }
