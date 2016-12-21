@@ -8,9 +8,9 @@ import java.util.*;
 
 public class ConfigResult {
     private List<Message> messages=new ArrayList<Message>();
-    private Map<Integer,Message> messageMap=new HashMap<>();
+    private Map<Integer,List<Message>> messageMap=new HashMap<>();
     private List models=new ArrayList<StatefulKnowledgeSessionImpl.ObjectStoreWrapper>();
-    public ConfigResult(List<Message> messages, Map<Integer,Message> messageMap, Collection<?> objects) {
+    public ConfigResult(List<Message> messages, Map<Integer,List<Message>> messageMap, Collection<?> objects) {
         this.messages=messages;
         this.messageMap=messageMap;
         this.models.addAll(objects);
@@ -25,7 +25,7 @@ public class ConfigResult {
         return messages;
     }
 
-    public Map<Integer, Message> getMessageMap() {
+    public Map<Integer, List<Message>> getMessageMap() {
         return messageMap;
     }
 }

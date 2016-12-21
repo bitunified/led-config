@@ -45,11 +45,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <div class="main-frame">
       <div class="subsection" visible$="[[!_hasItems]]">
-        <p class="empty-cart">Your <iron-icon icon="shopping-cart"></iron-icon> is empty.</p>
+        <h1>Admin</h1>
+        <p class="empty-cart"> .</p>
       </div>
       <div class="subsection" visible$="[[_hasItems]]">
         <header>
-          <h1>Your Cart</h1>
+          <h1>Admin</h1>
           <span>([[_getPluralizedQuantity(cart.length)]])</span>
         </header>
         <div class="list">
@@ -60,7 +61,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <div class="checkout-box">
           Total: <span class="subtotal">[[_formatTotal(total)]]</span>
           <shop-button responsive>
-            <a href="/checkout">Checkout</a>
+            <a href="/checkout">Terug</a>
           </shop-button>
         </div>
       </div>

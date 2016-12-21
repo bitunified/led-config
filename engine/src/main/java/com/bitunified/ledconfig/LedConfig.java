@@ -16,26 +16,20 @@
 
 package com.bitunified.ledconfig;
 
-import com.bitunified.ledconfig.composedproduct.ComposedProduct;
 import com.bitunified.ledconfig.configuration.parser.steps.ParseStep;
 import com.bitunified.ledconfig.configuration.parser.steps.ParsedResult;
+import com.bitunified.ledconfig.configuration.parser.steps.Parser;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.message.Message;
-import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 import com.bitunified.ledconfig.parts.Part;
-import org.drools.core.impl.StatefulKnowledgeSessionImpl;
-import org.drools.core.marshalling.impl.ProtobufMessages;
 import org.kie.api.KieServices;
 import org.kie.api.event.rule.DebugAgendaEventListener;
 import org.kie.api.event.rule.DebugRuleRuntimeEventListener;
-import org.kie.api.io.ResourceType;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
-import com.bitunified.ledconfig.configuration.parser.steps.Parser;
-import org.kie.internal.KnowledgeBase;
-import org.kie.internal.KnowledgeBaseFactory;
-import org.kie.internal.builder.*;
-import org.kie.internal.io.ResourceFactory;
+import org.kie.internal.builder.KnowledgeBuilder;
+import org.kie.internal.builder.KnowledgeBuilderConfiguration;
+import org.kie.internal.builder.KnowledgeBuilderFactory;
 
 import java.util.*;
 
@@ -63,11 +57,12 @@ public class LedConfig {
 
         KnowledgeBuilder kBuilder =
                 KnowledgeBuilderFactory.newKnowledgeBuilder(kbConfig);
-        return execute(kc, Parser.parse(args[0]));
+        Parser parser=new Parser();
+        return execute(kc, parser.parse(args[0]));
 
     }
 
-    public static ConfigResult execute(KieContainer kc, ParsedResult parsedResult) {
+    public ConfigResult execute(KieContainer kc, ParsedResult parsedResult) {
 
 
         // From the container, a session is created based on
@@ -100,15 +95,22 @@ public class LedConfig {
 
         ksession.fireAllRules();
 
-        Map<Integer, Message> messageMap = new HashMap<>();
+        Map<Integer, List<Message>> messageMap = new HashMap<>();
 
 
         for (ParseStep step : parsedResult.getSteps()) {
-
+            List<Message> messagesInMap=messageMap.get(step.getStep());
+            if (messagesInMap==null){
+                messagesInMap=new ArrayList<>();
+            }
             if (step.getModelResult() != null && step.getModelResult().getModel() != null) {
-                messageMap.put(step.getStep(), new Message(step.getModelResult().getModel().getName()));
+
+                messagesInMap.add(new Message(step.getModelResult().getModel().getName()));
+                messageMap.put(step.getStep(), messagesInMap);
             } else {
-                messageMap.put(step.getStep(), new Message(step.getErrorMessage()));
+                messagesInMap.add(new Message(step.getErrorMessage()));
+                messageMap.put(step.getStep(), messagesInMap);
+                messageMap.put(step.getStep(), messagesInMap);
             }
 
         }
@@ -118,25 +120,25 @@ public class LedConfig {
         for (Object model : sortedModels) {
             if (model instanceof Model) {
                 Model m = (Model) model;
-                if (m.getStep()!=null && m.getName()!=null) {
-                    messageMap.put(m.getStep(), new Message(m.getName()));
+                if (m.getStep() != null && m.getName() != null) {
+                    messageMap.get(m.getStep()).add(new Message(m.getName()));
+
                 }
-                System.out.println("Model: "+model);
+                System.out.println("Model: " + model);
             }
 
-            if (model instanceof Part){
-                System.out.println("Part:  "+((Part)model).getProduct());
+            if (model instanceof Part) {
+                System.out.println("Part:  " + ((Part) model).getProduct());
             }
+
         }
 
         for (Message msg : messages) {
             if (msg.getStep() != null) {
-                messageMap.put(msg.getStep(), msg);
+                messageMap.get(msg.getStep()).add(msg);
+
             }
         }
-
-
-
 
 
         // Remove comment if using logging
@@ -144,10 +146,13 @@ public class LedConfig {
 
         // and then dispose the session
         ksession.dispose();
-
+        ksession.destroy();
 
         return new ConfigResult(messages, messageMap, ksession.getObjects());
 
     }
 
+    public void dispose() {
+
+    }
 }

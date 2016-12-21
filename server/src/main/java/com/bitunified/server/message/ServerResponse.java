@@ -5,6 +5,7 @@ import com.bitunified.ledconfig.domain.message.Message;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ServerResponse {
@@ -12,7 +13,7 @@ public class ServerResponse {
 
     private String errorMessage;
     private String[] messages;
-    private Map<Integer,Message> messageMap=new HashMap<>();
+    private Map<Integer,List<Message>> messageMap=new HashMap<>();
     private Double totalPrice;
 
     public ServerResponse(String success) {
@@ -43,11 +44,11 @@ public class ServerResponse {
         this.messages = messages;
     }
 
-    public Map<Integer, Message> getMessageMap() {
+    public Map<Integer, List<Message>> getMessageMap() {
         return messageMap;
     }
 
-    public void setMessageMap(Map<Integer,Message> messagesMap) {
+    public void setMessageMap(Map<Integer,List<Message>> messagesMap) {
 
 //        for (Map.Entry message:messagesMap.entrySet()){
 //            messageMap.put((Integer)message.getKey(),((Message)message.getValue()).getMessage());

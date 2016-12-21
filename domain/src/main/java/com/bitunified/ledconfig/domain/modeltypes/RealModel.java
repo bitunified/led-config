@@ -3,6 +3,7 @@ package com.bitunified.ledconfig.domain.modeltypes;
 
 import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.domain.Model;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class RealModel extends Model {
     private Dimension dimension=new Dimension(null,null);
@@ -33,6 +34,6 @@ public class RealModel extends Model {
 
     @Override
     public String toString() {
-        return "["+super.toString()+" ,Dimension:"+(dimension!=null?dimension.toString():"")+" MaxDim: "+(this.maxDimension!=null?this.maxDimension.toString():"")+"]";
+        return ToStringBuilder.reflectionToString(this);
     }
 }

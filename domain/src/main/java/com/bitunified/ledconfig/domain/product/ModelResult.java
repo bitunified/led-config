@@ -3,6 +3,7 @@ package com.bitunified.ledconfig.domain.product;
 
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.parts.Part;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class ModelResult {
 
@@ -49,6 +50,6 @@ public class ModelResult {
 
     @Override
     public String toString() {
-        return "Model: ["+model!=null?model.toString():""+"], Part:["+part!=null?part.toString():""+"] "+super.toString();
+        return ToStringBuilder.reflectionToString(this);
     }
 }

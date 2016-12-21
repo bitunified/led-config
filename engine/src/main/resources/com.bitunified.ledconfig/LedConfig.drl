@@ -80,20 +80,20 @@ rule "Led strip section modulo"
      ledstrip:LedStrip( sect:getProperty(LedStrip.SECTION_WIDTH),(sect.value % ledstrip.dimension.width)!=0)
     then
 
-    messages.add(new Message("Ledstrip lengte moet een veelvoud zijn van sectielengte."));
+    messages.add(new Message("Ledstrip lengte moet een veelvoud zijn van sectielengte.",7,MessageStatus.ERROR));
 
 end
 rule "Aantal clips is evenredig aan lengte"
-no-loop false
+no-loop true
     when
         composedproduct:ComposedProduct();
 
-       count : Number(intValue<=composedproduct.dimension.width/100)
+       count : Number(intValue<=composedproduct.dimension.width/10)
           from accumulate( i : Part( product.class==Clip.class )from composedproduct.products, count( i ) )
 
     then
         Part part=new Part(new Clip());
-        insert(part);
+        insertLogical(part);
         modify(composedproduct){
             addProduct(part)
         }

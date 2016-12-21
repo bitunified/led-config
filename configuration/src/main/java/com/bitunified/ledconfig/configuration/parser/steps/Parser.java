@@ -27,19 +27,19 @@ import java.util.List;
 import java.util.Set;
 
 public class Parser {
-    private static List<Part> parts=new ArrayList<Part>();
+    private List<Part> parts=new ArrayList<Part>();
 
-private static ComposedProduct composedProduct;
-    static{
+private ComposedProduct composedProduct;
+    {
        init();
     }
-    public static void init(){
+    public void init(){
         parts=new ArrayList<Part>();
         createParts();
 
     }
 
-    private static void createParts(){
+    private void createParts(){
         Profile profile = new Profile(new Dimension(null));
         profile.setName("liniLED Aeris Profiel L20");
         Part part = new Part(profile);
@@ -258,7 +258,7 @@ private static ComposedProduct composedProduct;
     ///1: Profiel (B1)
     //2: Led Strip type
     //3: Cable type
-    public static ParsedResult parse(String productcode){
+    public ParsedResult parse(String productcode){
         List<ParseStep> steps =new ArrayList<ParseStep>();
         Set<Model> models=new HashSet<Model>();
         steps.add(new ParserStepRealModel(1,true,1,2,Profile.class,"","Profiel niet geconfigureerd"));

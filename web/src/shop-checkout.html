@@ -11,13 +11,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-data-table/iron-data-table.html">
+<link rel="import" href="../bower_components/iron-icons/image-icons.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-iconset-svg/iron-iconset-svg.html">
+
+<link rel="import"
+      href="../bower_components/paper-icon-button/paper-icon-button.html">
+
 <link rel="import" href="shop-button.html">
 <link rel="import" href="shop-common-styles.html">
 <link rel="import" href="shop-form-styles.html">
 <link rel="import" href="shop-input.html">
 <link rel="import" href="shop-select.html">
 <link rel="import" href="shop-checkbox.html">
-
+<link rel="import" href="shop-icons.html">
 <dom-module id="shop-checkout">
 
   <template>
@@ -123,7 +131,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               id="checkoutForm"
               is="iron-form"
               method="post"
-              action="/server/rest/engine/data"
+              action="http://localhost:8080/server/rest/engine/data"
               on-iron-form-response="_didReceiveResponse"
               on-iron-form-presubmit="_willSendRequest">
 
@@ -140,7 +148,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 <div class="row input-row">
                   <shop-input>
                     <input type="tel" id="ccNumber" name="ccNumber" pattern="C([A-F]){1}([GABHPQ]){1}([DPHN]){1}([RGBA]|[2473456]){1}([1470258369]){1}([1-5])([1-8])(\d{4})((\d{4})?)(([ab])?)+"
-                        placeholder="Card Number" required
+                        placeholder="Card Number" required value="CAGDR11102000300a"
                         autocomplete="cc-number">
                     <shop-md-decorator error-message="Ongeldige code" aria-hidden="true">
                       <label for="ccNumber">Productcode</label>
@@ -168,8 +176,54 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </shop-button>
         </header>-->
 
+
         <header state="success">
           <h1>Berichten:</h1>
+
+            <iron-data-table details-enabled items="{{_toDataTable(response.messageMap)}}">
+              <template is="row-detail">
+                <div class="detail">
+
+                  <template is="dom-repeat" items="[[item.msg]]" as="msge">
+                    <p>[[msge.message]]</p>
+
+                  </template>
+                </div>
+              </template>
+              <data-table-column name="Stap">
+                <template> {{item.step}}</template>
+              </data-table-column>
+              <data-table-column name="Configuratie">
+                <template is="row-detail">
+
+                  <template is="dom-repeat" items="[[item.msg]]" as="msge" index-as="ind">
+                    <template is="dom-if" if="{{showFirst(ind)}}"><p>[[msge.message]]</p></template>
+                  </template>
+
+
+</template>
+              </data-table-column>
+              <data-table-column name width="60px" align-right flex="0">
+                <template>
+
+                  <template is="dom-if" if="[[!expanded]]">
+
+                    <template is="dom-repeat" items="[[rowserror]]" as="rowerr" index-as="ix">
+                      {{rowerr}}
+                      </template>
+
+
+
+  </template>
+
+                  <template is="dom-if" if="[[expanded]]">
+                    <iron-icon icon="arrow-upward"></iron-icon>
+                  </template>
+                </template>
+              </data-table-column>
+            </iron-data-table>
+
+
           <template is="dom-if" if="[[!response.messages.length]]">
             De productcode is correct.
           </template>
@@ -177,24 +231,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <p>[[item]]</p>
           </template>
 
-          <p>Producten per stap:</p>
 
           <table>
 
-              <template is="dom-repeat" items="{{ _toArray(response.messageMap)}}">
-                <style>
-                  .message-indication{
 
-                  }
-                  .ERROR{
-                    color:red;
-                  }
-                </style>
-                <tr>
-                  <td> Stap {{item.name}}:</td>
-                  <td class$="{{displayMessageClass(item)}}">{{item.value.message}}</td>
-                </tr>
-              </template>
               <tr><td>Totaal</td>
               <td>€ [[response.totalPrice]]</td></tr>
           </table>
@@ -245,6 +285,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           type: Object,
           notify: true
         },
+        rowserror:{type:Array,value:[]},
 
         /**
          * The total price of the contents in the user's cart.
@@ -440,7 +481,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this._setWaiting(true);
 
         if (response.success) {
-          //console.info(this.state);
+          console.info(this.state);
           //this._pushState('localhost:8080/checkout/success');
           this._pushState('success');
           this._reset();
@@ -480,6 +521,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.fire('change-section', { title: 'Checkout' });
       },
 
+
       _toArray: function(obj) {
         return Object.keys(obj).map(function(key) {
           return {
@@ -492,6 +534,59 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
         return false;
+      },
+      showFirst:function(ind){
+        if (ind==0){
+          return true;
+        }
+        return false;
+      },
+      _containsError:function(item){
+
+        var error=false;
+        console.info(item);
+        for (var m in item){
+
+          console.info(m);
+
+
+            if (item[m].status==="ERROR"){
+              console.info(item[m]);
+              error=true;
+              break;
+
+          }
+
+
+        }
+        if (error){
+          console.info("true");
+          return true;
+        }
+        console.info("false");
+        return false;
+      },
+      _toDataTable:function(obj){
+        var arr=[];
+
+        var rowerr=this.rowserror;
+
+        var cFunc=this._containsError;
+
+        Object.keys(obj).map(function(key) {
+          console.info(key);
+
+          if (obj[key][1]!=undefined) {
+            if (obj[key][1].status === "ERROR") {
+              console.info("f");
+              rowerr.push(key);
+            }
+          }
+          var item={"step":key,"msg":obj[key]};
+          arr.push(item);
+        });
+        console.info(arr);
+        return arr;
       },
       displayMessage:function(item){
         if (item.value.status==="UNKNOWN"){
