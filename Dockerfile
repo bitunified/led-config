@@ -4,16 +4,17 @@ COPY apache-maven-3.3.9-bin.tar.gz /
 RUN tar xvf /apache-maven-3.3.9-bin.tar.gz -C /
 ENV M2_HOME /apache-maven-3.3.9
 ENV PATH $M2_HOME/bin:$PATH
-COPY tomcat-users.xml $CATALINA_BASE/conf/tomcat-users.xml
+COPY server/tomcat-users.xml $CATALINA_BASE/conf/tomcat-users.xml
+COPY server/target/server-1.0.0-SNAPSHOT.war $CATALINA_HOME/webapps/server.war
+COPY web/build/bundled/ $CATALINA_HOME/webapps/ROOT/
 RUN ls
-COPY settings.xml $M2_HOME/settings.xml
+COPY server/settings.xml $M2_HOME/settings.xml
 RUN ls
 WORKDIR /usr
 RUN mkdir led-config
 WORKDIR led-config
-RUN git clone https://github.com/bitunified/led-config.git
+#RUN git clone https://github.com/bitunified/led-config.git
 WORKDIR led-config
 RUN ls
-RUN mvn tomcat7:deploy -Dmaven.multiModuleProjectDirectory=/usr/led-config/led-config
 
 CMD ["catalina.sh", "run"]
