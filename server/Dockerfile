@@ -14,6 +14,6 @@ WORKDIR led-config
 RUN git clone https://github.com/bitunified/led-config.git
 WORKDIR led-config
 RUN ls
-RUN mvn clean install deploy -Dmaven.multiModuleProjectDirectory=/usr/led-config/led-config
+RUN mvn tomcat7:deploy -Dmaven.multiModuleProjectDirectory=/usr/led-config/led-config
 
 CMD ["catalina.sh", "run"]
