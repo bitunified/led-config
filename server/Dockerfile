@@ -1,7 +1,7 @@
 FROM tomcat:9.0.0.M13
 RUN apt-get --force-yes update && apt-get install -y git
 RUN apt-get install maven -y
-RUN apt-get install oracle-java8-installer -y
+FROM openjdk:8u111-jdk
 COPY tomcat-users.xml $CATALINA_BASE/conf/tomcat-users.xml
 RUN ls
 COPY settings.xml $M2_HOME/settings.xml
