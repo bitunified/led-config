@@ -5,7 +5,7 @@ RUN apt-get install oracle-java8-installer -y
 COPY tomcat-users.xml $CATALINA_BASE/conf/tomcat-users.xml
 RUN ls
 COPY settings.xml $M2_HOME/settings.xml
-RUN ls
+RUN ll
 WORKDIR /usr
 RUN mkdir led-config
 WORKDIR led-config
