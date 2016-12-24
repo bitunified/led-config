@@ -290,7 +290,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           type: Object,
           notify: true
         },
-        rowserror:{type:Array,value:[]},
+
 
         /**
          * The total price of the contents in the user's cart.
@@ -549,14 +549,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _containsError:function(item){
 
         var error=false;
-        console.info(item);
+
         for (var m in item){
 
-          console.info(m);
 
 
             if (item[m].status==="ERROR"){
-              console.info(item[m]);
+
               error=true;
               break;
 
@@ -588,12 +587,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         Object.keys(obj).map(function(key) {
           console.info(key);
           var isError=false;
-          if (obj[key][1]!=undefined) {
-            if (obj[key][1].status === "ERROR") {
-              console.info("f"+key);
-              isError=true;
+            for (var it in obj[key]){
+                if (obj[key][it]!=undefined) {
+                    if (obj[key][it].status === "ERROR") {
+
+                        isError=true;
+                        break;
+                    }
+                }
             }
-          }
+
           var item={"step":key,"msg":obj[key],"error":isError};
           arr.push(item);
         });

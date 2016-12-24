@@ -40,10 +40,8 @@ end
 
 rule "Totale lengte is groter dan maximale ledstrip lengte"
     when
-        LedStrip(maxDim:maxDimension)
-        LedStrip(maxDimension.width!=null)
-        ComposedProduct(productDimension:dimension,productDimension.width!=null)
-        ComposedProduct(productDimension.width<maxDim.width)
+        ledstrip:LedStrip(maxDim:maxDimension,maxDimension.width!=null)
+        ComposedProduct(dimension.width!=null,dimension.width<ledstrip.dimension.width)
 
     then
         messages.add(new Message("Totale lengte is groter dan maximale ledstrip lengte.",4,MessageStatus.ERROR));
@@ -86,19 +84,19 @@ end
 rule "Aantal clips is evenredig aan lengte"
 no-loop false
     when
-        composedproduct:ComposedProduct();
-    ComposedProduct(dimension.width!=null);
+        composedproduct:ComposedProduct(dimension.width!=null);
+
     //ArrayList( size > 1 ) from collect (ComposedProduct(prods:products))
 
-       count : Number(intValue<=composedproduct.dimension.width/100)
-          from accumulate( i : Part( product.class==Clip.class ) from composedproduct.getProducts(), count( i ) )
+        c:Long(longValue<((int)composedproduct.dimension.width/100)) from accumulate( i : Part( product.class==Clip.class ) from composedproduct.getProducts(), count(i) )
 
     then
         Part part=new Part(new Clip());
-        insert(part);
+        insertLogical(part);
         modify(composedproduct){
             addProduct(part)
         }
-        System.out.println((int)(composedproduct.getDimension().width/100));
+
+
         System.out.println("Clip toegevoegd");
     end
