@@ -9,8 +9,12 @@ import com.bitunified.ledconfig.domain.product.ModelResult;
 import com.bitunified.ledconfig.parts.Part;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class PriceCalculator {
+
+
+    private static final BigDecimal FACTOR = BigDecimal.valueOf(1.39 );
 
     public BigDecimal calculate(ConfigResult configResult){
         ComposedProduct composedProduct=null;
@@ -26,6 +30,7 @@ public class PriceCalculator {
         }
         BigDecimal totalPrice=new BigDecimal(0);
         for (Part part:composedProduct.getProducts()){
+            System.out.println(part);
             if (part.getPrice()!=null) {
                 totalPrice = totalPrice.add(part.getPrice());
             }
@@ -38,7 +43,9 @@ public class PriceCalculator {
                 }
             }
         }
-        System.out.println("TotalPrice: "+totalPrice);
-        return totalPrice;
+        BigDecimal total=FACTOR.multiply(totalPrice);
+        total=total.setScale(2, RoundingMode.HALF_UP);
+        System.out.println("TotalPrice: "+total);
+        return total;
     }
 }

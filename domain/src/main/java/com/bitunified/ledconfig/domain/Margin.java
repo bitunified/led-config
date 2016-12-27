@@ -1,7 +1,9 @@
 package com.bitunified.ledconfig.domain;
 
 
-public class Margin {
+import java.io.Serializable;
+
+public class Margin implements Serializable {
 
     private Integer left;
 

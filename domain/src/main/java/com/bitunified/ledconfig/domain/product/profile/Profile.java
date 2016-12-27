@@ -8,10 +8,19 @@ import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 public class Profile extends RealModel {
 
 
+    private Dimension lengthForCasting;
+
     public Profile(Dimension dimension) {
         super(dimension);
 
     }
 
 
+    public void setLengthForCasting(Dimension lengthForCasting) {
+        this.lengthForCasting = lengthForCasting;
+    }
+
+    public Dimension getLengthForCasting() {
+        return lengthForCasting;
+    }
 }

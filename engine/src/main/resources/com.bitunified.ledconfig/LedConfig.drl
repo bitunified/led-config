@@ -19,9 +19,12 @@ import com.bitunified.ledconfig.domain.product.cable.Cable;
 import com.bitunified.ledconfig.domain.Property
 import com.bitunified.ledconfig.domain.product.accessoires.Clip
 import com.bitunified.ledconfig.parts.Part
+import com.bitunified.ledconfig.domain.product.profile.Profile;
 import com.bitunified.ledconfig.domain.message.MessageStatus;
-import java.util.ArrayList;
+import java.util.ArrayList
+import org.apache.commons.lang3.SerializationUtils;
 global java.util.List<Message> messages
+global java.util.Map<Part> parts
 
 
 
@@ -81,22 +84,90 @@ rule "Led strip section modulo"
     messages.add(new Message("Ledstrip lengte moet een veelvoud zijn van sectielengte: "+ledstrip.getProperty(LedStrip.SECTION_WIDTH).getValue(),7,MessageStatus.ERROR));
 
 end
-rule "Aantal clips is evenredig aan lengte"
-no-loop false
+rule "Aantal clips is evenredig aan lengte L20"
+       no-loop false
+           when
+
+               exists(Profile(name matches ".*L20.*"));
+               composedproduct:ComposedProduct(dimension.width!=null);
+               c:Long(longValue<((int)composedproduct.dimension.width/500),((int)composedproduct.dimension.width/500)>=(int)2) from accumulate( i : Part( product!=null,product.class==Clip.class ) from composedproduct.products, count(i) )
+
+           then
+
+            Part part=SerializationUtils.clone((Part)parts.get("10890"));
+            insertLogical(part);
+            modify(composedproduct){
+                addProduct(part)
+            }
+            System.out.println("Clip toegevoegd voor L20");
+           end
+
+rule "Aantal clips minimaal 2 L20"
+no-loop true
     when
+
+        exists(Profile(name matches ".*L20.*"));
         composedproduct:ComposedProduct(dimension.width!=null);
-
-    //ArrayList( size > 1 ) from collect (ComposedProduct(prods:products))
-
-        c:Long(longValue<((int)composedproduct.dimension.width/100)) from accumulate( i : Part( product.class==Clip.class ) from composedproduct.getProducts(), count(i) )
+        eval((int)((composedproduct.getDimension().width)/(int)500)<(int)2);
 
     then
-        Part part=new Part(new Clip());
-        insertLogical(part);
-        modify(composedproduct){
-            addProduct(part)
-        }
 
+     Part part=SerializationUtils.clone((Part)parts.get("10890"));
+            insertLogical(part);
+            modify(composedproduct){
+                addProduct(part)
+            }
+            part=SerializationUtils.clone((Part)parts.get("10890"));
+             insertLogical(part);
+             modify(composedproduct){
+                 addProduct(part)
+             }
 
-        System.out.println("Clip toegevoegd");
+            System.out.println("Clip 2x toegevoegd voor L20");
+
     end
+
+    rule "Aantal clips is evenredig aan lengte L30"
+           no-loop false
+               when
+
+                   exists(Profile(name matches ".*L30.*"));
+                   composedproduct:ComposedProduct(dimension.width!=null);
+                   c:Long(longValue<((int)composedproduct.dimension.width/500),((int)composedproduct.dimension.width/500)>=(int)2) from accumulate( i : Part( product!=null,product.class==Clip.class ) from composedproduct.products, count(i) )
+
+               then
+
+                Part part=SerializationUtils.clone((Part)parts.get("10891"));
+                       insertLogical(part);
+                       modify(composedproduct){
+                           addProduct(part)
+                       }
+                       System.out.println("Clip toegevoegd voor L30");
+
+
+               end
+
+    rule "Aantal clips minimaal 2 L30"
+    no-loop true
+        when
+
+            exists(Profile(name matches ".*L30.*"));
+            composedproduct:ComposedProduct(dimension.width!=null);
+            eval((int)((composedproduct.getDimension().width)/500)<(int)2);
+
+        then
+
+         Part part=SerializationUtils.clone((Part)parts.get("10891"));
+                insertLogical(part);
+                modify(composedproduct){
+                    addProduct(part)
+                }
+                part=SerializationUtils.clone((Part)parts.get("10891"));
+                 insertLogical(part);
+                 modify(composedproduct){
+                     addProduct(part)
+                 }
+                System.out.println("Clip 2x toegevoegd voor L30");
+
+        end
+

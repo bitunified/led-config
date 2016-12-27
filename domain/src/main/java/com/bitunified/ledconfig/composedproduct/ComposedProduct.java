@@ -5,14 +5,12 @@ import com.bitunified.ledconfig.domain.product.ModelResult;
 import com.bitunified.ledconfig.parts.Part;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 
 public class ComposedProduct extends RealModel {
 
-    private Set<Part> products=new HashSet<Part>();
+    private List<Part> products=new ArrayList<Part>();
 
     private Set<ModelResult> modelResults=new HashSet<ModelResult>();
 
@@ -27,7 +25,7 @@ public class ComposedProduct extends RealModel {
     public void addProducts(Collection<Part> models) {
         products.addAll(models);
     }
-    public Set<Part> getProducts() {
+    public List<Part> getProducts() {
         return products;
     }
 

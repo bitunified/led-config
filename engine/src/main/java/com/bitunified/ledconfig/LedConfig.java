@@ -76,7 +76,12 @@ public class LedConfig {
         List<Message> messages = new ArrayList<Message>();
         ksession.setGlobal("messages",
                 messages);
-
+        Map<String,Part> parts = new HashMap<>();
+        for (Part part:parsedResult.getParts()){
+            parts.put(part.getId(),part);
+        }
+        ksession.setGlobal("parts",
+                parts);
         // The application can also setup listeners
         ksession.addEventListener(new DebugAgendaEventListener());
         ksession.addEventListener(new DebugRuleRuntimeEventListener());

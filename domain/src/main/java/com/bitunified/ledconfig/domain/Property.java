@@ -1,7 +1,9 @@
 package com.bitunified.ledconfig.domain;
 
 
-public class Property {
+import java.io.Serializable;
+
+public class Property implements Serializable{
 
     private final String name;
     private Object value;

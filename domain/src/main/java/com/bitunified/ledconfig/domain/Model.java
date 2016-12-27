@@ -4,12 +4,13 @@ package com.bitunified.ledconfig.domain;
 import com.bitunified.ledconfig.domain.description.Descriptive;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class Model extends Descriptive implements StepConfig {
+public class Model extends Descriptive implements StepConfig,Serializable {
     private String name="";
 
     private Integer step;

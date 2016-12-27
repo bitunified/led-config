@@ -6,14 +6,16 @@ import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 import com.bitunified.ledconfig.domain.product.profile.Profile;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class Part {
+public class Part implements Serializable{
     private RealModel product;
     private Model configModel;
     private BigDecimal price;
     private String code;
     private String description;
+    private String id;
 
     public Part(Model configModel){
         this.configModel=configModel;
@@ -61,5 +63,29 @@ public class Part {
 
     public void setConfigModel(Model configModel) {
         this.configModel = configModel;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Part part = (Part) o;
+
+        return id != null ? id.equals(part.id) : part.id == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 }

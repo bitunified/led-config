@@ -21,6 +21,7 @@ import com.bitunified.ledconfig.domain.product.cable.cableconfig.CableEntry;
 import com.bitunified.ledconfig.domain.product.cover.Covering;
 import com.bitunified.ledconfig.domain.product.mounting.Mounting;
 import com.bitunified.ledconfig.domain.product.profile.Profile;
+import com.bitunified.ledconfig.domain.work.Work;
 import com.bitunified.ledconfig.parts.Part;
 
 import java.math.BigDecimal;
@@ -43,42 +44,55 @@ private ComposedProduct composedProduct;
     }
 
     private void createParts(){
+
+
+
         Profile profile = new Profile(new Dimension(null));
         profile.setName("liniLED Aeris Profiel L20");
         profile.setMaxDimension(new Dimension(2750));
+        profile.setLeftSpace((100));
+        profile.setLengthForCasting(new Dimension(25));
         Part part = new Part(profile);
         part.setCode("A");
-        part.setPrice(BigDecimal.TEN);
+        part.setPrice(BigDecimal.valueOf(6.81));
+        part.setId("10713");
         parts.add(part);
 
         profile = new Profile(new Dimension(100,200));
         profile.setName("liniLED Aeris Profiel H20");
+        profile.setLengthForCasting(new Dimension(25));
         part = new Part(profile);
-        part.setPrice(BigDecimal.TEN);
+        part.setPrice(BigDecimal.valueOf(11.96));
         part.setCode("B");
+        part.setId("10717");
         parts.add(part);
 
         profile = new Profile(new Dimension(100,200));
         profile.setName("liniLED Aeris Profiel L30");
+        profile.setLengthForCasting(new Dimension(25));
         part = new Part(profile);
-        part.setPrice(BigDecimal.TEN);
+        part.setPrice(BigDecimal.valueOf(9.30));
         part.setCode("C");
+        part.setId("10733");
         parts.add(part);
 
         profile = new Profile(new Dimension(100,200));
         profile.setName("liniLED Aeris Profiel H30");
+        profile.setLengthForCasting(new Dimension(25));
         part = new Part(profile);
-        part.setPrice(BigDecimal.TEN);
+        part.setPrice(BigDecimal.valueOf(14.47));
         part.setCode("D");
+        part.setId("10734");
         parts.add(part);
 
 
         Cable cable=new Cable(new Dimension(null));
-        cable.setName("PVC with ope end");
+        cable.setName("PVC with open end");
         cable.getProperty(Cable.CABLE_TYPE).setValue("PVCopenend");
         part=new Part(cable);
         part.setPrice(BigDecimal.valueOf(8.9));
         part.setCode("1");
+        part.setId("60005");
         parts.add(part);
 
         cable=new Cable(new Dimension(null));
@@ -87,6 +101,7 @@ private ComposedProduct composedProduct;
         part=new Part(cable);
         part.setPrice(BigDecimal.valueOf(9.6));
         part.setCode("7");
+        part.setId("60007");
         parts.add(part);
 
         CableEntry cableEntry=new CableEntry();
@@ -105,13 +120,17 @@ private ComposedProduct composedProduct;
 
         Mounting mounting=new Mounting();
         mounting.setName("No end caps");
+        mounting.setLeftSpace((0));
+        mounting.setRightSpace((0));
         part=new Part(mounting);
         part.setCode("1");
         part.setPrice(BigDecimal.valueOf(5.4));
         parts.add(part);
 
-         mounting=new Mounting();
+        mounting=new Mounting();
         mounting.setName("End cap on right side");
+        mounting.setLeftSpace((5));
+        mounting.setRightSpace((15));
         part=new Part(mounting);
         part.setCode("2");
         part.setPrice(BigDecimal.valueOf(5.35));
@@ -119,6 +138,8 @@ private ComposedProduct composedProduct;
 
         mounting=new Mounting();
         mounting.setName("End caps both side");
+        mounting.setLeftSpace((2));
+        mounting.setRightSpace((2));
         part=new Part(mounting);
         part.setCode("4");
         part.setPrice(BigDecimal.valueOf(5.21));
@@ -181,7 +202,7 @@ private ComposedProduct composedProduct;
 
         ledStrip=new DecoLedStrip(new Dimension(null));
         ledStrip.setName("liniLED RGB Deco blauw");
-        ledStrip.setMaxDimension(new Dimension(10));
+        ledStrip.setMaxDimension(new Dimension(2600));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(DecoLedStrip.COLOR).setValue("blauw");
         part=new Part(ledStrip);
@@ -191,8 +212,8 @@ private ComposedProduct composedProduct;
 
         ledStrip=new DecoLedStrip(new Dimension(null));
         ledStrip.setName("liniLED Power blauw");
-        ledStrip.setMaxDimension(new Dimension(10));
-        ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
+        ledStrip.setMaxDimension(new Dimension(2700));
+        ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(100);
         ledStrip.getProperty(DecoLedStrip.COLOR).setValue("blauw");
         part=new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(13.2));
@@ -201,8 +222,8 @@ private ComposedProduct composedProduct;
 
         ledStrip=new HighPowerLedStrip(new Dimension(null));
         ledStrip.setName("liniLED Power 2400K");
-        ledStrip.setMaxDimension(new Dimension(10));
-        ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
+        ledStrip.setMaxDimension(new Dimension(2700));
+        ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(100);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2400");
         part=new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(14.1));
@@ -211,8 +232,8 @@ private ComposedProduct composedProduct;
 
         ledStrip=new HighPowerLedStrip(new Dimension(null));
         ledStrip.setName("liniLED HighPower 2000K");
-        ledStrip.setMaxDimension(new Dimension(10));
-        ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
+        ledStrip.setMaxDimension(new Dimension(2700));
+        ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(100);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2000");
         part=new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(14.1));
@@ -257,19 +278,42 @@ private ComposedProduct composedProduct;
         parts.add(part);
 
         Clip clip= new Clip();
-        clip.setName("Mounting clip");
+        clip.setName("liniLED Aeris Clip 20");
         part=new Part(clip);
         part.setPrice(BigDecimal.TEN);
         part.setCode("a");
+        part.setId("10890");
         parts.add(part);
+
+        clip= new Clip();
+        clip.setName("liniLED Aeris Clip 30");
+        part=new Part(clip);
+        part.setPrice(BigDecimal.TEN);
+        part.setCode("a");
+        part.setId("10891");
+        parts.add(part);
+
+
+
+
 
         composedProduct=new ComposedProduct(null,null);
         composedProduct.setName("ComposedProduct");
         part=new Part(composedProduct);
         part.setPrice(BigDecimal.valueOf(20.59));
+        part.setId("comp");
         parts.add(part);
 
 
+        Work work=new Work();
+        work.setName("Arbeidsuren");
+
+        part=new Part(work);
+        part.setCode(null);
+        part.setId("ARBEID");
+        part.setPrice(BigDecimal.valueOf(0.59));
+        parts.add(part);
+        composedProduct.addProduct(part);
 
 
     }
@@ -302,6 +346,7 @@ private ComposedProduct composedProduct;
             }
             step.addModelResult(createdModel);
             composedProduct.addModelResult(createdModel);
+
         }
 
         ParsedResult parsedResult=new ParsedResult();

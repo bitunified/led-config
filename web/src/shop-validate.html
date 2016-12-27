@@ -218,11 +218,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                           <iron-icon class="tool-box-icon" icon="error"></iron-icon>
                       </template>
+                      <template is="dom-if" if="[[!item.error]]">
 
-  </template>
+
+                          <iron-icon  icon="expand-more"></iron-icon>
+                      </template>
+
+                  </template>
 
                   <template is="dom-if" if="[[expanded]]">
-                    <iron-icon icon="arrow-upward"></iron-icon>
+                    <iron-icon icon="expand-less"></iron-icon>
                   </template>
                 </template>
               </data-table-column>
@@ -245,7 +250,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </table>
 
           <shop-button responsive>
-            <a href="/checkout">Terug</a>
+            <a href="/validate">Terug</a>
           </shop-button>
         </header>
         <!-- Error message UI -->
@@ -253,7 +258,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <h1>Er is een fout opgetreden</h1>
           <p id="errorMessage">[[response.messages]]</p>
           <shop-button responsive>
-            <a href="/checkout">Terug</a>
+            <a href="/validate">Terug</a>
           </shop-button>
         </header>
 
@@ -523,7 +528,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         // Reset the UI states
         this._reset();
         // Notify the page's title
-        this.fire('change-section', { title: 'Checkout' });
+        this.fire('change-section', { title: 'Validate' });
       },
 
 
@@ -564,10 +569,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         }
         if (error){
-          console.info("true");
+
           return true;
         }
-        console.info("false");
+
         return false;
       },
       _transformResponse:function(response){

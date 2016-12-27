@@ -264,9 +264,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <paper-icon-button icon="arrow-back" aria-label="Go back"></paper-icon-button>
           </a>
         </div>
-        <div class="logo" main-title><a href="/" aria-label="SHOP Home">Aeris Configurator</a></div>
+        <div class="logo" main-title><a href="/" aria-label="SHOP Home">Aeris Configurator 2</a></div>
         <div class="cart-btn-container">
-          <a href="/checkout" tabindex="-1">
+          <a href="/validate" tabindex="-1">
             <paper-icon-button icon="menu" aria-label$="Shopping cart: [[_computePluralizedQuantity(numItems)]]"></paper-icon-button>
           </a>
         </div>
@@ -310,7 +310,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <!-- cart view -->
       <shop-cart name="cart" cart="[[cart]]" total="[[total]]"></shop-cart>
       <!-- checkout view -->
-      <shop-checkout name="checkout" cart="[[cart]]" total="[[total]]" route="{{subroute}}"></shop-checkout>
+      <shop-checkout name="validate" cart="[[cart]]" total="[[total]]" route="{{subroute}}"></shop-checkout>
 
       <shop-404-warning name="404"></shop-404-warning>
     </iron-pages>
@@ -393,7 +393,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           this._listScrollTop = window.pageYOffset;
         }
 
-        this.page = page || 'checkout';
+        this.page = page || 'validate';
 
         // Close the drawer - in case the *route* change came from a link in the drawer.
         this.drawerOpened = false;
@@ -482,7 +482,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         // Announce the page's title
         if (detail.title) {
-          document.title = 'Aeris Configurator';
+          document.title = 'Aeris Configurator 2';
           this._announce('Applicatie geladen');
         }
       },

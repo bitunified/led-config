@@ -1,7 +1,9 @@
 package com.bitunified.ledconfig.domain;
 
 
-public class Dimension {
+import java.io.Serializable;
+
+public class Dimension implements Serializable{
 
     public Integer width;
     public Integer height;
