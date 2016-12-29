@@ -10,6 +10,8 @@ public class RealModel extends Model {
     protected Dimension dimension=new Dimension(null,null);
 
     private Dimension maxDimension;
+
+
     private Margin margin=new Margin();
 
     public RealModel(){
@@ -39,7 +41,16 @@ public class RealModel extends Model {
         return ToStringBuilder.reflectionToString(this);
     }
 
+    public void setLeftSpace(String leftSpace) {
+        if (this.margin==null){
+            this.margin=new Margin();
+        }
+        this.margin.setLeft(Integer.parseInt(leftSpace));
+    }
     public void setLeftSpace(Integer leftSpace) {
+        if (this.margin==null){
+            this.margin=new Margin();
+        }
         this.margin.setLeft(leftSpace);
     }
 
@@ -54,4 +65,12 @@ public class RealModel extends Model {
     public void setRightSpace(Integer rightSpace) {
         this.margin.setRight(rightSpace);
     }
+    public Margin getMargin() {
+        return margin;
+    }
+
+    public void setMargin(Margin margin) {
+        this.margin = margin;
+    }
+
 }

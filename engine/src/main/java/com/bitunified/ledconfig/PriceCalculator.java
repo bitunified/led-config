@@ -39,6 +39,7 @@ public class PriceCalculator {
             if (modelResult!=null) {
                 Part part = modelResult.getPart();
                 if (part != null && part.getPrice() != null) {
+                    //
                     totalPrice = totalPrice.add(part.getPrice());
                 }
             }

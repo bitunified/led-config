@@ -14,7 +14,7 @@ public class ParsedResult {
     private Set<Model> models=new HashSet<Model>();
     private List<ConfigMessage> messages=new ArrayList<ConfigMessage>();
 
-    private List<Part> parts = new ArrayList<Part>();
+    private Set<Part> parts = new HashSet<Part>();
     private List<ParseStep> steps;
 
     public List<ConfigMessage> getMessages() {
@@ -33,11 +33,11 @@ public class ParsedResult {
         this.models = models;
     }
 
-    public List<Part> getParts() {
+    public Set<Part> getParts() {
         return parts;
     }
 
-    public void setParts(List<Part> parts) {
+    public void setParts(Set<Part> parts) {
         this.parts = parts;
     }
 

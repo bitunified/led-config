@@ -7,6 +7,7 @@ import com.bitunified.ledconfig.domain.product.ModelResult;
 import com.bitunified.ledconfig.parts.Part;
 
 import java.util.List;
+import java.util.Set;
 
 public class ParserStepModel extends ParseStepBase implements ParseStep {
 
@@ -20,7 +21,7 @@ public class ParserStepModel extends ParseStepBase implements ParseStep {
         this.end = end;
     }
 
-    public ModelResult create(String productcode, List<Part> parts) {
+    public ModelResult create(String productcode, Set<Part> parts) {
         String code=parse(productcode);
         for (Part part : parts) {
             if (checkModel(part)) {

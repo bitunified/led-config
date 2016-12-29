@@ -32,7 +32,7 @@ public class ParserStepDimensionModel extends ParseStepBase implements ParseStep
                 productcode.substring(begin,end);
     }
     @Override
-    public ModelResult create(String lengthCode, List<Part> parts) {
+    public ModelResult create(String lengthCode, Set<Part> parts) {
         String lengthCodeParsed=parse(lengthCode);
         for (Model model : models) {
             if (checkModel(model)) {

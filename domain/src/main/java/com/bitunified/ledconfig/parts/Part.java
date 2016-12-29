@@ -3,25 +3,36 @@ package com.bitunified.ledconfig.parts;
 
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
-import com.bitunified.ledconfig.domain.product.profile.Profile;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class Part implements Serializable{
+public class Part implements Serializable {
     private RealModel product;
     private Model configModel;
+
+    private String priceStr;
+
     private BigDecimal price;
     private String code;
+
     private String description;
+
     private String id;
 
-    public Part(Model configModel){
-        this.configModel=configModel;
+    private String type;
+
+    public Part(Model configModel) {
+        this.configModel = configModel;
     }
+
     public Part(RealModel product) {
-        this.product=product;
+        this.product = product;
+    }
+
+    public Part() {
+
     }
 
     public String getCode() {
@@ -40,21 +51,18 @@ public class Part implements Serializable{
         this.description = description;
     }
 
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
 
     public RealModel getProduct() {
         return product;
     }
 
+    public void setProduct(RealModel product) {
+        this.product = product;
+    }
+
     @Override
     public String toString() {
-     return ToStringBuilder.reflectionToString(this);
+        return ToStringBuilder.reflectionToString(this);
     }
 
     public Model getConfigModel() {
@@ -87,5 +95,29 @@ public class Part implements Serializable{
     @Override
     public int hashCode() {
         return id != null ? id.hashCode() : 0;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getPriceStr() {
+        return priceStr;
+    }
+
+    public void setPriceStr(String priceStr) {
+        this.priceStr = priceStr;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 }

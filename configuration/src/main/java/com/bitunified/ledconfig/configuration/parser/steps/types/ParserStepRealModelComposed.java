@@ -28,7 +28,7 @@ public class ParserStepRealModelComposed extends ParseStepBase implements ParseS
         this.dataEnd = dataEnd;
     }
 
-    public ModelResult create(String productcode, List<Part> parts) {
+    public ModelResult create(String productcode, Set<Part> parts) {
 
         for (Part part : parts) {
             if (checkModel(part)) {

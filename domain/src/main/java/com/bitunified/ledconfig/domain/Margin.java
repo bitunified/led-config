@@ -1,9 +1,14 @@
 package com.bitunified.ledconfig.domain;
 
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import java.io.Serializable;
 
 public class Margin implements Serializable {
+
+
+    private String leftStr;
 
     private Integer left;
 
@@ -15,6 +20,7 @@ public class Margin implements Serializable {
 
     public void setLeft(Integer left) {
         this.left = left;
+        this.leftStr=left.toString();
     }
 
     public Integer getRight() {
@@ -24,4 +30,18 @@ public class Margin implements Serializable {
     public void setRight(Integer right) {
         this.right = right;
     }
+
+    public String getLeftStr() {
+        return leftStr;
+    }
+
+    public void setLeftStr(String leftStr) {
+        this.leftStr = leftStr;
+        this.left=Integer.parseInt(leftStr);
+    }
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
+    }
+
 }

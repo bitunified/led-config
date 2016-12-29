@@ -3,6 +3,7 @@ package com.bitunified.ledconfig.configuration.parser.steps;
 
 
 import com.bitunified.ledconfig.composedproduct.ComposedProduct;
+import com.bitunified.ledconfig.configuration.csvimport.Importer;
 import com.bitunified.ledconfig.configuration.parser.steps.types.ParserStepDimensionModel;
 import com.bitunified.ledconfig.configuration.parser.steps.types.ParserStepModel;
 import com.bitunified.ledconfig.configuration.parser.steps.types.ParserStepRealModel;
@@ -24,6 +25,7 @@ import com.bitunified.ledconfig.domain.product.profile.Profile;
 import com.bitunified.ledconfig.domain.work.Work;
 import com.bitunified.ledconfig.parts.Part;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -31,21 +33,26 @@ import java.util.List;
 import java.util.Set;
 
 public class Parser {
-    private List<Part> parts=new ArrayList<Part>();
+    private Set<Part> parts=new HashSet<Part>();
 
 private ComposedProduct composedProduct;
     {
        init();
     }
     public void init(){
-        parts=new ArrayList<Part>();
-        createParts();
+        parts=new HashSet<Part>();
+        try {
+            createParts();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
-    private void createParts(){
+    private void createParts() throws IOException {
 
-
+        //Importer importer=new Importer();
+        //parts=importer.importerDozer();
 
         Profile profile = new Profile(new Dimension(null));
         profile.setName("liniLED Aeris Profiel L20");
@@ -109,6 +116,7 @@ private ComposedProduct composedProduct;
         part=new Part(cableEntry);
         part.setCode("1");
         part.setPrice(BigDecimal.valueOf(7.1));
+        part.setId("ca1");
         parts.add(part);
 
         cableEntry=new CableEntry();
@@ -116,6 +124,7 @@ private ComposedProduct composedProduct;
         part=new Part(cableEntry);
         part.setPrice(BigDecimal.valueOf(6.2));
         part.setCode("2");
+        part.setId("ca2");
         parts.add(part);
 
         Mounting mounting=new Mounting();
@@ -125,6 +134,7 @@ private ComposedProduct composedProduct;
         part=new Part(mounting);
         part.setCode("1");
         part.setPrice(BigDecimal.valueOf(5.4));
+        part.setId("m1");
         parts.add(part);
 
         mounting=new Mounting();
@@ -134,6 +144,7 @@ private ComposedProduct composedProduct;
         part=new Part(mounting);
         part.setCode("2");
         part.setPrice(BigDecimal.valueOf(5.35));
+        part.setId("m2");
         parts.add(part);
 
         mounting=new Mounting();
@@ -143,6 +154,7 @@ private ComposedProduct composedProduct;
         part=new Part(mounting);
         part.setCode("4");
         part.setPrice(BigDecimal.valueOf(5.21));
+        part.setId("m3");
         parts.add(part);
 
         //(GABHPQ){1}
@@ -150,6 +162,7 @@ private ComposedProduct composedProduct;
         covering.setName("Geen kap");
         part=new Part(covering);
         part.setCode("G");
+        part.setId("co1");
         //part.setPrice(BigDecimal.valueOf(0));
         parts.add(part);
 
@@ -158,6 +171,7 @@ private ComposedProduct composedProduct;
         part=new Part(covering);
         part.setCode("A");
         part.setPrice(BigDecimal.valueOf(3.92));
+        part.setId("co2");
         parts.add(part);
 
         covering=new Covering(null);
@@ -165,6 +179,7 @@ private ComposedProduct composedProduct;
         part=new Part(covering);
         part.setCode("B");
         part.setPrice(BigDecimal.valueOf(3.42));
+        part.setId("co3");
         parts.add(part);
 
         covering=new Covering(null);
@@ -172,6 +187,7 @@ private ComposedProduct composedProduct;
         part=new Part(covering);
         part.setCode("H");
         part.setPrice(BigDecimal.valueOf(2.12));
+        part.setId("co4");
         parts.add(part);
 
         covering=new Covering(null);
@@ -179,6 +195,7 @@ private ComposedProduct composedProduct;
         part=new Part(covering);
         part.setCode("P");
         part.setPrice(BigDecimal.valueOf(4.32));
+        part.setId("co5");
         parts.add(part);
 
         covering=new Covering(null);
@@ -186,6 +203,7 @@ private ComposedProduct composedProduct;
         part=new Part(covering);
         part.setCode("Q");
         part.setPrice(BigDecimal.valueOf(8.12));
+        part.setId("co6");
         parts.add(part);
 
 
@@ -198,6 +216,7 @@ private ComposedProduct composedProduct;
         part=new Part(ledStrip);
         part.setCode("DR");
         part.setPrice(BigDecimal.valueOf(12.5));
+        part.setId("l1");
         parts.add(part);
 
         ledStrip=new DecoLedStrip(new Dimension(null));
@@ -208,6 +227,7 @@ private ComposedProduct composedProduct;
         part=new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(13.2));
         part.setCode("DB");
+        part.setId("l2");
         parts.add(part);
 
         ledStrip=new DecoLedStrip(new Dimension(null));
@@ -218,6 +238,7 @@ private ComposedProduct composedProduct;
         part=new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(13.2));
         part.setCode("PB");
+        part.setId("l3");
         parts.add(part);
 
         ledStrip=new HighPowerLedStrip(new Dimension(null));
@@ -228,6 +249,7 @@ private ComposedProduct composedProduct;
         part=new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(14.1));
         part.setCode("P4");
+        part.setId("l4");
         parts.add(part);
 
         ledStrip=new HighPowerLedStrip(new Dimension(null));
@@ -238,6 +260,7 @@ private ComposedProduct composedProduct;
         part=new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(14.1));
         part.setCode("H2");
+        part.setId("l5");
         parts.add(part);
 
         ledStrip=new HighPowerLedStrip(new Dimension(null));
@@ -248,6 +271,7 @@ private ComposedProduct composedProduct;
         part=new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(14.1));
         part.setCode("H4");
+        part.setId("l6");
         parts.add(part);
 
         ledStrip=new HighPowerLedStrip(new Dimension(null));
@@ -258,6 +282,7 @@ private ComposedProduct composedProduct;
         part=new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(14.1));
         part.setCode("H7");
+        part.setId("l7");
         parts.add(part);
 
         ledStrip=new HighPowerLedStrip(new Dimension(null));
@@ -268,6 +293,7 @@ private ComposedProduct composedProduct;
         part=new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(14.1));
         part.setCode("N2");
+        part.setId("l8");
         parts.add(part);
 
         CableChannel cableChannel= new CableChannel(new Dimension(null));
@@ -275,6 +301,7 @@ private ComposedProduct composedProduct;
         part=new Part(cableChannel);
         part.setPrice(BigDecimal.TEN);
         part.setCode("b");
+
         parts.add(part);
 
         Clip clip= new Clip();
@@ -305,15 +332,6 @@ private ComposedProduct composedProduct;
         parts.add(part);
 
 
-        Work work=new Work();
-        work.setName("Arbeidsuren");
-
-        part=new Part(work);
-        part.setCode(null);
-        part.setId("ARBEID");
-        part.setPrice(BigDecimal.valueOf(0.59));
-        parts.add(part);
-        composedProduct.addProduct(part);
 
 
     }
