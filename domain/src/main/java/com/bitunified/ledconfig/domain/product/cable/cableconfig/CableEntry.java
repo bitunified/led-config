@@ -1,9 +1,9 @@
 package com.bitunified.ledconfig.domain.product.cable.cableconfig;
 
-import com.bitunified.ledconfig.domain.Model;
+import com.bitunified.ledconfig.domain.modeltypes.ConfigurationModel;
 
 
-public class CableEntry extends Model {
+public class CableEntry extends ConfigurationModel {
 
 }
 

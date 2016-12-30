@@ -8,6 +8,16 @@ public class Dimension implements Serializable{
     public Integer width;
     public Integer height;
     public Integer depth;
+
+    public String getWidthStr() {
+        return widthStr;
+    }
+
+    public void setWidthStr(String widthStr) {
+        this.widthStr = widthStr;
+    }
+
+    public String widthStr;
     public Unit unit;
 
     public Dimension(Integer width, Integer height,Integer depth) {

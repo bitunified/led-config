@@ -23,11 +23,7 @@
             <artifactId>junit</artifactId>
 
         </dependency>
-        <dependency>
-            <groupId>com.opencsv</groupId>
-            <artifactId>opencsv</artifactId>
 
-        </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>

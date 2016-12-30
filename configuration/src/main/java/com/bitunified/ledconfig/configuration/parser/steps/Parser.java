@@ -9,6 +9,7 @@ import com.bitunified.ledconfig.configuration.parser.steps.types.ParserStepModel
 import com.bitunified.ledconfig.configuration.parser.steps.types.ParserStepRealModel;
 import com.bitunified.ledconfig.configuration.parser.steps.types.ParserStepRealModelComposed;
 import com.bitunified.ledconfig.domain.Dimension;
+import com.bitunified.ledconfig.domain.Margin;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.product.ModelResult;
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
@@ -111,8 +112,19 @@ private ComposedProduct composedProduct;
         part.setId("60007");
         parts.add(part);
 
+        cable=new Cable(new Dimension(null));
+        cable.setName("PVC with demo connector");
+        cable.getProperty(Cable.CABLE_TYPE).setValue("DemoConnector");
+        part=new Part(cable);
+        part.setPrice(BigDecimal.valueOf(9.6));
+        part.setCode("0");
+        part.setId("60009");
+        parts.add(part);
+
         CableEntry cableEntry=new CableEntry();
         cableEntry.setName("Left side via end cap");
+        Margin margin=new Margin(15,2);
+        cableEntry.setMargins(margin);
         part=new Part(cableEntry);
         part.setCode("1");
         part.setPrice(BigDecimal.valueOf(7.1));
@@ -121,6 +133,8 @@ private ComposedProduct composedProduct;
 
         cableEntry=new CableEntry();
         cableEntry.setName("Left side via bottom");
+        margin=new Margin(15,2);
+        cableEntry.setMargins(margin);
         part=new Part(cableEntry);
         part.setPrice(BigDecimal.valueOf(6.2));
         part.setCode("2");
@@ -129,8 +143,8 @@ private ComposedProduct composedProduct;
 
         Mounting mounting=new Mounting();
         mounting.setName("No end caps");
-        mounting.setLeftSpace((0));
-        mounting.setRightSpace((0));
+         margin = new Margin(2,2);
+        mounting.setMargins(margin);
         part=new Part(mounting);
         part.setCode("1");
         part.setPrice(BigDecimal.valueOf(5.4));
@@ -139,8 +153,8 @@ private ComposedProduct composedProduct;
 
         mounting=new Mounting();
         mounting.setName("End cap on right side");
-        mounting.setLeftSpace((5));
-        mounting.setRightSpace((15));
+        margin = new Margin(5,15);
+        mounting.setMargins(margin);
         part=new Part(mounting);
         part.setCode("2");
         part.setPrice(BigDecimal.valueOf(5.35));
@@ -149,8 +163,8 @@ private ComposedProduct composedProduct;
 
         mounting=new Mounting();
         mounting.setName("End caps both side");
-        mounting.setLeftSpace((2));
-        mounting.setRightSpace((2));
+        margin = new Margin(2,2);
+        mounting.setMargins(margin);
         part=new Part(mounting);
         part.setCode("4");
         part.setPrice(BigDecimal.valueOf(5.21));
@@ -352,7 +366,7 @@ private ComposedProduct composedProduct;
         steps.add(new ParserStepModel(6,true,7,8,Mounting.class,"","Montage opties niet geconfigureerd"));
         steps.add(new ParserStepDimensionModel(7,true,8,12,LedStrip.class,"","Led strip lengte niet geconfigureerd",models));
 
-        steps.add(new ParserStepRealModelComposed(8,ComposedProduct.class,"","Productlengte niet geconfigureerd",12,16,models));
+        steps.add(new ParserStepRealModelComposed(8,ComposedProduct.class,"","Productlengte automatisch berekend.",12,16,models));
         steps.add(new ParserStepRealModel(9,true,16,17,Accessoire.class,"","Accessoire opties niet geconfigureerd"));
 
         for (ParseStep step:steps){

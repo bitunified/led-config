@@ -9,7 +9,9 @@ public class Profile extends RealModel {
 
 
     private Dimension lengthForCasting;
+    Profile(){
 
+    }
     public Profile(Dimension dimension) {
         super(dimension);
 

@@ -1,13 +1,9 @@
 package com.bitunified.ledconfig.domain.product.mounting;
 
 
-import com.bitunified.ledconfig.domain.Dimension;
-import com.bitunified.ledconfig.domain.Model;
-import com.bitunified.ledconfig.domain.modeltypes.RealModel;
+import com.bitunified.ledconfig.domain.modeltypes.ConfigurationModel;
 
-public class Mounting extends RealModel {
-
-
+public class Mounting extends ConfigurationModel {
 
 
 }

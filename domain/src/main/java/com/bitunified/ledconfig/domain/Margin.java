@@ -7,6 +7,13 @@ import java.io.Serializable;
 
 public class Margin implements Serializable {
 
+    public Margin(int left,int right){
+        this.left=left;
+        this.right=right;
+    }
+    public Margin(){
+
+    }
 
     private String leftStr;
 

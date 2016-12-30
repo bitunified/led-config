@@ -1,18 +1,12 @@
 package com.bitunified.ledconfig.configuration.csvimport;
 
 
-import com.bitunified.ledconfig.domain.Margin;
-import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 import com.bitunified.ledconfig.parts.Part;
-import com.opencsv.bean.ColumnPositionMappingStrategy;
-import com.opencsv.bean.CsvToBean;
-import com.opencsv.bean.HeaderColumnNameTranslateMappingStrategy;
 import org.apache.commons.io.FileUtils;
 import org.supercsv.cellprocessor.CellProcessorAdaptor;
 import org.supercsv.cellprocessor.Optional;
 import org.supercsv.cellprocessor.ParseInt;
-import org.supercsv.cellprocessor.constraint.NotNull;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.io.CsvBeanReader;
 import org.supercsv.io.ICsvBeanReader;
@@ -26,7 +20,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.net.URL;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Importer {
 
@@ -85,7 +80,7 @@ public class Importer {
             }
         };
         final CellProcessor[] processors = new CellProcessor[] {
-                new Optional(parseAnswer),
+                new Optional(),
                 new Optional(parseAnswer),
                 new Optional(parseAnswer),
                 new Optional(parseAnswer),
@@ -103,7 +98,7 @@ public class Importer {
         try {
             beanReader = new CsvDozerBeanReader(fileReader(), CsvPreference.STANDARD_PREFERENCE);
 
-            beanReader.getHeader(true); // ignore the header
+            beanReader.getHeader(false); // ignore the header
             beanReader.configureBeanMapping(Part.class, fieldMapping, hintTypes);
 
             Set<Part> parts = new HashSet<Part>();
@@ -123,29 +118,29 @@ public class Importer {
         }
     }
 
-    public void importFromCSVFile(){
-        Map<String, String> columnMapping = new HashMap<String, String>();
-        columnMapping.put("id", "id");
-        columnMapping.put("description", "description");
-        columnMapping.put("price", "price");
-        columnMapping.put("type", "type");
-        HeaderColumnNameTranslateMappingStrategy<Part> strategy =
-                new HeaderColumnNameTranslateMappingStrategy<Part>();
-        strategy.setType(Part.class);
-        strategy.setColumnMapping(columnMapping);
-
-
-        CsvToBean<Part> csv = new CsvToBean<Part>();
-        try {
-
-
-            List list = csv.parse(strategy, fileReader());
-            System.out.println(list);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
+//    public void importFromCSVFile(){
+//        Map<String, String> columnMapping = new HashMap<String, String>();
+//        columnMapping.put("id", "id");
+//        columnMapping.put("description", "description");
+//        columnMapping.put("price", "price");
+//        columnMapping.put("type", "type");
+//        HeaderColumnNameTranslateMappingStrategy<Part> strategy =
+//                new HeaderColumnNameTranslateMappingStrategy<Part>();
+//        strategy.setType(Part.class);
+//        strategy.setColumnMapping(columnMapping);
+//
+//
+//        CsvToBean<Part> csv = new CsvToBean<Part>();
+//        try {
+//
+//
+//            List list = csv.parse(strategy, fileReader());
+//            System.out.println(list);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
     public Reader fileReader() throws IOException {
         File tempFile= File.createTempFile("tmp","ddr");
         URL url=new URL("http://localhost:8080/server/dataParts.csv");
