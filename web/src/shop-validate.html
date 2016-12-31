@@ -255,10 +255,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
 
-
-            <paper-dialog id="dialog" responsive width="200px">
+<style>
+    paper-dialog {
+        @apply(--layout-flex);
+    }
+</style>
+            <paper-dialog id="dialog" responsive >
                 <h2>Scrolling</h2>
-                <iron-data-table details-enabled items="{{partList}}" height="20%" width="20%">
+                <p>tekst</p>
+                <iron-data-table details-enabled items="{{partList}}" >
 
                     <data-table-column name="Stap">
                         <template> {{item.product.name}}</template>

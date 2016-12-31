@@ -128,7 +128,14 @@ public class LedConfig {
                 Model m = (Model) model;
                 if (m.getStep() != null && m.getName() != null) {
                     messageMap.get(m.getStep()).add(new Message(m));
-
+                    for (Part p:parts.values()){
+                        if (p.getProduct()!=null && p.getProduct().equals(m)){
+                            partList.add(p);
+                        }
+                        if (p.getConfigModel()!=null && p.getConfigModel().equals(m)){
+                            partList.add(p);
+                        }
+                    }
                 }
                 System.out.println("Model: " + model);
             }
