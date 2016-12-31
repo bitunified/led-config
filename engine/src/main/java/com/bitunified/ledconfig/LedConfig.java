@@ -22,6 +22,7 @@ import com.bitunified.ledconfig.configuration.parser.steps.ParsedResult;
 import com.bitunified.ledconfig.configuration.parser.steps.Parser;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.message.Message;
+import com.bitunified.ledconfig.parts.NotExistingPart;
 import com.bitunified.ledconfig.parts.Part;
 import org.kie.api.KieServices;
 import org.kie.api.event.rule.DebugAgendaEventListener;
@@ -129,11 +130,13 @@ public class LedConfig {
                 if (m.getStep() != null && m.getName() != null) {
                     messageMap.get(m.getStep()).add(new Message(m));
                     for (Part p:parts.values()){
-                        if (p.getProduct()!=null && p.getProduct().equals(m)){
-                            partList.add(p);
-                        }
-                        if (p.getConfigModel()!=null && p.getConfigModel().equals(m)){
-                            partList.add(p);
+                        if (!(p instanceof NotExistingPart)) {
+                            if (p.getProduct() != null && p.getProduct().equals(m)) {
+                                partList.add(p);
+                            }
+                            if (p.getConfigModel() != null && p.getConfigModel().equals(m)) {
+                                partList.add(p);
+                            }
                         }
                     }
                 }

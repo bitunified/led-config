@@ -4,6 +4,7 @@ package com.bitunified.ledconfig.configuration.parser.steps.types;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 import com.bitunified.ledconfig.domain.product.ModelResult;
+import com.bitunified.ledconfig.parts.NotExistingPart;
 import com.bitunified.ledconfig.parts.Part;
 
 public abstract class ParseStepBase {
@@ -39,6 +40,7 @@ public abstract class ParseStepBase {
         return false;
     }
     protected boolean checkModel(Part part) {
+
         if (part.getProduct()!=null && isInstance(part.getProduct())){
             return true;
         }

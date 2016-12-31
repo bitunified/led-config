@@ -26,6 +26,7 @@ import com.bitunified.ledconfig.domain.product.cover.Covering;
 import com.bitunified.ledconfig.domain.product.mounting.Mounting;
 import com.bitunified.ledconfig.domain.product.profile.Profile;
 import com.bitunified.ledconfig.domain.work.Work;
+import com.bitunified.ledconfig.parts.NotExistingPart;
 import com.bitunified.ledconfig.parts.Part;
 
 import java.io.IOException;
@@ -365,8 +366,9 @@ private ComposedProduct composedProduct;
         cable.getProperty(Cable.CABLE_TYPE).setValue("PVCopenend");
         cable.setCode("1");
         part=new Part(cable);
-        part.setPrice(BigDecimal.valueOf(8.9));
+        part.setPrice(BigDecimal.valueOf(0.31));
         part.setId("60005");
+        part.setDescription("Kabel RGB Wit");
         parts.add(part);
 
         cable=new Cable(new Dimension(null));
@@ -392,8 +394,7 @@ private ComposedProduct composedProduct;
         cableEntry.setCode("1");
         Margin margin=new Margin(15,2);
         cableEntry.setMargins(margin);
-        part=new Part(cableEntry);
-        part.setPrice(BigDecimal.valueOf(7.1));
+        part=new NotExistingPart(cableEntry);
         part.setId("ca1");
         parts.add(part);
 
@@ -402,8 +403,7 @@ private ComposedProduct composedProduct;
         margin=new Margin(15,2);
         cableEntry.setMargins(margin);
         cableEntry.setCode("2");
-        part=new Part(cableEntry);
-        part.setPrice(BigDecimal.valueOf(6.2));
+        part=new NotExistingPart(cableEntry);
         part.setId("ca2");
         parts.add(part);
 
@@ -412,8 +412,7 @@ private ComposedProduct composedProduct;
         mounting.setCode("1");
         margin = new Margin(2,2);
         mounting.setMargins(margin);
-        part=new Part(mounting);
-        part.setPrice(BigDecimal.valueOf(5.4));
+        part=new NotExistingPart(mounting);
         part.setId("m1");
         parts.add(part);
 
@@ -422,8 +421,7 @@ private ComposedProduct composedProduct;
         margin = new Margin(5,15);
         mounting.setCode("2");
         mounting.setMargins(margin);
-        part=new Part(mounting);
-        part.setPrice(BigDecimal.valueOf(5.35));
+        part=new NotExistingPart(mounting);
         part.setId("m2");
         parts.add(part);
 
@@ -432,8 +430,7 @@ private ComposedProduct composedProduct;
         margin = new Margin(2,2);
         mounting.setCode("4");
         mounting.setMargins(margin);
-        part=new Part(mounting);
-        part.setPrice(BigDecimal.valueOf(5.21));
+        part=new NotExistingPart(mounting);
         part.setId("m3");
         parts.add(part);
 
@@ -441,40 +438,36 @@ private ComposedProduct composedProduct;
         Covering covering=new Covering(null);
         covering.setName("Geen kap");
         covering.setCode("G");
-        part=new Part(covering);
+        part=new NotExistingPart(covering);
         part.setId("co1");
-        //part.setPrice(BigDecimal.valueOf(0));
         parts.add(part);
 
         covering=new Covering(null);
         covering.setName("Lage kap helder");
         covering.setCode("A");
-        part=new Part(covering);
-        part.setPrice(BigDecimal.valueOf(3.92));
+        part=new NotExistingPart(covering);
         part.setId("co2");
         parts.add(part);
 
         covering=new Covering(null);
         covering.setName("Lage kap diffuus");
         covering.setCode("B");
-        part=new Part(covering);
-        part.setPrice(BigDecimal.valueOf(3.42));
+        part=new NotExistingPart(covering);
         part.setId("co3");
         parts.add(part);
 
         covering=new Covering(null);
         covering.setName("Hoge kap diffuus");
         covering.setCode("H");
-        part=new Part(covering);
-        part.setPrice(BigDecimal.valueOf(2.12));
+        part=new NotExistingPart(covering);
         part.setId("co4");
         parts.add(part);
 
         covering=new Covering(null);
         covering.setName("PU Helder");
         covering.setCode("P");
-        part=new Part(covering);
-        part.setPrice(BigDecimal.valueOf(4.32));
+        part=new NotExistingPart(covering);
+
         part.setId("co5");
         parts.add(part);
 

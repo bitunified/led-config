@@ -258,17 +258,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <style>
     paper-dialog {
         @apply(--layout-flex);
+        width:400px;
     }
 </style>
             <paper-dialog id="dialog" responsive >
-                <h2>Scrolling</h2>
-                <p>tekst</p>
+                <h2>Artikelen</h2>
                 <iron-data-table details-enabled items="{{partList}}" >
 
-                    <data-table-column name="Stap">
-                        <template> {{item.product.name}}</template>
+                    <data-table-column name="Artikelnummer">
+                        <template> {{item.id}}</template>
                     </data-table-column>
-
+                    <data-table-column name="Omschrijving">
+                        <template> {{item.description}}</template>
+                    </data-table-column>
                 </iron-data-table>
                 <div class="buttons">
                     <paper-button dialog-confirm autofocus>OK</paper-button>
