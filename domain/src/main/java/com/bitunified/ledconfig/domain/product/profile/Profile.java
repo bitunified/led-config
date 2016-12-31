@@ -5,11 +5,15 @@ import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.domain.Property;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(namespace = "com.bitunified.ledconfig.domain.product.profile.Profile")
 public class Profile extends RealModel {
 
 
     private Dimension lengthForCasting;
-    Profile(){
+    private String lengthForCastingStr;
+    public Profile(){
 
     }
     public Profile(Dimension dimension) {
@@ -24,5 +28,13 @@ public class Profile extends RealModel {
 
     public Dimension getLengthForCasting() {
         return lengthForCasting;
+    }
+
+    public String getLengthForCastingStr() {
+        return lengthForCastingStr;
+    }
+
+    public void setLengthForCastingStr(String lengthForCastingStr) {
+        this.lengthForCastingStr = lengthForCastingStr;
     }
 }

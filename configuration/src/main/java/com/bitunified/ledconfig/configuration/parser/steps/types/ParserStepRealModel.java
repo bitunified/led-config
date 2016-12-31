@@ -33,7 +33,7 @@ public class ParserStepRealModel extends ParseStepBase implements ParseStep {
             if (checkModel(part)) {
                 RealModel product = createPart(part);
                 if (code != null) {
-                    if (part.getCode().equalsIgnoreCase(code)) {
+                    if (product.getCode().equalsIgnoreCase(code)) {
 
                         return new ModelResult(product,part);
                     }

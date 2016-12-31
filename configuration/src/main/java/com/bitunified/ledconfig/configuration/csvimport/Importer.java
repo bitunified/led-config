@@ -1,9 +1,10 @@
 package com.bitunified.ledconfig.configuration.csvimport;
 
 
-import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 import com.bitunified.ledconfig.parts.Part;
+import com.bitunified.ledconfig.parts.PartList;
 import org.apache.commons.io.FileUtils;
+import org.dozer.DozerBeanMapper;
 import org.supercsv.cellprocessor.CellProcessorAdaptor;
 import org.supercsv.cellprocessor.Optional;
 import org.supercsv.cellprocessor.ParseInt;
@@ -15,13 +16,12 @@ import org.supercsv.io.dozer.ICsvDozerBeanReader;
 import org.supercsv.prefs.CsvPreference;
 import org.supercsv.util.CsvContext;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
+import javax.xml.bind.*;
+import javax.xml.namespace.QName;
+import java.io.*;
+import java.lang.reflect.Array;
 import java.net.URL;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Importer {
 
@@ -89,17 +89,19 @@ public class Importer {
         };
 
         // no deep mapping (answers[0].answer) required as we're using a cell processor to create the bean
-        final String[] fieldMapping = {"id", "description","priceStr","type","code","product.margin.leftStr"};
+        final String[] fieldMapping = {"id", "description","priceStr","type","code"};
 
         // the indexed mappings need a hint for Dozer to work
-        final Class<?>[] hintTypes = {Part.class,  Part.class, Part.class,Part.class,Part.class,RealModel.class};
+        final Class<?>[] hintTypes = {Part.class,  Part.class, Part.class,Part.class,Part.class};
 
         ICsvDozerBeanReader beanReader = null;
         try {
-            beanReader = new CsvDozerBeanReader(fileReader(), CsvPreference.STANDARD_PREFERENCE);
+            String[] mappingFiles=new String[]{"dozerBeanMapping.xml"};
+            DozerBeanMapper dozerMapperBean=new DozerBeanMapper(Arrays.asList(mappingFiles));
+            beanReader = new CsvDozerBeanReader(fileReader(), CsvPreference.STANDARD_PREFERENCE,dozerMapperBean);
 
             beanReader.getHeader(false); // ignore the header
-            beanReader.configureBeanMapping(Part.class, fieldMapping, hintTypes);
+            beanReader.configureBeanMapping(Part.class, fieldMapping);
 
             Set<Part> parts = new HashSet<Part>();
             Part part;
@@ -146,5 +148,69 @@ public class Importer {
         URL url=new URL("http://localhost:8080/server/dataParts.csv");
         FileUtils.copyURLToFile(url, tempFile);
         return new FileReader(tempFile);
+    }
+
+
+    public Object readXml(String dataString) throws JAXBException {
+        JAXBContext jaxbContext = JAXBContext.newInstance(PartList.class);
+        Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+
+        //We had written this file in marshalling example
+        Object data = jaxbUnmarshaller.unmarshal( new StringReader(dataString) );
+
+        return  data;
+
+    }
+    public String writeXml(Object data) throws JAXBException {
+
+        JAXBContext context = JAXBContext.newInstance(PartList.class);
+        Marshaller m = context.createMarshaller();
+
+        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+
+        // Write to System.out
+        StringWriter writer = new StringWriter();
+        m.marshal(data, writer);
+
+        // Write to File
+        //m.marshal(bookstore, new File(BOOKSTORE_XML));
+
+        return writer.toString();
+    }
+
+    public <T> String jaxb(Collection<T> elements, Class<T> elementClass, String plural){
+        try {
+            T[] array = (T[]) Array.newInstance(elementClass, elements.size());
+            elements.toArray(array);
+            JAXBContext jc = JAXBContext.newInstance(array.getClass());
+            JAXBElement<T[]> topElement = new JAXBElement(new QName(plural), array.getClass(), array);
+            Marshaller marshaller = jc.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            StringWriter writer = new StringWriter();
+            marshaller.marshal(topElement, writer);
+            return writer.toString();
+        } catch (JAXBException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public <T> Collection<T>  unjaxb(String input, Class<T> elementClass, String plural){
+        try {
+            //T[] array = (T[]) Array.newInstance(elementClass, elements.size());
+            ///elements.toArray(array);
+            JAXBContext jc = JAXBContext.newInstance(elementClass.getClass());
+            //JAXBElement<T[]> topElement = new JAXBElement(new QName(plural), array.getClass(), array);
+
+
+            Unmarshaller jaxbUnmarshaller = jc.createUnmarshaller();
+
+
+            //jaxbUnmarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            StringWriter writer = new StringWriter();
+            Collection<T> obj= (Collection<T>) jaxbUnmarshaller.unmarshal(new StringReader(input));
+            return obj;
+        } catch (JAXBException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

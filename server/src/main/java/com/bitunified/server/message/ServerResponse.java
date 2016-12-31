@@ -2,11 +2,10 @@ package com.bitunified.server.message;
 
 
 import com.bitunified.ledconfig.domain.message.Message;
+import com.bitunified.ledconfig.parts.Part;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ServerResponse {
     private String success;
@@ -14,6 +13,8 @@ public class ServerResponse {
     private String errorMessage;
     private String[] messages;
     private Map<Integer,List<Message>> messageMap=new HashMap<>();
+    private Set<Part> partList=new HashSet<>();
+
     private Double totalPrice;
 
     public ServerResponse(String success) {
@@ -62,5 +63,13 @@ public class ServerResponse {
 
     public Double getTotalPrice() {
         return totalPrice;
+    }
+
+    public Set<Part> getPartList() {
+        return partList;
+    }
+
+    public void setPartList(Set<Part> partList) {
+        this.partList = partList;
     }
 }

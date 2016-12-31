@@ -102,7 +102,7 @@ public class LedConfig {
         ksession.fireAllRules();
 
         Map<Integer, List<Message>> messageMap = new HashMap<>();
-
+        Set<Part> partList= new HashSet<>();
 
         for (ParseStep step : parsedResult.getSteps()) {
             List<Message> messagesInMap=messageMap.get(step.getStep());
@@ -136,6 +136,9 @@ public class LedConfig {
             if (model instanceof Part) {
                 System.out.println("Part:  " + ((Part) model).getProduct());
             }
+            if (model instanceof ComposedProduct){
+                partList.addAll(((ComposedProduct) model).getProducts());
+            }
 
         }
 
@@ -154,7 +157,7 @@ public class LedConfig {
         ksession.dispose();
         ksession.destroy();
 
-        return new ConfigResult(messages, messageMap, ksession.getObjects());
+        return new ConfigResult(messages, messageMap, ksession.getObjects(),partList);
 
     }
 

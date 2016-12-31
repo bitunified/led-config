@@ -8,6 +8,9 @@ import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 
 public class Cable extends RealModel {
 
+    public Cable(){
+
+    }
     public static final String CABLE_TYPE = "cable_type";
     public static final String CABLE_END = "cable_end";
 

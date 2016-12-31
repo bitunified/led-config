@@ -8,6 +8,10 @@ import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 public class LedStrip extends RealModel {
 
 
+    public LedStrip(){
+
+    }
+
     public static final String SECTION_WIDTH = "section";
 
     public static final Property SECTION=new Property(SECTION_WIDTH,"");

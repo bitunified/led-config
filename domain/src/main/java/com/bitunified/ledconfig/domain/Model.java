@@ -13,6 +13,7 @@ import java.util.Set;
 public class Model extends Descriptive implements StepConfig,Serializable {
     private String name="";
 
+    private String code;
     private Integer step;
 
     private Map<String,Property> properies=new HashMap<String,Property>();
@@ -62,16 +63,27 @@ public class Model extends Descriptive implements StepConfig,Serializable {
 
         Model model = (Model) o;
 
-        if (!name.equals(model.name)) return false;
-        return step.equals(model.step);
+        if (name != null ? !name.equals(model.name) : model.name != null) return false;
+        if (code != null ? !code.equals(model.code) : model.code != null) return false;
+        if (step != null ? !step.equals(model.step) : model.step != null) return false;
+        return properies != null ? properies.equals(model.properies) : model.properies == null;
 
     }
 
     @Override
     public int hashCode() {
         int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (code != null ? code.hashCode() : 0);
         result = 31 * result + (step != null ? step.hashCode() : 0);
         result = 31 * result + (properies != null ? properies.hashCode() : 0);
         return result;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }

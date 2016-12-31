@@ -4,8 +4,14 @@ package com.bitunified.ledconfig.domain.modeltypes;
 import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.domain.Margin;
 import com.bitunified.ledconfig.domain.Model;
+import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
+import com.bitunified.ledconfig.domain.product.cable.Cable;
+import com.bitunified.ledconfig.domain.product.profile.Profile;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import javax.xml.bind.annotation.XmlSeeAlso;
+
+@XmlSeeAlso({Profile.class, LedStrip.class, Cable.class})
 public class RealModel extends Model {
     protected Dimension dimension=new Dimension(null,null);
 

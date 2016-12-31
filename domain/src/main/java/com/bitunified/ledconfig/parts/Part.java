@@ -3,19 +3,26 @@ package com.bitunified.ledconfig.parts;
 
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
+import com.bitunified.ledconfig.domain.product.profile.Profile;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Part implements Serializable {
+
+
+
     private RealModel product;
+
     private Model configModel;
 
     private String priceStr;
 
     private BigDecimal price;
-    private String code;
 
     private String description;
 
@@ -35,13 +42,6 @@ public class Part implements Serializable {
 
     }
 
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
 
     public String getDescription() {
         return description;

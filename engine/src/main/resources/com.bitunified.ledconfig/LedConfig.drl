@@ -201,7 +201,7 @@ no-loop true
     when
        exists(Profile(name matches ".*L20.*"));
                 composedproduct:ComposedProduct(dimension.width!=null);
-                eval(((int)((composedproduct.getDimension().width)/1000)<=(int)4) || ((int)((composedproduct.getDimension().width)/1000)>(int)0));
+                eval(((int)((composedproduct.getDimension().width)/1000)<=(int)4) && ((int)((composedproduct.getDimension().width)/1000)>(int)0));
 
     then
                 Part part=SerializationUtils.clone((Part)parts.get(((int)10749+(int)((composedproduct.getDimension().width)/1000))+""));

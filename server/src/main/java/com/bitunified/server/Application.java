@@ -27,27 +27,32 @@ public class Application {
         @POST
         @Path("/data")
         @Produces(MediaType.APPLICATION_JSON)
-        public ServerResponse input(@FormParam("ccNumber") String number) {
+        public ServerResponse input(@FormParam("productcode") String number) {
                 LedConfig ledConfig=new LedConfig();
                 PriceCalculator priceCalculator=new PriceCalculator();
                 ServerResponse result= new ServerResponse("yes");
-                try {
-                        ConfigResult configResult = ledConfig.rules(new String[]{number});
+                if (number!=null && number.length()>4) {
+                        try {
+                                ConfigResult configResult = ledConfig.rules(new String[]{number});
 
-                        List<String> clientMessages = new ArrayList<String>();
+                                List<String> clientMessages = new ArrayList<String>();
 
 
-                        BigDecimal totalPrice = priceCalculator.calculate(configResult);
+                                BigDecimal totalPrice = priceCalculator.calculate(configResult);
 
-                        for (Message message : configResult.getMessages()) {
+                                for (Message message : configResult.getMessages()) {
 
-                                clientMessages.add(message.getMessage());
+                                        clientMessages.add(message.getMessage());
+                                }
+                                result.setMessages(clientMessages.toArray(new String[]{}));
+                                result.setMessageMap(configResult.getMessageMap());
+                                result.setTotalPrice(totalPrice.doubleValue());
+                                result.setPartList(configResult.getPartList());
+                        } finally {
+                                ledConfig.dispose();
                         }
-                        result.setMessages(clientMessages.toArray(new String[]{}));
-                        result.setMessageMap(configResult.getMessageMap());
-                        result.setTotalPrice(totalPrice.doubleValue());
-                }finally {
-                        ledConfig.dispose();
+                }else{
+                        result= new ServerResponse("no");
                 }
                 return result;
 

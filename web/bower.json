@@ -1,5 +1,5 @@
 {
-  "name": "shop",
+  "name": "ledconfig",
   "version": "1.1.0",
   "authors": [
     "The Polymer Authors"
@@ -20,6 +20,8 @@
     "iron-selector": "polymerelements/iron-selector#^1.0.0",
     "paper-icon-button": "polymerelements/paper-icon-button#^1.0.0",
     "paper-spinner": "polymerelements/paper-spinner#^1.0.0",
+    "paper-dialog": "PolymerElements/paper-dialog#^1.1.0",
+    "paper-dialog-scrollable": "PolymerElements/paper-dialog-scrollable#^1.1.0",
     "iron-data-table": "^1.0.6"
   },
   "devDependencies": {

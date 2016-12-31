@@ -27,7 +27,7 @@ public class ParserStepModel extends ParseStepBase implements ParseStep {
             if (checkModel(part)) {
                 Model product = createPartModel(part);
                 if (code != null) {
-                    if (part.getCode().equalsIgnoreCase(code)) {
+                    if (product.getCode().equalsIgnoreCase(code)) {
 
                         return new ModelResult(product);
                     }
