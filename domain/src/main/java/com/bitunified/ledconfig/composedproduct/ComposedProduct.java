@@ -5,11 +5,19 @@ import com.bitunified.ledconfig.domain.product.ModelResult;
 import com.bitunified.ledconfig.parts.Part;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import javax.xml.bind.annotation.XmlMixed;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import java.util.*;
 
-
+@XmlType(name="cp")
+@XmlRootElement(name="ComposedProduct",namespace = "com.bitunified.ledconfig.domain.composedproduct.ComposedProduct")
 public class ComposedProduct extends RealModel {
 
+    public ComposedProduct(){
+
+    }
+    @XmlMixed
     private List<Part> products=new ArrayList<Part>();
 
     private Set<ModelResult> modelResults=new HashSet<ModelResult>();

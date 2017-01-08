@@ -145,20 +145,25 @@ public class Importer {
 //    }
     public Reader fileReader() throws IOException {
         File tempFile= File.createTempFile("tmp","ddr");
-        URL url=new URL("http://localhost:8080/server/dataParts.csv");
+        URL url=new URL("http://localhost:8080/server/dataPartsImport.xml");
         FileUtils.copyURLToFile(url, tempFile);
         return new FileReader(tempFile);
     }
 
-
-    public Object readXml(String dataString) throws JAXBException {
+    public Object readXml(Reader dataStream) throws JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(PartList.class);
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 
         //We had written this file in marshalling example
-        Object data = jaxbUnmarshaller.unmarshal( new StringReader(dataString) );
-
+        Object data = jaxbUnmarshaller.unmarshal( dataStream );
         return  data;
+    }
+    public Object readXml(FileReader dataString) throws JAXBException {
+        return readXml( (dataString) );
+
+    }
+    public Object readXml(String dataString) throws JAXBException {
+        return readXml( new StringReader(dataString) );
 
     }
     public String writeXml(Object data) throws JAXBException {

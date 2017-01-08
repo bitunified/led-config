@@ -102,7 +102,8 @@ rule "Kabeltype moet overeenkomen met PCB type"
 rule "Led strip section modulo"
 
     when
-     ledstrip:LedStrip( sect:getProperty(LedStrip.SECTION_WIDTH),(sect.value % ledstrip.dimension.width)!=0)
+
+     ledstrip:LedStrip( sect:getProperty(LedStrip.SECTION_WIDTH),sect!=null,(sect.value % ledstrip.dimension.width)!=0)
     then
 
     messages.add(new Message("Ledstrip lengte moet een veelvoud zijn van sectielengte: "+ledstrip.getProperty(LedStrip.SECTION_WIDTH).getValue(),7,MessageStatus.ERROR));

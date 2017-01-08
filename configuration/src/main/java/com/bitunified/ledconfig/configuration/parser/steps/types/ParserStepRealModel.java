@@ -7,7 +7,6 @@ import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 import com.bitunified.ledconfig.domain.product.ModelResult;
 import com.bitunified.ledconfig.parts.Part;
 
-import java.util.List;
 import java.util.Set;
 
 public class ParserStepRealModel extends ParseStepBase implements ParseStep {

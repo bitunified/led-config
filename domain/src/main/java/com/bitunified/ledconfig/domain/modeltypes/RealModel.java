@@ -1,6 +1,7 @@
 package com.bitunified.ledconfig.domain.modeltypes;
 
 
+import com.bitunified.ledconfig.composedproduct.ComposedProduct;
 import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.domain.Margin;
 import com.bitunified.ledconfig.domain.Model;
@@ -11,7 +12,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.xml.bind.annotation.XmlSeeAlso;
 
-@XmlSeeAlso({Profile.class, LedStrip.class, Cable.class})
+@XmlSeeAlso({Profile.class, LedStrip.class, Cable.class, ComposedProduct.class})
 public class RealModel extends Model {
     protected Dimension dimension=new Dimension(null,null);
 

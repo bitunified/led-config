@@ -1,8 +1,10 @@
 package com.bitunified.ledconfig.parts;
 
 
+import com.bitunified.ledconfig.composedproduct.ComposedProduct;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
+import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 import com.bitunified.ledconfig.domain.product.profile.Profile;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
@@ -11,8 +13,10 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 
+@XmlRootElement(name="part")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Part implements Serializable {
+
 
 
 

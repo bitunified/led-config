@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:partList xmlns:ns2="com.bitunified.ledconfig.domain.parts.Part" xmlns:ns3="com.bitunified.ledconfig.domain.product.profile.Profile">
+    <parts>
+        <product>
+            <code>b</code>
+            <name>Cable channel</name>
+            <dimension/>
+            <margin/>
+        </product>
+        <price>10</price>
+    </parts>
+    <parts>
+        <product xsi:type="ledStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>PA</code>
+            <name>liniLED Power amber</name>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2670</width>
+            </maxDimension>
+        </product>
+        <price>19</price>
+        <description>liniLED PCB amber P</description>
+        <id>21021</id>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <price>1.51</price>
+        <description>liniLED Aeris Eindkap C30</description>
+        <id>10928</id>
+    </parts>
+    <parts>
+        <product xsi:type="profile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>C</code>
+            <name>liniLED Aeris Profiel L30</name>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2750</width>
+            </maxDimension>
+            <lengthForCasting>
+                <width>25</width>
+            </lengthForCasting>
+        </product>
+        <price>9.3</price>
+        <description>liniLED Aeris Profiel L30 4 m</description>
+        <id>10733</id>
+    </parts>
+    <parts>
+        <configModel>
+            <code>1</code>
+            <name>Left side via end cap</name>
+        </configModel>
+        <id>ca1</id>
+    </parts>
+    <parts>
+        <product xsi:type="profile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>D</code>
+            <name>liniLED Aeris Profiel H30</name>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2750</width>
+            </maxDimension>
+            <lengthForCasting>
+                <width>25</width>
+            </lengthForCasting>
+        </product>
+        <price>14.47</price>
+        <description>liniLED Aeris Profiel H30 4 m</description>
+        <id>10737</id>
+    </parts>
+    <parts>
+        <configModel>
+            <code>2</code>
+            <name>Left side via bottom</name>
+        </configModel>
+        <id>ca2</id>
+    </parts>
+    <parts>
+        <product xsi:type="ledStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>H3</code>
+            <name>liniLED HP 3000K WW</name>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2670</width>
+            </maxDimension>
+        </product>
+        <price>19</price>
+        <description>liniLED PCB WW 3000K HP (PSP)</description>
+        <id>21014A</id>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <product xsi:type="ledStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>PG</code>
+            <name>liniLED Power groen</name>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2670</width>
+            </maxDimension>
+        </product>
+        <price>19</price>
+        <description>liniLED PCB Groen P</description>
+        <id>21020</id>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <product>
+            <code>a</code>
+            <name>liniLED Aeris Clip 30</name>
+            <dimension/>
+            <margin/>
+        </product>
+        <price>0.35</price>
+        <id>10891</id>
+    </parts>
+    <parts>
+        <product>
+            <code>a</code>
+            <name>liniLED Aeris Clip 20</name>
+            <dimension/>
+            <margin/>
+        </product>
+        <id>10890</id>
+    </parts>
+    <parts>
+        <product>
+            <name>Product lengte</name>
+            <dimension/>
+            <margin/>
+        </product>
+        <id>comp</id>
+    </parts>
+    <parts>
+        <product xsi:type="cable" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>0</code>
+            <name>PVC with demo connector</name>
+            <dimension/>
+            <margin/>
+        </product>
+        <price>9.6</price>
+        <id>60009</id>
+    </parts>
+    <parts>
+        <price>1.51</price>
+        <description>liniLED Aeris Eindkap L20 O</description>
+        <id>10901</id>
+    </parts>
+    <parts>
+        <product xsi:type="cable" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>7</code>
+            <name>PUR with liniLed PU Connector set</name>
+            <dimension/>
+            <margin/>
+        </product>
+        <price>9.6</price>
+        <id>60007</id>
+    </parts>
+    <parts>
+        <price>1.48</price>
+        <description>liniLED Aeris Eindkap L20</description>
+        <id>10900</id>
+    </parts>
+    <parts>
+        <price>1.57</price>
+        <description>liniLED Aeris Eindkap LC20 O</description>
+        <id>10903</id>
+    </parts>
+    <parts>
+        <product xsi:type="cable" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>1</code>
+            <name>PVC with open end</name>
+            <dimension/>
+            <margin/>
+        </product>
+        <price>0.31</price>
+        <description>Kabel RGB Wit</description>
+        <id>60005</id>
+    </parts>
+    <parts>
+        <price>1.55</price>
+        <description>liniLED Aeris Eindkap LC20</description>
+        <id>10902</id>
+    </parts>
+    <parts>
+        <price>1.61</price>
+        <description>liniLED Aeris Eindkap H20 O</description>
+        <id>10905</id>
+    </parts>
+    <parts>
+        <price>1.61</price>
+        <description>liniLED Aeris Eindkap H20</description>
+        <id>10904</id>
+    </parts>
+    <parts>
+        <product xsi:type="ledStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>H4</code>
+            <name>liniLED HP 4000K WW</name>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2670</width>
+            </maxDimension>
+        </product>
+        <price>19</price>
+        <description>liniLED PCB NW 4000K HP (PSP)</description>
+        <id>21015A</id>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <product xsi:type="ledStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>PB</code>
+            <name>liniLED Deco blauw</name>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+        </product>
+        <price>10.5</price>
+        <description>liniLED PCB Blauw D</description>
+        <id>21006</id>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <product xsi:type="ledStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>PG</code>
+            <name>liniLED Deco groen</name>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+        </product>
+        <price>10.5</price>
+        <description>liniLED PCB Groen D</description>
+        <id>21005</id>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <product xsi:type="ledStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>DR</code>
+            <name>liniLED RGB Deco rood</name>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2600</width>
+            </maxDimension>
+        </product>
+        <price>7.8</price>
+        <description>liniLED PCB Rood D</description>
+        <id>21004</id>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <product xsi:type="ledStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>PA</code>
+            <name>liniLED Deco amber</name>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+        </product>
+        <price>7.8</price>
+        <description>liniLED PCB Amber D</description>
+        <id>21003</id>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <configModel xsi:type="realModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>G</code>
+            <name>Geen kap</name>
+            <margin/>
+        </configModel>
+        <id>co1</id>
+    </parts>
+    <parts>
+        <product xsi:type="ledStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>DD</code>
+            <name>liniLED RGB Deco</name>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2600</width>
+            </maxDimension>
+        </product>
+        <price>15</price>
+        <description>liniLED PCB RGB D</description>
+        <id>21002</id>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <configModel xsi:type="realModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>B</code>
+            <name>Lage kap diffuus</name>
+            <margin/>
+        </configModel>
+        <id>co3</id>
+    </parts>
+    <parts>
+        <configModel xsi:type="realModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>A</code>
+            <name>Lage kap helder</name>
+            <margin/>
+        </configModel>
+        <id>co2</id>
+    </parts>
+    <parts>
+        <price>1.63</price>
+        <description>liniLED Aeris Eindkap HC20 O</description>
+        <id>10907</id>
+    </parts>
+    <parts>
+        <configModel xsi:type="realModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>P</code>
+            <name>PU Helder</name>
+            <margin/>
+        </configModel>
+        <id>co5</id>
+    </parts>
+    <parts>
+        <price>1.63</price>
+        <description>liniLED Aeris Eindkap HC20</description>
+        <id>10906</id>
+    </parts>
+    <parts>
+        <configModel xsi:type="realModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>H</code>
+            <name>Hoge kap diffuus</name>
+            <margin/>
+        </configModel>
+        <id>co4</id>
+    </parts>
+    <parts>
+        <product xsi:type="ledStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>H4</code>
+            <name>liniLED HP 2400K UWW</name>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2670</width>
+            </maxDimension>
+        </product>
+        <price>19</price>
+        <description>liniLED PCB EWW 2700K HP (PSP)</description>
+        <id>21032A</id>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <price>1.44</price>
+        <description>liniLED Aeris Eindkap C20</description>
+        <id>10908</id>
+    </parts>
+    <parts>
+        <product>
+            <code>Q</code>
+            <name>PU Diffuus</name>
+            <margin/>
+        </product>
+        <price>8.12</price>
+        <id>co6</id>
+    </parts>
+    <parts>
+        <price>5.18</price>
+        <description>liniLED Aeris Kabelgoot 30 3 m</description>
+        <id>10756</id>
+    </parts>
+    <parts>
+        <product xsi:type="ledStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>H6</code>
+            <name>liniLED HP 6500K KW</name>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2670</width>
+            </maxDimension>
+        </product>
+        <price>19</price>
+        <description>liniLED PCB KW 6500K HP (PSP)</description>
+        <id>21016A</id>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <price>3.45</price>
+        <description>liniLED Aeris Kabelgoot 30 2 m</description>
+        <id>10755</id>
+    </parts>
+    <parts>
+        <product xsi:type="profile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>A</code>
+            <name>liniLED Aeris Profiel L20</name>
+            <dimension/>
+            <leftSpace>100</leftSpace>
+            <margin>
+                <left>100</left>
+                <leftStr>100</leftStr>
+            </margin>
+            <maxDimension>
+                <width>2750</width>
+            </maxDimension>
+            <lengthForCasting>
+                <width>25</width>
+            </lengthForCasting>
+        </product>
+        <price>6.81</price>
+        <description>liniLED Aeris Profiel L20 4 m</description>
+        <id>10713</id>
+    </parts>
+    <parts>
+        <price>6.9</price>
+        <description>liniLED Aeris Kabelgoot 30 4 m</description>
+        <id>10757</id>
+    </parts>
+    <parts>
+        <product xsi:type="profile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>B</code>
+            <name>liniLED Aeris Profiel H20</name>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2750</width>
+            </maxDimension>
+            <lengthForCasting>
+                <width>25</width>
+            </lengthForCasting>
+        </product>
+        <price>11.96</price>
+        <description>liniLED Aeris Profiel L20 4 m</description>
+        <id>10717</id>
+    </parts>
+    <parts>
+        <price>1.36</price>
+        <description>liniLED Aeris Kabelgoot 20 1 m</description>
+        <id>10750</id>
+    </parts>
+    <parts>
+        <price>4.07</price>
+        <description>liniLED Aeris Kabelgoot 20 3 m</description>
+        <id>10752</id>
+    </parts>
+    <parts>
+        <price>2.71</price>
+        <description>liniLED Aeris Kabelgoot 20 2 m</description>
+        <id>10751</id>
+    </parts>
+    <parts>
+        <price>1.73</price>
+        <description>liniLED Aeris Kabelgoot 30 1 m</description>
+        <id>10754</id>
+    </parts>
+    <parts>
+        <price>5.42</price>
+        <description>liniLED Aeris Kabelgoot 20 4 m</description>
+        <id>10753</id>
+    </parts>
+    <parts>
+        <product xsi:type="ledStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>PP</code>
+            <name>liniLED Power RGB</name>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+        </product>
+        <price>38.6</price>
+        <description>liniLED PCB RGB P</description>
+        <id>21017</id>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <configModel>
+            <code>1</code>
+            <name>No end caps</name>
+        </configModel>
+        <id>m1</id>
+    </parts>
+    <parts>
+        <configModel>
+            <code>2</code>
+            <name>End cap on right side</name>
+        </configModel>
+        <id>m2</id>
+    </parts>
+    <parts>
+        <configModel>
+            <code>4</code>
+            <name>End caps both side</name>
+        </configModel>
+        <id>m3</id>
+    </parts>
+    <parts>
+        <product xsi:type="ledStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>PB</code>
+            <name>liniLED Power blauw</name>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2670</width>
+            </maxDimension>
+        </product>
+        <price>19</price>
+        <description>liniLED PCB Blauw P</description>
+        <id>21019</id>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <product xsi:type="ledStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>PR</code>
+            <name>liniLED Power rood</name>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2670</width>
+            </maxDimension>
+        </product>
+        <price>16</price>
+        <description>liniLED PCB Rood P</description>
+        <id>21018</id>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <price>1.53</price>
+        <description>liniLED Aeris Eindkap L30 O</description>
+        <id>10921</id>
+    </parts>
+    <parts>
+        <price>1.51</price>
+        <description>liniLED Aeris Eindkap L30</description>
+        <id>10920</id>
+    </parts>
+    <parts>
+        <price>1.61</price>
+        <description>liniLED Aeris Eindkap LC30 O</description>
+        <id>10923</id>
+    </parts>
+    <parts>
+        <price>1.59</price>
+        <description>liniLED Aeris Eindkap LC30</description>
+        <id>10922</id>
+    </parts>
+    <parts>
+        <price>1.61</price>
+        <description>liniLED Aeris Eindkap H30 O</description>
+        <id>10925</id>
+    </parts>
+    <parts>
+        <price>1.59</price>
+        <description>liniLED Aeris Eindkap H30</description>
+        <id>10924</id>
+    </parts>
+    <parts>
+        <product xsi:type="ledStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <code>H7</code>
+            <name>liniLED HP 2700K EWW</name>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2670</width>
+            </maxDimension>
+        </product>
+        <price>19</price>
+        <description>liniLED PCB EWW 2700K HP (PSP)</description>
+        <id>21013A</id>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <price>1.63</price>
+        <description>liniLED Aeris Eindkap HC30 O</description>
+        <id>10927</id>
+    </parts>
+    <parts>
+        <price>1.61</price>
+        <description>liniLED Aeris Eindkap HC30</description>
+        <id>10926</id>
+    </parts>
+    <parts>
+        <price>2.64</price>
+        <description>liniLED Aansluitkabel Demo</description>
+        <id>11214</id>
+        <type>MTR</type>
+    </parts>
+</ns2:partList>
