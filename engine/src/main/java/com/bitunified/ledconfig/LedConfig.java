@@ -22,6 +22,7 @@ import com.bitunified.ledconfig.configuration.parser.steps.ParsedResult;
 import com.bitunified.ledconfig.configuration.parser.steps.Parser;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.message.Message;
+import com.bitunified.ledconfig.domain.product.ModelResult;
 import com.bitunified.ledconfig.parts.NotExistingPart;
 import com.bitunified.ledconfig.parts.Part;
 import org.kie.api.KieServices;
@@ -75,8 +76,35 @@ public class LedConfig {
         // In this case it is setting a global as defined in the
         // org/drools/examples/helloworld/HelloWorld.drl file
         List<Message> messages = new ArrayList<Message>();
-        ksession.setGlobal("messages",
-                messages);
+        ksession.setGlobal("messages", messages);
+
+        Map<Integer, List<Message>> messageMap = new HashMap<>();
+        List<Part> partList= new ArrayList<>();
+
+        Map<Integer,ModelResult> modelResults=new HashMap<>();
+        for (ParseStep step : parsedResult.getSteps()) {
+
+            List<Message> messagesInMap=messageMap.get(step.getStep());
+            if (messagesInMap==null){
+                messagesInMap=new ArrayList<>();
+            }
+
+            if (step.getModelResult() != null && step.getModelResult().getModel() != null) {
+
+                modelResults.put(step.getStep(),step.getModelResult());
+                messagesInMap.add(new Message(step.getModelResult().getModel().getName()));
+                messageMap.put(step.getStep(), messagesInMap);
+            } else {
+                messagesInMap.add(new Message(step.getErrorMessage()));
+                messageMap.put(step.getStep(), messagesInMap);
+                messageMap.put(step.getStep(), messagesInMap);
+            }
+
+        }
+
+        ksession.setGlobal("messageMap", messageMap);
+
+
         Map<String,Part> parts = new HashMap<>();
         for (Part part:parsedResult.getParts()){
             parts.put(part.getId(),part);
@@ -102,25 +130,9 @@ public class LedConfig {
 
         ksession.fireAllRules();
 
-        Map<Integer, List<Message>> messageMap = new HashMap<>();
-        Set<Part> partList= new HashSet<>();
 
-        for (ParseStep step : parsedResult.getSteps()) {
-            List<Message> messagesInMap=messageMap.get(step.getStep());
-            if (messagesInMap==null){
-                messagesInMap=new ArrayList<>();
-            }
-            if (step.getModelResult() != null && step.getModelResult().getModel() != null) {
 
-                messagesInMap.add(new Message(step.getModelResult().getModel().getName()));
-                messageMap.put(step.getStep(), messagesInMap);
-            } else {
-                messagesInMap.add(new Message(step.getErrorMessage()));
-                messageMap.put(step.getStep(), messagesInMap);
-                messageMap.put(step.getStep(), messagesInMap);
-            }
 
-        }
 
         Collection<Model> sortedModels = (Collection<Model>) ksession.getObjects();
 

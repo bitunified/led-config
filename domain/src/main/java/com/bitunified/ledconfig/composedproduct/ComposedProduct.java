@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlType;
 import java.util.*;
 
 @XmlType(name="cp")
-@XmlRootElement(name="ComposedProduct",namespace = "com.bitunified.ledconfig.domain.composedproduct.ComposedProduct")
+@XmlRootElement(name="ComposedProduct",namespace = "com.bitunified.ledconfig.composedproduct.ComposedProduct")
 public class ComposedProduct extends RealModel {
 
     public ComposedProduct(){

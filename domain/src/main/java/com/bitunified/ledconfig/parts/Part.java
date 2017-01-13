@@ -1,23 +1,19 @@
 package com.bitunified.ledconfig.parts;
 
 
-import com.bitunified.ledconfig.composedproduct.ComposedProduct;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
-import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
-import com.bitunified.ledconfig.domain.product.profile.Profile;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 
-@XmlRootElement(name="part")
-@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "part", namespace = "com.bitunified.ledconfig.parts.Part")
 public class Part implements Serializable {
-
-
 
 
     private RealModel product;

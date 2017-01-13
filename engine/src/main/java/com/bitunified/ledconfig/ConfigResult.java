@@ -11,8 +11,8 @@ public class ConfigResult {
     private List<Message> messages=new ArrayList<Message>();
     private Map<Integer,List<Message>> messageMap=new HashMap<>();
     private List models=new ArrayList<StatefulKnowledgeSessionImpl.ObjectStoreWrapper>();
-    private Set<Part> partList;
-    public ConfigResult(List<Message> messages, Map<Integer,List<Message>> messageMap, Collection<?> objects,Set<Part> partList) {
+    private List<Part> partList;
+    public ConfigResult(List<Message> messages, Map<Integer,List<Message>> messageMap, Collection<?> objects,List<Part> partList) {
         this.messages=messages;
         this.messageMap=messageMap;
         this.models.addAll(objects);
@@ -32,7 +32,7 @@ public class ConfigResult {
         return messageMap;
     }
 
-    public Set<Part> getPartList() {
+    public List<Part> getPartList() {
         return partList;
     }
 }

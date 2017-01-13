@@ -20,14 +20,17 @@ import com.bitunified.ledconfig.domain.product.cable.cableconfig.CableEntry;
 import com.bitunified.ledconfig.domain.product.mounting.Mounting;
 import com.bitunified.ledconfig.domain.Property
 import com.bitunified.ledconfig.domain.product.accessoires.Clip
+import com.bitunified.ledconfig.domain.product.accessoires.CableChannel
 import com.bitunified.ledconfig.parts.Part
 import com.bitunified.ledconfig.domain.product.profile.Profile;
 import com.bitunified.ledconfig.domain.message.MessageStatus;
+import com.bitunified.ledconfig.domain.product.ModelResult;
 import java.util.ArrayList
+import java.util.List
 import org.apache.commons.lang3.SerializationUtils;
 global java.util.List<Message> messages
 global java.util.Map<Part> parts
-
+global java.util.Map<Integer,List<Message>> messageMap
 //Rule with higher priority.
 rule "Totale lengte berekening" salience 1
     when
@@ -36,10 +39,14 @@ rule "Totale lengte berekening" salience 1
        CableEntry(cableEntryLeft:margins.left!=null,cableEntryRight:margins.right!=null)
        LedStrip(ledstripLength:dimension.width!=null)
         cp:ComposedProduct(dimension.width==null)
+
     then
         int totalLength=(int)mountingLeft+(int)mountingRight+(int)ledstripLength+(int)cableEntryLeft+(int)cableEntryRight;
         cp.getDimension().width=totalLength;
-    System.out.println("Totale lengte automatisch berekend"+totalLength);
+        //List<Message> msgs=((List<Message>)messageMap.get(8));
+
+        ((((List<Message>)(messageMap.get(8))))).add(new Message("Totale lengte automatisch berekend: "+totalLength+" mm."));
+        System.out.println("Totale lengte automatisch berekend"+totalLength);
 end
 
 rule "Totale lengte minimaal"
@@ -81,13 +88,13 @@ rule "Minimale lengte groter dan section lengte"
         messages.add(new Message("Lengte ledstrip kan niet kleiner zijn dan sectie lengte."));
 end
 
-rule "Kabeltype moet overeenkomen met PCB type"
-    when
-        exists(DecoLedStrip());
-        not(Cable(TYPE matches ".*2-aderig.*"));
-    then
-        messages.add(new Message("Let op: kabeltype past niet bij PCB."));
-    end
+//rule "Kabeltype moet overeenkomen met PCB type"
+//    when
+//        exists(DecoLedStrip());
+//        not(Cable(TYPE matches ".*2-aderig.*"));
+//    then
+//        messages.add(new Message("Let op: kabeltype past niet bij PCB."));
+//    end
 
    rule "Kabeltype demo connector mag niet in combinatie met RGB Ledstrip"
        when
@@ -114,6 +121,7 @@ rule "Aantal clips is evenredig aan lengte L20"
            when
 
                exists(Profile(name matches ".*L20.*"));
+               exists(Clip())
                composedproduct:ComposedProduct(dimension.width!=null);
                c:Long(longValue<((int)composedproduct.dimension.width/500),((int)composedproduct.dimension.width/500)>=(int)2) from accumulate( i : Part( product!=null,product.class==Clip.class ) from composedproduct.products, count(i) )
 
@@ -132,6 +140,7 @@ no-loop true
     when
 
         exists(Profile(name matches ".*L20.*"));
+        exists(Clip())
         composedproduct:ComposedProduct(dimension.width!=null);
         eval((int)((composedproduct.getDimension().width)/(int)500)<(int)2);
 
@@ -157,6 +166,7 @@ no-loop true
                when
 
                    exists(Profile(name matches ".*L30.*"));
+                   exists(Clip())
                    composedproduct:ComposedProduct(dimension.width!=null);
                    c:Long(longValue<((int)composedproduct.dimension.width/500),((int)composedproduct.dimension.width/500)>=(int)2) from accumulate( i : Part( product!=null,product.class==Clip.class ) from composedproduct.products, count(i) )
 
@@ -177,6 +187,7 @@ no-loop true
         when
 
             exists(Profile(name matches ".*L30.*"));
+            exists(Clip())
             composedproduct:ComposedProduct(dimension.width!=null);
             eval((int)((composedproduct.getDimension().width)/500)<(int)2);
 
@@ -201,11 +212,12 @@ rule "Kabelgoot op maat voor L20"
 no-loop true
     when
        exists(Profile(name matches ".*L20.*"));
+       exists(CableChannel())
                 composedproduct:ComposedProduct(dimension.width!=null);
                 eval(((int)((composedproduct.getDimension().width)/1000)<=(int)4) && ((int)((composedproduct.getDimension().width)/1000)>(int)0));
 
     then
-                Part part=SerializationUtils.clone((Part)parts.get(((int)10749+(int)((composedproduct.getDimension().width)/1000))+""));
+                Part part=SerializationUtils.clone((Part)parts.get(((int)10749+(int)(Math.ceil((double)(composedproduct.getDimension().width)/1000d)))+""));
                  insertLogical(part);
                  modify(composedproduct){
                      addProduct(part)

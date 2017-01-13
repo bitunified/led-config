@@ -10,8 +10,9 @@ import com.bitunified.ledconfig.domain.product.cable.Cable;
 import com.bitunified.ledconfig.domain.product.profile.Profile;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
-
+@XmlRootElement(name="realmodel",namespace = "com.bitunified.ledconfig.domain.modeltypes.RealModel")
 @XmlSeeAlso({Profile.class, LedStrip.class, Cable.class, ComposedProduct.class})
 public class RealModel extends Model {
     protected Dimension dimension=new Dimension(null,null);
@@ -35,6 +36,7 @@ public class RealModel extends Model {
     public Dimension getMaxDimension() {
         return maxDimension;
     }
+
     public void setDimension(Dimension dimension){
         this.dimension=dimension;
     }

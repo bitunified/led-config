@@ -3,10 +3,7 @@ package com.bitunified.ledconfig.configuration.parser.steps;
 
 import com.bitunified.ledconfig.composedproduct.ComposedProduct;
 import com.bitunified.ledconfig.configuration.csvimport.Importer;
-import com.bitunified.ledconfig.configuration.parser.steps.types.ParserStepDimensionModel;
-import com.bitunified.ledconfig.configuration.parser.steps.types.ParserStepModel;
-import com.bitunified.ledconfig.configuration.parser.steps.types.ParserStepRealModel;
-import com.bitunified.ledconfig.configuration.parser.steps.types.ParserStepRealModelComposed;
+import com.bitunified.ledconfig.configuration.parser.steps.types.*;
 import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.domain.Margin;
 import com.bitunified.ledconfig.domain.Model;
@@ -52,7 +49,7 @@ public class Parser {
 
     {
 
-        init();
+        createParts();
     }
 
     public void init() {
@@ -152,7 +149,7 @@ public class Parser {
      * "GRIJP","Handleiding","0.70","ST","","10"
      * "GRIJP","Verpakking (per meter)","0.50","ST","","10"
      **/
-    private void createParts() throws IOException {
+    private void createParts()  {
 
         //Importer importer=new Importer();
         //parts=importer.importerDozer();
@@ -201,6 +198,16 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(14.47));
         part.setId("10737");
         part.setDescription("liniLED Aeris Profiel H30 4 m");
+        parts.add(part);
+
+
+
+        CableChannel cableChannel = new CableChannel(new Dimension(null));
+        cableChannel.setName("Cable channel");
+        cableChannel.setCode("b");
+        part = new NotExistingPart(cableChannel);
+        part.setDescription("Kabelgoot");
+        part.setId("kg");
         parts.add(part);
 
 
@@ -442,6 +449,12 @@ public class Parser {
         part.setId("m3");
         parts.add(part);
 
+
+
+
+
+
+
         //(GABHPQ){1}
         Covering covering = new Covering(null);
         covering.setName("Geen kap");
@@ -453,16 +466,30 @@ public class Parser {
         covering = new Covering(null);
         covering.setName("Lage kap helder");
         covering.setCode("A");
-        part = new NotExistingPart(covering);
-        part.setId("co2");
+        part = new Part(covering);
+        part.setId("95000");
+        part.setDescription("Ingieten liniLED L20 Helder");
+        part.setPrice(BigDecimal.valueOf(11.5));
+        part.setType("MTR");
         parts.add(part);
+        //        "95000","Ingieten liniLED L20 Helder","11.50","MTR","","10"
 
         covering = new Covering(null);
         covering.setName("Lage kap diffuus");
         covering.setCode("B");
-        part = new NotExistingPart(covering);
-        part.setId("co3");
+        part = new Part(covering);
+        part.setId("95001");
+        part.setPrice(BigDecimal.valueOf(11.5));
+        part.setDescription("Ingieten liniLED L20 Diffuus");
+        part.setType("MTR");
         parts.add(part);
+
+//        "95003","Ingieten liniLED L30 Helder","17.25","MTR","","10"
+//        "95004","Ingieten liniLED L30 Diffuus","17.25","MTR","","10"
+//        "95010","Ingieten liniLED H20 Helder","23.00","MTR","","10"
+//        "95011","Ingieten liniLED H20 Diffuus","23.00","MTR","","10"
+//        "95013","Ingieten liniLED H30 Helder","46.50","MTR","","10"
+//        "95014","Ingieten liniLED H30 Diffuus","46.50","MTR","","10"
 
         covering = new Covering(null);
         covering.setName("Hoge kap diffuus");
@@ -723,6 +750,7 @@ public class Parser {
 //        "60013","Kabel RGB PUR M12 Male 1 m","6.63","ST","","10"
 //        "60014","Kabel RGB PUR M12 Male 5 m","10.41","ST","","10"
 //        "60015","Kabel RGB PUR M12 Male 10 m","15.68","ST","","10"
+
 //        "95000","Ingieten liniLED L20 Helder","11.50","MTR","","10"
 //        "95001","Ingieten liniLED L20 Diffuus","11.50","MTR","","10"
 //        "95003","Ingieten liniLED L30 Helder","17.25","MTR","","10"
@@ -733,31 +761,39 @@ public class Parser {
 //        "95014","Ingieten liniLED H30 Diffuus","46.50","MTR","","10"
 
 
-        CableChannel cableChannel = new CableChannel(new Dimension(null));
-        cableChannel.setName("Cable channel");
-        cableChannel.setCode("b");
-        part = new Part(cableChannel);
-        part.setPrice(BigDecimal.ZERO);
-
-        parts.add(part);
 
         Clip clip = new Clip();
         clip.setName("liniLED Aeris Clip 20");
-        clip.setCode("a");
+
         part = new Part(clip);
         part.setId("10890");
+        part.setDescription("Clip 20");
         parts.add(part);
 
         clip = new Clip();
         clip.setName("liniLED Aeris Clip 30");
-        clip.setCode("a");
+
         part = new Part(clip);
         part.setId("10891");
         part.setPrice(BigDecimal.valueOf(0.35));
+        part.setDescription("Clip 30");
         parts.add(part);
 
-        //createComposedProduct();
+        clip = new Clip();
+        clip.setName("Clip");
+        clip.setCode("a");
+        part = new NotExistingPart(clip);
+        part.setId("clip");
+        part.setDescription("Clip.");
+        parts.add(part);
 
+
+
+        composedProduct=new ComposedProduct(null,null);
+        composedProduct.setName("Product lengte");
+        part=new Part(composedProduct);
+        part.setId("comp");
+        parts.add(part);
 
     }
 
@@ -780,7 +816,7 @@ public class Parser {
         steps.add(new ParserStepDimensionModel(7, true, 8, 12, LedStrip.class, "", "Led strip lengte niet geconfigureerd", models));
 
         steps.add(new ParserStepRealModelComposed(8, ComposedProduct.class, "", "Productlengte automatisch berekend.", 12, 16, models));
-        steps.add(new ParserStepRealModel(9, true, 16, 17, Accessoire.class, "", "Accessoire opties niet geconfigureerd"));
+        steps.add(new ParserStepModelRightParse(9, true, 0, 1, Accessoire.class, "", "Accessoire opties niet geconfigureerd"));
 
         for (ParseStep step : steps) {
             ModelResult createdModel = step.create(productcode, parts);

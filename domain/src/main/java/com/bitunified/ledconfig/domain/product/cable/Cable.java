@@ -8,7 +8,7 @@ import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(namespace = "com.bitunified.ledconfig.domain.product.cable.Cable")
+@XmlRootElement(name = "cable" ,namespace = "com.bitunified.ledconfig.domain.product.cable.Cable")
 public class Cable extends RealModel {
 
     public Cable(){

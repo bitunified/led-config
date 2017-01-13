@@ -13,7 +13,7 @@ public class ServerResponse {
     private String errorMessage;
     private String[] messages;
     private Map<Integer,List<Message>> messageMap=new HashMap<>();
-    private Set<Part> partList=new HashSet<>();
+    private List<Part> partList=new ArrayList<>();
 
     private Double totalPrice;
 
@@ -65,11 +65,11 @@ public class ServerResponse {
         return totalPrice;
     }
 
-    public Set<Part> getPartList() {
+    public List<Part> getPartList() {
         return partList;
     }
 
-    public void setPartList(Set<Part> partList) {
+    public void setPartList(List<Part> partList) {
         this.partList = partList;
     }
 }

@@ -31,10 +31,19 @@ public class ParserStepRealModel extends ParseStepBase implements ParseStep {
         for (Part part : parts) {
             if (checkModel(part)) {
                 RealModel product = createPart(part);
+                Model model = createPartModel(part);
                 if (code != null) {
-                    if (product.getCode().equalsIgnoreCase(code)) {
+                    if (product!=null) {
+                        if (code.equalsIgnoreCase(product.getCode())) {
 
-                        return new ModelResult(product,part);
+                            return new ModelResult(product, part);
+                        }
+                    }
+                    if (model!=null){
+                        if (code.equalsIgnoreCase(model.getCode())) {
+
+                            return new ModelResult(model, part);
+                        }
                     }
                 }
             }
