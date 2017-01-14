@@ -5,7 +5,10 @@ import java.io.Serializable;
 
 public class Property implements Serializable{
 
-    private final String name;
+    public Property(){
+
+    }
+    private String name;
     private Object value;
 
     public Property(String name, String value){

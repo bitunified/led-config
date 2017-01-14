@@ -103,33 +103,143 @@ end
        then
            messages.add(new Message("Kabel met demo connector kan niet in combinatie met RGB Ledstrip.",4,MessageStatus.ERROR));
        end
+
+
+
+
   rule "Actie: RGB kabel toevoegen"
   no-loop true
        when
+            exists(Cable(code!=null,code=="1"))
            exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value)) or exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value));
            composedproduct:ComposedProduct()
        then
+
          Part part=SerializationUtils.clone((Part)parts.get("60005"));
-         insertLogical(part);
-                        modify(composedproduct){
-                            addProduct(part)
-                        }
+
+         composedproduct.addProduct(part);
+        System.out.println("Actie RGB voor type 1:");
        end
-  rule "Actie: Andere kabel toevoegen"
+
+
+
+  rule "Actie: Andere kabel toevoegen type 1"
   no-loop true
        when
+            exists(Cable(code!=null,code=="1"))
            exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value)) and exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value));
-           composedproduct:ComposedProduct()
+           (composedproduct:ComposedProduct())
        then
          Part part=SerializationUtils.clone((Part)parts.get("60004"));
-         insertLogical(part);
-                        modify(composedproduct){
-                            addProduct(part)
-                        }
+        composedproduct.addProduct(part);
+                        System.out.println("Actie ander type 1:");
+       end
+
+
+  rule "Actie: RGB kabel toevoegen typ 2"
+  no-loop true
+       when
+            exists(Cable(code!=null,code=="2"))
+           exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value)) or exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value));
+           composedproduct:ComposedProduct()
+       then
+
+         Part part=SerializationUtils.clone((Part)parts.get("60005"));
+         composedproduct.addProduct(part);
+          part=SerializationUtils.clone((Part)parts.get("60005"));
+          composedproduct.addProduct(part);
+         part=SerializationUtils.clone((Part)parts.get("60005"));
+          composedproduct.addProduct(part);
+          part=SerializationUtils.clone((Part)parts.get("60005"));
+        composedproduct.addProduct(part);
+        part=SerializationUtils.clone((Part)parts.get("60005"));
+         composedproduct.addProduct(part);
+        System.out.println("Actie RGB voor type 2");
        end
 
 
 
+  rule "Actie: Andere kabel toevoegen type 2"
+  no-loop true
+       when
+            exists(Cable("2"==code))
+           exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value)) and exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value));
+           (composedproduct:ComposedProduct())
+       then
+         Part part=SerializationUtils.clone((Part)parts.get("60004"));
+        composedproduct.addProduct(part);
+         part=SerializationUtils.clone((Part)parts.get("60004"));
+         composedproduct.addProduct(part);
+         part=SerializationUtils.clone((Part)parts.get("60004"));
+         composedproduct.addProduct(part);
+          part=SerializationUtils.clone((Part)parts.get("60004"));
+           composedproduct.addProduct(part);
+         part=SerializationUtils.clone((Part)parts.get("60004"));
+        composedproduct.addProduct(part);
+         System.out.println("Actie ander type 2");
+       end
+ rule "Actie: RGB kabel toevoegen typ 3"
+  no-loop true
+       when
+            exists(Cable(code!=null,code=="3"))
+           exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value)) or exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value));
+           composedproduct:ComposedProduct()
+       then
+
+         Part part=SerializationUtils.clone((Part)parts.get("60005"));
+         composedproduct.addProduct(part);
+          part=SerializationUtils.clone((Part)parts.get("60005"));
+          composedproduct.addProduct(part);
+         part=SerializationUtils.clone((Part)parts.get("60005"));
+          composedproduct.addProduct(part);
+          part=SerializationUtils.clone((Part)parts.get("60005"));
+        composedproduct.addProduct(part);
+        part=SerializationUtils.clone((Part)parts.get("60005"));
+         composedproduct.addProduct(part);
+         part=SerializationUtils.clone((Part)parts.get("60005"));
+                   composedproduct.addProduct(part);
+                  part=SerializationUtils.clone((Part)parts.get("60005"));
+                   composedproduct.addProduct(part);
+                   part=SerializationUtils.clone((Part)parts.get("60005"));
+                 composedproduct.addProduct(part);
+                 part=SerializationUtils.clone((Part)parts.get("60005"));
+                  composedproduct.addProduct(part);
+                   part=SerializationUtils.clone((Part)parts.get("60005"));
+         composedproduct.addProduct(part);
+        System.out.println("Actie RGB voor type 3");
+       end
+
+
+
+  rule "Actie: Andere kabel toevoegen type 3"
+  no-loop true
+       when
+            exists(Cable("3"==code))
+           exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value)) and exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value));
+           (composedproduct:ComposedProduct())
+       then
+         Part part=SerializationUtils.clone((Part)parts.get("60004"));
+        composedproduct.addProduct(part);
+         part=SerializationUtils.clone((Part)parts.get("60004"));
+         composedproduct.addProduct(part);
+         part=SerializationUtils.clone((Part)parts.get("60004"));
+         composedproduct.addProduct(part);
+          part=SerializationUtils.clone((Part)parts.get("60004"));
+           composedproduct.addProduct(part);
+         part=SerializationUtils.clone((Part)parts.get("60004"));
+        composedproduct.addProduct(part);
+         part=SerializationUtils.clone((Part)parts.get("60004"));
+                composedproduct.addProduct(part);
+                 part=SerializationUtils.clone((Part)parts.get("60004"));
+                        composedproduct.addProduct(part);
+                         part=SerializationUtils.clone((Part)parts.get("60004"));
+                                composedproduct.addProduct(part);
+                                 part=SerializationUtils.clone((Part)parts.get("60004"));
+                                        composedproduct.addProduct(part);
+                                         part=SerializationUtils.clone((Part)parts.get("60004"));
+                                                composedproduct.addProduct(part);
+         System.out.println("Actie ander type 3");
+       end
 rule "Led strip section modulo"
 
     when
@@ -152,34 +262,30 @@ rule "Aantal clips is evenredig aan lengte L20"
            then
 
             Part part=SerializationUtils.clone((Part)parts.get("10890"));
-            insertLogical(part);
+
             modify(composedproduct){
                 addProduct(part)
             }
             System.out.println("Clip toegevoegd voor L20");
            end
-
+//
 rule "Aantal clips minimaal 2 L20"
 no-loop true
     when
 
-        exists(Profile(name matches ".*L20.*"));
-        exists(Clip())
+        exists(Profile(name matches ".*L20.*")) and exists(Clip())
         composedproduct:ComposedProduct(dimension.width!=null);
         eval((int)((composedproduct.getDimension().width)/(int)500)<(int)2);
 
     then
 
      Part part=SerializationUtils.clone((Part)parts.get("10890"));
-            insertLogical(part);
-            modify(composedproduct){
-                addProduct(part)
-            }
+
+            composedproduct.addProduct(part);
+
             part=SerializationUtils.clone((Part)parts.get("10890"));
-             insertLogical(part);
-             modify(composedproduct){
-                 addProduct(part)
-             }
+            composedproduct.addProduct(part);
+
 
             System.out.println("Clip 2x toegevoegd voor L20");
 
@@ -197,10 +303,9 @@ no-loop true
                then
 
                 Part part=SerializationUtils.clone((Part)parts.get("10891"));
-                       insertLogical(part);
-                       modify(composedproduct){
-                           addProduct(part)
-                       }
+
+                       composedproduct.addProduct(part);
+
                        System.out.println("Clip toegevoegd voor L30");
 
 
@@ -218,15 +323,13 @@ no-loop true
         then
 
          Part part=SerializationUtils.clone((Part)parts.get("10891"));
-                insertLogical(part);
-                modify(composedproduct){
-                    addProduct(part)
-                }
+
+                composedproduct.addProduct(part);
+
                 part=SerializationUtils.clone((Part)parts.get("10891"));
-                 insertLogical(part);
-                 modify(composedproduct){
-                     addProduct(part)
-                 }
+
+                 composedproduct.addProduct(part);
+
                 System.out.println("Clip 2x toegevoegd voor L30");
 
         end
@@ -242,10 +345,7 @@ no-loop true
 
     then
                 Part part=SerializationUtils.clone((Part)parts.get(((int)10749+(int)(Math.ceil((double)(composedproduct.getDimension().width)/1000d)))+""));
-                 insertLogical(part);
-                 modify(composedproduct){
-                     addProduct(part)
-                 }
+                 composedproduct.addProduct(part);
                 System.out.println("Kabelgoot toegevoegd voor L20");
 
 end

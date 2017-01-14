@@ -380,18 +380,12 @@ public class Parser {
         cable.setName("PVC with open end");
         cable.getProperty(Cable.CABLE_TYPE).setValue("PVCopenend");
         cable.setCode("1");
+        part = new NotExistingPart(cable);
+        part.setId("pvcw1");
+        parts.add(part);
 
 
-         cable = new Cable(new Dimension(null));
-        cable.setName("Mono wit");
-        cable.getProperty(Cable.CABLE_TYPE).setValue("PVCopenend");
-        cable.setCode("1");
 
-
-        cable = new Cable(new Dimension(null));
-        cable.setName("PUR with liniLed PU Connector set");
-        cable.getProperty(Cable.CABLE_TYPE).setValue("PURconnectorset");
-        cable.setCode("7");
 
 
 
@@ -399,6 +393,38 @@ public class Parser {
         cable.setName("PVC with demo connector");
         cable.getProperty(Cable.CABLE_TYPE).setValue("DemoConnector");
         cable.setCode("0");
+        part = new NotExistingPart(cable);
+        part.setId("pvc0dc");
+        parts.add(part);
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("PVC with open end 5 m");
+        cable.setCode("2");
+        part = new NotExistingPart(cable);
+        part.setId("pvc2op5");
+        parts.add(part);
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("PVC with open end 10 m");
+        cable.setCode("3");
+        part = new NotExistingPart(cable);
+        part.setId("pvc3op10");
+        parts.add(part);
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("PUR with open end 1 m");
+        cable.setCode("4");
+        part = new NotExistingPart(cable);
+        part.setId("pur4op1");
+        parts.add(part);
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("PUR with liniLed PU Connector set");
+        cable.getProperty(Cable.CABLE_TYPE).setValue("PURconnectorset");
+        cable.setCode("7");
+        part = new NotExistingPart(cable);
+        part.setId("purw7");
+        parts.add(part);
 
         part = new Part();
         part.setPrice(BigDecimal.valueOf(9.6));
@@ -597,7 +623,7 @@ public class Parser {
 //        "95014","Ingieten liniLED H30 Diffuus","46.50","MTR","","10"
 
 
-        //(DPHN){1}(RGBA|2473456){1}
+        //(DPHN){1}(RGBDA|2473456){1}
         LedStrip ledStrip = new DecoLedStrip(new Dimension(null));
         ledStrip.setName("liniLED Deco rood");
         ledStrip.setMaxDimension(new Dimension(2600));
