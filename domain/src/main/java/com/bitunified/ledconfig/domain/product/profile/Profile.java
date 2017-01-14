@@ -7,7 +7,7 @@ import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(namespace = "com.bitunified.ledconfig.domain.product.profile.Profile")
+
 public class Profile extends RealModel {
 
 

@@ -1,6 +1,7 @@
 package com.bitunified.ledconfig.configuration.csvimport;
 
 
+import com.bitunified.ledconfig.composedproduct.ComposedProduct;
 import com.bitunified.ledconfig.parts.Part;
 import com.bitunified.ledconfig.parts.PartList;
 import org.apache.commons.io.FileUtils;
@@ -190,6 +191,7 @@ public class Importer {
             JAXBContext jc = JAXBContext.newInstance(array.getClass());
             JAXBElement<T[]> topElement = new JAXBElement(new QName(plural), array.getClass(), array);
             Marshaller marshaller = jc.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_NO_NAMESPACE_SCHEMA_LOCATION,true);
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             StringWriter writer = new StringWriter();
             marshaller.marshal(topElement, writer);

@@ -12,7 +12,6 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 
-@XmlRootElement(name = "part", namespace = "com.bitunified.ledconfig.parts.Part")
 public class Part implements Serializable {
 
 

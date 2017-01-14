@@ -45,14 +45,15 @@ public class ImporterTest {
     @Test
     public void writeXml() throws JAXBException {
         Importer importer = new Importer();
-        Parser parser=new Parser();
-        parser.init();
+        Parser parser = new Parser();
+        parser.createParts();
+
 
         //ff f = new ff();
         //f.parts=parser.getParts();
 
         String result=importer.writeXml(new PartList(parser.getParts()));
-
+        System.out.println(result);
           Object parts=  importer.readXml(result);
 
         System.out.println(result);

@@ -149,7 +149,7 @@ public class Parser {
      * "GRIJP","Handleiding","0.70","ST","","10"
      * "GRIJP","Verpakking (per meter)","0.50","ST","","10"
      **/
-    private void createParts()  {
+    public void createParts()  {
 
         //Importer importer=new Importer();
         //parts=importer.importerDozer();
@@ -380,29 +380,67 @@ public class Parser {
         cable.setName("PVC with open end");
         cable.getProperty(Cable.CABLE_TYPE).setValue("PVCopenend");
         cable.setCode("1");
-        part = new Part(cable);
-        part.setPrice(BigDecimal.valueOf(0.31));
-        part.setId("60005");
-        part.setDescription("Kabel RGB Wit");
-        parts.add(part);
+
+
+         cable = new Cable(new Dimension(null));
+        cable.setName("Mono wit");
+        cable.getProperty(Cable.CABLE_TYPE).setValue("PVCopenend");
+        cable.setCode("1");
+
 
         cable = new Cable(new Dimension(null));
         cable.setName("PUR with liniLed PU Connector set");
         cable.getProperty(Cable.CABLE_TYPE).setValue("PURconnectorset");
         cable.setCode("7");
-        part = new Part(cable);
-        part.setPrice(BigDecimal.valueOf(9.6));
-        part.setId("60007");
-        parts.add(part);
+
+
 
         cable = new Cable(new Dimension(null));
         cable.setName("PVC with demo connector");
         cable.getProperty(Cable.CABLE_TYPE).setValue("DemoConnector");
         cable.setCode("0");
-        part = new Part(cable);
+
+        part = new Part();
         part.setPrice(BigDecimal.valueOf(9.6));
         part.setId("60009");
         parts.add(part);
+
+        part = new Part();
+        part.setPrice(BigDecimal.valueOf(0.27));
+        part.setId("60004");
+        part.setDescription("Kabel Mono Wit");
+        parts.add(part);
+//        "60004","Kabel Mono Wit","0.27","MTR","","10"
+
+        part = new Part();
+        part.setPrice(BigDecimal.valueOf(0.31));
+        part.setId("60005");
+        part.setDescription("Kabel RGB Wit");
+        parts.add(part);
+
+//        "60005","Kabel RGB Wit","0.31","MTR","","10"
+
+        part = new Part(cable);
+        part.setPrice(BigDecimal.valueOf(0.9));
+        part.setType("MTR");
+        part.setId("60006");
+        part.setDescription("Kabel Mono PUR");
+        parts.add(part);
+//        "60006","Kabel Mono PUR","0.78","MTR","","10"
+        part = new Part(cable);
+        part.setPrice(BigDecimal.valueOf(0.9));
+        part.setType("MTR");
+        part.setId("60007");
+        part.setDescription("Kabel RGB PUR");
+        parts.add(part);
+//        "60007","Kabel RGB PUR","0.90","MTR","","10"
+
+//        "60010","Kabel Mono PUR M12 Male 1 m","5.42","ST","","10"
+//        "60011","Kabel Mono PUR M12 Male 5 m","8.92","ST","","10"
+//        "60012","Kabel Mono PUR M12 Male 10 m","13.29","ST","","10"
+//        "60013","Kabel RGB PUR M12 Male 1 m","6.63","ST","","10"
+//        "60014","Kabel RGB PUR M12 Male 5 m","10.41","ST","","10"
+//        "60015","Kabel RGB PUR M12 Male 10 m","15.68","ST","","10"
 
         CableEntry cableEntry = new CableEntry();
         cableEntry.setName("Left side via end cap");
@@ -455,7 +493,7 @@ public class Parser {
 
 
 
-        //(GABHPQ){1}
+        //(GABHPQRSTUV){1}
         Covering covering = new Covering(null);
         covering.setName("Geen kap");
         covering.setCode("G");
@@ -483,41 +521,85 @@ public class Parser {
         part.setDescription("Ingieten liniLED L20 Diffuus");
         part.setType("MTR");
         parts.add(part);
+//        "95001","Ingieten liniLED L20 Diffuus","11.50","MTR","","10"
 
-//        "95003","Ingieten liniLED L30 Helder","17.25","MTR","","10"
-//        "95004","Ingieten liniLED L30 Diffuus","17.25","MTR","","10"
-//        "95010","Ingieten liniLED H20 Helder","23.00","MTR","","10"
-//        "95011","Ingieten liniLED H20 Diffuus","23.00","MTR","","10"
-//        "95013","Ingieten liniLED H30 Helder","46.50","MTR","","10"
-//        "95014","Ingieten liniLED H30 Diffuus","46.50","MTR","","10"
+
 
         covering = new Covering(null);
-        covering.setName("Hoge kap diffuus");
+        covering.setName("Hoge kap helder");
         covering.setCode("H");
-        part = new NotExistingPart(covering);
-        part.setId("co4");
+        part = new Part(covering);
+        part.setDescription("Ingieten liniLED L30 Helder");
+        part.setPrice(BigDecimal.valueOf(17.25));
+        part.setType("MTR");
+        part.setId("95003");
         parts.add(part);
 
+        //        "95003","Ingieten liniLED L30 Helder","17.25","MTR","","10"
+
+
         covering = new Covering(null);
-        covering.setName("PU Helder");
+        covering.setName("L30 Diffuus");
         covering.setCode("P");
-        part = new NotExistingPart(covering);
-
-        part.setId("co5");
+        part = new Part(covering);
+        part.setDescription("Ingieten liniLED L30 Diffuus");
+        part.setId("95004");
+        part.setPrice(BigDecimal.valueOf(17.25));
+        part.setType("MTR");
         parts.add(part);
+        //        "95004","Ingieten liniLED L30 Diffuus","17.25","MTR","","10"
+
+
 
         covering = new Covering(null);
-        covering.setName("PU Diffuus");
+        covering.setName("H20 Helder");
         covering.setCode("Q");
         part = new Part(covering);
-        part.setPrice(BigDecimal.valueOf(8.12));
-        part.setId("co6");
+        part.setPrice(BigDecimal.valueOf(23));
+        part.setId("95010");
+        part.setDescription("Ingieten liniLED H20 Helder");
+        part.setType("MTR");
         parts.add(part);
+
+//        "95010","Ingieten liniLED H20 Helder","23.00","MTR","","10"
+
+        covering = new Covering(null);
+        covering.setName("H20 Diffuus");
+        covering.setCode("R");
+        part = new Part(covering);
+        part.setPrice(BigDecimal.valueOf(23));
+        part.setId("95011");
+        part.setDescription("Ingieten liniLED H20 Diffuus");
+        part.setType("MTR");
+        parts.add(part);
+        //        "95011","Ingieten liniLED H20 Diffuus","23.00","MTR","","10"
+
+        covering = new Covering(null);
+        covering.setName("H30 Helder");
+        covering.setCode("S");
+        part = new Part(covering);
+        part.setPrice(BigDecimal.valueOf(46.5));
+        part.setId("95013");
+        part.setDescription("Ingieten liniLED H30 Helder");
+        part.setType("MTR");
+        parts.add(part);
+//        "95013","Ingieten liniLED H30 Helder","46.50","MTR","","10"
+        covering = new Covering(null);
+        covering.setName("H30 Diffuus");
+        covering.setCode("U");
+        part = new Part(covering);
+        part.setPrice(BigDecimal.valueOf(46.5));
+        part.setId("95014");
+        part.setDescription("Ingieten liniLED H30 Diffuus");
+        part.setType("MTR");
+        parts.add(part);
+
+//        "95014","Ingieten liniLED H30 Diffuus","46.50","MTR","","10"
 
 
         //(DPHN){1}(RGBA|2473456){1}
         LedStrip ledStrip = new DecoLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED RGB Deco rood");
+        ledStrip.setName("liniLED Deco rood");
         ledStrip.setMaxDimension(new Dimension(2600));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(DecoLedStrip.COLOR).setValue("rood");
@@ -740,25 +822,8 @@ public class Parser {
 
         //"60000","Dubbelz Tape 6mm tbv PCB (l=50m)","4.71","ST","","10"
 
-//        "60004","Kabel Mono Wit","0.27","MTR","","10"
-//        "60005","Kabel RGB Wit","0.31","MTR","","10"
-//        "60006","Kabel Mono PUR","0.78","MTR","","10"
-//        "60007","Kabel RGB PUR","0.90","MTR","","10"
-//        "60010","Kabel Mono PUR M12 Male 1 m","5.42","ST","","10"
-//        "60011","Kabel Mono PUR M12 Male 5 m","8.92","ST","","10"
-//        "60012","Kabel Mono PUR M12 Male 10 m","13.29","ST","","10"
-//        "60013","Kabel RGB PUR M12 Male 1 m","6.63","ST","","10"
-//        "60014","Kabel RGB PUR M12 Male 5 m","10.41","ST","","10"
-//        "60015","Kabel RGB PUR M12 Male 10 m","15.68","ST","","10"
 
-//        "95000","Ingieten liniLED L20 Helder","11.50","MTR","","10"
-//        "95001","Ingieten liniLED L20 Diffuus","11.50","MTR","","10"
-//        "95003","Ingieten liniLED L30 Helder","17.25","MTR","","10"
-//        "95004","Ingieten liniLED L30 Diffuus","17.25","MTR","","10"
-//        "95010","Ingieten liniLED H20 Helder","23.00","MTR","","10"
-//        "95011","Ingieten liniLED H20 Diffuus","23.00","MTR","","10"
-//        "95013","Ingieten liniLED H30 Helder","46.50","MTR","","10"
-//        "95014","Ingieten liniLED H30 Diffuus","46.50","MTR","","10"
+
 
 
 

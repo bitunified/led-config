@@ -125,6 +125,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       }
 
+        .detail{
+            width:100%;
+        }
     </style>
 
     <div class="main-frame">
@@ -151,7 +154,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                                 <div class="row input-row">
                   <shop-input>
-                    <input type="tel" id="productcode" name="productcode" pattern="C([A-F]){1}([GABHPQ]){1}([DPHN]){1}([RGBA]|[2473456]){1}([1470258369]){1}([1-5])([1-8])(\d{4})((\d{4})?)(([ab])?)+"
+                    <input type="tel" id="productcode" name="productcode" pattern="C([A-F]){1}([GABHPQRSTUV]){1}([DPHN]){1}([RGBA]|[2473456]){1}([1470258369]){1}([1-5])([1-8])(\d{4})((\d{4})?)(([ab])?)+"
                         placeholder="Card Number" required value="CAGDR11102000300a"
                         autocomplete="cc-number">
                     <shop-md-decorator error-message="Ongeldige code" aria-hidden="true">
@@ -188,9 +191,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               <template is="row-detail">
                 <div class="detail">
 
-                  <template is="dom-repeat" items="[[item.msg]]" as="msge">
+                  <template is="dom-repeat" items="[[item.msg]]" as="msge" index-as="msgindex">
+                      <template is="dom-if" if="{{!showFirst(msgindex)}}">
                     <p>[[msge.message]]</p>
-
+                        </template>
                   </template>
                 </div>
               </template>
@@ -623,7 +627,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         response.messageTable=[];
         response.messageTable=messageTable;
           this.partList=response.partList;
-          console.info(this.partList);
         return response;
       },
       _toDataTable:function(obj){
@@ -634,7 +637,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         var cFunc=this._containsError;
 
         Object.keys(obj).map(function(key) {
-          console.info(key);
+
           var isError=false;
             for (var it in obj[key]){
                 if (obj[key][it]!=undefined) {
@@ -649,7 +652,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           var item={"step":key,"msg":obj[key],"error":isError};
           arr.push(item);
         });
-        console.info(arr);
         return arr;
       },
       displayMessage:function(item){

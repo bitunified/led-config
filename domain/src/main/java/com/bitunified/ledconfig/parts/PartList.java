@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.HashSet;
 import java.util.Set;
 
-@XmlRootElement(namespace = "com.bitunified.ledconfig.domain.parts.Part")
+@XmlRootElement(name="partList")
 public class PartList {
     public PartList(){
 

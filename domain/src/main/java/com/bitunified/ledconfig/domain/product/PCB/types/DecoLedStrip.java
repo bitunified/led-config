@@ -7,8 +7,11 @@ import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 
 public class DecoLedStrip extends LedStrip {
     public static final String COLOR = "color";
-    public static final Property COLOR_PROP=new Property(COLOR,"");
+    public final Property COLOR_PROP=new Property(COLOR,"");
 
+    public DecoLedStrip(){
+
+    }
     public DecoLedStrip(Dimension dimension){
         super(dimension);
         addProperty(COLOR_PROP);

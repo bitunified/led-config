@@ -11,7 +11,9 @@ public class PowerLedStrip extends LedStrip {
     public static final String COLOR_TYPE = "color";
     public static final Property COLOR=new Property(COLOR_TYPE,"");
 
+    public PowerLedStrip(){
 
+    }
     public PowerLedStrip(Dimension dimension){
         super(dimension);
         addProperty(KELVIN);

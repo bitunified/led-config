@@ -7,6 +7,9 @@ import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 public class RGBLedStrip extends LedStrip {
 
 
+    public RGBLedStrip(){
+
+    }
     public RGBLedStrip(Dimension dimension){
         super(dimension);
 

@@ -6,14 +6,16 @@ import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.domain.Margin;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
+import com.bitunified.ledconfig.domain.product.accessoires.Accessoire;
 import com.bitunified.ledconfig.domain.product.cable.Cable;
+import com.bitunified.ledconfig.domain.product.cover.types.Resin;
 import com.bitunified.ledconfig.domain.product.profile.Profile;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
-@XmlRootElement(name="realmodel",namespace = "com.bitunified.ledconfig.domain.modeltypes.RealModel")
-@XmlSeeAlso({Profile.class, LedStrip.class, Cable.class, ComposedProduct.class})
+
+@XmlSeeAlso({Profile.class, LedStrip.class, Cable.class, ComposedProduct.class, Accessoire.class})
 public class RealModel extends Model {
     protected Dimension dimension=new Dimension(null,null);
 

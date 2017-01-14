@@ -14,6 +14,7 @@ import com.bitunified.ledconfig.domain.product.cover.types.ResinClear;
 import com.bitunified.ledconfig.domain.product.cover.types.Resin;
 import com.bitunified.ledconfig.domain.product.PCB.types.RGBLedStrip;
 import com.bitunified.ledconfig.domain.product.PCB.types.DecoLedStrip;
+import com.bitunified.ledconfig.domain.product.PCB.types.PowerLedStrip;
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 import com.bitunified.ledconfig.domain.product.cable.Cable;
 import com.bitunified.ledconfig.domain.product.cable.cableconfig.CableEntry;
@@ -51,24 +52,23 @@ end
 
 rule "Totale lengte minimaal"
     when
-        LedStrip(afmetingen:dimension)
-        LedStrip(dimension.width!=null)
-        ComposedProduct(dimension.width!=null)
-        ComposedProduct(dimension.width<(afmetingen.width+15))
+        afm:LedStrip(afmetingen:dimension)
+        exists(LedStrip(dimension.width!=null))
+        exists(ComposedProduct(dimension.width!=null,((int)dimension.width)<(((int)afm.dimension.width+15))))
 
     then
         messages.add(new Message("Totale lengte is groter dan ledstrip lengte inclusief marges.",8,MessageStatus.ERROR));
-
+        System.out.println("TL groter dan ledstrip lengte incl. marges");
 end
 
 rule "Totale lengte is groter dan maximale ledstrip lengte"
     when
         ledstrip:LedStrip(maxDim:maxDimension,maxDimension.width!=null)
-        ComposedProduct(dimension.width!=null,dimension.width<ledstrip.dimension.width)
+        exists(ComposedProduct(dimension.width!=null,dimension.width<ledstrip.dimension.width))
 
     then
-        messages.add(new Message("Totale lengte is groter dan maximale ledstrip lengte.",4,MessageStatus.ERROR));
-
+        messages.add(new Message("Totale lengte is groter dan maximale ledstrip lengte.",3,MessageStatus.ERROR));
+        System.out.println("TL groter dan maximale ledstrip lengte");
 end
 
 rule "Kap en gieting"
@@ -102,6 +102,30 @@ end
            Cable(CABLE_TYPE matches ".*DemoConnector.*");
        then
            messages.add(new Message("Kabel met demo connector kan niet in combinatie met RGB Ledstrip.",4,MessageStatus.ERROR));
+       end
+  rule "Actie: RGB kabel toevoegen"
+  no-loop true
+       when
+           exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value)) or exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value));
+           composedproduct:ComposedProduct()
+       then
+         Part part=SerializationUtils.clone((Part)parts.get("60005"));
+         insertLogical(part);
+                        modify(composedproduct){
+                            addProduct(part)
+                        }
+       end
+  rule "Actie: Andere kabel toevoegen"
+  no-loop true
+       when
+           exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value)) and exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value));
+           composedproduct:ComposedProduct()
+       then
+         Part part=SerializationUtils.clone((Part)parts.get("60004"));
+         insertLogical(part);
+                        modify(composedproduct){
+                            addProduct(part)
+                        }
        end
 
 
