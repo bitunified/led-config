@@ -285,6 +285,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <input type="button" on-click="openDialog" value="Onderdelen">
             </shop-button>
 
+            <paper-dialog id="instructionsDialog" responsive >
+                <h2>Assemblage instructies</h2>
+                <iron-data-table details-enabled items="{{instructions}}" >
+
+
+                    <data-table-column name="Omschrijving">
+                        <template> {{item.message}}</template>
+                    </data-table-column>
+                </iron-data-table>
+                <div class="buttons">
+                    <paper-button dialog-confirm autofocus>OK</paper-button>
+                </div>
+            </paper-dialog>
+            <shop-button responsive id="openInstructionsDialog" >
+                <input type="button" on-click="openDialogInstructions" value="Assemblage instructies">
+            </shop-button>
 
 
           <shop-button responsive>
@@ -364,6 +380,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
          */
         response: Object,
         partList:Array,
+        instructions:Array,
         /**
          * If true, the user must enter a billing address.
          */
@@ -591,6 +608,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         openDialog: function() {
             this.$.dialog.open();
         },
+        openDialogInstructions: function() {
+            this.$.instructionsDialog.open();
+        },
       showFirst:function(ind){
         if (ind==0){
           return true;
@@ -627,6 +647,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         response.messageTable=[];
         response.messageTable=messageTable;
           this.partList=response.partList;
+          this.instructions=response.instructions;
         return response;
       },
       _toDataTable:function(obj){

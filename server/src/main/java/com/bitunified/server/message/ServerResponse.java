@@ -1,6 +1,7 @@
 package com.bitunified.server.message;
 
 
+import com.bitunified.ledconfig.domain.instruction.InstructionMessage;
 import com.bitunified.ledconfig.domain.message.Message;
 import com.bitunified.ledconfig.parts.Part;
 
@@ -14,6 +15,7 @@ public class ServerResponse {
     private String[] messages;
     private Map<Integer,List<Message>> messageMap=new HashMap<>();
     private List<Part> partList=new ArrayList<>();
+    private List<InstructionMessage> instructions;
 
     private Double totalPrice;
 
@@ -71,5 +73,13 @@ public class ServerResponse {
 
     public void setPartList(List<Part> partList) {
         this.partList = partList;
+    }
+
+    public List<InstructionMessage> getInstructions() {
+        return instructions;
+    }
+
+    public void setInstructions(List<InstructionMessage> instructions) {
+        this.instructions = instructions;
     }
 }

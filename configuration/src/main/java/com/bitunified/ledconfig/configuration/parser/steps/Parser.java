@@ -220,7 +220,7 @@ public class Parser {
         parts.add(part);
 
         Mounting mounting = new NoEndCapsMounting();
-        mounting.setName("No end caps");
+        mounting.setName("Geen eindkappen");
         mounting.setCode("1");
         margin = new Margin(2, 2);
         mounting.setMargins(margin);
@@ -231,7 +231,7 @@ public class Parser {
         parts.add(part);
 
         mounting = new EndCapRightMounting();
-        mounting.setName("End cap on right side");
+        mounting.setName("Eindkap aan de rechter zijde");
         margin = new Margin(0, 2);
         mounting.setCode("2");
         mounting.setMargins(margin);
@@ -242,7 +242,7 @@ public class Parser {
         parts.add(part);
 
         mounting = new EndCapBothSidesMounting();
-        mounting.setName("End caps both side");
+        mounting.setName("Eindkappen aan beide zijdes");
         margin = new Margin(2, 2);
         mounting.setCode("4");
         mounting.setMargins(margin);
@@ -254,7 +254,7 @@ public class Parser {
         parts.add(part);
 
         mounting = new EndCapLeftMounting();
-        mounting.setName("End caps left side");
+        mounting.setName("Eindkap aan linkerzijde");
         margin = new Margin(2, 0);
         mounting.setCode("3");
         mounting.setMargins(margin);
@@ -902,7 +902,7 @@ public class Parser {
         parts.add(part);
 
         clip = new Clip();
-        clip.setName("Clip");
+        clip.setName("Accessoire: Clip");
         clip.setCode("a");
         part = new NotExistingPart(clip);
         part.setId("clip");

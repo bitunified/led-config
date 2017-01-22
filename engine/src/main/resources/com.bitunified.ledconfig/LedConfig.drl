@@ -35,14 +35,16 @@ import com.bitunified.ledconfig.parts.Relatable
 import com.bitunified.ledconfig.domain.modeltypes.RealModel
 import com.bitunified.ledconfig.domain.Model
 import com.bitunified.ledconfig.domain.product.mounting.EndCap
+import com.bitunified.ledconfig.domain.instruction.InstructionMessage;
 import java.util.Map
 import java.util.HashMap
 import java.util.TreeMap
 import com.bitunified.ledconfig.domain.Orientation
 import com.bitunified.ledconfig.helpers.EndCapMatchHelper;
 global java.util.List<Message> messages
-global java.util.Map<Part> parts
+global java.util.Map<String,Part> parts
 global java.util.Map<Integer,List<Message>> messageMap
+global java.util.List<InstructionMessage> instructions;
 //Rule with higher priority.
 rule "Totale lengte berekening" salience 1
     when
@@ -317,6 +319,13 @@ rule "Profiel L30 lengte"
                 }
 
               end
+
+
+
+
+
+
+
 //
 //  case '1':                                                                               // Option 1 selected
 //
@@ -363,6 +372,124 @@ rule "Profiel L30 lengte"
 //                break;
 
 
+rule "Actie: Ledstrip PCB toevoegen"
+
+    when
+        composedproduct:ComposedProduct()
+     ledstrip:LedStrip( sect:getProperty(LedStrip.SECTION_WIDTH),sect!=null,ledstripLengte:dimension.width)
+
+    then
+    Part part=null;
+    for (Object p:parts.values()){
+    if (((Part)p).getProduct()!=null && (((Part)p).getProduct()) instanceof LedStrip){
+    LedStrip ls=(LedStrip) (((Part)p).getProduct());
+    if (ls.getCode().equals(ledstrip.getCode())){
+
+       int length=-1*Math.floorDiv(-1*((Integer)ledstripLengte),1000);
+        for (int c=0;c<length;c++){
+         part=SerializationUtils.clone((Part)p);
+          composedproduct.addProduct(part);
+          System.out.println("Ledstrip toegevoegd: "+part);
+           }
+
+         break;
+         }
+        }
+
+    }
+
+
+end
+//    case 'M':
+//
+//                newConfig.UNIT4.partlist.push({Part: 21002, Count: newConfig.steps[6].value / 1000});// Add LED strip
+//
+//                break;
+//
+//            case 'R':
+//
+//                newConfig.UNIT4.partlist.push({Part: 21004, Count: newConfig.steps[6].value / 1000});// Add LED strip
+//
+//                break;
+//
+//            case 'G':
+//
+//                newConfig.UNIT4.partlist.push({Part: 21005, Count: newConfig.steps[6].value / 1000});// Add LED strip
+//
+//                break;
+//
+//            case 'B':
+//
+//                newConfig.UNIT4.partlist.push({Part: 21006, Count: newConfig.steps[6].value / 1000});// Add LED strip
+//
+//                break;
+//
+//            case 'A':
+//
+//                newConfig.UNIT4.partlist.push({Part: 21003, Count: newConfig.steps[6].value / 1000});// Add LED strip
+//
+//                break;
+//
+//            case 'P':
+//
+//                newConfig.UNIT4.partlist.push({Part: 21017, Count: newConfig.steps[6].value / 1000});// Add LED strip
+//
+//                break;
+//
+//            case 'C':
+//
+//                newConfig.UNIT4.partlist.push({Part: 21018, Count: newConfig.steps[6].value / 1000});// Add LED strip
+//
+//                break;
+//
+//            case 'D':
+//
+//                newConfig.UNIT4.partlist.push({Part: 21020, Count: newConfig.steps[6].value / 1000});// Add LED strip
+//
+//                break;
+//
+//            case 'E':
+//
+//                newConfig.UNIT4.partlist.push({Part: 21019, Count: newConfig.steps[6].value / 1000});// Add LED strip
+//
+//                break;
+//
+//            case 'F':
+//
+//                newConfig.UNIT4.partlist.push({Part: 21021, Count: newConfig.steps[6].value / 1000});// Add LED strip
+//
+//                break;
+//
+//            case '1':
+//
+//                newConfig.UNIT4.partlist.push({Part: '21032A', Count: newConfig.steps[6].value / 1000});// Add LED strip
+//
+//                break;
+//
+//            case '2':
+//
+//                newConfig.UNIT4.partlist.push({Part: '21013A', Count: newConfig.steps[6].value / 1000});// Add LED strip
+//
+//                break;
+//
+//            case '3':
+//
+//                newConfig.UNIT4.partlist.push({Part: '21014A', Count: newConfig.steps[6].value / 1000});// Add LED strip
+//
+//                break;
+//
+//            case '4':
+//
+//                newConfig.UNIT4.partlist.push({Part: '21015A', Count: newConfig.steps[6].value / 1000});// Add LED strip
+//
+//                break;
+//
+//            case '6':
+//
+//                newConfig.UNIT4.partlist.push({Part: '21016A', Count: newConfig.steps[6].value / 1000});// Add LED strip
+//
+
+
 rule "Led strip section modulo"
 
     when
@@ -373,7 +500,7 @@ rule "Led strip section modulo"
     messages.add(new Message("Ledstrip lengte moet een veelvoud zijn van sectielengte: "+ledstrip.getProperty(LedStrip.SECTION_WIDTH).getValue(),7,MessageStatus.ERROR));
 
 end
-rule "Aantal clips is evenredig aan lengte L20"
+rule "Actie: Aantal clips is evenredig aan lengte L20"
        no-loop false
            when
 
@@ -392,7 +519,7 @@ rule "Aantal clips is evenredig aan lengte L20"
             System.out.println("Clip toegevoegd voor L20");
            end
 //
-rule "Aantal clips minimaal 2 L20"
+rule "Actie: Aantal clips minimaal 2 L20"
 no-loop true
     when
 
@@ -414,7 +541,7 @@ no-loop true
 
     end
 
-    rule "Aantal clips is evenredig aan lengte L30"
+    rule "Actie: Aantal clips is evenredig aan lengte L30"
            no-loop false
                when
 
@@ -434,7 +561,7 @@ no-loop true
 
                end
 
-    rule "Aantal clips minimaal 2 L30"
+    rule "Actie: Aantal clips minimaal 2 L30"
     no-loop true
         when
 
@@ -458,7 +585,7 @@ no-loop true
         end
 
 
-rule "Kabelgoot op maat voor L20"
+rule "Actie: Kabelgoot op maat voor L20"
 no-loop true
     when
        exists(Profile(name matches ".*L20.*"));
@@ -473,4 +600,38 @@ no-loop true
 
 end
 
+
+
+//            "Zaaglengte profiel (voor gieten): " + ((newConfig.totalLength - (newConfig.steps[4].left + newConfig.steps[4].right)) + newConfig.steps[0].addLengthForCasting) + " mm" +
+//
+//            "</div>" +
+//
+//            "<div>" +
+//
+//            "Zaaglengte profiel na gieten (evt. incl. linker eindkap): " + (newConfig.totalLength - newConfig.steps[4].right) + " mm" +
+//
+//            "</div>" +
+//
+//            "<div>" +
+//
+//            "Eindlengte profiel bij levereing (evt. incl. eindkap of eindkappen): " + (newConfig.totalLength) + " mm" +
+
+rule "Instructie: Zaaglengte profiel"
+no-loop true
+    when
+        Mounting(mountingLeft:margins.left!=null, mountingRight:margins.right!=null)
+        cp:ComposedProduct(dimension.width==null)
+        profile:Profile(castingLength:lengthForCasting.width)
+
+    then
+        int lengthBeforeCasting=cp.getDimension().width-((Integer)mountingLeft+(Integer)mountingRight+profile.getLengthForCasting().width);
+        int lengthAfterCasting=cp.getDimension().width-((Integer)mountingRight);
+        int lengthEnd=cp.getDimension().width;
+        instructions.add(new InstructionMessage("Zaaglengte profiel (voor gieten): "+lengthBeforeCasting));
+        instructions.add(new InstructionMessage("Zaaglengte profiel na gieten (evt. incl. linker eindkap): "+lengthAfterCasting));
+        instructions.add(new InstructionMessage("Eindlengte profiel bij levereing (evt. incl. eindkap of eindkappen): "+lengthEnd));
+
+        System.out.println("Intructies toegevoegd");
+
+end
 

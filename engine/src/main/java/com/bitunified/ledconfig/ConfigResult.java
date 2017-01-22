@@ -1,6 +1,7 @@
 package com.bitunified.ledconfig;
 
 
+import com.bitunified.ledconfig.domain.instruction.InstructionMessage;
 import com.bitunified.ledconfig.domain.message.Message;
 import com.bitunified.ledconfig.parts.Part;
 import org.drools.core.impl.StatefulKnowledgeSessionImpl;
@@ -12,11 +13,13 @@ public class ConfigResult {
     private Map<Integer,List<Message>> messageMap=new HashMap<>();
     private List models=new ArrayList<StatefulKnowledgeSessionImpl.ObjectStoreWrapper>();
     private List<Part> partList;
-    public ConfigResult(List<Message> messages, Map<Integer,List<Message>> messageMap, Collection<?> objects,List<Part> partList) {
+    private List<InstructionMessage> instructions;
+    public ConfigResult(List<Message> messages, Map<Integer,List<Message>> messageMap, Collection<?> objects,List<Part> partList,List<InstructionMessage> instructions) {
         this.messages=messages;
         this.messageMap=messageMap;
         this.models.addAll(objects);
         this.partList=partList;
+        this.instructions=instructions;
     }
 
 
@@ -34,5 +37,9 @@ public class ConfigResult {
 
     public List<Part> getPartList() {
         return partList;
+    }
+
+    public List<InstructionMessage> getInstructions() {
+        return instructions;
     }
 }

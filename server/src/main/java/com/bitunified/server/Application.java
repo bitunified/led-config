@@ -48,6 +48,7 @@ public class Application {
                                 result.setMessageMap(configResult.getMessageMap());
                                 result.setTotalPrice(totalPrice.doubleValue());
                                 result.setPartList(configResult.getPartList());
+                                result.setInstructions(configResult.getInstructions());
                         } finally {
                                 ledConfig.dispose();
                         }

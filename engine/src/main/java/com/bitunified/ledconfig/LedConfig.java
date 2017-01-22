@@ -21,6 +21,7 @@ import com.bitunified.ledconfig.configuration.parser.steps.ParseStep;
 import com.bitunified.ledconfig.configuration.parser.steps.ParsedResult;
 import com.bitunified.ledconfig.configuration.parser.steps.Parser;
 import com.bitunified.ledconfig.domain.Model;
+import com.bitunified.ledconfig.domain.instruction.InstructionMessage;
 import com.bitunified.ledconfig.domain.message.Message;
 import com.bitunified.ledconfig.domain.product.ModelResult;
 import com.bitunified.ledconfig.parts.NotExistingPart;
@@ -77,6 +78,9 @@ public class LedConfig {
         // org/drools/examples/helloworld/HelloWorld.drl file
         List<Message> messages = new ArrayList<Message>();
         ksession.setGlobal("messages", messages);
+
+        List<InstructionMessage> instructions = new ArrayList<>();
+        ksession.setGlobal("instructions", instructions);
 
         Map<Integer, List<Message>> messageMap = new HashMap<>();
         List<Part> partList= new ArrayList<>();
@@ -144,10 +148,10 @@ public class LedConfig {
                     for (Part p:parts.values()){
                         if (!(p instanceof NotExistingPart)) {
                             if (p.getProduct() != null && p.getProduct().equals(m)) {
-                                partList.add(p);
+                                //partList.add(p);
                             }
                             if (p.getConfigModel() != null && p.getConfigModel().equals(m)) {
-                                partList.add(p);
+                                //partList.add(p);
                             }
                         }
                     }
@@ -179,7 +183,7 @@ public class LedConfig {
         ksession.dispose();
         ksession.destroy();
 
-        return new ConfigResult(messages, messageMap, ksession.getObjects(),partList);
+        return new ConfigResult(messages, messageMap, ksession.getObjects(),partList,instructions);
 
     }
 
