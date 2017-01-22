@@ -620,16 +620,16 @@ rule "Instructie: Zaaglengte profiel"
 no-loop true
     when
         Mounting(mountingLeft:margins.left!=null, mountingRight:margins.right!=null)
-        cp:ComposedProduct(dimension.width==null)
-        profile:Profile(castingLength:lengthForCasting.width)
+        cp:ComposedProduct(dimension.width!=null)
+        profile:Profile(castingLength:lengthForCasting.width!=null)
 
     then
         int lengthBeforeCasting=cp.getDimension().width-((Integer)mountingLeft+(Integer)mountingRight+profile.getLengthForCasting().width);
         int lengthAfterCasting=cp.getDimension().width-((Integer)mountingRight);
         int lengthEnd=cp.getDimension().width;
-        instructions.add(new InstructionMessage("Zaaglengte profiel (voor gieten): "+lengthBeforeCasting));
-        instructions.add(new InstructionMessage("Zaaglengte profiel na gieten (evt. incl. linker eindkap): "+lengthAfterCasting));
-        instructions.add(new InstructionMessage("Eindlengte profiel bij levereing (evt. incl. eindkap of eindkappen): "+lengthEnd));
+        instructions.add(new InstructionMessage("Zaaglengte profiel (voor gieten): "+lengthBeforeCasting+" mm"));
+        instructions.add(new InstructionMessage("Zaaglengte profiel na gieten (evt. incl. linker eindkap): "+lengthAfterCasting+" mm"));
+        instructions.add(new InstructionMessage("Eindlengte profiel bij levereing (evt. incl. eindkap of eindkappen): "+lengthEnd+" mm"));
 
         System.out.println("Intructies toegevoegd");
 
