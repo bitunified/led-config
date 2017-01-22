@@ -2,6 +2,7 @@ package com.bitunified.ledconfig.domain;
 
 
 import com.bitunified.ledconfig.domain.description.Descriptive;
+import com.bitunified.ledconfig.parts.Relatable;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.Serializable;
@@ -10,7 +11,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class Model extends Descriptive implements StepConfig,Serializable {
+public class Model extends Relatable implements StepConfig,Serializable {
     private String name="";
 
     private String code;
@@ -86,4 +87,6 @@ public class Model extends Descriptive implements StepConfig,Serializable {
     public void setCode(String code) {
         this.code = code;
     }
+
+
 }

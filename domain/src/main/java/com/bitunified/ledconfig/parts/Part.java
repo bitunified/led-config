@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 
 
 @XmlSeeAlso({NotExistingPart.class})
-public class Part implements Serializable {
+public class Part extends Relatable implements Serializable {
 
 
     private RealModel product;

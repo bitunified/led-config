@@ -20,28 +20,7 @@ import java.util.*;
 public class ImporterTest {
 
 
-    @Test
-    public void test3() throws IOException {
-        Importer importer=new Importer();
-        importer.importerDozer();
-    }
 
-
-    @XmlRootElement
-    class ff {
-        private Set<Part> parts=new HashSet<Part>();
-        ff(){
-
-        }
-
-        public Set<Part> getParts() {
-            return parts;
-        }
-
-        public void setParts(Set<Part> parts) {
-            this.parts = parts;
-        }
-    }
     @Test
     public void writeXml() throws JAXBException {
         Importer importer = new Importer();

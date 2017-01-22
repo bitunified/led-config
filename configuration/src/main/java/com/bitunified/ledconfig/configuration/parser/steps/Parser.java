@@ -4,24 +4,22 @@ package com.bitunified.ledconfig.configuration.parser.steps;
 import com.bitunified.ledconfig.composedproduct.ComposedProduct;
 import com.bitunified.ledconfig.configuration.csvimport.Importer;
 import com.bitunified.ledconfig.configuration.parser.steps.types.*;
-import com.bitunified.ledconfig.domain.Dimension;
-import com.bitunified.ledconfig.domain.Margin;
-import com.bitunified.ledconfig.domain.Model;
+import com.bitunified.ledconfig.domain.*;
 import com.bitunified.ledconfig.domain.product.ModelResult;
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 import com.bitunified.ledconfig.domain.product.PCB.types.DecoLedStrip;
 import com.bitunified.ledconfig.domain.product.PCB.types.HighPowerLedStrip;
-import com.bitunified.ledconfig.domain.product.PCB.types.PhotonLedStrip;
 import com.bitunified.ledconfig.domain.product.PCB.types.PowerLedStrip;
 import com.bitunified.ledconfig.domain.product.accessoires.Accessoire;
 import com.bitunified.ledconfig.domain.product.accessoires.CableChannel;
 import com.bitunified.ledconfig.domain.product.accessoires.Clip;
 import com.bitunified.ledconfig.domain.product.cable.Cable;
 import com.bitunified.ledconfig.domain.product.cable.cableconfig.CableEntry;
+import com.bitunified.ledconfig.domain.product.cable.cableconfig.LeftViaBottomCableEntry;
+import com.bitunified.ledconfig.domain.product.cable.cableconfig.LeftViaEndCapCableEntry;
 import com.bitunified.ledconfig.domain.product.cover.Covering;
-import com.bitunified.ledconfig.domain.product.mounting.Mounting;
+import com.bitunified.ledconfig.domain.product.mounting.*;
 import com.bitunified.ledconfig.domain.product.profile.Profile;
-import com.bitunified.ledconfig.domain.work.Work;
 import com.bitunified.ledconfig.parts.NotExistingPart;
 import com.bitunified.ledconfig.parts.Part;
 import com.bitunified.ledconfig.parts.PartList;
@@ -60,9 +58,9 @@ public class Parser {
         try {
             PartList partList = (PartList) importer.readXml(importer.fileReader());
             parts = partList.getParts();
-            for (Part part:parts){
-                if (part.getProduct() instanceof ComposedProduct){
-                    composedProduct= (ComposedProduct) part.getProduct();
+            for (Part part : parts) {
+                if (part.getProduct() instanceof ComposedProduct) {
+                    composedProduct = (ComposedProduct) part.getProduct();
                 }
             }
         } catch (JAXBException e) {
@@ -149,7 +147,7 @@ public class Parser {
      * "GRIJP","Handleiding","0.70","ST","","10"
      * "GRIJP","Verpakking (per meter)","0.50","ST","","10"
      **/
-    public void createParts()  {
+    public void createParts() {
 
         //Importer importer=new Importer();
         //parts=importer.importerDozer();
@@ -167,6 +165,106 @@ public class Parser {
         part.setDescription("liniLED Aeris Profiel L20 4 m");
         parts.add(part);
 
+        EndCap endCapL20L = new EndCap();
+        endCapL20L.setName("End cap L20");
+
+        Relation profileL20 = new Relation(profile);
+        Part partEndCapL20 = new Part(endCapL20L);
+        profileL20.addRelateTo(partEndCapL20, null);
+        partEndCapL20.setPrice(BigDecimal.valueOf(1.48));
+        partEndCapL20.setId("10900");
+        partEndCapL20.setDescription("liniLED Aeris Eindkap L20");
+        parts.add(partEndCapL20);
+
+        EndCap endCapL20Open = new EndCap();
+        endCapL20Open.setName("End cap open L20");
+
+        Part partEndCapL20Open = new Part(endCapL20Open);
+        profileL20.addRelateTo(partEndCapL20Open, null);
+        partEndCapL20Open.setPrice(BigDecimal.valueOf(1.51));
+        partEndCapL20Open.setId("10901");
+        partEndCapL20Open.setDescription("liniLED Aeris Eindkap L20 O");
+        parts.add(partEndCapL20Open);
+
+
+
+
+
+        CableEntry cableEntry = new LeftViaEndCapCableEntry();
+        cableEntry.setName("Left side via end cap");
+        cableEntry.setCode("1");
+        Margin margin = new Margin(15, 2);
+        cableEntry.setMargins(margin);
+        part = new NotExistingPart(cableEntry);
+        Relation cableEntryMounting = new Relation(cableEntry);
+        cableEntryMounting.addRelateTo(partEndCapL20Open, Orientation.Left);
+        cableEntryMounting.addRelateTo(partEndCapL20, Orientation.Right);
+
+
+        part.setId("ca1");
+        parts.add(part);
+
+
+
+        cableEntry = new LeftViaBottomCableEntry();
+        cableEntry.setName("Left side via bottom");
+        Relation cableEntryLeftViaBottom = new Relation(cableEntry);
+
+        cableEntryLeftViaBottom.addRelateTo(partEndCapL20, null);
+        margin = new Margin(15, 2);
+        cableEntry.setMargins(margin);
+        cableEntry.setCode("2");
+        part = new NotExistingPart(cableEntry);
+
+        part.setId("ca2");
+        parts.add(part);
+
+        Mounting mounting = new NoEndCapsMounting();
+        mounting.setName("No end caps");
+        mounting.setCode("1");
+        margin = new Margin(2, 2);
+        mounting.setMargins(margin);
+        Relation noEndCapMounting = new Relation(mounting);
+        part = new NotExistingPart(mounting);
+        noEndCapMounting.addRelateTo(partEndCapL20, Orientation.Right);
+        part.setId("m1");
+        parts.add(part);
+
+        mounting = new EndCapRightMounting();
+        mounting.setName("End cap on right side");
+        margin = new Margin(0, 2);
+        mounting.setCode("2");
+        mounting.setMargins(margin);
+        Relation endCapRightMounting = new Relation(mounting);
+        part = new NotExistingPart(mounting);
+        endCapRightMounting.addRelateTo(partEndCapL20,Orientation.Right);
+        part.setId("m2");
+        parts.add(part);
+
+        mounting = new EndCapBothSidesMounting();
+        mounting.setName("End caps both side");
+        margin = new Margin(2, 2);
+        mounting.setCode("4");
+        mounting.setMargins(margin);
+        Relation endCapBothSideMounting = new Relation(mounting);
+        part = new NotExistingPart(mounting);
+        //endCapBothSideMounting.addRelateTo(endCapL20L,null);
+        //endCapBothSideMounting.addRelateTo(endCapL20Open,Orientation.Left);
+        part.setId("m4");
+        parts.add(part);
+
+        mounting = new EndCapLeftMounting();
+        mounting.setName("End caps left side");
+        margin = new Margin(2, 0);
+        mounting.setCode("3");
+        mounting.setMargins(margin);
+        Relation endCapLeftSideMounting = new Relation(mounting);
+        part = new NotExistingPart(mounting);
+        endCapLeftSideMounting.addRelateTo(partEndCapL20,Orientation.Left);
+        endCapLeftSideMounting.addRelateTo(partEndCapL20Open,Orientation.Left);
+        part.setId("m3");
+        parts.add(part);
+
         profile = new Profile(new Dimension(null));
         profile.setName("liniLED Aeris Profiel H20");
         profile.setLengthForCasting(new Dimension(25));
@@ -175,7 +273,18 @@ public class Parser {
         part = new Part(profile);
         part.setPrice(BigDecimal.valueOf(11.96));
         part.setId("10717");
-        part.setDescription("liniLED Aeris Profiel L20 4 m");
+        part.setDescription("liniLED Aeris Profiel H20 4 m");
+        parts.add(part);
+
+        EndCap endCapH20 = new EndCap();
+        Relation relationEndCapClosedH20 = new Relation(profile);
+        relationEndCapClosedH20.addRelateTo(part, null);
+        part = new Part(endCapH20);
+        relationEndCapClosedH20.addRelateTo(part, null);
+
+        part.setPrice(BigDecimal.valueOf(1.61));
+        part.setId("10904");
+        part.setDescription("liniLED Aeris Eindkap H20");
         parts.add(part);
 
         profile = new Profile(new Dimension(null));
@@ -199,7 +308,6 @@ public class Parser {
         part.setId("10737");
         part.setDescription("liniLED Aeris Profiel H30 4 m");
         parts.add(part);
-
 
 
         CableChannel cableChannel = new CableChannel(new Dimension(null));
@@ -261,18 +369,6 @@ public class Parser {
 
 
         part = new Part();
-        part.setPrice(BigDecimal.valueOf(1.48));
-        part.setId("10900");
-        part.setDescription("liniLED Aeris Eindkap L20");
-        parts.add(part);
-
-        part = new Part();
-        part.setPrice(BigDecimal.valueOf(1.51));
-        part.setId("10901");
-        part.setDescription("liniLED Aeris Eindkap L20 O");
-        parts.add(part);
-
-        part = new Part();
         part.setPrice(BigDecimal.valueOf(1.55));
         part.setId("10902");
         part.setDescription("liniLED Aeris Eindkap LC20");
@@ -284,11 +380,6 @@ public class Parser {
         part.setDescription("liniLED Aeris Eindkap LC20 O");
         parts.add(part);
 
-        part = new Part();
-        part.setPrice(BigDecimal.valueOf(1.61));
-        part.setId("10904");
-        part.setDescription("liniLED Aeris Eindkap H20");
-        parts.add(part);
 
         part = new Part();
         part.setPrice(BigDecimal.valueOf(1.61));
@@ -385,10 +476,6 @@ public class Parser {
         parts.add(part);
 
 
-
-
-
-
         cable = new Cable(new Dimension(null));
         cable.setName("PVC with demo connector");
         cable.getProperty(Cable.CABLE_TYPE).setValue("DemoConnector");
@@ -468,56 +555,6 @@ public class Parser {
 //        "60014","Kabel RGB PUR M12 Male 5 m","10.41","ST","","10"
 //        "60015","Kabel RGB PUR M12 Male 10 m","15.68","ST","","10"
 
-        CableEntry cableEntry = new CableEntry();
-        cableEntry.setName("Left side via end cap");
-        cableEntry.setCode("1");
-        Margin margin = new Margin(15, 2);
-        cableEntry.setMargins(margin);
-        part = new NotExistingPart(cableEntry);
-        part.setId("ca1");
-        parts.add(part);
-
-        cableEntry = new CableEntry();
-        cableEntry.setName("Left side via bottom");
-        margin = new Margin(15, 2);
-        cableEntry.setMargins(margin);
-        cableEntry.setCode("2");
-        part = new NotExistingPart(cableEntry);
-        part.setId("ca2");
-        parts.add(part);
-
-        Mounting mounting = new Mounting();
-        mounting.setName("No end caps");
-        mounting.setCode("1");
-        margin = new Margin(2, 2);
-        mounting.setMargins(margin);
-        part = new NotExistingPart(mounting);
-        part.setId("m1");
-        parts.add(part);
-
-        mounting = new Mounting();
-        mounting.setName("End cap on right side");
-        margin = new Margin(5, 15);
-        mounting.setCode("2");
-        mounting.setMargins(margin);
-        part = new NotExistingPart(mounting);
-        part.setId("m2");
-        parts.add(part);
-
-        mounting = new Mounting();
-        mounting.setName("End caps both side");
-        margin = new Margin(2, 2);
-        mounting.setCode("4");
-        mounting.setMargins(margin);
-        part = new NotExistingPart(mounting);
-        part.setId("m3");
-        parts.add(part);
-
-
-
-
-
-
 
         //(GABHPQRSTUV){1}
         Covering covering = new Covering(null);
@@ -550,7 +587,6 @@ public class Parser {
 //        "95001","Ingieten liniLED L20 Diffuus","11.50","MTR","","10"
 
 
-
         covering = new Covering(null);
         covering.setName("Hoge kap helder");
         covering.setCode("H");
@@ -574,7 +610,6 @@ public class Parser {
         part.setType("MTR");
         parts.add(part);
         //        "95004","Ingieten liniLED L30 Diffuus","17.25","MTR","","10"
-
 
 
         covering = new Covering(null);
@@ -849,10 +884,6 @@ public class Parser {
         //"60000","Dubbelz Tape 6mm tbv PCB (l=50m)","4.71","ST","","10"
 
 
-
-
-
-
         Clip clip = new Clip();
         clip.setName("liniLED Aeris Clip 20");
 
@@ -879,10 +910,9 @@ public class Parser {
         parts.add(part);
 
 
-
-        composedProduct=new ComposedProduct(null,null);
+        composedProduct = new ComposedProduct(null, null);
         composedProduct.setName("Product lengte");
-        part=new Part(composedProduct);
+        part = new Part(composedProduct);
         part.setId("comp");
         parts.add(part);
 

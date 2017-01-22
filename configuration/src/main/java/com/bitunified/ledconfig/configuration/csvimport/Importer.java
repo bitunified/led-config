@@ -67,59 +67,7 @@ public class Importer {
         }
 
     }
-    public Set<Part> importerDozer() throws IOException{
-        // simple cell processor that creates an Answer with a value
-        final CellProcessor parseAnswer = new CellProcessorAdaptor() {
-            public Object execute(Object value, CsvContext context) {
-                return value;
-            }
-        };
-        final CellProcessor parseAnswer2 = new CellProcessorAdaptor() {
-            public Object execute(Object value, CsvContext context) {
-                return next.execute(Integer.parseInt((String)value),context);
 
-            }
-        };
-        final CellProcessor[] processors = new CellProcessor[] {
-                new Optional(),
-                new Optional(parseAnswer),
-                new Optional(parseAnswer),
-                new Optional(parseAnswer),
-                new Optional(parseAnswer),
-                new ParseInt()
-        };
-
-        // no deep mapping (answers[0].answer) required as we're using a cell processor to create the bean
-        final String[] fieldMapping = {"id", "description","priceStr","type","code"};
-
-        // the indexed mappings need a hint for Dozer to work
-        final Class<?>[] hintTypes = {Part.class,  Part.class, Part.class,Part.class,Part.class};
-
-        ICsvDozerBeanReader beanReader = null;
-        try {
-            String[] mappingFiles=new String[]{"dozerBeanMapping.xml"};
-            DozerBeanMapper dozerMapperBean=new DozerBeanMapper(Arrays.asList(mappingFiles));
-            beanReader = new CsvDozerBeanReader(fileReader(), CsvPreference.STANDARD_PREFERENCE,dozerMapperBean);
-
-            beanReader.getHeader(false); // ignore the header
-            beanReader.configureBeanMapping(Part.class, fieldMapping);
-
-            Set<Part> parts = new HashSet<Part>();
-            Part part;
-            while( (part = beanReader.read(Part.class, processors)) != null ) {
-                System.out.println(String.format("lineNo=%s, rowNo=%s, part=%s", beanReader.getLineNumber(),
-                        beanReader.getRowNumber(), part));
-                parts.add(part);
-            }
-
-            return parts;
-        }
-        finally {
-            if( beanReader != null ) {
-                beanReader.close();
-            }
-        }
-    }
 
 //    public void importFromCSVFile(){
 //        Map<String, String> columnMapping = new HashMap<String, String>();

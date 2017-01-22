@@ -18,7 +18,9 @@ import com.bitunified.ledconfig.domain.product.PCB.types.PowerLedStrip;
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 import com.bitunified.ledconfig.domain.product.cable.Cable;
 import com.bitunified.ledconfig.domain.product.cable.cableconfig.CableEntry;
+import com.bitunified.ledconfig.domain.product.cable.cableconfig.LeftViaEndCapCableEntry;
 import com.bitunified.ledconfig.domain.product.mounting.Mounting;
+import com.bitunified.ledconfig.domain.product.mounting.NoEndCapsMounting;
 import com.bitunified.ledconfig.domain.Property
 import com.bitunified.ledconfig.domain.product.accessoires.Clip
 import com.bitunified.ledconfig.domain.product.accessoires.CableChannel
@@ -28,7 +30,16 @@ import com.bitunified.ledconfig.domain.message.MessageStatus;
 import com.bitunified.ledconfig.domain.product.ModelResult;
 import java.util.ArrayList
 import java.util.List
-import org.apache.commons.lang3.SerializationUtils;
+import org.apache.commons.lang3.SerializationUtils
+import com.bitunified.ledconfig.parts.Relatable
+import com.bitunified.ledconfig.domain.modeltypes.RealModel
+import com.bitunified.ledconfig.domain.Model
+import com.bitunified.ledconfig.domain.product.mounting.EndCap
+import java.util.Map
+import java.util.HashMap
+import java.util.TreeMap
+import com.bitunified.ledconfig.domain.Orientation
+import com.bitunified.ledconfig.helpers.EndCapMatchHelper;
 global java.util.List<Message> messages
 global java.util.Map<Part> parts
 global java.util.Map<Integer,List<Message>> messageMap
@@ -143,17 +154,10 @@ end
            exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value)) or exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value));
            composedproduct:ComposedProduct()
        then
-
+for (int i=0;i<5;i++){
          Part part=SerializationUtils.clone((Part)parts.get("60005"));
          composedproduct.addProduct(part);
-          part=SerializationUtils.clone((Part)parts.get("60005"));
-          composedproduct.addProduct(part);
-         part=SerializationUtils.clone((Part)parts.get("60005"));
-          composedproduct.addProduct(part);
-          part=SerializationUtils.clone((Part)parts.get("60005"));
-        composedproduct.addProduct(part);
-        part=SerializationUtils.clone((Part)parts.get("60005"));
-         composedproduct.addProduct(part);
+          }
         System.out.println("Actie RGB voor type 2");
        end
 
@@ -166,16 +170,10 @@ end
            exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value)) and exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value));
            (composedproduct:ComposedProduct())
        then
+       for (int i=0;i<5;i++){
          Part part=SerializationUtils.clone((Part)parts.get("60004"));
         composedproduct.addProduct(part);
-         part=SerializationUtils.clone((Part)parts.get("60004"));
-         composedproduct.addProduct(part);
-         part=SerializationUtils.clone((Part)parts.get("60004"));
-         composedproduct.addProduct(part);
-          part=SerializationUtils.clone((Part)parts.get("60004"));
-           composedproduct.addProduct(part);
-         part=SerializationUtils.clone((Part)parts.get("60004"));
-        composedproduct.addProduct(part);
+         }
          System.out.println("Actie ander type 2");
        end
  rule "Actie: RGB kabel toevoegen typ 3"
@@ -185,28 +183,12 @@ end
            exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value)) or exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value));
            composedproduct:ComposedProduct()
        then
-
+        for (int i=0;i<10;i++){
          Part part=SerializationUtils.clone((Part)parts.get("60005"));
          composedproduct.addProduct(part);
-          part=SerializationUtils.clone((Part)parts.get("60005"));
-          composedproduct.addProduct(part);
-         part=SerializationUtils.clone((Part)parts.get("60005"));
-          composedproduct.addProduct(part);
-          part=SerializationUtils.clone((Part)parts.get("60005"));
-        composedproduct.addProduct(part);
-        part=SerializationUtils.clone((Part)parts.get("60005"));
-         composedproduct.addProduct(part);
-         part=SerializationUtils.clone((Part)parts.get("60005"));
-                   composedproduct.addProduct(part);
-                  part=SerializationUtils.clone((Part)parts.get("60005"));
-                   composedproduct.addProduct(part);
-                   part=SerializationUtils.clone((Part)parts.get("60005"));
-                 composedproduct.addProduct(part);
-                 part=SerializationUtils.clone((Part)parts.get("60005"));
-                  composedproduct.addProduct(part);
-                   part=SerializationUtils.clone((Part)parts.get("60005"));
-         composedproduct.addProduct(part);
-        System.out.println("Actie RGB voor type 3");
+
+          }
+        System.out.println("Actie RGB voor type 3 10x ");
        end
 
 
@@ -218,28 +200,169 @@ end
            exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value)) and exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value));
            (composedproduct:ComposedProduct())
        then
-         Part part=SerializationUtils.clone((Part)parts.get("60004"));
-        composedproduct.addProduct(part);
-         part=SerializationUtils.clone((Part)parts.get("60004"));
-         composedproduct.addProduct(part);
-         part=SerializationUtils.clone((Part)parts.get("60004"));
-         composedproduct.addProduct(part);
-          part=SerializationUtils.clone((Part)parts.get("60004"));
-           composedproduct.addProduct(part);
-         part=SerializationUtils.clone((Part)parts.get("60004"));
-        composedproduct.addProduct(part);
-         part=SerializationUtils.clone((Part)parts.get("60004"));
-                composedproduct.addProduct(part);
-                 part=SerializationUtils.clone((Part)parts.get("60004"));
-                        composedproduct.addProduct(part);
-                         part=SerializationUtils.clone((Part)parts.get("60004"));
-                                composedproduct.addProduct(part);
-                                 part=SerializationUtils.clone((Part)parts.get("60004"));
-                                        composedproduct.addProduct(part);
-                                         part=SerializationUtils.clone((Part)parts.get("60004"));
-                                                composedproduct.addProduct(part);
-         System.out.println("Actie ander type 3");
+        for (int i=0;i<10;i++){
+            Part part=SerializationUtils.clone((Part)parts.get("60004"));
+            composedproduct.addProduct(part);
+
+       }
+         System.out.println("Actie ander type 3 10x");
        end
+
+
+  rule "Actie: Andere kabel toevoegen type 4 RGB"
+  no-loop true
+       when
+            exists(Cable("4"==code))
+           exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value)) and exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value));
+           (composedproduct:ComposedProduct())
+       then
+         Part part=SerializationUtils.clone((Part)parts.get("60007"));
+        composedproduct.addProduct(part);
+
+         System.out.println("Actie ander type 4 RGB");
+       end
+rule "Actie: Andere kabel toevoegen type 4 Niet RGB"
+  no-loop true
+       when
+            exists(Cable("4"==code))
+           exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value)) and exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value));
+           (composedproduct:ComposedProduct())
+       then
+         Part part=SerializationUtils.clone((Part)parts.get("60006"));
+        composedproduct.addProduct(part);
+
+         System.out.println("Actie ander type 4 Niet RGB");
+       end
+
+rule "Profiel L20 lengte"
+  no-loop true
+       when
+
+            exists(Profile(name matches ".*L20.*"));
+           (composedproduct:ComposedProduct(totalLength:dimension.width))
+
+           profile:Profile(castingLength:lengthForCasting.width)
+           mountingLeft:Mounting(leftMountingLength:margins.left,margins!=null,leftMountingLength!=null)
+           mountingRight:Mounting(rightMountingLength:margins.right,margins!=null,margins.right!=null)
+       then
+         //Profiel lengte
+         int length=-1*Math.floorDiv(-1*(composedproduct.getDimension().width-((int)mountingLeft.getMargins().getLeft()))+profile.getLengthForCasting().width,4000);
+         for (int i=0;i<length;i++){
+         Part part=SerializationUtils.clone((Part)parts.get("10713"));
+        composedproduct.addProduct(part);
+        }
+
+         System.out.println("Profiel lengte L20:"+length);
+       end
+rule "Profiel L30 lengte"
+  no-loop true
+       when
+
+            exists(Profile(name matches ".*L30.*"));
+           (composedproduct:ComposedProduct(totalLength:dimension.width))
+
+           profile:Profile(castingLength:lengthForCasting.width)
+           mountingLeft:Mounting(leftMountingLength:margins.left,margins!=null,leftMountingLength!=null)
+           mountingRight:Mounting(rightMountingLength:margins.right,margins!=null,margins.right!=null)
+       then
+         //Profiel lengte
+         int length=-1*Math.floorDiv(-1*(composedproduct.getDimension().width-((int)mountingLeft.getMargins().getLeft()))+profile.getLengthForCasting().width,4000);
+         for (int i=0;i<length;i++){
+         Part part=SerializationUtils.clone((Part)parts.get("10717"));
+        composedproduct.addProduct(part);
+        }
+
+         System.out.println("Profiel lengte L30:"+length);
+       end
+
+
+       rule "Geen eindkappen montage icm kabeleinde via linker uitgang niet mogelijk"
+         no-loop true
+              when
+              exists(NoEndCapsMounting())
+              exists(LeftViaEndCapCableEntry())
+              then
+               messages.add(new Message("Geen eindkappen montage icm kabeleinde via linker uitgang niet mogelijk.",6,MessageStatus.ERROR));
+               end
+
+       rule "Eindkappen"
+         no-loop true
+              when
+
+
+                  profile:Profile(relations:relation.relateTo,relation!=null)
+                  cableEntry:CableEntry()
+                  mounting:Mounting()
+                  composedproduct:ComposedProduct()
+               then
+
+
+                Map<Orientation,EndCapMatchHelper.EndCapMostWanted> result=EndCapMatchHelper.match(profile,mounting,cableEntry);
+                Part part=null;
+                if (result.get(Orientation.Left).getCount()==result.get(Orientation.Right).getCount()){
+                        part=SerializationUtils.clone((Part)result.get(Orientation.Right).getEndCap());
+                        composedproduct.addProduct(part);
+                        part=SerializationUtils.clone((Part)result.get(Orientation.Left).getEndCap());
+                        composedproduct.addProduct(part);
+                }else{
+                    if (result.get(Orientation.Left).getCount()>result.get(Orientation.Right
+                    ).getCount()){
+                        part=SerializationUtils.clone((Part)result.get(Orientation.Left).getEndCap());
+                        composedproduct.addProduct(part);
+                    }
+                    else{
+                        part=SerializationUtils.clone((Part)result.get(Orientation.Right).getEndCap());
+                        composedproduct.addProduct(part);
+                    }
+                }
+
+              end
+//
+//  case '1':                                                                               // Option 1 selected
+//
+//                newConfig.UNIT4.partlist.push({
+//                    Part: 10713,
+//                    Count: ((newConfig.totalLength - (newConfig.steps[4].left + newConfig.steps[4].right)) + newConfig.steps[0].addLengthForCasting) / 4000
+//                });// Add the profile to the list
+//
+//                Subs = [10900, 10901, 10902, 10903, 10908, 95000, 95001];                           // Load article numbers of end caps and castings
+//
+//                break;
+//
+//            case '2':                                                                               // Option 2 selected
+//
+//                newConfig.UNIT4.partlist.push({
+//                    Part: 10717,
+//                    Count: ((newConfig.totalLength - (newConfig.steps[4].left + newConfig.steps[4].right)) + newConfig.steps[0].addLengthForCasting) / 4000
+//                });// Add the profile to the list
+//
+//                Subs = [10904, 10905, 10906, 10907, 10908, 95010, 95011];                           // Load article numbers of end caps and castings
+//
+//                break;
+//
+//            case '4':                                                                               // Option 4 selected
+//
+//                newConfig.UNIT4.partlist.push({
+//                    Part: 10733,
+//                    Count: ((newConfig.totalLength - (newConfig.steps[4].left + newConfig.steps[4].right)) + newConfig.steps[0].addLengthForCasting) / 4000
+//                });// Add the profile to the list
+//
+//                Subs = [10920, 10921, 10922, 10923, 10928, 95003, 95004];                           // Load article numbers of end caps and castings
+//
+//                break;
+//
+//            case '5':                                                                               // Option 5 selected
+//
+//                newConfig.UNIT4.partlist.push({
+//                    Part: 10737,
+//                    Count: ((newConfig.totalLength - (newConfig.steps[4].left + newConfig.steps[4].right)) + newConfig.steps[0].addLengthForCasting) / 4000
+//                });// Add the profile to the list
+//
+//                Subs = [10924, 10925, 10926, 10927, 10928, 95013, 95014];                           // Load article numbers of end caps and castings
+//
+//                break;
+
+
 rule "Led strip section modulo"
 
     when
