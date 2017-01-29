@@ -146,9 +146,10 @@ public class LedConfig {
                 if (m.getStep() != null && m.getName() != null) {
                     messageMap.get(m.getStep()).add(new Message(m));
                     for (Part p:parts.values()){
+
                         if (!(p instanceof NotExistingPart)) {
                             if (p.getProduct() != null && p.getProduct().equals(m)) {
-                                //partList.add(p);
+                                partList.add(p);
                             }
                             if (p.getConfigModel() != null && p.getConfigModel().equals(m)) {
                                 //partList.add(p);
@@ -168,6 +169,9 @@ public class LedConfig {
 
         }
 
+        for (Part pl:partList){
+            System.out.println("Part from partlist: "+pl.getProduct());
+        }
         for (Message msg : messages) {
             if (msg.getStep() != null) {
                 messageMap.get(msg.getStep()).add(msg);

@@ -131,7 +131,7 @@ end
          Part part=SerializationUtils.clone((Part)parts.get("60005"));
 
          composedproduct.addProduct(part);
-        System.out.println("Actie RGB voor type 1:");
+        System.out.println("Actie RGB voor type kabel."+part);
        end
 
 
@@ -141,11 +141,11 @@ end
        when
             exists(Cable(code!=null,code=="1"))
            exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value)) and exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value));
-           (composedproduct:ComposedProduct())
+           composedproduct:ComposedProduct()
        then
          Part part=SerializationUtils.clone((Part)parts.get("60004"));
         composedproduct.addProduct(part);
-                        System.out.println("Actie ander type 1:");
+                        System.out.println("Actie ander type kabel 1:"+part);
        end
 
 
@@ -160,7 +160,7 @@ for (int i=0;i<5;i++){
          Part part=SerializationUtils.clone((Part)parts.get("60005"));
          composedproduct.addProduct(part);
           }
-        System.out.println("Actie RGB voor type 2");
+        System.out.println("Actie RGB voor type kabel 2");
        end
 
 
@@ -236,6 +236,34 @@ rule "Actie: Andere kabel toevoegen type 4 Niet RGB"
          System.out.println("Actie ander type 4 Niet RGB");
        end
 
+  rule "Actie: Andere kabel toevoegen type 5 RGB"
+  no-loop true
+       when
+            exists(Cable("5"==code))
+           exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value)) and exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value));
+           (composedproduct:ComposedProduct())
+       then
+         for (int i=0;i<5;i++){
+            Part part=SerializationUtils.clone((Part)parts.get("60007"));
+            composedproduct.addProduct(part);
+         }
+         System.out.println("Actie ander type 5 kabel RGB");
+       end
+
+rule "Actie: Andere kabel toevoegen type 5 Niet RGB"
+  no-loop true
+       when
+            exists(Cable("5"==code))
+           exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value)) and exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value));
+           composedproduct:ComposedProduct()
+       then
+        for (int i=0;i<5;i++){
+            Part part=SerializationUtils.clone((Part)parts.get("60006"));
+            composedproduct.addProduct(part);
+        }
+        System.out.println("Actie ander type 5 kabel Niet RGB");
+end
+
 rule "Profiel L20 lengte"
   no-loop true
        when
@@ -270,9 +298,9 @@ rule "Profiel L30 lengte"
          //Profiel lengte
          int length=-1*Math.floorDiv(-1*(composedproduct.getDimension().width-((int)mountingLeft.getMargins().getLeft()))+profile.getLengthForCasting().width,4000);
          for (int i=0;i<length;i++){
-         Part part=SerializationUtils.clone((Part)parts.get("10717"));
-        composedproduct.addProduct(part);
-        }
+            Part part=SerializationUtils.clone((Part)parts.get("10717"));
+            composedproduct.addProduct(part);
+         }
 
          System.out.println("Profiel lengte L30:"+length);
        end
@@ -290,31 +318,33 @@ rule "Profiel L30 lengte"
        rule "Eindkappen"
          no-loop true
               when
-
-
-                  profile:Profile(relations:relation.relateTo,relation!=null)
+                  profile:Profile()
                   cableEntry:CableEntry()
                   mounting:Mounting()
                   composedproduct:ComposedProduct()
                then
 
-
+                System.out.println("Start matching");
                 Map<Orientation,EndCapMatchHelper.EndCapMostWanted> result=EndCapMatchHelper.match(profile,mounting,cableEntry);
                 Part part=null;
                 if (result.get(Orientation.Left).getCount()==result.get(Orientation.Right).getCount()){
                         part=SerializationUtils.clone((Part)result.get(Orientation.Right).getEndCap());
                         composedproduct.addProduct(part);
+                        System.out.println("Part Eindkap:"+part);
                         part=SerializationUtils.clone((Part)result.get(Orientation.Left).getEndCap());
                         composedproduct.addProduct(part);
+                        System.out.println("Part Eindkap:"+part);
                 }else{
                     if (result.get(Orientation.Left).getCount()>result.get(Orientation.Right
                     ).getCount()){
                         part=SerializationUtils.clone((Part)result.get(Orientation.Left).getEndCap());
                         composedproduct.addProduct(part);
+                        System.out.println("Part Eindkap:"+part);
                     }
                     else{
                         part=SerializationUtils.clone((Part)result.get(Orientation.Right).getEndCap());
                         composedproduct.addProduct(part);
+                        System.out.println("Part Eindkap:"+part);
                     }
                 }
 
@@ -494,10 +524,10 @@ rule "Led strip section modulo"
 
     when
 
-     ledstrip:LedStrip( sect:getProperty(LedStrip.SECTION_WIDTH),sect!=null,(sect.value % ledstrip.dimension.width)!=0)
+     ledstrip:LedStrip( sect:getProperty(LedStrip.SECTION_WIDTH),sect!=null,(ledstrip.dimension.width % sect.value)!=0)
     then
 
-    messages.add(new Message("Ledstrip lengte moet een veelvoud zijn van sectielengte: "+ledstrip.getProperty(LedStrip.SECTION_WIDTH).getValue(),7,MessageStatus.ERROR));
+    messages.add(new Message("Ledstrip lengte "+ledstrip.getDimension().width+" moet een veelvoud zijn van sectielengte: "+ledstrip.getProperty(LedStrip.SECTION_WIDTH).getValue(),7,MessageStatus.ERROR));
 
 end
 rule "Actie: Aantal clips is evenredig aan lengte L20"
@@ -512,13 +542,10 @@ rule "Actie: Aantal clips is evenredig aan lengte L20"
            then
 
             Part part=SerializationUtils.clone((Part)parts.get("10890"));
+            composedproduct.addProduct(part);
+            System.out.println("Clip toegevoegd voor L20 "+c);
+end
 
-            modify(composedproduct){
-                addProduct(part)
-            }
-            System.out.println("Clip toegevoegd voor L20");
-           end
-//
 rule "Actie: Aantal clips minimaal 2 L20"
 no-loop true
     when
