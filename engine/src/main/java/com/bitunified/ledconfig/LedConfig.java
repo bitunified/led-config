@@ -149,7 +149,8 @@ public class LedConfig {
 
                         if (!(p instanceof NotExistingPart)) {
                             if (p.getProduct() != null && p.getProduct().equals(m)) {
-                                partList.add(p);
+                                //System.out.println("Add to partList: "+p);
+                                //partList.add(p);
                             }
                             if (p.getConfigModel() != null && p.getConfigModel().equals(m)) {
                                 //partList.add(p);
@@ -170,7 +171,9 @@ public class LedConfig {
         }
 
         for (Part pl:partList){
-            System.out.println("Part from partlist: "+pl.getProduct());
+            if (pl!=null) {
+                System.out.println("Part from partlist: " + pl.getProduct() + " " + pl);
+            }
         }
         for (Message msg : messages) {
             if (msg.getStep() != null) {

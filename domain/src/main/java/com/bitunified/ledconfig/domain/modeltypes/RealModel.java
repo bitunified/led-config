@@ -8,27 +8,27 @@ import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 import com.bitunified.ledconfig.domain.product.accessoires.Accessoire;
 import com.bitunified.ledconfig.domain.product.cable.Cable;
-import com.bitunified.ledconfig.domain.product.cover.types.Resin;
+import com.bitunified.ledconfig.domain.product.mounting.EndCap;
 import com.bitunified.ledconfig.domain.product.profile.Profile;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
-@XmlSeeAlso({Profile.class, LedStrip.class, Cable.class, ComposedProduct.class, Accessoire.class})
+@XmlSeeAlso({Profile.class, LedStrip.class, Cable.class, ComposedProduct.class, Accessoire.class, EndCap.class})
 public class RealModel extends Model {
-    protected Dimension dimension=new Dimension(null,null);
+    protected Dimension dimension = new Dimension(null, null);
 
     private Dimension maxDimension;
 
 
-    private Margin margin=new Margin();
+    private Margin margin = new Margin();
 
-    public RealModel(){
+    public RealModel() {
 
     }
+
     public RealModel(Dimension dimension) {
-        this.dimension=dimension;
+        this.dimension = dimension;
     }
 
     public Dimension getDimension() {
@@ -39,8 +39,8 @@ public class RealModel extends Model {
         return maxDimension;
     }
 
-    public void setDimension(Dimension dimension){
-        this.dimension=dimension;
+    public void setDimension(Dimension dimension) {
+        this.dimension = dimension;
     }
 
     public void setMaxDimension(Dimension maxDimension) {
@@ -53,14 +53,15 @@ public class RealModel extends Model {
     }
 
     public void setLeftSpace(String leftSpace) {
-        if (this.margin==null){
-            this.margin=new Margin();
+        if (this.margin == null) {
+            this.margin = new Margin();
         }
         this.margin.setLeft(Integer.parseInt(leftSpace));
     }
+
     public void setLeftSpace(Integer leftSpace) {
-        if (this.margin==null){
-            this.margin=new Margin();
+        if (this.margin == null) {
+            this.margin = new Margin();
         }
         this.margin.setLeft(leftSpace);
     }
@@ -76,6 +77,7 @@ public class RealModel extends Model {
     public void setRightSpace(Integer rightSpace) {
         this.margin.setRight(rightSpace);
     }
+
     public Margin getMargin() {
         return margin;
     }

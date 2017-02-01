@@ -1,12 +1,16 @@
 package com.bitunified.ledconfig.parts;
 
 
+import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.Orientation;
 import com.bitunified.ledconfig.domain.Relation;
 
+import javax.xml.bind.annotation.XmlSeeAlso;
+
+@XmlSeeAlso({Model.class,Part.class})
 public class Relatable {
 
-    private Relation relates;
+    private Relation relates=new Relation();
 
     private Orientation orientation;
 
@@ -25,4 +29,6 @@ public class Relatable {
     public void setOrientation(Orientation orientation) {
         this.orientation = orientation;
     }
+
+
 }

@@ -1,28 +1,29 @@
 package com.bitunified.ledconfig.domain;
 
 
-import com.bitunified.ledconfig.domain.description.Descriptive;
+import com.bitunified.ledconfig.domain.modeltypes.ConfigurationModel;
+import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 import com.bitunified.ledconfig.parts.Relatable;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import javax.xml.bind.annotation.XmlSeeAlso;
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class Model extends Relatable implements StepConfig,Serializable {
-    private String name="";
+@XmlSeeAlso({RealModel.class, ConfigurationModel.class})
+public class Model extends Relatable implements StepConfig, Serializable {
+    private String name = "";
 
     private String code;
     private Integer step;
 
-    private Map<String,Property> properies=new HashMap<String,Property>();
+    private Map<String, Property> properies = new HashMap<String, Property>();
 
 
-
-    public Property addProperty(Property property){
-        this.properies.put(property.getName(),property);
+    public Property addProperty(Property property) {
+        this.properies.put(property.getName(), property);
         return property;
     }
 
@@ -44,10 +45,10 @@ public class Model extends Relatable implements StepConfig,Serializable {
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return ToStringBuilder.reflectionToString(this);
     }
+
     @Override
     public Integer getStep() {
         return step;

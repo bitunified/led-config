@@ -69,29 +69,6 @@ public class Importer {
     }
 
 
-//    public void importFromCSVFile(){
-//        Map<String, String> columnMapping = new HashMap<String, String>();
-//        columnMapping.put("id", "id");
-//        columnMapping.put("description", "description");
-//        columnMapping.put("price", "price");
-//        columnMapping.put("type", "type");
-//        HeaderColumnNameTranslateMappingStrategy<Part> strategy =
-//                new HeaderColumnNameTranslateMappingStrategy<Part>();
-//        strategy.setType(Part.class);
-//        strategy.setColumnMapping(columnMapping);
-//
-//
-//        CsvToBean<Part> csv = new CsvToBean<Part>();
-//        try {
-//
-//
-//            List list = csv.parse(strategy, fileReader());
-//            System.out.println(list);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//    }
     public Reader fileReader() throws IOException {
         File tempFile= File.createTempFile("tmp","ddr");
         URL url=new URL("http://localhost:8080/server/dataPartsImport.xml");

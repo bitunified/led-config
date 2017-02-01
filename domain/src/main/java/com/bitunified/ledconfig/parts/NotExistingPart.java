@@ -7,4 +7,6 @@ public class NotExistingPart extends Part {
     public NotExistingPart(Model model) {
         this.setConfigModel(model);
     }
+
+    public NotExistingPart(){}
 }

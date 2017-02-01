@@ -46,6 +46,8 @@ global java.util.Map<String,Part> parts
 global java.util.Map<Integer,List<Message>> messageMap
 global java.util.List<InstructionMessage> instructions;
 //Rule with higher priority.
+
+
 rule "Totale lengte berekening" salience 1
     when
 
@@ -57,6 +59,10 @@ rule "Totale lengte berekening" salience 1
     then
         int totalLength=(int)mountingLeft+(int)mountingRight+(int)ledstripLength+(int)cableEntryLeft+(int)cableEntryRight;
         cp.getDimension().width=totalLength;
+        modify(cp){
+        getDimension().width=totalLength
+        }
+
         //List<Message> msgs=((List<Message>)messageMap.get(8));
 
         ((((List<Message>)(messageMap.get(8))))).add(new Message("Totale lengte automatisch berekend: "+totalLength+" mm."));
@@ -101,14 +107,6 @@ rule "Minimale lengte groter dan section lengte"
         messages.add(new Message("Lengte ledstrip kan niet kleiner zijn dan sectie lengte."));
 end
 
-//rule "Kabeltype moet overeenkomen met PCB type"
-//    when
-//        exists(DecoLedStrip());
-//        not(Cable(TYPE matches ".*2-aderig.*"));
-//    then
-//        messages.add(new Message("Let op: kabeltype past niet bij PCB."));
-//    end
-
    rule "Kabeltype demo connector mag niet in combinatie met RGB Ledstrip"
        when
            exists(RGBLedStrip());
@@ -118,7 +116,26 @@ end
        end
 
 
+  rule "Actie: Profiel toevoegen"
+  no-loop true
+       when
+            profile:Profile()
+           composedproduct:ComposedProduct()
+       then
 
+            for (Object p:parts.values()){
+            if (((Part)p).getProduct()!=null){
+                if (((Part)p).getProduct().getName().equalsIgnoreCase(profile.getName())){
+                    Part part=SerializationUtils.clone((Part)p);
+                    //composedproduct.addProduct(part);
+                    System.out.println("Actie: profiel toegevoegd: "+part);
+                          break;
+                }
+                }
+            }
+
+
+       end
 
   rule "Actie: RGB kabel toevoegen"
   no-loop true
@@ -319,13 +336,13 @@ rule "Profiel L30 lengte"
          no-loop true
               when
                   profile:Profile()
-                  cableEntry:CableEntry()
+                  not(exists(LeftViaEndCapCableEntry()))
                   mounting:Mounting()
                   composedproduct:ComposedProduct()
                then
 
                 System.out.println("Start matching");
-                Map<Orientation,EndCapMatchHelper.EndCapMostWanted> result=EndCapMatchHelper.match(profile,mounting,cableEntry);
+                Map<Orientation,EndCapMatchHelper.EndCapMostWanted> result=EndCapMatchHelper.match(profile,mounting);
                 Part part=null;
                 if (result.get(Orientation.Left).getCount()==result.get(Orientation.Right).getCount()){
                         part=SerializationUtils.clone((Part)result.get(Orientation.Right).getEndCap());
@@ -531,42 +548,25 @@ rule "Led strip section modulo"
 
 end
 rule "Actie: Aantal clips is evenredig aan lengte L20"
-       no-loop false
+salience -1
+       no-loop true
            when
 
-               exists(Profile(name matches ".*L20.*"));
-               exists(Clip())
+               exists(Profile(name matches ".*L20.*")) and exists(Clip())
                composedproduct:ComposedProduct(dimension.width!=null);
-               c:Long(longValue<((int)composedproduct.dimension.width/500),((int)composedproduct.dimension.width/500)>=(int)2) from accumulate( i : Part( product!=null,product.class==Clip.class ) from composedproduct.products, count(i) )
 
            then
+            int c=(int)composedproduct.getDimension().width/500;
+            if (c<2){
+            c=2;
+            }
+            for (int i=0;i<c;i++){
+                Part part=SerializationUtils.clone((Part)parts.get("10890"));
+                        composedproduct.addProduct(part);
+                        System.out.println("Clip toegevoegd voor L20 ");
+            }
 
-            Part part=SerializationUtils.clone((Part)parts.get("10890"));
-            composedproduct.addProduct(part);
-            System.out.println("Clip toegevoegd voor L20 "+c);
 end
-
-rule "Actie: Aantal clips minimaal 2 L20"
-no-loop true
-    when
-
-        exists(Profile(name matches ".*L20.*")) and exists(Clip())
-        composedproduct:ComposedProduct(dimension.width!=null);
-        eval((int)((composedproduct.getDimension().width)/(int)500)<(int)2);
-
-    then
-
-     Part part=SerializationUtils.clone((Part)parts.get("10890"));
-
-            composedproduct.addProduct(part);
-
-            part=SerializationUtils.clone((Part)parts.get("10890"));
-            composedproduct.addProduct(part);
-
-
-            System.out.println("Clip 2x toegevoegd voor L20");
-
-    end
 
     rule "Actie: Aantal clips is evenredig aan lengte L30"
            no-loop false
@@ -575,41 +575,22 @@ no-loop true
                    exists(Profile(name matches ".*L30.*"));
                    exists(Clip())
                    composedproduct:ComposedProduct(dimension.width!=null);
-                   c:Long(longValue<((int)composedproduct.dimension.width/500),((int)composedproduct.dimension.width/500)>=(int)2) from accumulate( i : Part( product!=null,product.class==Clip.class ) from composedproduct.products, count(i) )
 
                then
-
+ int c=(int)composedproduct.getDimension().width/500;
+            if (c<2){
+            c=2;
+            }
+            for (int i=0;i<c;i++){
                 Part part=SerializationUtils.clone((Part)parts.get("10891"));
 
                        composedproduct.addProduct(part);
 
                        System.out.println("Clip toegevoegd voor L30");
-
+}
 
                end
 
-    rule "Actie: Aantal clips minimaal 2 L30"
-    no-loop true
-        when
-
-            exists(Profile(name matches ".*L30.*"));
-            exists(Clip())
-            composedproduct:ComposedProduct(dimension.width!=null);
-            eval((int)((composedproduct.getDimension().width)/500)<(int)2);
-
-        then
-
-         Part part=SerializationUtils.clone((Part)parts.get("10891"));
-
-                composedproduct.addProduct(part);
-
-                part=SerializationUtils.clone((Part)parts.get("10891"));
-
-                 composedproduct.addProduct(part);
-
-                System.out.println("Clip 2x toegevoegd voor L30");
-
-        end
 
 
 rule "Actie: Kabelgoot op maat voor L20"
@@ -645,6 +626,7 @@ end
 
 rule "Instructie: Zaaglengte profiel"
 no-loop true
+salience -9
     when
         Mounting(mountingLeft:margins.left!=null, mountingRight:margins.right!=null)
         cp:ComposedProduct(dimension.width!=null)
@@ -662,3 +644,19 @@ no-loop true
 
 end
 
+rule "Print"
+salience -10
+    when
+
+        mt:Mounting()
+       ce:CableEntry()
+       ls:LedStrip()
+        cp:ComposedProduct()
+
+    then
+        System.out.println("Totale lengte LedStrip:"+ls.getDimension().width);
+        System.out.println("Totale lengte:"+cp.getDimension().width);
+        System.out.println("Margins mounting:"+mt.getMargins());
+        System.out.println("Margins CableEntry:"+ce.getMargins());
+
+end

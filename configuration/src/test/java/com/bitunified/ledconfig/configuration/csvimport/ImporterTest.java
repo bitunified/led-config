@@ -31,7 +31,7 @@ public class ImporterTest {
         //ff f = new ff();
         //f.parts=parser.getParts();
 
-        String result=importer.writeXml(new PartList(parser.getParts()));
+        String result=importer.writeXml(new PartList(parser.getParts(),parser.getRelations()));
         System.out.println(result);
           Object parts=  importer.readXml(result);
 

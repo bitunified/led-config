@@ -10,24 +10,26 @@ import com.bitunified.ledconfig.domain.product.profile.Profile;
 import com.bitunified.ledconfig.parts.Part;
 import com.bitunified.ledconfig.parts.Relatable;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class EndCapMatchHelper {
 
-    private static void findEndCapsFromModel(List<Part> endCaps,Model model,Orientation orientation){
-        System.out.println(model);
-        if (model.getRelation()!=null && model.getRelation().getRelatableMap().get(orientation)!=null) {
-            for (Relatable relation : model.getRelation().getRelatableMap().get(orientation)) {
+    private static void findEndCapsFromModel(Set<Part> endCaps, Model model, Orientation orientation){
+        System.out.println("Match model:"+model);
+        if (model.getRelation()!=null ) {
+            Set<Relatable> relations=null;
+            if (orientation==Orientation.Left){
+                relations=model.getRelation().getRelateToLeft();
+            }else{
+                relations=model.getRelation().getRelateToRight();
+            }
+            for (Relatable relation : relations) {
                 if (relation instanceof Part) {
-
+                    System.out.println("Product: "+((Part) relation).getProduct());
                     if (((Part) relation).getProduct() != null && (((Part) relation).getProduct() instanceof EndCap)) {
 
 
                         endCaps.add( (Part) relation);
-                        System.out.println(orientation.toString() + " End cap " + model.getClass().getSimpleName().toString() + ": " + relation);
 
                     }
                 }
@@ -36,7 +38,7 @@ public class EndCapMatchHelper {
             }
         }
     }
-    private static EndCapMostWanted findMatches(List<Part> endCaps,Orientation orientation){
+    private static EndCapMostWanted findMatches(Set<Part> endCaps,Orientation orientation){
         Map<Part, Integer> map = new HashMap<Part, Integer>();
 
         for (Part temp : endCaps) {
@@ -75,9 +77,9 @@ public class EndCapMatchHelper {
             return endCap;
         }
     }
-    public static Map<Orientation,EndCapMostWanted> match(Profile profile, Mounting mounting, CableEntry cableEntry){
-        List<Part> endCapsLeft = new ArrayList<>();
-        List<Part> endCapsRight = new ArrayList<>();
+    public static Map<Orientation,EndCapMostWanted> match(Profile profile, Mounting mounting){
+        Set<Part> endCapsLeft = new HashSet<>();
+        Set<Part> endCapsRight = new HashSet<>();
 
         findEndCapsFromModel(endCapsLeft,profile,Orientation.Left);
         findEndCapsFromModel(endCapsRight,profile,Orientation.Right);
@@ -85,8 +87,6 @@ public class EndCapMatchHelper {
         findEndCapsFromModel(endCapsLeft,mounting,Orientation.Left);
         findEndCapsFromModel(endCapsRight,mounting,Orientation.Right);
 
-        findEndCapsFromModel(endCapsLeft,cableEntry,Orientation.Left);
-        findEndCapsFromModel(endCapsRight,cableEntry,Orientation.Right);
 
         EndCapMostWanted mostWantedLeft=findMatches(endCapsLeft,Orientation.Left);
         EndCapMostWanted mostWantedRight=findMatches(endCapsRight,Orientation.Right);
