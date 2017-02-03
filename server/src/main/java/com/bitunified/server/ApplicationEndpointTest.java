@@ -5,12 +5,12 @@ import org.junit.Assert;
 import org.junit.Test;
 
 
-public class ApplicationTest {
+public class ApplicationEndpointTest {
 
     @Test
     public void test(){
-        Application application=new Application();
-        ServerResponse response=application.input("B13714D02000219a");
+        ApplicationEndpoint applicationEndpoint =new ApplicationEndpoint();
+        ServerResponse response= applicationEndpoint.input("B13714D02000219a");
         Assert.assertEquals(response.getTotalPrice(),new Double(36));
     }
 }

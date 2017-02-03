@@ -145,7 +145,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             <header class="subsection" visible="true">
               <h1>Productcode opgeven</h1>
-              <span>Bijv.:CAGDR11102000300a</span>
+              <span>Bijv.:CAGDR12102000300a</span>
             </header>
 
             <div class="subsection grid" visible="true">
@@ -155,7 +155,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 <div class="row input-row">
                   <shop-input>
                     <input type="tel" id="productcode" name="productcode" pattern="C([A-F]){1}([GABHPQRSTUV]){1}([DPHN]){1}([RGBDA]|[2473456]){1}([1470258369]){1}([1-5])([1-8])(\d{4})((\d{4})?)(([ab])?)+"
-                        placeholder="Card Number" required value="CAGDR11102000300a"
+                        placeholder="Card Number" required value="CAGDR12102000300a"
                         autocomplete="cc-number">
                     <shop-md-decorator error-message="Ongeldige code" aria-hidden="true">
                       <label for="productcode">Productcode</label>
@@ -241,21 +241,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               </data-table-column>
             </iron-data-table>
 
-
-          <template is="dom-if" if="[[!response.messages.length]]">
+            <template is="dom-if" if="[[!success]]">
+                De configuratie bevat fouten. Corrigeer de configuratie.
+            </template>
+          <template is="dom-if" if="[[success]]">
             De productcode is correct.
           </template>
           <template is="dom-repeat" items="[[response.messages]]">
             <p>[[item]]</p>
           </template>
 
-
+            <template is="dom-if" if="[[success]]">
           <table>
 
 
               <tr><td>Totaal</td>
               <td>€ [[response.totalPrice]]</td></tr>
           </table>
+                </template>
 
 
 
@@ -275,16 +278,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <data-table-column name="Omschrijving">
                         <template> {{item.description}}</template>
                     </data-table-column>
+                    <data-table-column name="Aantal">
+                        <template> {{item.count}}</template>
+                    </data-table-column>
                 </iron-data-table>
                 <div class="buttons">
                     <paper-button dialog-confirm autofocus>OK</paper-button>
                 </div>
             </paper-dialog>
 
+            <template is="dom-if" if="[[success]]">
             <shop-button responsive id="openDialog" >
                 <input type="button" on-click="openDialog" value="Onderdelen">
             </shop-button>
-
+            </template>
             <paper-dialog id="instructionsDialog" responsive >
                 <h2>Assemblage instructies</h2>
                 <iron-data-table details-enabled items="{{instructions}}" >
@@ -298,10 +305,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <paper-button dialog-confirm autofocus>OK</paper-button>
                 </div>
             </paper-dialog>
+
+            <template is="dom-if" if="[[success]]">
             <shop-button responsive id="openInstructionsDialog" >
                 <input type="button" on-click="openDialogInstructions" value="Assemblage instructies">
             </shop-button>
-
+            </template>
 
           <shop-button responsive>
             <a href="/validate">Terug</a>
@@ -381,6 +390,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         response: Object,
         partList:Object,
         instructions:Array,
+          success:Boolean,
         /**
          * If true, the user must enter a billing address.
          */
@@ -642,13 +652,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         return false;
       },
         _transformPartList:function(partCountList){
+            var partList=[];
             Object.keys(partCountList).map(function(key) {
-                for (var o in partCountList[key]){
-                    console.info(partCountList[key][o]);
-                }
+
+                var obj=partCountList[key];
+                var newPart={id:obj.part.id,description:obj.part.description,count:obj.count};
+                partList.push(newPart);
+
             });
+            return partList;
         },
       _transformResponse:function(response){
+          if(response.success==='true'){
+              this.success=Boolean(true);
+          }else{
+              this.success=Boolean(false);
+          }
 
         var messageTable=this._toDataTable(response.messageMap);
         response.messageTable=[];

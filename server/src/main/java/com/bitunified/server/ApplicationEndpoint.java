@@ -5,8 +5,6 @@ import com.bitunified.ledconfig.LedConfig;
 import com.bitunified.ledconfig.PriceCalculator;
 import com.bitunified.ledconfig.domain.message.Message;
 import com.bitunified.server.message.ServerResponse;
-import org.glassfish.jersey.jackson.JacksonFeature;
-import org.glassfish.jersey.server.ResourceConfig;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -15,13 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Path("/engine")
-public class Application extends ResourceConfig {
+public class ApplicationEndpoint {
 
-public Application(){
-    this.packages("com.bitunified.server")
-            .register(ObjectMapperProvider.class)  // No need to register this provider if no special configuration is required.
-            .register(JacksonFeature.class);
-}
+    public ApplicationEndpoint() {
+
+    }
 
     @POST
     @Path("/data")
@@ -29,7 +25,7 @@ public Application(){
     public ServerResponse input(@FormParam("productcode") String number) {
         LedConfig ledConfig = new LedConfig();
         PriceCalculator priceCalculator = new PriceCalculator();
-        ServerResponse result = new ServerResponse("false");
+        ServerResponse result = new ServerResponse("true");
         if (number != null && number.length() > 4) {
             try {
                 ConfigResult configResult = ledConfig.rules(new String[]{number});
@@ -42,9 +38,9 @@ public Application(){
                 result.setMessages(clientMessages.toArray(new String[]{}));
                 result.setMessageMap(configResult.getMessageMap());
                 result.setTotalPrice(totalPrice.doubleValue());
-                result.setPartList(configResult.getPartList());
+                result.addPartList(configResult.getPartList());
                 result.setInstructions(configResult.getInstructions());
-                if (configResult.getMessageMap().isEmpty() && configResult.getMessages().isEmpty()) {
+                if (!configResult.getMessages().isEmpty()) {
                     result.setSuccess("false");
                     result.setTotalPrice(0d);
                 }

@@ -777,7 +777,7 @@ public class Parser {
         ledStrip.setName("liniLED Deco rood");
         ledStrip.setMaxDimension(new Dimension(2600));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
-        ledStrip.getProperty(DecoLedStrip.COLOR).setValue("rood");
+        ledStrip.getProperty(LedStrip.COLOR_TYPE).setValue("rood");
         ledStrip.setCode("DR");
         part = new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(7.8));
@@ -790,7 +790,7 @@ public class Parser {
         ledStrip.setName("liniLED RGB Deco");
         ledStrip.setMaxDimension(new Dimension(2600));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
-        ledStrip.getProperty(DecoLedStrip.COLOR).setValue("rgb");
+        ledStrip.getProperty(LedStrip.COLOR_TYPE).setValue("rgb");
         ledStrip.setCode("DD");
         part = new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(15));
@@ -804,7 +804,7 @@ public class Parser {
         ledStrip.setName("liniLED Deco groen");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(100);
-        ledStrip.getProperty(DecoLedStrip.COLOR).setValue("groen");
+        ledStrip.getProperty(LedStrip.COLOR_TYPE).setValue("groen");
         ledStrip.setCode("PG");
         part = new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(10.5));
@@ -818,7 +818,7 @@ public class Parser {
         ledStrip.setName("liniLED Deco blauw");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(100);
-        ledStrip.getProperty(DecoLedStrip.COLOR).setValue("blauw");
+        ledStrip.getProperty(LedStrip.COLOR_TYPE).setValue("blauw");
         ledStrip.setCode("PB");
         part = new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(10.5));
@@ -833,7 +833,7 @@ public class Parser {
         ledStrip.setName("liniLED Deco amber");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(100);
-        ledStrip.getProperty(DecoLedStrip.COLOR).setValue("amber");
+        ledStrip.getProperty(LedStrip.COLOR_TYPE).setValue("amber");
         ledStrip.setCode("PA");
         part = new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(7.8));
@@ -1023,6 +1023,54 @@ public class Parser {
         part.setDescription("Clip.");
         parts.add(part);
 
+        Part arbeid=new Part();
+        arbeid.setId("ARBEID");
+        arbeid.setDescription("Arbeidsminuut intern magazijn");
+        arbeid.setPrice(BigDecimal.valueOf(0.59));
+        arbeid.setType("MINUUT");
+        parts.add(arbeid);
+
+        Part tule=new Part();
+        tule.setId("GRIJP_KTULE_EINDKAP");
+        tule.setDescription("Kabeltule t.b.v. eindkap");
+        tule.setPrice(BigDecimal.valueOf(0.07));
+        tule.setType("ST");
+        parts.add(tule);
+
+         tule=new Part();
+        tule.setId("GRIJP_KTULE_ALU_ZWART");
+        tule.setDescription("Kabeltule t.b.v. ALU zwart");
+        tule.setPrice(BigDecimal.valueOf(0.07));
+        tule.setType("ST");
+        parts.add(tule);
+
+        tule=new Part();
+        tule.setId("GRIJP_KTULE_ALU_WIT");
+        tule.setDescription("Kabeltule t.b.v. ALU wit");
+        tule.setPrice(BigDecimal.valueOf(0.11));
+        tule.setType("ST");
+        parts.add(tule);
+
+        Part sticker=new Part();
+        sticker.setId("GRIJP_PSTICKER");
+        sticker.setDescription("Productsticker");
+        sticker.setPrice(BigDecimal.valueOf(0.25));
+        sticker.setType("ST");
+        parts.add(sticker);
+
+        Part handleiding=new Part();
+        handleiding.setId("HANDLEIDING");
+        handleiding.setDescription("Handleiding");
+        handleiding.setPrice(BigDecimal.valueOf(0.70));
+        handleiding.setType("ST");
+        parts.add(handleiding);
+
+        Part verpakking=new Part();
+        verpakking.setId("VERPAKKING");
+        verpakking.setDescription("Verpakking");
+        verpakking.setPrice(BigDecimal.valueOf(0.50));
+        verpakking.setType("ST");
+        parts.add(verpakking);
 
         composedProduct = new ComposedProduct(null, null);
         composedProduct.setName("Product lengte");

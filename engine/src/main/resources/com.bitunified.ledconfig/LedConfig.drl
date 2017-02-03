@@ -98,7 +98,7 @@ rule "Kap en gieting"
 
     when
         Resin()
-        DecoLedStrip(COLOR_PROP.value=="ROOD")
+        DecoLedStrip(COLOR.value=="ROOD")
     then
         messages.add(new Message("Rood met giethars niet mogelijk"));
 
@@ -145,9 +145,8 @@ end
   no-loop true
        when
             exists(Cable(code!=null,code=="1"))
-           exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value)) or exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value));
-           composedproduct:ComposedProduct()
-       then
+           exists(LedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"==color.value))
+        then
 
          Part part=SerializationUtils.clone((Part)parts.get("60005"));
          PartListHelper.addToPartCountList(partCountList,part,1d);
@@ -160,7 +159,7 @@ end
   no-loop true
        when
             exists(Cable(code!=null,code=="1"))
-           exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value)) and exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value));
+           exists(LedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"!=color.value));
        then
          Part part=SerializationUtils.clone((Part)parts.get("60004"));
          PartListHelper.addToPartCountList(partCountList,part,1d);
@@ -172,7 +171,7 @@ end
   no-loop true
        when
             exists(Cable(code!=null,code=="2"))
-           exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value)) or exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value));
+           exists(DecoLedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"==color.value));
            composedproduct:ComposedProduct()
        then
          Part part=SerializationUtils.clone((Part)parts.get("60005"));
@@ -186,7 +185,7 @@ end
   no-loop true
        when
             exists(Cable("2"==code))
-           exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value)) and exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value));
+           exists(DecoLedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"!=color.value));
        then
             Part part=SerializationUtils.clone((Part)parts.get("60004"));
              PartListHelper.addToPartCountList(partCountList,part,5d);
@@ -196,7 +195,7 @@ end
   no-loop true
        when
             exists(Cable(code!=null,code=="3"))
-           exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value)) or exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value));
+           exists(DecoLedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"==color.value));
 
        then
          Part part=SerializationUtils.clone((Part)parts.get("60005"));
@@ -209,8 +208,8 @@ end
   rule "Actie: Andere kabel toevoegen type 3"
   no-loop true
        when
-            exists(Cable("3"==code))
-           exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value)) and exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value));
+           exists(Cable("3"==code))
+           exists(DecoLedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"!=color.value));
        then
 
             Part part=SerializationUtils.clone((Part)parts.get("60004"));
@@ -223,7 +222,7 @@ end
   no-loop true
        when
             exists(Cable("4"==code))
-           exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value)) and exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value));
+           exists(DecoLedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"==color.value));
        then
          Part part=SerializationUtils.clone((Part)parts.get("60007"));
         PartListHelper.addToPartCountList(partCountList,part,1d);
@@ -233,7 +232,7 @@ rule "Actie: Andere kabel toevoegen type 4 Niet RGB"
   no-loop true
        when
             exists(Cable("4"==code))
-           exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value)) and exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value));
+           exists(DecoLedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"!=color.value));
        then
          Part part=SerializationUtils.clone((Part)parts.get("60006"));
          PartListHelper.addToPartCountList(partCountList,part,1d);
@@ -245,7 +244,7 @@ rule "Actie: Andere kabel toevoegen type 4 Niet RGB"
   no-loop true
        when
             exists(Cable("5"==code))
-           exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value)) and exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value));
+           exists(DecoLedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"==color.value))
 
        then
 
@@ -258,7 +257,7 @@ rule "Actie: Andere kabel toevoegen type 5 Niet RGB"
   no-loop true
        when
             exists(Cable("5"==code))
-           exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value)) and exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value));
+           exists(DecoLedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"!=color.value))
 
        then
 
@@ -488,6 +487,43 @@ no-loop true
     System.out.println("Tape length: "+length+" "+ledstrip.getDimension().width);
 end
 
+rule "Actie: Arbeidsminuten toevoegen"
+  no-loop true
+       when
+            eval(true)
+
+       then
+
+            Part part=SerializationUtils.clone((Part)parts.get("ARBEID"));
+            PartListHelper.addToPartCountList(partCountList,part,15d);
+        System.out.println("Arbeid toevoegd.");
+end
+
+rule "Actie: Handleiding toevoegen"
+  no-loop true
+       when
+            eval(true)
+
+       then
+
+            Part part=SerializationUtils.clone((Part)parts.get("HANDLEIDING"));
+            PartListHelper.addToPartCountList(partCountList,part,1d);
+        System.out.println("Handleiding toevoegd.");
+end
+
+
+rule "Actie: Verpakking toevoegen"
+  no-loop true
+       when
+            eval(true)
+            composedproduct:ComposedProduct()
+
+       then
+            double length=(composedproduct.getDimension().width/1000d)+0.25d;
+            Part part=SerializationUtils.clone((Part)parts.get("VERPAKKING"));
+            PartListHelper.addToPartCountList(partCountList,part,length);
+        System.out.println("Verpakking toevoegd.");
+end
 
 rule "Instructie: Zaaglengte profiel"
 no-loop true

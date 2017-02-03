@@ -1,13 +1,35 @@
 package com.bitunified.ledconfig;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 
 public class LedConfigTest {
 
+
+    //CABDD1473000b
+
     @Test
-    public void testConfig(){
-        String[] args=new String[]{"CABDD1473000b"};
+    public void testConfig1(){
+        String[] codes=new String[]{
+                "CABDD1473000b",
+                "CAGDR11102000300a"};
+        for (String code:codes) {
+            execute(code);
+        }
+     }
+
+     private void execute(String code){
+         String[] args=new String[]{"CABDD1473000b"};
+         LedConfig ledConfig=new LedConfig();
+         ConfigResult result=ledConfig.rules(args);
+         System.out.println(result.getMessages());
+         System.out.println(result.getModels());
+     }
+    @Ignore
+    @Test
+    public void testConfig2(){
+        String[] args=new String[]{"CAGDR11102000300a"};
         LedConfig ledConfig=new LedConfig();
         ConfigResult result=ledConfig.rules(args);
         System.out.println(result.getMessages());

@@ -3,19 +3,24 @@ package com.bitunified.server.message;
 
 import com.bitunified.ledconfig.domain.instruction.InstructionMessage;
 import com.bitunified.ledconfig.domain.message.Message;
+import com.bitunified.ledconfig.domain.message.PartCount;
 import com.bitunified.ledconfig.parts.Part;
-import com.bitunified.ledconfig.parts.SimplePart;
 
-import java.math.BigDecimal;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ServerResponse {
     private String success;
 
     private String errorMessage;
     private String[] messages;
-    private Map<Integer,List<Message>> messageMap=new HashMap<>();
-    private Map<SimplePart,Double> partList=new HashMap<>();
+    private Map<Integer, List<Message>> messageMap = new HashMap<>();
+
+    private List<PartCount> partList=new ArrayList<PartCount>();
+
+
     private List<InstructionMessage> instructions;
 
     private Double totalPrice;
@@ -52,12 +57,12 @@ public class ServerResponse {
         return messageMap;
     }
 
-    public void setMessageMap(Map<Integer,List<Message>> messagesMap) {
+    public void setMessageMap(Map<Integer, List<Message>> messagesMap) {
 
 //        for (Map.Entry message:messagesMap.entrySet()){
 //            messageMap.put((Integer)message.getKey(),((Message)message.getValue()).getMessage());
 //        }
-    this.messageMap=messagesMap;
+        this.messageMap = messagesMap;
     }
 
     public void setTotalPrice(Double totalPrice) {
@@ -68,13 +73,20 @@ public class ServerResponse {
         return totalPrice;
     }
 
-    public Map<SimplePart,Double> getPartList() {
+
+    public List<PartCount> getPartList() {
         return partList;
     }
 
-    public void setPartList(Map<Part,Double> partList) {
-        for (Part p:partList.keySet()){
-            this.partList.put(new SimplePart(p.getPrice().doubleValue(),p.getDescription()), partList.get(p));
+    public void setPartList(List<PartCount> partList) {
+        this.partList = partList;
+    }
+
+    public void addPartList(Map<Part, Double> partList) {
+        for (Part p : partList.keySet()) {
+            if (p != null && p.getPrice() != null) {
+                this.partList.add(new PartCount( p,partList.get(p)));
+            }
         }
 
     }
