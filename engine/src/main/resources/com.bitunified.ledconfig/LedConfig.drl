@@ -15,6 +15,7 @@ import com.bitunified.ledconfig.domain.product.cover.types.Resin;
 import com.bitunified.ledconfig.domain.product.PCB.types.RGBLedStrip;
 import com.bitunified.ledconfig.domain.product.PCB.types.DecoLedStrip;
 import com.bitunified.ledconfig.domain.product.PCB.types.PowerLedStrip;
+import com.bitunified.ledconfig.domain.product.PCB.types.HighPowerLedStrip;
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 import com.bitunified.ledconfig.domain.product.cable.Cable;
 import com.bitunified.ledconfig.domain.product.cable.cableconfig.CableEntry;
@@ -40,11 +41,14 @@ import java.util.Map
 import java.util.HashMap
 import java.util.TreeMap
 import com.bitunified.ledconfig.domain.Orientation
-import com.bitunified.ledconfig.helpers.EndCapMatchHelper;
+import com.bitunified.ledconfig.helpers.PartMatchHelper
+import com.bitunified.ledconfig.domain.product.cover.Covering
+import com.bitunified.ledconfig.helpers.PartListHelper;
 global java.util.List<Message> messages
 global java.util.Map<String,Part> parts
 global java.util.Map<Integer,List<Message>> messageMap
 global java.util.List<InstructionMessage> instructions;
+global java.util.Map<Part,Double> partCountList;
 //Rule with higher priority.
 
 
@@ -146,8 +150,7 @@ end
        then
 
          Part part=SerializationUtils.clone((Part)parts.get("60005"));
-
-         composedproduct.addProduct(part);
+         PartListHelper.addToPartCountList(partCountList,part,1d);
         System.out.println("Actie RGB voor type kabel."+part);
        end
 
@@ -158,11 +161,10 @@ end
        when
             exists(Cable(code!=null,code=="1"))
            exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value)) and exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value));
-           composedproduct:ComposedProduct()
        then
          Part part=SerializationUtils.clone((Part)parts.get("60004"));
-        composedproduct.addProduct(part);
-                        System.out.println("Actie ander type kabel 1:"+part);
+         PartListHelper.addToPartCountList(partCountList,part,1d);
+         System.out.println("Actie ander type kabel 1:"+part);
        end
 
 
@@ -173,11 +175,9 @@ end
            exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value)) or exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value));
            composedproduct:ComposedProduct()
        then
-for (int i=0;i<5;i++){
          Part part=SerializationUtils.clone((Part)parts.get("60005"));
-         composedproduct.addProduct(part);
-          }
-        System.out.println("Actie RGB voor type kabel 2");
+         PartListHelper.addToPartCountList(partCountList,part,5d);
+         System.out.println("Actie RGB voor type kabel 2");
        end
 
 
@@ -187,12 +187,9 @@ for (int i=0;i<5;i++){
        when
             exists(Cable("2"==code))
            exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value)) and exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value));
-           (composedproduct:ComposedProduct())
        then
-       for (int i=0;i<5;i++){
-         Part part=SerializationUtils.clone((Part)parts.get("60004"));
-        composedproduct.addProduct(part);
-         }
+            Part part=SerializationUtils.clone((Part)parts.get("60004"));
+             PartListHelper.addToPartCountList(partCountList,part,5d);
          System.out.println("Actie ander type 2");
        end
  rule "Actie: RGB kabel toevoegen typ 3"
@@ -200,14 +197,11 @@ for (int i=0;i<5;i++){
        when
             exists(Cable(code!=null,code=="3"))
            exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value)) or exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value));
-           composedproduct:ComposedProduct()
-       then
-        for (int i=0;i<10;i++){
-         Part part=SerializationUtils.clone((Part)parts.get("60005"));
-         composedproduct.addProduct(part);
 
-          }
-        System.out.println("Actie RGB voor type 3 10x ");
+       then
+         Part part=SerializationUtils.clone((Part)parts.get("60005"));
+         PartListHelper.addToPartCountList(partCountList,part,5d);
+         System.out.println("Actie RGB voor type 3 10x ");
        end
 
 
@@ -217,13 +211,10 @@ for (int i=0;i<5;i++){
        when
             exists(Cable("3"==code))
            exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value)) and exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value));
-           (composedproduct:ComposedProduct())
        then
-        for (int i=0;i<10;i++){
-            Part part=SerializationUtils.clone((Part)parts.get("60004"));
-            composedproduct.addProduct(part);
 
-       }
+            Part part=SerializationUtils.clone((Part)parts.get("60004"));
+           PartListHelper.addToPartCountList(partCountList,part,10d);
          System.out.println("Actie ander type 3 10x");
        end
 
@@ -233,11 +224,9 @@ for (int i=0;i<5;i++){
        when
             exists(Cable("4"==code))
            exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value)) and exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value));
-           (composedproduct:ComposedProduct())
        then
          Part part=SerializationUtils.clone((Part)parts.get("60007"));
-        composedproduct.addProduct(part);
-
+        PartListHelper.addToPartCountList(partCountList,part,1d);
          System.out.println("Actie ander type 4 RGB");
        end
 rule "Actie: Andere kabel toevoegen type 4 Niet RGB"
@@ -245,10 +234,9 @@ rule "Actie: Andere kabel toevoegen type 4 Niet RGB"
        when
             exists(Cable("4"==code))
            exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value)) and exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value));
-           (composedproduct:ComposedProduct())
        then
          Part part=SerializationUtils.clone((Part)parts.get("60006"));
-        composedproduct.addProduct(part);
+         PartListHelper.addToPartCountList(partCountList,part,1d);
 
          System.out.println("Actie ander type 4 Niet RGB");
        end
@@ -258,12 +246,11 @@ rule "Actie: Andere kabel toevoegen type 4 Niet RGB"
        when
             exists(Cable("5"==code))
            exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value)) and exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"==color.value));
-           (composedproduct:ComposedProduct())
+
        then
-         for (int i=0;i<5;i++){
+
             Part part=SerializationUtils.clone((Part)parts.get("60007"));
-            composedproduct.addProduct(part);
-         }
+            PartListHelper.addToPartCountList(partCountList,part,5d);
          System.out.println("Actie ander type 5 kabel RGB");
        end
 
@@ -272,39 +259,32 @@ rule "Actie: Andere kabel toevoegen type 5 Niet RGB"
        when
             exists(Cable("5"==code))
            exists(DecoLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value)) and exists(PowerLedStrip(color:getProperty(DecoLedStrip.COLOR),color!=null,"rgb"!=color.value));
-           composedproduct:ComposedProduct()
+
        then
-        for (int i=0;i<5;i++){
+
             Part part=SerializationUtils.clone((Part)parts.get("60006"));
-            composedproduct.addProduct(part);
-        }
+            PartListHelper.addToPartCountList(partCountList,part,5d);
         System.out.println("Actie ander type 5 kabel Niet RGB");
 end
 
 rule "Profiel L20 lengte"
   no-loop true
        when
-
             exists(Profile(name matches ".*L20.*"));
            (composedproduct:ComposedProduct(totalLength:dimension.width))
-
            profile:Profile(castingLength:lengthForCasting.width)
            mountingLeft:Mounting(leftMountingLength:margins.left,margins!=null,leftMountingLength!=null)
            mountingRight:Mounting(rightMountingLength:margins.right,margins!=null,margins.right!=null)
        then
          //Profiel lengte
-         int length=-1*Math.floorDiv(-1*(composedproduct.getDimension().width-((int)mountingLeft.getMargins().getLeft()))+profile.getLengthForCasting().width,4000);
-         for (int i=0;i<length;i++){
+         double length=((composedproduct.getDimension().width-((int)mountingLeft.getMargins().getLeft()))+profile.getLengthForCasting().width/4000d);
          Part part=SerializationUtils.clone((Part)parts.get("10713"));
-        composedproduct.addProduct(part);
-        }
-
+         PartListHelper.addToPartCountList(partCountList,part,length);
          System.out.println("Profiel lengte L20:"+length);
        end
 rule "Profiel L30 lengte"
   no-loop true
        when
-
             exists(Profile(name matches ".*L30.*"));
            (composedproduct:ComposedProduct(totalLength:dimension.width))
 
@@ -314,10 +294,9 @@ rule "Profiel L30 lengte"
        then
          //Profiel lengte
          int length=-1*Math.floorDiv(-1*(composedproduct.getDimension().width-((int)mountingLeft.getMargins().getLeft()))+profile.getLengthForCasting().width,4000);
-         for (int i=0;i<length;i++){
+
             Part part=SerializationUtils.clone((Part)parts.get("10717"));
-            composedproduct.addProduct(part);
-         }
+            PartListHelper.addToPartCountList(partCountList,part,Double.valueOf(length));
 
          System.out.println("Profiel lengte L30:"+length);
        end
@@ -338,29 +317,28 @@ rule "Profiel L30 lengte"
                   profile:Profile()
                   not(exists(LeftViaEndCapCableEntry()))
                   mounting:Mounting()
-                  composedproduct:ComposedProduct()
                then
 
                 System.out.println("Start matching");
-                Map<Orientation,EndCapMatchHelper.EndCapMostWanted> result=EndCapMatchHelper.match(profile,mounting);
+                Map<Orientation,PartMatchHelper.PartMostWanted> result=PartMatchHelper.match(EndCap.class,null,profile,mounting);
                 Part part=null;
                 if (result.get(Orientation.Left).getCount()==result.get(Orientation.Right).getCount()){
-                        part=SerializationUtils.clone((Part)result.get(Orientation.Right).getEndCap());
-                        composedproduct.addProduct(part);
+                        part=SerializationUtils.clone((Part)result.get(Orientation.Right).getPart());
+                        PartListHelper.addToPartCountList(partCountList,part,1d);
                         System.out.println("Part Eindkap:"+part);
-                        part=SerializationUtils.clone((Part)result.get(Orientation.Left).getEndCap());
-                        composedproduct.addProduct(part);
+                        part=SerializationUtils.clone((Part)result.get(Orientation.Left).getPart());
+                        PartListHelper.addToPartCountList(partCountList,part,1d);
                         System.out.println("Part Eindkap:"+part);
                 }else{
                     if (result.get(Orientation.Left).getCount()>result.get(Orientation.Right
                     ).getCount()){
-                        part=SerializationUtils.clone((Part)result.get(Orientation.Left).getEndCap());
-                        composedproduct.addProduct(part);
+                        part=SerializationUtils.clone((Part)result.get(Orientation.Left).getPart());
+                        PartListHelper.addToPartCountList(partCountList,part,1d);
                         System.out.println("Part Eindkap:"+part);
                     }
                     else{
-                        part=SerializationUtils.clone((Part)result.get(Orientation.Right).getEndCap());
-                        composedproduct.addProduct(part);
+                        part=SerializationUtils.clone((Part)result.get(Orientation.Right).getPart());
+                        PartListHelper.addToPartCountList(partCountList,part,1d);
                         System.out.println("Part Eindkap:"+part);
                     }
                 }
@@ -368,55 +346,16 @@ rule "Profiel L30 lengte"
               end
 
 
+ rule "Eindkappen voor Kabelaansluiting: Left side via Endcap"
+         no-loop true
+              when
+                  profile:Profile()
+                  exists(LeftViaEndCapCableEntry())
+                  mounting:Mounting()
+                  composedproduct:ComposedProduct()
+               then
 
-
-
-
-
-//
-//  case '1':                                                                               // Option 1 selected
-//
-//                newConfig.UNIT4.partlist.push({
-//                    Part: 10713,
-//                    Count: ((newConfig.totalLength - (newConfig.steps[4].left + newConfig.steps[4].right)) + newConfig.steps[0].addLengthForCasting) / 4000
-//                });// Add the profile to the list
-//
-//                Subs = [10900, 10901, 10902, 10903, 10908, 95000, 95001];                           // Load article numbers of end caps and castings
-//
-//                break;
-//
-//            case '2':                                                                               // Option 2 selected
-//
-//                newConfig.UNIT4.partlist.push({
-//                    Part: 10717,
-//                    Count: ((newConfig.totalLength - (newConfig.steps[4].left + newConfig.steps[4].right)) + newConfig.steps[0].addLengthForCasting) / 4000
-//                });// Add the profile to the list
-//
-//                Subs = [10904, 10905, 10906, 10907, 10908, 95010, 95011];                           // Load article numbers of end caps and castings
-//
-//                break;
-//
-//            case '4':                                                                               // Option 4 selected
-//
-//                newConfig.UNIT4.partlist.push({
-//                    Part: 10733,
-//                    Count: ((newConfig.totalLength - (newConfig.steps[4].left + newConfig.steps[4].right)) + newConfig.steps[0].addLengthForCasting) / 4000
-//                });// Add the profile to the list
-//
-//                Subs = [10920, 10921, 10922, 10923, 10928, 95003, 95004];                           // Load article numbers of end caps and castings
-//
-//                break;
-//
-//            case '5':                                                                               // Option 5 selected
-//
-//                newConfig.UNIT4.partlist.push({
-//                    Part: 10737,
-//                    Count: ((newConfig.totalLength - (newConfig.steps[4].left + newConfig.steps[4].right)) + newConfig.steps[0].addLengthForCasting) / 4000
-//                });// Add the profile to the list
-//
-//                Subs = [10924, 10925, 10926, 10927, 10928, 95013, 95014];                           // Load article numbers of end caps and castings
-//
-//                break;
+               end
 
 
 rule "Actie: Ledstrip PCB toevoegen"
@@ -431,110 +370,17 @@ rule "Actie: Ledstrip PCB toevoegen"
     if (((Part)p).getProduct()!=null && (((Part)p).getProduct()) instanceof LedStrip){
     LedStrip ls=(LedStrip) (((Part)p).getProduct());
     if (ls.getCode().equals(ledstrip.getCode())){
-
-       int length=-1*Math.floorDiv(-1*((Integer)ledstripLengte),1000);
-        for (int c=0;c<length;c++){
+       double length=((Integer)ledstripLengte)/1000d;
          part=SerializationUtils.clone((Part)p);
-          composedproduct.addProduct(part);
-          System.out.println("Ledstrip toegevoegd: "+part);
-           }
-
-         break;
-         }
+         PartListHelper.addToPartCountList(partCountList,part,length);
+          System.out.println("Ledstrip toegevoegd,lengte: "+length+": "+part);
+          }
         }
 
     }
 
 
 end
-//    case 'M':
-//
-//                newConfig.UNIT4.partlist.push({Part: 21002, Count: newConfig.steps[6].value / 1000});// Add LED strip
-//
-//                break;
-//
-//            case 'R':
-//
-//                newConfig.UNIT4.partlist.push({Part: 21004, Count: newConfig.steps[6].value / 1000});// Add LED strip
-//
-//                break;
-//
-//            case 'G':
-//
-//                newConfig.UNIT4.partlist.push({Part: 21005, Count: newConfig.steps[6].value / 1000});// Add LED strip
-//
-//                break;
-//
-//            case 'B':
-//
-//                newConfig.UNIT4.partlist.push({Part: 21006, Count: newConfig.steps[6].value / 1000});// Add LED strip
-//
-//                break;
-//
-//            case 'A':
-//
-//                newConfig.UNIT4.partlist.push({Part: 21003, Count: newConfig.steps[6].value / 1000});// Add LED strip
-//
-//                break;
-//
-//            case 'P':
-//
-//                newConfig.UNIT4.partlist.push({Part: 21017, Count: newConfig.steps[6].value / 1000});// Add LED strip
-//
-//                break;
-//
-//            case 'C':
-//
-//                newConfig.UNIT4.partlist.push({Part: 21018, Count: newConfig.steps[6].value / 1000});// Add LED strip
-//
-//                break;
-//
-//            case 'D':
-//
-//                newConfig.UNIT4.partlist.push({Part: 21020, Count: newConfig.steps[6].value / 1000});// Add LED strip
-//
-//                break;
-//
-//            case 'E':
-//
-//                newConfig.UNIT4.partlist.push({Part: 21019, Count: newConfig.steps[6].value / 1000});// Add LED strip
-//
-//                break;
-//
-//            case 'F':
-//
-//                newConfig.UNIT4.partlist.push({Part: 21021, Count: newConfig.steps[6].value / 1000});// Add LED strip
-//
-//                break;
-//
-//            case '1':
-//
-//                newConfig.UNIT4.partlist.push({Part: '21032A', Count: newConfig.steps[6].value / 1000});// Add LED strip
-//
-//                break;
-//
-//            case '2':
-//
-//                newConfig.UNIT4.partlist.push({Part: '21013A', Count: newConfig.steps[6].value / 1000});// Add LED strip
-//
-//                break;
-//
-//            case '3':
-//
-//                newConfig.UNIT4.partlist.push({Part: '21014A', Count: newConfig.steps[6].value / 1000});// Add LED strip
-//
-//                break;
-//
-//            case '4':
-//
-//                newConfig.UNIT4.partlist.push({Part: '21015A', Count: newConfig.steps[6].value / 1000});// Add LED strip
-//
-//                break;
-//
-//            case '6':
-//
-//                newConfig.UNIT4.partlist.push({Part: '21016A', Count: newConfig.steps[6].value / 1000});// Add LED strip
-//
 
 
 rule "Led strip section modulo"
@@ -560,11 +406,11 @@ salience -1
             if (c<2){
             c=2;
             }
-            for (int i=0;i<c;i++){
+
                 Part part=SerializationUtils.clone((Part)parts.get("10890"));
-                        composedproduct.addProduct(part);
+                      PartListHelper.addToPartCountList(partCountList,part,Double.valueOf(c));
                         System.out.println("Clip toegevoegd voor L20 ");
-            }
+
 
 end
 
@@ -581,13 +427,12 @@ end
             if (c<2){
             c=2;
             }
-            for (int i=0;i<c;i++){
-                Part part=SerializationUtils.clone((Part)parts.get("10891"));
 
-                       composedproduct.addProduct(part);
+                Part part=SerializationUtils.clone((Part)parts.get("10891"));
+PartListHelper.addToPartCountList(partCountList,part,Double.valueOf(c));
 
                        System.out.println("Clip toegevoegd voor L30");
-}
+
 
                end
 
@@ -603,26 +448,46 @@ no-loop true
 
     then
                 Part part=SerializationUtils.clone((Part)parts.get(((int)10749+(int)(Math.ceil((double)(composedproduct.getDimension().width)/1000d)))+""));
-                 composedproduct.addProduct(part);
+               PartListHelper.addToPartCountList(partCountList,part,1d);
                 System.out.println("Kabelgoot toegevoegd voor L20");
 
 end
 
+rule "Actie: Ingieten"
+no-loop true
+    when
+       profile:(Profile())
+       resin:(Resin())
+       composedproduct:ComposedProduct(dimension.width!=null)
+    then
+        Map<Orientation,PartMatchHelper.PartMostWanted> result=PartMatchHelper.match(resin.getClass(),null,profile);
+        Part part=null;
+        if (result.get(Orientation.Left).getCount()==result.get(Orientation.Right).getCount()){
+                           part=SerializationUtils.clone((Part)result.get(Orientation.Right).getPart());
+                            PartListHelper.addToPartCountList(partCountList,part,1d);
+                           System.out.println("Part Behuizing:"+part+ " "+result);
+
+                   }
 
 
-//            "Zaaglengte profiel (voor gieten): " + ((newConfig.totalLength - (newConfig.steps[4].left + newConfig.steps[4].right)) + newConfig.steps[0].addLengthForCasting) + " mm" +
-//
-//            "</div>" +
-//
-//            "<div>" +
-//
-//            "Zaaglengte profiel na gieten (evt. incl. linker eindkap): " + (newConfig.totalLength - newConfig.steps[4].right) + " mm" +
-//
-//            "</div>" +
-//
-//            "<div>" +
-//
-//            "Eindlengte profiel bij levereing (evt. incl. eindkap of eindkappen): " + (newConfig.totalLength) + " mm" +
+end
+
+
+rule "Actie: Tape toevoegen voor alle ledstrip types behalve HighPower."
+salience 1
+no-loop true
+    when
+
+       not(exists(HighPowerLedStrip()))
+       ledstrip:LedStrip()
+       composedproduct:ComposedProduct(dimension.width!=null)
+    then
+       double length=ledstrip.getDimension().width/50000d;
+  Part part=SerializationUtils.clone((Part)parts.get("60000"));
+                           PartListHelper.addToPartCountList(partCountList,part,length);
+    System.out.println("Tape length: "+length+" "+ledstrip.getDimension().width);
+end
+
 
 rule "Instructie: Zaaglengte profiel"
 no-loop true

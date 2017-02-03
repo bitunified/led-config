@@ -82,8 +82,12 @@ public class LedConfig {
         List<InstructionMessage> instructions = new ArrayList<>();
         ksession.setGlobal("instructions", instructions);
 
+        Map<Part,Double> partCountList = new HashMap<>();
+        ksession.setGlobal("partCountList",partCountList);
+
         Map<Integer, List<Message>> messageMap = new HashMap<>();
         List<Part> partList= new ArrayList<>();
+
 
         Map<Integer,ModelResult> modelResults=new HashMap<>();
         for (ParseStep step : parsedResult.getSteps()) {
@@ -170,9 +174,9 @@ public class LedConfig {
 
         }
 
-        for (Part pl:partList){
+        for (Map.Entry<Part,Double> pl:partCountList.entrySet()){
             if (pl!=null) {
-                System.out.println("Part from partlist: " + pl.getProduct() + " " + pl);
+                System.out.println("Part from partlist: " + pl.getValue() + " aantal: " + pl.getKey());
             }
         }
         for (Message msg : messages) {
@@ -190,7 +194,7 @@ public class LedConfig {
         ksession.dispose();
         ksession.destroy();
 
-        return new ConfigResult(messages, messageMap, ksession.getObjects(),partList,instructions);
+        return new ConfigResult(messages, messageMap, ksession.getObjects(),partCountList,instructions);
 
     }
 

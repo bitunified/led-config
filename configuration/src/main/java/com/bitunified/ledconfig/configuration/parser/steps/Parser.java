@@ -16,6 +16,8 @@ import com.bitunified.ledconfig.domain.product.accessoires.Clip;
 import com.bitunified.ledconfig.domain.product.cable.Cable;
 import com.bitunified.ledconfig.domain.product.cable.cableconfig.*;
 import com.bitunified.ledconfig.domain.product.cover.Covering;
+import com.bitunified.ledconfig.domain.product.cover.types.ResinClear;
+import com.bitunified.ledconfig.domain.product.cover.types.ResinDiffuse;
 import com.bitunified.ledconfig.domain.product.mounting.*;
 import com.bitunified.ledconfig.domain.product.profile.Profile;
 import com.bitunified.ledconfig.parts.NotExistingPart;
@@ -671,8 +673,8 @@ public class Parser {
         part.setId("co1");
         parts.add(part);
 
-        covering = new Covering(null);
-        covering.setName("Lage kap helder");
+        covering = new ResinClear(null);
+        covering.setName("Lage kap helder L20");
         covering.setCode("A");
         part = new Part(covering);
         part.setId("95000");
@@ -680,10 +682,11 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(11.5));
         part.setType("MTR");
         parts.add(part);
+        profileL20.getRelation().addRelateTo(part,null);
         //        "95000","Ingieten liniLED L20 Helder","11.50","MTR","","10"
 
-        covering = new Covering(null);
-        covering.setName("Lage kap diffuus");
+        covering = new ResinDiffuse(null);
+        covering.setName("Lage kap diffuus L20");
         covering.setCode("B");
         part = new Part(covering);
         part.setId("95001");
@@ -691,11 +694,12 @@ public class Parser {
         part.setDescription("Ingieten liniLED L20 Diffuus");
         part.setType("MTR");
         parts.add(part);
+        profileL20.getRelation().addRelateTo(part,null);
 //        "95001","Ingieten liniLED L20 Diffuus","11.50","MTR","","10"
 
 
-        covering = new Covering(null);
-        covering.setName("Hoge kap helder");
+        covering = new ResinClear(null);
+        covering.setName("Hoge kap helder L30");
         covering.setCode("H");
         part = new Part(covering);
         part.setDescription("Ingieten liniLED L30 Helder");
@@ -703,11 +707,11 @@ public class Parser {
         part.setType("MTR");
         part.setId("95003");
         parts.add(part);
-
+        profileL30.getRelation().addRelateTo(part,null);
         //        "95003","Ingieten liniLED L30 Helder","17.25","MTR","","10"
 
 
-        covering = new Covering(null);
+        covering = new ResinDiffuse(null);
         covering.setName("L30 Diffuus");
         covering.setCode("P");
         part = new Part(covering);
@@ -716,10 +720,11 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(17.25));
         part.setType("MTR");
         parts.add(part);
+        profileL30.getRelation().addRelateTo(part,null);
         //        "95004","Ingieten liniLED L30 Diffuus","17.25","MTR","","10"
 
 
-        covering = new Covering(null);
+        covering = new ResinClear(null);
         covering.setName("H20 Helder");
         covering.setCode("Q");
         part = new Part(covering);
@@ -728,10 +733,10 @@ public class Parser {
         part.setDescription("Ingieten liniLED H20 Helder");
         part.setType("MTR");
         parts.add(part);
-
+        profileH20.getRelation().addRelateTo(part,null);
 //        "95010","Ingieten liniLED H20 Helder","23.00","MTR","","10"
 
-        covering = new Covering(null);
+        covering = new ResinDiffuse(null);
         covering.setName("H20 Diffuus");
         covering.setCode("R");
         part = new Part(covering);
@@ -740,9 +745,10 @@ public class Parser {
         part.setDescription("Ingieten liniLED H20 Diffuus");
         part.setType("MTR");
         parts.add(part);
+        profileH20.getRelation().addRelateTo(part,null);
         //        "95011","Ingieten liniLED H20 Diffuus","23.00","MTR","","10"
 
-        covering = new Covering(null);
+        covering = new ResinClear(null);
         covering.setName("H30 Helder");
         covering.setCode("S");
         part = new Part(covering);
@@ -751,8 +757,9 @@ public class Parser {
         part.setDescription("Ingieten liniLED H30 Helder");
         part.setType("MTR");
         parts.add(part);
+        profileH30.getRelation().addRelateTo(part,null);
 //        "95013","Ingieten liniLED H30 Helder","46.50","MTR","","10"
-        covering = new Covering(null);
+        covering = new ResinDiffuse(null);
         covering.setName("H30 Diffuus");
         covering.setCode("U");
         part = new Part(covering);
@@ -761,7 +768,7 @@ public class Parser {
         part.setDescription("Ingieten liniLED H30 Diffuus");
         part.setType("MTR");
         parts.add(part);
-
+        profileH30.getRelation().addRelateTo(part,null);
 //        "95014","Ingieten liniLED H30 Diffuus","46.50","MTR","","10"
 
 

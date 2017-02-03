@@ -3,6 +3,7 @@ package com.bitunified.ledconfig.parts;
 
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -11,7 +12,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import java.io.Serializable;
 import java.math.BigDecimal;
-
 
 @XmlSeeAlso({NotExistingPart.class})
 public class Part extends Relatable implements Serializable {

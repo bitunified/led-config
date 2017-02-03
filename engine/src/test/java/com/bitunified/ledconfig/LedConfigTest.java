@@ -7,7 +7,7 @@ public class LedConfigTest {
 
     @Test
     public void testConfig(){
-        String[] args=new String[]{"CAGDD1473000a"};
+        String[] args=new String[]{"CABDD1473000b"};
         LedConfig ledConfig=new LedConfig();
         ConfigResult result=ledConfig.rules(args);
         System.out.println(result.getMessages());

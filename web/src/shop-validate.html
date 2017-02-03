@@ -379,7 +379,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
          * The server's response.
          */
         response: Object,
-        partList:Array,
+        partList:Object,
         instructions:Array,
         /**
          * If true, the user must enter a billing address.
@@ -641,12 +641,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         return false;
       },
+        _transformPartList:function(partCountList){
+            Object.keys(partCountList).map(function(key) {
+                for (var o in partCountList[key]){
+                    console.info(partCountList[key][o]);
+                }
+            });
+        },
       _transformResponse:function(response){
 
         var messageTable=this._toDataTable(response.messageMap);
         response.messageTable=[];
         response.messageTable=messageTable;
-          this.partList=response.partList;
+          this.partList=this._transformPartList(response.partList);
           this.instructions=response.instructions;
         return response;
       },

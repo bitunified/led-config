@@ -4,6 +4,7 @@ package com.bitunified.server.message;
 import com.bitunified.ledconfig.domain.instruction.InstructionMessage;
 import com.bitunified.ledconfig.domain.message.Message;
 import com.bitunified.ledconfig.parts.Part;
+import com.bitunified.ledconfig.parts.SimplePart;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -14,7 +15,7 @@ public class ServerResponse {
     private String errorMessage;
     private String[] messages;
     private Map<Integer,List<Message>> messageMap=new HashMap<>();
-    private List<Part> partList=new ArrayList<>();
+    private Map<SimplePart,Double> partList=new HashMap<>();
     private List<InstructionMessage> instructions;
 
     private Double totalPrice;
@@ -67,12 +68,15 @@ public class ServerResponse {
         return totalPrice;
     }
 
-    public List<Part> getPartList() {
+    public Map<SimplePart,Double> getPartList() {
         return partList;
     }
 
-    public void setPartList(List<Part> partList) {
-        this.partList = partList;
+    public void setPartList(Map<Part,Double> partList) {
+        for (Part p:partList.keySet()){
+            this.partList.put(new SimplePart(p.getPrice().doubleValue(),p.getDescription()), partList.get(p));
+        }
+
     }
 
     public List<InstructionMessage> getInstructions() {
