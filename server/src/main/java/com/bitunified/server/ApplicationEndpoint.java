@@ -4,6 +4,7 @@ import com.bitunified.ledconfig.ConfigResult;
 import com.bitunified.ledconfig.LedConfig;
 import com.bitunified.ledconfig.PriceCalculator;
 import com.bitunified.ledconfig.domain.message.Message;
+import com.bitunified.ledconfig.domain.message.MessageStatus;
 import com.bitunified.server.message.ServerResponse;
 
 import javax.ws.rs.*;
@@ -40,7 +41,7 @@ public class ApplicationEndpoint {
                 result.setTotalPrice(totalPrice.doubleValue());
                 result.addPartList(configResult.getPartList());
                 result.setInstructions(configResult.getInstructions());
-                if (!configResult.getMessages().isEmpty()) {
+                if (isThereAnError(configResult)) {
                     result.setSuccess("false");
                     result.setTotalPrice(0d);
                 }
@@ -56,12 +57,14 @@ public class ApplicationEndpoint {
 
     }
 
-
-    @GET
-    @Path("/health")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String healthCheck() {
-        return "ok";
+    private boolean isThereAnError(ConfigResult configResult) {
+        for (Message m:configResult.getMessages()){
+            if (m.getStatus()== MessageStatus.ERROR){
+                return true;
+            }
+        }
+        return false;
     }
+
 
 }

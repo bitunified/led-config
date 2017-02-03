@@ -20,8 +20,11 @@ import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 import com.bitunified.ledconfig.domain.product.cable.Cable;
 import com.bitunified.ledconfig.domain.product.cable.cableconfig.CableEntry;
 import com.bitunified.ledconfig.domain.product.cable.cableconfig.LeftViaEndCapCableEntry;
+import com.bitunified.ledconfig.domain.product.cable.cableconfig.LeftViaBottomCableEntry;
 import com.bitunified.ledconfig.domain.product.mounting.Mounting;
 import com.bitunified.ledconfig.domain.product.mounting.NoEndCapsMounting;
+import com.bitunified.ledconfig.domain.product.mounting.EndCapRightMounting;
+import com.bitunified.ledconfig.domain.product.mounting.HighEndCapRightMounting;
 import com.bitunified.ledconfig.domain.Property
 import com.bitunified.ledconfig.domain.product.accessoires.Clip
 import com.bitunified.ledconfig.domain.product.accessoires.CableChannel
@@ -67,8 +70,6 @@ rule "Totale lengte berekening" salience 1
         getDimension().width=totalLength
         }
 
-        //List<Message> msgs=((List<Message>)messageMap.get(8));
-
         ((((List<Message>)(messageMap.get(8))))).add(new Message("Totale lengte automatisch berekend: "+totalLength+" mm."));
         System.out.println("Totale lengte automatisch berekend"+totalLength);
 end
@@ -84,15 +85,34 @@ rule "Totale lengte minimaal"
         System.out.println("TL groter dan ledstrip lengte incl. marges");
 end
 
-rule "Totale lengte is groter dan maximale ledstrip lengte"
+rule "Totale lengte is groter dan maximale profiel lengte"
     when
-        ledstrip:LedStrip(maxDim:maxDimension,maxDimension.width!=null)
-        exists(ComposedProduct(dimension.width!=null,dimension.width<ledstrip.dimension.width))
 
+        composedProduct:(ComposedProduct(dimension.width!=null))
+        profile:Profile(maxDimension!=null)
+        eval(composedProduct.getDimension().width>profile.getMaxDimension().width)
     then
-        messages.add(new Message("Totale lengte is groter dan maximale ledstrip lengte.",3,MessageStatus.ERROR));
-        System.out.println("TL groter dan maximale ledstrip lengte");
+        messages.add(new Message("Totale lengte is groter dan maximale profiel lengte.",0,MessageStatus.ERROR));
+        System.out.println("TL groter dan maximale profiel lengte");
 end
+
+
+rule "Opgegeven lengte is kleiner dan berekende lengte"
+    when
+
+        composedProduct:(ComposedProduct(dimension.width!=null))
+          Mounting(mountingLeft:margins.left!=null, mountingRight:margins.right!=null)
+               CableEntry(cableEntryLeft:margins.left!=null,cableEntryRight:margins.right!=null)
+               LedStrip(ledstripLength:dimension.width!=null)
+
+               eval(composedProduct.getDimension().width<((int)mountingLeft+(int)mountingRight+(int)ledstripLength+(int)cableEntryLeft+(int)cableEntryRight))
+    then
+        int lengthCalc=((int)mountingLeft+(int)mountingRight+(int)ledstripLength+(int)cableEntryLeft+(int)cableEntryRight);
+        messages.add(new Message("Opgegeven lengte "+composedProduct.getDimension().width+" mm is kleiner dan berekende lengte "+lengthCalc,8,MessageStatus.ERROR));
+        System.out.println("Opgegeven lengte is kleiner dan berekende lengte.");
+end
+
+
 
 rule "Kap en gieting"
 
@@ -119,6 +139,14 @@ end
            messages.add(new Message("Kabel met demo connector kan niet in combinatie met RGB Ledstrip.",4,MessageStatus.ERROR));
        end
 
+   rule "Kabel uiteinde via eindkap"
+       when
+           exists((NoEndCapsMounting() || EndCapRightMounting() || HighEndCapRightMounting()) && LeftViaEndCapCableEntry())
+
+       then
+           messages.add(new Message("Kabel uiteinde via eindkap alleen mogelijk als kabel door eindkap gaat.",4,MessageStatus.ERROR));
+       end
+
 
   rule "Actie: Profiel toevoegen"
   no-loop true
@@ -132,7 +160,7 @@ end
                 if (((Part)p).getProduct().getName().equalsIgnoreCase(profile.getName())){
                     Part part=SerializationUtils.clone((Part)p);
                     //composedproduct.addProduct(part);
-                    System.out.println("Actie: profiel toegevoegd: "+part);
+                    //System.out.println("Actie: profiel toegevoegd: "+part);
                           break;
                 }
                 }
@@ -357,10 +385,8 @@ rule "Profiel L30 lengte"
                end
 
 
-rule "Actie: Ledstrip PCB toevoegen"
-
+rule "Actie: Ledstrip toevoegen"
     when
-        composedproduct:ComposedProduct()
      ledstrip:LedStrip( sect:getProperty(LedStrip.SECTION_WIDTH),sect!=null,ledstripLengte:dimension.width)
 
     then
@@ -437,18 +463,33 @@ PartListHelper.addToPartCountList(partCountList,part,Double.valueOf(c));
 
 
 
-rule "Actie: Kabelgoot op maat voor L20"
+rule "Actie: Kabelgoot op maat voor L20/H20"
 no-loop true
     when
-       exists(Profile(name matches ".*L20.*"));
+       exists(Profile(name matches ".*20.*"));
        exists(CableChannel())
-                composedproduct:ComposedProduct(dimension.width!=null);
-                eval(((int)((composedproduct.getDimension().width)/1000)<=(int)4) && ((int)((composedproduct.getDimension().width)/1000)>(int)0));
+       composedproduct:ComposedProduct(dimension.width!=null);
+       eval(((int)((composedproduct.getDimension().width)/1000)<=(int)4) && ((int)((composedproduct.getDimension().width)/1000)>(int)0));
 
     then
                 Part part=SerializationUtils.clone((Part)parts.get(((int)10749+(int)(Math.ceil((double)(composedproduct.getDimension().width)/1000d)))+""));
-               PartListHelper.addToPartCountList(partCountList,part,1d);
-                System.out.println("Kabelgoot toegevoegd voor L20");
+              PartListHelper.addToPartCountList(partCountList,part,1d);
+                System.out.println("Kabelgoot toegevoegd voor L20/H20");
+
+end
+
+rule "Actie: Kabelgoot op maat voor L30/H30"
+no-loop true
+    when
+       exists(Profile(name matches ".*30.*"));
+       exists(CableChannel())
+       composedproduct:ComposedProduct(dimension.width!=null);
+       eval(((int)((composedproduct.getDimension().width)/1000)<=(int)4) && ((int)((composedproduct.getDimension().width)/1000)>(int)0));
+
+    then
+                Part part=SerializationUtils.clone((Part)parts.get(((int)10753+(int)(Math.ceil((double)(composedproduct.getDimension().width)/1000d)))+""));
+              PartListHelper.addToPartCountList(partCountList,part,1d);
+                System.out.println("Kabelgoot toegevoegd voor L30/H30");
 
 end
 
@@ -485,6 +526,35 @@ no-loop true
   Part part=SerializationUtils.clone((Part)parts.get("60000"));
                            PartListHelper.addToPartCountList(partCountList,part,length);
     System.out.println("Tape length: "+length+" "+ledstrip.getDimension().width);
+end
+
+rule "Actie: Tube door eindkap toevoegen kabel."
+no-loop true
+    when
+       exists(LeftViaEndCapCableEntry())
+    then
+        Part part=SerializationUtils.clone((Part)parts.get("GRIJP_KTULE_EINDKAP"));
+        PartListHelper.addToPartCountList(partCountList,part,1d);
+        System.out.println("Tube kabel door eindkap toegevoegd.");
+end
+rule "Actie: Tube door aluminium zwart toevoegen kabel."
+no-loop true
+    when
+       exists(LeftViaBottomCableEntry())
+    then
+        Part part=SerializationUtils.clone((Part)parts.get("GRIJP_KTULE_ALU_ZWART"));
+        PartListHelper.addToPartCountList(partCountList,part,1d);
+        System.out.println("Tube kabel door aluminium zwart toegevoegd.");
+end
+
+rule "Actie: Tube door aluminium wit toevoegen kabel."
+no-loop true
+    when
+       not(exists(LeftViaBottomCableEntry()) || exists(LeftViaEndCapCableEntry()))
+    then
+        Part part=SerializationUtils.clone((Part)parts.get("GRIJP_KTULE_ALU_WIT"));
+        PartListHelper.addToPartCountList(partCountList,part,1d);
+        System.out.println("Tube kabel door aluminium wit toegevoegd.");
 end
 
 rule "Actie: Arbeidsminuten toevoegen"

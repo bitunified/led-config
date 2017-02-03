@@ -26,10 +26,10 @@ public class LedConfigTest {
          System.out.println(result.getMessages());
          System.out.println(result.getModels());
      }
-    @Ignore
+
     @Test
     public void testConfig2(){
-        String[] args=new String[]{"CAGDR11102000300a"};
+        String[] args=new String[]{"CAGDR11102000230b"};
         LedConfig ledConfig=new LedConfig();
         ConfigResult result=ledConfig.rules(args);
         System.out.println(result.getMessages());

@@ -16,7 +16,6 @@ import java.math.BigDecimal;
 @XmlSeeAlso({NotExistingPart.class})
 public class Part extends Relatable implements Serializable {
 
-
     private RealModel product;
 
     private Model configModel;

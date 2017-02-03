@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 public class RealModel extends Model {
     protected Dimension dimension = new Dimension(null, null);
 
-    private Dimension maxDimension;
+    protected Dimension maxDimension;
 
 
     private Margin margin = new Margin();

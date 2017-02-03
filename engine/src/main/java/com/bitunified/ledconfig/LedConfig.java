@@ -180,7 +180,7 @@ public class LedConfig {
             }
         }
         for (Message msg : messages) {
-            if (msg.getStep() != null) {
+            if (msg.getStep() != null && messageMap.get(msg.getStep())!=null) {
                 messageMap.get(msg.getStep()).add(msg);
 
             }
