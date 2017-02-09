@@ -27,10 +27,7 @@ import com.bitunified.ledconfig.parts.PartList;
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Parser {
     public Set<Part> getParts() {
@@ -161,6 +158,7 @@ public class Parser {
         profileL20.setLeftSpace((100));
         profileL20.setLengthForCasting(new Dimension(25));
         profileL20.setCode("A");
+        profileL20.setDescription(Locale.ENGLISH,"");
         Part partL20 = new Part(profileL20);
         partL20.setPrice(BigDecimal.valueOf(6.81));
         partL20.setId("10713");
@@ -402,6 +400,8 @@ public class Parser {
 
         Mounting mounting = new NoEndCapsMounting();
         mounting.setName("Geen eindkappen");
+        mounting.setDescription(new Locale("nl"),"Geen eindkappen");
+        mounting.setDescription(Locale.ENGLISH,"No endcaps");
         mounting.setCode("1");
         margin = new Margin(2, 2);
         mounting.setMargins(margin);
@@ -615,11 +615,27 @@ public class Parser {
         parts.add(part);
 
         cable = new Cable(new Dimension(null));
-        cable.setName("PUR with liniLed PU Connector set");
+        cable.setName("PUR with liniLed PU Connector set 1 M");
         cable.getProperty(Cable.CABLE_TYPE).setValue("PURconnectorset");
         cable.setCode("7");
         part = new NotExistingPart(cable);
         part.setId("purw7");
+        parts.add(part);
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("PUR with liniLed PU Connector set 5 M");
+        cable.getProperty(Cable.CABLE_TYPE).setValue("PURconnectorset");
+        cable.setCode("8");
+        part = new NotExistingPart(cable);
+        part.setId("purw8");
+        parts.add(part);
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("PUR with liniLed PU Connector set 10 M");
+        cable.getProperty(Cable.CABLE_TYPE).setValue("PURconnectorset");
+        cable.setCode("9");
+        part = new NotExistingPart(cable);
+        part.setId("purw9");
         parts.add(part);
 
         part = new Part();
@@ -922,7 +938,7 @@ public class Parser {
         ledStrip.setMaxDimension(new Dimension(2670));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2400");
-        ledStrip.setCode("H4");
+        ledStrip.setCode("H2");
         part = new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(19));
         part.setId("21032A");

@@ -9,6 +9,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -21,6 +22,9 @@ public class Model extends Relatable implements StepConfig, Serializable {
 
     private Map<String, Property> properies = new HashMap<String, Property>();
 
+
+
+    private Map<Locale,String> descriptions=new HashMap<Locale, String>();
 
     public Property addProperty(Property property) {
         this.properies.put(property.getName(), property);
@@ -89,5 +93,11 @@ public class Model extends Relatable implements StepConfig, Serializable {
         this.code = code;
     }
 
+    public Map<Locale, String> getDescriptions() {
+        return descriptions;
+    }
 
+    public void setDescription(Locale locale, String s) {
+        descriptions.put(locale,s);
+    }
 }

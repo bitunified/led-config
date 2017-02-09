@@ -1,0 +1,13 @@
+{
+  "en": {
+    "hello": "My name is {name}.",
+    "validate.form.product.code": "Fill in the productcode",
+    "validate.form.validate":"Validate",
+"validate.form.invalidcode":"Invalid code"
+  },
+  "nl":{
+    "validate.form.product.code": "Productcode opgeven",
+    "validate.form.validate":"Valideer",
+    "validate.form.invalidcode":"Ongeldige code"
+  }
+}

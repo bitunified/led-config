@@ -22,7 +22,8 @@
     "paper-spinner": "polymerelements/paper-spinner#^1.0.0",
     "paper-dialog": "PolymerElements/paper-dialog#^1.1.0",
     "paper-dialog-scrollable": "PolymerElements/paper-dialog-scrollable#^1.1.0",
-    "iron-data-table": "^1.0.6"
+    "iron-data-table": "^1.0.6",
+    "app-localize-behavior": "PolymerElements/app-localize-behavior#^0.10.1"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"
