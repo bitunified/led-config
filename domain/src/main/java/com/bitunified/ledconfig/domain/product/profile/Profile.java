@@ -12,6 +12,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 public class Profile extends RealModel {
 
+    public static final int CODE_LENGTH = 1;
     private Dimension lengthForCasting;
     private String lengthForCastingStr;
     public Profile(){

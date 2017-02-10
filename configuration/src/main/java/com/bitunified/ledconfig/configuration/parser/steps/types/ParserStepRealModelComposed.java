@@ -52,6 +52,7 @@ public class ParserStepRealModelComposed extends ParseStepBase implements ParseS
 
 
         }
+        setError(true);
         return new ModelResult(getErrorMessage());
     }
 

@@ -34,6 +34,7 @@ public class ParserStepModel extends ParseStepBase implements ParseStep {
                 }
             }
         }
+        setError(true);
         return new ModelResult(getErrorMessage());
     }
 

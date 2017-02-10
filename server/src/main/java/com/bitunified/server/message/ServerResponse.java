@@ -1,25 +1,24 @@
 package com.bitunified.server.message;
 
 
+import com.bitunified.ledconfig.configuration.parser.steps.ParseStep;
 import com.bitunified.ledconfig.domain.instruction.InstructionMessage;
 import com.bitunified.ledconfig.domain.message.Message;
 import com.bitunified.ledconfig.domain.message.PartCount;
 import com.bitunified.ledconfig.parts.Part;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ServerResponse {
     private String success;
 
     private String errorMessage;
-    private String[] messages;
+    private Set<Message> messages=new HashSet<>();
     private Map<Integer, List<Message>> messageMap = new HashMap<>();
 
     private List<PartCount> partList=new ArrayList<PartCount>();
 
+    private List<ParseStep> parseSteps;
 
     private List<InstructionMessage> instructions;
 
@@ -45,13 +44,7 @@ public class ServerResponse {
         this.success = success;
     }
 
-    public String[] getMessages() {
-        return messages;
-    }
 
-    public void setMessages(String[] messages) {
-        this.messages = messages;
-    }
 
     public Map<Integer, List<Message>> getMessageMap() {
         return messageMap;
@@ -97,5 +90,21 @@ public class ServerResponse {
 
     public void setInstructions(List<InstructionMessage> instructions) {
         this.instructions = instructions;
+    }
+
+    public List<ParseStep> getParseSteps() {
+        return parseSteps;
+    }
+
+    public void setParseSteps(List<ParseStep> parseSteps) {
+        this.parseSteps = parseSteps;
+    }
+
+    public Set<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(Set<Message> messages) {
+        this.messages = messages;
     }
 }

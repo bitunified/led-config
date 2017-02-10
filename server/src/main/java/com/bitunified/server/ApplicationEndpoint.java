@@ -3,6 +3,7 @@ package com.bitunified.server;
 import com.bitunified.ledconfig.ConfigResult;
 import com.bitunified.ledconfig.LedConfig;
 import com.bitunified.ledconfig.PriceCalculator;
+import com.bitunified.ledconfig.configuration.parser.steps.ParseStep;
 import com.bitunified.ledconfig.domain.message.Message;
 import com.bitunified.ledconfig.domain.message.MessageStatus;
 import com.bitunified.server.message.ServerResponse;
@@ -11,6 +12,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Path("/engine")
@@ -36,12 +38,14 @@ public class ApplicationEndpoint {
 
                     clientMessages.add(message.getMessage());
                 }
-                result.setMessages(clientMessages.toArray(new String[]{}));
+                result.setMessages(new HashSet<>(configResult.getMessages()));
                 result.setMessageMap(configResult.getMessageMap());
                 result.setTotalPrice(totalPrice.doubleValue());
                 result.addPartList(configResult.getPartList());
+
                 result.setInstructions(configResult.getInstructions());
-                if (isThereAnError(configResult)) {
+                result.setParseSteps(configResult.getParseSteps());
+                if (isThereAnError(configResult,totalPrice)) {
                     result.setSuccess("false");
                     result.setTotalPrice(0d);
                 }
@@ -57,13 +61,18 @@ public class ApplicationEndpoint {
 
     }
 
-    private boolean isThereAnError(ConfigResult configResult) {
+    private boolean isThereAnError(ConfigResult configResult,BigDecimal price) {
         for (Message m:configResult.getMessages()){
             if (m.getStatus()== MessageStatus.ERROR){
                 return true;
             }
         }
-        return false;
+        for (ParseStep step:configResult.getParseSteps()){
+            if (step.isMantatory()&&(step.getModelResult()==null || step.getModelResult().getModel()==null || step.isError())){
+                return true;
+            }
+        }
+        return price.compareTo(BigDecimal.ZERO) <= 0;
     }
 
 

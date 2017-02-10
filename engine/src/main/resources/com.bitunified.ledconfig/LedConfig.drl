@@ -47,7 +47,7 @@ import com.bitunified.ledconfig.domain.Orientation
 import com.bitunified.ledconfig.helpers.PartMatchHelper
 import com.bitunified.ledconfig.domain.product.cover.Covering
 import com.bitunified.ledconfig.helpers.PartListHelper;
-global java.util.List<Message> messages
+global java.util.Set<Message> messages
 global java.util.Map<String,Part> parts
 global java.util.Map<Integer,List<Message>> messageMap
 global java.util.List<InstructionMessage> instructions;
@@ -70,7 +70,7 @@ rule "Totale lengte berekening" salience 1
         getDimension().width=totalLength
         }
 
-        ((((List<Message>)(messageMap.get(8))))).add(new Message("Totale lengte automatisch berekend: "+totalLength+" mm."));
+        messages.add(new Message("Totale lengte automatisch berekend: "+totalLength+" mm.",8,MessageStatus.INFO));
         System.out.println("Totale lengte automatisch berekend"+totalLength);
 end
 
@@ -338,7 +338,7 @@ rule "Profiel L30 lengte"
                messages.add(new Message("Geen eindkappen montage icm kabeleinde via linker uitgang niet mogelijk.",6,MessageStatus.ERROR));
                end
 
-       rule "Eindkappen"
+       rule "Eindkappen; niet left side via endcap"
          no-loop true
               when
                   profile:Profile()
@@ -372,17 +372,6 @@ rule "Profiel L30 lengte"
 
               end
 
-
- rule "Eindkappen voor Kabelaansluiting: Left side via Endcap"
-         no-loop true
-              when
-                  profile:Profile()
-                  exists(LeftViaEndCapCableEntry())
-                  mounting:Mounting()
-                  composedproduct:ComposedProduct()
-               then
-
-               end
 
 
 rule "Actie: Ledstrip toevoegen"
@@ -586,7 +575,7 @@ rule "Actie: Verpakking toevoegen"
   no-loop true
        when
             eval(true)
-            composedproduct:ComposedProduct()
+            composedproduct:ComposedProduct(dimension.width!=null)
 
        then
             double length=(composedproduct.getDimension().width/1000d)+0.25d;

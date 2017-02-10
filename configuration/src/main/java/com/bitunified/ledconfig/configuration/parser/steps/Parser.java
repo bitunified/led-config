@@ -2,9 +2,12 @@ package com.bitunified.ledconfig.configuration.parser.steps;
 
 
 import com.bitunified.ledconfig.composedproduct.ComposedProduct;
+import com.bitunified.ledconfig.configuration.Accumulator;
 import com.bitunified.ledconfig.configuration.csvimport.Importer;
 import com.bitunified.ledconfig.configuration.parser.steps.types.*;
 import com.bitunified.ledconfig.domain.*;
+import com.bitunified.ledconfig.domain.I18N.*;
+import com.bitunified.ledconfig.domain.I18N.Locale;
 import com.bitunified.ledconfig.domain.product.ModelResult;
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 import com.bitunified.ledconfig.domain.product.PCB.types.DecoLedStrip;
@@ -158,7 +161,6 @@ public class Parser {
         profileL20.setLeftSpace((100));
         profileL20.setLengthForCasting(new Dimension(25));
         profileL20.setCode("A");
-        profileL20.setDescription(Locale.ENGLISH,"");
         Part partL20 = new Part(profileL20);
         partL20.setPrice(BigDecimal.valueOf(6.81));
         partL20.setId("10713");
@@ -256,6 +258,8 @@ public class Parser {
 
         Profile profileL30 = new Profile(new Dimension(null));
         profileL30.setName("liniLED Aeris Profiel L30");
+        profileL30.setTranslations(Locale.nl,profileL30.getName());
+        profileL30.setTranslations(Locale.en,"liniLed Aeris Profile L30");
         profileL30.setLengthForCasting(new Dimension(25));
         profileL30.setMaxDimension(new Dimension(2750));
         profileL30.setCode("C");
@@ -345,6 +349,8 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(1.63));
         part.setId("10927");
         part.setDescription("liniLED Aeris Eindkap HC30 O");
+        part.setTranslations(Locale.nl,part.getDescription());
+        part.setTranslations(Locale.en,"liniLED Aeris Endcap HC30 O");
         parts.add(part);
 
 
@@ -400,8 +406,8 @@ public class Parser {
 
         Mounting mounting = new NoEndCapsMounting();
         mounting.setName("Geen eindkappen");
-        mounting.setDescription(new Locale("nl"),"Geen eindkappen");
-        mounting.setDescription(Locale.ENGLISH,"No endcaps");
+        mounting.setTranslations(Locale.nl,"Geen eindkappen");
+        mounting.setTranslations(Locale.en,"No endcaps");
         mounting.setCode("1");
         margin = new Margin(2, 2);
         mounting.setMargins(margin);
@@ -414,6 +420,8 @@ public class Parser {
 
         mounting = new EndCapRightMounting();
         mounting.setName("Eindkap aan de rechter zijde");
+        mounting.setTranslations(Locale.nl,mounting.getName());
+        mounting.setTranslations(Locale.en,"Endcap right side");
         margin = new Margin(0, 2);
         mounting.setCode("2");
         mounting.setMargins(margin);
@@ -426,6 +434,8 @@ public class Parser {
 
         mounting = new EndCapLeftMounting();
         mounting.setName("Eindkap aan linkerzijde");
+        mounting.setTranslations(Locale.nl,mounting.getName());
+        mounting.setTranslations(Locale.en,"Endcap left side");
         margin = new Margin(2, 0);
         mounting.setCode("3");
         mounting.setMargins(margin);
@@ -440,6 +450,8 @@ public class Parser {
 
         mounting = new EndCapBothSidesMounting();
         mounting.setName("Eindkappen aan beide zijdes");
+        mounting.setTranslations(Locale.nl,mounting.getName());
+        mounting.setTranslations(Locale.en,"Endcaps both sides");
         margin = new Margin(2, 2);
         mounting.setCode("4");
         mounting.setMargins(margin);
@@ -1106,26 +1118,30 @@ public class Parser {
     public ParsedResult parse(String productcode) {
         List<ParseStep> steps = new ArrayList<ParseStep>();
         Set<Model> models = new HashSet<Model>();
-        steps.add(new ParserStepRealModel(1, true, 1, 2, Profile.class, "", "Profiel niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(2, true, 2, 3, Covering.class, "", "Behuizing niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(3, true, 3, 5, LedStrip.class, "", "Kleur niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(4, true, 5, 6, Cable.class, "", "Kabel niet geconfigureerd"));
-        steps.add(new ParserStepModel(5, true, 6, 7, CableEntry.class, "", "Kabeluiteinde niet geconfigureerd"));
-        steps.add(new ParserStepModel(6, true, 7, 8, Mounting.class, "", "Montage opties niet geconfigureerd"));
-        steps.add(new ParserStepDimensionModel(7, true, 8, 12, LedStrip.class, "", "Led strip lengte niet geconfigureerd", models));
+        int startPositionCode=0;
+        Accumulator accumulator=new Accumulator(startPositionCode);
+        steps.add(new ParserStepRealModel(1, true, accumulator.start(), accumulator.plus(Profile.CODE_LENGTH), Profile.class, "", "Profiel niet geconfigureerd"));
+        steps.add(new ParserStepRealModel(2, true, accumulator.start(), accumulator.plus(Covering.CODE_LENGTH), Covering.class, "", "Behuizing niet geconfigureerd"));
+        steps.add(new ParserStepRealModel(3, true, accumulator.start(), accumulator.plus(2), LedStrip.class, "", "Kleur niet geconfigureerd"));
+        steps.add(new ParserStepRealModel(4, true, accumulator.start(), accumulator.plus(1), Cable.class, "", "Kabel niet geconfigureerd"));
+        steps.add(new ParserStepModel(5, true, accumulator.start(), accumulator.plus(1), CableEntry.class, "", "Kabeluiteinde niet geconfigureerd"));
+        steps.add(new ParserStepModel(6, true, accumulator.start(), accumulator.plus(1), Mounting.class, "", "Montage opties niet geconfigureerd"));
+        steps.add(new ParserStepDimensionModel(7, true, accumulator.start(), accumulator.plus(4), LedStrip.class, "", "Led strip lengte niet geconfigureerd", models));
 
-        steps.add(new ParserStepRealModelComposed(8, ComposedProduct.class, "", "Productlengte automatisch berekend.", 12, 16, models));
-        steps.add(new ParserStepModelRightParse(9, true, 0, 1, Accessoire.class, "", "Accessoire opties niet geconfigureerd"));
+        steps.add(new ParserStepRealModelComposed(8, ComposedProduct.class, "", "Productlengte automatisch berekend.", accumulator.start(),accumulator.plus(4), models));
+        steps.add(new ParserStepModelRightParse(9, false, 0, 1, Accessoire.class, "", "Accessoire opties niet geconfigureerd"));
 
         for (ParseStep step : steps) {
-            ModelResult createdModel = step.create(productcode, parts);
+            ModelResult modelResult = step.create(productcode, parts);
 
-            if (createdModel != null) {
-                models.add(createdModel.getModel());
+            if (modelResult!=null && modelResult.getModel() != null) {
+                models.add(modelResult.getModel());
+            }else{
 
+                models.add(new ErrorModel());
             }
-            step.addModelResult(createdModel);
-            composedProduct.addModelResult(createdModel);
+            step.addModelResult(modelResult);
+            composedProduct.addModelResult(modelResult);
 
         }
 

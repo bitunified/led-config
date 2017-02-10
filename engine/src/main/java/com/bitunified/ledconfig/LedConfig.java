@@ -76,7 +76,7 @@ public class LedConfig {
         // Once the session is created, the application can interact with it
         // In this case it is setting a global as defined in the
         // org/drools/examples/helloworld/HelloWorld.drl file
-        List<Message> messages = new ArrayList<Message>();
+        Set<Message> messages = new HashSet<>();
         ksession.setGlobal("messages", messages);
 
         List<InstructionMessage> instructions = new ArrayList<>();
@@ -194,7 +194,7 @@ public class LedConfig {
         ksession.dispose();
         ksession.destroy();
 
-        return new ConfigResult(messages, messageMap, ksession.getObjects(),partCountList,instructions);
+        return new ConfigResult(parsedResult.getSteps(),messages, messageMap, ksession.getObjects(),partCountList,instructions);
 
     }
 

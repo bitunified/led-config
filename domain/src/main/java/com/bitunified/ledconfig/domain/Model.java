@@ -1,6 +1,7 @@
 package com.bitunified.ledconfig.domain;
 
 
+import com.bitunified.ledconfig.domain.I18N.Locale;
 import com.bitunified.ledconfig.domain.modeltypes.ConfigurationModel;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 import com.bitunified.ledconfig.parts.Relatable;
@@ -9,12 +10,12 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
 @XmlSeeAlso({RealModel.class, ConfigurationModel.class})
 public class Model extends Relatable implements StepConfig, Serializable {
+
     private String name = "";
 
     private String code;
@@ -22,9 +23,7 @@ public class Model extends Relatable implements StepConfig, Serializable {
 
     private Map<String, Property> properies = new HashMap<String, Property>();
 
-
-
-    private Map<Locale,String> descriptions=new HashMap<Locale, String>();
+    private Map<Locale, String> translations = new HashMap<Locale, String>();
 
     public Property addProperty(Property property) {
         this.properies.put(property.getName(), property);
@@ -93,11 +92,15 @@ public class Model extends Relatable implements StepConfig, Serializable {
         this.code = code;
     }
 
-    public Map<Locale, String> getDescriptions() {
-        return descriptions;
+    public Map<Locale, String> getTranslations() {
+        return translations;
     }
 
-    public void setDescription(Locale locale, String s) {
-        descriptions.put(locale,s);
+    public void setTranslations(Locale locale, String s) {
+        translations.put(locale, s);
+    }
+
+    public void setTranslations(Map<Locale, String> translations) {
+        this.translations = translations;
     }
 }

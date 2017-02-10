@@ -21,4 +21,6 @@ public interface ParseStep {
     ModelResult getModelResult();
 
     String getErrorMessage();
+
+    boolean isError();
 }

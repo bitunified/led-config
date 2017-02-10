@@ -2,6 +2,7 @@ package com.bitunified.ledconfig.configuration.parser.steps.types;
 
 import com.bitunified.ledconfig.configuration.parser.steps.ParseStep;
 import com.bitunified.ledconfig.domain.Dimension;
+import com.bitunified.ledconfig.domain.ErrorModel;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 import com.bitunified.ledconfig.domain.product.ModelResult;
@@ -43,8 +44,10 @@ public class ParserStepDimensionModel extends ParseStepBase implements ParseStep
                             if (lengthInt!=null) {
                                 product.setDimension(new Dimension(lengthInt));
                             }else{
-                                return new ModelResult(getErrorMessage());
+                                setError(true);
+                                return new ModelResult(createErrorModel(),getErrorMessage());
                             }
+
 
                     return new ModelResult(product);
 
@@ -53,6 +56,12 @@ public class ParserStepDimensionModel extends ParseStepBase implements ParseStep
                 }
             }
         }
-        return null;
+        setError(true);
+        return new ModelResult(createErrorModel(),getErrorMessage());
+    }
+
+    private Model createErrorModel(){
+
+        return new ErrorModel();
     }
 }

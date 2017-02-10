@@ -1,17 +1,17 @@
 package com.bitunified.ledconfig.parts;
 
 
+import com.bitunified.ledconfig.domain.I18N.Locale;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
 
 @XmlSeeAlso({NotExistingPart.class})
 public class Part extends Relatable implements Serializable {
@@ -29,6 +29,9 @@ public class Part extends Relatable implements Serializable {
     private String id;
 
     private String type;
+
+
+    private Map<Locale,String> translations=new HashMap<Locale, String>();
 
     public Part(Model configModel) {
         this.configModel = configModel;
@@ -119,5 +122,16 @@ public class Part extends Relatable implements Serializable {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public Map<Locale, String> getTranslations() {
+        return translations;
+    }
+
+    public void setTranslations(Map<Locale, String> translations) {
+        this.translations = translations;
+    }
+    public void setTranslations(Locale locale, String s) {
+        translations.put(locale,s);
     }
 }

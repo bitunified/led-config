@@ -3,6 +3,7 @@ package com.bitunified.ledconfig.composedproduct;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 import com.bitunified.ledconfig.domain.product.ModelResult;
 import com.bitunified.ledconfig.parts.Part;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.xml.bind.annotation.XmlMixed;
@@ -19,6 +20,7 @@ public class ComposedProduct extends RealModel {
     @XmlMixed
     private List<Part> products=new ArrayList<Part>();
 
+    @JsonIgnore
     private Set<ModelResult> modelResults=new HashSet<ModelResult>();
 
     public ComposedProduct(Integer totalWidth, Integer totalHeight) {

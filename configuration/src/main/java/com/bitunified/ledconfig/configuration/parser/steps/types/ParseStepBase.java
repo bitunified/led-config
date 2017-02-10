@@ -17,6 +17,7 @@ public abstract class ParseStepBase {
     private final Integer step;
     private String errorMessage;
     private ModelResult modelResult;
+    private boolean isError;
 
     public ParseStepBase(Integer step,boolean mandatory, Class<? extends Model> model, String regex, String errorMessage) {
         this.mandatory=mandatory;
@@ -73,6 +74,9 @@ public abstract class ParseStepBase {
         this.errorMessage = errorMessage;
     }
 
+    public boolean isError(){
+        return isError;
+    }
     public Model createPartModel(Part part){
 
         Model model= part.getConfigModel();
@@ -106,5 +110,9 @@ public abstract class ParseStepBase {
 
     public void addModelResult(ModelResult modelResult) {
         this.modelResult = modelResult;
+    }
+
+    public void setError(boolean error) {
+        isError = error;
     }
 }

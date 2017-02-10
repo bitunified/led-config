@@ -138,7 +138,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             id="checkoutForm"
                             is="iron-form"
                             method="post"
-                            action="/server/rest/engine/data"
+                            action="http://localhost:8080/server/rest/engine/data"
                             on-iron-form-response="_didReceiveResponse"
                             on-iron-form-presubmit="_willSendRequest">
 
@@ -146,7 +146,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         <header class="subsection" visible="true">
                             <h1>{{localize('validate.form.product.code')}}</h1>
 
-                            <span>Bijv.:CAGDR12102000300a</span>
+                            <span>Bijv.:AGDR12102000300a</span>
                         </header>
 
                         <div class="subsection grid" visible="true">
@@ -156,8 +156,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 <div class="row input-row">
                                     <shop-input>
                                         <input type="tel" id="productcode" name="productcode"
-                                               pattern="C([A-F]){1}([GABHPQRSTUV]){1}([DPHN]){1}([RGBDA]|[2473456]){1}([1470258369]){1}([1-5])([1-8])(\d{4})((\d{4})?)(([ab])?)+"
-                                               placeholder="Card Number" required value="CAGDR12102010300a"
+                                               pattern="([A-F]){1}([GABHPQRSTUV]){1}([DPHN]){1}([RGBDA]|[2473456]){1}([1470258369]){1}([1-5])([1-8])(\d{4})((\d{4})?)(([ab])?)+"
+                                               placeholder="Card Number" required value="AGDR12102010300a"
                                                autocomplete="cc-number">
                                         <shop-md-decorator error-message="{{localize('validate.form.invalidcode')}}"
                                                            aria-hidden="true">
@@ -240,7 +240,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         De productcode is correct.
                     </template>
                     <template is="dom-repeat" items="[[response.messages]]">
-                        <p>[[item]]</p>
+                        <p>[[item.message]]</p>
                     </template>
 
                     <template is="dom-if" if="[[success]]">
@@ -261,7 +261,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             width: 400px;
                         }
                     </style>
-                    <paper-dialog id="dialog" responsive>
+                    <paper-dialog id="dialog" responsive style="width: 80%">
                         <h2>Artikelen</h2>
                         <iron-data-table details-enabled items="{{partList}}">
 
@@ -285,9 +285,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             <input type="button" on-click="openDialog" value="Onderdelen">
                         </shop-button>
                     </template>
-                    <paper-dialog id="instructionsDialog" responsive>
+                    <paper-dialog id="instructionsDialog" responsive style="width:600px">
                         <h2>Assemblage instructies</h2>
-                        <iron-data-table details-enabled items="{{instructions}}">
+                        <iron-data-table details-enabled items="{{instructions}}" style="min-width:200px">
 
 
                             <data-table-column name="Omschrijving">
@@ -304,7 +304,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             <input type="button" on-click="openDialogInstructions" value="Assemblage instructies">
                         </shop-button>
                     </template>
-
+                    <br/>
                     <shop-button responsive>
                         <a href="/validate">Terug</a>
                     </shop-button>
@@ -345,7 +345,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 Polymer.AppLocalizeBehavior
             ],
             attached: function () {
-                this.loadResources(this.resolveUrl('../server/locales.json'));
+                this.loadResources(this.resolveUrl('http://localhost:8080/server/locales.json'));
             },
             properties: {
                 language: {
@@ -666,7 +666,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     this.success = Boolean(false);
                 }
 
-                var messageTable = this._toDataTable(response.messageMap);
+                var messageTable = this._toDataTable(response);
                 response.messageTable = [];
                 response.messageTable = messageTable;
                 this.partList = this._transformPartList(response.partList);
@@ -675,9 +675,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             },
             _translatedMessage: function (msg) {
                 if (msg[0] != undefined && msg[1] != undefined) {
-                    if (msg[1].model != undefined && msg[1].model.descriptions != undefined) {
-                        var messageTranslated=(msg[1].model.descriptions[this.properties.language.value]);
-                        if (messageTranslated!=undefined) {
+                    if (msg[1].model != undefined ) {
+                        var messageTranslated=this.translate(msg[1].model);
+                        if (messageTranslated!=null) {
                             msg[0].message = messageTranslated;
                             msg[1].message = messageTranslated;
                         }
@@ -687,32 +687,70 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                 return msg;
             },
-            _toDataTable: function (obj) {
+            _toDataTable: function (response) {
                 var arr = [];
-
+                var steps=response.parseSteps;
 
                 var cFunc = this._containsError;
                 var transatedMessageFunc = this._translatedMessage;
                 var self = this;
-                Object.keys(obj).map(function (key) {
-
-                    var isError = false;
-                    for (var it in obj[key]) {
-                        if (obj[key][it] != undefined) {
-                            if (obj[key][it].status === "ERROR") {
-
-                                isError = true;
-                                break;
-                            }
+                var isInError=function(step,messages){
+                    if (step.error){
+                        return true;
+                    }
+                    for(var err in messages){
+                        if (messages[err].status==="ERROR"){
+                            return true;
                         }
                     }
-                    var msg = self._translatedMessage(obj[key]);
-                    var item = {"step": key, "msg": msg, "error": isError};
+                    return false;
+                };
+                self.isInError=isInError;
+                self.translate=this.translate;
+                Object.keys(steps).map(function (key) {
+
+//                    var isError = false;
+//                    for (var it in steps[key]) {
+//                        if (obj[key][it] != undefined) {
+//                            if (obj[key][it].status === "ERROR") {
+//
+//                                isError = true;
+//                                break;
+//                            }
+//                        }
+//                    }
+                    //var msg = self._translatedMessage(obj[key]);
+
+                    var messages=[];
+
+                        var messageText=steps[key].errorMessage;
+                        if (steps[key].error && steps[key].mantatory){
+                            //messageText=steps[key].errorMessage;
+                        }else{
+                            messageText=(steps[key].modelResult.model.name);
+                        }
+
+                        messages.push({"message": messageText});
+
+                    for (var mes in response.messages){
+
+                        if (response.messages[mes].step===steps[key].step){
+
+                            messages.push(response.messages[mes]);
+                        }
+                    }
+
+                    var item = {"step": steps[key].step, "msg": messages, "error": self.isInError(steps[key],messages)};
                     arr.push(item);
                 });
                 return arr;
             },
-
+            translate:function(obj){
+                if (obj.translations!=undefined) {
+                   return (obj.translations[this.properties.language.value]);
+                }
+                return null;
+            },
             displayMessage: function (item) {
                 if (item.value.status === "UNKNOWN") {
                     return "";
