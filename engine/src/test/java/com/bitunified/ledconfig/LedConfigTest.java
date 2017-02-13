@@ -11,15 +11,15 @@ public class LedConfigTest {
     @Test
     public void testConfig1() {
         String[] codes = new String[]{
-                "ABDD1473000b",
-                "AGDR11102000300a"};
+                //"ABDD1473000b",
+                "AGDR11302000300a"};
         for (String code : codes) {
             execute(code);
         }
     }
 
     private void execute(String code) {
-        String[] args = new String[]{"ABDD1473000b"};
+        String[] args = new String[]{code};
         LedConfig ledConfig = new LedConfig();
         ConfigResult result = ledConfig.rules(args);
         System.out.println(result.getMessages());

@@ -148,27 +148,6 @@ end
        end
 
 
-  rule "Actie: Profiel toevoegen"
-  no-loop true
-       when
-            profile:Profile()
-           composedproduct:ComposedProduct()
-       then
-
-            for (Object p:parts.values()){
-            if (((Part)p).getProduct()!=null){
-                if (((Part)p).getProduct().getName().equalsIgnoreCase(profile.getName())){
-                    Part part=SerializationUtils.clone((Part)p);
-                    //composedproduct.addProduct(part);
-                    //System.out.println("Actie: profiel toegevoegd: "+part);
-                          break;
-                }
-                }
-            }
-
-
-       end
-
   rule "Actie: RGB kabel toevoegen"
   no-loop true
        when
@@ -342,8 +321,9 @@ rule "Profiel L30 lengte"
          no-loop true
               when
                   profile:Profile()
-                  not(exists(LeftViaEndCapCableEntry()))
+                  not(LeftViaEndCapCableEntry())
                   mounting:Mounting()
+
                then
 
                 System.out.println("Start matching");
@@ -372,7 +352,19 @@ rule "Profiel L30 lengte"
 
               end
 
+     rule "Eindkappen; 1: left side via endcap"
+         no-loop true
+              when
+                  profile:Profile()
+                  exists(LeftViaEndCapCableEntry())
+                  mounting:Mounting()
+               then
+            System.out.println("Matching, Left side End Cap:");
+             Map<Orientation,PartMatchHelper.PartMostWanted> result=PartMatchHelper.match(EndCap.class,null,profile,mounting);
 
+            System.out.println(result);
+
+        end
 
 rule "Actie: Ledstrip toevoegen"
     when
@@ -390,7 +382,6 @@ rule "Actie: Ledstrip toevoegen"
           System.out.println("Ledstrip toegevoegd,lengte: "+length+": "+part);
           }
         }
-
     }
 
 
@@ -414,16 +405,15 @@ salience -1
 
                exists(Profile(name matches ".*L20.*")) and exists(Clip())
                composedproduct:ComposedProduct(dimension.width!=null);
-
            then
             int c=(int)composedproduct.getDimension().width/500;
             if (c<2){
-            c=2;
+                c=2;
             }
 
                 Part part=SerializationUtils.clone((Part)parts.get("10890"));
-                      PartListHelper.addToPartCountList(partCountList,part,Double.valueOf(c));
-                        System.out.println("Clip toegevoegd voor L20 ");
+                PartListHelper.addToPartCountList(partCountList,part,Double.valueOf(c));
+                System.out.println("Clip toegevoegd voor L20 ");
 
 
 end
@@ -439,16 +429,13 @@ end
                then
  int c=(int)composedproduct.getDimension().width/500;
             if (c<2){
-            c=2;
+                c=2;
             }
 
                 Part part=SerializationUtils.clone((Part)parts.get("10891"));
-PartListHelper.addToPartCountList(partCountList,part,Double.valueOf(c));
-
-                       System.out.println("Clip toegevoegd voor L30");
-
-
-               end
+                PartListHelper.addToPartCountList(partCountList,part,Double.valueOf(c));
+                System.out.println("Clip toegevoegd voor L30");
+           end
 
 
 
@@ -459,11 +446,10 @@ no-loop true
        exists(CableChannel())
        composedproduct:ComposedProduct(dimension.width!=null);
        eval(((int)((composedproduct.getDimension().width)/1000)<=(int)4) && ((int)((composedproduct.getDimension().width)/1000)>(int)0));
-
     then
-                Part part=SerializationUtils.clone((Part)parts.get(((int)10749+(int)(Math.ceil((double)(composedproduct.getDimension().width)/1000d)))+""));
-              PartListHelper.addToPartCountList(partCountList,part,1d);
-                System.out.println("Kabelgoot toegevoegd voor L20/H20");
+       Part part=SerializationUtils.clone((Part)parts.get(((int)10749+(int)(Math.ceil((double)(composedproduct.getDimension().width)/1000d)))+""));
+       PartListHelper.addToPartCountList(partCountList,part,1d);
+       System.out.println("Kabelgoot toegevoegd voor L20/H20");
 
 end
 
@@ -476,9 +462,9 @@ no-loop true
        eval(((int)((composedproduct.getDimension().width)/1000)<=(int)4) && ((int)((composedproduct.getDimension().width)/1000)>(int)0));
 
     then
-                Part part=SerializationUtils.clone((Part)parts.get(((int)10753+(int)(Math.ceil((double)(composedproduct.getDimension().width)/1000d)))+""));
-              PartListHelper.addToPartCountList(partCountList,part,1d);
-                System.out.println("Kabelgoot toegevoegd voor L30/H30");
+       Part part=SerializationUtils.clone((Part)parts.get(((int)10753+(int)(Math.ceil((double)(composedproduct.getDimension().width)/1000d)))+""));
+       PartListHelper.addToPartCountList(partCountList,part,1d);
+       System.out.println("Kabelgoot toegevoegd voor L30/H30");
 
 end
 
@@ -492,7 +478,7 @@ no-loop true
         Map<Orientation,PartMatchHelper.PartMostWanted> result=PartMatchHelper.match(resin.getClass(),null,profile);
         Part part=null;
         if (result.get(Orientation.Left).getCount()==result.get(Orientation.Right).getCount()){
-                           part=SerializationUtils.clone((Part)result.get(Orientation.Right).getPart());
+           part=SerializationUtils.clone((Part)result.get(Orientation.Right).getPart());
                             PartListHelper.addToPartCountList(partCountList,part,1d);
                            System.out.println("Part Behuizing:"+part+ " "+result);
 
@@ -550,24 +536,20 @@ rule "Actie: Arbeidsminuten toevoegen"
   no-loop true
        when
             eval(true)
-
        then
-
             Part part=SerializationUtils.clone((Part)parts.get("ARBEID"));
             PartListHelper.addToPartCountList(partCountList,part,15d);
-        System.out.println("Arbeid toevoegd.");
+            System.out.println("Arbeid toevoegd.");
 end
 
 rule "Actie: Handleiding toevoegen"
   no-loop true
        when
             eval(true)
-
        then
-
             Part part=SerializationUtils.clone((Part)parts.get("HANDLEIDING"));
             PartListHelper.addToPartCountList(partCountList,part,1d);
-        System.out.println("Handleiding toevoegd.");
+            System.out.println("Handleiding toevoegd.");
 end
 
 
@@ -578,9 +560,9 @@ rule "Actie: Verpakking toevoegen"
             composedproduct:ComposedProduct(dimension.width!=null)
 
        then
-            double length=(composedproduct.getDimension().width/1000d)+0.25d;
-            Part part=SerializationUtils.clone((Part)parts.get("VERPAKKING"));
-            PartListHelper.addToPartCountList(partCountList,part,length);
+        double length=(composedproduct.getDimension().width/1000d)+0.25d;
+        Part part=SerializationUtils.clone((Part)parts.get("VERPAKKING"));
+        PartListHelper.addToPartCountList(partCountList,part,length);
         System.out.println("Verpakking toevoegd.");
 end
 
@@ -607,7 +589,6 @@ end
 rule "Print"
 salience -10
     when
-
         mt:Mounting()
        ce:CableEntry()
        ls:LedStrip()

@@ -146,7 +146,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         <header class="subsection" visible="true">
                             <h1>{{localize('validate.form.product.code')}}</h1>
 
-                            <span>Bijv.:AGDR12102000300a</span>
+                            <span>{{localize('validate.form.product.example')}}</span>
                         </header>
 
                         <div class="subsection grid" visible="true">
@@ -157,11 +157,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                     <shop-input>
                                         <input type="tel" id="productcode" name="productcode"
                                                pattern="([A-F]){1}([GABHPQRSTUV]){1}([DPHN]){1}([RGBDA]|[2473456]){1}([1470258369]){1}([1-5])([1-8])(\d{4})((\d{4})?)(([ab])?)+"
-                                               placeholder="Card Number" required value="AGDR12102010300a"
+                                               placeholder="{{localize('validate.form.code')}}" required value=""
                                                autocomplete="cc-number">
                                         <shop-md-decorator error-message="{{localize('validate.form.invalidcode')}}"
                                                            aria-hidden="true">
-                                            <label for="productcode">Productcode</label>
+                                            <label for="productcode">{{localize('validate.form.product.code')}}</label>
                                             <shop-underline></shop-underline>
                                         </shop-md-decorator>
                                     </shop-input>
@@ -177,7 +177,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
                 <header state="success">
-                    <h1>Berichten:</h1>
+                    <h1>{{localize('validate.response.messages')}}</h1>
 
                     <iron-data-table details-enabled items="{{response.messageTable}}" height="300px">
                         <template is="row-detail">
@@ -190,10 +190,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 </template>
                             </div>
                         </template>
-                        <data-table-column name="Stap">
+                        <data-table-column name="{{localize('validate.response.step')}}">
                             <template> {{item.step}}</template>
                         </data-table-column>
-                        <data-table-column name="Configuratie">
+                        <data-table-column name="{{localize('validate.response.configuration')}}">
                             <template is="row-detail">
 
                                 <template is="dom-repeat" items="[[item.msg]]" as="msge" index-as="ind">
@@ -234,10 +234,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     </iron-data-table>
 
                     <template is="dom-if" if="[[!success]]">
-                        De configuratie bevat fouten. Corrigeer de configuratie.
+                        {{localize('validate.response.error.message')}}
+
                     </template>
                     <template is="dom-if" if="[[success]]">
-                        De productcode is correct.
+                        {{localize('validate.response.correct.message')}
                     </template>
                     <template is="dom-repeat" items="[[response.messages]]">
                         <p>[[item.message]]</p>
@@ -248,7 +249,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
                             <tr>
-                                <td>Totaal</td>
+                                <td> {{localize('validate.response.total')}</td>
                                 <td>€ [[response.totalPrice]]</td>
                             </tr>
                         </table>
@@ -262,35 +263,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         }
                     </style>
                     <paper-dialog id="dialog" responsive style="width: 80%">
-                        <h2>Artikelen</h2>
+                        <h2>{{localize('validate.response.partlist.title')}}</h2>
                         <iron-data-table details-enabled items="{{partList}}">
 
-                            <data-table-column name="Artikelnummer">
+                            <data-table-column name="{{localize('validate.response.partlist.id')}}">
                                 <template> {{item.id}}</template>
                             </data-table-column>
-                            <data-table-column name="Omschrijving">
+                            <data-table-column name="{{localize('validate.response.partlist.description')}}">
                                 <template> {{item.description}}</template>
                             </data-table-column>
-                            <data-table-column name="Aantal">
+                            <data-table-column name="{{localize('validate.response.partlist.amount')}}">
                                 <template> {{item.count}}</template>
                             </data-table-column>
                         </iron-data-table>
                         <div class="buttons">
-                            <paper-button dialog-confirm autofocus>OK</paper-button>
+                            <paper-button dialog-confirm autofocus>{{localize('validate.response.partlist.button.close')}}</paper-button>
                         </div>
                     </paper-dialog>
 
                     <template is="dom-if" if="[[success]]">
                         <shop-button responsive id="openDialog">
-                            <input type="button" on-click="openDialog" value="Onderdelen">
+                            <input type="button" on-click="openDialog" value="{{localize('validate.response.partlist.button')}}">
                         </shop-button>
                     </template>
                     <paper-dialog id="instructionsDialog" responsive style="width:600px">
-                        <h2>Assemblage instructies</h2>
+                        <h2>{{localize('validate.response.assembly.title')}}</h2>
                         <iron-data-table details-enabled items="{{instructions}}" style="min-width:200px">
 
 
-                            <data-table-column name="Omschrijving">
+                            <data-table-column name="{{localize('validate.response.assembly.description')}}">
                                 <template> {{item.message}}</template>
                             </data-table-column>
                         </iron-data-table>
@@ -306,15 +307,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     </template>
                     <br/>
                     <shop-button responsive>
-                        <a href="/validate">Terug</a>
+                        <a href="/validate">{{localize('validate.response.back.button')}}</a>
                     </shop-button>
                 </header>
                 <!-- Error message UI -->
                 <header state="error">
-                    <h1>Er is een fout opgetreden</h1>
+                    <h1>{{localize('validate.response.error.unknown')}}</h1>
                     <p id="errorMessage">[[response.messages]]</p>
                     <shop-button responsive>
-                        <a href="/validate">Terug</a>
+                        <a href="/validate">{{localize('validate.response.back.button')}}</a>
                     </shop-button>
                 </header>
 

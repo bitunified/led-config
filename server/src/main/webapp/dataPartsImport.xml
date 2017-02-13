@@ -4,6 +4,7 @@
         <description>Kabeltule t.b.v. eindkap</description>
         <id>GRIJP_KTULE_EINDKAP</id>
         <price>0.07</price>
+        <translations/>
         <type>ST</type>
     </parts>
     <parts>
@@ -13,12 +14,14 @@
         <product xsi:type="powerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <code>PA</code>
             <name>liniLED Power amber</name>
+            <translations/>
             <dimension/>
             <margin/>
             <maxDimension>
                 <width>2670</width>
             </maxDimension>
         </product>
+        <translations/>
         <type>MTR</type>
     </parts>
     <parts>
@@ -28,8 +31,10 @@
         <product>
             <code>R</code>
             <name>H20 Diffuus</name>
+            <translations/>
             <margin/>
         </product>
+        <translations/>
         <type>MTR</type>
     </parts>
     <parts>
@@ -38,14 +43,17 @@
         <price>1.51</price>
         <product xsi:type="endCap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <name></name>
+            <translations/>
             <dimension/>
             <margin/>
         </product>
+        <translations/>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <configModel xsi:type="cable">
             <code>4</code>
             <name>PUR with open end 1 m</name>
+            <translations/>
             <dimension/>
             <margin/>
             <TYPE>
@@ -56,6 +64,7 @@
             </END>
         </configModel>
         <id>pur4op1</id>
+        <translations/>
     </parts>
     <parts>
         <description>Ingieten liniLED H30 Helder</description>
@@ -64,8 +73,10 @@
         <product>
             <code>S</code>
             <name>H30 Helder</name>
+            <translations/>
             <margin/>
         </product>
+        <translations/>
         <type>MTR</type>
     </parts>
     <parts>
@@ -75,14 +86,17 @@
         <product>
             <code>U</code>
             <name>H30 Diffuus</name>
+            <translations/>
             <margin/>
         </product>
+        <translations/>
         <type>MTR</type>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <configModel xsi:type="cable">
             <code>7</code>
-            <name>PUR with liniLed PU Connector set</name>
+            <name>PUR with liniLed PU Connector set 1 M</name>
+            <translations/>
             <dimension/>
             <margin/>
             <TYPE>
@@ -93,6 +107,41 @@
             </END>
         </configModel>
         <id>purw7</id>
+        <translations/>
+    </parts>
+    <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <configModel xsi:type="cable">
+            <code>9</code>
+            <name>PUR with liniLed PU Connector set 10 M</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <TYPE>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">PURconnectorset</value>
+            </TYPE>
+            <END>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"></value>
+            </END>
+        </configModel>
+        <id>purw9</id>
+        <translations/>
+    </parts>
+    <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <configModel xsi:type="cable">
+            <code>8</code>
+            <name>PUR with liniLed PU Connector set 5 M</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <TYPE>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">PURconnectorset</value>
+            </TYPE>
+            <END>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"></value>
+            </END>
+        </configModel>
+        <id>purw8</id>
+        <translations/>
     </parts>
     <parts>
         <description>Ingieten liniLED H20 Helder</description>
@@ -101,8 +150,10 @@
         <product>
             <code>Q</code>
             <name>H20 Helder</name>
+            <translations/>
             <margin/>
         </product>
+        <translations/>
         <type>MTR</type>
     </parts>
     <parts>
@@ -112,6 +163,16 @@
         <product xsi:type="profile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <code>C</code>
             <name>liniLED Aeris Profiel L30</name>
+            <translations>
+                <entry>
+                    <key>en</key>
+                    <value>liniLed Aeris Profile L30</value>
+                </entry>
+                <entry>
+                    <key>nl</key>
+                    <value>liniLED Aeris Profiel L30</value>
+                </entry>
+            </translations>
             <dimension/>
             <margin/>
             <maxDimension>
@@ -121,28 +182,33 @@
                 <width>25</width>
             </lengthForCasting>
         </product>
+        <translations/>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <configModel xsi:type="leftViaEndCapCableEntry">
             <code>1</code>
             <name>Left side via end cap</name>
+            <translations/>
             <margins>
                 <left>10</left>
                 <right>5</right>
             </margins>
         </configModel>
         <id>ca1</id>
+        <translations/>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <configModel xsi:type="leftViaSideCableEntry">
             <code>3</code>
             <name>Left side via side</name>
+            <translations/>
             <margins>
                 <left>15</left>
                 <right>5</right>
             </margins>
         </configModel>
         <id>ca3</id>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED Aeris Profiel H30 4 m</description>
@@ -151,6 +217,7 @@
         <product xsi:type="profile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <code>D</code>
             <name>liniLED Aeris Profiel H30</name>
+            <translations/>
             <dimension/>
             <margin/>
             <maxDimension>
@@ -160,33 +227,39 @@
                 <width>25</width>
             </lengthForCasting>
         </product>
+        <translations/>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <configModel xsi:type="leftViaBottomCableEntry">
             <code>2</code>
             <name>Left side via bottom</name>
+            <translations/>
             <margins>
                 <left>15</left>
                 <right>5</right>
             </margins>
         </configModel>
         <id>ca2</id>
+        <translations/>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <configModel xsi:type="centerViaSideCableEntry">
             <code>5</code>
             <name>Center via side</name>
+            <translations/>
             <margins>
                 <left>5</left>
                 <right>5</right>
             </margins>
         </configModel>
         <id>ca5</id>
+        <translations/>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <configModel xsi:type="cable">
             <code>1</code>
             <name>PVC with open end</name>
+            <translations/>
             <dimension/>
             <margin/>
             <TYPE>
@@ -197,6 +270,7 @@
             </END>
         </configModel>
         <id>pvcw1</id>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED PCB WW 3000K HP (PSP)</description>
@@ -205,24 +279,28 @@
         <product xsi:type="highPowerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <code>H3</code>
             <name>liniLED HP 3000K WW</name>
+            <translations/>
             <dimension/>
             <margin/>
             <maxDimension>
                 <width>2670</width>
             </maxDimension>
         </product>
+        <translations/>
         <type>MTR</type>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <configModel xsi:type="rightViaSideCableEntry">
             <code>4</code>
             <name>Rigt side via side</name>
+            <translations/>
             <margins>
                 <left>5</left>
                 <right>15</right>
             </margins>
         </configModel>
         <id>ca4</id>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED PCB Groen P</description>
@@ -231,12 +309,14 @@
         <product xsi:type="powerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <code>PG</code>
             <name>liniLED Power groen</name>
+            <translations/>
             <dimension/>
             <margin/>
             <maxDimension>
                 <width>2670</width>
             </maxDimension>
         </product>
+        <translations/>
         <type>MTR</type>
     </parts>
     <parts>
@@ -245,26 +325,32 @@
         <price>0.35</price>
         <product xsi:type="clip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <name>liniLED Aeris Clip 30</name>
+            <translations/>
             <dimension/>
             <margin/>
         </product>
+        <translations/>
     </parts>
     <parts>
         <description>Clip 20</description>
         <id>10890</id>
         <product xsi:type="clip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <name>liniLED Aeris Clip 20</name>
+            <translations/>
             <dimension/>
             <margin/>
         </product>
+        <translations/>
     </parts>
     <parts>
         <id>comp</id>
         <product xsi:type="composedProduct" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <name>Product lengte</name>
+            <translations/>
             <dimension/>
             <margin/>
         </product>
+        <translations/>
     </parts>
     <parts>
         <description>Ingieten liniLED L30 Diffuus</description>
@@ -273,8 +359,10 @@
         <product>
             <code>P</code>
             <name>L30 Diffuus</name>
+            <translations/>
             <margin/>
         </product>
+        <translations/>
         <type>MTR</type>
     </parts>
     <parts>
@@ -284,8 +372,10 @@
         <product>
             <code>A</code>
             <name>Lage kap helder L20</name>
+            <translations/>
             <margin/>
         </product>
+        <translations/>
         <type>MTR</type>
     </parts>
     <parts>
@@ -295,8 +385,10 @@
         <product>
             <code>B</code>
             <name>Lage kap diffuus L20</name>
+            <translations/>
             <margin/>
         </product>
+        <translations/>
         <type>MTR</type>
     </parts>
     <parts>
@@ -306,19 +398,23 @@
         <product>
             <code>H</code>
             <name>Hoge kap helder L30</name>
+            <translations/>
             <margin/>
         </product>
+        <translations/>
         <type>MTR</type>
     </parts>
     <parts>
         <description>Kabeltule t.b.v. ALU zwart</description>
         <id>GRIJP_KTULE_ALU_ZWART</id>
         <price>0.07</price>
+        <translations/>
         <type>ST</type>
     </parts>
     <parts>
         <id>60009</id>
         <price>9.6</price>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED Aeris Eindkap L20 O</description>
@@ -326,17 +422,20 @@
         <price>1.51</price>
         <product xsi:type="endCap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <name>End cap open L20</name>
+            <translations/>
             <dimension/>
             <margin/>
         </product>
+        <translations/>
     </parts>
     <parts>
         <description>Kabel RGB PUR</description>
         <id>60007</id>
         <price>0.9</price>
         <product xsi:type="cable" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <code>7</code>
-            <name>PUR with liniLed PU Connector set</name>
+            <code>9</code>
+            <name>PUR with liniLed PU Connector set 10 M</name>
+            <translations/>
             <dimension/>
             <margin/>
             <TYPE>
@@ -346,6 +445,7 @@
                 <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"></value>
             </END>
         </product>
+        <translations/>
         <type>MTR</type>
     </parts>
     <parts>
@@ -354,17 +454,20 @@
         <price>1.48</price>
         <product xsi:type="endCap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <name>End cap L20</name>
+            <translations/>
             <dimension/>
             <margin/>
         </product>
+        <translations/>
     </parts>
     <parts>
         <description>Kabel Mono PUR</description>
         <id>60006</id>
         <price>0.9</price>
         <product xsi:type="cable" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <code>7</code>
-            <name>PUR with liniLed PU Connector set</name>
+            <code>9</code>
+            <name>PUR with liniLed PU Connector set 10 M</name>
+            <translations/>
             <dimension/>
             <margin/>
             <TYPE>
@@ -374,17 +477,20 @@
                 <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"></value>
             </END>
         </product>
+        <translations/>
         <type>MTR</type>
     </parts>
     <parts>
         <description>liniLED Aeris Eindkap LC20 O</description>
         <id>10903</id>
         <price>1.57</price>
+        <translations/>
     </parts>
     <parts>
         <description>Kabel RGB Wit</description>
         <id>60005</id>
         <price>0.31</price>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED Aeris Eindkap LC20</description>
@@ -392,19 +498,23 @@
         <price>1.55</price>
         <product xsi:type="endCap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <name></name>
+            <translations/>
             <dimension/>
             <margin/>
         </product>
+        <translations/>
     </parts>
     <parts>
         <description>Kabel Mono Wit</description>
         <id>60004</id>
         <price>0.27</price>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED Aeris Eindkap H20 O</description>
         <id>10905</id>
         <price>1.61</price>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED Aeris Eindkap H20</description>
@@ -412,9 +522,11 @@
         <price>1.61</price>
         <product xsi:type="endCap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <name></name>
+            <translations/>
             <dimension/>
             <margin/>
         </product>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED PCB NW 4000K HP (PSP)</description>
@@ -423,24 +535,28 @@
         <product xsi:type="highPowerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <code>H4</code>
             <name>liniLED HP 4000K WW</name>
+            <translations/>
             <dimension/>
             <margin/>
             <maxDimension>
                 <width>2670</width>
             </maxDimension>
         </product>
+        <translations/>
         <type>MTR</type>
     </parts>
     <parts>
         <description>Kabeltule t.b.v. ALU wit</description>
         <id>GRIJP_KTULE_ALU_WIT</id>
         <price>0.11</price>
+        <translations/>
         <type>ST</type>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <configModel xsi:type="cable">
             <code>0</code>
             <name>PVC with demo connector</name>
+            <translations/>
             <dimension/>
             <margin/>
             <TYPE>
@@ -451,23 +567,27 @@
             </END>
         </configModel>
         <id>pvc0dc</id>
+        <translations/>
     </parts>
     <parts>
         <description>Dubbelz Tape 6mm tbv PCB (l=50m)</description>
         <id>60000</id>
         <price>4.71</price>
+        <translations/>
         <type>ST</type>
     </parts>
     <parts>
         <description>Productsticker</description>
         <id>GRIJP_PSTICKER</id>
         <price>0.25</price>
+        <translations/>
         <type>ST</type>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <configModel xsi:type="cable">
             <code>2</code>
             <name>PVC with open end 5 m</name>
+            <translations/>
             <dimension/>
             <margin/>
             <TYPE>
@@ -478,6 +598,7 @@
             </END>
         </configModel>
         <id>pvc2op5</id>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED PCB Blauw D</description>
@@ -486,12 +607,14 @@
         <product xsi:type="decoLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <code>PB</code>
             <name>liniLED Deco blauw</name>
+            <translations/>
             <dimension/>
             <margin/>
             <maxDimension>
                 <width>2700</width>
             </maxDimension>
         </product>
+        <translations/>
         <type>MTR</type>
     </parts>
     <parts>
@@ -501,18 +624,21 @@
         <product xsi:type="decoLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <code>PG</code>
             <name>liniLED Deco groen</name>
+            <translations/>
             <dimension/>
             <margin/>
             <maxDimension>
                 <width>2700</width>
             </maxDimension>
         </product>
+        <translations/>
         <type>MTR</type>
     </parts>
     <parts>
         <description>Handleiding</description>
         <id>HANDLEIDING</id>
         <price>0.7</price>
+        <translations/>
         <type>ST</type>
     </parts>
     <parts>
@@ -522,18 +648,21 @@
         <product xsi:type="decoLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <code>DR</code>
             <name>liniLED Deco rood</name>
+            <translations/>
             <dimension/>
             <margin/>
             <maxDimension>
                 <width>2600</width>
             </maxDimension>
         </product>
+        <translations/>
         <type>MTR</type>
     </parts>
     <parts>
         <description>Arbeidsminuut intern magazijn</description>
         <id>ARBEID</id>
         <price>0.59</price>
+        <translations/>
         <type>MINUUT</type>
     </parts>
     <parts>
@@ -543,21 +672,25 @@
         <product xsi:type="decoLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <code>PA</code>
             <name>liniLED Deco amber</name>
+            <translations/>
             <dimension/>
             <margin/>
             <maxDimension>
                 <width>2700</width>
             </maxDimension>
         </product>
+        <translations/>
         <type>MTR</type>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <configModel xsi:type="realModel">
             <code>G</code>
             <name>Geen kap</name>
+            <translations/>
             <margin/>
         </configModel>
         <id>co1</id>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED PCB RGB D</description>
@@ -566,18 +699,21 @@
         <product xsi:type="decoLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <code>DD</code>
             <name>liniLED RGB Deco</name>
+            <translations/>
             <dimension/>
             <margin/>
             <maxDimension>
                 <width>2600</width>
             </maxDimension>
         </product>
+        <translations/>
         <type>MTR</type>
     </parts>
     <parts>
         <description>liniLED Aeris Eindkap HC20 O</description>
         <id>10907</id>
         <price>1.63</price>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED Aeris Eindkap HC20</description>
@@ -585,34 +721,40 @@
         <price>1.63</price>
         <product xsi:type="endCap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <name></name>
+            <translations/>
             <dimension/>
             <margin/>
         </product>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED PCB EWW 2700K HP (PSP)</description>
         <id>21032A</id>
         <price>19</price>
         <product xsi:type="highPowerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <code>H4</code>
+            <code>H2</code>
             <name>liniLED HP 2400K UWW</name>
+            <translations/>
             <dimension/>
             <margin/>
             <maxDimension>
                 <width>2670</width>
             </maxDimension>
         </product>
+        <translations/>
         <type>MTR</type>
     </parts>
     <parts>
         <description>liniLED Aeris Eindkap C20</description>
         <id>10908</id>
         <price>1.44</price>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED Aeris Kabelgoot 30 3 m</description>
         <id>10756</id>
         <price>5.18</price>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED PCB KW 6500K HP (PSP)</description>
@@ -621,18 +763,21 @@
         <product xsi:type="highPowerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <code>H6</code>
             <name>liniLED HP 6500K KW</name>
+            <translations/>
             <dimension/>
             <margin/>
             <maxDimension>
                 <width>2670</width>
             </maxDimension>
         </product>
+        <translations/>
         <type>MTR</type>
     </parts>
     <parts>
         <description>liniLED Aeris Kabelgoot 30 2 m</description>
         <id>10755</id>
         <price>3.45</price>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED Aeris Profiel L20 4 m</description>
@@ -641,6 +786,7 @@
         <product xsi:type="profile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <code>A</code>
             <name>liniLED Aeris Profiel L20</name>
+            <translations/>
             <dimension/>
             <leftSpace>100</leftSpace>
             <margin>
@@ -654,11 +800,13 @@
                 <width>25</width>
             </lengthForCasting>
         </product>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED Aeris Kabelgoot 30 4 m</description>
         <id>10757</id>
         <price>6.9</price>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED Aeris Profiel H20 4 m</description>
@@ -667,6 +815,7 @@
         <product xsi:type="profile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <code>B</code>
             <name>liniLED Aeris Profiel H20</name>
+            <translations/>
             <dimension/>
             <margin/>
             <maxDimension>
@@ -676,41 +825,49 @@
                 <width>25</width>
             </lengthForCasting>
         </product>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED Aeris Kabelgoot 20 1 m</description>
         <id>10750</id>
         <price>1.36</price>
+        <translations/>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <configModel xsi:type="cableChannel">
             <code>b</code>
             <name>Cable channel</name>
+            <translations/>
             <dimension/>
             <margin/>
         </configModel>
         <description>Kabelgoot</description>
         <id>kg</id>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED Aeris Kabelgoot 20 3 m</description>
         <id>10752</id>
         <price>4.07</price>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED Aeris Kabelgoot 20 2 m</description>
         <id>10751</id>
         <price>2.71</price>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED Aeris Kabelgoot 30 1 m</description>
         <id>10754</id>
         <price>1.73</price>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED Aeris Kabelgoot 20 4 m</description>
         <id>10753</id>
         <price>5.42</price>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED PCB RGB P</description>
@@ -719,18 +876,21 @@
         <product xsi:type="powerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <code>PP</code>
             <name>liniLED Power RGB</name>
+            <translations/>
             <dimension/>
             <margin/>
             <maxDimension>
                 <width>2700</width>
             </maxDimension>
         </product>
+        <translations/>
         <type>MTR</type>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <configModel xsi:type="cable">
             <code>3</code>
             <name>PVC with open end 10 m</name>
+            <translations/>
             <dimension/>
             <margin/>
             <TYPE>
@@ -741,94 +901,147 @@
             </END>
         </configModel>
         <id>pvc3op10</id>
+        <translations/>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <configModel xsi:type="noEndCapsMounting">
             <code>1</code>
             <name>Geen eindkappen</name>
+            <translations>
+                <entry>
+                    <key>en</key>
+                    <value>No endcaps</value>
+                </entry>
+                <entry>
+                    <key>nl</key>
+                    <value>Geen eindkappen</value>
+                </entry>
+            </translations>
             <margins>
                 <left>2</left>
                 <right>2</right>
             </margins>
         </configModel>
         <id>m1</id>
+        <translations/>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <configModel xsi:type="endCapRightMounting">
             <code>2</code>
             <name>Eindkap aan de rechter zijde</name>
+            <translations>
+                <entry>
+                    <key>en</key>
+                    <value>Endcap right side</value>
+                </entry>
+                <entry>
+                    <key>nl</key>
+                    <value>Eindkap aan de rechter zijde</value>
+                </entry>
+            </translations>
             <margins>
                 <left>0</left>
                 <right>2</right>
             </margins>
         </configModel>
         <id>m2</id>
+        <translations/>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <configModel xsi:type="endCapLeftMounting">
             <code>3</code>
             <name>Eindkap aan linkerzijde</name>
+            <translations>
+                <entry>
+                    <key>en</key>
+                    <value>Endcap left side</value>
+                </entry>
+                <entry>
+                    <key>nl</key>
+                    <value>Eindkap aan linkerzijde</value>
+                </entry>
+            </translations>
             <margins>
                 <left>2</left>
                 <right>0</right>
             </margins>
         </configModel>
         <id>m3</id>
+        <translations/>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <configModel xsi:type="endCapBothSidesMounting">
             <code>4</code>
             <name>Eindkappen aan beide zijdes</name>
+            <translations>
+                <entry>
+                    <key>en</key>
+                    <value>Endcaps both sides</value>
+                </entry>
+                <entry>
+                    <key>nl</key>
+                    <value>Eindkappen aan beide zijdes</value>
+                </entry>
+            </translations>
             <margins>
                 <left>2</left>
                 <right>2</right>
             </margins>
         </configModel>
         <id>m4</id>
+        <translations/>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <configModel xsi:type="highEndCapRightMounting">
             <code>5</code>
             <name>Hoge eindkap aan de rechter zijde</name>
+            <translations/>
             <margins>
                 <left>0</left>
                 <right>2</right>
             </margins>
         </configModel>
         <id>m5</id>
+        <translations/>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <configModel xsi:type="highEndCapLeftMounting">
             <code>6</code>
             <name>Hoge eindkap aan de linker zijde</name>
+            <translations/>
             <margins>
                 <left>2</left>
                 <right>0</right>
             </margins>
         </configModel>
         <id>m6</id>
+        <translations/>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <configModel xsi:type="highEndCapBothMounting">
             <code>7</code>
             <name>Hoge eindkap aan beide zijdes</name>
+            <translations/>
             <margins>
                 <left>2</left>
                 <right>2</right>
             </margins>
         </configModel>
         <id>m7</id>
+        <translations/>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <configModel xsi:type="highEndCapBothCableChannelMounting">
             <code>8</code>
             <name>Hoge eindkap aan beide zijdes van kabelgoot</name>
+            <translations/>
             <margins>
                 <left>2</left>
                 <right>2</right>
             </margins>
         </configModel>
         <id>m8</id>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED PCB Blauw P</description>
@@ -837,12 +1050,14 @@
         <product xsi:type="powerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <code>PB</code>
             <name>liniLED Power blauw</name>
+            <translations/>
             <dimension/>
             <margin/>
             <maxDimension>
                 <width>2670</width>
             </maxDimension>
         </product>
+        <translations/>
         <type>MTR</type>
     </parts>
     <parts>
@@ -852,18 +1067,21 @@
         <product xsi:type="powerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <code>PR</code>
             <name>liniLED Power rood</name>
+            <translations/>
             <dimension/>
             <margin/>
             <maxDimension>
                 <width>2670</width>
             </maxDimension>
         </product>
+        <translations/>
         <type>MTR</type>
     </parts>
     <parts>
         <description>liniLED Aeris Eindkap L30 O</description>
         <id>10921</id>
         <price>1.53</price>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED Aeris Eindkap L30</description>
@@ -871,20 +1089,24 @@
         <price>1.51</price>
         <product xsi:type="endCap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <name></name>
+            <translations/>
             <dimension/>
             <margin/>
         </product>
+        <translations/>
     </parts>
     <parts>
         <description>Verpakking</description>
         <id>VERPAKKING</id>
         <price>0.5</price>
+        <translations/>
         <type>ST</type>
     </parts>
     <parts>
         <description>liniLED Aeris Eindkap LC30 O</description>
         <id>10923</id>
         <price>1.61</price>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED Aeris Eindkap LC30</description>
@@ -892,14 +1114,17 @@
         <price>1.59</price>
         <product xsi:type="endCap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <name></name>
+            <translations/>
             <dimension/>
             <margin/>
         </product>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED Aeris Eindkap H30 O</description>
         <id>10925</id>
         <price>1.61</price>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED Aeris Eindkap H30</description>
@@ -907,9 +1132,11 @@
         <price>1.59</price>
         <product xsi:type="endCap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <name></name>
+            <translations/>
             <dimension/>
             <margin/>
         </product>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED PCB EWW 2700K HP (PSP)</description>
@@ -918,18 +1145,30 @@
         <product xsi:type="highPowerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <code>H7</code>
             <name>liniLED HP 2700K EWW</name>
+            <translations/>
             <dimension/>
             <margin/>
             <maxDimension>
                 <width>2670</width>
             </maxDimension>
         </product>
+        <translations/>
         <type>MTR</type>
     </parts>
     <parts>
         <description>liniLED Aeris Eindkap HC30 O</description>
         <id>10927</id>
         <price>1.63</price>
+        <translations>
+            <entry>
+                <key>en</key>
+                <value>liniLED Aeris Endcap HC30 O</value>
+            </entry>
+            <entry>
+                <key>nl</key>
+                <value>liniLED Aeris Eindkap HC30 O</value>
+            </entry>
+        </translations>
     </parts>
     <parts>
         <description>liniLED Aeris Eindkap HC30</description>
@@ -937,24 +1176,29 @@
         <price>1.61</price>
         <product xsi:type="endCap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <name></name>
+            <translations/>
             <dimension/>
             <margin/>
         </product>
+        <translations/>
     </parts>
     <parts>
         <description>liniLED Aansluitkabel Demo</description>
         <id>11214</id>
         <price>2.64</price>
+        <translations/>
         <type>MTR</type>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <configModel xsi:type="clip">
             <code>a</code>
             <name>Accessoire: Clip</name>
+            <translations/>
             <dimension/>
             <margin/>
         </configModel>
         <description>Clip.</description>
         <id>clip</id>
+        <translations/>
     </parts>
 </partList>
