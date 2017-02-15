@@ -21,6 +21,7 @@ public class Model extends Relatable implements StepConfig, Serializable {
     private String code;
     private Integer step;
 
+
     private Map<String, Property> properies = new HashMap<String, Property>();
 
     private Map<Locale, String> translations = new HashMap<Locale, String>();
@@ -103,4 +104,5 @@ public class Model extends Relatable implements StepConfig, Serializable {
     public void setTranslations(Map<Locale, String> translations) {
         this.translations = translations;
     }
+
 }

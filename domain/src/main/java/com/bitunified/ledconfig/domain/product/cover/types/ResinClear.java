@@ -7,7 +7,7 @@ import com.bitunified.ledconfig.domain.product.cover.Covering;
 
 import javax.xml.bind.annotation.XmlSeeAlso;
 
-
+@XmlSeeAlso({Covering.class,Resin.class})
 public class ResinClear extends Resin {
 
     public ResinClear(Dimension dimension) {

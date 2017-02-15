@@ -6,15 +6,12 @@ import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 
 
 public class PowerLedStrip extends LedStrip {
-    public static final String KELVIN_TYPE = "kelvin";
-    public static final Property KELVIN=new Property(KELVIN_TYPE,"");
 
     public PowerLedStrip(){
 
     }
     public PowerLedStrip(Dimension dimension){
         super(dimension);
-        addProperty(KELVIN);
         addProperty(COLOR);
     }
 }

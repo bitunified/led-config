@@ -3,6 +3,7 @@ package com.bitunified.ledconfig.parts;
 
 import com.bitunified.ledconfig.domain.I18N.Locale;
 import com.bitunified.ledconfig.domain.Model;
+import com.bitunified.ledconfig.domain.Relation;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -13,7 +14,7 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-@XmlSeeAlso({NotExistingPart.class})
+@XmlSeeAlso({NotExistingPart.class,Relatable.class})
 public class Part extends Relatable implements Serializable {
 
     private RealModel product;

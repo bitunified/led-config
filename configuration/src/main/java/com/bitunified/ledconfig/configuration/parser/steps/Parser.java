@@ -160,7 +160,7 @@ public class Parser {
         profileL20.setMaxDimension(new Dimension(2750));
         profileL20.setLeftSpace((100));
         profileL20.setLengthForCasting(new Dimension(25));
-        profileL20.setCode("A");
+        profileL20.setCode("D");
         Part partL20 = new Part(profileL20);
         partL20.setPrice(BigDecimal.valueOf(6.81));
         partL20.setId("10713");
@@ -190,7 +190,7 @@ public class Parser {
         profileH20.setName("liniLED Aeris Profiel H20");
         profileH20.setLengthForCasting(new Dimension(25));
         profileH20.setMaxDimension(new Dimension(2750));
-        profileH20.setCode("B");
+        profileH20.setCode("E");
         Part partProfielH20 = new Part(profileH20);
         partProfielH20.setPrice(BigDecimal.valueOf(11.96));
         partProfielH20.setId("10717");
@@ -262,7 +262,7 @@ public class Parser {
         profileL30.setTranslations(Locale.en,"liniLed Aeris Profile L30");
         profileL30.setLengthForCasting(new Dimension(25));
         profileL30.setMaxDimension(new Dimension(2750));
-        profileL30.setCode("C");
+        profileL30.setCode("F");
         Part partProfielL30 = new Part(profileL30);
         partProfielL30.setPrice(BigDecimal.valueOf(9.30));
         partProfielL30.setId("10733");
@@ -289,7 +289,7 @@ public class Parser {
         profileH30.setName("liniLED Aeris Profiel H30");
         profileH30.setLengthForCasting(new Dimension(25));
         profileH30.setMaxDimension(new Dimension(2750));
-        profileH30.setCode("D");
+        profileH30.setCode("G");
 
         Part partProfielH30 = new Part(profileH30);
         partProfielH30.setPrice(BigDecimal.valueOf(14.47));
@@ -357,7 +357,7 @@ public class Parser {
 
         CableEntry cableEntry = new LeftViaEndCapCableEntry();
         cableEntry.setName("Left side via end cap");
-        cableEntry.setCode("1");
+        cableEntry.setCode("A");
         Margin margin = new Margin(10, 5);
         cableEntry.setMargins(margin);
         part = new NotExistingPart(cableEntry);
@@ -369,7 +369,7 @@ public class Parser {
         cableEntry.setName("Left side via bottom");
         margin = new Margin(15, 5);
         cableEntry.setMargins(margin);
-        cableEntry.setCode("2");
+        cableEntry.setCode("B");
         part = new NotExistingPart(cableEntry);
         part.setId("ca2");
         parts.add(part);
@@ -378,7 +378,7 @@ public class Parser {
         cableEntry.setName("Left side via side");
         margin = new Margin(15, 5);
         cableEntry.setMargins(margin);
-        cableEntry.setCode("3");
+        cableEntry.setCode("C");
         part = new NotExistingPart(cableEntry);
         part.setId("ca3");
         parts.add(part);
@@ -389,7 +389,7 @@ public class Parser {
 
         margin = new Margin(5, 15);
         cableEntry.setMargins(margin);
-        cableEntry.setCode("4");
+        cableEntry.setCode("D");
         part = new NotExistingPart(cableEntry);
         part.setId("ca4");
         parts.add(part);
@@ -399,7 +399,7 @@ public class Parser {
 
         margin = new Margin(5, 5);
         cableEntry.setMargins(margin);
-        cableEntry.setCode("5");
+        cableEntry.setCode("E");
         part = new NotExistingPart(cableEntry);
         part.setId("ca5");
         parts.add(part);
@@ -408,7 +408,7 @@ public class Parser {
         mounting.setName("Geen eindkappen");
         mounting.setTranslations(Locale.nl,"Geen eindkappen");
         mounting.setTranslations(Locale.en,"No endcaps");
-        mounting.setCode("1");
+        mounting.setCode("A");
         margin = new Margin(2, 2);
         mounting.setMargins(margin);
         part = new NotExistingPart(mounting);
@@ -423,7 +423,7 @@ public class Parser {
         mounting.setTranslations(Locale.nl,mounting.getName());
         mounting.setTranslations(Locale.en,"Endcap right side");
         margin = new Margin(0, 2);
-        mounting.setCode("2");
+        mounting.setCode("B");
         mounting.setMargins(margin);
 
         part = new NotExistingPart(mounting);
@@ -437,7 +437,7 @@ public class Parser {
         mounting.setTranslations(Locale.nl,mounting.getName());
         mounting.setTranslations(Locale.en,"Endcap left side");
         margin = new Margin(2, 0);
-        mounting.setCode("3");
+        mounting.setCode("C");
         mounting.setMargins(margin);
 
         part = new NotExistingPart(mounting);
@@ -453,7 +453,7 @@ public class Parser {
         mounting.setTranslations(Locale.nl,mounting.getName());
         mounting.setTranslations(Locale.en,"Endcaps both sides");
         margin = new Margin(2, 2);
-        mounting.setCode("4");
+        mounting.setCode("D");
         mounting.setMargins(margin);
 
         part = new NotExistingPart(mounting);
@@ -468,7 +468,7 @@ public class Parser {
         mounting = new HighEndCapRightMounting();
         mounting.setName("Hoge eindkap aan de rechter zijde");
         margin = new Margin(0, 2);
-        mounting.setCode("5");
+        mounting.setCode("E");
         mounting.setMargins(margin);
 
         part = new NotExistingPart(mounting);
@@ -482,7 +482,7 @@ public class Parser {
         mounting = new HighEndCapLeftMounting();
         mounting.setName("Hoge eindkap aan de linker zijde");
         margin = new Margin(2, 0);
-        mounting.setCode("6");
+        mounting.setCode("F");
         mounting.setMargins(margin);
 
         part = new NotExistingPart(mounting);
@@ -496,7 +496,7 @@ public class Parser {
         mounting = new HighEndCapBothMounting();
         mounting.setName("Hoge eindkap aan beide zijdes");
         margin = new Margin(2, 2);
-        mounting.setCode("7");
+        mounting.setCode("G");
         mounting.setMargins(margin);
 
         part = new NotExistingPart(mounting);
@@ -510,7 +510,7 @@ public class Parser {
         mounting = new HighEndCapBothCableChannelMounting();
         mounting.setName("Hoge eindkap aan beide zijdes van kabelgoot");
         margin = new Margin(2, 2);
-        mounting.setCode("8");
+        mounting.setCode("H");
         mounting.setMargins(margin);
 
         part = new NotExistingPart(mounting);
@@ -590,8 +590,8 @@ public class Parser {
 
         Cable cable = new Cable(new Dimension(null));
         cable.setName("PVC with open end");
-        cable.getProperty(Cable.CABLE_TYPE).setValue("PVCopenend");
-        cable.setCode("1");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
+        cable.setCode("B");
         part = new NotExistingPart(cable);
         part.setId("pvcw1");
         parts.add(part);
@@ -599,53 +599,53 @@ public class Parser {
 
         cable = new Cable(new Dimension(null));
         cable.setName("PVC with demo connector");
-        cable.getProperty(Cable.CABLE_TYPE).setValue("DemoConnector");
-        cable.setCode("0");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("DemoConnector");
+        cable.setCode("A");
         part = new NotExistingPart(cable);
         part.setId("pvc0dc");
         parts.add(part);
 
         cable = new Cable(new Dimension(null));
         cable.setName("PVC with open end 5 m");
-        cable.setCode("2");
+        cable.setCode("C");
         part = new NotExistingPart(cable);
         part.setId("pvc2op5");
         parts.add(part);
 
         cable = new Cable(new Dimension(null));
         cable.setName("PVC with open end 10 m");
-        cable.setCode("3");
+        cable.setCode("D");
         part = new NotExistingPart(cable);
         part.setId("pvc3op10");
         parts.add(part);
 
         cable = new Cable(new Dimension(null));
         cable.setName("PUR with open end 1 m");
-        cable.setCode("4");
+        cable.setCode("E");
         part = new NotExistingPart(cable);
         part.setId("pur4op1");
         parts.add(part);
 
         cable = new Cable(new Dimension(null));
         cable.setName("PUR with liniLed PU Connector set 1 M");
-        cable.getProperty(Cable.CABLE_TYPE).setValue("PURconnectorset");
-        cable.setCode("7");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PURconnectorset");
+        cable.setCode("H");
         part = new NotExistingPart(cable);
         part.setId("purw7");
         parts.add(part);
 
         cable = new Cable(new Dimension(null));
         cable.setName("PUR with liniLed PU Connector set 5 M");
-        cable.getProperty(Cable.CABLE_TYPE).setValue("PURconnectorset");
-        cable.setCode("8");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PURconnectorset");
+        cable.setCode("I");
         part = new NotExistingPart(cable);
         part.setId("purw8");
         parts.add(part);
 
         cable = new Cable(new Dimension(null));
         cable.setName("PUR with liniLed PU Connector set 10 M");
-        cable.getProperty(Cable.CABLE_TYPE).setValue("PURconnectorset");
-        cable.setCode("9");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PURconnectorset");
+        cable.setCode("J");
         part = new NotExistingPart(cable);
         part.setId("purw9");
         parts.add(part);
@@ -696,15 +696,19 @@ public class Parser {
         //(GABHPQRSTUV){1}
         Covering covering = new Covering(null);
         covering.setName("Geen kap");
-        covering.setCode("G");
+        covering.setCode("E");
         part = new NotExistingPart(covering);
         part.setId("co1");
         parts.add(part);
 
         covering = new ResinClear(null);
-        covering.setName("Lage kap helder L20");
-        covering.setCode("A");
-        part = new Part(covering);
+        covering.setName("Helder");
+        covering.setCode("C");
+        part = new NotExistingPart(covering);
+        part.setId("coh1");
+        parts.add(part);
+
+        part = new Part();
         part.setId("95000");
         part.setDescription("Ingieten liniLED L20 Helder");
         part.setPrice(BigDecimal.valueOf(11.5));
@@ -714,22 +718,26 @@ public class Parser {
         //        "95000","Ingieten liniLED L20 Helder","11.50","MTR","","10"
 
         covering = new ResinDiffuse(null);
-        covering.setName("Lage kap diffuus L20");
-        covering.setCode("B");
-        part = new Part(covering);
+        covering.setName("Diffuus");
+        covering.setCode("D");
+        part = new NotExistingPart(covering);
+        part.setId("cod1");
+        parts.add(part);
+
+        part = new Part();
         part.setId("95001");
         part.setPrice(BigDecimal.valueOf(11.5));
         part.setDescription("Ingieten liniLED L20 Diffuus");
         part.setType("MTR");
         parts.add(part);
         profileL20.getRelation().addRelateTo(part,null);
+
 //        "95001","Ingieten liniLED L20 Diffuus","11.50","MTR","","10"
 
 
-        covering = new ResinClear(null);
-        covering.setName("Hoge kap helder L30");
-        covering.setCode("H");
-        part = new Part(covering);
+
+
+        part = new Part();
         part.setDescription("Ingieten liniLED L30 Helder");
         part.setPrice(BigDecimal.valueOf(17.25));
         part.setType("MTR");
@@ -739,10 +747,8 @@ public class Parser {
         //        "95003","Ingieten liniLED L30 Helder","17.25","MTR","","10"
 
 
-        covering = new ResinDiffuse(null);
-        covering.setName("L30 Diffuus");
-        covering.setCode("P");
-        part = new Part(covering);
+
+        part = new Part();
         part.setDescription("Ingieten liniLED L30 Diffuus");
         part.setId("95004");
         part.setPrice(BigDecimal.valueOf(17.25));
@@ -752,10 +758,8 @@ public class Parser {
         //        "95004","Ingieten liniLED L30 Diffuus","17.25","MTR","","10"
 
 
-        covering = new ResinClear(null);
-        covering.setName("H20 Helder");
-        covering.setCode("Q");
-        part = new Part(covering);
+
+        part = new Part();
         part.setPrice(BigDecimal.valueOf(23));
         part.setId("95010");
         part.setDescription("Ingieten liniLED H20 Helder");
@@ -764,10 +768,8 @@ public class Parser {
         profileH20.getRelation().addRelateTo(part,null);
 //        "95010","Ingieten liniLED H20 Helder","23.00","MTR","","10"
 
-        covering = new ResinDiffuse(null);
-        covering.setName("H20 Diffuus");
-        covering.setCode("R");
-        part = new Part(covering);
+
+        part = new Part();
         part.setPrice(BigDecimal.valueOf(23));
         part.setId("95011");
         part.setDescription("Ingieten liniLED H20 Diffuus");
@@ -776,10 +778,8 @@ public class Parser {
         profileH20.getRelation().addRelateTo(part,null);
         //        "95011","Ingieten liniLED H20 Diffuus","23.00","MTR","","10"
 
-        covering = new ResinClear(null);
-        covering.setName("H30 Helder");
-        covering.setCode("S");
-        part = new Part(covering);
+
+        part = new Part();
         part.setPrice(BigDecimal.valueOf(46.5));
         part.setId("95013");
         part.setDescription("Ingieten liniLED H30 Helder");
@@ -787,10 +787,8 @@ public class Parser {
         parts.add(part);
         profileH30.getRelation().addRelateTo(part,null);
 //        "95013","Ingieten liniLED H30 Helder","46.50","MTR","","10"
-        covering = new ResinDiffuse(null);
-        covering.setName("H30 Diffuus");
-        covering.setCode("U");
-        part = new Part(covering);
+
+        part = new Part();
         part.setPrice(BigDecimal.valueOf(46.5));
         part.setId("95014");
         part.setDescription("Ingieten liniLED H30 Diffuus");
@@ -800,7 +798,7 @@ public class Parser {
 //        "95014","Ingieten liniLED H30 Diffuus","46.50","MTR","","10"
 
 
-        //(DPHN){1}(RGBDA|2473456){1}
+
         LedStrip ledStrip = new DecoLedStrip(new Dimension(null));
         ledStrip.setName("liniLED Deco rood");
         ledStrip.setMaxDimension(new Dimension(2600));
@@ -819,7 +817,7 @@ public class Parser {
         ledStrip.setMaxDimension(new Dimension(2600));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(LedStrip.COLOR_TYPE).setValue("rgb");
-        ledStrip.setCode("DD");
+        ledStrip.setCode("DP");
         part = new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(15));
         part.setId("21002");
@@ -950,7 +948,7 @@ public class Parser {
         ledStrip.setMaxDimension(new Dimension(2670));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2400");
-        ledStrip.setCode("H2");
+        ledStrip.setCode("HU");
         part = new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(19));
         part.setId("21032A");
@@ -964,7 +962,7 @@ public class Parser {
         ledStrip.setMaxDimension(new Dimension(2670));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2700");
-        ledStrip.setCode("H7");
+        ledStrip.setCode("HE");
         part = new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(19));
         part.setId("21013A");
@@ -978,7 +976,8 @@ public class Parser {
         ledStrip.setMaxDimension(new Dimension(2670));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("3000");
-        ledStrip.setCode("H3");
+        ledStrip.setCode("HW");
+
         part = new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(19));
         part.setId("21014A");
@@ -992,7 +991,7 @@ public class Parser {
         ledStrip.setMaxDimension(new Dimension(2670));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("4000");
-        ledStrip.setCode("H4");
+        ledStrip.setCode("HN");
         part = new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(19));
         part.setId("21015A");
@@ -1006,7 +1005,7 @@ public class Parser {
         ledStrip.setMaxDimension(new Dimension(2670));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("6500");
-        ledStrip.setCode("H6");
+        ledStrip.setCode("HC");
 
         part = new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(19));

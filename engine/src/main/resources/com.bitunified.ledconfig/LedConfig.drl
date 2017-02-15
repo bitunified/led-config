@@ -11,6 +11,7 @@ import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.composedproduct.ComposedProduct;
 import com.bitunified.ledconfig.domain.message.Message
 import com.bitunified.ledconfig.domain.product.cover.types.ResinClear;
+import com.bitunified.ledconfig.domain.product.cover.types.ResinDiffuse;
 import com.bitunified.ledconfig.domain.product.cover.types.Resin;
 import com.bitunified.ledconfig.domain.product.PCB.types.RGBLedStrip;
 import com.bitunified.ledconfig.domain.product.PCB.types.DecoLedStrip;
@@ -65,9 +66,10 @@ rule "Totale lengte berekening" salience 1
 
     then
         int totalLength=(int)mountingLeft+(int)mountingRight+(int)ledstripLength+(int)cableEntryLeft+(int)cableEntryRight;
-        cp.getDimension().width=totalLength;
+
+        //Dit activeert andere regels die op basis van de productlengte berekeningen maken.
         modify(cp){
-        getDimension().width=totalLength
+            getDimension().width=totalLength
         }
 
         messages.add(new Message("Totale lengte automatisch berekend: "+totalLength+" mm.",8,MessageStatus.INFO));
@@ -126,7 +128,8 @@ end
 
 rule "Minimale lengte groter dan section lengte"
     when
-        LedStrip(dimension.width<SECTION.value);
+
+        LedStrip(sect:getProperty(LedStrip.SECTION_WIDTH),sect!=null,dimension.width<sect.value);
     then
         messages.add(new Message("Lengte ledstrip kan niet kleiner zijn dan sectie lengte."));
 end
@@ -147,6 +150,18 @@ end
            messages.add(new Message("Kabel uiteinde via eindkap alleen mogelijk als kabel door eindkap gaat.",4,MessageStatus.ERROR));
        end
 
+rule "Error: niet ingieten bij lage lichtsterktes"
+no-loop true
+    when
+       exists(ResinClear() or ResinDiffuse())
+       exists(DecoLedStrip()) or exists(PowerLedStrip()) or exists(HighPowerLedStrip(kelvin:getProperty(HighPowerLedStrip.KELVIN_TYPE),kelvin!=null,kelvin.value=="2400"))
+
+    then
+        System.out.println("Deco,Power,HP ledstrip niet mogelijk voor ingieten.");
+         messages.add(new Message("Deco,Power, HP ledstrip niet mogelijk voor ingieten.",2,MessageStatus.ERROR));
+
+
+end
 
   rule "Actie: RGB kabel toevoegen"
   no-loop true
@@ -273,17 +288,18 @@ rule "Actie: Andere kabel toevoegen type 5 Niet RGB"
         System.out.println("Actie ander type 5 kabel Niet RGB");
 end
 
-rule "Profiel L20 lengte"
+rule "Actie: Profiel L20 lengte"
   no-loop true
        when
+
             exists(Profile(name matches ".*L20.*"));
-           (composedproduct:ComposedProduct(totalLength:dimension.width))
+           composedproduct:ComposedProduct(dimension.width!=null)
            profile:Profile(castingLength:lengthForCasting.width)
            mountingLeft:Mounting(leftMountingLength:margins.left,margins!=null,leftMountingLength!=null)
            mountingRight:Mounting(rightMountingLength:margins.right,margins!=null,margins.right!=null)
        then
          //Profiel lengte
-         double length=((composedproduct.getDimension().width-((int)mountingLeft.getMargins().getLeft()))+profile.getLengthForCasting().width/4000d);
+         double length=(((composedproduct.getDimension().width-((int)mountingLeft.getMargins().getLeft()))+profile.getLengthForCasting().width)/4000d);
          Part part=SerializationUtils.clone((Part)parts.get("10713"));
          PartListHelper.addToPartCountList(partCountList,part,length);
          System.out.println("Profiel lengte L20:"+length);
@@ -468,6 +484,8 @@ no-loop true
 
 end
 
+
+
 rule "Actie: Ingieten"
 no-loop true
     when
@@ -479,10 +497,9 @@ no-loop true
         Part part=null;
         if (result.get(Orientation.Left).getCount()==result.get(Orientation.Right).getCount()){
            part=SerializationUtils.clone((Part)result.get(Orientation.Right).getPart());
-                            PartListHelper.addToPartCountList(partCountList,part,1d);
-                           System.out.println("Part Behuizing:"+part+ " "+result);
-
-                   }
+           PartListHelper.addToPartCountList(partCountList,part,1d);
+           System.out.println("Part Behuizing:"+part+ " "+result);
+        }
 
 
 end

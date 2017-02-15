@@ -20,10 +20,9 @@ public class LedStrip extends RealModel {
 
     public static final String SECTION_WIDTH = "section";
 
-    public static final Property SECTION=new Property(SECTION_WIDTH,"");
+    public final Property SECTION=new Property(SECTION_WIDTH,null);
     public LedStrip(Dimension dimension) {
         super(dimension);
         addProperty(SECTION);
-
     }
 }

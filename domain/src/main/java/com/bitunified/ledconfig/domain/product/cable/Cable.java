@@ -13,14 +13,14 @@ public class Cable extends RealModel {
     public Cable(){
 
     }
-    public static final String CABLE_TYPE = "cable_type";
-    public static final String CABLE_END = "cable_end";
+    public static final String CABLE_TYPE_S = "cable_type";
+    public static final String CABLE_END_S = "cable_end";
 
-    public  final Property TYPE=new Property(CABLE_TYPE,"");
-    public  final Property END=new Property(CABLE_END,"");
+    public  final Property CABLE_TYPE=new Property(CABLE_TYPE_S,"");
+    public  final Property CABLE_END=new Property(CABLE_END_S,"");
     public Cable(Dimension dimension) {
         super(dimension);
-        addProperty(TYPE);
-        addProperty(END);
+        addProperty(CABLE_TYPE);
+        addProperty(CABLE_END);
     }
 }

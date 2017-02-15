@@ -11,7 +11,7 @@ public class Property implements Serializable{
     private String name;
     private Object value;
 
-    public Property(String name, String value){
+    public Property(String name, Object value){
         this.name=name;
         this.value=value;
     }

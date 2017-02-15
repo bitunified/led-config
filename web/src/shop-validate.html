@@ -138,7 +138,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             id="checkoutForm"
                             is="iron-form"
                             method="post"
-                            action="/server/rest/engine/data"
+                            action="http://localhost:8080/server/rest/engine/data"
                             on-iron-form-response="_didReceiveResponse"
                             on-iron-form-presubmit="_willSendRequest">
 
@@ -156,7 +156,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 <div class="row input-row">
                                     <shop-input>
                                         <input type="tel" id="productcode" name="productcode"
-                                               pattern="([A-F]){1}([GABHPQRSTUV]){1}([DPHN]){1}([RGBDA]|[2473456]){1}([1470258369]){1}([1-5])([1-8])(\d{4})((\d{4})?)(([ab])?)+"
+                                               pattern="([D-K]){1}([CDEHL]){1}([DPHNT]){1}([RGBDA]|[FUEWNCTV]){1}([A-J]){1}([A-E])([A-H])(\d{4})((\d{4})?)(([ab])?)+"
                                                placeholder="{{localize('validate.form.code')}}" required value=""
                                                autocomplete="cc-number">
                                         <shop-md-decorator error-message="{{localize('validate.form.invalidcode')}}"
@@ -238,7 +238,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                     </template>
                     <template is="dom-if" if="[[success]]">
-                        {{localize('validate.response.correct.message')}
+                        {{localize('validate.response.correct.message')}}
                     </template>
                     <template is="dom-repeat" items="[[response.messages]]">
                         <p>[[item.message]]</p>
@@ -249,7 +249,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
                             <tr>
-                                <td> {{localize('validate.response.total')}</td>
+                                <td> {{localize('validate.response.total')}}</td>
                                 <td>€ [[response.totalPrice]]</td>
                             </tr>
                         </table>
@@ -346,7 +346,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 Polymer.AppLocalizeBehavior
             ],
             attached: function () {
-                this.loadResources(this.resolveUrl('../server/locales.json'));
+                this.loadResources(this.resolveUrl('http://localhost:8080/server/locales.json'));
             },
             properties: {
                 language: {

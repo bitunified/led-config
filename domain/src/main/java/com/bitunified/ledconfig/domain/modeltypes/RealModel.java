@@ -5,20 +5,23 @@ import com.bitunified.ledconfig.composedproduct.ComposedProduct;
 import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.domain.Margin;
 import com.bitunified.ledconfig.domain.Model;
+import com.bitunified.ledconfig.domain.Relation;
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 import com.bitunified.ledconfig.domain.product.accessoires.Accessoire;
 import com.bitunified.ledconfig.domain.product.cable.Cable;
 import com.bitunified.ledconfig.domain.product.mounting.EndCap;
 import com.bitunified.ledconfig.domain.product.profile.Profile;
+import com.bitunified.ledconfig.parts.Relatable;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.xml.bind.annotation.XmlSeeAlso;
 
-@XmlSeeAlso({Profile.class, LedStrip.class, Cable.class, ComposedProduct.class, Accessoire.class, EndCap.class})
+@XmlSeeAlso({Profile.class, LedStrip.class, Cable.class, ComposedProduct.class, Accessoire.class, EndCap.class, Relatable.class})
 public class RealModel extends Model {
     protected Dimension dimension = new Dimension(null, null);
 
     protected Dimension maxDimension;
+
 
 
     private Margin margin = new Margin();
@@ -85,5 +88,6 @@ public class RealModel extends Model {
     public void setMargin(Margin margin) {
         this.margin = margin;
     }
+
 
 }
