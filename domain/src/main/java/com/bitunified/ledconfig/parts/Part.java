@@ -21,7 +21,6 @@ public class Part extends Relatable implements Serializable {
 
     private Model configModel;
 
-    private String priceStr;
 
     private BigDecimal price;
 
@@ -107,14 +106,6 @@ public class Part extends Relatable implements Serializable {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public String getPriceStr() {
-        return priceStr;
-    }
-
-    public void setPriceStr(String priceStr) {
-        this.priceStr = priceStr;
     }
 
     public BigDecimal getPrice() {

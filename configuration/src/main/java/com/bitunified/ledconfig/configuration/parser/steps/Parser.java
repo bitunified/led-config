@@ -1030,6 +1030,7 @@ public class Parser {
 
         part = new Part(clip);
         part.setId("10890");
+        part.setPrice(BigDecimal.valueOf(0.35));
         part.setDescription("Clip 20");
         parts.add(part);
 

@@ -35,7 +35,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <template>
         <style include="shop-common-styles shop-button shop-form-styles shop-input shop-select shop-checkbox">
 
+            @media print {
+                body * {
+                    visibility: hidden;
+                }
+                .infoDialog {
+                    font: 10pt Georgia, "Times New Roman", Times, Serif;
+                    /*color: #222222;*/
+                    line-height: 1.3;
+                    width:100px
+                }
+                .main-frame {
+                    display: none;
+                }
+                @page{
+                    margin: 0.5cm;
+                    size: landscape;
 
+                }
+            }
             .main-frame {
                 transition: opacity 0.5s;
             }
@@ -179,7 +197,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <header state="success">
                     <h1>{{localize('validate.response.messages')}}</h1>
 
-                    <iron-data-table details-enabled items="{{response.messageTable}}" height="300px">
+                    <iron-data-table details-enabled items="{{response.messageTable}}" style="height:500px">
                         <template is="row-detail">
                             <div class="detail">
 
@@ -218,9 +236,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                                         <iron-icon class="tool-box-icon" icon="error"></iron-icon>
                                     </template>
-                                    <template is="dom-if" if="[[!item.error]]">
-
-
+                                    <template is="dom-if" if="[[item.more]]">
                                         <iron-icon icon="expand-more"></iron-icon>
                                     </template>
 
@@ -246,8 +262,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                     <template is="dom-if" if="[[success]]">
                         <table>
-
-
                             <tr>
                                 <td> {{localize('validate.response.total')}}</td>
                                 <td>€ [[response.totalPrice]]</td>
@@ -256,55 +270,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     </template>
 
 
-                    <style>
-                        paper-dialog {
-                            @apply(--layout-flex);
-                            width: 400px;
-                        }
-                    </style>
-                    <paper-dialog id="dialog" responsive style="width: 80%">
-                        <h2>{{localize('validate.response.partlist.title')}}</h2>
-                        <iron-data-table details-enabled items="{{partList}}">
 
-                            <data-table-column name="{{localize('validate.response.partlist.id')}}">
-                                <template> {{item.id}}</template>
-                            </data-table-column>
-                            <data-table-column name="{{localize('validate.response.partlist.description')}}">
-                                <template> {{item.description}}</template>
-                            </data-table-column>
-                            <data-table-column name="{{localize('validate.response.partlist.amount')}}">
-                                <template> {{item.count}}</template>
-                            </data-table-column>
-                        </iron-data-table>
-                        <div class="buttons">
-                            <paper-button dialog-confirm autofocus>{{localize('validate.response.partlist.button.close')}}</paper-button>
-                        </div>
-                    </paper-dialog>
 
                     <template is="dom-if" if="[[success]]">
                         <shop-button responsive id="openDialog">
                             <input type="button" on-click="openDialog" value="{{localize('validate.response.partlist.button')}}">
                         </shop-button>
                     </template>
-                    <paper-dialog id="instructionsDialog" responsive style="width:600px">
-                        <h2>{{localize('validate.response.assembly.title')}}</h2>
-                        <iron-data-table details-enabled items="{{instructions}}" style="min-width:200px">
 
-
-                            <data-table-column name="{{localize('validate.response.assembly.description')}}">
-                                <template> {{item.message}}</template>
-                            </data-table-column>
-                        </iron-data-table>
-                        <div class="buttons">
-                            <paper-button dialog-confirm autofocus>OK</paper-button>
-                        </div>
-                    </paper-dialog>
-
-                    <template is="dom-if" if="[[success]]">
-                        <shop-button responsive id="openInstructionsDialog">
-                            <input type="button" on-click="openDialogInstructions" value="Assemblage instructies">
-                        </shop-button>
-                    </template>
                     <br/>
                     <shop-button responsive>
                         <a href="/validate">{{localize('validate.response.back.button')}}</a>
@@ -324,7 +297,44 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
         </div>
+<div class="infoDialog">
 
+
+    <paper-dialog id="dialog" responsive style="width: 80%">
+
+        <h2>{{localize('validate.response.partlist.title')}}</h2>
+        <iron-data-table details-enabled items="{{partList}}">
+
+            <data-table-column name="{{localize('validate.response.partlist.id')}}">
+                <template> {{item.id}}</template>
+            </data-table-column>
+            <data-table-column name="{{localize('validate.response.partlist.description')}}">
+                <template> {{item.description}}</template>
+            </data-table-column>
+            <data-table-column name="{{localize('validate.response.partlist.amount')}}">
+                <template> {{item.count}}</template>
+            </data-table-column>
+        </iron-data-table>
+
+
+
+        <h2>{{localize('validate.response.assembly.title')}}</h2>
+        <iron-data-table details-enabled items="{{instructions}}" style="min-width:200px;max-height: 200px">
+
+
+            <data-table-column name="{{localize('validate.response.assembly.description')}}">
+                <template> {{item.message}}</template>
+            </data-table-column>
+        </iron-data-table>
+        <div class="buttons">
+
+            <paper-button on-click="printDialog">{{localize('validate.response.partlist.button.print')}}</paper-button>
+            <paper-button dialog-confirm autofocus>{{localize('validate.response.partlist.button.close')}}</paper-button>
+
+        </div>
+
+    </paper-dialog>
+</div>
         <!-- Handles the routing for the success and error subroutes -->
         <app-route
                 route="[[route]]"
@@ -540,10 +550,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 body.cartItemsId = [];
                 body.cartItemsQuantity = [];
 
-                this.cart.forEach(function (cartItem) {
-                    body.cartItemsId.push(cartItem.item.name);
-                    body.cartItemsQuantity.push(cartItem.quantity);
-                });
+
             },
 
             /**
@@ -615,8 +622,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             openDialog: function () {
                 this.$.dialog.open();
             },
-            openDialogInstructions: function () {
-                this.$.instructionsDialog.open();
+            printDialog: function () {
+                window.print();
             },
             showFirst: function (ind) {
                 if (ind == 0) {
@@ -696,11 +703,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 var transatedMessageFunc = this._translatedMessage;
                 var self = this;
                 var isInError=function(step,messages){
-                    if (step.error){
+                    if (step.error && step.mantatory){
                         return true;
                     }
                     for(var err in messages){
-                        if (messages[err].status==="ERROR"){
+                        if (messages[err].status==="ERROR" && messages[err].step===step.step){
                             return true;
                         }
                     }
@@ -727,8 +734,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         var messageText=steps[key].errorMessage;
                         if (steps[key].error && steps[key].mantatory){
                             //messageText=steps[key].errorMessage;
-                        }else{
-                            messageText=(steps[key].modelResult.model.name);
+                        }else {
+                            if (steps[key].modelResult.model != undefined && steps[key].modelResult.model.name != undefined) {
+                                messageText = steps[key].modelResult.model.name;
+                            }
                         }
 
                         messages.push({"message": messageText});
@@ -740,8 +749,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             messages.push(response.messages[mes]);
                         }
                     }
-
-                    var item = {"step": steps[key].step, "msg": messages, "error": self.isInError(steps[key],messages)};
+                    var error=self.isInError(steps[key],messages);
+                    var moreMessages=(messages.length>1) && !error;
+                    var item = {"step": steps[key].step, "msg": messages, "error": error,"more":moreMessages};
                     arr.push(item);
                 });
                 return arr;

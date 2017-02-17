@@ -16,6 +16,7 @@
     "validate.response.partlist.description":"Omschrijving",
     "validate.response.partlist.amount":"Aantal",
     "validate.response.partlist.button.close":"OK",
+    "validate.response.partlist.button.print":"Print",
     "validate.response.partlist.button":"Onderdelen",
     "validate.response.assembly.title":"Assemblage instructies",
     "validate.response.assembly.description":"Omschrijving",

@@ -11,7 +11,7 @@ public class LedConfigTest {
     @Test
     public void testConfig1() {
         String[] codes = new String[]{
-                "DDHUABD2000b"
+                "DEHUABD2000a"
                 //"AGDR11302000300a"};
         };
         for (String code : codes) {
