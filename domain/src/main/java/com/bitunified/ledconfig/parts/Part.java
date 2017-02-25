@@ -47,6 +47,10 @@ public class Part extends Relatable implements Serializable {
 
 
     public String getDescription() {
+
+        if ((description==null || description.isEmpty() ) && product!=null){
+            return product.getName();
+        }
         return description;
     }
 

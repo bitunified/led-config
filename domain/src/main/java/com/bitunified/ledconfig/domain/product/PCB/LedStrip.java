@@ -13,6 +13,8 @@ public class LedStrip extends RealModel {
 
     public static final String COLOR_TYPE = "color";
     public static final Property COLOR=new Property(COLOR_TYPE,"");
+    public static final String KELVIN_TYPE = "kelvin";
+    public final Property KELVIN=new Property(KELVIN_TYPE,"");
 
     public LedStrip(){
 
@@ -24,5 +26,6 @@ public class LedStrip extends RealModel {
     public LedStrip(Dimension dimension) {
         super(dimension);
         addProperty(SECTION);
+        addProperty(KELVIN);
     }
 }

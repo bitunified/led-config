@@ -156,7 +156,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             id="checkoutForm"
                             is="iron-form"
                             method="post"
-                            action="http://localhost:8080/server/rest/engine/data"
+                            action="/server/rest/engine/data"
                             on-iron-form-response="_didReceiveResponse"
                             on-iron-form-presubmit="_willSendRequest">
 
@@ -356,7 +356,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 Polymer.AppLocalizeBehavior
             ],
             attached: function () {
-                this.loadResources(this.resolveUrl('http://localhost:8080/server/locales.json'));
+                this.loadResources(this.resolveUrl('/server/locales.json'));
             },
             properties: {
                 language: {

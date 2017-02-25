@@ -14,7 +14,7 @@ import java.math.RoundingMode;
 public class PriceCalculator {
 
 
-    private static final BigDecimal FACTOR = BigDecimal.valueOf(1.39 );
+    private static final BigDecimal FACTOR = BigDecimal.valueOf(1);
 
     public BigDecimal calculate(ConfigResult configResult){
         ComposedProduct composedProduct=null;
