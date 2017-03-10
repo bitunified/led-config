@@ -8,19 +8,22 @@
         <type>ST</type>
     </parts>
     <parts>
-        <id>21021</id>
-        <description>liniLED PCB amber P</description>
-        <price>19</price>
-        <product xsi:type="powerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <id>12150</id>
+        <description>liniLED PCB WW 3000K Photon 1200</description>
+        <price>127.77</price>
+        <product xsi:type="photonLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <id></id>
-            <code>PA</code>
-            <name>liniLED Power amber</name>
+            <code>NW</code>
+            <name>liniLED PCB WW 3000K Photon 1200</name>
             <translations/>
             <dimension/>
             <margin/>
             <maxDimension>
-                <width>2670</width>
+                <width>2700</width>
             </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">3000</value>
+            </KELVIN>
             <SECTION>
                 <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
             </SECTION>
@@ -29,16 +32,105 @@
         <type>MTR</type>
     </parts>
     <parts>
-        <id>95011</id>
-        <description>Ingieten liniLED H20 Diffuus</description>
-        <price>23</price>
+        <id>12152</id>
+        <description>liniLED PCB KW 6500K Photon 1200</description>
+        <price>127.77</price>
+        <product xsi:type="photonLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>NC</code>
+            <name>liniLED PCB KW 6500K Photon 1200</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">6500</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>12151</id>
+        <description>liniLED PCB NW 4000K Photon 1200</description>
+        <price>127.77</price>
+        <product xsi:type="photonLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>NN</code>
+            <name>liniLED PCB NW 4000K Photon 1200</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">4000</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>12154</id>
+        <description>liniLED PCB UWW 2400K Photon 2000</description>
+        <price>130.56</price>
+        <product xsi:type="photonLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>QU</code>
+            <name>liniLED PCB UWW 2400K Photon 2000</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">2400</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>12153</id>
+        <description>liniLED PCB FW 2000K Photon 2000</description>
+        <price>130.56</price>
+        <product xsi:type="photonLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>QF</code>
+            <name>liniLED PCB FW 2000K Photon 2000</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">6500</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
         <translations/>
         <type>MTR</type>
     </parts>
     <parts>
         <id>10928</id>
         <description>liniLED Aeris Eindkap C30</description>
-        <price>1.51</price>
+        <price>7.9</price>
         <product xsi:type="endCap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <id></id>
             <name></name>
@@ -47,38 +139,6 @@
             <margin/>
         </product>
         <translations/>
-    </parts>
-    <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-        <id>pur4op1</id>
-        <configModel xsi:type="cable">
-            <id></id>
-            <code>E</code>
-            <name>PUR with open end 1 m</name>
-            <translations/>
-            <dimension/>
-            <margin/>
-            <CABLE_TYPE>
-                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"></value>
-            </CABLE_TYPE>
-            <CABLE_END>
-                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"></value>
-            </CABLE_END>
-        </configModel>
-        <translations/>
-    </parts>
-    <parts>
-        <id>95013</id>
-        <description>Ingieten liniLED H30 Helder</description>
-        <price>46.5</price>
-        <translations/>
-        <type>MTR</type>
-    </parts>
-    <parts>
-        <id>95014</id>
-        <description>Ingieten liniLED H30 Diffuus</description>
-        <price>46.5</price>
-        <translations/>
-        <type>MTR</type>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <id>purw7</id>
@@ -134,118 +194,6 @@
         </configModel>
         <translations/>
     </parts>
-    <parts>
-        <id>95010</id>
-        <description>Ingieten liniLED H20 Helder</description>
-        <price>23</price>
-        <translations/>
-        <type>MTR</type>
-    </parts>
-    <parts>
-        <id>10733</id>
-        <description>liniLED Aeris Profiel L30 4 m</description>
-        <price>9.3</price>
-        <product xsi:type="profile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <id></id>
-            <code>F</code>
-            <name>liniLED Aeris Profiel L30</name>
-            <translations>
-                <entry>
-                    <key>en</key>
-                    <value>liniLed Aeris Profile L30</value>
-                </entry>
-                <entry>
-                    <key>nl</key>
-                    <value>liniLED Aeris Profiel L30</value>
-                </entry>
-            </translations>
-            <dimension/>
-            <margin/>
-            <maxDimension>
-                <width>2750</width>
-            </maxDimension>
-            <lengthForCasting>
-                <width>25</width>
-            </lengthForCasting>
-        </product>
-        <translations/>
-    </parts>
-    <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-        <id>ca1</id>
-        <configModel xsi:type="leftViaEndCapCableEntry">
-            <id></id>
-            <code>A</code>
-            <name>Left side via end cap</name>
-            <translations/>
-            <margins>
-                <left>10</left>
-                <right>5</right>
-            </margins>
-        </configModel>
-        <translations/>
-    </parts>
-    <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-        <id>ca3</id>
-        <configModel xsi:type="leftViaSideCableEntry">
-            <id></id>
-            <code>C</code>
-            <name>Left side via side</name>
-            <translations/>
-            <margins>
-                <left>15</left>
-                <right>5</right>
-            </margins>
-        </configModel>
-        <translations/>
-    </parts>
-    <parts>
-        <id>10737</id>
-        <description>liniLED Aeris Profiel H30 4 m</description>
-        <price>14.47</price>
-        <product xsi:type="profile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <id></id>
-            <code>G</code>
-            <name>liniLED Aeris Profiel H30</name>
-            <translations/>
-            <dimension/>
-            <margin/>
-            <maxDimension>
-                <width>2750</width>
-            </maxDimension>
-            <lengthForCasting>
-                <width>25</width>
-            </lengthForCasting>
-        </product>
-        <translations/>
-    </parts>
-    <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-        <id>ca2</id>
-        <configModel xsi:type="leftViaBottomCableEntry">
-            <id></id>
-            <code>B</code>
-            <name>Left side via bottom</name>
-            <translations/>
-            <margins>
-                <left>15</left>
-                <right>5</right>
-            </margins>
-        </configModel>
-        <translations/>
-    </parts>
-    <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-        <id>ca5</id>
-        <configModel xsi:type="centerViaSideCableEntry">
-            <id></id>
-            <code>E</code>
-            <name>Center via side</name>
-            <translations/>
-            <margins>
-                <left>5</left>
-                <right>5</right>
-            </margins>
-        </configModel>
-        <translations/>
-    </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <id>pvcw1</id>
         <configModel xsi:type="cable">
@@ -265,68 +213,22 @@
         <translations/>
     </parts>
     <parts>
-        <id>21014A</id>
-        <description>liniLED PCB WW 3000K HP (PSP)</description>
-        <price>19</price>
-        <product xsi:type="highPowerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <id>12156</id>
+        <description>liniLED PCB WW 3000K Photon 2000</description>
+        <price>130.56</price>
+        <product xsi:type="photonLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <id></id>
-            <code>HW</code>
-            <name>liniLED HP 3000K WW</name>
+            <code>QW</code>
+            <name>liniLED PCB WW 3000K Photon 2000</name>
             <translations/>
             <dimension/>
             <margin/>
             <maxDimension>
-                <width>2670</width>
+                <width>2700</width>
             </maxDimension>
-            <SECTION>
-                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
-            </SECTION>
             <KELVIN>
                 <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">3000</value>
             </KELVIN>
-        </product>
-        <translations/>
-        <type>MTR</type>
-    </parts>
-    <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-        <id>ca4</id>
-        <configModel xsi:type="rightViaSideCableEntry">
-            <id></id>
-            <code>D</code>
-            <name>Rigt side via side</name>
-            <translations/>
-            <margins>
-                <left>5</left>
-                <right>15</right>
-            </margins>
-        </configModel>
-        <translations/>
-    </parts>
-    <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-        <id>cod1</id>
-        <configModel xsi:type="realModel">
-            <id></id>
-            <code>D</code>
-            <name>Diffuus</name>
-            <translations/>
-            <margin/>
-        </configModel>
-        <translations/>
-    </parts>
-    <parts>
-        <id>21020</id>
-        <description>liniLED PCB Groen P</description>
-        <price>19</price>
-        <product xsi:type="powerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <id></id>
-            <code>PG</code>
-            <name>liniLED Power groen</name>
-            <translations/>
-            <dimension/>
-            <margin/>
-            <maxDimension>
-                <width>2670</width>
-            </maxDimension>
             <SECTION>
                 <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
             </SECTION>
@@ -337,7 +239,7 @@
     <parts>
         <id>10891</id>
         <description>Clip 30</description>
-        <price>0.35</price>
+        <price>1.86</price>
         <product xsi:type="clip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <id></id>
             <name>liniLED Aeris Clip 30</name>
@@ -348,8 +250,33 @@
         <translations/>
     </parts>
     <parts>
+        <id>12155</id>
+        <description>liniLED PCB UWW 2400K Photon 2000</description>
+        <price>130.56</price>
+        <product xsi:type="photonLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>QE</code>
+            <name>liniLED PCB EWW 2700K Photon 2000</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">2700</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
         <id>10890</id>
         <description>Clip 20</description>
+        <price>1.86</price>
         <product xsi:type="clip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <id></id>
             <name>liniLED Aeris Clip 20</name>
@@ -358,6 +285,30 @@
             <margin/>
         </product>
         <translations/>
+    </parts>
+    <parts>
+        <id>12158</id>
+        <description>liniLED PCB KW 6500K Photon 2000</description>
+        <price>130.56</price>
+        <product xsi:type="photonLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>QC</code>
+            <name>liniLED PCB KW 6500K Photon 2000</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">4000</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <id>coh1</id>
@@ -371,7 +322,56 @@
         <translations/>
     </parts>
     <parts>
+        <id>12157</id>
+        <description>liniLED PCB NW 4000K Photon 2000</description>
+        <price>130.56</price>
+        <product xsi:type="photonLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>QN</code>
+            <name>liniLED PCB NW 4000K Photon 2000</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">4000</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>12159</id>
+        <description>liniLED PCB FW 2000K Photon 3000</description>
+        <price>130.56</price>
+        <product xsi:type="photonLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>WF</code>
+            <name>liniLED PCB FW 2000K Photon 3000</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">2000</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
         <id>comp</id>
+        <description>Product lengte</description>
         <product xsi:type="composedProduct" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <id></id>
             <name>Product lengte</name>
@@ -382,62 +382,153 @@
         <translations/>
     </parts>
     <parts>
-        <id>95004</id>
-        <description>Ingieten liniLED L30 Diffuus</description>
-        <price>17.25</price>
-        <translations/>
-        <type>MTR</type>
-    </parts>
-    <parts>
-        <id>95000</id>
-        <description>Ingieten liniLED L20 Helder</description>
-        <price>11.5</price>
-        <translations/>
-        <type>MTR</type>
-    </parts>
-    <parts>
-        <id>95001</id>
-        <description>Ingieten liniLED L20 Diffuus</description>
-        <price>11.5</price>
-        <translations/>
-        <type>MTR</type>
-    </parts>
-    <parts>
-        <id>95003</id>
-        <description>Ingieten liniLED L30 Helder</description>
-        <price>17.25</price>
-        <translations/>
-        <type>MTR</type>
-    </parts>
-    <parts>
-        <id>GRIJP_KTULE_ALU_ZWART</id>
-        <description>Kabeltule t.b.v. ALU zwart</description>
-        <price>0.07</price>
-        <translations/>
-        <type>ST</type>
-    </parts>
-    <parts>
-        <id>60009</id>
-        <price>9.6</price>
-        <translations/>
-    </parts>
-    <parts>
-        <id>10901</id>
-        <description>liniLED Aeris Eindkap L20 O</description>
-        <price>1.51</price>
-        <product xsi:type="endCap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <id>12161</id>
+        <description>liniLED PCB EWW 2700K Photon 3000</description>
+        <price>146.48</price>
+        <product xsi:type="photonLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <id></id>
-            <name>End cap open L20</name>
+            <code>WE</code>
+            <name>liniLED PCB EWW 2700K Photon 3000</name>
             <translations/>
             <dimension/>
             <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">2700</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
         </product>
         <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>12160</id>
+        <description>liniLED PCB UWW 2400K Photon 3000</description>
+        <price>146.48</price>
+        <product xsi:type="photonLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>WU</code>
+            <name>liniLED PCB UWW 2400K Photon 3000</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">2400</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>12163</id>
+        <description>liniLED PCB NW 4000K Photon 3000</description>
+        <price>146.48</price>
+        <product xsi:type="photonLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>WN</code>
+            <name>liniLED PCB NW 4000K Photon 3000</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">4000</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>12162</id>
+        <description>liniLED PCB WW 3000K Photon 3000</description>
+        <price>146.48</price>
+        <product xsi:type="photonLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>WW</code>
+            <name>liniLED PCB WW 3000K Photon 3000</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">3000</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>12165</id>
+        <description>liniLED PCB FW 2000K Photon 4000</description>
+        <price>179.38</price>
+        <product xsi:type="photonLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>XF</code>
+            <name>liniLED PCB FW 2000K Photon 4000</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">2000</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>12164</id>
+        <description>liniLED PCB KW 6500K Photon 3000</description>
+        <price>146.48</price>
+        <product xsi:type="photonLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>WC</code>
+            <name>liniLED PCB KW 6500K Photon 3000</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">6500</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
     </parts>
     <parts>
         <id>60007</id>
         <description>Kabel RGB PUR</description>
-        <price>0.9</price>
+        <price>4.77</price>
         <product xsi:type="cable" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <id></id>
             <code>J</code>
@@ -454,24 +545,11 @@
         </product>
         <translations/>
         <type>MTR</type>
-    </parts>
-    <parts>
-        <id>10900</id>
-        <description>liniLED Aeris Eindkap L20</description>
-        <price>1.48</price>
-        <product xsi:type="endCap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <id></id>
-            <name>End cap L20</name>
-            <translations/>
-            <dimension/>
-            <margin/>
-        </product>
-        <translations/>
     </parts>
     <parts>
         <id>60006</id>
         <description>Kabel Mono PUR</description>
-        <price>0.9</price>
+        <price>4.13</price>
         <product xsi:type="cable" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <id></id>
             <code>J</code>
@@ -490,103 +568,64 @@
         <type>MTR</type>
     </parts>
     <parts>
-        <id>10903</id>
-        <description>liniLED Aeris Eindkap LC20 O</description>
-        <price>1.57</price>
-        <translations/>
-    </parts>
-    <parts>
         <id>60005</id>
         <description>Kabel RGB Wit</description>
-        <price>0.31</price>
-        <translations/>
-    </parts>
-    <parts>
-        <id>10902</id>
-        <description>liniLED Aeris Eindkap LC20</description>
-        <price>1.55</price>
-        <product xsi:type="endCap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <id></id>
-            <name></name>
-            <translations/>
-            <dimension/>
-            <margin/>
-        </product>
+        <price>1.64</price>
         <translations/>
     </parts>
     <parts>
         <id>60004</id>
         <description>Kabel Mono Wit</description>
-        <price>0.27</price>
+        <price>1.43</price>
         <translations/>
     </parts>
     <parts>
-        <id>10905</id>
-        <description>liniLED Aeris Eindkap H20 O</description>
-        <price>1.61</price>
-        <translations/>
-    </parts>
-    <parts>
-        <id>10904</id>
-        <description>liniLED Aeris Eindkap H20</description>
-        <price>1.61</price>
-        <product xsi:type="endCap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <id>12167</id>
+        <description>liniLED PCB EWW 2700K Photon 4000</description>
+        <price>179.38</price>
+        <product xsi:type="photonLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <id></id>
-            <name></name>
-            <translations/>
-            <dimension/>
-            <margin/>
-        </product>
-        <translations/>
-    </parts>
-    <parts>
-        <id>21015A</id>
-        <description>liniLED PCB NW 4000K HP (PSP)</description>
-        <price>19</price>
-        <product xsi:type="highPowerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <id></id>
-            <code>HN</code>
-            <name>liniLED HP 4000K WW</name>
+            <code>XE</code>
+            <name>liniLED PCB EWW 2700K Photon 4000</name>
             <translations/>
             <dimension/>
             <margin/>
             <maxDimension>
-                <width>2670</width>
+                <width>2700</width>
             </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">2400</value>
+            </KELVIN>
             <SECTION>
                 <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
             </SECTION>
-            <KELVIN>
-                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">4000</value>
-            </KELVIN>
         </product>
         <translations/>
         <type>MTR</type>
     </parts>
     <parts>
-        <id>GRIJP_KTULE_ALU_WIT</id>
-        <description>Kabeltule t.b.v. ALU wit</description>
-        <price>0.11</price>
-        <translations/>
-        <type>ST</type>
-    </parts>
-    <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-        <id>pvc0dc</id>
-        <configModel xsi:type="cable">
+        <id>12166</id>
+        <description>liniLED PCB UWW 2400K Photon 4000</description>
+        <price>179.38</price>
+        <product xsi:type="photonLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <id></id>
-            <code>A</code>
-            <name>PVC with demo connector</name>
+            <code>XU</code>
+            <name>liniLED PCB UWW 2400K Photon 4000</name>
             <translations/>
             <dimension/>
             <margin/>
-            <CABLE_TYPE>
-                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">DemoConnector</value>
-            </CABLE_TYPE>
-            <CABLE_END>
-                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"></value>
-            </CABLE_END>
-        </configModel>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">2400</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
         <translations/>
+        <type>MTR</type>
     </parts>
     <parts>
         <id>60000</id>
@@ -594,6 +633,54 @@
         <price>4.71</price>
         <translations/>
         <type>ST</type>
+    </parts>
+    <parts>
+        <id>12169</id>
+        <description>liniLED PCB NW 4000K Photon 4000</description>
+        <price>179.38</price>
+        <product xsi:type="photonLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>XN</code>
+            <name>liniLED PCB NW 4000K Photon 4000</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">4000</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>12168</id>
+        <description>liniLED PCB WW 3000K Photon 4000</description>
+        <price>179.38</price>
+        <product xsi:type="photonLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>XW</code>
+            <name>liniLED PCB WW 3000K Photon 4000</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">3000</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
     </parts>
     <parts>
         <id>GRIJP_PSTICKER</id>
@@ -623,38 +710,20 @@
     <parts>
         <id>21006</id>
         <description>liniLED PCB Blauw D</description>
-        <price>10.5</price>
+        <price>48.4</price>
         <product xsi:type="decoLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <id></id>
-            <code>PB</code>
+            <code>DB</code>
             <name>liniLED Deco blauw</name>
             <translations/>
             <dimension/>
             <margin/>
             <maxDimension>
-                <width>2700</width>
+                <width>2600</width>
             </maxDimension>
-            <SECTION>
-                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">100</value>
-            </SECTION>
-        </product>
-        <translations/>
-        <type>MTR</type>
-    </parts>
-    <parts>
-        <id>21005</id>
-        <description>liniLED PCB Groen D</description>
-        <price>10.5</price>
-        <product xsi:type="decoLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <id></id>
-            <code>PG</code>
-            <name>liniLED Deco groen</name>
-            <translations/>
-            <dimension/>
-            <margin/>
-            <maxDimension>
-                <width>2700</width>
-            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"></value>
+            </KELVIN>
             <SECTION>
                 <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">100</value>
             </SECTION>
@@ -669,55 +738,6 @@
         <translations/>
         <type>ST</type>
     </parts>
-    <parts>
-        <id>21004</id>
-        <description>liniLED PCB Rood D</description>
-        <price>7.8</price>
-        <product xsi:type="decoLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <id></id>
-            <code>DR</code>
-            <name>liniLED Deco rood</name>
-            <translations/>
-            <dimension/>
-            <margin/>
-            <maxDimension>
-                <width>2600</width>
-            </maxDimension>
-            <SECTION>
-                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
-            </SECTION>
-        </product>
-        <translations/>
-        <type>MTR</type>
-    </parts>
-    <parts>
-        <id>ARBEID</id>
-        <description>Arbeidsminuut intern magazijn</description>
-        <price>0.59</price>
-        <translations/>
-        <type>MINUUT</type>
-    </parts>
-    <parts>
-        <id>21003</id>
-        <description>liniLED PCB Amber D</description>
-        <price>7.8</price>
-        <product xsi:type="decoLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <id></id>
-            <code>PA</code>
-            <name>liniLED Deco amber</name>
-            <translations/>
-            <dimension/>
-            <margin/>
-            <maxDimension>
-                <width>2700</width>
-            </maxDimension>
-            <SECTION>
-                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">100</value>
-            </SECTION>
-        </product>
-        <translations/>
-        <type>MTR</type>
-    </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <id>co1</id>
         <configModel xsi:type="realModel">
@@ -730,36 +750,15 @@
         <translations/>
     </parts>
     <parts>
-        <id>21002</id>
-        <description>liniLED PCB RGB D</description>
-        <price>15</price>
-        <product xsi:type="decoLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <id></id>
-            <code>DP</code>
-            <name>liniLED RGB Deco</name>
-            <translations/>
-            <dimension/>
-            <margin/>
-            <maxDimension>
-                <width>2600</width>
-            </maxDimension>
-            <SECTION>
-                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
-            </SECTION>
-        </product>
-        <translations/>
-        <type>MTR</type>
-    </parts>
-    <parts>
         <id>10907</id>
         <description>liniLED Aeris Eindkap HC20 O</description>
-        <price>1.63</price>
+        <price>8.64</price>
         <translations/>
     </parts>
     <parts>
         <id>10906</id>
         <description>liniLED Aeris Eindkap HC20</description>
-        <price>1.63</price>
+        <price>8.53</price>
         <product xsi:type="endCap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <id></id>
             <name></name>
@@ -770,125 +769,33 @@
         <translations/>
     </parts>
     <parts>
-        <id>21032A</id>
-        <description>liniLED PCB EWW 2700K HP (PSP)</description>
-        <price>19</price>
-        <product xsi:type="highPowerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <id></id>
-            <code>HU</code>
-            <name>liniLED HP 2400K UWW</name>
-            <translations/>
-            <dimension/>
-            <margin/>
-            <maxDimension>
-                <width>2670</width>
-            </maxDimension>
-            <SECTION>
-                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
-            </SECTION>
-            <KELVIN>
-                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">2400</value>
-            </KELVIN>
-        </product>
-        <translations/>
-        <type>MTR</type>
-    </parts>
-    <parts>
         <id>10908</id>
         <description>liniLED Aeris Eindkap C20</description>
-        <price>1.44</price>
+        <price>7.63</price>
         <translations/>
     </parts>
     <parts>
         <id>10756</id>
         <description>liniLED Aeris Kabelgoot 30 3 m</description>
-        <price>5.18</price>
+        <price>29.52</price>
         <translations/>
-    </parts>
-    <parts>
-        <id>21016A</id>
-        <description>liniLED PCB KW 6500K HP (PSP)</description>
-        <price>19</price>
-        <product xsi:type="highPowerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <id></id>
-            <code>HC</code>
-            <name>liniLED HP 6500K KW</name>
-            <translations/>
-            <dimension/>
-            <margin/>
-            <maxDimension>
-                <width>2670</width>
-            </maxDimension>
-            <SECTION>
-                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
-            </SECTION>
-            <KELVIN>
-                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">6500</value>
-            </KELVIN>
-        </product>
-        <translations/>
-        <type>MTR</type>
     </parts>
     <parts>
         <id>10755</id>
         <description>liniLED Aeris Kabelgoot 30 2 m</description>
-        <price>3.45</price>
-        <translations/>
-    </parts>
-    <parts>
-        <id>10713</id>
-        <description>liniLED Aeris Profiel L20 4 m</description>
-        <price>6.81</price>
-        <product xsi:type="profile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <id></id>
-            <code>D</code>
-            <name>liniLED Aeris Profiel L20</name>
-            <translations/>
-            <dimension/>
-            <leftSpace>100</leftSpace>
-            <margin>
-                <left>100</left>
-                <leftStr>100</leftStr>
-            </margin>
-            <maxDimension>
-                <width>2750</width>
-            </maxDimension>
-            <lengthForCasting>
-                <width>25</width>
-            </lengthForCasting>
-        </product>
+        <price>19.66</price>
         <translations/>
     </parts>
     <parts>
         <id>10757</id>
         <description>liniLED Aeris Kabelgoot 30 4 m</description>
-        <price>6.9</price>
-        <translations/>
-    </parts>
-    <parts>
-        <id>10717</id>
-        <description>liniLED Aeris Profiel H20 4 m</description>
-        <price>11.96</price>
-        <product xsi:type="profile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <id></id>
-            <code>E</code>
-            <name>liniLED Aeris Profiel H20</name>
-            <translations/>
-            <dimension/>
-            <margin/>
-            <maxDimension>
-                <width>2750</width>
-            </maxDimension>
-            <lengthForCasting>
-                <width>25</width>
-            </lengthForCasting>
-        </product>
+        <price>39.38</price>
         <translations/>
     </parts>
     <parts>
         <id>10750</id>
         <description>liniLED Aeris Kabelgoot 20 1 m</description>
-        <price>1.36</price>
+        <price>7.16</price>
         <translations/>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -907,65 +814,50 @@
     <parts>
         <id>10752</id>
         <description>liniLED Aeris Kabelgoot 20 3 m</description>
-        <price>4.07</price>
+        <price>21.52</price>
         <translations/>
     </parts>
     <parts>
         <id>10751</id>
         <description>liniLED Aeris Kabelgoot 20 2 m</description>
-        <price>2.71</price>
+        <price>14.36</price>
         <translations/>
     </parts>
     <parts>
         <id>10754</id>
         <description>liniLED Aeris Kabelgoot 30 1 m</description>
-        <price>1.73</price>
+        <price>9.86</price>
         <translations/>
     </parts>
     <parts>
         <id>10753</id>
         <description>liniLED Aeris Kabelgoot 20 4 m</description>
-        <price>5.42</price>
+        <price>28.73</price>
         <translations/>
     </parts>
     <parts>
-        <id>21017</id>
-        <description>liniLED PCB RGB P</description>
+        <id>12139</id>
+        <description>liniLED PCB RGB 240 P</description>
         <price>38.6</price>
         <product xsi:type="powerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <id></id>
-            <code>PP</code>
+            <code>RQ</code>
             <name>liniLED Power RGB</name>
             <translations/>
             <dimension/>
             <margin/>
             <maxDimension>
-                <width>2700</width>
+                <width>2600</width>
             </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"></value>
+            </KELVIN>
             <SECTION>
                 <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">100</value>
             </SECTION>
         </product>
         <translations/>
         <type>MTR</type>
-    </parts>
-    <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-        <id>pvc3op10</id>
-        <configModel xsi:type="cable">
-            <id></id>
-            <code>D</code>
-            <name>PVC with open end 10 m</name>
-            <translations/>
-            <dimension/>
-            <margin/>
-            <CABLE_TYPE>
-                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"></value>
-            </CABLE_TYPE>
-            <CABLE_END>
-                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"></value>
-            </CABLE_END>
-        </configModel>
-        <translations/>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <id>m1</id>
@@ -975,12 +867,12 @@
             <name>Geen eindkappen</name>
             <translations>
                 <entry>
-                    <key>en</key>
-                    <value>No endcaps</value>
-                </entry>
-                <entry>
                     <key>nl</key>
                     <value>Geen eindkappen</value>
+                </entry>
+                <entry>
+                    <key>en</key>
+                    <value>No endcaps</value>
                 </entry>
             </translations>
             <margins>
@@ -990,6 +882,30 @@
         </configModel>
         <translations/>
     </parts>
+    <parts>
+        <id>12141</id>
+        <description>liniLED PCB NW 3000K D</description>
+        <price>51.04</price>
+        <product xsi:type="decoLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>DW</code>
+            <name>liniLED PCB NW 3000K D</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">3000</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">100</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <id>m2</id>
         <configModel xsi:type="endCapRightMounting">
@@ -998,12 +914,12 @@
             <name>Eindkap aan de rechter zijde</name>
             <translations>
                 <entry>
-                    <key>en</key>
-                    <value>Endcap right side</value>
-                </entry>
-                <entry>
                     <key>nl</key>
                     <value>Eindkap aan de rechter zijde</value>
+                </entry>
+                <entry>
+                    <key>en</key>
+                    <value>Endcap right side</value>
                 </entry>
             </translations>
             <margins>
@@ -1021,12 +937,12 @@
             <name>Eindkap aan linkerzijde</name>
             <translations>
                 <entry>
-                    <key>en</key>
-                    <value>Endcap left side</value>
-                </entry>
-                <entry>
                     <key>nl</key>
                     <value>Eindkap aan linkerzijde</value>
+                </entry>
+                <entry>
+                    <key>en</key>
+                    <value>Endcap left side</value>
                 </entry>
             </translations>
             <margins>
@@ -1036,6 +952,30 @@
         </configModel>
         <translations/>
     </parts>
+    <parts>
+        <id>12143</id>
+        <description>liniLED PCB KW 6500K D</description>
+        <price>51.04</price>
+        <product xsi:type="decoLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>DC</code>
+            <name>liniLED PCB KW 6500K D</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">6500</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">100</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <id>m4</id>
         <configModel xsi:type="endCapBothSidesMounting">
@@ -1044,12 +984,12 @@
             <name>Eindkappen aan beide zijdes</name>
             <translations>
                 <entry>
-                    <key>en</key>
-                    <value>Endcaps both sides</value>
-                </entry>
-                <entry>
                     <key>nl</key>
                     <value>Eindkappen aan beide zijdes</value>
+                </entry>
+                <entry>
+                    <key>en</key>
+                    <value>Endcaps both sides</value>
                 </entry>
             </translations>
             <margins>
@@ -1058,6 +998,30 @@
             </margins>
         </configModel>
         <translations/>
+    </parts>
+    <parts>
+        <id>12142</id>
+        <description>liniLED PCB NW 3000K D</description>
+        <price>51.04</price>
+        <product xsi:type="decoLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>DN</code>
+            <name>liniLED PCB NW 4000K D</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">4000</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">100</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
     </parts>
     <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <id>m5</id>
@@ -1116,57 +1080,15 @@
         <translations/>
     </parts>
     <parts>
-        <id>21019</id>
-        <description>liniLED PCB Blauw P</description>
-        <price>19</price>
-        <product xsi:type="powerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <id></id>
-            <code>PB</code>
-            <name>liniLED Power blauw</name>
-            <translations/>
-            <dimension/>
-            <margin/>
-            <maxDimension>
-                <width>2670</width>
-            </maxDimension>
-            <SECTION>
-                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
-            </SECTION>
-        </product>
-        <translations/>
-        <type>MTR</type>
-    </parts>
-    <parts>
-        <id>21018</id>
-        <description>liniLED PCB Rood P</description>
-        <price>16</price>
-        <product xsi:type="powerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <id></id>
-            <code>PR</code>
-            <name>liniLED Power rood</name>
-            <translations/>
-            <dimension/>
-            <margin/>
-            <maxDimension>
-                <width>2670</width>
-            </maxDimension>
-            <SECTION>
-                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">100</value>
-            </SECTION>
-        </product>
-        <translations/>
-        <type>MTR</type>
-    </parts>
-    <parts>
         <id>10921</id>
         <description>liniLED Aeris Eindkap L30 O</description>
-        <price>1.53</price>
+        <price>8.11</price>
         <translations/>
     </parts>
     <parts>
         <id>10920</id>
         <description>liniLED Aeris Eindkap L30</description>
-        <price>1.51</price>
+        <price>8.0</price>
         <product xsi:type="endCap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <id></id>
             <name></name>
@@ -1186,13 +1108,13 @@
     <parts>
         <id>10923</id>
         <description>liniLED Aeris Eindkap LC30 O</description>
-        <price>1.61</price>
+        <price>8.53</price>
         <translations/>
     </parts>
     <parts>
         <id>10922</id>
         <description>liniLED Aeris Eindkap LC30</description>
-        <price>1.59</price>
+        <price>8.43</price>
         <product xsi:type="endCap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <id></id>
             <name></name>
@@ -1205,13 +1127,13 @@
     <parts>
         <id>10925</id>
         <description>liniLED Aeris Eindkap H30 O</description>
-        <price>1.61</price>
+        <price>8.53</price>
         <translations/>
     </parts>
     <parts>
         <id>10924</id>
         <description>liniLED Aeris Eindkap H30</description>
-        <price>1.59</price>
+        <price>8.43</price>
         <product xsi:type="endCap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <id></id>
             <name></name>
@@ -1222,48 +1144,24 @@
         <translations/>
     </parts>
     <parts>
-        <id>21013A</id>
-        <description>liniLED PCB EWW 2700K HP (PSP)</description>
-        <price>19</price>
-        <product xsi:type="highPowerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <id></id>
-            <code>HE</code>
-            <name>liniLED HP 2700K EWW</name>
-            <translations/>
-            <dimension/>
-            <margin/>
-            <maxDimension>
-                <width>2670</width>
-            </maxDimension>
-            <SECTION>
-                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
-            </SECTION>
-            <KELVIN>
-                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">2700</value>
-            </KELVIN>
-        </product>
-        <translations/>
-        <type>MTR</type>
-    </parts>
-    <parts>
         <id>10927</id>
         <description>liniLED Aeris Eindkap HC30 O</description>
-        <price>1.63</price>
+        <price>8.64</price>
         <translations>
-            <entry>
-                <key>en</key>
-                <value>liniLED Aeris Endcap HC30 O</value>
-            </entry>
             <entry>
                 <key>nl</key>
                 <value>liniLED Aeris Eindkap HC30 O</value>
+            </entry>
+            <entry>
+                <key>en</key>
+                <value>liniLED Aeris Endcap HC30 O</value>
             </entry>
         </translations>
     </parts>
     <parts>
         <id>10926</id>
         <description>liniLED Aeris Eindkap HC30</description>
-        <price>1.61</price>
+        <price>8.53</price>
         <product xsi:type="endCap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <id></id>
             <name></name>
@@ -1274,9 +1172,81 @@
         <translations/>
     </parts>
     <parts>
+        <id>12147</id>
+        <description>liniLED PCB FW 2000K Photon 1200</description>
+        <price>127.77</price>
+        <product xsi:type="photonLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>NF</code>
+            <name>liniLED PCB FW 2000K Photon</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">2000</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
         <id>11214</id>
         <description>liniLED Aansluitkabel Demo</description>
-        <price>2.64</price>
+        <price>13.99</price>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>12149</id>
+        <description>liniLED PCB EWW 2700K Photon 1200</description>
+        <price>127.77</price>
+        <product xsi:type="photonLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>NE</code>
+            <name>liniLED PCB EWW 2700K Photon 1200</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">2700</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>12148</id>
+        <description>liniLED PCB UWW 2400K Photon 1200</description>
+        <price>127.77</price>
+        <product xsi:type="photonLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>NU</code>
+            <name>liniLED PCB UWW 2400K Photon</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">2400</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
         <translations/>
         <type>MTR</type>
     </parts>
@@ -1292,5 +1262,829 @@
         </configModel>
         <description>Clip.</description>
         <translations/>
+    </parts>
+    <parts>
+        <id>12192</id>
+        <description>liniLED PCB EWW 2700K HP (PSP)</description>
+        <price>127.77</price>
+        <product xsi:type="highPowerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>HE</code>
+            <name>liniLED HP 2700K EWW</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">2700</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>12191</id>
+        <description>liniLED PCB KW 6500K P</description>
+        <price>63.36</price>
+        <product xsi:type="powerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>PC</code>
+            <name>liniLED PCB KW 6500K P</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">6500</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>12194</id>
+        <description>liniLED PCB NW 4000K HP (PSP)</description>
+        <price>19</price>
+        <product xsi:type="highPowerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>HN</code>
+            <name>liniLED HP 4000K WW</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">4000</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>12193</id>
+        <description>liniLED PCB WW 3000K HP (PSP)</description>
+        <price>127.77</price>
+        <product xsi:type="highPowerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>HW</code>
+            <name>liniLED HP 3000K WW</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2670</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">3000</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>12195</id>
+        <description>liniLED PCB KW 6500K HP (PSP)</description>
+        <price>19</price>
+        <product xsi:type="highPowerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>HC</code>
+            <name>liniLED HP 6500K KW</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">6500</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>95011</id>
+        <description>Ingieten liniLED H20 Diffuus</description>
+        <price>23</price>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <id>pur4op1</id>
+        <configModel xsi:type="cable">
+            <id></id>
+            <code>E</code>
+            <name>PUR with open end 1 m</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <CABLE_TYPE>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"></value>
+            </CABLE_TYPE>
+            <CABLE_END>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"></value>
+            </CABLE_END>
+        </configModel>
+        <translations/>
+    </parts>
+    <parts>
+        <id>95013</id>
+        <description>Ingieten liniLED H30 Helder</description>
+        <price>46.5</price>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>95014</id>
+        <description>Ingieten liniLED H30 Diffuus</description>
+        <price>46.5</price>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>12190</id>
+        <description>liniLED PCB NW 4000K P</description>
+        <price>63.36</price>
+        <product xsi:type="powerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>PN</code>
+            <name>liniLED PCB NW 4000K P</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">4000</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>95010</id>
+        <description>Ingieten liniLED H20 Helder</description>
+        <price>23</price>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>10733</id>
+        <description>liniLED Aeris Profiel L30 4 m</description>
+        <price>49.29</price>
+        <product xsi:type="profile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>F</code>
+            <name>liniLED Aeris Profiel L30</name>
+            <translations>
+                <entry>
+                    <key>nl</key>
+                    <value>liniLED Aeris Profiel L30</value>
+                </entry>
+                <entry>
+                    <key>en</key>
+                    <value>liniLed Aeris Profile L30</value>
+                </entry>
+            </translations>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2750</width>
+            </maxDimension>
+            <lengthForCasting>
+                <width>25</width>
+            </lengthForCasting>
+        </product>
+        <translations/>
+    </parts>
+    <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <id>ca1</id>
+        <configModel xsi:type="leftViaEndCapCableEntry">
+            <id></id>
+            <code>A</code>
+            <name>Left side via end cap</name>
+            <translations/>
+            <margins>
+                <left>10</left>
+                <right>5</right>
+            </margins>
+        </configModel>
+        <translations/>
+    </parts>
+    <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <id>ca3</id>
+        <configModel xsi:type="leftViaSideCableEntry">
+            <id></id>
+            <code>C</code>
+            <name>Left side via side</name>
+            <translations/>
+            <margins>
+                <left>15</left>
+                <right>5</right>
+            </margins>
+        </configModel>
+        <translations/>
+    </parts>
+    <parts>
+        <id>10737</id>
+        <description>liniLED Aeris Profiel H30 4 m</description>
+        <price>76.69</price>
+        <product xsi:type="profile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>G</code>
+            <name>liniLED Aeris Profiel H30</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2750</width>
+            </maxDimension>
+            <lengthForCasting>
+                <width>25</width>
+            </lengthForCasting>
+        </product>
+        <translations/>
+    </parts>
+    <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <id>ca2</id>
+        <configModel xsi:type="leftViaBottomCableEntry">
+            <id></id>
+            <code>B</code>
+            <name>Left side via bottom</name>
+            <translations/>
+            <margins>
+                <left>15</left>
+                <right>5</right>
+            </margins>
+        </configModel>
+        <translations/>
+    </parts>
+    <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <id>ca5</id>
+        <configModel xsi:type="centerViaSideCableEntry">
+            <id></id>
+            <code>E</code>
+            <name>Center via side</name>
+            <translations/>
+            <margins>
+                <left>5</left>
+                <right>5</right>
+            </margins>
+        </configModel>
+        <translations/>
+    </parts>
+    <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <id>ca4</id>
+        <configModel xsi:type="rightViaSideCableEntry">
+            <id></id>
+            <code>D</code>
+            <name>Rigt side via side</name>
+            <translations/>
+            <margins>
+                <left>5</left>
+                <right>15</right>
+            </margins>
+        </configModel>
+        <translations/>
+    </parts>
+    <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <id>cod1</id>
+        <configModel xsi:type="realModel">
+            <id></id>
+            <code>D</code>
+            <name>Diffuus</name>
+            <translations/>
+            <margin/>
+        </configModel>
+        <translations/>
+    </parts>
+    <parts>
+        <id>12199</id>
+        <description>liniLED PCB EWW 2700K HP (PSP)</description>
+        <price>127.77</price>
+        <product xsi:type="highPowerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>HU</code>
+            <name>liniLED HP 2400K UWW (PSP)</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2670</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">2400</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>95004</id>
+        <description>Ingieten liniLED L30 Diffuus</description>
+        <price>17.25</price>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>95000</id>
+        <description>Ingieten liniLED L20 Helder</description>
+        <price>43.13</price>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>95001</id>
+        <description>Ingieten liniLED L20 Diffuus</description>
+        <price>43.13</price>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>95003</id>
+        <description>Ingieten liniLED L30 Helder</description>
+        <price>17.25</price>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>GRIJP_KTULE_ALU_ZWART</id>
+        <description>Kabeltule t.b.v. ALU zwart</description>
+        <price>0.07</price>
+        <translations/>
+        <type>ST</type>
+    </parts>
+    <parts>
+        <id>10901</id>
+        <description>liniLED Aeris Eindkap L20 O</description>
+        <price>8.0</price>
+        <product xsi:type="endCap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <name>End cap open L20</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+        </product>
+        <translations/>
+    </parts>
+    <parts>
+        <id>10900</id>
+        <description>liniLED Aeris Eindkap L20</description>
+        <price>7.84</price>
+        <product xsi:type="endCap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <name>End cap L20</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+        </product>
+        <translations/>
+    </parts>
+    <parts>
+        <id>10903</id>
+        <description>liniLED Aeris Eindkap LC20 O</description>
+        <price>8.32</price>
+        <translations/>
+    </parts>
+    <parts>
+        <id>10902</id>
+        <description>liniLED Aeris Eindkap LC20</description>
+        <price>8.22</price>
+        <product xsi:type="endCap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <name></name>
+            <translations/>
+            <dimension/>
+            <margin/>
+        </product>
+        <translations/>
+    </parts>
+    <parts>
+        <id>10905</id>
+        <description>liniLED Aeris Eindkap H20 O</description>
+        <price>8.53</price>
+        <translations/>
+    </parts>
+    <parts>
+        <id>10904</id>
+        <description>liniLED Aeris Eindkap H20</description>
+        <price>8.43</price>
+        <product xsi:type="endCap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <name></name>
+            <translations/>
+            <dimension/>
+            <margin/>
+        </product>
+        <translations/>
+    </parts>
+    <parts>
+        <id>GRIJP_KTULE_ALU_WIT</id>
+        <description>Kabeltule t.b.v. ALU wit</description>
+        <price>0.11</price>
+        <translations/>
+        <type>ST</type>
+    </parts>
+    <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <id>pvc0dc</id>
+        <configModel xsi:type="cable">
+            <id></id>
+            <code>A</code>
+            <name>PVC with demo connector</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <CABLE_TYPE>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">DemoConnector</value>
+            </CABLE_TYPE>
+            <CABLE_END>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"></value>
+            </CABLE_END>
+        </configModel>
+        <translations/>
+    </parts>
+    <parts>
+        <id>12170</id>
+        <description>liniLED PCB KW 6500K Photon 4000</description>
+        <price>179.38</price>
+        <product xsi:type="photonLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>XC</code>
+            <name>liniLED PCB KW 6500K Photon 4000</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">6500</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>ARBEID</id>
+        <description>Arbeidsminuut intern magazijn</description>
+        <price>0.59</price>
+        <translations/>
+        <type>MINUUT</type>
+    </parts>
+    <parts>
+        <id>12176</id>
+        <description>liniLED PCB Rood P</description>
+        <price>69.52</price>
+        <product xsi:type="powerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>PR</code>
+            <name>liniLED Power rood</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"></value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">100</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>12175</id>
+        <description>liniLED PCB Oranje P</description>
+        <price>69.52</price>
+        <product xsi:type="powerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>PO</code>
+            <name>liniLED Power Orange</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2600</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"></value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">100</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>10713</id>
+        <description>liniLED Aeris Profiel L20 4 m</description>
+        <price>36.09</price>
+        <product xsi:type="profile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>D</code>
+            <name>liniLED Aeris Profiel L20</name>
+            <translations/>
+            <dimension/>
+            <leftSpace>100</leftSpace>
+            <margin>
+                <left>100</left>
+            </margin>
+            <maxDimension>
+                <width>2750</width>
+            </maxDimension>
+            <lengthForCasting>
+                <width>25</width>
+            </lengthForCasting>
+        </product>
+        <translations/>
+    </parts>
+    <parts>
+        <id>10717</id>
+        <description>liniLED Aeris Profiel H20 4 m</description>
+        <price>63.39</price>
+        <product xsi:type="profile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>E</code>
+            <name>liniLED Aeris Profiel H20</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2750</width>
+            </maxDimension>
+            <lengthForCasting>
+                <width>25</width>
+            </lengthForCasting>
+        </product>
+        <translations/>
+    </parts>
+    <parts>
+        <id>12178</id>
+        <description>liniLED PCB Groen P</description>
+        <price>69.52</price>
+        <product xsi:type="powerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>PG</code>
+            <name>liniLED Power groen</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"></value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>12177</id>
+        <description>liniLED PCB Blauw P</description>
+        <price>69.52</price>
+        <product xsi:type="powerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>PB</code>
+            <name>liniLED Power blauw</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"></value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>12179</id>
+        <description>liniLED PCB amber P</description>
+        <price>69.52</price>
+        <product xsi:type="powerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>PA</code>
+            <name>liniLED Power amber</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"></value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>12181</id>
+        <description>liniLED PCB Amber D</description>
+        <price>36.96</price>
+        <product xsi:type="decoLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>DA</code>
+            <name>liniLED Deco amber</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"></value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">100</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>12183</id>
+        <description>liniLED PCB Groen D</description>
+        <price>48.4</price>
+        <product xsi:type="decoLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>DG</code>
+            <name>liniLED Deco groen</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2600</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"></value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">100</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts xsi:type="notExistingPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <id>pvc3op10</id>
+        <configModel xsi:type="cable">
+            <id></id>
+            <code>D</code>
+            <name>PVC with open end 10 m</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <CABLE_TYPE>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"></value>
+            </CABLE_TYPE>
+            <CABLE_END>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"></value>
+            </CABLE_END>
+        </configModel>
+        <translations/>
+    </parts>
+    <parts>
+        <id>12182</id>
+        <description>liniLED PCB Rood D</description>
+        <price>36.96</price>
+        <product xsi:type="decoLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>DR</code>
+            <name>liniLED Deco rood</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2600</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"></value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>12187</id>
+        <description>liniLED PCB RGB D</description>
+        <price>69.52</price>
+        <product xsi:type="decoLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>RP</code>
+            <name>liniLED RGB Deco</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2600</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"></value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>12189</id>
+        <description>liniLED PCB WW 3000K P</description>
+        <price>63.36</price>
+        <product xsi:type="powerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>PW</code>
+            <name>liniLED PCB WW 3000K P</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">3000</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
+    </parts>
+    <parts>
+        <id>12188</id>
+        <description>liniLED PCB EWW 2700K P</description>
+        <price>63.36</price>
+        <product xsi:type="powerLedStrip" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <id></id>
+            <code>PE</code>
+            <name>liniLED PCB EWW 2700K P</name>
+            <translations/>
+            <dimension/>
+            <margin/>
+            <maxDimension>
+                <width>2700</width>
+            </maxDimension>
+            <KELVIN>
+                <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">2700</value>
+            </KELVIN>
+            <SECTION>
+                <value xsi:type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">200</value>
+            </SECTION>
+        </product>
+        <translations/>
+        <type>MTR</type>
     </parts>
 </partList>
