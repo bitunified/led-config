@@ -151,7 +151,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <div class="main-frame">
             <iron-pages selected="[[state]]" attr-for-selected="state">
 
-                <div state="init">
+                <div state="init"><!--http://localhost:8080-->
                     <form
                             id="checkoutForm"
                             is="iron-form"
@@ -174,8 +174,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 <div class="row input-row">
                                     <shop-input>
                                         <input type="tel" id="productcode" name="productcode"
-                                               pattern="([D-K]){1}([CDEHL]){1}([DPHNT]){1}([RGBDA]|[FUEWNCTV]){1}([A-J]){1}([A-E])([A-H])(\d{4})((\d{4})?)(([ab])?)+"
-                                               placeholder="{{localize('validate.form.code')}}" required value=""
+                                               pattern="([D-K]){1}([CDEHL]){1}([D-Z]){1}([D-Z]){1}([A-J]){1}([A-E])([A-H])(\d{4})((\d{4})?)(([ab])?)+"
+                                               placeholder="{{localize('validate.form.code')}}" required value="{{code::input}}"
                                                autocomplete="cc-number">
                                         <shop-md-decorator error-message="{{localize('validate.form.invalidcode')}}"
                                                            aria-hidden="true">
@@ -357,6 +357,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             ],
             attached: function () {
                 this.loadResources(this.resolveUrl('/server/locales.json'));
+
+
+            },
+            ready:function(){
+
+                if (localStorage.getItem('code')!=null) {
+                    this.$.productcode.value = localStorage.getItem('code');
+                }
+
+            },
+
+            attributeChanged: function(name, type) {
+
             },
             properties: {
                 language: {
@@ -386,10 +399,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     value: 'init'
                 },
 
-                /**
-                 * An array containing the items in the cart.
-                 */
-                cart: Array,
 
                 /**
                  * The server's response.
@@ -405,7 +414,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     type: Boolean,
                     value: false
                 },
-
+                code:{
+                    type:String,
+                    notify: true,
+                    value:'',
+                    reflectToAttribute: true
+                },
                 /**
                  * If true, shop-checkout is currently visible on the screen.
                  */
@@ -431,12 +445,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     computed: '_computeHasItem(cart.length)'
                 }
             },
-
             _submit: function (e) {
+
                 if (this._validateForm()) {
                     // To send the form data to the server:
                     // 2) Remove the code below.
                     // 3) Uncomment `this.$.checkoutForm.submit()`.
+
 
                     this.$.checkoutForm.fire('iron-form-presubmit', null, {bubbles: false});
 
@@ -451,6 +466,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                     this.$.checkoutForm.submit();
                 }
+
+                localStorage.setItem("code", this.code);
             },
 
             /**
@@ -458,8 +475,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
              */
             _pushState: function (state) {
                 this._validState = state;
-                console.info(this.state);
-                console.info(this.route.path);
                 this.set('route.path', state);
             },
 
@@ -470,7 +485,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
              */
             _activeRouteHandler: function (e) {
                 var route = e.target;
-
+                this.$.productcode.value=localStorage.getItem('code');
                 if (e.detail.value) {
                     var state = route.data.state;
                     if (this._validState === state) {
@@ -479,8 +494,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         return;
                     }
                 }
-
                 this.state = 'init';
+
             },
 
             /**
@@ -559,13 +574,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
              */
             _didReceiveResponse: function (e) {
                 var response = e.detail.response;
-                //console.info(response);
-                console.info(e);
+
+
                 this.response = this._transformResponse(response);
                 this._setWaiting(true);
 
                 if (response.success) {
-                    console.info(this.state);
+
                     //this._pushState('localhost:8080/checkout/success');
                     this._pushState('success');
                     this._reset();
@@ -575,13 +590,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 }
             },
 
-            _toggleBillingAddress: function (e) {
-                this.hasBillingAddress = e.target.checked;
-
-                if (this.hasBillingAddress) {
-                    this.$.billAddress.focus();
-                }
-            },
 
             _computeHasItem: function (cartLength) {
                 return cartLength > 0;
@@ -716,18 +724,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 self.isInError=isInError;
                 self.translate=this.translate;
                 Object.keys(steps).map(function (key) {
-
-//                    var isError = false;
-//                    for (var it in steps[key]) {
-//                        if (obj[key][it] != undefined) {
-//                            if (obj[key][it].status === "ERROR") {
-//
-//                                isError = true;
-//                                break;
-//                            }
-//                        }
-//                    }
-                    //var msg = self._translatedMessage(obj[key]);
 
                     var messages=[];
 

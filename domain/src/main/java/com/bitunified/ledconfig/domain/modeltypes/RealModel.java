@@ -9,6 +9,7 @@ import com.bitunified.ledconfig.domain.Relation;
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 import com.bitunified.ledconfig.domain.product.accessoires.Accessoire;
 import com.bitunified.ledconfig.domain.product.cable.Cable;
+import com.bitunified.ledconfig.domain.product.cover.Covering;
 import com.bitunified.ledconfig.domain.product.mounting.EndCap;
 import com.bitunified.ledconfig.domain.product.profile.Profile;
 import com.bitunified.ledconfig.parts.Relatable;
@@ -16,13 +17,11 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.xml.bind.annotation.XmlSeeAlso;
 
-@XmlSeeAlso({Profile.class, LedStrip.class, Cable.class, ComposedProduct.class, Accessoire.class, EndCap.class, Relatable.class})
+@XmlSeeAlso({Profile.class, LedStrip.class, Cable.class, ComposedProduct.class, Accessoire.class, EndCap.class, Relatable.class,Covering.class})
 public class RealModel extends Model {
     protected Dimension dimension = new Dimension(null, null);
 
     protected Dimension maxDimension;
-
-
 
     private Margin margin = new Margin();
 

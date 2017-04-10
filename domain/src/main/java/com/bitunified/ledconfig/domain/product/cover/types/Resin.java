@@ -10,6 +10,9 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 @XmlSeeAlso({ResinClear.class,ResinDiffuse.class})
 public class Resin extends Covering {
 
+    public Resin(){
+        this(new Dimension());
+    }
     public Resin(Dimension dimension) {
         super(dimension);
 

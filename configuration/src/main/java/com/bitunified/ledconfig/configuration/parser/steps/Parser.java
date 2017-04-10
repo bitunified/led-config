@@ -17,6 +17,7 @@ import com.bitunified.ledconfig.domain.product.accessoires.Clip;
 import com.bitunified.ledconfig.domain.product.cable.Cable;
 import com.bitunified.ledconfig.domain.product.cable.cableconfig.*;
 import com.bitunified.ledconfig.domain.product.cover.Covering;
+import com.bitunified.ledconfig.domain.product.cover.types.Cap;
 import com.bitunified.ledconfig.domain.product.cover.types.ResinClear;
 import com.bitunified.ledconfig.domain.product.cover.types.ResinDiffuse;
 import com.bitunified.ledconfig.domain.product.mounting.*;
@@ -71,75 +72,7 @@ public class Parser {
         }
 
     }
-
     /**
-     * "10713","liniLED Aeris Profiel L20 4 m","6.81","ST","A","10"
-     * "10717","liniLED Aeris Profiel H20 4 m","11.96","ST","B","10"
-     * "10733","liniLED Aeris Profiel L30 4 m","9.30","ST","","10"
-     * "10737","liniLED Aeris Profiel H30 4 m","14.47","ST","","10"
-     * "10750","liniLED Aeris Kabelgoot 20 1 m","1.36","ST","","10"
-     * "10751","liniLED Aeris Kabelgoot 20 2 m","2.71","ST","","10"
-     * "10752","liniLED Aeris Kabelgoot 20 3 m","4.07","ST","","10"
-     * "10753","liniLED Aeris Kabelgoot 20 4 m","5.42","ST","","10"
-     * "10754","liniLED Aeris Kabelgoot 30 1 m","1.73","ST","","10"
-     * "10755","liniLED Aeris Kabelgoot 30 2 m","3.45","ST","","10"
-     * "10756","liniLED Aeris Kabelgoot 30 3 m","5.18","ST","","10"
-     * "10757","liniLED Aeris Kabelgoot 30 4 m","6.90","ST","","10"
-     * "10890","liniLED Aeris Clip 20","0.35","ST","","10"
-     * "10891","liniLED Aeris Clip 30","0.35","ST","","10"
-     * "10900","liniLED Aeris Eindkap L20","1.48","ST","","10"
-     * "10901","liniLED Aeris Eindkap L20 O","1.51","ST","","10"
-     * "10902","liniLED Aeris Eindkap LC20","1.55","ST","","10"
-     * "10903","liniLED Aeris Eindkap LC20 O","1.57","ST","","10"
-     * "10904","liniLED Aeris Eindkap H20","1.61","ST","","10"
-     * "10905","liniLED Aeris Eindkap H20 O","1.61","ST","","10"
-     * "10906","liniLED Aeris Eindkap HC20","1.63","ST","","10"
-     * "10907","liniLED Aeris Eindkap HC20 O","1.63","ST","","10"
-     * "10908","liniLED Aeris Eindkap C20","1.44","ST","","10"
-     * "10920","liniLED Aeris Eindkap L30","1.51","ST","","10"
-     * "10921","liniLED Aeris Eindkap L30 O","1.53","ST","","10"
-     * "10922","liniLED Aeris Eindkap LC30","1.59","ST","","10"
-     * "10923","liniLED Aeris Eindkap LC30 O","1.61","ST","","10"
-     * "10924","liniLED Aeris Eindkap H30","1.59","ST","","10"
-     * "10925","liniLED Aeris Eindkap H30 O","1.61","ST","","10"
-     * "10926","liniLED Aeris Eindkap HC30","1.61","ST","","10"
-     * "10927","liniLED Aeris Eindkap HC30 O","1.63","ST","","10"
-     * "10928","liniLED Aeris Eindkap C30","1.51","ST","","10"
-     * "11214","liniLED Aansluitkabel Demo","2.64","MTR","","10"
-     * "21002","liniLED PCB RGB D","15.00","MTR","","10"
-     * "21004","liniLED PCB Rood D","7.80","MTR","","10"
-     * "21005","liniLED PCB Groen D","10.50","MTR","","10"
-     * "21006","liniLED PCB Blauw D","10.50","MTR","","10"
-     * "21003","liniLED PCB Amber D","7.80","MTR","","10"
-     * "21017","liniLED PCB RGB P","38.60","MTR","","10"
-     * "21018","liniLED PCB Rood P","16.00","MTR","","10"
-     * "21020","liniLED PCB Groen P","19.00","MTR","","10"
-     * "21019","liniLED PCB Blauw P","19.00","MTR","","10"
-     * "21021","liniLED PCB Amber","16.00","MTR","","10"
-     * "21032A","liniLED PCB UWW 2400K HP (PSP)","19.00","MTR","","10"
-     * "21013A","liniLED PCB EWW 2700K HP (PSP)","19.00","MTR","","10"
-     * "21014A","liniLED PCB WW 3000K HP (PSP)","19.00","MTR","","10"
-     * "21015A","liniLED PCB NW 4000K HP (PSP)","19.00","MTR","","10"
-     * "21016A","liniLED PCB KW 6500K HP (PSP)","19.00","MTR","","10"
-     * "60000","Dubbelz Tape 6mm tbv PCB (l=50m)","4.71","ST","","10"
-     * "60004","Kabel Mono Wit","0.27","MTR","","10"
-     * "60005","Kabel RGB Wit","0.31","MTR","","10"
-     * "60006","Kabel Mono PUR","0.78","MTR","","10"
-     * "60007","Kabel RGB PUR","0.90","MTR","","10"
-     * "60010","Kabel Mono PUR M12 Male 1 m","5.42","ST","","10"
-     * "60011","Kabel Mono PUR M12 Male 5 m","8.92","ST","","10"
-     * "60012","Kabel Mono PUR M12 Male 10 m","13.29","ST","","10"
-     * "60013","Kabel RGB PUR M12 Male 1 m","6.63","ST","","10"
-     * "60014","Kabel RGB PUR M12 Male 5 m","10.41","ST","","10"
-     * "60015","Kabel RGB PUR M12 Male 10 m","15.68","ST","","10"
-     * "95000","Ingieten liniLED L20 Helder","11.50","MTR","","10"
-     * "95001","Ingieten liniLED L20 Diffuus","11.50","MTR","","10"
-     * "95003","Ingieten liniLED L30 Helder","17.25","MTR","","10"
-     * "95004","Ingieten liniLED L30 Diffuus","17.25","MTR","","10"
-     * "95010","Ingieten liniLED H20 Helder","23.00","MTR","","10"
-     * "95011","Ingieten liniLED H20 Diffuus","23.00","MTR","","10"
-     * "95013","Ingieten liniLED H30 Helder","46.50","MTR","","10"
-     * "95014","Ingieten liniLED H30 Diffuus","46.50","MTR","","10"
      * "ARBEID-MIN","Arbeidsminuut intern magazijn","0.59","MINUUT","","10"
      * "GRIJP","Kabeltule t.b.v. eindkap","0.07","ST","","10"
      * "GRIJP","Kabeltule t.b.v. ALU zwart","0.07","ST","","10"
@@ -168,8 +101,7 @@ public class Parser {
 
         EndCap endCapLC20 = new EndCap();
         Part partEndCapLC20 = new Part(endCapLC20);
-        partEndCapLC20.setPrice(BigDecimal.valueOf(8.22
-        ));
+        partEndCapLC20.setPrice(BigDecimal.valueOf(8.22));
         partEndCapLC20.setId("10902");
         partEndCapLC20.setDescription("liniLED Aeris Eindkap LC20");
         parts.add(partEndCapLC20);
@@ -191,8 +123,7 @@ public class Parser {
         profileH20.setMaxDimension(new Dimension(2750));
         profileH20.setCode("E");
         Part partProfielH20 = new Part(profileH20);
-        partProfielH20.setPrice(BigDecimal.valueOf(63.39
-        ));
+        partProfielH20.setPrice(BigDecimal.valueOf(63.39));
         partProfielH20.setId("10717");
         partProfielH20.setDescription("liniLED Aeris Profiel H20 4 m");
         parts.add(partProfielH20);
@@ -202,8 +133,7 @@ public class Parser {
 
         EndCap endCapH20 = new EndCap();
         Part partEndCapH20 = new Part(endCapH20);
-        partEndCapH20.setPrice(BigDecimal.valueOf(8.43
-        ));
+        partEndCapH20.setPrice(BigDecimal.valueOf(8.43));
         partEndCapH20.setId("10904");
         partEndCapH20.setDescription("liniLED Aeris Eindkap H20");
         parts.add(partEndCapH20);
@@ -211,8 +141,7 @@ public class Parser {
 
         EndCap endCapHC20 = new EndCap();
         Part partEndCapHC20 = new Part(endCapHC20);
-        partEndCapHC20.setPrice(BigDecimal.valueOf(8.53
-        ));
+        partEndCapHC20.setPrice(BigDecimal.valueOf(8.53));
         partEndCapHC20.setId("10906");
         partEndCapHC20.setDescription("liniLED Aeris Eindkap HC20");
         parts.add(partEndCapHC20);
@@ -220,8 +149,7 @@ public class Parser {
 
 
         Part partEndCapC20 = new Part();
-        partEndCapC20.setPrice(BigDecimal.valueOf(7.63
-        ));
+        partEndCapC20.setPrice(BigDecimal.valueOf(7.63));
         partEndCapC20.setId("10908");
         partEndCapC20.setDescription("liniLED Aeris Eindkap C20");
         parts.add(partEndCapC20);
@@ -229,8 +157,7 @@ public class Parser {
         profileL20.getRelation().addRelateTo(partEndCapC20, null);
 
         Part part = new Part();
-        part.setPrice(BigDecimal.valueOf(8.32
-        ));
+        part.setPrice(BigDecimal.valueOf(8.32));
         part.setId("10903");
         part.setDescription("liniLED Aeris Eindkap LC20 O");
         parts.add(part);
@@ -239,15 +166,13 @@ public class Parser {
         endCapL20Open.setName("End cap open L20");
 
         Part partEndCapL20Open = new Part(endCapL20Open);
-        partEndCapL20Open.setPrice(BigDecimal.valueOf(8.00
-        ));
+        partEndCapL20Open.setPrice(BigDecimal.valueOf(8.00));
         partEndCapL20Open.setId("10901");
         partEndCapL20Open.setDescription("liniLED Aeris Eindkap L20 O");
         parts.add(partEndCapL20Open);
 
         part = new Part();
-        part.setPrice(BigDecimal.valueOf(8.53
-        ));
+        part.setPrice(BigDecimal.valueOf(8.53));
         part.setId("10905");
         part.setDescription("liniLED Aeris Eindkap H20 O");
         parts.add(part);
@@ -255,13 +180,79 @@ public class Parser {
 
 
         part = new Part();
-        part.setPrice(BigDecimal.valueOf(8.64
-        ));
+        part.setPrice(BigDecimal.valueOf(8.64));
         part.setId("10907");
         part.setDescription("liniLED Aeris Eindkap HC20 O");
         parts.add(part);
 
 
+
+        Cap capL20 = new Cap(new Dimension(null));
+        capL20.setName("liniLED® Aeris Kap D L20 4 m");
+        capL20.setTranslations(Locale.nl,capL20.getName());
+        capL20.setTranslations(Locale.en,"liniLED® Aeris Cap D L20 4 m");
+        capL20.setCode("L");
+        Part partCapL20 = new Part(capL20);
+        partCapL20.setPrice(BigDecimal.valueOf(40.92));
+        partCapL20.setId("10803");
+        partCapL20.setDescription("liniLED® Aeris Kap D L20 4 m");
+        parts.add(partCapL20);
+
+
+        capL20 = new Cap(new Dimension(null));
+        capL20.setName("liniLED® Aeris Kap C L20 4 m");
+        capL20.setTranslations(Locale.nl,capL20.getName());
+        capL20.setTranslations(Locale.en,"liniLED® Aeris Cap C L20 4 m");
+        capL20.setCode("R");
+        partCapL20 = new Part(capL20);
+        partCapL20.setPrice(BigDecimal.valueOf(35.62));
+        partCapL20.setId("10807");
+        partCapL20.setDescription("liniLED® Aeris Kap C L20 4 m");
+        parts.add(partCapL20);
+
+        capL20 = new Cap(new Dimension(null));
+        capL20.setName("liniLED® Aeris Kap D H20 4 m");
+        capL20.setTranslations(Locale.nl,capL20.getName());
+        capL20.setTranslations(Locale.en,"liniLED® Aeris Cap D H20 4 m");
+        capL20.setCode("H");
+        partCapL20 = new Part(capL20);
+        partCapL20.setPrice(BigDecimal.valueOf(54.11));
+        partCapL20.setId("10811");
+        partCapL20.setDescription("liniLED® Aeris Kap D H20 4 m");
+        parts.add(partCapL20);
+
+        capL20 = new Cap(new Dimension(null));
+        capL20.setName("liniLED® Aeris Kap D L30 4 m");
+        capL20.setTranslations(Locale.nl,capL20.getName());
+        capL20.setTranslations(Locale.en,"liniLED® Aeris Cap D L30 4 m");
+        capL20.setCode("S");
+        partCapL20 = new Part(capL20);
+        partCapL20.setPrice(BigDecimal.valueOf(43.46));
+        partCapL20.setId("10823");
+        partCapL20.setDescription("liniLED® Aeris Kap D L30 4 m");
+        parts.add(partCapL20);
+
+        capL20 = new Cap(new Dimension(null));
+        capL20.setName("liniLED® Aeris Kap C L30 4 m");
+        capL20.setTranslations(Locale.nl,capL20.getName());
+        capL20.setTranslations(Locale.en,"liniLED® Aeris Cap C L30 4 m");
+        capL20.setCode("V");
+        partCapL20 = new Part(capL20);
+        partCapL20.setPrice(BigDecimal.valueOf(37.74));
+        partCapL20.setId("10827");
+        partCapL20.setDescription("liniLED® Aeris Kap C L30 4 m");
+        parts.add(partCapL20);
+
+        capL20 = new Cap(new Dimension(null));
+        capL20.setName("liniLED® Aeris Kap D H30 4 m");
+        capL20.setTranslations(Locale.nl,capL20.getName());
+        capL20.setTranslations(Locale.en,"liniLED® Aeris Cap D H30 4 m");
+        capL20.setCode("X");
+        partCapL20 = new Part(capL20);
+        partCapL20.setPrice(BigDecimal.valueOf(55.76));
+        partCapL20.setId("10831");
+        partCapL20.setDescription("liniLED® Aeris Kap D H30 4 m");
+        parts.add(partCapL20);
 
         Profile profileL30 = new Profile(new Dimension(null));
         profileL30.setName("liniLED Aeris Profiel L30");
@@ -270,17 +261,17 @@ public class Parser {
         profileL30.setLengthForCasting(new Dimension(25));
         profileL30.setMaxDimension(new Dimension(2750));
         profileL30.setCode("F");
+
+
         Part partProfielL30 = new Part(profileL30);
-        partProfielL30.setPrice(BigDecimal.valueOf(49.29
-        ));
+        partProfielL30.setPrice(BigDecimal.valueOf(49.29));
         partProfielL30.setId("10733");
         partProfielL30.setDescription("liniLED Aeris Profiel L30 4 m");
         parts.add(partProfielL30);
 
         EndCap endCapL30 = new EndCap();
         Part partEndCapL30 = new Part(endCapL30);
-        partEndCapL30.setPrice(BigDecimal.valueOf(8.00
-        ));
+        partEndCapL30.setPrice(BigDecimal.valueOf(8.00));
         partEndCapL30.setId("10920");
         partEndCapL30.setDescription("liniLED Aeris Eindkap L30");
         parts.add(partEndCapL30);
@@ -288,8 +279,7 @@ public class Parser {
 
         EndCap endCapLC30 = new EndCap();
         Part partEndCapLC30 = new Part(endCapLC30);
-        partEndCapLC30.setPrice(BigDecimal.valueOf(8.43
-        ));
+        partEndCapLC30.setPrice(BigDecimal.valueOf(8.43));
         partEndCapLC30.setId("10922");
         partEndCapLC30.setDescription("liniLED Aeris Eindkap LC30");
         parts.add(partEndCapLC30);
@@ -302,16 +292,14 @@ public class Parser {
         profileH30.setCode("G");
 
         Part partProfielH30 = new Part(profileH30);
-        partProfielH30.setPrice(BigDecimal.valueOf(76.69
-        ));
+        partProfielH30.setPrice(BigDecimal.valueOf(76.69));
         partProfielH30.setId("10737");
         partProfielH30.setDescription("liniLED Aeris Profiel H30 4 m");
         parts.add(partProfielH30);
 
         EndCap endCapH30 = new EndCap();
         Part partEndCapH30 = new Part(endCapH30);
-        partEndCapH30.setPrice(BigDecimal.valueOf(8.43
-        ));
+        partEndCapH30.setPrice(BigDecimal.valueOf(8.43));
         partEndCapH30.setId("10924");
         partEndCapH30.setDescription("liniLED Aeris Eindkap H30");
         parts.add(partEndCapH30);
@@ -319,8 +307,7 @@ public class Parser {
 
         EndCap endCapHC30 = new EndCap();
         Part partEndCapHC30 = new Part(endCapHC30);
-        partEndCapHC30.setPrice(BigDecimal.valueOf(8.53
-        ));
+        partEndCapHC30.setPrice(BigDecimal.valueOf(8.53));
         partEndCapHC30.setId("10926");
         partEndCapHC30.setDescription("liniLED Aeris Eindkap HC30");
         parts.add(partEndCapHC30);
@@ -351,8 +338,7 @@ public class Parser {
 
 
         part = new Part();
-        part.setPrice(BigDecimal.valueOf(8.53
-        ));
+        part.setPrice(BigDecimal.valueOf(8.53));
         part.setId("10925");
         part.setDescription("liniLED Aeris Eindkap H30 O");
         parts.add(part);
@@ -360,8 +346,7 @@ public class Parser {
 
 
         part = new Part();
-        part.setPrice(BigDecimal.valueOf(8.64
-        ));
+        part.setPrice(BigDecimal.valueOf(8.64));
         part.setId("10927");
         part.setDescription("liniLED Aeris Eindkap HC30 O");
         part.setTranslations(Locale.nl,part.getDescription());
@@ -546,12 +531,6 @@ public class Parser {
 
 
 
-
-
-
-
-
-
         part = new Part();
         part.setPrice(BigDecimal.valueOf(7.16
         ));
@@ -578,16 +557,13 @@ public class Parser {
         parts.add(part);
 
         part = new Part();
-        part.setPrice(BigDecimal.valueOf(9.86
-        ));
+        part.setPrice(BigDecimal.valueOf(9.86));
         part.setId("10754");
         part.setDescription("liniLED Aeris Kabelgoot 30 1 m");
         parts.add(part);
 
         part = new Part();
-        part.setPrice(BigDecimal.valueOf(19.66
-
-        ));
+        part.setPrice(BigDecimal.valueOf(19.66));
         part.setId("10755");
         part.setDescription("liniLED Aeris Kabelgoot 30 2 m");
         parts.add(part);
@@ -604,121 +580,153 @@ public class Parser {
         part.setDescription("liniLED Aeris Kabelgoot 30 4 m");
         parts.add(part);
 
-
-
-        part = new Part();
-        part.setPrice(BigDecimal.valueOf(13.99
-        ));
+        Cable cable = new Cable(new Dimension(null));
+        cable.setName("liniLED Aansluitkabel Mono Demo 1 m");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
+        cable.setTranslations(Locale.en,"liniLED connector cable Mono Demo 1 m");
+        cable.setCode("K");
+        part = new Part(cable);
+        part.setPrice(BigDecimal.valueOf(13.99));
         part.setId("11214");
-        part.setDescription("liniLED Aansluitkabel Demo");
+        part.setDescription("liniLED Aansluitkabel Mono Demo 1 m");
         part.setType("MTR");
         parts.add(part);
 
+        cable = new Cable(new Dimension(null));
+        cable.setName("Kabel Mono Wit 1 m with open end");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
+        cable.setCode("A");
+        part = new Part(cable);
+        part.setId("60004");
+        part.setPrice(BigDecimal.valueOf(1.43));
+        parts.add(part);
 
-        Cable cable = new Cable(new Dimension(null));
-        cable.setName("PVC with open end");
+        cable = new Cable(new Dimension(null));
+        cable.setName("Kabel Mono Wit 5 m with open end");
         cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
         cable.setCode("B");
-        part = new NotExistingPart(cable);
-        part.setId("pvcw1");
+        part = new Part(cable);
+        part.setId("60004b");
+        part.setPrice(BigDecimal.valueOf(7.15));
         parts.add(part);
 
 
         cable = new Cable(new Dimension(null));
-        cable.setName("PVC with demo connector");
-        cable.getProperty(Cable.CABLE_TYPE_S).setValue("DemoConnector");
-        cable.setCode("A");
-        part = new NotExistingPart(cable);
-        part.setId("pvc0dc");
-        parts.add(part);
-
-        cable = new Cable(new Dimension(null));
-        cable.setName("PVC with open end 5 m");
+        cable.setName("Kabel Mono Wit 10 m with open end");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
         cable.setCode("C");
-        part = new NotExistingPart(cable);
-        part.setId("pvc2op5");
+        part = new Part(cable);
+        part.setId("60004c");
+        part.setPrice(BigDecimal.valueOf(14.30));
         parts.add(part);
 
         cable = new Cable(new Dimension(null));
-        cable.setName("PVC with open end 10 m");
-        cable.setCode("D");
-        part = new NotExistingPart(cable);
-        part.setId("pvc3op10");
-        parts.add(part);
-
-        cable = new Cable(new Dimension(null));
-        cable.setName("PUR with open end 1 m");
-        cable.setCode("E");
-        part = new NotExistingPart(cable);
-        part.setId("pur4op1");
-        parts.add(part);
-
-        cable = new Cable(new Dimension(null));
-        cable.setName("PUR with liniLed PU Connector set 1 M");
-        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PURconnectorset");
-        cable.setCode("H");
-        part = new NotExistingPart(cable);
-        part.setId("purw7");
-        parts.add(part);
-
-        cable = new Cable(new Dimension(null));
-        cable.setName("PUR with liniLed PU Connector set 5 M");
-        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PURconnectorset");
-        cable.setCode("I");
-        part = new NotExistingPart(cable);
-        part.setId("purw8");
-        parts.add(part);
-
-        cable = new Cable(new Dimension(null));
-        cable.setName("PUR with liniLed PU Connector set 10 M");
-        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PURconnectorset");
-        cable.setCode("J");
-        part = new NotExistingPart(cable);
-        part.setId("purw9");
-        parts.add(part);
-
-
-
-        part = new Part();
-        part.setPrice(BigDecimal.valueOf(1.43
-        ));
-        part.setId("60004");
-        part.setDescription("Kabel Mono Wit");
-        parts.add(part);
-//        "60004","Kabel Mono Wit","0.27","MTR","","10"
-
-        part = new Part();
-        part.setPrice(BigDecimal.valueOf(1.64
-        ));
+        cable.setName("Kabel RGB Wit 1 m with open end");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
+        cable.setCode("R");
+        part = new Part(cable);
         part.setId("60005");
-        part.setDescription("Kabel RGB Wit");
+        part.setPrice(BigDecimal.valueOf(1.64));
         parts.add(part);
 
-//        "60005","Kabel RGB Wit","0.31","MTR","","10"
-
+        cable = new Cable(new Dimension(null));
+        cable.setName("Kabel RGB Wit 5 m with open end");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
+        cable.setCode("S");
         part = new Part(cable);
-        part.setPrice(BigDecimal.valueOf(4.13
-        ));
-        part.setType("MTR");
+        part.setId("60005s");
+        part.setPrice(BigDecimal.valueOf(8.2));
+        parts.add(part);
+
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("Kabel RGB Wit 10 m with open end");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
+        cable.setCode("T");
+        part = new Part(cable);
+        part.setId("60005t");
+        part.setPrice(BigDecimal.valueOf(16.4));
+        parts.add(part);
+
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("Kabel Mono PUR 1 m with open end");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
+        cable.setCode("D");
+        part = new Part(cable);
         part.setId("60006");
-        part.setDescription("Kabel Mono PUR");
+        part.setPrice(BigDecimal.valueOf(4.13));
         parts.add(part);
-//        "60006","Kabel Mono PUR","0.78","MTR","","10"
-        part = new Part(cable);
-        part.setPrice(BigDecimal.valueOf(4.77
-        ));
-        part.setType("MTR");
-        part.setId("60007");
-        part.setDescription("Kabel RGB PUR");
-        parts.add(part);
-//        "60007","Kabel RGB PUR","0.90","MTR","","10"
 
-//        "60010","Kabel Mono PUR M12 Male 1 m","5.42","ST","","10"
-//        "60011","Kabel Mono PUR M12 Male 5 m","8.92","ST","","10"
-//        "60012","Kabel Mono PUR M12 Male 10 m","13.29","ST","","10"
-//        "60013","Kabel RGB PUR M12 Male 1 m","6.63","ST","","10"
-//        "60014","Kabel RGB PUR M12 Male 5 m","10.41","ST","","10"
-//        "60015","Kabel RGB PUR M12 Male 10 m","15.68","ST","","10"
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("Kabel RGB PUR 1 m with open end");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("RGB");
+        cable.setCode("G");
+        part = new Part(cable);
+        part.setId("60007");
+        part.setPrice(BigDecimal.valueOf(4.77));
+        parts.add(part);
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("Kabel Mono PUR 1 m with PU connector set");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
+        cable.setCode("U");
+        part = new Part(cable);
+        part.setId("60010");
+        part.setPrice(BigDecimal.valueOf(5.42));
+        parts.add(part);
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("Kabel Mono PUR 4 m with PU connector set");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
+        cable.setCode("V");
+        part = new Part(cable);
+        part.setId("60011");
+        part.setPrice(BigDecimal.valueOf(8.92));
+        parts.add(part);
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("Kabel Mono PUR 10 m with PU connector set");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
+        cable.setCode("W");
+        part = new Part(cable);
+        part.setId("60012");
+        part.setPrice(BigDecimal.valueOf(13.29));
+        parts.add(part);
+        //60012	Kabel Mono PUR 10 m with PU connector set	W	€ 13,29
+        cable = new Cable(new Dimension(null));
+        cable.setName("Kabel RGB PUR 1 m with PU connector set");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
+        cable.setCode("X");
+        part = new Part(cable);
+        part.setId("60013");
+        part.setPrice(BigDecimal.valueOf(6.63));
+        parts.add(part);
+        //60013	Kabel RGB PUR 1 m with PU connector set	X	€ 6,63
+        cable = new Cable(new Dimension(null));
+        cable.setName("Kabel RGB PUR 5 m with PU connector set");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
+        cable.setCode("Y");
+        part = new Part(cable);
+        part.setId("60014");
+        part.setPrice(BigDecimal.valueOf(10.41));
+        parts.add(part);
+        //60014	Kabel RGB PUR 5 m with PU connector set	Y	€ 10,41
+        cable = new Cable(new Dimension(null));
+        cable.setName("Kabel RGB PUR 10 m with PU connector set");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
+        cable.setCode("Z");
+        part = new Part(cable);
+        part.setId("60015");
+        part.setPrice(BigDecimal.valueOf(15.68));
+        parts.add(part);
+        //60015	Kabel RGB PUR 10 m with PU connector set	Z	€ 15,68
+
+
+
+
+
 
 
         //(GABHPQRSTUV){1}
@@ -769,7 +777,7 @@ public class Parser {
 
         part = new Part();
         part.setDescription("Ingieten liniLED L30 Helder");
-        part.setPrice(BigDecimal.valueOf(17.25));
+        part.setPrice(BigDecimal.valueOf(86.25));
         part.setType("MTR");
         part.setId("95003");
         parts.add(part);
@@ -781,7 +789,7 @@ public class Parser {
         part = new Part();
         part.setDescription("Ingieten liniLED L30 Diffuus");
         part.setId("95004");
-        part.setPrice(BigDecimal.valueOf(17.25));
+        part.setPrice(BigDecimal.valueOf(86.25));
         part.setType("MTR");
         parts.add(part);
         profileL30.getRelation().addRelateTo(part,null);
@@ -794,6 +802,8 @@ public class Parser {
         part.setId("95010");
         part.setDescription("Ingieten liniLED H20 Helder");
         part.setType("MTR");
+        part.setPrice(BigDecimal.valueOf(86.25
+        ));
         parts.add(part);
         profileH20.getRelation().addRelateTo(part,null);
 //        "95010","Ingieten liniLED H20 Helder","23.00","MTR","","10"
@@ -804,13 +814,15 @@ public class Parser {
         part.setId("95011");
         part.setDescription("Ingieten liniLED H20 Diffuus");
         part.setType("MTR");
+        part.setPrice(BigDecimal.valueOf(86.25
+        ));
         parts.add(part);
         profileH20.getRelation().addRelateTo(part,null);
         //        "95011","Ingieten liniLED H20 Diffuus","23.00","MTR","","10"
 
 
         part = new Part();
-        part.setPrice(BigDecimal.valueOf(46.5));
+        part.setPrice(BigDecimal.valueOf(174.37));
         part.setId("95013");
         part.setDescription("Ingieten liniLED H30 Helder");
         part.setType("MTR");
@@ -819,7 +831,7 @@ public class Parser {
 //        "95013","Ingieten liniLED H30 Helder","46.50","MTR","","10"
 
         part = new Part();
-        part.setPrice(BigDecimal.valueOf(46.5));
+        part.setPrice(BigDecimal.valueOf(174.37));
         part.setId("95014");
         part.setDescription("Ingieten liniLED H30 Diffuus");
         part.setType("MTR");
@@ -953,12 +965,13 @@ public class Parser {
 
 
         ledStrip = new PowerLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED Power RGB");
+        ledStrip.setName("liniLED Power RGB 240");
         ledStrip.setMaxDimension(new Dimension(2600));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(100);
         ledStrip.setCode("RQ");
         part = new Part(ledStrip);
-        part.setPrice(BigDecimal.valueOf(38.6));
+        part.setPrice(BigDecimal.valueOf(77.95
+        ));
         part.setId("12139");
         part.setType("MTR");
         part.setDescription("liniLED PCB RGB 240 P");
@@ -1464,10 +1477,6 @@ public class Parser {
 
 
 
-
-
-
-
         ledStrip = new TunnableLedStrip(new Dimension(null));
         ledStrip.setName("liniLED PCB TW 2700K-6500K 1700");
         ledStrip.setMaxDimension(new Dimension(2700));
@@ -1499,7 +1508,8 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2700");
         ledStrip.setCode("XZ");
         part = new Part(ledStrip);
-        part.setPrice(BigDecimal.valueOf(195.83));
+        part.setPrice(BigDecimal.valueOf(219.73
+        ));
         part.setId("12146");
         part.setType("MTR");
         parts.add(part);
