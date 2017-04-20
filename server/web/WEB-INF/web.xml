@@ -24,6 +24,14 @@
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>validatepage</servlet-name>
+        <jsp-file>/index.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>validatepage</servlet-name>
+        <url-pattern>/validate</url-pattern>
+    </servlet-mapping>
 
     <filter>
         <filter-name>CORS</filter-name>

@@ -13,5 +13,6 @@ public class RGBLedStrip extends LedStrip {
     public RGBLedStrip(Dimension dimension){
         super(dimension);
 
+
     }
 }

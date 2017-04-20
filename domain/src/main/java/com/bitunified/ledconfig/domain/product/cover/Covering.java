@@ -13,7 +13,8 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 
 @XmlSeeAlso({Resin.class,Cover.class,Cap.class})
 public class Covering extends RealModel{
-    public static final Property TRANSLUCENCY = new Property("translucency","");
+    public static final String TRANSLUCENCY_S = "translucency";
+    public static final Property TRANSLUCENCY = new Property(TRANSLUCENCY_S,"");
     public static final int CODE_LENGTH = 1;
 
     public Covering(){

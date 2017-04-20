@@ -2,6 +2,8 @@ package com.bitunified.ledconfig;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 
 public class LedConfigTest {
 
@@ -28,12 +30,43 @@ public class LedConfigTest {
     }
 
     @Test
-    public void testConfig2() {
-        String[] args = new String[]{"AGDR11102000230b"};
+    public void test_Cable_mono_not_with_RGB() {
+        String[] args = new String[]{"DERPKBC02000230b"};
         LedConfig ledConfig = new LedConfig();
         ConfigResult result = ledConfig.rules(args);
-        System.out.println(result.getMessages());
-        System.out.println(result.getModels());
-        //assertEquals("","[Message: Totale lengte is groter dan ledstrip lengte inclusief marges. - Status: 0, Message: Totale lengte is groter dan maximale ledstrip lengte. - Status: 0]",messages);
+        System.out.println(result);
+
+        result.getMessages().stream().forEach(f-> {
+                    System.out.println(f.getMessage());
+                    assertEquals("Check error", "Kabel met mono connector kan niet in combinatie met RGB Ledstrip.", f.getMessage());
+                }
+        );
+    }
+
+    @Test
+    public void test_Warning_Not_Diffuse() {
+        // 1. Laag profiel (L20/L30)
+        // 2. Diffuse lage kap/Diffuse ingegoten
+        // 3. Deco, Power, Photon of RGB PCB
+        String[] args = new String[]{"DDDGKBC02000230b"};
+        LedConfig ledConfig = new LedConfig();
+        ConfigResult result = ledConfig.rules(args);
+
+        result.getMessages().stream().forEach(f-> {
+                    System.out.println(f.getMessage());
+                    assertEquals("Check error", "Deco,Power, HP ledstrip niet mogelijk voor ingieten.", f.getMessage());
+                }
+        );
+        assertEquals("Check # messages",1,result.getMessages().size());
+        args = new String[]{"DLDGKBC02000230b"};
+        ledConfig = new LedConfig();
+        result = ledConfig.rules(args);
+
+        result.getMessages().stream().forEach(f-> {
+                    System.out.println(f.getMessage());
+                    assertEquals("Check error", "Deco,Power, HP ledstrip niet mogelijk voor ingieten.", f.getMessage());
+                }
+        );
+        assertEquals("Check # messages",1,result.getMessages().size());
     }
 }

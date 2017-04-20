@@ -191,6 +191,7 @@ public class Parser {
         capL20.setName("liniLED® Aeris Kap D L20 4 m");
         capL20.setTranslations(Locale.nl,capL20.getName());
         capL20.setTranslations(Locale.en,"liniLED® Aeris Cap D L20 4 m");
+        capL20.getProperty(Cap.TRANSLUCENCY_S).setValue("diffuse");
         capL20.setCode("L");
         Part partCapL20 = new Part(capL20);
         partCapL20.setPrice(BigDecimal.valueOf(40.92));
@@ -582,7 +583,7 @@ public class Parser {
 
         Cable cable = new Cable(new Dimension(null));
         cable.setName("liniLED Aansluitkabel Mono Demo 1 m");
-        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("mono");
         cable.setTranslations(Locale.en,"liniLED connector cable Mono Demo 1 m");
         cable.setCode("K");
         part = new Part(cable);
@@ -594,7 +595,7 @@ public class Parser {
 
         cable = new Cable(new Dimension(null));
         cable.setName("Kabel Mono Wit 1 m with open end");
-        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("mono");
         cable.setCode("A");
         part = new Part(cable);
         part.setId("60004");
@@ -603,7 +604,7 @@ public class Parser {
 
         cable = new Cable(new Dimension(null));
         cable.setName("Kabel Mono Wit 5 m with open end");
-        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("mono");
         cable.setCode("B");
         part = new Part(cable);
         part.setId("60004b");
@@ -613,7 +614,7 @@ public class Parser {
 
         cable = new Cable(new Dimension(null));
         cable.setName("Kabel Mono Wit 10 m with open end");
-        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("mono");
         cable.setCode("C");
         part = new Part(cable);
         part.setId("60004c");
@@ -855,7 +856,7 @@ public class Parser {
         part.setType("MTR");
         parts.add(part);
 
-        ledStrip = new DecoLedStrip(new Dimension(null));
+        ledStrip = new RGBLedStrip(new Dimension(null));
         ledStrip.setName("liniLED RGB Deco");
         ledStrip.setMaxDimension(new Dimension(2600));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);

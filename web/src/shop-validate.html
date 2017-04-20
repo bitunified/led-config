@@ -174,7 +174,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 <div class="row input-row">
                                     <shop-input>
                                         <input type="tel" id="productcode" name="productcode"
-                                               pattern="([D-K]){1}([CDEHL]){1}([D-Z]){1}([D-Z]){1}([A-J]){1}([A-E])([A-H])(\d{4})((\d{4})?)(([ab])?)+"
+                                               pattern="([D-K]){1}([CDEHL]){1}([D-Z]){1}([D-Z]){1}([A-Z]){1}([A-E]){1}([A-H]){1}(\d{4})((\d{4})?)(([ab])?)+"
                                                placeholder="{{localize('validate.form.code')}}" required value="{{code::input}}"
                                                autocomplete="cc-number">
                                         <shop-md-decorator error-message="{{localize('validate.form.invalidcode')}}"
@@ -204,6 +204,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 <template is="dom-repeat" items="[[item.msg]]" as="msge" index-as="msgindex">
                                     <template is="dom-if" if="{{!showFirst(msgindex)}}">
                                         <p>[[msge.message]]</p>
+
                                     </template>
                                 </template>
                             </div>
@@ -236,6 +237,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                                         <iron-icon class="tool-box-icon" icon="error"></iron-icon>
                                     </template>
+
                                     <template is="dom-if" if="[[item.more]]">
                                         <iron-icon icon="expand-more"></iron-icon>
                                     </template>
@@ -706,22 +708,30 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             _toDataTable: function (response) {
                 var arr = [];
                 var steps=response.parseSteps;
-
-                var cFunc = this._containsError;
-                var transatedMessageFunc = this._translatedMessage;
                 var self = this;
-                var isInError=function(step,messages){
+                var isInState=function(step,messages,status){
                     if (step.error && step.mantatory){
                         return true;
                     }
                     for(var err in messages){
-                        if (messages[err].status==="ERROR" && messages[err].step===step.step){
+                        if (messages[err].status===status && messages[err].step===step.step){
                             return true;
                         }
                     }
                     return false;
                 };
-                self.isInError=isInError;
+                var isInWarning=function(step,messages,status){
+
+                    console.info(messages);
+                    for(var err in messages){
+                        if (messages[err].status===status){
+                            return true;
+                        }
+                    }
+                    return false;
+                };
+                self.isInState=isInState;
+                self.isInWarning=isInWarning;
                 self.translate=this.translate;
                 Object.keys(steps).map(function (key) {
 
@@ -736,18 +746,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             }
                         }
 
-                        messages.push({"message": messageText});
+                        messages.push({"message": messageText,"iserror":true,"iswarning":false});
 
                     for (var mes in response.messages){
 
                         if (response.messages[mes].step===steps[key].step){
-
-                            messages.push(response.messages[mes]);
+                            var isError=response.messages[mes].status === "ERROR";
+                            var isWarning=response.messages[mes].status === "WARNING";
+                            messages.push(Object.assign(response.messages[mes],{"iserror":isError,"iswarning":isWarning}));
                         }
                     }
-                    var error=self.isInError(steps[key],messages);
+                    var error=self.isInState(steps[key],messages,'ERROR');
+                    var isInWarning=self.isInWarning(steps[key],messages,'WARNING');
                     var moreMessages=(messages.length>1) && !error;
-                    var item = {"step": steps[key].step, "msg": messages, "error": error,"more":moreMessages};
+
+                    console.info(error+" - " +isInWarning + " - Step: " +steps[key].step + " - ");
+                    console.info(messages);
+                    var item = {"step": steps[key].step, "msg": messages, "error": error,"more":moreMessages,"warning":isInWarning};
                     arr.push(item);
                 });
                 return arr;

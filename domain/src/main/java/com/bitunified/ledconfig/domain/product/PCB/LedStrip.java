@@ -27,5 +27,6 @@ public class LedStrip extends RealModel {
         super(dimension);
         addProperty(SECTION);
         addProperty(KELVIN);
+        addProperty(COLOR);
     }
 }

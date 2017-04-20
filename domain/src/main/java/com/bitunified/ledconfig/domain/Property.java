@@ -3,7 +3,7 @@ package com.bitunified.ledconfig.domain;
 
 import java.io.Serializable;
 
-public class Property implements Serializable{
+public class Property implements Serializable {
 
     public Property(){
 
