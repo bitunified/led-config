@@ -1,0 +1,60 @@
+<ng-sidebar-container>
+  <ng-sidebar
+    [(opened)]="_opened"
+    [mode]="_MODES[_modeNum]"
+    [keyClose]="_keyClose"
+    [position]="_POSITIONS[_positionNum]"
+    [dockedSize]="'50px'"
+    [autoCollapseHeight]="_autoCollapseHeight"
+    [autoCollapseWidth]="_autoCollapseWidth"
+    [closeOnClickOutside]="_closeOnClickOutside"
+    [closeOnClickBackdrop]="_closeOnClickBackdrop"
+    [showBackdrop]="_showBackdrop"
+    [animate]="_animate"
+    [trapFocus]="_trapFocus"
+    [autoFocus]="_autoFocus"
+    [sidebarClass]="'demo-sidebar'"
+    [ariaLabel]="'My sidebar'"
+    (onOpenStart)="_onOpenStart()"
+    (onOpened)="_onOpened()"
+    (onCloseStart)="_onCloseStart()"
+    (onClosed)="_onClosed()"
+    (onAnimationStart)="_onAnimationStart($event)"
+    (onAnimationDone)="_onAnimationDone($event)">
+    Admin
+    <p> <button (click)="_toggleOpened()" md-icon-button><i class="material-icons">close</i></button></p>
+  </ng-sidebar>
+  <header class="demo-header">
+
+
+    <button md-icon-button [mdMenuTriggerFor]="menu">
+      <md-icon>more_vert</md-icon>
+
+    </button>
+
+    <md-menu #menu="mdMenu">
+      <button md-menu-item (click)="_toggleOpened()">
+        <md-icon>dialpad</md-icon>
+        <span>Admin</span>
+      </button>
+      <button md-menu-item disabled>
+        <md-icon>voicemail</md-icon>
+        <span>Check voicemail</span>
+      </button>
+      <button md-menu-item>
+        <md-icon>notifications_off</md-icon>
+        <span>Disable alerts</span>
+      </button>
+    </md-menu>
+
+  </header>
+  <section class="demo-contents">
+
+<div class="validationInput">
+    <p>Valideer code:</p>
+    <validation-input></validation-input>
+  <br/>
+  <button md-raised-button>Valideer</button>
+</div>
+  </section>
+</ng-sidebar-container>
