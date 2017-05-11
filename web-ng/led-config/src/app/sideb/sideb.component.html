@@ -37,24 +37,28 @@
         <md-icon>dialpad</md-icon>
         <span>Admin</span>
       </button>
-      <button md-menu-item disabled>
-        <md-icon>voicemail</md-icon>
-        <span>Check voicemail</span>
-      </button>
-      <button md-menu-item>
-        <md-icon>notifications_off</md-icon>
-        <span>Disable alerts</span>
-      </button>
     </md-menu>
 
   </header>
   <section class="demo-contents">
+    <md-card>
+      <md-card-content>
+        <div class="validationInput"><h2 class="example-h2">Aeris Configurator 2</h2></div>
 
-<div class="validationInput">
-    <p>Valideer code:</p>
-    <validation-input></validation-input>
-  <br/>
-  <button md-raised-button>Valideer</button>
-</div>
+        <section class="example-section">
+        </section>
+        <section class="example-section validationInput">
+          <label class="example-margin">Productcode:</label>
+          <validation-input></validation-input>
+        </section>
+
+        <section class="example-section validationInput">
+          <button md-raised-button (click)="validateCode()">Valideer</button>
+        </section>
+
+      </md-card-content>
+    </md-card>
+
+
   </section>
 </ng-sidebar-container>

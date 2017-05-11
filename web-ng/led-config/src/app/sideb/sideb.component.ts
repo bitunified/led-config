@@ -1,16 +1,15 @@
-import {Component, OnInit, AnimationTransitionEvent} from '@angular/core';
+import {Component, OnInit, AnimationTransitionEvent, OnDestroy} from '@angular/core';
+import {ProductcodeService} from "../services/productcode.service";
 
 @Component({
   selector: 'sideb',
   templateUrl: './sideb.component.html',
-  styleUrls: ['./sideb.component.css']
+  styleUrls: ['./sideb.component.css'],
+  providers: [ProductcodeService]
+
 })
-export class SidebComponent implements OnInit {
+export class SidebComponent implements OnInit, OnDestroy {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
   private _opened: boolean = false;
   private _modeNum: number = 2;
   private _positionNum: number = 0;
@@ -27,9 +26,25 @@ export class SidebComponent implements OnInit {
   private _MODES: Array<string> = ['over', 'push', 'slide', 'dock'];
   private _POSITIONS: Array<string> = ['left', 'right', 'top', 'bottom'];
 
+  ngOnDestroy(): void {
+  }
+
+  ngOnInit(): void {
+  }
+
+
+  constructor( private productcodeService: ProductcodeService ){
+  }
+
+  public validateCode():void{
+// this method needs to be called when user click on submit button from header
+    this.productcodeService.notifyOther('test');
+  }
+
   private _toggleOpened(): void {
     this._opened = !this._opened;
   }
+
 
   private _toggleMode(): void {
     this._modeNum++;
