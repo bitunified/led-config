@@ -49,11 +49,11 @@
         </section>
         <section class="example-section validationInput">
           <label class="example-margin">Productcode:</label>
-          <validation-input></validation-input>
+          <validation-input [(productcode)]="code"></validation-input>
         </section>
 
         <section class="example-section validationInput">
-          <button md-raised-button (click)="validateCode()">Valideer</button>
+          <button md-raised-button (click)="validateCode(code)">Valideer</button>
         </section>
 
       </md-card-content>

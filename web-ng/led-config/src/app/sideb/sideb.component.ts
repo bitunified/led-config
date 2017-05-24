@@ -9,7 +9,15 @@ import {ProductcodeService} from "../services/productcode.service";
 
 })
 export class SidebComponent implements OnInit, OnDestroy {
+  get code(): string {
+    return this._code;
+  }
 
+  set code(value: string) {
+    this._code = value;
+  }
+
+  private _code:string;
   private _opened: boolean = false;
   private _modeNum: number = 2;
   private _positionNum: number = 0;
@@ -36,9 +44,10 @@ export class SidebComponent implements OnInit, OnDestroy {
   constructor( private productcodeService: ProductcodeService ){
   }
 
-  public validateCode():void{
+  public validateCode(code):void{
+    console.info(code);
 // this method needs to be called when user click on submit button from header
-    this.productcodeService.notifyOther('test');
+    this.productcodeService.notifyOther(code);
   }
 
   private _toggleOpened(): void {

@@ -4,9 +4,14 @@ import com.bitunified.ledconfig.ConfigResult;
 import com.bitunified.ledconfig.LedConfig;
 import com.bitunified.ledconfig.PriceCalculator;
 import com.bitunified.ledconfig.configuration.parser.steps.ParseStep;
+import com.bitunified.ledconfig.configuration.parser.steps.Parser;
+import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.message.Message;
 import com.bitunified.ledconfig.domain.message.MessageStatus;
+import com.bitunified.ledconfig.parts.Part;
 import com.bitunified.server.message.ServerResponse;
+import com.bitunified.server.models.Models;
+import com.bitunified.server.models.PartModelCollector;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -14,12 +19,35 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @Path("/engine")
 public class ApplicationEndpoint {
 
     public ApplicationEndpoint() {
 
+    }
+
+    @GET
+    @Path("/models")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Models getAllModels(){
+        Models models = new Models();
+
+        Parser parser = new Parser();
+
+        parser.createParts();
+        List<Model> modelsExtracted=new ArrayList<>();
+        for (Part p: parser.getParts()){
+            if (p!=null && p.getConfigModel()!=null) {
+                modelsExtracted.add(p.getConfigModel());
+            }
+        }
+
+
+        models.setModels(modelsExtracted);
+        return models;
     }
 
     @POST

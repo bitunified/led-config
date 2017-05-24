@@ -1,8 +1,9 @@
-import {Component, forwardRef, OnInit, OnDestroy} from '@angular/core';
+import {Component, forwardRef, OnInit, OnDestroy, Input, Output, EventEmitter} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {ProductcodeService} from "../services/productcode.service";
 import {Subscription} from "rxjs";
 import {ValidationServiceService} from "../services/validation-service.service";
+import {Serverresponse} from "../domain/serverresponse";
 
 export const VALIDATION_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -19,12 +20,30 @@ const noop = () => {
 })
 export class ValidationInputComponent implements  OnDestroy,ControlValueAccessor {
 
+  @Output() productcodeChange = new EventEmitter<string>();
+  productCode="";
+
+  set productcode(val) {
+    console.info(val);
+    this.productcode = val;
+    this.productcodeChange.emit(this.productCode);
+  }
+
+
+  get productcode() {
+    return this.productCode;
+  }
+
   private subscription: Subscription;
   constructor(private productcodeService: ProductcodeService,validationService:ValidationServiceService ){
     this.subscription = this.productcodeService.notifyObservable$.subscribe((data) => {
       console.info(data);
-      validationService.validateCode(data).subscribe(serverResponse=>
-        console.info(serverResponse),
+      validationService.validateCode(data).subscribe((res:Serverresponse) => {
+        let serverresponse:Serverresponse=res;
+
+        console.info(serverresponse);
+      }
+        ,
         error=>console.info('error'))
 
 
