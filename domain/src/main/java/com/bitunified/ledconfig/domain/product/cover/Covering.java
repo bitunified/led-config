@@ -24,6 +24,7 @@ public class Covering extends RealModel{
     public Covering(Dimension dimension){
         super(dimension);
         addProperty(TRANSLUCENCY);
+        this.setStep(2);
     }
 
     @Override

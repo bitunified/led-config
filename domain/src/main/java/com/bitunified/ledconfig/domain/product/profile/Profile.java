@@ -20,7 +20,7 @@ public class Profile extends RealModel {
     }
     public Profile(Dimension dimension) {
         super(dimension);
-
+        this.setStep(1);
     }
 
 

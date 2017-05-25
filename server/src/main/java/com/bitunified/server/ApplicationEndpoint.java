@@ -12,6 +12,7 @@ import com.bitunified.ledconfig.parts.Part;
 import com.bitunified.server.message.ServerResponse;
 import com.bitunified.server.models.Models;
 import com.bitunified.server.models.PartModelCollector;
+import com.bitunified.server.models.Relations;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -38,16 +39,24 @@ public class ApplicationEndpoint {
         Parser parser = new Parser();
 
         parser.createParts();
-        List<Model> modelsExtracted=new ArrayList<>();
-        for (Part p: parser.getParts()){
-            if (p!=null && p.getConfigModel()!=null) {
-                modelsExtracted.add(p.getConfigModel());
-            }
-        }
 
 
-        models.setModels(modelsExtracted);
+        models.setModels(parser.getModels());
         return models;
+    }
+
+    @GET
+    @Path("/relations")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Relations getAllRelations(){
+
+        Parser parser = new Parser();
+
+        parser.createParts();
+
+        Relations relations=new Relations();
+        relations.setRelations(parser.getRelationDefinitions());
+        return relations;
     }
 
     @POST

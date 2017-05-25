@@ -27,7 +27,7 @@
         <module name="engine" />
         <module name="server" />
         <module name="web" />
-        <module name="web-ng" />
+        <module name="web-steps" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -38,6 +38,7 @@
       <module name="server" target="1.8" />
       <module name="web" target="1.6" />
       <module name="web-ng" target="1.6" />
+      <module name="web-steps" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>

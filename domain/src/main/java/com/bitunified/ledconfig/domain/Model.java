@@ -4,7 +4,6 @@ package com.bitunified.ledconfig.domain;
 import com.bitunified.ledconfig.domain.I18N.Locale;
 import com.bitunified.ledconfig.domain.modeltypes.ConfigurationModel;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
-import com.bitunified.ledconfig.domain.relation.RelationDependency;
 import com.bitunified.ledconfig.parts.Relatable;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
@@ -21,9 +20,6 @@ public class Model extends Relatable implements StepConfig, Serializable {
 
     private String code;
     private Integer step;
-
-
-    private RelationDependency relationDependency = new RelationDependency();
 
     private Map<String, Property> properies = new HashMap<String, Property>();
 
@@ -108,11 +104,4 @@ public class Model extends Relatable implements StepConfig, Serializable {
         this.translations = translations;
     }
 
-    public RelationDependency getRelationDependency() {
-        return relationDependency;
-    }
-
-    public void setRelationDependency(RelationDependency relationDependency) {
-        this.relationDependency = relationDependency;
-    }
 }

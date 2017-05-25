@@ -17,7 +17,7 @@ public class LedStrip extends RealModel {
     public final Property KELVIN=new Property(KELVIN_TYPE,"");
 
     public LedStrip(){
-
+        this.setStep(3);
     }
 
     public static final String SECTION_WIDTH = "section";

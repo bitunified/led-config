@@ -6,7 +6,6 @@ import com.bitunified.ledconfig.configuration.Accumulator;
 import com.bitunified.ledconfig.configuration.csvimport.Importer;
 import com.bitunified.ledconfig.configuration.parser.steps.types.*;
 import com.bitunified.ledconfig.domain.*;
-import com.bitunified.ledconfig.domain.I18N.*;
 import com.bitunified.ledconfig.domain.I18N.Locale;
 import com.bitunified.ledconfig.domain.product.ModelResult;
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
@@ -22,6 +21,8 @@ import com.bitunified.ledconfig.domain.product.cover.types.ResinClear;
 import com.bitunified.ledconfig.domain.product.cover.types.ResinDiffuse;
 import com.bitunified.ledconfig.domain.product.mounting.*;
 import com.bitunified.ledconfig.domain.product.profile.Profile;
+import com.bitunified.ledconfig.domain.relation.RelationDefinition;
+import com.bitunified.ledconfig.domain.relation.RelationState;
 import com.bitunified.ledconfig.parts.NotExistingPart;
 import com.bitunified.ledconfig.parts.Part;
 import com.bitunified.ledconfig.parts.PartList;
@@ -44,6 +45,9 @@ public class Parser {
 
     private Set<Relation> relations = new HashSet<Relation>();
 
+    private List<RelationDefinition> relationDefinitions = new ArrayList<RelationDefinition>();
+
+
     private ComposedProduct composedProduct;
 
     {
@@ -51,15 +55,16 @@ public class Parser {
         createParts();
     }
 
+
     public void init() {
         parts = new HashSet<Part>();
-        relations=new HashSet<Relation>();
+        relations = new HashSet<Relation>();
         Importer importer = new Importer();
 
         try {
             PartList partList = (PartList) importer.readXml(importer.fileReader());
             parts = partList.getParts();
-            relations=partList.getRelations();
+            relations = partList.getRelations();
             for (Part part : parts) {
                 if (part.getProduct() instanceof ComposedProduct) {
                     composedProduct = (ComposedProduct) part.getProduct();
@@ -72,6 +77,7 @@ public class Parser {
         }
 
     }
+
     /**
      * "ARBEID-MIN","Arbeidsminuut intern magazijn","0.59","MINUUT","","10"
      * "GRIJP","Kabeltule t.b.v. eindkap","0.07","ST","","10"
@@ -92,6 +98,11 @@ public class Parser {
         profileL20.setLeftSpace((100));
         profileL20.setLengthForCasting(new Dimension(25));
         profileL20.setCode("D");
+        profileL20.setStep(1);
+
+        RelationDefinition relationDefinitionL20Diffuus = createRelationDefinition(RelationState.FORBIDDEN,"L20 kan niet samen met Diffuus");
+        relationDefinitionL20Diffuus.addModel(profileL20);
+
         Part partL20 = new Part(profileL20);
         partL20.setPrice(BigDecimal.valueOf(36.09));
         partL20.setId("10713");
@@ -127,8 +138,6 @@ public class Parser {
         partProfielH20.setId("10717");
         partProfielH20.setDescription("liniLED Aeris Profiel H20 4 m");
         parts.add(partProfielH20);
-
-
 
 
         EndCap endCapH20 = new EndCap();
@@ -178,7 +187,6 @@ public class Parser {
         parts.add(part);
 
 
-
         part = new Part();
         part.setPrice(BigDecimal.valueOf(8.64));
         part.setId("10907");
@@ -186,11 +194,10 @@ public class Parser {
         parts.add(part);
 
 
-
         Cap capL20 = new Cap(new Dimension(null));
         capL20.setName("liniLED® Aeris Kap D L20 4 m");
-        capL20.setTranslations(Locale.nl,capL20.getName());
-        capL20.setTranslations(Locale.en,"liniLED® Aeris Cap D L20 4 m");
+        capL20.setTranslations(Locale.nl, capL20.getName());
+        capL20.setTranslations(Locale.en, "liniLED® Aeris Cap D L20 4 m");
         capL20.getProperty(Cap.TRANSLUCENCY_S).setValue("diffuse");
         capL20.setCode("L");
         Part partCapL20 = new Part(capL20);
@@ -202,8 +209,8 @@ public class Parser {
 
         capL20 = new Cap(new Dimension(null));
         capL20.setName("liniLED® Aeris Kap C L20 4 m");
-        capL20.setTranslations(Locale.nl,capL20.getName());
-        capL20.setTranslations(Locale.en,"liniLED® Aeris Cap C L20 4 m");
+        capL20.setTranslations(Locale.nl, capL20.getName());
+        capL20.setTranslations(Locale.en, "liniLED® Aeris Cap C L20 4 m");
         capL20.setCode("R");
         partCapL20 = new Part(capL20);
         partCapL20.setPrice(BigDecimal.valueOf(35.62));
@@ -213,8 +220,8 @@ public class Parser {
 
         capL20 = new Cap(new Dimension(null));
         capL20.setName("liniLED® Aeris Kap D H20 4 m");
-        capL20.setTranslations(Locale.nl,capL20.getName());
-        capL20.setTranslations(Locale.en,"liniLED® Aeris Cap D H20 4 m");
+        capL20.setTranslations(Locale.nl, capL20.getName());
+        capL20.setTranslations(Locale.en, "liniLED® Aeris Cap D H20 4 m");
         capL20.setCode("H");
         partCapL20 = new Part(capL20);
         partCapL20.setPrice(BigDecimal.valueOf(54.11));
@@ -224,8 +231,8 @@ public class Parser {
 
         capL20 = new Cap(new Dimension(null));
         capL20.setName("liniLED® Aeris Kap D L30 4 m");
-        capL20.setTranslations(Locale.nl,capL20.getName());
-        capL20.setTranslations(Locale.en,"liniLED® Aeris Cap D L30 4 m");
+        capL20.setTranslations(Locale.nl, capL20.getName());
+        capL20.setTranslations(Locale.en, "liniLED® Aeris Cap D L30 4 m");
         capL20.setCode("S");
         partCapL20 = new Part(capL20);
         partCapL20.setPrice(BigDecimal.valueOf(43.46));
@@ -235,8 +242,8 @@ public class Parser {
 
         capL20 = new Cap(new Dimension(null));
         capL20.setName("liniLED® Aeris Kap C L30 4 m");
-        capL20.setTranslations(Locale.nl,capL20.getName());
-        capL20.setTranslations(Locale.en,"liniLED® Aeris Cap C L30 4 m");
+        capL20.setTranslations(Locale.nl, capL20.getName());
+        capL20.setTranslations(Locale.en, "liniLED® Aeris Cap C L30 4 m");
         capL20.setCode("V");
         partCapL20 = new Part(capL20);
         partCapL20.setPrice(BigDecimal.valueOf(37.74));
@@ -246,8 +253,8 @@ public class Parser {
 
         capL20 = new Cap(new Dimension(null));
         capL20.setName("liniLED® Aeris Kap D H30 4 m");
-        capL20.setTranslations(Locale.nl,capL20.getName());
-        capL20.setTranslations(Locale.en,"liniLED® Aeris Cap D H30 4 m");
+        capL20.setTranslations(Locale.nl, capL20.getName());
+        capL20.setTranslations(Locale.en, "liniLED® Aeris Cap D H30 4 m");
         capL20.setCode("X");
         partCapL20 = new Part(capL20);
         partCapL20.setPrice(BigDecimal.valueOf(55.76));
@@ -257,8 +264,8 @@ public class Parser {
 
         Profile profileL30 = new Profile(new Dimension(null));
         profileL30.setName("liniLED Aeris Profiel L30");
-        profileL30.setTranslations(Locale.nl,profileL30.getName());
-        profileL30.setTranslations(Locale.en,"liniLed Aeris Profile L30");
+        profileL30.setTranslations(Locale.nl, profileL30.getName());
+        profileL30.setTranslations(Locale.en, "liniLed Aeris Profile L30");
         profileL30.setLengthForCasting(new Dimension(25));
         profileL30.setMaxDimension(new Dimension(2750));
         profileL30.setCode("F");
@@ -276,7 +283,7 @@ public class Parser {
         partEndCapL30.setId("10920");
         partEndCapL30.setDescription("liniLED Aeris Eindkap L30");
         parts.add(partEndCapL30);
-        partProfielL30.getRelation().addRelateTo(partEndCapL30,null);
+        partProfielL30.getRelation().addRelateTo(partEndCapL30, null);
 
         EndCap endCapLC30 = new EndCap();
         Part partEndCapLC30 = new Part(endCapLC30);
@@ -284,7 +291,7 @@ public class Parser {
         partEndCapLC30.setId("10922");
         partEndCapLC30.setDescription("liniLED Aeris Eindkap LC30");
         parts.add(partEndCapLC30);
-        partProfielL30.getRelation().addRelateTo(partEndCapLC30,null);
+        partProfielL30.getRelation().addRelateTo(partEndCapLC30, null);
 
         Profile profileH30 = new Profile(new Dimension(null));
         profileH30.setName("liniLED Aeris Profiel H30");
@@ -304,7 +311,7 @@ public class Parser {
         partEndCapH30.setId("10924");
         partEndCapH30.setDescription("liniLED Aeris Eindkap H30");
         parts.add(partEndCapH30);
-        profileH30.getRelation().addRelateTo(partEndCapH30,null);
+        profileH30.getRelation().addRelateTo(partEndCapH30, null);
 
         EndCap endCapHC30 = new EndCap();
         Part partEndCapHC30 = new Part(endCapHC30);
@@ -312,7 +319,7 @@ public class Parser {
         partEndCapHC30.setId("10926");
         partEndCapHC30.setDescription("liniLED Aeris Eindkap HC30");
         parts.add(partEndCapHC30);
-        profileH30.getRelation().addRelateTo(partEndCapHC30,null);
+        profileH30.getRelation().addRelateTo(partEndCapHC30, null);
 
         EndCap endCapC30 = new EndCap();
         Part partEndCapC30 = new Part(endCapC30);
@@ -320,14 +327,13 @@ public class Parser {
         partEndCapC30.setId("10928");
         partEndCapC30.setDescription("liniLED Aeris Eindkap C30");
         parts.add(partEndCapC30);
-        profileH30.getRelation().addRelateTo(partEndCapC30,null);
+        profileH30.getRelation().addRelateTo(partEndCapC30, null);
 
         part = new Part();
         part.setPrice(BigDecimal.valueOf(8.11));
         part.setId("10921");
         part.setDescription("liniLED Aeris Eindkap L30 O");
         parts.add(part);
-
 
 
         part = new Part();
@@ -337,7 +343,6 @@ public class Parser {
         parts.add(part);
 
 
-
         part = new Part();
         part.setPrice(BigDecimal.valueOf(8.53));
         part.setId("10925");
@@ -345,15 +350,13 @@ public class Parser {
         parts.add(part);
 
 
-
         part = new Part();
         part.setPrice(BigDecimal.valueOf(8.64));
         part.setId("10927");
         part.setDescription("liniLED Aeris Eindkap HC30 O");
-        part.setTranslations(Locale.nl,part.getDescription());
-        part.setTranslations(Locale.en,"liniLED Aeris Endcap HC30 O");
+        part.setTranslations(Locale.nl, part.getDescription());
+        part.setTranslations(Locale.en, "liniLED Aeris Endcap HC30 O");
         parts.add(part);
-
 
 
         CableEntry cableEntry = new LeftViaEndCapCableEntry();
@@ -407,8 +410,8 @@ public class Parser {
 
         Mounting mounting = new NoEndCapsMounting();
         mounting.setName("Geen eindkappen");
-        mounting.setTranslations(Locale.nl,"Geen eindkappen");
-        mounting.setTranslations(Locale.en,"No endcaps");
+        mounting.setTranslations(Locale.nl, "Geen eindkappen");
+        mounting.setTranslations(Locale.en, "No endcaps");
         mounting.setCode("A");
         margin = new Margin(2, 2);
         mounting.setMargins(margin);
@@ -421,47 +424,46 @@ public class Parser {
 
         mounting = new EndCapRightMounting();
         mounting.setName("Eindkap aan de rechter zijde");
-        mounting.setTranslations(Locale.nl,mounting.getName());
-        mounting.setTranslations(Locale.en,"Endcap right side");
+        mounting.setTranslations(Locale.nl, mounting.getName());
+        mounting.setTranslations(Locale.en, "Endcap right side");
         margin = new Margin(0, 2);
         mounting.setCode("B");
         mounting.setMargins(margin);
 
         part = new NotExistingPart(mounting);
-        mounting.getRelation().addRelateTo(partEndCapL20,Orientation.Right);
-        mounting.getRelation().addRelateTo(partEndCapH20,Orientation.Right);
+        mounting.getRelation().addRelateTo(partEndCapL20, Orientation.Right);
+        mounting.getRelation().addRelateTo(partEndCapH20, Orientation.Right);
         part.setId("m2");
         parts.add(part);
 
         mounting = new EndCapLeftMounting();
         mounting.setName("Eindkap aan linkerzijde");
-        mounting.setTranslations(Locale.nl,mounting.getName());
-        mounting.setTranslations(Locale.en,"Endcap left side");
+        mounting.setTranslations(Locale.nl, mounting.getName());
+        mounting.setTranslations(Locale.en, "Endcap left side");
         margin = new Margin(2, 0);
         mounting.setCode("C");
         mounting.setMargins(margin);
 
         part = new NotExistingPart(mounting);
-        mounting.getRelation().addRelateTo(partEndCapL20,Orientation.Left);
-        mounting.getRelation().addRelateTo(partEndCapH20,Orientation.Left);
+        mounting.getRelation().addRelateTo(partEndCapL20, Orientation.Left);
+        mounting.getRelation().addRelateTo(partEndCapH20, Orientation.Left);
         part.setId("m3");
         parts.add(part);
 
 
-
         mounting = new EndCapBothSidesMounting();
         mounting.setName("Eindkappen aan beide zijdes");
-        mounting.setTranslations(Locale.nl,mounting.getName());
-        mounting.setTranslations(Locale.en,"Endcaps both sides");
+        mounting.setTranslations(Locale.nl, mounting.getName());
+        mounting.setTranslations(Locale.en, "Endcaps both sides");
         margin = new Margin(2, 2);
         mounting.setCode("D");
         mounting.setMargins(margin);
 
         part = new NotExistingPart(mounting);
-        mounting.getRelation().addRelateTo(partEndCapL20,null);
-        mounting.getRelation().addRelateTo(partEndCapH20,null);
-        mounting.getRelation().addRelateTo(partEndCapL30,null);
-        mounting.getRelation().addRelateTo(partEndCapH30,null);
+        mounting.getRelation().addRelateTo(partEndCapL20, null);
+        mounting.getRelation().addRelateTo(partEndCapH20, null);
+        mounting.getRelation().addRelateTo(partEndCapL30, null);
+        mounting.getRelation().addRelateTo(partEndCapH30, null);
 
         part.setId("m4");
         parts.add(part);
@@ -473,10 +475,10 @@ public class Parser {
         mounting.setMargins(margin);
 
         part = new NotExistingPart(mounting);
-        mounting.getRelation().addRelateTo(partEndCapLC20,Orientation.Right);
-        mounting.getRelation().addRelateTo(partEndCapHC20,Orientation.Right);
-        mounting.getRelation().addRelateTo(partEndCapLC30,Orientation.Right);
-        mounting.getRelation().addRelateTo(partEndCapHC30,Orientation.Right);
+        mounting.getRelation().addRelateTo(partEndCapLC20, Orientation.Right);
+        mounting.getRelation().addRelateTo(partEndCapHC20, Orientation.Right);
+        mounting.getRelation().addRelateTo(partEndCapLC30, Orientation.Right);
+        mounting.getRelation().addRelateTo(partEndCapHC30, Orientation.Right);
         part.setId("m5");
         parts.add(part);
 
@@ -487,10 +489,10 @@ public class Parser {
         mounting.setMargins(margin);
 
         part = new NotExistingPart(mounting);
-        mounting.getRelation().addRelateTo(partEndCapLC20,Orientation.Left);
-        mounting.getRelation().addRelateTo(partEndCapHC20,Orientation.Left);
-        mounting.getRelation().addRelateTo(partEndCapLC30,Orientation.Left);
-        mounting.getRelation().addRelateTo(partEndCapHC30,Orientation.Left);
+        mounting.getRelation().addRelateTo(partEndCapLC20, Orientation.Left);
+        mounting.getRelation().addRelateTo(partEndCapHC20, Orientation.Left);
+        mounting.getRelation().addRelateTo(partEndCapLC30, Orientation.Left);
+        mounting.getRelation().addRelateTo(partEndCapHC30, Orientation.Left);
         part.setId("m6");
         parts.add(part);
 
@@ -501,10 +503,10 @@ public class Parser {
         mounting.setMargins(margin);
 
         part = new NotExistingPart(mounting);
-        mounting.getRelation().addRelateTo(partEndCapLC20,null);
-        mounting.getRelation().addRelateTo(partEndCapHC20,null);
-        mounting.getRelation().addRelateTo(partEndCapLC30,null);
-        mounting.getRelation().addRelateTo(partEndCapHC30,null);
+        mounting.getRelation().addRelateTo(partEndCapLC20, null);
+        mounting.getRelation().addRelateTo(partEndCapHC20, null);
+        mounting.getRelation().addRelateTo(partEndCapLC30, null);
+        mounting.getRelation().addRelateTo(partEndCapHC30, null);
         part.setId("m7");
         parts.add(part);
 
@@ -515,10 +517,10 @@ public class Parser {
         mounting.setMargins(margin);
 
         part = new NotExistingPart(mounting);
-        mounting.getRelation().addRelateTo(partEndCapL20,null);
-        mounting.getRelation().addRelateTo(partEndCapC20,null);
-        mounting.getRelation().addRelateTo(partEndCapL30,null);
-        mounting.getRelation().addRelateTo(partEndCapC30,null);
+        mounting.getRelation().addRelateTo(partEndCapL20, null);
+        mounting.getRelation().addRelateTo(partEndCapC20, null);
+        mounting.getRelation().addRelateTo(partEndCapL30, null);
+        mounting.getRelation().addRelateTo(partEndCapC30, null);
         part.setId("m8");
         parts.add(part);
 
@@ -529,7 +531,6 @@ public class Parser {
         part.setDescription("Kabelgoot");
         part.setId("kg");
         parts.add(part);
-
 
 
         part = new Part();
@@ -576,7 +577,7 @@ public class Parser {
         parts.add(part);
 
         part = new Part();
-        part.setPrice(BigDecimal.valueOf( 39.38));
+        part.setPrice(BigDecimal.valueOf(39.38));
         part.setId("10757");
         part.setDescription("liniLED Aeris Kabelgoot 30 4 m");
         parts.add(part);
@@ -584,7 +585,7 @@ public class Parser {
         Cable cable = new Cable(new Dimension(null));
         cable.setName("liniLED Aansluitkabel Mono Demo 1 m");
         cable.getProperty(Cable.CABLE_TYPE_S).setValue("mono");
-        cable.setTranslations(Locale.en,"liniLED connector cable Mono Demo 1 m");
+        cable.setTranslations(Locale.en, "liniLED connector cable Mono Demo 1 m");
         cable.setCode("K");
         part = new Part(cable);
         part.setPrice(BigDecimal.valueOf(13.99));
@@ -725,15 +726,11 @@ public class Parser {
         //60015	Kabel RGB PUR 10 m with PU connector set	Z	€ 15,68
 
 
-
-
-
-
-
         //(GABHPQRSTUV){1}
         Covering covering = new Covering(null);
         covering.setName("Geen kap");
         covering.setCode("E");
+        covering.setStep(2);
         part = new NotExistingPart(covering);
         part.setId("co1");
         parts.add(part);
@@ -741,6 +738,7 @@ public class Parser {
         covering = new ResinClear(null);
         covering.setName("Helder");
         covering.setCode("C");
+        covering.setStep(2);
         part = new NotExistingPart(covering);
         part.setId("coh1");
         parts.add(part);
@@ -752,12 +750,13 @@ public class Parser {
         ));
         part.setType("MTR");
         parts.add(part);
-        profileL20.getRelation().addRelateTo(part,null);
+        profileL20.getRelation().addRelateTo(part, null);
         //        "95000","Ingieten liniLED L20 Helder","11.50","MTR","","10"
 
         covering = new ResinDiffuse(null);
         covering.setName("Diffuus");
         covering.setCode("D");
+        relationDefinitionL20Diffuus.addModel(covering);
         part = new NotExistingPart(covering);
         part.setId("cod1");
         parts.add(part);
@@ -769,11 +768,9 @@ public class Parser {
         part.setDescription("Ingieten liniLED L20 Diffuus");
         part.setType("MTR");
         parts.add(part);
-        profileL20.getRelation().addRelateTo(part,null);
+        profileL20.getRelation().addRelateTo(part, null);
 
 //        "95001","Ingieten liniLED L20 Diffuus","11.50","MTR","","10"
-
-
 
 
         part = new Part();
@@ -782,9 +779,8 @@ public class Parser {
         part.setType("MTR");
         part.setId("95003");
         parts.add(part);
-        profileL30.getRelation().addRelateTo(part,null);
+        profileL30.getRelation().addRelateTo(part, null);
         //        "95003","Ingieten liniLED L30 Helder","17.25","MTR","","10"
-
 
 
         part = new Part();
@@ -793,9 +789,8 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(86.25));
         part.setType("MTR");
         parts.add(part);
-        profileL30.getRelation().addRelateTo(part,null);
+        profileL30.getRelation().addRelateTo(part, null);
         //        "95004","Ingieten liniLED L30 Diffuus","17.25","MTR","","10"
-
 
 
         part = new Part();
@@ -806,7 +801,7 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(86.25
         ));
         parts.add(part);
-        profileH20.getRelation().addRelateTo(part,null);
+        profileH20.getRelation().addRelateTo(part, null);
 //        "95010","Ingieten liniLED H20 Helder","23.00","MTR","","10"
 
 
@@ -818,7 +813,7 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(86.25
         ));
         parts.add(part);
-        profileH20.getRelation().addRelateTo(part,null);
+        profileH20.getRelation().addRelateTo(part, null);
         //        "95011","Ingieten liniLED H20 Diffuus","23.00","MTR","","10"
 
 
@@ -828,7 +823,7 @@ public class Parser {
         part.setDescription("Ingieten liniLED H30 Helder");
         part.setType("MTR");
         parts.add(part);
-        profileH30.getRelation().addRelateTo(part,null);
+        profileH30.getRelation().addRelateTo(part, null);
 //        "95013","Ingieten liniLED H30 Helder","46.50","MTR","","10"
 
         part = new Part();
@@ -837,9 +832,8 @@ public class Parser {
         part.setDescription("Ingieten liniLED H30 Diffuus");
         part.setType("MTR");
         parts.add(part);
-        profileH30.getRelation().addRelateTo(part,null);
+        profileH30.getRelation().addRelateTo(part, null);
 //        "95014","Ingieten liniLED H30 Diffuus","46.50","MTR","","10"
-
 
 
         LedStrip ledStrip = new DecoLedStrip(new Dimension(null));
@@ -931,7 +925,6 @@ public class Parser {
         parts.add(part);
 
 
-
         ledStrip = new DecoLedStrip(new Dimension(null));
         ledStrip.setName("liniLED PCB NW 4000K D");
         ledStrip.setMaxDimension(new Dimension(2700));
@@ -961,8 +954,6 @@ public class Parser {
         part.setType("MTR");
         part.setDescription("liniLED PCB KW 6500K D");
         parts.add(part);
-
-
 
 
         ledStrip = new PowerLedStrip(new Dimension(null));
@@ -1174,7 +1165,6 @@ public class Parser {
         part.setType("MTR");
         part.setDescription("liniLED PCB KW 6500K HP (PSP)");
         parts.add(part);
-
 
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
@@ -1477,7 +1467,6 @@ public class Parser {
         parts.add(part);
 
 
-
         ledStrip = new TunnableLedStrip(new Dimension(null));
         ledStrip.setName("liniLED PCB TW 2700K-6500K 1700");
         ledStrip.setMaxDimension(new Dimension(2700));
@@ -1514,7 +1503,6 @@ public class Parser {
         part.setId("12146");
         part.setType("MTR");
         parts.add(part);
-
 
 
         ledStrip = new TunnableLedStrip(new Dimension(null));
@@ -1566,49 +1554,49 @@ public class Parser {
         part.setDescription("Clip.");
         parts.add(part);
 
-        Part arbeid=new Part();
+        Part arbeid = new Part();
         arbeid.setId("ARBEID");
         arbeid.setDescription("Arbeidsminuut intern magazijn");
         arbeid.setPrice(BigDecimal.valueOf(0.59));
         arbeid.setType("MINUUT");
         parts.add(arbeid);
 
-        Part tule=new Part();
+        Part tule = new Part();
         tule.setId("GRIJP_KTULE_EINDKAP");
         tule.setDescription("Kabeltule t.b.v. eindkap");
         tule.setPrice(BigDecimal.valueOf(0.07));
         tule.setType("ST");
         parts.add(tule);
 
-         tule=new Part();
+        tule = new Part();
         tule.setId("GRIJP_KTULE_ALU_ZWART");
         tule.setDescription("Kabeltule t.b.v. ALU zwart");
         tule.setPrice(BigDecimal.valueOf(0.07));
         tule.setType("ST");
         parts.add(tule);
 
-        tule=new Part();
+        tule = new Part();
         tule.setId("GRIJP_KTULE_ALU_WIT");
         tule.setDescription("Kabeltule t.b.v. ALU wit");
         tule.setPrice(BigDecimal.valueOf(0.11));
         tule.setType("ST");
         parts.add(tule);
 
-        Part sticker=new Part();
+        Part sticker = new Part();
         sticker.setId("GRIJP_PSTICKER");
         sticker.setDescription("Productsticker");
         sticker.setPrice(BigDecimal.valueOf(0.25));
         sticker.setType("ST");
         parts.add(sticker);
 
-        Part handleiding=new Part();
+        Part handleiding = new Part();
         handleiding.setId("HANDLEIDING");
         handleiding.setDescription("Handleiding");
         handleiding.setPrice(BigDecimal.valueOf(0.70));
         handleiding.setType("ST");
         parts.add(handleiding);
 
-        Part verpakking=new Part();
+        Part verpakking = new Part();
         verpakking.setId("VERPAKKING");
         verpakking.setDescription("Verpakking");
         verpakking.setPrice(BigDecimal.valueOf(0.50));
@@ -1623,38 +1611,11 @@ public class Parser {
 
 
     }
-    public boolean checkUniqueness(){
-        Map<String,Integer> uni=new HashMap<String, Integer>();
-        for (Part part:parts){
-            if (part!=null) {
-                if (part.getProduct() != null) {
-                    if (isPropWrong(uni, part.getProduct().getCode())) {
-                        System.out.println(part);
-                        return false;
-                    }
-                }
-                if (isPropWrong(uni, part.getId())) {
-                    System.out.println(part);
-                    return false;
-                }
 
-            }
-        }
-        return true;
-    }
-
-    private boolean isPropWrong(Map<String, Integer> uni, String key) {
-        Integer c=0;
-        if (key==null){
-            return false;
-        }
-        c = uni.get(key);
-
-        if (c!=null){
-            return true;
-        }
-        uni.put(key,0);
-        return false;
+    private RelationDefinition createRelationDefinition(RelationState state,String message) {
+        RelationDefinition relationDefinition = new RelationDefinition(state,message);
+        relationDefinitions.add(relationDefinition);
+        return relationDefinition;
     }
 
 
@@ -1667,8 +1628,8 @@ public class Parser {
     public ParsedResult parse(String productcode) {
         List<ParseStep> steps = new ArrayList<ParseStep>();
         Set<Model> models = new HashSet<Model>();
-        int startPositionCode=0;
-        Accumulator accumulator=new Accumulator(startPositionCode);
+        int startPositionCode = 0;
+        Accumulator accumulator = new Accumulator(startPositionCode);
         steps.add(new ParserStepRealModel(1, true, accumulator.start(), accumulator.plus(Profile.CODE_LENGTH), Profile.class, "", "Profiel niet geconfigureerd"));
         steps.add(new ParserStepRealModel(2, true, accumulator.start(), accumulator.plus(Covering.CODE_LENGTH), Covering.class, "", "Behuizing niet geconfigureerd"));
         steps.add(new ParserStepRealModel(3, true, accumulator.start(), accumulator.plus(2), LedStrip.class, "", "Kleur niet geconfigureerd"));
@@ -1677,15 +1638,15 @@ public class Parser {
         steps.add(new ParserStepModel(6, true, accumulator.start(), accumulator.plus(1), Mounting.class, "", "Montage opties niet geconfigureerd"));
         steps.add(new ParserStepDimensionModel(7, true, accumulator.start(), accumulator.plus(4), LedStrip.class, "", "Led strip lengte niet geconfigureerd", models));
 
-        steps.add(new ParserStepRealModelComposed(8, ComposedProduct.class, "", "Productlengte automatisch berekend.", accumulator.start(),accumulator.plus(4), models));
+        steps.add(new ParserStepRealModelComposed(8, ComposedProduct.class, "", "Productlengte automatisch berekend.", accumulator.start(), accumulator.plus(4), models));
         steps.add(new ParserStepModelRightParse(9, false, 0, 1, Accessoire.class, "", "Accessoire opties niet geconfigureerd"));
 
         for (ParseStep step : steps) {
             ModelResult modelResult = step.create(productcode, parts);
 
-            if (modelResult!=null && modelResult.getModel() != null) {
+            if (modelResult != null && modelResult.getModel() != null) {
                 models.add(modelResult.getModel());
-            }else{
+            } else {
 
                 models.add(new ErrorModel());
             }
@@ -1703,5 +1664,19 @@ public class Parser {
 
     public Set<Relation> getRelations() {
         return relations;
+    }
+
+    public List<Model> getModels() {
+        List<Model> modelsExtracted = new ArrayList<Model>();
+        for (Part p : getParts()) {
+            if (p != null && p.getConfigModel() != null) {
+                modelsExtracted.add(p.getConfigModel());
+            }
+        }
+        return modelsExtracted;
+    }
+
+    public List<RelationDefinition> getRelationDefinitions() {
+        return relationDefinitions;
     }
 }
