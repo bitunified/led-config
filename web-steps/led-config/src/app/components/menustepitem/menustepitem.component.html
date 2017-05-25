@@ -1,0 +1,11 @@
+<form>
+
+  <h3>{{title}}</h3>
+  <md-tab-group selectedIndex="1">
+
+    <md-tab *ngFor="let profile of data" [label]="profile.value" [disabled]="profile.value=='L20'">
+      {{profile.viewValue}}
+    </md-tab>
+  </md-tab-group>
+
+</form>

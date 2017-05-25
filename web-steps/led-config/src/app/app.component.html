@@ -1,0 +1,32 @@
+<md-sidenav-container [class.m2app-dark]="isDarkTheme">
+
+  <md-sidenav #sidenav mode="side" class="app-sidenav">
+
+  </md-sidenav>
+
+  <md-toolbar color="primary">
+    <button class="app-icon-button" (click)="sidenav.toggle()">
+      <i class="material-icons app-toolbar-menu">menu</i>
+    </button>
+
+    Aeris Configurator 2.0 - Step by step
+
+    <span class="app-toolbar-filler"></span>
+    <button md-button (click)="isDarkTheme = !isDarkTheme"></button>
+  </md-toolbar>
+
+  <div class="app-content">
+
+    <md-card>
+
+
+      <menusteps [titles]="titles"></menusteps>
+
+    </md-card>
+
+
+
+
+  </div>
+
+</md-sidenav-container>
