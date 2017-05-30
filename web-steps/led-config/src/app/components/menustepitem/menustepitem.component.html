@@ -3,8 +3,18 @@
   <h3>{{title}}</h3>
   <md-tab-group selectedIndex="1">
 
-    <md-tab *ngFor="let profile of data" [label]="profile.value" [disabled]="profile.value=='L20'">
-      {{profile.viewValue}}
+    <md-tab *ngFor="let item of data" [label]="item.value" [disabled]="item.value=='Empty'">
+
+      <md-list dense>
+        <md-list-item>
+        Description: {{item.viewValue}}
+
+        </md-list-item>
+        <md-divider></md-divider>
+        <md-list-item>
+         Width: {{item.dimension.width}} mm
+        </md-list-item>
+      </md-list>
     </md-tab>
   </md-tab-group>
 

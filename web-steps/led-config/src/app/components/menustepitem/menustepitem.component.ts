@@ -14,21 +14,10 @@ export class MenustepitemComponent implements OnInit {
 
   selectedValue: string;
 
-  data = [
-    {value: 'L20', viewValue: 'liniLED Aeris Profiel L20'},
-    {value: 'H20', viewValue: 'liniLED Aeris Profiel H20'},
-    {value: 'L30', viewValue: 'liniLED Aeris Profiel L30'}
-  ];
-  constructor(modelService:ModelserviceService) {
-    modelService.getModels().subscribe((res:any) => {
-        let serverresponse:any=res;
+  @Input()
+  data:Array<string>;
 
-        console.info(serverresponse);
-      }
-      ,
-      error=>console.info('error'));
-
-
+  constructor() {
 
   }
 

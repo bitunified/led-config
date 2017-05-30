@@ -13,6 +13,8 @@ import com.bitunified.server.message.ServerResponse;
 import com.bitunified.server.models.Models;
 import com.bitunified.server.models.PartModelCollector;
 import com.bitunified.server.models.Relations;
+import com.bitunified.server.service.StepService;
+import com.bitunified.server.steps.Steps;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -28,6 +30,14 @@ public class ApplicationEndpoint {
 
     public ApplicationEndpoint() {
 
+    }
+    @GET
+    @Path("/steps")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Steps getAllStepss(){
+        StepService stepService = new StepService();
+
+        return stepService.getSteps();
     }
 
     @GET
