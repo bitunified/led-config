@@ -16,9 +16,7 @@ import com.bitunified.ledconfig.domain.product.accessoires.Clip;
 import com.bitunified.ledconfig.domain.product.cable.Cable;
 import com.bitunified.ledconfig.domain.product.cable.cableconfig.*;
 import com.bitunified.ledconfig.domain.product.cover.Covering;
-import com.bitunified.ledconfig.domain.product.cover.types.Cap;
-import com.bitunified.ledconfig.domain.product.cover.types.ResinClear;
-import com.bitunified.ledconfig.domain.product.cover.types.ResinDiffuse;
+import com.bitunified.ledconfig.domain.product.cover.types.*;
 import com.bitunified.ledconfig.domain.product.mounting.*;
 import com.bitunified.ledconfig.domain.product.profile.Profile;
 import com.bitunified.ledconfig.domain.relation.RelationDefinition;
@@ -47,6 +45,7 @@ public class Parser {
 
     private List<RelationDefinition> relationDefinitions = new ArrayList<RelationDefinition>();
 
+    private List<Model> models = new ArrayList<Model>();
 
     private ComposedProduct composedProduct;
 
@@ -99,9 +98,11 @@ public class Parser {
         profileL20.setLengthForCasting(new Dimension(25));
         profileL20.setCode("D");
         profileL20.setStep(1);
+        models.add(profileL20);
 
-        RelationDefinition relationDefinitionL20Diffuus = createRelationDefinition(RelationState.FORBIDDEN,"L20 kan niet samen met Diffuus");
-        relationDefinitionL20Diffuus.addModel(profileL20);
+        RelationDefinition relationDefinitionL20 = createRelationDefinition();
+        relationDefinitionL20.addModel(profileL20);
+
 
         Part partL20 = new Part(profileL20);
         partL20.setPrice(BigDecimal.valueOf(36.09));
@@ -110,8 +111,9 @@ public class Parser {
         parts.add(partL20);
 
 
-        EndCap endCapLC20 = new EndCap();
-        Part partEndCapLC20 = new Part(endCapLC20);
+        EndCap endCap = new EndCap();
+        models.add(endCap);
+        Part partEndCapLC20 = new Part(endCap);
         partEndCapLC20.setPrice(BigDecimal.valueOf(8.22));
         partEndCapLC20.setId("10902");
         partEndCapLC20.setDescription("liniLED Aeris Eindkap LC20");
@@ -119,9 +121,7 @@ public class Parser {
         profileL20.getRelation().addRelateTo(partEndCapLC20, null);
 
 
-        EndCap endCapL20 = new EndCap();
-        endCapL20.setName("End cap L20");
-        Part partEndCapL20 = new Part(endCapL20);
+        Part partEndCapL20 = new Part(endCap);
         partEndCapL20.setPrice(BigDecimal.valueOf(7.84));
         partEndCapL20.setId("10900");
         partEndCapL20.setDescription("liniLED Aeris Eindkap L20");
@@ -194,69 +194,59 @@ public class Parser {
         parts.add(part);
 
 
-        Cap capL20 = new Cap(new Dimension(null));
-        capL20.setName("liniLED® Aeris Kap D L20 4 m");
-        capL20.setTranslations(Locale.nl, capL20.getName());
-        capL20.setTranslations(Locale.en, "liniLED® Aeris Cap D L20 4 m");
-        capL20.getProperty(Cap.TRANSLUCENCY_S).setValue("diffuse");
-        capL20.setCode("L");
-        Part partCapL20 = new Part(capL20);
+        Cap capDiffuse;
+        capDiffuse = new CapDiffuse();
+        capDiffuse.setName("liniLED® Aeris Afdekkap");
+        capDiffuse.setTranslations(Locale.nl, capDiffuse.getName());
+        capDiffuse.setTranslations(Locale.en, "liniLED® Aeris Cap");
+        capDiffuse.getProperty(Cap.TRANSLUCENCY_S).setValue("diffuse");
+        capDiffuse.setCode("L");
+        relationDefinitionL20.addModel(capDiffuse);
+
+        Part partCapL20 = new Part(capDiffuse);
         partCapL20.setPrice(BigDecimal.valueOf(40.92));
         partCapL20.setId("10803");
         partCapL20.setDescription("liniLED® Aeris Kap D L20 4 m");
         parts.add(partCapL20);
 
 
-        capL20 = new Cap(new Dimension(null));
-        capL20.setName("liniLED® Aeris Kap C L20 4 m");
-        capL20.setTranslations(Locale.nl, capL20.getName());
-        capL20.setTranslations(Locale.en, "liniLED® Aeris Cap C L20 4 m");
-        capL20.setCode("R");
-        partCapL20 = new Part(capL20);
+        Cap capClear = new CapClear(new Dimension(null));
+        capClear.setName("liniLED® Aeris Afdekkap");
+        capClear.setTranslations(Locale.nl, capClear.getName());
+        capClear.setTranslations(Locale.en, "liniLED® Aeris Cap C L20 4 m");
+        capClear.setCode("R");
+        relationDefinitionL20.addModel(capClear);
+
+        partCapL20 = new Part(capClear);
         partCapL20.setPrice(BigDecimal.valueOf(35.62));
         partCapL20.setId("10807");
         partCapL20.setDescription("liniLED® Aeris Kap C L20 4 m");
         parts.add(partCapL20);
 
-        capL20 = new Cap(new Dimension(null));
-        capL20.setName("liniLED® Aeris Kap D H20 4 m");
-        capL20.setTranslations(Locale.nl, capL20.getName());
-        capL20.setTranslations(Locale.en, "liniLED® Aeris Cap D H20 4 m");
-        capL20.setCode("H");
-        partCapL20 = new Part(capL20);
+
+        partCapL20 = new Part(capDiffuse);
         partCapL20.setPrice(BigDecimal.valueOf(54.11));
         partCapL20.setId("10811");
         partCapL20.setDescription("liniLED® Aeris Kap D H20 4 m");
         parts.add(partCapL20);
 
-        capL20 = new Cap(new Dimension(null));
-        capL20.setName("liniLED® Aeris Kap D L30 4 m");
-        capL20.setTranslations(Locale.nl, capL20.getName());
-        capL20.setTranslations(Locale.en, "liniLED® Aeris Cap D L30 4 m");
-        capL20.setCode("S");
-        partCapL20 = new Part(capL20);
+
+        partCapL20 = new Part(capDiffuse);
         partCapL20.setPrice(BigDecimal.valueOf(43.46));
         partCapL20.setId("10823");
         partCapL20.setDescription("liniLED® Aeris Kap D L30 4 m");
         parts.add(partCapL20);
 
-        capL20 = new Cap(new Dimension(null));
-        capL20.setName("liniLED® Aeris Kap C L30 4 m");
-        capL20.setTranslations(Locale.nl, capL20.getName());
-        capL20.setTranslations(Locale.en, "liniLED® Aeris Cap C L30 4 m");
-        capL20.setCode("V");
-        partCapL20 = new Part(capL20);
+
+        partCapL20 = new Part(capClear);
         partCapL20.setPrice(BigDecimal.valueOf(37.74));
         partCapL20.setId("10827");
         partCapL20.setDescription("liniLED® Aeris Kap C L30 4 m");
         parts.add(partCapL20);
 
-        capL20 = new Cap(new Dimension(null));
-        capL20.setName("liniLED® Aeris Kap D H30 4 m");
-        capL20.setTranslations(Locale.nl, capL20.getName());
-        capL20.setTranslations(Locale.en, "liniLED® Aeris Cap D H30 4 m");
-        capL20.setCode("X");
-        partCapL20 = new Part(capL20);
+
+
+        partCapL20 = new Part(capDiffuse);
         partCapL20.setPrice(BigDecimal.valueOf(55.76));
         partCapL20.setId("10831");
         partCapL20.setDescription("liniLED® Aeris Kap D H30 4 m");
@@ -727,23 +717,27 @@ public class Parser {
 
 
         //(GABHPQRSTUV){1}
-        Covering covering = new Covering(null);
-        covering.setName("Geen kap");
-        covering.setCode("E");
-        covering.setStep(2);
-        part = new NotExistingPart(covering);
+        Covering noCovering = new NoCovering();
+        noCovering.setName("Geen kap");
+        noCovering.setCode("E");
+        noCovering.setStep(2);
+        relationDefinitionL20.addModel(noCovering);
+
+        part = new NotExistingPart(noCovering);
         part.setId("co1");
         parts.add(part);
 
-        covering = new ResinClear(null);
-        covering.setName("Helder");
-        covering.setCode("C");
-        covering.setStep(2);
-        part = new NotExistingPart(covering);
+        ResinClear resinClear = new ResinClear(null);
+        resinClear.setName("Helder");
+        resinClear.setCode("C");
+        resinClear.setStep(2);
+        relationDefinitionL20.addModel(resinClear);
+
+        part = new NotExistingPart(resinClear);
         part.setId("coh1");
         parts.add(part);
 
-        part = new Part();
+        part = new Part(resinClear);
         part.setId("95000");
         part.setDescription("Ingieten liniLED L20 Helder");
         part.setPrice(BigDecimal.valueOf(43.13
@@ -753,15 +747,15 @@ public class Parser {
         profileL20.getRelation().addRelateTo(part, null);
         //        "95000","Ingieten liniLED L20 Helder","11.50","MTR","","10"
 
-        covering = new ResinDiffuse(null);
-        covering.setName("Diffuus");
-        covering.setCode("D");
-        relationDefinitionL20Diffuus.addModel(covering);
-        part = new NotExistingPart(covering);
+        ResinDiffuse resinDiffuse = new ResinDiffuse(null);
+        resinDiffuse.setName("Diffuus");
+        resinDiffuse.setCode("D");
+        relationDefinitionL20.addModel(resinDiffuse);
+        part = new NotExistingPart(resinDiffuse);
         part.setId("cod1");
         parts.add(part);
 
-        part = new Part();
+        part = new Part(resinDiffuse);
         part.setId("95001");
         part.setPrice(BigDecimal.valueOf(43.13
         ));
@@ -773,7 +767,7 @@ public class Parser {
 //        "95001","Ingieten liniLED L20 Diffuus","11.50","MTR","","10"
 
 
-        part = new Part();
+        part = new Part(resinClear);
         part.setDescription("Ingieten liniLED L30 Helder");
         part.setPrice(BigDecimal.valueOf(86.25));
         part.setType("MTR");
@@ -783,7 +777,7 @@ public class Parser {
         //        "95003","Ingieten liniLED L30 Helder","17.25","MTR","","10"
 
 
-        part = new Part();
+        part = new Part(resinDiffuse);
         part.setDescription("Ingieten liniLED L30 Diffuus");
         part.setId("95004");
         part.setPrice(BigDecimal.valueOf(86.25));
@@ -793,7 +787,7 @@ public class Parser {
         //        "95004","Ingieten liniLED L30 Diffuus","17.25","MTR","","10"
 
 
-        part = new Part();
+        part = new Part(resinClear);
         part.setPrice(BigDecimal.valueOf(23));
         part.setId("95010");
         part.setDescription("Ingieten liniLED H20 Helder");
@@ -805,7 +799,7 @@ public class Parser {
 //        "95010","Ingieten liniLED H20 Helder","23.00","MTR","","10"
 
 
-        part = new Part();
+        part = new Part(resinDiffuse);
         part.setPrice(BigDecimal.valueOf(23));
         part.setId("95011");
         part.setDescription("Ingieten liniLED H20 Diffuus");
@@ -817,7 +811,7 @@ public class Parser {
         //        "95011","Ingieten liniLED H20 Diffuus","23.00","MTR","","10"
 
 
-        part = new Part();
+        part = new Part(resinClear);
         part.setPrice(BigDecimal.valueOf(174.37));
         part.setId("95013");
         part.setDescription("Ingieten liniLED H30 Helder");
@@ -826,7 +820,7 @@ public class Parser {
         profileH30.getRelation().addRelateTo(part, null);
 //        "95013","Ingieten liniLED H30 Helder","46.50","MTR","","10"
 
-        part = new Part();
+        part = new Part(resinDiffuse);
         part.setPrice(BigDecimal.valueOf(174.37));
         part.setId("95014");
         part.setDescription("Ingieten liniLED H30 Diffuus");
@@ -1611,7 +1605,11 @@ public class Parser {
 
 
     }
-
+    private RelationDefinition createRelationDefinition() {
+        RelationDefinition relationDefinition = new RelationDefinition();
+        relationDefinitions.add(relationDefinition);
+        return relationDefinition;
+    }
     private RelationDefinition createRelationDefinition(RelationState state,String message) {
         RelationDefinition relationDefinition = new RelationDefinition(state,message);
         relationDefinitions.add(relationDefinition);
@@ -1671,6 +1669,9 @@ public class Parser {
         for (Part p : getParts()) {
             if (p != null && p.getConfigModel() != null) {
                 modelsExtracted.add(p.getConfigModel());
+            }
+            if (p != null && p.getProduct() != null) {
+                modelsExtracted.add(p.getProduct());
             }
         }
         return modelsExtracted;

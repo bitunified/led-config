@@ -3,12 +3,13 @@ package com.bitunified.ledconfig.domain.product.cover.types;
 import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.domain.product.cover.Covering;
 
+public class CapClear extends Cap {
 
-public class Cover extends Covering {
-    public Cover(){
+    public CapClear(){
         this(new Dimension());
     }
-    public Cover(Dimension dimension) {
+    public CapClear(Dimension dimension) {
         super(dimension);
+        TRANSLUCENCY.setValue("CLEAR");
     }
 }

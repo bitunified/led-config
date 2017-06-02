@@ -3,15 +3,13 @@ package com.bitunified.ledconfig.domain.product.cover.types;
 import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.domain.product.cover.Covering;
 
-import javax.xml.bind.annotation.XmlSeeAlso;
+public class CapDiffuse extends Cap {
 
-@XmlSeeAlso({CapClear.class,CapDiffuse.class})
-public class Cap extends Covering {
-
-    public Cap(){
+    public CapDiffuse(){
         this(new Dimension());
     }
-    public Cap(Dimension dimension) {
+    public CapDiffuse(Dimension dimension) {
         super(dimension);
+        TRANSLUCENCY.setValue("DIFFUSE");
     }
 }

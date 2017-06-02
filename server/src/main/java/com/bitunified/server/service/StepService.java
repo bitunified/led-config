@@ -22,7 +22,7 @@ public class StepService {
         models.setModels(parser.getModels());
         Steps steps = new Steps();
 
-        Map<Integer, List<Model>> groupedModels = parser.getModels().stream().collect(Collectors.groupingBy(Model::getStep));
+        Map<Integer, List<Model>> groupedModels = parser.getModels().stream().filter(f->f.getStep()!=null).collect(Collectors.groupingBy(Model::getStep));
         List<Step> stepList = groupedModels.entrySet().stream().map(t -> new Step(t.getKey()==null?"":t.getKey().toString(), t.getValue())).collect(Collectors.toList());
         steps.setSteps(stepList);
         return steps;

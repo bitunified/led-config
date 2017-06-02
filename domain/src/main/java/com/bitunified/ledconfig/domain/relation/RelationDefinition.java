@@ -9,28 +9,20 @@ import java.util.List;
 
 public class RelationDefinition {
 
-    private RelationState relationState=RelationState.FORBIDDEN;
-    private String forBiddenMessage;
+    private RelationState relationState=RelationState.ALLOWED;
     private String allowedWithWarningMessage;
 
     private List<Model> models=new ArrayList<Model>();
 
+    public RelationDefinition() {
+        this.relationState=RelationState.ALLOWED;
+    }
     public RelationDefinition(RelationState state,String message) {
         this.allowedWithWarningMessage=message;
-        if (state==RelationState.FORBIDDEN){
-            this.forBiddenMessage=message;
-        }
         this.relationState=state;
     }
 
 
-    public String getForBiddenMessage() {
-        return forBiddenMessage;
-    }
-
-    public void setForBiddenMessage(String forBiddenMessage) {
-        this.forBiddenMessage = forBiddenMessage;
-    }
 
     public String getAllowedWithWarningMessage() {
         return allowedWithWarningMessage;
