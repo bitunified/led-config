@@ -9,10 +9,8 @@ import {ModelserviceService} from "../../services/modelservice.service";
 export class MenustepsComponent implements OnInit {
 
   @Input()
-  titles:Array<string>;
+  models:Array<DisplayModel>;
 
-  @Input()
-  data:Array<Array<string>>;
 
   constructor(private modelService:ModelserviceService) {
 

@@ -1,21 +1,20 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input ,ViewEncapsulation} from '@angular/core';
 import {ModelserviceService} from "../../services/modelservice.service";
 
 @Component({
   selector: 'menustepitem',
   templateUrl: './menustepitem.component.html',
   styleUrls: ['./menustepitem.component.css'],
-  providers:[ModelserviceService]
+  providers:[ModelserviceService],
+  encapsulation: ViewEncapsulation.None
 })
 export class MenustepitemComponent implements OnInit {
 
   @Input()
-  title:string;
+  model:DisplayModel;
 
   selectedValue: string;
 
-  @Input()
-  data:Array<string>;
 
   constructor() {
 

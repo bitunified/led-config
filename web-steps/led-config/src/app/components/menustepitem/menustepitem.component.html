@@ -1,21 +1,43 @@
 <form>
 
-  <h3>{{title}}</h3>
-  <md-tab-group selectedIndex="1">
+  <h3>{{model.title}}</h3>
 
-    <md-tab *ngFor="let item of data" [label]="item.value" [disabled]="item.value=='Empty'">
 
-      <md-list dense>
-        <md-list-item>
-        Description: {{item.viewValue}}
+  <div *ngIf="model.type=='values'">
+    <md-tab-group selectedIndex="1">
+      <md-tab *ngFor="let m of model.models" [label]="m.value" [disabled]="m.title=='Empty'">
 
-        </md-list-item>
-        <md-divider></md-divider>
-        <md-list-item>
-         Width: {{item.dimension.width}} mm
-        </md-list-item>
-      </md-list>
-    </md-tab>
-  </md-tab-group>
+        <md-list dense>
+          <md-list-item>
+            Description: {{m.viewValue}}
+
+          </md-list-item>
+          <md-divider></md-divider>
+          <md-list-item>
+            Width: {{m.dimension.width}} mm
+          </md-list-item>
+        </md-list>
+      </md-tab>
+    </md-tab-group>
+  </div>
+  <div *ngIf="model.type=='input'">
+
+
+    <md-card-content>
+
+      <md-input-container>
+        Width:
+        <md-slider class="mat-slider-horizontal"
+                   max="400"
+                   min="200"
+                   step="1"
+                   thumb-label="true" [(ngModel)]="model.models[0].value" name="inputValue">
+        </md-slider> mm.
+        Or:
+        <input mdInput [(ngModel)]="model.models[0].value" name="inputValue">
+      </md-input-container>
+
+    </md-card-content>
+  </div>
 
 </form>
