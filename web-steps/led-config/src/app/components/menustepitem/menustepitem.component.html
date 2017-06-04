@@ -23,9 +23,8 @@
       </md-tab>
     </md-tab-group>
   </div>
-  <div *ngIf="step.type=='TEXT'">
+  <div *ngIf="step.type=='NUMBER'">
 
-    <md-card-content>
 
       <md-input-container>
         Width:
@@ -33,13 +32,12 @@
                    max="400"
                    min="200"
                    step="1"
-                   thumb-label="true" [(ngModel)]="model.models[0].value" name="inputValue">
+                   thumb-label="true" [(ngModel)]="step.modelValue" name="inputValue">
         </md-slider> mm.
-        Or:
-        <input mdInput [(ngModel)]="model.models[0].value" name="inputValue">
+
+        <input mdInput [(ngModel)]="step.modelValue" name="inputValue">
       </md-input-container>
 
-    </md-card-content>
   </div>
   </div>
   <div *ngIf="stepDiff(step)==1">

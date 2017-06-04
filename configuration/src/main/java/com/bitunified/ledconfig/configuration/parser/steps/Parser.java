@@ -256,7 +256,7 @@ public class Parser {
 
 
         Part partProfielL30 = new Part(profileL30);
-        models.add(profileL20);
+
         partProfielL30.setPrice(BigDecimal.valueOf(49.29));
         partProfielL30.setId("10733");
         partProfielL30.setDescription("liniLED Aeris Profiel L30 4 m");
