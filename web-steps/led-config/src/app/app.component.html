@@ -1,7 +1,11 @@
 <md-sidenav-container [class.m2app-dark]="isDarkTheme">
 
-  <md-sidenav #sidenav mode="side" class="app-sidenav">
+  <md-sidenav #sidenav mode="side" class="app-sidenav" style="width:10%">
+    <md-list>
+      <md-list-item> Productcode </md-list-item>
+      <md-list-item> <h4>{{productcode}}</h4> </md-list-item>
 
+    </md-list>
   </md-sidenav>
 
   <md-toolbar color="primary">
@@ -9,7 +13,7 @@
       <i class="material-icons app-toolbar-menu">menu</i>
     </button>
 
-    Aeris Configurator 2.0 - Step by step
+    Aeris Configurator 3.0 - Step by step
 
     <span class="app-toolbar-filler"></span>
     <button md-button (click)="isDarkTheme = !isDarkTheme"></button>
@@ -20,7 +24,7 @@
     <md-card>
 
 
-      <menusteps [models]="models" [steps]="steps"></menusteps>
+      <menusteps [steps]="steps"></menusteps>
 
     </md-card>
 

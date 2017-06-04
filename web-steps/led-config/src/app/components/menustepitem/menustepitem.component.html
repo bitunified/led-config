@@ -1,12 +1,14 @@
 <form>
 
-  <h3>{{step.description}}</h3>
 
-
-  <div *ngIf="currentStep!=step.description">
-  <div *ngIf="step.type=='VALUES'">
-    <md-tab-group selectedIndex="1">
-      <md-tab *ngFor="let s of step.models" [label]="s.name" [disabled]="s.name=='Empty'">
+  <div *ngIf="stepDiff(step)<0">
+    <h4>{{step.description}}</h4>
+  </div>
+  <div *ngIf="stepDiff(step)==0">
+    <h3>{{step.description}}</h3>
+  <div >
+    <md-tab-group selectedIndex="1" (selectChange)="changedTabSelection($event)">
+      <md-tab *ngFor="let s of step.models" [label]="s.name" >
 
         <md-list dense>
           <md-list-item>
@@ -15,7 +17,7 @@
           </md-list-item>
           <md-divider></md-divider>
           <md-list-item>
-            Width: {{s.dimension.width}} mm
+            Width: {{s.dimension==null?'':s.dimension.width}} mm
           </md-list-item>
         </md-list>
       </md-tab>
@@ -40,5 +42,10 @@
     </md-card-content>
   </div>
   </div>
-
+  <div *ngIf="stepDiff(step)==1">
+    <h4>{{step.description}}</h4>
+  </div>
+  <div *ngIf="stepDiff(step)>1">
+    <h5>{{step.description}}</h5>
+  </div>
 </form>

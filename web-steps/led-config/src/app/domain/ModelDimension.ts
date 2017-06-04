@@ -1,4 +1,4 @@
-class ModelDimension {
+export class ModelDimension {
 
   width: number;
   height: number;

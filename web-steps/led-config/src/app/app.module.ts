@@ -8,11 +8,13 @@ import { MenustepsComponent } from './components/menusteps/menusteps.component';
 import {MdwidgetmoduleModule} from './modules/mdwidgetmodule/mdwidgetmodule.module'
 import { ReactiveFormsModule} from '@angular/forms';
 import { MenustepitemComponent } from './components/menustepitem/menustepitem.component';
+import { NotificationComponent } from './components/notification/notification.component';
 @NgModule({
   declarations: [
     AppComponent,
     MenustepsComponent,
-    MenustepitemComponent
+    MenustepitemComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,

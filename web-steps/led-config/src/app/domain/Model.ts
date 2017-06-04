@@ -1,4 +1,5 @@
-class Model {
+import {ModelDimension} from "./ModelDimension";
+export class Model {
 
   id:string;
   orientation: string;
