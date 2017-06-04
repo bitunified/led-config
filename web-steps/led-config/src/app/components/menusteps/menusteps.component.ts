@@ -1,5 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
-import {ModelserviceService} from "../../services/modelservice.service";
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'menusteps',
@@ -11,21 +11,18 @@ export class MenustepsComponent implements OnInit {
   @Input()
   models:Array<DisplayModel>;
 
+  @Input()
+  steps:Observable<StepsModel>;
 
-  constructor(private modelService:ModelserviceService) {
+  currentStep:number;
 
-
+  constructor() {
 
   }
 
   ngOnInit() {
-    this.modelService.getModels().subscribe((res:any) => {
-        let serverresponse:any=res;
+    this.currentStep=1;
 
-        console.info(serverresponse);
-      }
-      ,
-      error=>console.info('error'));
 
 
   }

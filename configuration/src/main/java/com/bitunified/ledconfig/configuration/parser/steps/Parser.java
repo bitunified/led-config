@@ -49,12 +49,6 @@ public class Parser {
 
     private ComposedProduct composedProduct;
 
-    {
-
-        createParts();
-    }
-
-
     public void init() {
         parts = new HashSet<Part>();
         relations = new HashSet<Relation>();
@@ -133,6 +127,7 @@ public class Parser {
         profileH20.setLengthForCasting(new Dimension(25));
         profileH20.setMaxDimension(new Dimension(2750));
         profileH20.setCode("E");
+        models.add(profileH20);
         Part partProfielH20 = new Part(profileH20);
         partProfielH20.setPrice(BigDecimal.valueOf(63.39));
         partProfielH20.setId("10717");
@@ -140,16 +135,14 @@ public class Parser {
         parts.add(partProfielH20);
 
 
-        EndCap endCapH20 = new EndCap();
-        Part partEndCapH20 = new Part(endCapH20);
+        Part partEndCapH20 = new Part(endCap);
         partEndCapH20.setPrice(BigDecimal.valueOf(8.43));
         partEndCapH20.setId("10904");
         partEndCapH20.setDescription("liniLED Aeris Eindkap H20");
         parts.add(partEndCapH20);
         profileH20.getRelation().addRelateTo(partEndCapH20, null);
 
-        EndCap endCapHC20 = new EndCap();
-        Part partEndCapHC20 = new Part(endCapHC20);
+        Part partEndCapHC20 = new Part(endCap);
         partEndCapHC20.setPrice(BigDecimal.valueOf(8.53));
         partEndCapHC20.setId("10906");
         partEndCapHC20.setDescription("liniLED Aeris Eindkap HC20");
@@ -157,7 +150,7 @@ public class Parser {
         profileH20.getRelation().addRelateTo(partEndCapHC20, null);
 
 
-        Part partEndCapC20 = new Part();
+        Part partEndCapC20 = new Part(endCap);
         partEndCapC20.setPrice(BigDecimal.valueOf(7.63));
         partEndCapC20.setId("10908");
         partEndCapC20.setDescription("liniLED Aeris Eindkap C20");
@@ -165,29 +158,27 @@ public class Parser {
         profileH20.getRelation().addRelateTo(partEndCapC20, null);
         profileL20.getRelation().addRelateTo(partEndCapC20, null);
 
-        Part part = new Part();
+        Part part = new Part(endCap);
         part.setPrice(BigDecimal.valueOf(8.32));
         part.setId("10903");
         part.setDescription("liniLED Aeris Eindkap LC20 O");
         parts.add(part);
 
-        EndCap endCapL20Open = new EndCap();
-        endCapL20Open.setName("End cap open L20");
 
-        Part partEndCapL20Open = new Part(endCapL20Open);
+        Part partEndCapL20Open = new Part(endCap);
         partEndCapL20Open.setPrice(BigDecimal.valueOf(8.00));
         partEndCapL20Open.setId("10901");
         partEndCapL20Open.setDescription("liniLED Aeris Eindkap L20 O");
         parts.add(partEndCapL20Open);
 
-        part = new Part();
+        part = new Part(endCap);
         part.setPrice(BigDecimal.valueOf(8.53));
         part.setId("10905");
         part.setDescription("liniLED Aeris Eindkap H20 O");
         parts.add(part);
 
 
-        part = new Part();
+        part = new Part(endCap);
         part.setPrice(BigDecimal.valueOf(8.64));
         part.setId("10907");
         part.setDescription("liniLED Aeris Eindkap HC20 O");
@@ -196,6 +187,7 @@ public class Parser {
 
         Cap capDiffuse;
         capDiffuse = new CapDiffuse();
+        models.add(capDiffuse);
         capDiffuse.setName("liniLED® Aeris Afdekkap");
         capDiffuse.setTranslations(Locale.nl, capDiffuse.getName());
         capDiffuse.setTranslations(Locale.en, "liniLED® Aeris Cap");
@@ -211,6 +203,7 @@ public class Parser {
 
 
         Cap capClear = new CapClear(new Dimension(null));
+        models.add(capClear);
         capClear.setName("liniLED® Aeris Afdekkap");
         capClear.setTranslations(Locale.nl, capClear.getName());
         capClear.setTranslations(Locale.en, "liniLED® Aeris Cap C L20 4 m");
@@ -253,6 +246,7 @@ public class Parser {
         parts.add(partCapL20);
 
         Profile profileL30 = new Profile(new Dimension(null));
+        models.add(profileL30);
         profileL30.setName("liniLED Aeris Profiel L30");
         profileL30.setTranslations(Locale.nl, profileL30.getName());
         profileL30.setTranslations(Locale.en, "liniLed Aeris Profile L30");
@@ -262,21 +256,21 @@ public class Parser {
 
 
         Part partProfielL30 = new Part(profileL30);
+        models.add(profileL20);
         partProfielL30.setPrice(BigDecimal.valueOf(49.29));
         partProfielL30.setId("10733");
         partProfielL30.setDescription("liniLED Aeris Profiel L30 4 m");
         parts.add(partProfielL30);
 
-        EndCap endCapL30 = new EndCap();
-        Part partEndCapL30 = new Part(endCapL30);
+        Part partEndCapL30 = new Part(endCap);
         partEndCapL30.setPrice(BigDecimal.valueOf(8.00));
         partEndCapL30.setId("10920");
         partEndCapL30.setDescription("liniLED Aeris Eindkap L30");
         parts.add(partEndCapL30);
         partProfielL30.getRelation().addRelateTo(partEndCapL30, null);
 
-        EndCap endCapLC30 = new EndCap();
-        Part partEndCapLC30 = new Part(endCapLC30);
+
+        Part partEndCapLC30 = new Part(endCap);
         partEndCapLC30.setPrice(BigDecimal.valueOf(8.43));
         partEndCapLC30.setId("10922");
         partEndCapLC30.setDescription("liniLED Aeris Eindkap LC30");
@@ -284,6 +278,7 @@ public class Parser {
         partProfielL30.getRelation().addRelateTo(partEndCapLC30, null);
 
         Profile profileH30 = new Profile(new Dimension(null));
+        models.add(profileH30);
         profileH30.setName("liniLED Aeris Profiel H30");
         profileH30.setLengthForCasting(new Dimension(25));
         profileH30.setMaxDimension(new Dimension(2750));
@@ -295,45 +290,45 @@ public class Parser {
         partProfielH30.setDescription("liniLED Aeris Profiel H30 4 m");
         parts.add(partProfielH30);
 
-        EndCap endCapH30 = new EndCap();
-        Part partEndCapH30 = new Part(endCapH30);
+
+        Part partEndCapH30 = new Part(endCap);
         partEndCapH30.setPrice(BigDecimal.valueOf(8.43));
         partEndCapH30.setId("10924");
         partEndCapH30.setDescription("liniLED Aeris Eindkap H30");
         parts.add(partEndCapH30);
         profileH30.getRelation().addRelateTo(partEndCapH30, null);
 
-        EndCap endCapHC30 = new EndCap();
-        Part partEndCapHC30 = new Part(endCapHC30);
+
+        Part partEndCapHC30 = new Part(endCap);
         partEndCapHC30.setPrice(BigDecimal.valueOf(8.53));
         partEndCapHC30.setId("10926");
         partEndCapHC30.setDescription("liniLED Aeris Eindkap HC30");
         parts.add(partEndCapHC30);
         profileH30.getRelation().addRelateTo(partEndCapHC30, null);
 
-        EndCap endCapC30 = new EndCap();
-        Part partEndCapC30 = new Part(endCapC30);
+
+        Part partEndCapC30 = new Part(endCap);
         partEndCapC30.setPrice(BigDecimal.valueOf(7.90));
         partEndCapC30.setId("10928");
         partEndCapC30.setDescription("liniLED Aeris Eindkap C30");
         parts.add(partEndCapC30);
         profileH30.getRelation().addRelateTo(partEndCapC30, null);
 
-        part = new Part();
+        part = new Part(endCap);
         part.setPrice(BigDecimal.valueOf(8.11));
         part.setId("10921");
         part.setDescription("liniLED Aeris Eindkap L30 O");
         parts.add(part);
 
 
-        part = new Part();
+        part = new Part(endCap);
         part.setPrice(BigDecimal.valueOf(8.53));
         part.setId("10923");
         part.setDescription("liniLED Aeris Eindkap LC30 O");
         parts.add(part);
 
 
-        part = new Part();
+        part = new Part(endCap);
         part.setPrice(BigDecimal.valueOf(8.53));
         part.setId("10925");
         part.setDescription("liniLED Aeris Eindkap H30 O");
@@ -350,6 +345,7 @@ public class Parser {
 
 
         CableEntry cableEntry = new LeftViaEndCapCableEntry();
+        models.add(cableEntry);
         cableEntry.setName("Left side via end cap");
         cableEntry.setCode("A");
         Margin margin = new Margin(10, 5);
@@ -731,6 +727,7 @@ public class Parser {
         resinClear.setName("Helder");
         resinClear.setCode("C");
         resinClear.setStep(2);
+        models.add(resinClear);
         relationDefinitionL20.addModel(resinClear);
 
         part = new NotExistingPart(resinClear);
@@ -750,6 +747,7 @@ public class Parser {
         ResinDiffuse resinDiffuse = new ResinDiffuse(null);
         resinDiffuse.setName("Diffuus");
         resinDiffuse.setCode("D");
+        models.add(resinDiffuse);
         relationDefinitionL20.addModel(resinDiffuse);
         part = new NotExistingPart(resinDiffuse);
         part.setId("cod1");
@@ -1665,16 +1663,7 @@ public class Parser {
     }
 
     public List<Model> getModels() {
-        List<Model> modelsExtracted = new ArrayList<Model>();
-        for (Part p : getParts()) {
-            if (p != null && p.getConfigModel() != null) {
-                modelsExtracted.add(p.getConfigModel());
-            }
-            if (p != null && p.getProduct() != null) {
-                modelsExtracted.add(p.getProduct());
-            }
-        }
-        return modelsExtracted;
+       return this.models;
     }
 
     public List<RelationDefinition> getRelationDefinitions() {

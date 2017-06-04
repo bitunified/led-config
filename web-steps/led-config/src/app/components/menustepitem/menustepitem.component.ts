@@ -11,9 +11,10 @@ import {ModelserviceService} from "../../services/modelservice.service";
 export class MenustepitemComponent implements OnInit {
 
   @Input()
-  model:DisplayModel;
+  step:StepModel;
 
-  selectedValue: string;
+  @Input()
+  currentStep: number;
 
 
   constructor() {

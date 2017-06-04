@@ -1,26 +1,27 @@
 <form>
 
-  <h3>{{model.title}}</h3>
+  <h3>{{step.description}}</h3>
 
 
-  <div *ngIf="model.type=='values'">
+  <div *ngIf="currentStep!=step.description">
+  <div *ngIf="step.type=='VALUES'">
     <md-tab-group selectedIndex="1">
-      <md-tab *ngFor="let m of model.models" [label]="m.value" [disabled]="m.title=='Empty'">
+      <md-tab *ngFor="let s of step.models" [label]="s.name" [disabled]="s.name=='Empty'">
 
         <md-list dense>
           <md-list-item>
-            Description: {{m.viewValue}}
+            Description: {{s.name}}
 
           </md-list-item>
           <md-divider></md-divider>
           <md-list-item>
-            Width: {{m.dimension.width}} mm
+            Width: {{s.dimension.width}} mm
           </md-list-item>
         </md-list>
       </md-tab>
     </md-tab-group>
   </div>
-  <div *ngIf="model.type=='input'">
+  <div *ngIf="step.type=='TEXT'">
 
     <md-card-content>
 
@@ -37,6 +38,7 @@
       </md-input-container>
 
     </md-card-content>
+  </div>
   </div>
 
 </form>

@@ -1,14 +1,34 @@
-import {Component, ViewEncapsulation} from "@angular/core";
+import {Component, ViewEncapsulation, OnInit} from "@angular/core";
 import {ModelserviceService} from "./services/modelservice.service";
+import {StepsService} from "./services/steps.service";
+import {Observable} from "rxjs";
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   encapsulation: ViewEncapsulation.None,
-  providers: [ModelserviceService]
+  providers: [ModelserviceService,StepsService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
 
+  steps:Observable<StepsModel>;
+
+  constructor(private modelService:ModelserviceService,private stepService:StepsService) {
+  }
+
+  ngOnInit() {
+    this.modelService.getModels().subscribe((res:any) => {
+        let serverresponse:any=res;
+
+        console.info(serverresponse);
+      }
+      ,
+      error=>console.info('error'));
+
+    this.steps=this.stepService.getSteps();
+
+  }
   data = [
     [
       {value: 'L20', viewValue: 'liniLED Aeris Profiel L20', price: 10.50, dimension: {width: 200}},
