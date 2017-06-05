@@ -4,3 +4,7 @@
 .md-sidenav {
   width: 200px;
 }
+.small-product-code{
+  font-size: xx-small;
+  margin:10px 10px 10px 10px;
+}

@@ -4,6 +4,7 @@ import {ProductcodeService} from "../../services/productcode.service";
 import {MdTabChangeEvent} from "@angular/material";
 import {StepModel} from "../../domain/StepModel";
 import {Model} from "../../domain/Model";
+import {ProductconfigurationService} from "../../services/productconfiguration.service";
 @Component({
   selector: 'menustepitem',
   templateUrl: './menustepitem.component.html',
@@ -19,9 +20,11 @@ export class MenustepitemComponent implements OnInit {
   @Input()
   currentStep: number;
 
+
+
   selectedModel:Model;
 
-  constructor(private productcodeService: ProductcodeService) {
+  constructor(private productcodeService: ProductcodeService,private productconfigService:ProductconfigurationService) {
 
   }
 
@@ -39,6 +42,7 @@ export class MenustepitemComponent implements OnInit {
     console.info(event);
 
     this.selectedModel=this.step.models[event.index];
+    this.productconfigService.productconfigAnnouncement(this.step,this.selectedModel);
     this.productcodeService.productcodeAnnouncement(this.selectedModel.code,this.currentStep);
   }
 

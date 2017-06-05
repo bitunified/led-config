@@ -8,13 +8,16 @@ import {StepsModel} from "./domain/StepsModel";
 import {ProductCodeComposition} from "./domain/ProductCodeComposition";
 import {Model} from "./domain/Model";
 import {StepModel} from "./domain/StepModel";
+import {ProductconfigurationService} from "./services/productconfiguration.service";
+import {ProductConfiguration} from "./domain/ProductConfiguration";
+import {ModelChosenStep} from "./domain/ModelChosenStep";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   encapsulation: ViewEncapsulation.None,
-  providers: [ModelserviceService,StepsService,ProductcodeService,Model,StepsModel,StepModel,ProductCodeComposition]
+  providers: [ModelserviceService,StepsService,ProductcodeService,Model,StepsModel,StepModel,ProductCodeComposition,ProductconfigurationService,ProductConfiguration,ModelChosenStep]
 })
 export class AppComponent implements OnInit,OnDestroy {
 
