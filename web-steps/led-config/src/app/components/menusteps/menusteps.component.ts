@@ -32,8 +32,10 @@ export class MenustepsComponent implements OnInit {
   constructor(public snackBar: MdSnackBar, private productConfigService: ProductconfigurationService) {
     this.productConfigSubscription = productConfigService.productconfigSource$.subscribe(
       res => {
+        console.info(res);
         this.productconfig = res;
       });
+    this.productconfig=productConfigService.productConfiguration;
   }
 
   openSnackBar() {
@@ -41,9 +43,9 @@ export class MenustepsComponent implements OnInit {
   }
 
   nextStep() {
+    console.info(this.currentStep);
+    console.info(''+this.productconfig.containsStep(this.currentStep));
     if (this.productconfig.containsStep(this.currentStep)) {
-
-
       if (this.currentStep < this.stepsall.steps.length) {
         this.currentStep++;
       }

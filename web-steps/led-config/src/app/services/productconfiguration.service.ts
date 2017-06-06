@@ -11,7 +11,7 @@ export class ProductconfigurationService {
 
   productconfigSource$ = this.productconfigSource.asObservable();
 
-  productConfiguration: ProductConfiguration = new ProductConfiguration();
+  public productConfiguration: ProductConfiguration = new ProductConfiguration();
 
 
   productconfigAnnouncement(step: StepModel, model: Model) {
