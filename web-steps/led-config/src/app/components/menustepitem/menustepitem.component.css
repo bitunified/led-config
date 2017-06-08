@@ -5,3 +5,9 @@
 .mat-slider-vertical {
   height: 300px;
 }
+
+.labelTab{
+  overflow:auto;
+  /*font-size:1.1em;*/
+  font-weight: bold;
+}

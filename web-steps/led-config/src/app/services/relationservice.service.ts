@@ -2,25 +2,27 @@ import { Injectable } from '@angular/core';
 
 import {Http} from "@angular/http";
 import {Observable} from "rxjs/Rx";
-import {StepsModel} from "../domain/StepsModel";
+import {Relations} from "../domain/relations/Relations";
 
 @Injectable()
-export class StepsService {
+export class RelationService {
+
   constructor (private http: Http) {}
 
-  // private instance variable to hold base url
-  private stepsServerUrl = 'http://localhost:8080/server/rest/engine/steps';
+  private relationsServerUrl = 'http://localhost:8080/server/rest/engine/relations';
 
-  public getSteps() : Observable<StepsModel>{
+  public getRelations() : Observable<Relations>{
 
 
-    return this.http.get(this.stepsServerUrl)
+    return this.http.get(this.relationsServerUrl)
     // ...and calling .json() on the response to return data
-      .map(res => <any>res.json())
+      .map(res => <Relations>res.json())
       .do(data => console.log(data))
       //...errors if any
       .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
 
   }
-
 }
+
+
+

@@ -4,4 +4,5 @@ export class ModelChosenStep {
 
   step:StepModel;
   chosenModel:Model;
+  modelValue:number;
 }

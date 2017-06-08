@@ -14,9 +14,9 @@ export class ProductconfigurationService {
   public productConfiguration: ProductConfiguration = new ProductConfiguration();
 
 
-  productconfigAnnouncement(step: StepModel, model: Model) {
+  productconfigAnnouncement(step: StepModel, model: Model,value:number) {
 
-   this.productConfiguration.assignModel(step,model);
+   this.productConfiguration.assignModel(step,model,value);
 
 
     this.productconfigSource.next(this.productConfiguration);

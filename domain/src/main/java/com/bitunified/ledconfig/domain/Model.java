@@ -12,10 +12,13 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 @XmlSeeAlso({RealModel.class, ConfigurationModel.class})
 public class Model extends Relatable implements StepConfig, Serializable {
 
+
+    private String uuid="unknown";
     private String name = "";
 
     private String code;
@@ -24,6 +27,10 @@ public class Model extends Relatable implements StepConfig, Serializable {
     private Map<String, Property> properies = new HashMap<String, Property>();
 
     private Map<Locale, String> translations = new HashMap<Locale, String>();
+
+    public Model() {
+        this.uuid = String.valueOf(UUID.randomUUID());
+    }
 
     public Property addProperty(Property property) {
         this.properies.put(property.getName(), property);
@@ -102,6 +109,14 @@ public class Model extends Relatable implements StepConfig, Serializable {
 
     public void setTranslations(Map<Locale, String> translations) {
         this.translations = translations;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
 }

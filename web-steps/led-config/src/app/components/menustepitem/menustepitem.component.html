@@ -2,22 +2,27 @@
 
 
   <div *ngIf="stepDiff(step)<0">
-    <h4>{{step.description}}</h4>
+    <h4>{{step.description}}: {{selectedModel?selectedModel.name:''}}</h4>
   </div>
   <div *ngIf="stepDiff(step)==0">
-    <h3>{{step.description}}</h3>
+    <h3>{{step.description}}: {{selectedModel?selectedModel.name:''}}</h3>
   <div >
-    <md-tab-group selectedIndex="1" (selectChange)="changedTabSelection($event)">
-      <md-tab *ngFor="let s of step.models" [label]="s.name" >
+    <md-tab-group (selectChange)="changedTabSelection($event)">
+      <md-tab *ngFor="let m of step.models" >
+        <ng-template md-tab-label>
+          <div class="labelTab" (click)="tabClick()" [style.color]="getTabColor(m)">
 
+            {{m.name}}
+          </div>
+        </ng-template>
         <md-list dense>
           <md-list-item>
-            Description: {{s.name}}
+            Description: {{m.name}}
 
           </md-list-item>
           <md-divider></md-divider>
-          <md-list-item>
-            Width: {{s.dimension==null?'':s.dimension.width}} mm
+          <md-list-item *ngIf="m.dimension!=null && m.dimension.width!=null">
+            Width: {{m.dimension==null?'':m.dimension.width}} mm
           </md-list-item>
         </md-list>
       </md-tab>
@@ -32,10 +37,10 @@
                    max="400"
                    min="200"
                    step="1"
-                   thumb-label="true" [(ngModel)]="step.modelValue" name="inputValue">
+                   thumb-label="true" [(ngModel)]="step.modelValue" name="inputValue" (ngModelChange)="onInputChange($event)">
         </md-slider> mm.
 
-        <input mdInput [(ngModel)]="step.modelValue" name="inputValue">
+        <input mdInput [(ngModel)]="step.modelValue" name="inputValue" (ngModelChange)="onInputChange($event)">
       </md-input-container>
 
   </div>

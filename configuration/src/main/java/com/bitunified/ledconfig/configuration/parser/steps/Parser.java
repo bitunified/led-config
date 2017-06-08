@@ -86,6 +86,7 @@ public class Parser {
         //parts=importer.importerDozer();
 
         Profile profileL20 = new Profile(new Dimension(null));
+        profileL20.getDimension().width=4000;
         profileL20.setName("liniLED Aeris Profiel L20");
         profileL20.setMaxDimension(new Dimension(2750));
         profileL20.setLeftSpace((100));
@@ -206,7 +207,8 @@ public class Parser {
         models.add(capClear);
         capClear.setName("liniLED® Aeris Afdekkap");
         capClear.setTranslations(Locale.nl, capClear.getName());
-        capClear.setTranslations(Locale.en, "liniLED® Aeris Cap C L20 4 m");
+        capClear.setTranslations(Locale.en, "liniLED® Aeris Cap");
+        capClear.getDimension().width=100;
         capClear.setCode("R");
         relationDefinitionL20.addModel(capClear);
 

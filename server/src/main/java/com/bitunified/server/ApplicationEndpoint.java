@@ -69,6 +69,8 @@ public class ApplicationEndpoint {
         return relations;
     }
 
+
+
     @POST
     @Path("/data")
     @Produces(MediaType.APPLICATION_JSON)

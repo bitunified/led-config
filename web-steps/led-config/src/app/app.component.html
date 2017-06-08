@@ -2,8 +2,8 @@
 
   <md-sidenav #sidenav mode="side" class="app-sidenav" style="width:10%">
     <md-list>
-      <md-list-item> Productcode </md-list-item>
-      <md-list-item> <h4>{{productcode}}</h4> </md-list-item>
+      <md-list-item> Productcode</md-list-item>
+      <md-list-item><h4>{{productcode}}</h4></md-list-item>
 
     </md-list>
   </md-sidenav>
@@ -14,23 +14,15 @@
     </button>
 
     Aeris Configurator 3.0 - Step by step
-<span class="small-product-code">Productcode: {{productcode}}</span>
+    <div class="small-product-code">Productcode: {{productcode}}</div>
     <span class="app-toolbar-filler"></span>
     <button md-button (click)="isDarkTheme = !isDarkTheme"></button>
   </md-toolbar>
 
   <div class="app-content">
-
     <md-card>
-
-
-      <menusteps [steps]="steps"></menusteps>
-
+      <menusteps [steps]="steps" [relations]="relations"></menusteps>
     </md-card>
-
-
-
-
   </div>
 
 </md-sidenav-container>

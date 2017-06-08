@@ -1,11 +1,12 @@
 import {Component, OnInit, Input} from "@angular/core";
-import {Observable} from "rxjs";
 import {MdSnackBar} from "@angular/material";
 import {NotificationComponent} from "../notification/notification.component";
 import {StepsModel} from "../../domain/StepsModel";
 import {ProductconfigurationService} from "../../services/productconfiguration.service";
 import {Subscription} from "rxjs/Subscription";
 import {ProductConfiguration} from "../../domain/ProductConfiguration";
+import {Relations} from "../../domain/relations/Relations";
+import {Observable} from "rxjs/Rx";
 
 @Component({
   selector: 'menusteps',
@@ -18,12 +19,18 @@ export class MenustepsComponent implements OnInit {
   @Input()
   steps: Observable<StepsModel>;
 
-  stepsall: StepsModel;
+  @Input()
+  relations: Observable<Relations>;
 
-  currentStep: number;
+  relationsAll: Relations;
 
   @Input()
   maxSteps: number;
+
+
+  stepsall: StepsModel;
+
+  currentStep: number;
 
   private productConfigSubscription: Subscription;
 
@@ -35,7 +42,22 @@ export class MenustepsComponent implements OnInit {
         console.info(res);
         this.productconfig = res;
       });
-    this.productconfig=productConfigService.productConfiguration;
+    this.productconfig = productConfigService.productConfiguration;
+
+  }
+
+  ngOnInit() {
+    this.currentStep = 1;
+
+    const combineRelationSteps:Observable<{rels:Relations,steps:StepsModel}> = Observable.combineLatest(this.relations, this.steps, (rels:Relations, steps:StepsModel)=> {
+      return {rels: rels, steps: steps};
+    });
+    combineRelationSteps.subscribe((combinedRelStep)=> {
+       this.stepsall = combinedRelStep.steps;
+       this.relationsAll = combinedRelStep.rels;
+      console.info(combinedRelStep);
+      this.evaluateRelations();
+    });
   }
 
   openSnackBar() {
@@ -43,14 +65,26 @@ export class MenustepsComponent implements OnInit {
   }
 
   nextStep() {
-    console.info(this.currentStep);
-    console.info(''+this.productconfig.containsStep(this.currentStep));
     if (this.productconfig.containsStep(this.currentStep)) {
       if (this.currentStep < this.stepsall.steps.length) {
         this.currentStep++;
       }
     }
 
+  }
+
+  evaluateRelations() {
+    for (let step of this.stepsall.steps) {
+      for (let stepModel of step.models) {
+        for (let relation of this.relationsAll.relations) {
+          for (let model of relation.models) {
+            if (model.uuid === stepModel.uuid) {
+              stepModel.relations.push(relation);
+            }
+          }
+        }
+      }
+    }
   }
 
   prevStep() {
@@ -60,19 +94,7 @@ export class MenustepsComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-    this.currentStep = 1;
 
-    this.steps.subscribe((res: StepsModel) => {
-        this.stepsall = res;
-
-        console.info(res);
-      }
-      ,
-      error=>console.info('error'));
-
-
-  }
 
 
 }
