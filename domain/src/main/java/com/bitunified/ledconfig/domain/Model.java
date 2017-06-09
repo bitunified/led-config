@@ -115,8 +115,5 @@ public class Model extends Relatable implements StepConfig, Serializable {
         return uuid;
     }
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
 
 }

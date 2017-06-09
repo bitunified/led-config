@@ -15,9 +15,7 @@ import java.util.stream.Collectors;
 
 public class StepService {
 
-    public Steps getSteps() {
-        Parser parser = new Parser();
-        parser.createParts();
+    public Steps getSteps(Parser parser) {
 
         Steps steps = new Steps();
 

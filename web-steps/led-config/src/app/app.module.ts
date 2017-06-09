@@ -9,12 +9,14 @@ import {MdwidgetmoduleModule} from './modules/mdwidgetmodule/mdwidgetmodule.modu
 import { ReactiveFormsModule} from '@angular/forms';
 import { MenustepitemComponent } from './components/menustepitem/menustepitem.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import {FilterModel} from "./pipes/FilterModel";
 @NgModule({
   declarations: [
     AppComponent,
     MenustepsComponent,
     MenustepitemComponent,
-    NotificationComponent
+    NotificationComponent,
+    FilterModel
   ],
   imports: [
     BrowserModule,

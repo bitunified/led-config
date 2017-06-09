@@ -1,4 +1,5 @@
-class ModelMargin {
+export class ModelMargin {
+
   left: number;
   right: number;
 }

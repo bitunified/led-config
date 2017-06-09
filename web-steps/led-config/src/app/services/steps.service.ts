@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {Http} from "@angular/http";
 import {Observable} from "rxjs/Rx";
 import {StepsModel} from "../domain/StepsModel";
+import { Deserialize} from 'cerialize';
 
 @Injectable()
 export class StepsService {
@@ -16,7 +17,10 @@ export class StepsService {
 
     return this.http.get(this.stepsServerUrl)
     // ...and calling .json() on the response to return data
-      .map(res => <any>res.json())
+      .map(res => {
+        return Deserialize(res.json(),StepsModel);
+
+      })
       .do(data => console.log(data))
       //...errors if any
       .catch((error:any) => Observable.throw(error.json().error || 'Server error'));

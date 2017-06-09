@@ -2,6 +2,7 @@ package com.bitunified.ledconfig.configuration.parser.steps;
 
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.parts.Part;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -9,6 +10,8 @@ import static org.junit.Assert.assertEquals;
 
 public class ParserTest {
     Parser parser = new Parser();
+
+    @Ignore
     @Test
     public void testParser() {
 

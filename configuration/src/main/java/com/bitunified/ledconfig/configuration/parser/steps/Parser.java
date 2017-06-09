@@ -98,6 +98,10 @@ public class Parser {
         RelationDefinition relationDefinitionL20 = createRelationDefinition();
         relationDefinitionL20.addModel(profileL20);
 
+        RelationDefinition relationDefinitionL30N = createRelationDefinition();
+
+        RelationDefinition relationDefinitionL30DH = createRelationDefinition(RelationState.ALLOWEDWITHWARNING,"L30 kan niet diffuus");
+
 
         Part partL20 = new Part(profileL20);
         partL20.setPrice(BigDecimal.valueOf(36.09));
@@ -195,6 +199,8 @@ public class Parser {
         capDiffuse.getProperty(Cap.TRANSLUCENCY_S).setValue("diffuse");
         capDiffuse.setCode("L");
         relationDefinitionL20.addModel(capDiffuse);
+        relationDefinitionL30N.addModel(capDiffuse);
+
 
         Part partCapL20 = new Part(capDiffuse);
         partCapL20.setPrice(BigDecimal.valueOf(40.92));
@@ -256,6 +262,8 @@ public class Parser {
         profileL30.setMaxDimension(new Dimension(2750));
         profileL30.setCode("F");
 
+        relationDefinitionL30DH.addModel(profileL30);
+        relationDefinitionL30N.addModel(profileL30);
 
         Part partProfielL30 = new Part(profileL30);
 
@@ -731,7 +739,7 @@ public class Parser {
         resinClear.setStep(2);
         models.add(resinClear);
         relationDefinitionL20.addModel(resinClear);
-
+        relationDefinitionL30DH.addModel(resinClear);
         part = new NotExistingPart(resinClear);
         part.setId("coh1");
         parts.add(part);
@@ -751,6 +759,7 @@ public class Parser {
         resinDiffuse.setCode("D");
         models.add(resinDiffuse);
         relationDefinitionL20.addModel(resinDiffuse);
+        relationDefinitionL30DH.addModel(resinDiffuse);
         part = new NotExistingPart(resinDiffuse);
         part.setId("cod1");
         parts.add(part);

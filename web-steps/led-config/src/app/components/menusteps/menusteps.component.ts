@@ -74,11 +74,14 @@ export class MenustepsComponent implements OnInit {
   }
 
   evaluateRelations() {
+    console.info('stepsall',this.stepsall);
+    console.info('relationsall',this.relationsAll);
     for (let step of this.stepsall.steps) {
       for (let stepModel of step.models) {
         for (let relation of this.relationsAll.relations) {
           for (let model of relation.models) {
-            if (model.uuid === stepModel.uuid) {
+            if (model.uuid == stepModel.uuid) {
+              console.info('add relation to model',stepModel,relation);
               stepModel.relations.push(relation);
             }
           }

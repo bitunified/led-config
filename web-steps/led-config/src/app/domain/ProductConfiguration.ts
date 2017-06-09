@@ -22,7 +22,7 @@ export class ProductConfiguration {
   prevModels(stepMax: number) {
     let models: Array<Model> = [];
     for (let modelStep of this.modelsForSteps) {
-      if (modelStep.step.stepindex <= stepMax) {
+      if (modelStep.step.stepindex < stepMax) {
         models.push(modelStep.chosenModel);
       }
     }

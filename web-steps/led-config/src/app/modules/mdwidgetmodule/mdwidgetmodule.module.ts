@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MdSnackBarModule,MdSliderModule,MdListModule,MdTabsModule,MdSidenavModule,MdToolbarModule,MdInputModule,MdMenuModule,MdSelectModule,MdIconModule,MdButtonModule,MdCardModule} from '@angular/material';
+import {MdGridListModule,MdChipsModule,MdSnackBarModule,MdSliderModule,MdListModule,MdTabsModule,MdSidenavModule,MdToolbarModule,MdInputModule,MdMenuModule,MdSelectModule,MdIconModule,MdButtonModule,MdCardModule} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -16,7 +16,9 @@ import {MdSnackBarModule,MdSliderModule,MdListModule,MdTabsModule,MdSidenavModul
     MdTabsModule,
     MdListModule,
     MdSliderModule,
-    MdSnackBarModule
+    MdSnackBarModule,
+    MdGridListModule,
+    MdChipsModule
   ],
   exports:[MdToolbarModule,
     MdInputModule,
@@ -27,7 +29,10 @@ import {MdSnackBarModule,MdSliderModule,MdListModule,MdTabsModule,MdSidenavModul
     MdButtonModule,
     MdCardModule,
   MdTabsModule, MdListModule,
-  MdSliderModule,MdSnackBarModule],
+  MdSliderModule,MdSnackBarModule,
+    MdGridListModule,
+    MdChipsModule
+  ],
   declarations: []
 })
 export class MdwidgetmoduleModule { }

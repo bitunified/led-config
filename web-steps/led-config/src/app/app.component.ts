@@ -13,13 +13,16 @@ import {ProductConfiguration} from "./domain/ProductConfiguration";
 import {ModelChosenStep} from "./domain/ModelChosenStep";
 import {RelationService} from "./services/relationservice.service";
 import {Relations} from "./domain/relations/Relations";
+import {ModelDimension} from "./domain/ModelDimension";
+import {ModelMargin} from "./domain/ModelMargin";
+import {ModelTranslation} from "./domain/ModelTranslation";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   encapsulation: ViewEncapsulation.None,
-  providers: [RelationService,ModelserviceService,StepsService,ProductcodeService,Model,StepsModel,StepModel,ProductCodeComposition,ProductconfigurationService,ProductConfiguration,ModelChosenStep]
+  providers: [ModelMargin,ModelDimension,ModelTranslation,RelationService,ModelserviceService,StepsService,ProductcodeService,Model,StepsModel,StepModel,ProductCodeComposition,ProductconfigurationService,ProductConfiguration,ModelChosenStep]
 })
 export class AppComponent implements OnInit,OnDestroy {
 

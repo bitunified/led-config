@@ -27,9 +27,14 @@ import java.util.stream.Collectors;
 
 @Path("/engine")
 public class ApplicationEndpoint {
-
+    static Parser parser=null;
     public ApplicationEndpoint() {
 
+        if (parser==null){
+            parser = new Parser();
+            parser.createParts();
+
+        }
     }
     @GET
     @Path("/steps")
@@ -37,7 +42,7 @@ public class ApplicationEndpoint {
     public Steps getAllStepss(){
         StepService stepService = new StepService();
 
-        return stepService.getSteps();
+        return stepService.getSteps(parser);
     }
 
     @GET
@@ -45,12 +50,6 @@ public class ApplicationEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Models getAllModels(){
         Models models = new Models();
-
-        Parser parser = new Parser();
-
-        parser.createParts();
-
-
         models.setModels(parser.getModels());
         return models;
     }
@@ -59,11 +58,6 @@ public class ApplicationEndpoint {
     @Path("/relations")
     @Produces(MediaType.APPLICATION_JSON)
     public Relations getAllRelations(){
-
-        Parser parser = new Parser();
-
-        parser.createParts();
-
         Relations relations=new Relations();
         relations.setRelations(parser.getRelationDefinitions());
         return relations;

@@ -7,15 +7,26 @@
   <div *ngIf="stepDiff(step)==0">
     <h3>{{step.description}}: {{selectedModel?selectedModel.name:''}}</h3>
   <div >
-    <md-tab-group (selectChange)="changedTabSelection($event)">
-      <md-tab *ngFor="let m of step.models" >
-        <ng-template md-tab-label>
-          <div class="labelTab" (click)="tabClick()" [style.color]="getTabColor(m)">
+    <md-tab-group (selectChange)="changedTabSelection($event)" [selectedIndex]="tabIndex">
+      <md-tab *ngFor="let m of filter(step.models);let i=index;">
+        <ng-template md-tab-label >
+          <div class="labelTab" (click)="tabClick()" [style.color]="getTabColor(m).color" >
 
             {{m.name}}
           </div>
         </ng-template>
-        <md-list dense>
+        <md-list dense >
+          <md-list-item *ngIf="getTabColor(m).message!=null">
+            <md-chip-list class="mat-chip-list-stacked" >
+              <md-chip class="warningChip"
+                       selected="true"
+                       color="warn">
+                Warning: {{displayRelation.message}}
+              </md-chip>
+            </md-chip-list>
+
+
+          </md-list-item>
           <md-list-item>
             Description: {{m.name}}
 
