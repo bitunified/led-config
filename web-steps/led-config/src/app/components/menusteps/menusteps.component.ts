@@ -39,7 +39,6 @@ export class MenustepsComponent implements OnInit {
   constructor(public snackBar: MdSnackBar, private productConfigService: ProductconfigurationService) {
     this.productConfigSubscription = productConfigService.productconfigSource$.subscribe(
       res => {
-        console.info(res);
         this.productconfig = res;
       });
     this.productconfig = productConfigService.productConfiguration;
@@ -49,13 +48,12 @@ export class MenustepsComponent implements OnInit {
   ngOnInit() {
     this.currentStep = 1;
 
-    const combineRelationSteps:Observable<{rels:Relations,steps:StepsModel}> = Observable.combineLatest(this.relations, this.steps, (rels:Relations, steps:StepsModel)=> {
+    const combineRelationSteps: Observable<{rels: Relations,steps: StepsModel}> = Observable.combineLatest(this.relations, this.steps, (rels: Relations, steps: StepsModel)=> {
       return {rels: rels, steps: steps};
     });
     combineRelationSteps.subscribe((combinedRelStep)=> {
-       this.stepsall = combinedRelStep.steps;
-       this.relationsAll = combinedRelStep.rels;
-      console.info(combinedRelStep);
+      this.stepsall = combinedRelStep.steps;
+      this.relationsAll = combinedRelStep.rels;
       this.evaluateRelations();
     });
   }
@@ -68,20 +66,21 @@ export class MenustepsComponent implements OnInit {
     if (this.productconfig.containsStep(this.currentStep)) {
       if (this.currentStep < this.stepsall.steps.length) {
         this.currentStep++;
+        return;
+      }
+      if (this.currentStep==this.stepsall.steps.length){
+        console.info('finish');
       }
     }
 
   }
 
   evaluateRelations() {
-    console.info('stepsall',this.stepsall);
-    console.info('relationsall',this.relationsAll);
     for (let step of this.stepsall.steps) {
       for (let stepModel of step.models) {
         for (let relation of this.relationsAll.relations) {
           for (let model of relation.models) {
             if (model.uuid == stepModel.uuid) {
-              console.info('add relation to model',stepModel,relation);
               stepModel.relations.push(relation);
             }
           }
@@ -96,8 +95,6 @@ export class MenustepsComponent implements OnInit {
     }
 
   }
-
-
 
 
 }

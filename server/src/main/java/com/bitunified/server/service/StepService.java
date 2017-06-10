@@ -21,9 +21,9 @@ public class StepService {
 
         Map<Integer, List<Model>> groupedModels = parser.getModels().stream().filter(f->f.getStep()!=null).collect(Collectors.groupingBy(Model::getStep));
 
-        List<Step> stepListValues = groupedModels.entrySet().stream().filter(f->f.getKey()!=3).map(t -> new Step(t.getKey(),t.getKey()==null?"":"Step "+t.getKey().toString(), t.getValue())).collect(Collectors.toList());
+        List<Step> stepListValues = groupedModels.entrySet().stream().filter(f->f.getKey()!=4).map(t -> new Step(t.getKey(),t.getKey()==null?"":"Step "+t.getKey().toString(), t.getValue())).collect(Collectors.toList());
         List<Step> stepListNumbers = new ArrayList<>();
-        stepListNumbers.add(new Step(3,"Step 3", new ArrayList<Model>(), StepType.NUMBER));
+        stepListNumbers.add(new Step(4,"Step 4", new ArrayList<Model>(), StepType.NUMBER));
 
         List<Step> allSteps=new ArrayList<>();
         allSteps.addAll(stepListValues);

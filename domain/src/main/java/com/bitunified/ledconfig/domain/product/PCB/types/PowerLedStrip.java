@@ -8,10 +8,11 @@ import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 public class PowerLedStrip extends LedStrip {
 
 
-    public PowerLedStrip(){
-
+    public PowerLedStrip() {
+        super();
     }
-    public PowerLedStrip(Dimension dimension){
+
+    public PowerLedStrip(Dimension dimension) {
         super(dimension);
         addProperty(COLOR);
 

@@ -24,7 +24,7 @@ public class Model extends Relatable implements StepConfig, Serializable {
     private String code;
     private Integer step;
 
-    private Map<String, Property> properies = new HashMap<String, Property>();
+    private Map<String, Property> properties = new HashMap<String, Property>();
 
     private Map<Locale, String> translations = new HashMap<Locale, String>();
 
@@ -33,7 +33,7 @@ public class Model extends Relatable implements StepConfig, Serializable {
     }
 
     public Property addProperty(Property property) {
-        this.properies.put(property.getName(), property);
+        this.properties.put(property.getName(), property);
         return property;
     }
 
@@ -46,12 +46,12 @@ public class Model extends Relatable implements StepConfig, Serializable {
     }
 
     public Property getProperty(String propName) {
-        return properies.get(propName);
+        return properties.get(propName);
 
     }
 
-    public Set getProperies() {
-        return properies.entrySet();
+    public Set getProperties() {
+        return properties.entrySet();
     }
 
     @Override
@@ -78,7 +78,7 @@ public class Model extends Relatable implements StepConfig, Serializable {
         if (name != null ? !name.equals(model.name) : model.name != null) return false;
         if (code != null ? !code.equals(model.code) : model.code != null) return false;
         if (step != null ? !step.equals(model.step) : model.step != null) return false;
-        return properies != null ? properies.equals(model.properies) : model.properies == null;
+        return properties != null ? properties.equals(model.properties) : model.properties == null;
 
     }
 
@@ -87,7 +87,7 @@ public class Model extends Relatable implements StepConfig, Serializable {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (code != null ? code.hashCode() : 0);
         result = 31 * result + (step != null ? step.hashCode() : 0);
-        result = 31 * result + (properies != null ? properies.hashCode() : 0);
+        result = 31 * result + (properties != null ? properties.hashCode() : 0);
         return result;
     }
 

@@ -2,6 +2,7 @@
 import {Model} from "./Model";
 
 import { deserialize,deserializeAs } from 'cerialize';
+import {StepType} from "./StepType";
 
 export class StepModel {
 
@@ -13,6 +14,9 @@ export class StepModel {
 
   @deserializeAs(Model)
   models:Array<Model>=[];
+
+  @deserializeAs(StepType)
+  type:StepType;
 
   modelValue:any;
 }

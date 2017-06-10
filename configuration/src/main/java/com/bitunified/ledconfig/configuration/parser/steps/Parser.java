@@ -845,6 +845,8 @@ public class Parser {
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(LedStrip.COLOR_TYPE).setValue("rood");
         ledStrip.setCode("DR");
+        models.add(ledStrip);
+        relationDefinitionL30N.addModel(ledStrip);
         part = new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(36.96
         ));
@@ -859,6 +861,9 @@ public class Parser {
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(LedStrip.COLOR_TYPE).setValue("rgb");
         ledStrip.setCode("RP");
+        models.add(ledStrip);
+        relationDefinitionL30N.addModel(ledStrip);
+
         part = new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(69.52
         ));
@@ -874,6 +879,9 @@ public class Parser {
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(100);
         ledStrip.getProperty(LedStrip.COLOR_TYPE).setValue("groen");
         ledStrip.setCode("DG");
+        models.add(ledStrip);
+        relationDefinitionL30N.addModel(ledStrip);
+
         part = new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(48.40
         ));

@@ -8,7 +8,7 @@ public class RGBLedStrip extends LedStrip {
 
 
     public RGBLedStrip(){
-
+    super();
     }
     public RGBLedStrip(Dimension dimension){
         super(dimension);

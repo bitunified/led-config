@@ -9,7 +9,8 @@ import Utils from "../../utils/Utils";
 import {RelationDefinition} from "../../domain/relations/RelationDefinition";
 import {RelationState} from "../../domain/relations/RelationState";
 import {DisplayRelation} from "../../domain/internal/DisplayRelation";
-import {MdTab} from "@angular/material";
+import {StepType} from "../../domain/StepType";
+import {ModelProperty} from "../../domain/ModelProperty";
 @Component({
   selector: 'menustepitem',
   templateUrl: './menustepitem.component.html',
@@ -19,8 +20,17 @@ import {MdTab} from "@angular/material";
 })
 export class MenustepitemComponent implements OnInit {
 
+  _step: StepModel;
+
   @Input()
-  step: StepModel;
+  set step(step: StepModel) {
+    this._step = step;
+    this.filter(step.models);
+  }
+
+  get step() {
+    return this._step;
+  }
 
   @Input()
   currentStep: number;
@@ -29,32 +39,53 @@ export class MenustepitemComponent implements OnInit {
   @Input()
   selectedModel: Model;
 
-  tabIndex:number;
+  tabIndex: number;
 
-  filteredModels:Array<Model>;
-   displayRelation:DisplayRelation;
+  filteredModels: Array<Model> = [];
+  displayRelation: DisplayRelation;
 
   constructor(private productcodeService: ProductcodeService, private productconfigService: ProductconfigurationService) {
 
   }
 
   ngOnInit() {
-
   }
 
-  filter(models:Model[]){
-    let mls:Array<Model>=[];
-    for (let model of models){
-      let rl=this.getTabColor(model).relationState;
-      if (rl==RelationState.ALLOWED || rl==RelationState.ALLOWEDWITHWARNING){
+  isStepTypeValues(step: StepModel) {
+    if (step.type == StepType.VALUES) {
+      return true;
+    }
+    return false;
+  }
+
+  isStepTypeNumber(step: StepModel) {
+    if (step.type == StepType.NUMBER) {
+      return true;
+    }
+    return false;
+  }
+
+  getModelTitle(): string {
+    if (this.step.type == StepType.VALUES) {
+      return this.selectedModel ? this.selectedModel.name : '';
+    }
+    return '' + (this.step.modelValue ? this.step.modelValue : '') + ' mm';
+  }
+
+  filter(models: Model[]) {
+    let mls: Array<Model> = [];
+    for (let model of models) {
+      let rl = this.getTabColor(model).relationState;
+      if (rl == RelationState.ALLOWED || rl == RelationState.ALLOWEDWITHWARNING) {
         mls.push(model);
       }
     }
-    this.filteredModels=mls;
-  return mls;
+    this.filteredModels = mls;
+    return mls;
   }
-  getTabColor(m: Model):DisplayRelation {
-    this.displayRelation=new DisplayRelation();
+
+  getTabColor(m: Model): DisplayRelation {
+    this.displayRelation = new DisplayRelation();
     let prevModels: Array<Model> = this.productconfigService.productConfiguration.prevModels(this.currentStep);
 
     if (prevModels.length > 0 && m) {
@@ -66,17 +97,17 @@ export class MenustepitemComponent implements OnInit {
       for (let rel of relations) {
         if (rel.relationState == RelationState.ALLOWEDWITHWARNING) {
           allowedWithWarning = true;
-          this.displayRelation.message=rel.allowedWithWarningMessage;
+          this.displayRelation.message = rel.allowedWithWarningMessage;
           break;
         }
       }
       if (allowedWithWarning) {
-        this.displayRelation.relationState=RelationState.ALLOWEDWITHWARNING;
-        this.displayRelation.color="orange";
+        this.displayRelation.relationState = RelationState.ALLOWEDWITHWARNING;
+        this.displayRelation.color = "orange";
         return this.displayRelation;
       }
       for (let rel of relations) {
-        if (RelationState.ALLOWED==rel.relationState) {
+        if (RelationState.ALLOWED == rel.relationState) {
           allowed = true;
         }
       }
@@ -84,17 +115,17 @@ export class MenustepitemComponent implements OnInit {
 
       if (allowed) {
 
-        this.displayRelation.relationState=RelationState.ALLOWED;
-        this.displayRelation.color="black";
+        this.displayRelation.relationState = RelationState.ALLOWED;
+        this.displayRelation.color = "black";
 
         return this.displayRelation;
       }
-      this.displayRelation.relationState=null;
-      this.displayRelation.color="red";
+      this.displayRelation.relationState = null;
+      this.displayRelation.color = "red";
       return this.displayRelation;
     } else {
-      this.displayRelation.relationState=RelationState.ALLOWED;
-      this.displayRelation.color="black";
+      this.displayRelation.relationState = RelationState.ALLOWED;
+      this.displayRelation.color = "black";
       return this.displayRelation;
     }
   }
@@ -109,7 +140,8 @@ export class MenustepitemComponent implements OnInit {
 
   tabClick() {
 
-    if (!this.selectedModel) {
+    console.info(this.selectedModel);
+    if (this.selectedModel == undefined) {
 
       this.changeTab(null);
     }
@@ -128,21 +160,35 @@ export class MenustepitemComponent implements OnInit {
   }
 
   private changeTab(tabEvent: MdTabChangeEvent) {
+    console.info(this.filteredModels);
+    if (tabEvent) {
 
-    if (tabEvent){
-      console.info(tabEvent);
       this.selectedModel = this.filteredModels[tabEvent.index];
 
-      this.productconfigService.productconfigAnnouncement(this.step, this.selectedModel, null);
-      this.productcodeService.productcodeAnnouncement(this.selectedModel.code, this.currentStep);
-      this.tabIndex=tabEvent.index;
-    }else{
+
+      this.tabIndex = tabEvent.index;
+    } else {
       this.selectedModel = this.filteredModels[0];
-      this.tabIndex=0;
+      this.tabIndex = 0;
     }
 
-
+    this.productconfigService.productconfigAnnouncement(this.step, this.selectedModel, null);
+    this.productcodeService.productcodeAnnouncement(this.selectedModel.code, this.currentStep);
 
   }
+
+  getSectionValueModelFromStep(stepIndex: number): string {
+    let model: Model = this.productconfigService.productConfiguration.getModelFromStep(stepIndex);
+
+    console.info(model.properties);
+    for (let prop of model.properties) {
+
+      if (prop.key=='section'){
+        return prop.value.value;
+      }
+
+    }
+  }
+
 
 }

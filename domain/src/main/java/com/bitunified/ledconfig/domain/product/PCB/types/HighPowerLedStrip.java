@@ -9,7 +9,7 @@ public class HighPowerLedStrip extends PowerLedStrip {
 
 
     public HighPowerLedStrip(){
-
+        super();
     }
     public HighPowerLedStrip(Dimension dimension){
         super(dimension);

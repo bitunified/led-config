@@ -14,10 +14,11 @@ public class LedStrip extends RealModel {
     public static final String COLOR_TYPE = "color";
     public static final Property COLOR=new Property(COLOR_TYPE,"");
     public static final String KELVIN_TYPE = "kelvin";
+    public static final int STEP = 3;
     public final Property KELVIN=new Property(KELVIN_TYPE,"");
 
     public LedStrip(){
-        this.setStep(3);
+        this.setStep(STEP);
     }
 
     public static final String SECTION_WIDTH = "section";
@@ -25,6 +26,7 @@ public class LedStrip extends RealModel {
     public final Property SECTION=new Property(SECTION_WIDTH,null);
     public LedStrip(Dimension dimension) {
         super(dimension);
+        this.setStep(STEP);
         addProperty(SECTION);
         addProperty(KELVIN);
         addProperty(COLOR);

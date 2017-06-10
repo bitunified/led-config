@@ -2,59 +2,70 @@
 
 
   <div *ngIf="stepDiff(step)<0">
-    <h4>{{step.description}}: {{selectedModel?selectedModel.name:''}}</h4>
+    <h4>{{step.description}}: {{getModelTitle()}}</h4>
   </div>
   <div *ngIf="stepDiff(step)==0">
-    <h3>{{step.description}}: {{selectedModel?selectedModel.name:''}}</h3>
-  <div >
-    <md-tab-group (selectChange)="changedTabSelection($event)" [selectedIndex]="tabIndex">
-      <md-tab *ngFor="let m of filter(step.models);let i=index;">
-        <ng-template md-tab-label >
-          <div class="labelTab" (click)="tabClick()" [style.color]="getTabColor(m).color" >
+    <h3>{{step.description}}: {{getModelTitle()}}</h3>
 
-            {{m.name}}
-          </div>
-        </ng-template>
-        <md-list dense >
-          <md-list-item *ngIf="getTabColor(m).message!=null">
-            <md-chip-list class="mat-chip-list-stacked" >
-              <md-chip class="warningChip"
-                       selected="true"
-                       color="warn">
-                Warning: {{displayRelation.message}}
-              </md-chip>
-            </md-chip-list>
+    <div>
+      <div *ngIf="isStepTypeValues(step) && filter(step.models).length>0">
 
+        <md-tab-group (selectChange)="changedTabSelection($event)" [selectedIndex]="tabIndex">
+          <md-tab *ngFor="let m of filter(step.models);let i=index;">
+            <ng-template md-tab-label>
+              <div class="labelTab" (click)="tabClick()" [style.color]="getTabColor(m).color">
 
-          </md-list-item>
-          <md-list-item>
-            Description: {{m.name}}
-
-          </md-list-item>
-          <md-divider></md-divider>
-          <md-list-item *ngIf="m.dimension!=null && m.dimension.width!=null">
-            Width: {{m.dimension==null?'':m.dimension.width}} mm
-          </md-list-item>
-        </md-list>
-      </md-tab>
-    </md-tab-group>
-  </div>
-  <div *ngIf="step.type=='NUMBER'">
+                {{m.name}}
+              </div>
+            </ng-template>
+            <md-list dense>
+              <md-list-item *ngIf="getTabColor(m).message!=null">
+                <md-chip-list class="mat-chip-list-stacked">
+                  <md-chip class="warningChip"
+                           selected="true"
+                           color="warn">
+                    Warning: {{displayRelation.message}}
+                  </md-chip>
+                </md-chip-list>
 
 
-      <md-input-container>
-        Width:
-        <md-slider class="mat-slider-horizontal"
-                   max="400"
-                   min="200"
-                   step="1"
-                   thumb-label="true" [(ngModel)]="step.modelValue" name="inputValue" (ngModelChange)="onInputChange($event)">
-        </md-slider> mm.
+              </md-list-item>
+              <md-list-item>
+                Description: {{m.name}}
 
-        <input mdInput [(ngModel)]="step.modelValue" name="inputValue" (ngModelChange)="onInputChange($event)">
-      </md-input-container>
+              </md-list-item>
+              <md-divider></md-divider>
+              <md-list-item *ngIf="m.dimension!=null && m.dimension.width!=null">
+                Width: {{m.dimension==null?'':m.dimension.width}} mm
+              </md-list-item>
+            </md-list>
+          </md-tab>
+        </md-tab-group>
+      </div>
+      <div *ngIf="isStepTypeValues(step) && filter(step.models).length==0">
+        No configuration possible. Go to previous step and choose another option.
+        </div>
+      <div *ngIf="isStepTypeNumber(step)">
 
-  </div>
+
+        <md-input-container>
+          Width:
+
+          <md-slider class="mat-slider-horizontal"
+                     max="400"
+                     min="200"
+                     step="getSectionValueModelFromStep(3)"
+                     thumb-label="true" [(ngModel)]="step.modelValue" name="inputValue"
+                     (ngModelChange)="onInputChange($event)">
+          </md-slider>
+          mm.
+
+          <input mdInput [(ngModel)]="step.modelValue" name="inputValue" (ngModelChange)="onInputChange($event)">
+        </md-input-container>
+
+      </div>
+    </div>
+
   </div>
   <div *ngIf="stepDiff(step)==1">
     <h4>{{step.description}}</h4>
