@@ -48,20 +48,16 @@
       <div *ngIf="isStepTypeNumber(step)">
 
 
-        <md-input-container>
           Width:
-
           <md-slider class="mat-slider-horizontal"
-                     max="400"
-                     min="200"
-                     step="getSectionValueModelFromStep(3)"
+                     max="4000"
+                     min="{{getKeyValueModelFromStep(3,'section')}}"
+                     step="{{getKeyValueModelFromStep(3,'section')}}"
                      thumb-label="true" [(ngModel)]="step.modelValue" name="inputValue"
                      (ngModelChange)="onInputChange($event)">
           </md-slider>
           mm.
 
-          <input mdInput [(ngModel)]="step.modelValue" name="inputValue" (ngModelChange)="onInputChange($event)">
-        </md-input-container>
 
       </div>
     </div>

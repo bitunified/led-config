@@ -4,15 +4,15 @@ package com.bitunified.ledconfig.domain;
 import com.bitunified.ledconfig.domain.I18N.Locale;
 import com.bitunified.ledconfig.domain.modeltypes.ConfigurationModel;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
+import com.bitunified.ledconfig.domain.relation.RelationDefinition;
 import com.bitunified.ledconfig.parts.Relatable;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
+import java.beans.Transient;
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @XmlSeeAlso({RealModel.class, ConfigurationModel.class})
 public class Model extends Relatable implements StepConfig, Serializable {
@@ -24,16 +24,22 @@ public class Model extends Relatable implements StepConfig, Serializable {
     private String code;
     private Integer step;
 
-    private Map<String, Property> properties = new HashMap<String, Property>();
+
+
+    private List<Property> properties = new ArrayList<Property>();
 
     private Map<Locale, String> translations = new HashMap<Locale, String>();
+
+    @XmlTransient
+    private List<RelationDefinition> relations=new ArrayList<RelationDefinition>();
 
     public Model() {
         this.uuid = String.valueOf(UUID.randomUUID());
     }
 
+    @XmlTransient
     public Property addProperty(Property property) {
-        this.properties.put(property.getName(), property);
+        this.properties.add( property);
         return property;
     }
 
@@ -45,13 +51,24 @@ public class Model extends Relatable implements StepConfig, Serializable {
         this.name = name;
     }
 
+    @XmlTransient
     public Property getProperty(String propName) {
-        return properties.get(propName);
+        for (Property p:properties){
+            if (p.getName()==propName){
+                return p;
+            }
+        }
 
+        return null;
     }
 
-    public Set getProperties() {
-        return properties.entrySet();
+
+    public List<Property> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(List<Property> properties) {
+        this.properties = properties;
     }
 
     @Override
@@ -116,4 +133,13 @@ public class Model extends Relatable implements StepConfig, Serializable {
     }
 
 
+    @XmlTransient
+    public List<RelationDefinition> getRelations() {
+        return relations;
+    }
+
+    @XmlTransient
+    public void setRelations(List<RelationDefinition> relations) {
+        this.relations = relations;
+    }
 }

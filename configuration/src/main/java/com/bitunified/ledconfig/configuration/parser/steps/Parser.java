@@ -89,7 +89,8 @@ public class Parser {
         profileL20.getDimension().width=4000;
         profileL20.setName("liniLED Aeris Profiel L20");
         profileL20.setMaxDimension(new Dimension(2750));
-        profileL20.setLeftSpace((100));
+        Margin margin=new Margin(400,null);
+        profileL20.setMargin(margin);
         profileL20.setLengthForCasting(new Dimension(25));
         profileL20.setCode("D");
         profileL20.setStep(1);
@@ -358,7 +359,7 @@ public class Parser {
         models.add(cableEntry);
         cableEntry.setName("Left side via end cap");
         cableEntry.setCode("A");
-        Margin margin = new Margin(10, 5);
+        margin = new Margin(10, 5);
         cableEntry.setMargins(margin);
         part = new NotExistingPart(cableEntry);
 

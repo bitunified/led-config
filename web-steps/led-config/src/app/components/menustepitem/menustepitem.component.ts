@@ -177,16 +177,17 @@ export class MenustepitemComponent implements OnInit {
 
   }
 
-  getSectionValueModelFromStep(stepIndex: number): string {
+  getKeyValueModelFromStep(stepIndex: number,propkey:string): string {
     let model: Model = this.productconfigService.productConfiguration.getModelFromStep(stepIndex);
 
-    console.info(model.properties);
-    for (let prop of model.properties) {
+    if (model.properties) {
+      for (let prop of model.properties) {
 
-      if (prop.key=='section'){
-        return prop.value.value;
+        if (prop.name == propkey) {
+          return prop.value;
+        }
+
       }
-
     }
   }
 

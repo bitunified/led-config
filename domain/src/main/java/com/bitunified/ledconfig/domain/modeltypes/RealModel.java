@@ -19,9 +19,9 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 
 @XmlSeeAlso({Profile.class, LedStrip.class, Cable.class, ComposedProduct.class, Accessoire.class, EndCap.class, Relatable.class,Covering.class})
 public class RealModel extends Model {
-    protected Dimension dimension = new Dimension(null, null);
+    private Dimension dimension = new Dimension(null, null);
 
-    protected Dimension maxDimension;
+    private Dimension maxDimension=new Dimension();
 
     private Margin margin = new Margin();
 
@@ -54,31 +54,8 @@ public class RealModel extends Model {
         return ToStringBuilder.reflectionToString(this);
     }
 
-    public void setLeftSpace(String leftSpace) {
-        if (this.margin == null) {
-            this.margin = new Margin();
-        }
-        this.margin.setLeft(Integer.parseInt(leftSpace));
-    }
 
-    public void setLeftSpace(Integer leftSpace) {
-        if (this.margin == null) {
-            this.margin = new Margin();
-        }
-        this.margin.setLeft(leftSpace);
-    }
 
-    public Integer getLeftSpace() {
-        return margin.getLeft();
-    }
-
-    public Integer getRightSpace() {
-        return margin.getRight();
-    }
-
-    public void setRightSpace(Integer rightSpace) {
-        this.margin.setRight(rightSpace);
-    }
 
     public Margin getMargin() {
         return margin;

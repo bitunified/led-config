@@ -7,6 +7,7 @@ import {Subscription} from "rxjs/Subscription";
 import {ProductConfiguration} from "../../domain/ProductConfiguration";
 import {Relations} from "../../domain/relations/Relations";
 import {Observable} from "rxjs/Rx";
+import {PriceCalculation} from "../../domain/server/PriceCalculation";
 
 @Component({
   selector: 'menusteps',
@@ -70,6 +71,11 @@ export class MenustepsComponent implements OnInit {
       }
       if (this.currentStep==this.stepsall.steps.length){
         console.info('finish');
+        let subscriptionProductPrice=this.productConfigService.sendProductConfigToServer();
+        subscriptionProductPrice.subscribe((productPrice)=>{
+          let productPriceCalculated:PriceCalculation=productPrice;
+          console.info(productPriceCalculated);
+        });
       }
     }
 

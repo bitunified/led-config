@@ -3,7 +3,7 @@ import {RelationDefinition} from "./relations/RelationDefinition";
 import {ModelTranslation} from "./ModelTranslation";
 import { deserialize,deserializeAs } from 'cerialize';
 import {ModelMargin} from "./ModelMargin";
-import {ModelProperty} from "./ModelProperty";
+import {ModelPropertyValue} from "./ModelPropertyValue";
 
 export class Model {
 
@@ -21,8 +21,8 @@ export class Model {
   @deserialize
   step:number;
 
-  @deserializeAs(ModelProperty)
-  properties:Array<ModelProperty>;
+  @deserializeAs(ModelPropertyValue)
+  properties:Array<ModelPropertyValue>;
 
   @deserializeAs(ModelTranslation)
   translations: ModelTranslation;

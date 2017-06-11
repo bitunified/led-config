@@ -9,6 +9,7 @@ public class DecoLedStrip extends LedStrip {
 
     public DecoLedStrip(){
         super();
+
     }
     public DecoLedStrip(Dimension dimension){
         super(dimension);

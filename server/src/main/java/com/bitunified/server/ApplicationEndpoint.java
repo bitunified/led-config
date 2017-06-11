@@ -10,9 +10,7 @@ import com.bitunified.ledconfig.domain.message.Message;
 import com.bitunified.ledconfig.domain.message.MessageStatus;
 import com.bitunified.ledconfig.parts.Part;
 import com.bitunified.server.message.ServerResponse;
-import com.bitunified.server.models.Models;
-import com.bitunified.server.models.PartModelCollector;
-import com.bitunified.server.models.Relations;
+import com.bitunified.server.models.*;
 import com.bitunified.server.service.StepService;
 import com.bitunified.server.steps.Steps;
 
@@ -27,19 +25,21 @@ import java.util.stream.Collectors;
 
 @Path("/engine")
 public class ApplicationEndpoint {
-    static Parser parser=null;
+    static Parser parser = null;
+
     public ApplicationEndpoint() {
 
-        if (parser==null){
+        if (parser == null) {
             parser = new Parser();
             parser.createParts();
 
         }
     }
+
     @GET
     @Path("/steps")
     @Produces(MediaType.APPLICATION_JSON)
-    public Steps getAllStepss(){
+    public Steps getAllStepss() {
         StepService stepService = new StepService();
 
         return stepService.getSteps(parser);
@@ -48,7 +48,7 @@ public class ApplicationEndpoint {
     @GET
     @Path("/models")
     @Produces(MediaType.APPLICATION_JSON)
-    public Models getAllModels(){
+    public Models getAllModels() {
         Models models = new Models();
         models.setModels(parser.getModels());
         return models;
@@ -57,13 +57,22 @@ public class ApplicationEndpoint {
     @GET
     @Path("/relations")
     @Produces(MediaType.APPLICATION_JSON)
-    public Relations getAllRelations(){
-        Relations relations=new Relations();
+    public Relations getAllRelations() {
+        Relations relations = new Relations();
         relations.setRelations(parser.getRelationDefinitions());
         return relations;
     }
 
 
+    @POST
+    @Path("/submitconfig")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public PriceCalculation input(ProductConfiguration config) {
+
+        PriceCalculation priceCalculation = new PriceCalculation();
+        priceCalculation.setTotalPrice(2000);
+        return priceCalculation;
+    }
 
     @POST
     @Path("/data")
@@ -88,7 +97,7 @@ public class ApplicationEndpoint {
 
                 result.setInstructions(configResult.getInstructions());
                 result.setParseSteps(configResult.getParseSteps());
-                if (isThereAnError(configResult,totalPrice)) {
+                if (isThereAnError(configResult, totalPrice)) {
                     result.setSuccess("false");
                     result.setTotalPrice(0d);
                 }
@@ -104,14 +113,14 @@ public class ApplicationEndpoint {
 
     }
 
-    private boolean isThereAnError(ConfigResult configResult,BigDecimal price) {
-        for (Message m:configResult.getMessages()){
-            if (m.getStatus()== MessageStatus.ERROR){
+    private boolean isThereAnError(ConfigResult configResult, BigDecimal price) {
+        for (Message m : configResult.getMessages()) {
+            if (m.getStatus() == MessageStatus.ERROR) {
                 return true;
             }
         }
-        for (ParseStep step:configResult.getParseSteps()){
-            if (step.isMantatory()&&(step.getModelResult()==null || step.getModelResult().getModel()==null || step.isError())){
+        for (ParseStep step : configResult.getParseSteps()) {
+            if (step.isMantatory() && (step.getModelResult() == null || step.getModelResult().getModel() == null || step.isError())) {
                 return true;
             }
         }

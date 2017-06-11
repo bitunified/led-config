@@ -11,6 +11,12 @@ public class Margin implements Serializable {
         this.left=left;
         this.right=right;
     }
+    public Margin(int left,Object o){
+        this.left=left;
+    }
+    public Margin(Object o,int right){
+        this.right=right;
+    }
     public Margin(){
 
     }

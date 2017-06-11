@@ -7,6 +7,7 @@ import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 import com.bitunified.ledconfig.domain.product.PCB.types.*;
 
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
 
 @XmlSeeAlso({HighPowerLedStrip.class, PhotonLedStrip.class, DecoLedStrip.class, PowerLedStrip.class, RGBLedStrip.class,RGBLedStrip.class})
 public class LedStrip extends RealModel {
@@ -15,6 +16,7 @@ public class LedStrip extends RealModel {
     public static final Property COLOR=new Property(COLOR_TYPE,"");
     public static final String KELVIN_TYPE = "kelvin";
     public static final int STEP = 3;
+    @XmlTransient
     public final Property KELVIN=new Property(KELVIN_TYPE,"");
 
     public LedStrip(){
@@ -23,7 +25,9 @@ public class LedStrip extends RealModel {
 
     public static final String SECTION_WIDTH = "section";
 
+    @XmlTransient
     public final Property SECTION=new Property(SECTION_WIDTH,null);
+
     public LedStrip(Dimension dimension) {
         super(dimension);
         this.setStep(STEP);
