@@ -17,8 +17,6 @@
 package com.bitunified.ledconfig;
 
 import com.bitunified.ledconfig.composedproduct.ComposedProduct;
-import com.bitunified.ledconfig.configuration.parser.steps.ParseStep;
-import com.bitunified.ledconfig.configuration.parser.steps.ParsedResult;
 import com.bitunified.ledconfig.configuration.parser.steps.Parser;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.instruction.InstructionMessage;
@@ -26,6 +24,8 @@ import com.bitunified.ledconfig.domain.message.Message;
 import com.bitunified.ledconfig.domain.product.ModelResult;
 import com.bitunified.ledconfig.parts.NotExistingPart;
 import com.bitunified.ledconfig.parts.Part;
+import com.bitunified.ledconfig.productconfiguration.ModelChosenStep;
+import com.bitunified.ledconfig.productconfiguration.ProductConfiguration;
 import org.kie.api.KieServices;
 import org.kie.api.event.rule.DebugAgendaEventListener;
 import org.kie.api.event.rule.DebugRuleRuntimeEventListener;
@@ -44,10 +44,10 @@ import java.util.*;
 public class LedConfig {
 
     public final void main(final String[] args) {
-        rules(args);
+        rules(null,null);
     }
 
-    public final ConfigResult rules(final String[] args) {
+    public final ProductConfigResult rules(final ProductConfiguration productConfigration, Parser parser) {
         // KieServices is the factory for all KIE services 
         KieServices ks = KieServices.Factory.get();
 
@@ -61,12 +61,12 @@ public class LedConfig {
 
         KnowledgeBuilder kBuilder =
                 KnowledgeBuilderFactory.newKnowledgeBuilder(kbConfig);
-        Parser parser=new Parser();
-        return execute(kc, parser.parse(args[0]));
+
+        return execute(kc, productConfigration,parser);
 
     }
 
-    public ConfigResult execute(KieContainer kc, ParsedResult parsedResult) {
+    public ProductConfigResult execute(KieContainer kc, ProductConfiguration productConfiguration, Parser parser) {
 
 
         // From the container, a session is created based on
@@ -90,31 +90,13 @@ public class LedConfig {
 
 
         Map<Integer,ModelResult> modelResults=new HashMap<>();
-        for (ParseStep step : parsedResult.getSteps()) {
 
-            List<Message> messagesInMap=messageMap.get(step.getStep());
-            if (messagesInMap==null){
-                messagesInMap=new ArrayList<>();
-            }
-
-            if (step.getModelResult() != null && step.getModelResult().getModel() != null) {
-
-                modelResults.put(step.getStep(),step.getModelResult());
-                messagesInMap.add(new Message(step.getModelResult().getModel().getName()));
-                messageMap.put(step.getStep(), messagesInMap);
-            } else {
-                messagesInMap.add(new Message(step.getErrorMessage()));
-                messageMap.put(step.getStep(), messagesInMap);
-                messageMap.put(step.getStep(), messagesInMap);
-            }
-
-        }
 
         ksession.setGlobal("messageMap", messageMap);
 
 
         Map<String,Part> parts = new HashMap<>();
-        for (Part part:parsedResult.getParts()){
+        for (Part part:parser.getParts()){
             parts.put(part.getId(),part);
         }
         ksession.setGlobal("parts",
@@ -132,9 +114,11 @@ public class LedConfig {
 
         // The application can insert facts into the session
 
-        for (Model model : parsedResult.getModels()) {
-            ksession.insert(model);
+        for (ModelChosenStep m: productConfiguration.getModelsForSteps()){
+            ksession.insert(m.getChosenModel());
         }
+
+
 
         ksession.fireAllRules();
 
@@ -147,7 +131,7 @@ public class LedConfig {
         for (Object model : sortedModels) {
             if (model instanceof Model && !(model instanceof ComposedProduct)) {
                 Model m = (Model) model;
-                if (m.getStep() != null && m.getName() != null) {
+                if (m.getStep() != null && m.getName() != null && messageMap.get(m.getStep())!=null) {
                     messageMap.get(m.getStep()).add(new Message(m));
                     for (Part p:parts.values()){
 
@@ -194,7 +178,7 @@ public class LedConfig {
         ksession.dispose();
         ksession.destroy();
 
-        return new ConfigResult(parsedResult.getSteps(),messages, messageMap, ksession.getObjects(),partCountList,instructions);
+        return new ProductConfigResult(new ArrayList<>(),messages, messageMap, ksession.getObjects(),partCountList,instructions);
 
     }
 

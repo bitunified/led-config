@@ -1,48 +1,70 @@
 import {ModelDimension} from "./ModelDimension";
 import {RelationDefinition} from "./relations/RelationDefinition";
 import {ModelTranslation} from "./ModelTranslation";
-import { deserialize,deserializeAs } from 'cerialize';
+import { serialize,deserialize,deserializeAs,serializeAs } from 'cerialize';
 import {ModelMargin} from "./ModelMargin";
 import {ModelPropertyValue} from "./ModelPropertyValue";
 
 export class Model {
 
+  @serialize
   @deserialize
-  public uuid:string;
+  typeClass:string;
 
+  @serialize
+  @deserialize
+  uuid:string;
+
+  @serialize
   @deserialize
   id:string;
+
+  @serialize
   @deserialize
   orientation: string;
+
+  @serialize
   @deserialize
   name:string;
+
+  @serialize
   @deserialize
   code:string;
+
+  @serialize
   @deserialize
   step:number;
 
+  @serializeAs(ModelPropertyValue)
   @deserializeAs(ModelPropertyValue)
   properties:Array<ModelPropertyValue>;
 
+  @serializeAs(ModelTranslation)
   @deserializeAs(ModelTranslation)
   translations: ModelTranslation;
 
+  @serializeAs(ModelDimension)
   @deserializeAs(ModelDimension)
   dimension: ModelDimension;
 
+  @serializeAs(ModelDimension)
   @deserializeAs(ModelDimension)
   maxDimension: ModelDimension;
 
+  @serializeAs(ModelMargin)
   @deserializeAs(ModelMargin)
   margin: ModelMargin;
 
+  @serializeAs(ModelDimension)
   @deserializeAs(ModelDimension)
   lengthForCasting: ModelDimension;
   lengthForCastingStr: string;
 
+  @serialize
   @deserialize
   leftSpace: number;
 
+  @serialize
   @deserialize
   rightSpace: number;
 

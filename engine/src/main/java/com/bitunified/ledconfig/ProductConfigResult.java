@@ -9,14 +9,14 @@ import org.drools.core.impl.StatefulKnowledgeSessionImpl;
 
 import java.util.*;
 
-public class ConfigResult {
+public class ProductConfigResult {
     private Set<Message> messages=new HashSet<>();
     private Map<Integer,List<Message>> messageMap=new HashMap<>();
     private List models=new ArrayList<StatefulKnowledgeSessionImpl.ObjectStoreWrapper>();
     private Map<Part,Double> partList;
     private List<InstructionMessage> instructions;
     private List<ParseStep> parseSteps;
-    public ConfigResult(List<ParseStep> steps, Set<Message> messages, Map<Integer, List<Message>> messageMap, Collection<?> objects, Map<Part, Double> partList, List<InstructionMessage> instructions) {
+    public ProductConfigResult(List<ParseStep> steps, Set<Message> messages, Map<Integer, List<Message>> messageMap, Collection<?> objects, Map<Part, Double> partList, List<InstructionMessage> instructions) {
         this.messages=messages;
         this.messageMap=messageMap;
         this.models.addAll(objects);

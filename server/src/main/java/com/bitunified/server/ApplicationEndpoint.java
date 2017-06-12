@@ -1,26 +1,21 @@
 package com.bitunified.server;
 
-import com.bitunified.ledconfig.ConfigResult;
+import com.bitunified.ledconfig.ProductConfigResult;
 import com.bitunified.ledconfig.LedConfig;
 import com.bitunified.ledconfig.PriceCalculator;
-import com.bitunified.ledconfig.configuration.parser.steps.ParseStep;
 import com.bitunified.ledconfig.configuration.parser.steps.Parser;
-import com.bitunified.ledconfig.domain.Model;
-import com.bitunified.ledconfig.domain.message.Message;
-import com.bitunified.ledconfig.domain.message.MessageStatus;
-import com.bitunified.ledconfig.parts.Part;
-import com.bitunified.server.message.ServerResponse;
-import com.bitunified.server.models.*;
+import com.bitunified.ledconfig.productconfiguration.Models;
+import com.bitunified.ledconfig.productconfiguration.PriceList;
+import com.bitunified.ledconfig.productconfiguration.ProductConfiguration;
+import com.bitunified.ledconfig.productconfiguration.Relations;
+import com.bitunified.ledconfig.productconfiguration.price.PriceCount;
 import com.bitunified.server.service.StepService;
-import com.bitunified.server.steps.Steps;
+import com.bitunified.ledconfig.productconfiguration.steps.Steps;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Path("/engine")
@@ -67,64 +62,28 @@ public class ApplicationEndpoint {
     @POST
     @Path("/submitconfig")
     @Consumes(MediaType.APPLICATION_JSON)
-    public PriceCalculation input(ProductConfiguration config) {
+    public PriceList submitConfiguration(ProductConfiguration config) {
 
-        PriceCalculation priceCalculation = new PriceCalculation();
-        priceCalculation.setTotalPrice(2000);
-        return priceCalculation;
-    }
-
-    @POST
-    @Path("/data")
-    @Produces(MediaType.APPLICATION_JSON)
-    public ServerResponse input(@FormParam("productcode") String number) {
         LedConfig ledConfig = new LedConfig();
+        ProductConfigResult productConfigResult = ledConfig.rules(config, parser);
+
+        PriceList priceList = new PriceList();
+
         PriceCalculator priceCalculator = new PriceCalculator();
-        ServerResponse result = new ServerResponse("true");
-        if (number != null && number.length() > 4) {
-            try {
-                ConfigResult configResult = ledConfig.rules(new String[]{number});
-                List<String> clientMessages = new ArrayList<String>();
-                BigDecimal totalPrice = priceCalculator.calculate(configResult);
-                for (Message message : configResult.getMessages()) {
-
-                    clientMessages.add(message.getMessage());
-                }
-                result.setMessages(new HashSet<>(configResult.getMessages()));
-                result.setMessageMap(configResult.getMessageMap());
-                result.setTotalPrice(totalPrice.doubleValue());
-                result.addPartList(configResult.getPartList());
-
-                result.setInstructions(configResult.getInstructions());
-                result.setParseSteps(configResult.getParseSteps());
-                if (isThereAnError(configResult, totalPrice)) {
-                    result.setSuccess("false");
-                    result.setTotalPrice(0d);
-                }
-
-            } finally {
-                ledConfig.dispose();
+        BigDecimal price=priceCalculator.calculate(productConfigResult);
+        List<PriceCount> prices = productConfigResult.getPartList().entrySet().stream().map(item -> {
+            if (item.getKey() != null && item.getValue() != null) {
+                PriceCount pc = new PriceCount();
+                pc.setCount(item.getValue());
+                pc.setPart(item.getKey());
+                return pc;
             }
-        } else {
-            result = new ServerResponse("no");
-        }
-        return result;
+            return null;
+        }).collect(Collectors.toList());
+        priceList.setPrices(prices);
 
-
-    }
-
-    private boolean isThereAnError(ConfigResult configResult, BigDecimal price) {
-        for (Message m : configResult.getMessages()) {
-            if (m.getStatus() == MessageStatus.ERROR) {
-                return true;
-            }
-        }
-        for (ParseStep step : configResult.getParseSteps()) {
-            if (step.isMantatory() && (step.getModelResult() == null || step.getModelResult().getModel() == null || step.isError())) {
-                return true;
-            }
-        }
-        return price.compareTo(BigDecimal.ZERO) <= 0;
+        priceList.setTotalPrice(price.doubleValue());
+        return priceList;
     }
 
 

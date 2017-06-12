@@ -62,26 +62,26 @@ rule "Totale lengte berekening" salience 1
 
        Mounting(mountingLeft:margins.left!=null, mountingRight:margins.right!=null)
        CableEntry(cableEntryLeft:margins.left!=null,cableEntryRight:margins.right!=null)
-       LedStrip(ledstripLength:dimension.width!=null)
-        cp:ComposedProduct(dimension.width==null)
+       LedStrip(ledstripLength:dimension.getWidth()!=null)
+       cp:ComposedProduct(dimension.getWidth()==null)
 
     then
-        int totalLength=(int)mountingLeft+(int)mountingRight+(int)ledstripLength+(int)cableEntryLeft+(int)cableEntryRight;
-
-        //Dit activeert andere regels die op basis van de productlengte berekeningen maken.
-        modify(cp){
-            getDimension().width=totalLength
-        }
-
-        messages.add(new Message("Totale lengte automatisch berekend: "+totalLength+" mm.",8,MessageStatus.INFO));
-        System.out.println("Totale lengte automatisch berekend"+totalLength);
+//        int totalLength=(int)mountingLeft+(int)mountingRight+(int)ledstripLength+(int)cableEntryLeft+(int)cableEntryRight;
+//
+//        //Dit activeert andere regels die op basis van de productlengte berekeningen maken.
+//        modify(cp){
+//            getDimension().getWidth()=totalLength
+//        }
+//
+//        messages.add(new Message("Totale lengte automatisch berekend: "+totalLength+" mm.",8,MessageStatus.INFO));
+//        System.out.println("Totale lengte automatisch berekend"+totalLength);
 end
 
 rule "Totale lengte minimaal"
     when
         afm:LedStrip(afmetingen:dimension)
-        exists(LedStrip(dimension.width!=null))
-        exists(ComposedProduct(dimension.width!=null,((int)dimension.width)<(((int)afm.dimension.width+15))))
+        exists(LedStrip(dimension.getWidth()!=null))
+        exists(ComposedProduct(dimension.getWidth()!=null,((int)dimension.getWidth())<(((int)afm.dimension.getWidth()+15))))
 
     then
         messages.add(new Message("Totale lengte is groter dan ledstrip lengte inclusief marges.",8,MessageStatus.ERROR));
@@ -91,9 +91,9 @@ end
 rule "Totale lengte is groter dan maximale profiel lengte"
     when
 
-        composedProduct:(ComposedProduct(dimension.width!=null))
+        composedProduct:(ComposedProduct(dimension.getWidth()!=null))
         profile:Profile(maxDimension!=null)
-        eval(composedProduct.getDimension().width>profile.getMaxDimension().width)
+        eval(composedProduct.getDimension().getWidth()>profile.getMaxDimension().getWidth())
     then
         messages.add(new Message("Totale lengte is groter dan maximale profiel lengte.",0,MessageStatus.ERROR));
         System.out.println("TL groter dan maximale profiel lengte");
@@ -103,15 +103,15 @@ end
 rule "Opgegeven lengte is kleiner dan berekende lengte"
     when
 
-        composedProduct:(ComposedProduct(dimension.width!=null))
+        composedProduct:(ComposedProduct(dimension.getWidth()!=null))
           Mounting(mountingLeft:margins.left!=null, mountingRight:margins.right!=null)
                CableEntry(cableEntryLeft:margins.left!=null,cableEntryRight:margins.right!=null)
-               LedStrip(ledstripLength:dimension.width!=null)
+               LedStrip(ledstripLength:dimension.getWidth()!=null)
 
-               eval(composedProduct.getDimension().width<((int)mountingLeft+(int)mountingRight+(int)ledstripLength+(int)cableEntryLeft+(int)cableEntryRight))
+               eval(composedProduct.getDimension().getWidth()<((int)mountingLeft+(int)mountingRight+(int)ledstripLength+(int)cableEntryLeft+(int)cableEntryRight))
     then
         int lengthCalc=((int)mountingLeft+(int)mountingRight+(int)ledstripLength+(int)cableEntryLeft+(int)cableEntryRight);
-        messages.add(new Message("Opgegeven lengte "+composedProduct.getDimension().width+" mm is kleiner dan berekende lengte "+lengthCalc,8,MessageStatus.ERROR));
+        messages.add(new Message("Opgegeven lengte "+composedProduct.getDimension().getWidth()+" mm is kleiner dan berekende lengte "+lengthCalc,8,MessageStatus.ERROR));
         System.out.println("Opgegeven lengte is kleiner dan berekende lengte.");
 end
 
@@ -130,7 +130,7 @@ end
 rule "Minimale lengte groter dan section lengte"
     when
 
-        LedStrip(sect:getProperty(LedStrip.SECTION_WIDTH),sect!=null,dimension.width<sect.value);
+        LedStrip(sect:getProperty(LedStrip.SECTION_WIDTH),sect!=null,dimension.getWidth()<sect.value);
     then
         messages.add(new Message("Lengte ledstrip kan niet kleiner zijn dan sectie lengte."));
 end
@@ -291,13 +291,13 @@ rule "Actie: Profiel L20 lengte"
        when
 
             exists(Profile(name matches ".*L20.*"));
-           composedproduct:ComposedProduct(dimension.width!=null)
+           composedproduct:ComposedProduct(dimension.getWidth()!=null)
            profile:Profile(castingLength:lengthForCasting.width)
            mountingLeft:Mounting(leftMountingLength:margins.left,margins!=null,leftMountingLength!=null)
            mountingRight:Mounting(rightMountingLength:margins.right,margins!=null,margins.right!=null)
        then
          //Profiel lengte
-         double length=(((composedproduct.getDimension().width-((int)mountingLeft.getMargins().getLeft()))+profile.getLengthForCasting().width)/4000d);
+         double length=(((composedproduct.getDimension().getWidth()-((int)mountingLeft.getMargins().getLeft()))+profile.getLengthForCasting().getWidth())/4000d);
          Part part=SerializationUtils.clone((Part)parts.get("10713"));
          PartListHelper.addToPartCountList(partCountList,part,length);
          System.out.println("Profiel lengte L20:"+length);
@@ -306,14 +306,14 @@ rule "Profiel L30 lengte"
   no-loop true
        when
             exists(Profile(name matches ".*L30.*"));
-           (composedproduct:ComposedProduct(totalLength:dimension.width))
+           (composedproduct:ComposedProduct(totalLength:dimension.getWidth()))
 
            profile:Profile(castingLength:lengthForCasting.width)
            mountingLeft:Mounting(leftMountingLength:margins.left,margins!=null,leftMountingLength!=null)
            mountingRight:Mounting(rightMountingLength:margins.right,margins!=null,margins.right!=null)
        then
          //Profiel lengte
-         int length=-1*Math.floorDiv(-1*(composedproduct.getDimension().width-((int)mountingLeft.getMargins().getLeft()))+profile.getLengthForCasting().width,4000);
+         int length=-1*Math.floorDiv(-1*(composedproduct.getDimension().getWidth()-((int)mountingLeft.getMargins().getLeft()))+profile.getLengthForCasting().getWidth(),4000);
 
             Part part=SerializationUtils.clone((Part)parts.get("10717"));
             PartListHelper.addToPartCountList(partCountList,part,Double.valueOf(length));
@@ -382,7 +382,7 @@ rule "Profiel L30 lengte"
 
 rule "Actie: Ledstrip toevoegen"
     when
-     ledstrip:LedStrip( sect:getProperty(LedStrip.SECTION_WIDTH),sect!=null,ledstripLengte:dimension.width)
+     ledstrip:LedStrip( sect:getProperty(LedStrip.SECTION_WIDTH),sect!=null,ledstripLengte:dimension.getWidth())
 
     then
     Part part=null;
@@ -406,10 +406,10 @@ rule "Led strip section modulo"
 
     when
 
-     ledstrip:LedStrip( sect:getProperty(LedStrip.SECTION_WIDTH),sect!=null,(ledstrip.dimension.width % sect.value)!=0)
+     ledstrip:LedStrip( sect:getProperty(LedStrip.SECTION_WIDTH),sect!=null,(ledstrip.dimension.getWidth() % sect.value)!=0)
     then
 
-    messages.add(new Message("Ledstrip lengte "+ledstrip.getDimension().width+" moet een veelvoud zijn van sectielengte: "+ledstrip.getProperty(LedStrip.SECTION_WIDTH).getValue(),7,MessageStatus.ERROR));
+    messages.add(new Message("Ledstrip lengte "+ledstrip.getDimension().getWidth()+" moet een veelvoud zijn van sectielengte: "+ledstrip.getProperty(LedStrip.SECTION_WIDTH).getValue(),7,MessageStatus.ERROR));
 
 end
 rule "Actie: Aantal clips is evenredig aan lengte L20"
@@ -418,9 +418,9 @@ salience -1
            when
 
                exists(Profile(name matches ".*L20.*")) and exists(Clip())
-               composedproduct:ComposedProduct(dimension.width!=null);
+               composedproduct:ComposedProduct(dimension.getWidth()!=null);
            then
-            int c=(int)composedproduct.getDimension().width/500;
+            int c=(int)composedproduct.getDimension().getWidth()/500;
             if (c<2){
                 c=2;
             }
@@ -438,10 +438,10 @@ end
 
                    exists(Profile(name matches ".*L30.*"));
                    exists(Clip())
-                   composedproduct:ComposedProduct(dimension.width!=null);
+                   composedproduct:ComposedProduct(dimension.getWidth()!=null);
 
                then
- int c=(int)composedproduct.getDimension().width/500;
+ int c=(int)composedproduct.getDimension().getWidth()/500;
             if (c<2){
                 c=2;
             }
@@ -458,10 +458,10 @@ no-loop true
     when
        exists(Profile(name matches ".*20.*"));
        exists(CableChannel())
-       composedproduct:ComposedProduct(dimension.width!=null);
-       eval(((int)((composedproduct.getDimension().width)/1000)<=(int)4) && ((int)((composedproduct.getDimension().width)/1000)>(int)0));
+       composedproduct:ComposedProduct(dimension.getWidth()!=null);
+       eval(((int)((composedproduct.getDimension().getWidth())/1000)<=(int)4) && ((int)((composedproduct.getDimension().getWidth())/1000)>(int)0));
     then
-       Part part=SerializationUtils.clone((Part)parts.get(((int)10749+(int)(Math.ceil((double)(composedproduct.getDimension().width)/1000d)))+""));
+       Part part=SerializationUtils.clone((Part)parts.get(((int)10749+(int)(Math.ceil((double)(composedproduct.getDimension().getWidth())/1000d)))+""));
        PartListHelper.addToPartCountList(partCountList,part,1d);
        System.out.println("Kabelgoot toegevoegd voor L20/H20");
 
@@ -472,11 +472,11 @@ no-loop true
     when
        exists(Profile(name matches ".*30.*"));
        exists(CableChannel())
-       composedproduct:ComposedProduct(dimension.width!=null);
-       eval(((int)((composedproduct.getDimension().width)/1000)<=(int)4) && ((int)((composedproduct.getDimension().width)/1000)>(int)0));
+       composedproduct:ComposedProduct(dimension.getWidth()!=null);
+       eval(((int)((composedproduct.getDimension().getWidth())/1000)<=(int)4) && ((int)((composedproduct.getDimension().getWidth())/1000)>(int)0));
 
     then
-       Part part=SerializationUtils.clone((Part)parts.get(((int)10753+(int)(Math.ceil((double)(composedproduct.getDimension().width)/1000d)))+""));
+       Part part=SerializationUtils.clone((Part)parts.get(((int)10753+(int)(Math.ceil((double)(composedproduct.getDimension().getWidth())/1000d)))+""));
        PartListHelper.addToPartCountList(partCountList,part,1d);
        System.out.println("Kabelgoot toegevoegd voor L30/H30");
 
@@ -489,7 +489,7 @@ no-loop true
     when
        profile:(Profile())
        resin:(Resin())
-       composedproduct:ComposedProduct(dimension.width!=null)
+       composedproduct:ComposedProduct(dimension.getWidth()!=null)
     then
         Map<Orientation,PartMatchHelper.PartMostWanted> result=PartMatchHelper.match(resin.getClass(),null,profile);
         Part part=null;
@@ -510,12 +510,12 @@ no-loop true
 
        not(exists(HighPowerLedStrip()))
        ledstrip:LedStrip()
-       composedproduct:ComposedProduct(dimension.width!=null)
+       composedproduct:ComposedProduct(dimension.getWidth()!=null)
     then
-       double length=ledstrip.getDimension().width/50000d;
+       double length=ledstrip.getDimension().getWidth()/50000d;
   Part part=SerializationUtils.clone((Part)parts.get("60000"));
                            PartListHelper.addToPartCountList(partCountList,part,length);
-    System.out.println("Tape length: "+length+" "+ledstrip.getDimension().width);
+    System.out.println("Tape length: "+length+" "+ledstrip.getDimension().getWidth());
 end
 
 rule "Actie: Tube door eindkap toevoegen kabel."
@@ -572,10 +572,10 @@ rule "Actie: Verpakking toevoegen"
   no-loop true
        when
             eval(true)
-            composedproduct:ComposedProduct(dimension.width!=null)
+            composedproduct:ComposedProduct(dimension.getWidth()!=null)
 
        then
-        double length=(composedproduct.getDimension().width/1000d)+0.25d;
+        double length=(composedproduct.getDimension().getWidth()/1000d)+0.25d;
         Part part=SerializationUtils.clone((Part)parts.get("VERPAKKING"));
         PartListHelper.addToPartCountList(partCountList,part,length);
         System.out.println("Verpakking toevoegd.");
@@ -586,13 +586,13 @@ no-loop true
 salience -9
     when
         Mounting(mountingLeft:margins.left!=null, mountingRight:margins.right!=null)
-        cp:ComposedProduct(dimension.width!=null)
-        profile:Profile(castingLength:lengthForCasting.width!=null)
+        cp:ComposedProduct(dimension.getWidth()!=null)
+        profile:Profile(castingLength:lengthForCasting.getWidth()!=null)
 
     then
-        int lengthBeforeCasting=cp.getDimension().width-((Integer)mountingLeft+(Integer)mountingRight+profile.getLengthForCasting().width);
-        int lengthAfterCasting=cp.getDimension().width-((Integer)mountingRight);
-        int lengthEnd=cp.getDimension().width;
+        int lengthBeforeCasting=cp.getDimension().getWidth()-((Integer)mountingLeft+(Integer)mountingRight+profile.getLengthForCasting().getWidth());
+        int lengthAfterCasting=cp.getDimension().getWidth()-((Integer)mountingRight);
+        int lengthEnd=cp.getDimension().getWidth();
         instructions.add(new InstructionMessage("Zaaglengte profiel (voor gieten): "+lengthBeforeCasting+" mm"));
         instructions.add(new InstructionMessage("Zaaglengte profiel na gieten (evt. incl. linker eindkap): "+lengthAfterCasting+" mm"));
         instructions.add(new InstructionMessage("Eindlengte profiel bij levereing (evt. incl. eindkap of eindkappen): "+lengthEnd+" mm"));
@@ -610,8 +610,8 @@ salience -10
         cp:ComposedProduct()
 
     then
-        System.out.println("Totale lengte LedStrip:"+ls.getDimension().width);
-        System.out.println("Totale lengte:"+cp.getDimension().width);
+        System.out.println("Totale lengte LedStrip:"+ls.getDimension().getWidth());
+        System.out.println("Totale lengte:"+cp.getDimension().getWidth());
         System.out.println("Margins mounting:"+mt.getMargins());
         System.out.println("Margins CableEntry:"+ce.getMargins());
 

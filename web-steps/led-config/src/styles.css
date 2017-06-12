@@ -1,2 +1,12 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+.companyFooter {
+  font-size: xx-small;
+  font-family: Arial, serif;
+  display: block;
+  margin: 0 auto 0 auto;
+  bottom: 10px;
+  width: 90%;
+  position: absolute;
+}

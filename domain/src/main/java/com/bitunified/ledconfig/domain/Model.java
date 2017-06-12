@@ -4,8 +4,14 @@ package com.bitunified.ledconfig.domain;
 import com.bitunified.ledconfig.domain.I18N.Locale;
 import com.bitunified.ledconfig.domain.modeltypes.ConfigurationModel;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
+import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
+import com.bitunified.ledconfig.domain.product.cover.types.Cap;
+import com.bitunified.ledconfig.domain.product.cover.types.Resin;
+import com.bitunified.ledconfig.domain.product.profile.Profile;
 import com.bitunified.ledconfig.domain.relation.RelationDefinition;
 import com.bitunified.ledconfig.parts.Relatable;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.xml.bind.annotation.XmlSeeAlso;
@@ -15,6 +21,16 @@ import java.io.Serializable;
 import java.util.*;
 
 @XmlSeeAlso({RealModel.class, ConfigurationModel.class})
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "typeClass")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = RealModel.class),
+        @JsonSubTypes.Type(value = Profile.class),
+        @JsonSubTypes.Type(value = Cap.class),
+        @JsonSubTypes.Type(value = Resin.class),
+        @JsonSubTypes.Type(value = LedStrip.class)
+})
 public class Model extends Relatable implements StepConfig, Serializable {
 
 

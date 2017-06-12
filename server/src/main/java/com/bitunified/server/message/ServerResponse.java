@@ -75,14 +75,7 @@ public class ServerResponse {
         this.partList = partList;
     }
 
-    public void addPartList(Map<Part, Double> partList) {
-        for (Part p : partList.keySet()) {
-            if (p != null && p.getPrice() != null) {
-                this.partList.add(new PartCount( p,partList.get(p)));
-            }
-        }
 
-    }
 
     public List<InstructionMessage> getInstructions() {
         return instructions;

@@ -1,4 +1,4 @@
-package com.bitunified.server.models;
+package com.bitunified.ledconfig.productconfiguration;
 
 
 import com.bitunified.ledconfig.domain.Model;
@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Models {
 
-    private List<Model> models = new ArrayList<>();
+    private List<Model> models = new ArrayList<Model>();
 
     public List<Model> getModels() {
         return models;

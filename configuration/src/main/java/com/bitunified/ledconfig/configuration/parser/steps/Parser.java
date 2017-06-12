@@ -7,6 +7,7 @@ import com.bitunified.ledconfig.configuration.csvimport.Importer;
 import com.bitunified.ledconfig.configuration.parser.steps.types.*;
 import com.bitunified.ledconfig.domain.*;
 import com.bitunified.ledconfig.domain.I18N.Locale;
+import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 import com.bitunified.ledconfig.domain.product.ModelResult;
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 import com.bitunified.ledconfig.domain.product.PCB.types.*;
@@ -19,6 +20,7 @@ import com.bitunified.ledconfig.domain.product.cover.Covering;
 import com.bitunified.ledconfig.domain.product.cover.types.*;
 import com.bitunified.ledconfig.domain.product.mounting.*;
 import com.bitunified.ledconfig.domain.product.profile.Profile;
+import com.bitunified.ledconfig.domain.product.profile.ProfileL20;
 import com.bitunified.ledconfig.domain.relation.RelationDefinition;
 import com.bitunified.ledconfig.domain.relation.RelationState;
 import com.bitunified.ledconfig.parts.NotExistingPart;
@@ -85,8 +87,8 @@ public class Parser {
         //Importer importer=new Importer();
         //parts=importer.importerDozer();
 
-        Profile profileL20 = new Profile(new Dimension(null));
-        profileL20.getDimension().width=4000;
+        ProfileL20 profileL20 = new ProfileL20(new Dimension(null));
+        profileL20.getDimension().setWidth(4000);
         profileL20.setName("liniLED Aeris Profiel L20");
         profileL20.setMaxDimension(new Dimension(2750));
         Margin margin=new Margin(400,null);
@@ -215,7 +217,7 @@ public class Parser {
         capClear.setName("liniLED® Aeris Afdekkap");
         capClear.setTranslations(Locale.nl, capClear.getName());
         capClear.setTranslations(Locale.en, "liniLED® Aeris Cap");
-        capClear.getDimension().width=100;
+        capClear.getDimension().setWidth(100);
         capClear.setCode("R");
         relationDefinitionL20.addModel(capClear);
 

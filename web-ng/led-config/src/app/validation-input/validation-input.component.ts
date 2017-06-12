@@ -3,7 +3,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {ProductcodeService} from "../services/productcode.service";
 import {Subscription} from "rxjs";
 import {ValidationServiceService} from "../services/validation-service.service";
-import {Serverresponse} from "../domain/serverresponse";
+
 
 export const VALIDATION_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,

@@ -16,6 +16,7 @@ import {Relations} from "./domain/relations/Relations";
 import {ModelDimension} from "./domain/ModelDimension";
 import {ModelMargin} from "./domain/ModelMargin";
 import {ModelTranslation} from "./domain/ModelTranslation";
+import {PriceCalculation} from "./domain/server/PriceCalculation";
 
 @Component({
   selector: 'app-root',
@@ -29,12 +30,19 @@ export class AppComponent implements OnInit,OnDestroy {
   steps:Observable<StepsModel>;
   productcode:string;
   subscription: Subscription;
+  subscriptionPriceCalcution: Subscription;
   relations:Observable<Relations>;
+  priceCalculation:PriceCalculation;
 
-  constructor(private modelService:ModelserviceService,private stepService:StepsService,productcodeService:ProductcodeService,private relationsService:RelationService) {
+  constructor(private modelService:ModelserviceService,private stepService:StepsService,productcodeService:ProductcodeService,private relationsService:RelationService,private productConfiguration:ProductconfigurationService) {
     this.subscription = productcodeService.productcodeSource$.subscribe(
       res => {
         this.productcode = res.getCode();
+      });
+
+    this.subscriptionPriceCalcution = productConfiguration.priceCalcSource$.subscribe(
+      res => {
+        this.priceCalculation=res;
       });
   }
 
@@ -54,7 +62,11 @@ export class AppComponent implements OnInit,OnDestroy {
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.subscriptionPriceCalcution.unsubscribe();
   }
 
+  backToConfig(){
+    this.priceCalculation=null;
+  }
 
 }

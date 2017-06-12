@@ -1,73 +1,53 @@
 package com.bitunified.ledconfig;
 
+import com.bitunified.ledconfig.configuration.parser.steps.Parser;
+import com.bitunified.ledconfig.domain.product.profile.ProfileL20;
+import com.bitunified.ledconfig.productconfiguration.ModelChosenStep;
+import com.bitunified.ledconfig.productconfiguration.ProductConfiguration;
 import org.junit.Ignore;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
 @Ignore
 public class LedConfigTest {
 
+    static Parser parser = null;
 
+    public LedConfigTest() {
+
+        if (parser == null) {
+            parser = new Parser();
+            parser.createParts();
+
+        }
+    }
     //CABDD1473000b
 
     @Test
     public void testConfig1() {
-        String[] codes = new String[]{
-                "DEHUABD2000a"
-                //"AGDR11302000300a"};
-        };
-        for (String code : codes) {
-            execute(code);
-        }
+        ProductConfiguration productConfiguration = new ProductConfiguration();
+        List<ModelChosenStep> steps = new ArrayList<>();
+        ModelChosenStep modelstep=new ModelChosenStep();
+        ProfileL20 l20=new ProfileL20();
+
+        modelstep.setChosenModel(l20);
+
+        steps.add(modelstep);
+        productConfiguration.setModelsForSteps(steps);
+        execute(productConfiguration);
     }
 
-    private void execute(String code) {
-        String[] args = new String[]{code};
+    private void execute(ProductConfiguration productConfiguration) {
         LedConfig ledConfig = new LedConfig();
-        ConfigResult result = ledConfig.rules(args);
+
+        ProductConfigResult result = ledConfig.rules(productConfiguration,parser);
         System.out.println(result.getMessages());
         System.out.println(result.getModels());
     }
 
-    @Test
-    public void test_Cable_mono_not_with_RGB() {
-        String[] args = new String[]{"DERPKBC02000230b"};
-        LedConfig ledConfig = new LedConfig();
-        ConfigResult result = ledConfig.rules(args);
-        System.out.println(result);
 
-        result.getMessages().stream().forEach(f-> {
-                    System.out.println(f.getMessage());
-                    assertEquals("Check error", "Kabel met mono connector kan niet in combinatie met RGB Ledstrip.", f.getMessage());
-                }
-        );
-    }
-
-    @Test
-    public void test_Warning_Not_Diffuse() {
-        // 1. Laag profiel (L20/L30)
-        // 2. Diffuse lage kap/Diffuse ingegoten
-        // 3. Deco, Power, Photon of RGB PCB
-        String[] args = new String[]{"DDDGKBC02000230b"};
-        LedConfig ledConfig = new LedConfig();
-        ConfigResult result = ledConfig.rules(args);
-
-        result.getMessages().stream().forEach(f-> {
-                    System.out.println(f.getMessage());
-                    assertEquals("Check error", "Deco,Power, HP ledstrip niet mogelijk voor ingieten.", f.getMessage());
-                }
-        );
-        assertEquals("Check # messages",1,result.getMessages().size());
-        args = new String[]{"DLDGKBC02000230b"};
-        ledConfig = new LedConfig();
-        result = ledConfig.rules(args);
-
-        result.getMessages().stream().forEach(f-> {
-                    System.out.println(f.getMessage());
-                    assertEquals("Check error", "Deco,Power, HP ledstrip niet mogelijk voor ingieten.", f.getMessage());
-                }
-        );
-        assertEquals("Check # messages",1,result.getMessages().size());
-    }
 }

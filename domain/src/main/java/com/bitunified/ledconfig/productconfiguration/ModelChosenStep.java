@@ -1,14 +1,15 @@
-package com.bitunified.server.models;
+package com.bitunified.ledconfig.productconfiguration;
 
 
-import com.bitunified.ledconfig.domain.modeltypes.RealModel;
-import com.bitunified.server.steps.Step;
+import com.bitunified.ledconfig.domain.Model;
+import com.bitunified.ledconfig.productconfiguration.steps.Step;
+
 
 public class ModelChosenStep {
 
 
     private Step step;
-    private RealModel chosenModel;
+    private Model chosenModel;
     private int modelValue;
 
     public int getModelValue() {
@@ -19,11 +20,11 @@ public class ModelChosenStep {
         this.modelValue = modelValue;
     }
 
-    public RealModel getChosenModel() {
+    public Model getChosenModel() {
         return chosenModel;
     }
 
-    public void setChosenModel(RealModel chosenModel) {
+    public void setChosenModel(Model chosenModel) {
         this.chosenModel = chosenModel;
     }
 

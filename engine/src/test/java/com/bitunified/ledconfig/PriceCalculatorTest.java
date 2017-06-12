@@ -14,12 +14,12 @@ public class PriceCalculatorTest {
     @Ignore
     @Test
     public void test(){
-        PriceCalculator calculator=new PriceCalculator();
-        String[] args=new String[]{"CAGDR11102000500b"};
-        LedConfig ledConfig=new LedConfig();
-        ConfigResult result=ledConfig.rules(args);
-
-        BigDecimal total=calculator.calculate(result);
-        System.out.println(total);
+//        PriceCalculator calculator=new PriceCalculator();
+//        String[] args=new String[]{"CAGDR11102000500b"};
+//        LedConfig ledConfig=new LedConfig();
+//        ProductConfigResult result=ledConfig.rules(args);
+//
+//        BigDecimal total=calculator.calculate(result);
+//        System.out.println(total);
     }
 }

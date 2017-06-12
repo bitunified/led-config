@@ -9,19 +9,20 @@
   </md-sidenav>
 
   <md-toolbar color="primary">
-    <button class="app-icon-button" (click)="sidenav.toggle()">
-      <i class="material-icons app-toolbar-menu">menu</i>
-    </button>
 
     Aeris Configurator 3.0 - Step by step
-    <div class="small-product-code">Productcode: {{productcode}}</div>
+    <div class="small-product-code" *ngIf="productcode">Productcode: {{productcode}}</div>
     <span class="app-toolbar-filler"></span>
     <button md-button (click)="isDarkTheme = !isDarkTheme"></button>
   </md-toolbar>
 
   <div class="app-content">
-    <md-card>
+    <md-card *ngIf="priceCalculation==null">
       <menusteps [steps]="steps" [relations]="relations"></menusteps>
+    </md-card>
+    <md-card *ngIf="priceCalculation!=null">
+     <pricecalculation [priceCalculation]="priceCalculation"></pricecalculation>
+      <button md-raised-button (click)="backToConfig()">Back</button>
     </md-card>
   </div>
 

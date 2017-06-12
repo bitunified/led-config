@@ -1,4 +1,4 @@
-package com.bitunified.server.models;
+package com.bitunified.ledconfig.productconfiguration;
 
 
 import java.util.ArrayList;

@@ -10,13 +10,15 @@ import { ReactiveFormsModule} from '@angular/forms';
 import { MenustepitemComponent } from './components/menustepitem/menustepitem.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import {FilterModel} from "./pipes/FilterModel";
+import { PricecalculationComponent } from './components/pricecalculation/pricecalculation.component';
 @NgModule({
   declarations: [
     AppComponent,
     MenustepsComponent,
     MenustepitemComponent,
     NotificationComponent,
-    FilterModel
+    FilterModel,
+    PricecalculationComponent
   ],
   imports: [
     BrowserModule,

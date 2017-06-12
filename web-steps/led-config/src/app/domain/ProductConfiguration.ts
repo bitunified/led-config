@@ -1,9 +1,11 @@
 import {ModelChosenStep} from "./ModelChosenStep";
 import {Model} from "./Model";
 import {StepModel} from "./StepModel";
+import { serializeAs } from 'cerialize';
 export class ProductConfiguration {
 
-  modelsForSteps: Array<ModelChosenStep> = [];
+  @serializeAs(ModelChosenStep)
+  public modelsForSteps: Array<ModelChosenStep> = [];
 
   containsStep(step: number) {
     let found: boolean = false;

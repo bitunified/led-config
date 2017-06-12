@@ -1,4 +1,4 @@
-package com.bitunified.server.steps;
+package com.bitunified.ledconfig.productconfiguration.steps;
 
 import com.bitunified.ledconfig.domain.Model;
 
@@ -10,22 +10,24 @@ public class Step {
     private StepType type;
     private List<Model> models;
 
+    private Integer modelValue;
+
     public Step() {
 
     }
 
-    public Step(Integer stepindex,String description, List<Model> models, StepType type) {
+    public Step(Integer stepindex, String description, List<Model> models, StepType type) {
         this.description = description;
         this.models = models;
         this.type = type;
-        this.stepindex=stepindex;
+        this.stepindex = stepindex;
     }
 
-    public Step(Integer stepindex,String description, List<Model> models) {
+    public Step(Integer stepindex, String description, List<Model> models) {
         this.description = description;
         this.models = models;
         this.type = StepType.VALUES;
-        this.stepindex=stepindex;
+        this.stepindex = stepindex;
     }
 
     public List<Model> getModels() {
@@ -58,5 +60,13 @@ public class Step {
 
     public void setStepindex(Integer stepindex) {
         this.stepindex = stepindex;
+    }
+
+    public Integer getModelValue() {
+        return modelValue;
+    }
+
+    public void setModelValue(Integer modelValue) {
+        this.modelValue = modelValue;
     }
 }
