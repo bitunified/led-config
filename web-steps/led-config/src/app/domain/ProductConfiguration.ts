@@ -10,11 +10,12 @@ export class ProductConfiguration {
   containsStep(step: number) {
     let found: boolean = false;
     if (step) {
-      this.modelsForSteps.forEach(function (i: ModelChosenStep) {
-        if (i.step && i.step.stepindex == step) {
+      for (let i of this.modelsForSteps) {
+        if ((i.step && i.step.stepindex == step) || (i.skipped && i.step.skip)) {
           found = true;
+          break;
         }
-      });
+      }
 
     }
 
@@ -47,23 +48,31 @@ export class ProductConfiguration {
   }
 
   assignModel(step: StepModel, model: Model, value: number) {
-    let found: boolean = false;
+    let found: ModelChosenStep = null;
     if (this.modelsForSteps != undefined) {
-      this.modelsForSteps.forEach(function (i: ModelChosenStep) {
+      for (let i of this.modelsForSteps) {
         if (i.step && i.step.stepindex == step.stepindex) {
           if (model != null) {
             i.chosenModel = model;
           } else {
+            i.skipped=false;
+            if (model==null && value == null){
+              i.skipped=true;
+            }
             i.modelValue = value;
           }
-          found = true;
+          found = i;
         }
-      });
+      }
       if (!found) {
         let mc = new ModelChosenStep();
         if (model != null) {
           mc.chosenModel = model;
         } else {
+          mc.skipped=false;
+          if (model==null && value == null){
+            mc.skipped=true;
+          }
           mc.modelValue = value;
         }
         mc.step = step;

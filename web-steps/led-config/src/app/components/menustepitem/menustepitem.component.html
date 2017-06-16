@@ -6,9 +6,9 @@
   </div>
   <div *ngIf="stepDiff(step)==0">
     <h3>{{step.description}}: {{getModelTitle()}}</h3>
-
+    <div *ngIf="step.skip"><md-checkbox  (change)="skipThisStep($event)" [(ngModel)]="skip" [ngModelOptions]="{standalone: true}">Optional step, skip it.</md-checkbox></div>
     <div>
-      <div *ngIf="isStepTypeValues(step) && filter(step.models).length>0">
+      <div *ngIf="isStepTypeValues(step) && filter(step.models).length>0 && !skip">
 
         <md-tab-group (selectChange)="changedTabSelection($event)" [selectedIndex]="tabIndex">
           <md-tab *ngFor="let m of filter(step.models);let i=index;">
@@ -42,10 +42,10 @@
           </md-tab>
         </md-tab-group>
       </div>
-      <div *ngIf="isStepTypeValues(step) && filter(step.models).length==0">
+      <div *ngIf="isStepTypeValues(step) && filter(step.models).length==0 ">
         No configuration possible. Go to previous step and choose another option.
         </div>
-      <div *ngIf="isStepTypeNumber(step)">
+      <div *ngIf="isStepTypeNumber(step)  && !skip">
 
 
           Width:

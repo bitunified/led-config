@@ -57,15 +57,15 @@ global java.util.Map<Part,Double> partCountList;
 //Rule with higher priority.
 
 
-rule "Totale lengte berekening" salience 1
-    when
-
-       Mounting(mountingLeft:margins.left!=null, mountingRight:margins.right!=null)
-       CableEntry(cableEntryLeft:margins.left!=null,cableEntryRight:margins.right!=null)
-       LedStrip(ledstripLength:dimension.getWidth()!=null)
-       cp:ComposedProduct(dimension.getWidth()==null)
-
-    then
+//rule "Totale lengte berekening" salience 1
+//    when
+//
+//       Mounting(mountingLeft:margins.left!=null, mountingRight:margins.right!=null)
+//       CableEntry(cableEntryLeft:margins.left!=null,cableEntryRight:margins.right!=null)
+//       LedStrip(ledstripLength:dimension.getWidth()!=null)
+//       cp:ComposedProduct(dimension.getWidth()==null)
+//
+//    then
 //        int totalLength=(int)mountingLeft+(int)mountingRight+(int)ledstripLength+(int)cableEntryLeft+(int)cableEntryRight;
 //
 //        //Dit activeert andere regels die op basis van de productlengte berekeningen maken.
@@ -75,7 +75,7 @@ rule "Totale lengte berekening" salience 1
 //
 //        messages.add(new Message("Totale lengte automatisch berekend: "+totalLength+" mm.",8,MessageStatus.INFO));
 //        System.out.println("Totale lengte automatisch berekend"+totalLength);
-end
+//end
 
 rule "Totale lengte minimaal"
     when

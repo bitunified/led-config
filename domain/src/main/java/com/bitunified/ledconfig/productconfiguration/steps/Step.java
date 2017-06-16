@@ -10,17 +10,19 @@ public class Step {
     private StepType type;
     private List<Model> models;
 
+    private boolean skip=false;
     private Integer modelValue;
 
     public Step() {
 
     }
 
-    public Step(Integer stepindex, String description, List<Model> models, StepType type) {
+    public Step(Integer stepindex, String description, List<Model> models, StepType type,boolean skip) {
         this.description = description;
         this.models = models;
         this.type = type;
         this.stepindex = stepindex;
+        this.skip=skip;
     }
 
     public Step(Integer stepindex, String description, List<Model> models) {
@@ -68,5 +70,13 @@ public class Step {
 
     public void setModelValue(Integer modelValue) {
         this.modelValue = modelValue;
+    }
+
+    public boolean isSkip() {
+        return skip;
+    }
+
+    public void setSkip(boolean skip) {
+        this.skip = skip;
     }
 }

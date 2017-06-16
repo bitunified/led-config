@@ -24,4 +24,8 @@ export class StepModel {
 
   @serialize
   modelValue:any;
+
+  @serialize
+  @deserialize
+  skip:boolean;
 }

@@ -64,6 +64,7 @@ export class MenustepsComponent implements OnInit {
   }
 
   nextStep() {
+    console.info(this.productconfig);
     if (this.productconfig.containsStep(this.currentStep)) {
       if (this.currentStep < this.stepsall.steps.length) {
         this.currentStep++;

@@ -20,6 +20,7 @@ public class Cable extends RealModel {
     public  final Property CABLE_END=new Property(CABLE_END_S,"");
     public Cable(Dimension dimension) {
         super(dimension);
+        setStep(4);
         addProperty(CABLE_TYPE);
         addProperty(CABLE_END);
     }

@@ -11,4 +11,7 @@ export class ModelChosenStep {
 
   @serialize
   modelValue:number;
+
+  @serialize
+  skipped:boolean;
 }

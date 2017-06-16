@@ -7,5 +7,8 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 @XmlSeeAlso({LeftViaEndCapCableEntry.class,LeftViaBottomCableEntry.class,LeftViaSideCableEntry.class,RightViaSideCableEntry.class,CenterViaSideCableEntry.class})
 public class CableEntry extends ConfigurationModel {
 
+    public CableEntry(){
+        this.setStep(5);
+    }
 }
 

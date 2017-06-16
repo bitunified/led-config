@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, ViewEncapsulation} from "@angular/core";
 import {ModelserviceService} from "../../services/modelservice.service";
 import {ProductcodeService} from "../../services/productcode.service";
-import {MdTabChangeEvent} from "@angular/material";
+import {MdTabChangeEvent,MdCheckboxChange} from "@angular/material";
 import {StepModel} from "../../domain/StepModel";
 import {Model} from "../../domain/Model";
 import {ProductconfigurationService} from "../../services/productconfiguration.service";
@@ -10,7 +10,6 @@ import {RelationDefinition} from "../../domain/relations/RelationDefinition";
 import {RelationState} from "../../domain/relations/RelationState";
 import {DisplayRelation} from "../../domain/internal/DisplayRelation";
 import {StepType} from "../../domain/StepType";
-import {ModelProperty} from "../../domain/ModelProperty";
 @Component({
   selector: 'menustepitem',
   templateUrl: './menustepitem.component.html',
@@ -44,11 +43,26 @@ export class MenustepitemComponent implements OnInit {
   filteredModels: Array<Model> = [];
   displayRelation: DisplayRelation;
 
+  skip: boolean;
+
   constructor(private productcodeService: ProductcodeService, private productconfigService: ProductconfigurationService) {
 
   }
 
   ngOnInit() {
+  }
+
+  skipThisStep(value:MdCheckboxChange) {
+    console.info(value);
+    this.skip=value.checked;
+      console.info(this.skip);
+    if (value.checked) {
+
+      this.selectedModel = null;
+      this.onInputChange(null);
+
+    }
+
   }
 
   isStepTypeValues(step: StepModel) {
@@ -76,7 +90,7 @@ export class MenustepitemComponent implements OnInit {
     let mls: Array<Model> = [];
     for (let model of models) {
       let rl = this.getTabColor(model).relationState;
-      if (rl == RelationState.ALLOWED || rl == RelationState.ALLOWEDWITHWARNING) {
+      if (rl == RelationState.ALLOWED || rl == RelationState.ALLOWEDWITHWARNING || rl == RelationState.ALLOWEDWITHINFO) {
         mls.push(model);
       }
     }
@@ -97,13 +111,26 @@ export class MenustepitemComponent implements OnInit {
       for (let rel of relations) {
         if (rel.relationState == RelationState.ALLOWEDWITHWARNING) {
           allowedWithWarning = true;
-          this.displayRelation.message = rel.allowedWithWarningMessage;
+          this.displayRelation.message = rel.allowedWithMessage;
           break;
         }
       }
       if (allowedWithWarning) {
         this.displayRelation.relationState = RelationState.ALLOWEDWITHWARNING;
         this.displayRelation.color = "orange";
+        return this.displayRelation;
+      }
+      let allowedWithInfo: boolean = false;
+      for (let rel of relations) {
+        if (rel.relationState == RelationState.ALLOWEDWITHINFO) {
+          allowedWithInfo = true;
+          this.displayRelation.message = rel.allowedWithMessage;
+          break;
+        }
+      }
+      if (allowedWithInfo) {
+        this.displayRelation.relationState = RelationState.ALLOWEDWITHINFO;
+        this.displayRelation.color = "black";
         return this.displayRelation;
       }
       for (let rel of relations) {
@@ -133,8 +160,17 @@ export class MenustepitemComponent implements OnInit {
   onInputChange(value: string) {
     console.info(value);
     this.step.modelValue = value;
-    this.productconfigService.productconfigAnnouncement(this.step, null, Number(value));
-    this.productcodeService.productcodeAnnouncement(Utils.padString(value, 4), this.currentStep);
+    let valueN=null;
+    let valueS=null;
+    let codeString='';
+    if (value) {
+     valueN=Number(value);
+      valueS=value;
+      codeString=Utils.padString(valueS, 4);
+    }
+    this.productconfigService.productconfigAnnouncement(this.step, null, valueN);
+    this.productcodeService.productcodeAnnouncement(codeString, this.currentStep);
+
   }
 
 
@@ -177,7 +213,7 @@ export class MenustepitemComponent implements OnInit {
 
   }
 
-  getKeyValueModelFromStep(stepIndex: number,propkey:string): string {
+  getKeyValueModelFromStep(stepIndex: number, propkey: string): string {
     let model: Model = this.productconfigService.productConfiguration.getModelFromStep(stepIndex);
 
     if (model.properties) {

@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 public class ConfigurationModel extends Model {
 
 
-    private Margin margins;
+    private Margin margins=new Margin();
 
     public Margin getMargins() {
         return margins;

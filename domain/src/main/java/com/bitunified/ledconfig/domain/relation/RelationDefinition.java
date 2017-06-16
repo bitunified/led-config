@@ -2,7 +2,6 @@ package com.bitunified.ledconfig.domain.relation;
 
 
 import com.bitunified.ledconfig.domain.Model;
-import com.bitunified.ledconfig.domain.product.profile.Profile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +9,7 @@ import java.util.List;
 public class RelationDefinition {
 
     private RelationState relationState=RelationState.ALLOWED;
-    private String allowedWithWarningMessage;
+    private String allowedWithMessage;
 
     private List<Model> models=new ArrayList<Model>();
 
@@ -18,18 +17,18 @@ public class RelationDefinition {
         this.relationState=RelationState.ALLOWED;
     }
     public RelationDefinition(RelationState state,String message) {
-        this.allowedWithWarningMessage=message;
+        this.allowedWithMessage =message;
         this.relationState=state;
     }
 
 
 
-    public String getAllowedWithWarningMessage() {
-        return allowedWithWarningMessage;
+    public String getAllowedWithMessage() {
+        return allowedWithMessage;
     }
 
-    public void setAllowedWithWarningMessage(String allowedWithWarningMessage) {
-        this.allowedWithWarningMessage = allowedWithWarningMessage;
+    public void setAllowedWithMessage(String allowedWithMessage) {
+        this.allowedWithMessage = allowedWithMessage;
     }
 
 
@@ -70,5 +69,10 @@ public class RelationDefinition {
 
     public void addModel(Model model) {
         models.add(model);
+    }
+    public void addModel(Model... models) {
+        for (Model model:models) {
+            this.models.add(model);
+        }
     }
 }

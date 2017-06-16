@@ -5,7 +5,7 @@ import com.bitunified.ledconfig.domain.Dimension;
 
 public class CableChannel extends Accessoire {
     public CableChannel(){
-
+    super();
     }
     public CableChannel(Dimension dimension) {
         super();

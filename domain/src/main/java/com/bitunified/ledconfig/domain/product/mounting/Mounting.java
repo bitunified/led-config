@@ -16,4 +16,9 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 public class Mounting extends ConfigurationModel {
 
 
+    public Mounting(){
+        super();
+        setStep(6);
+    }
+
 }

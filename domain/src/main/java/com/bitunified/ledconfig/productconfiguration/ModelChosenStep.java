@@ -11,6 +11,7 @@ public class ModelChosenStep {
     private Step step;
     private Model chosenModel;
     private int modelValue;
+    private boolean skipped;
 
     public int getModelValue() {
         return modelValue;
@@ -34,5 +35,13 @@ public class ModelChosenStep {
 
     public void setStep(Step step) {
         this.step = step;
+    }
+
+    public boolean isSkipped() {
+        return skipped;
+    }
+
+    public void setSkipped(boolean skipped) {
+        this.skipped = skipped;
     }
 }
