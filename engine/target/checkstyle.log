@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="6.1.1">
-<file name="C:\data\projects\led-config\engine\src\main\java\com\bitunified\ledconfig\ConfigResult.java">
-</file>
 <file name="C:\data\projects\led-config\engine\src\main\java\com\bitunified\ledconfig\helpers\PartListHelper.java">
 </file>
 <file name="C:\data\projects\led-config\engine\src\main\java\com\bitunified\ledconfig\helpers\PartMatchHelper.java">
@@ -9,6 +7,8 @@
 <file name="C:\data\projects\led-config\engine\src\main\java\com\bitunified\ledconfig\LedConfig.java">
 </file>
 <file name="C:\data\projects\led-config\engine\src\main\java\com\bitunified\ledconfig\PriceCalculator.java">
+</file>
+<file name="C:\data\projects\led-config\engine\src\main\java\com\bitunified\ledconfig\ProductConfigResult.java">
 </file>
 <file name="C:\data\projects\led-config\engine\src\test\java\com\bitunified\ledconfig\LedConfigTest.java">
 </file>

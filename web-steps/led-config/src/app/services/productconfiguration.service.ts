@@ -8,7 +8,7 @@ import {Model} from "../domain/Model";
 import {Observable} from "rxjs";
 import {Serialize, Deserialize} from 'cerialize';
 import {PriceCalculation} from "../domain/server/PriceCalculation";
-
+import { environment } from '../../environments/environment';
 @Injectable()
 export class ProductconfigurationService {
 
@@ -24,7 +24,7 @@ export class ProductconfigurationService {
 
   public priceCalculation:PriceCalculation;
 
-  private serverUrl = 'http://localhost:8080/server/rest/engine/submitconfig';
+  private serverUrl = environment.contextroot+'/server/rest/engine/submitconfig';
 
   constructor(private http: Http) {
   }
@@ -40,7 +40,6 @@ export class ProductconfigurationService {
   sendProductConfigToServer() {
 
     let serProductConfig = Serialize(this.productConfiguration, ProductConfiguration);
-    console.info(serProductConfig);
     return this.http.post(this.serverUrl, serProductConfig)
 
       .map(res => {
@@ -49,7 +48,7 @@ export class ProductconfigurationService {
 
         this.priceCalculation=m;
         this.priceCalcSource.next(m);
-        console.info(m);
+
         return m;
 
       })

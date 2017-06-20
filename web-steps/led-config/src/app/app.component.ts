@@ -17,13 +17,17 @@ import {ModelDimension} from "./domain/ModelDimension";
 import {ModelMargin} from "./domain/ModelMargin";
 import {ModelTranslation} from "./domain/ModelTranslation";
 import {PriceCalculation} from "./domain/server/PriceCalculation";
-
+import {NotificationService} from "./services/notificationservice.service";
+import {NotificationComponent} from "./components/notification/notification.component";
+import {MdSnackBar} from "@angular/material";
+import {ErrorNotificationState} from "./domain/internal/ErrorNotificationState";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   encapsulation: ViewEncapsulation.None,
-  providers: [ModelMargin,ModelDimension,ModelTranslation,RelationService,ModelserviceService,StepsService,ProductcodeService,Model,StepsModel,StepModel,ProductCodeComposition,ProductconfigurationService,ProductConfiguration,ModelChosenStep]
+  providers: [
+    NotificationComponent,NotificationService,ModelMargin,ModelDimension,ModelTranslation,RelationService,ModelserviceService,StepsService,ProductcodeService,Model,StepsModel,StepModel,ProductCodeComposition,ProductconfigurationService,ProductConfiguration,ModelChosenStep]
 })
 export class AppComponent implements OnInit,OnDestroy {
 
@@ -31,10 +35,11 @@ export class AppComponent implements OnInit,OnDestroy {
   productcode:string;
   subscription: Subscription;
   subscriptionPriceCalcution: Subscription;
+  subscriptionNotificationMessage:Subscription;
   relations:Observable<Relations>;
   priceCalculation:PriceCalculation;
-
-  constructor(private modelService:ModelserviceService,private stepService:StepsService,productcodeService:ProductcodeService,private relationsService:RelationService,private productConfiguration:ProductconfigurationService) {
+  notificationMessage:string;
+  constructor(public snackBar: MdSnackBar,private notificationMessageService:NotificationService,private modelService:ModelserviceService,private stepService:StepsService,productcodeService:ProductcodeService,private relationsService:RelationService,private productConfiguration:ProductconfigurationService) {
     this.subscription = productcodeService.productcodeSource$.subscribe(
       res => {
         this.productcode = res.getCode();
@@ -44,8 +49,19 @@ export class AppComponent implements OnInit,OnDestroy {
       res => {
         this.priceCalculation=res;
       });
-  }
 
+    this.subscriptionNotificationMessage = notificationMessageService.notificationMessageSource$.subscribe(
+      res => {
+        this.notificationMessage = res.message;
+        let duration:number=3000;
+        if (res.state==ErrorNotificationState.ERROR){
+          duration=15000;
+        }
+        this.snackBar.open(res.message, 'Close',{duration:duration});
+        console.info(res);
+      });
+
+  }
 
   ngOnInit() {
     this.modelService.getModels().subscribe((res:any) => {

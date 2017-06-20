@@ -51,27 +51,7 @@ public class Parser {
 
     private ComposedProduct composedProduct;
 
-    public void init() {
-        parts = new HashSet<Part>();
-        relations = new HashSet<Relation>();
-        Importer importer = new Importer();
 
-        try {
-            PartList partList = (PartList) importer.readXml(importer.fileReader());
-            parts = partList.getParts();
-            relations = partList.getRelations();
-            for (Part part : parts) {
-                if (part.getProduct() instanceof ComposedProduct) {
-                    composedProduct = (ComposedProduct) part.getProduct();
-                }
-            }
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
 
     /**
      * "ARBEID-MIN","Arbeidsminuut intern magazijn","0.59","MINUUT","","10"
@@ -83,9 +63,6 @@ public class Parser {
      * "GRIJP","Verpakking (per meter)","0.50","ST","","10"
      **/
     public void createParts() {
-
-        //Importer importer=new Importer();
-        //parts=importer.importerDozer();
 
         ProfileL20 profileL20 = new ProfileL20(new Dimension(null));
         profileL20.getDimension().setWidth(4000);
@@ -206,7 +183,7 @@ public class Parser {
 
 
         Cap capDiffuse = new CapDiffuse();
-        capDiffuse.setName("liniLED® Aeris Afdekkap");
+        capDiffuse.setName("liniLED® Aeris Afdekkap Diffuus");
         capDiffuse.setTranslations(Locale.nl, capDiffuse.getName());
         capDiffuse.setTranslations(Locale.en, "liniLED® Aeris Cap");
         capDiffuse.getProperty(Cap.TRANSLUCENCY_S).setValue("diffuse");
@@ -225,7 +202,7 @@ public class Parser {
 
 
         Cap capClear = new CapClear(new Dimension(null));
-        capClear.setName("liniLED® Aeris Afdekkap");
+        capClear.setName("liniLED® Aeris Afdekkap Helder");
         capClear.setTranslations(Locale.nl, capClear.getName());
         capClear.setTranslations(Locale.en, "liniLED® Aeris Cap");
         capClear.getDimension().setWidth(100);
@@ -834,22 +811,10 @@ public class Parser {
 
 
         //(GABHPQRSTUV){1}
-        Covering noCovering = new NoCovering();
-        noCovering.setName("Geen kap");
-        noCovering.setCode("E");
-        noCovering.setStep(2);
-        relationDefinitionL20.addModel(noCovering);
-        relationDefinitionL20.addModel(noCovering);
-        relationDefinitionL30.addModel(noCovering);
-        relationDefinitionH20.addModel(noCovering);
-        relationDefinitionH30.addModel(noCovering);
 
-        part = new NotExistingPart(noCovering);
-        part.setId("co1");
-        parts.add(part);
 
         ResinClear resinClear = new ResinClear(null);
-        resinClear.setName("Helder");
+        resinClear.setName("Ingieten Helder");
         resinClear.setCode("C");
         resinClear.setStep(2);
         models.add(resinClear);
@@ -872,7 +837,7 @@ public class Parser {
         //        "95000","Ingieten liniLED L20 Helder","11.50","MTR","","10"
 
         ResinDiffuse resinDiffuse = new ResinDiffuse(null);
-        resinDiffuse.setName("Diffuus");
+        resinDiffuse.setName("Ingieten Diffuus");
         resinDiffuse.setCode("D");
         models.add(resinDiffuse);
 
@@ -958,6 +923,8 @@ public class Parser {
         parts.add(part);
         profileH30.getRelation().addRelateTo(part, null);
 //        "95014","Ingieten liniLED H30 Diffuus","46.50","MTR","","10"
+
+
 
 
         LedStrip ledStrip = new DecoLedStrip(new Dimension(null));
@@ -2042,9 +2009,7 @@ public class Parser {
 
         composedProduct = new ComposedProduct(null, null);
         composedProduct.setName("Product lengte");
-        part = new Part(composedProduct);
-        part.setId("comp");
-        parts.add(part);
+
 
 
     }
@@ -2060,48 +2025,6 @@ public class Parser {
     }
 
 
-    //B1M348D20077778a
-    //B([321]){1}([MRGBAPCDEF123456])([1470258369])([1-5])([1-8])([CD])(\d{4})((\d{4})?)(([ab])?)
-    //C([ABCDEF]){1}([GABHPQ]){1}([DPHN]){1}([RGBA]|[2473456]){1}([1470258369])([1-5])([1-8])(\d{4})((\d{4})?)(([ab])?)
-    ///1: Profiel (B1)
-    //2: Led Strip type
-    //3: Cable type
-    public ParsedResult parse(String productcode) {
-        List<ParseStep> steps = new ArrayList<ParseStep>();
-        Set<Model> models = new HashSet<Model>();
-        int startPositionCode = 0;
-        Accumulator accumulator = new Accumulator(startPositionCode);
-        steps.add(new ParserStepRealModel(1, true, accumulator.start(), accumulator.plus(Profile.CODE_LENGTH), Profile.class, "", "Profiel niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(2, true, accumulator.start(), accumulator.plus(Covering.CODE_LENGTH), Covering.class, "", "Behuizing niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(3, true, accumulator.start(), accumulator.plus(2), LedStrip.class, "", "Kleur niet geconfigureerd"));
-        steps.add(new ParserStepRealModel(4, true, accumulator.start(), accumulator.plus(1), Cable.class, "", "Kabel niet geconfigureerd"));
-        steps.add(new ParserStepModel(5, true, accumulator.start(), accumulator.plus(1), CableEntry.class, "", "Kabeluiteinde niet geconfigureerd"));
-        steps.add(new ParserStepModel(6, true, accumulator.start(), accumulator.plus(1), Mounting.class, "", "Montage opties niet geconfigureerd"));
-        steps.add(new ParserStepDimensionModel(7, true, accumulator.start(), accumulator.plus(4), LedStrip.class, "", "Led strip lengte niet geconfigureerd", models));
-
-        steps.add(new ParserStepRealModelComposed(8, ComposedProduct.class, "", "Productlengte automatisch berekend.", accumulator.start(), accumulator.plus(4), models));
-        steps.add(new ParserStepModelRightParse(9, false, 0, 1, Accessoire.class, "", "Accessoire opties niet geconfigureerd"));
-
-        for (ParseStep step : steps) {
-            ModelResult modelResult = step.create(productcode, parts);
-
-            if (modelResult != null && modelResult.getModel() != null) {
-                models.add(modelResult.getModel());
-            } else {
-
-                models.add(new ErrorModel());
-            }
-            step.addModelResult(modelResult);
-            composedProduct.addModelResult(modelResult);
-
-        }
-
-        ParsedResult parsedResult = new ParsedResult();
-        parsedResult.setModels(models);
-        parsedResult.setParts(parts);
-        parsedResult.setSteps(steps);
-        return parsedResult;
-    }
 
     public Set<Relation> getRelations() {
         return relations;

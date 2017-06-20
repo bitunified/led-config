@@ -1,19 +1,23 @@
-import { Injectable } from '@angular/core';
-
+import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import {Observable} from "rxjs";
 import {Models} from "../domain/Models";
-import { Deserialize} from 'cerialize';
+import {Deserialize} from "cerialize";
+import {NotificationService} from "./notificationservice.service";
+import {ErrorNotificationState} from "../domain/internal/ErrorNotificationState";
+import {NotificationMessage} from "../domain/internal/NotificationMessage";
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class ModelserviceService {
 
-  constructor (private http: Http) {}
+  constructor(private http: Http, private notificationService: NotificationService) {
+  }
 
   // private instance variable to hold base url
-  private modelsServerUrl = 'http://localhost:8080/server/rest/engine/models';
+  private modelsServerUrl = environment.contextroot +'/server/rest/engine/models';
 
-  public getModels() : Observable<Models>{
+  public getModels(): Observable<Models> {
 
 
     return this.http.get(this.modelsServerUrl)
@@ -21,15 +25,19 @@ export class ModelserviceService {
       .map(res => {
 
 
-       let m=Deserialize(res.json(),Models);
+        let m = Deserialize(res.json(), Models);
 
         console.info(m);
-         return m;
+        return m;
 
       })
       .do(data => console.log(data))
       //...errors if any
-      .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+      .catch((error: any) => {
+
+        this.notificationService.notificationMessageAnnouncement(new NotificationMessage("Error while receiving data from server.", ErrorNotificationState.ERROR));
+        return Observable.throw(error.json().error || 'Server error');
+      });
 
   }
 }

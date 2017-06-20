@@ -1,4 +1,4 @@
-<md-sidenav-container [class.m2app-dark]="isDarkTheme">
+<md-sidenav-container>
 
   <md-sidenav #sidenav mode="side" class="app-sidenav" style="width:10%">
     <md-list>
@@ -13,7 +13,7 @@
     Aeris Configurator 3.0 - Step by step
     <div class="small-product-code" *ngIf="productcode">Productcode: {{productcode}}</div>
     <span class="app-toolbar-filler"></span>
-    <button md-button (click)="isDarkTheme = !isDarkTheme"></button>
+
   </md-toolbar>
 
   <div class="app-content">

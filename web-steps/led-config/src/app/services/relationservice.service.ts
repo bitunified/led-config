@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import {Http} from "@angular/http";
 import {Observable} from "rxjs/Rx";
 import {Relations} from "../domain/relations/Relations";
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class RelationService {
 
   constructor (private http: Http) {}
 
-  private relationsServerUrl = 'http://localhost:8080/server/rest/engine/relations';
+  private relationsServerUrl = environment.contextroot+'/server/rest/engine/relations';
 
   public getRelations() : Observable<Relations>{
 
@@ -19,7 +20,7 @@ export class RelationService {
       .map(res => <Relations>res.json())
       .do(data => console.log(data))
       //...errors if any
-      .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+      .catch((error:any) => Observable.throw( 'Server error'));
 
   }
 }

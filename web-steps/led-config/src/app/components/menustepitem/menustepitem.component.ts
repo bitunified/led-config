@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, ViewEncapsulation} from "@angular/core";
 import {ModelserviceService} from "../../services/modelservice.service";
 import {ProductcodeService} from "../../services/productcode.service";
-import {MdTabChangeEvent,MdCheckboxChange} from "@angular/material";
+import {MdTabChangeEvent, MdCheckboxChange} from "@angular/material";
 import {StepModel} from "../../domain/StepModel";
 import {Model} from "../../domain/Model";
 import {ProductconfigurationService} from "../../services/productconfiguration.service";
@@ -10,6 +10,7 @@ import {RelationDefinition} from "../../domain/relations/RelationDefinition";
 import {RelationState} from "../../domain/relations/RelationState";
 import {DisplayRelation} from "../../domain/internal/DisplayRelation";
 import {StepType} from "../../domain/StepType";
+import {ModelChosenStep} from "../../domain/ModelChosenStep";
 @Component({
   selector: 'menustepitem',
   templateUrl: './menustepitem.component.html',
@@ -52,10 +53,10 @@ export class MenustepitemComponent implements OnInit {
   ngOnInit() {
   }
 
-  skipThisStep(value:MdCheckboxChange) {
+  skipThisStep(value: MdCheckboxChange) {
     console.info(value);
-    this.skip=value.checked;
-      console.info(this.skip);
+    this.skip = value.checked;
+    console.info(this.skip);
     if (value.checked) {
 
       this.selectedModel = null;
@@ -160,23 +161,50 @@ export class MenustepitemComponent implements OnInit {
   onInputChange(value: string) {
     console.info(value);
     this.step.modelValue = value;
-    let valueN=null;
-    let valueS=null;
-    let codeString='';
+    let valueN = null;
+    let valueS = null;
+    let codeString = '';
     if (value) {
-     valueN=Number(value);
-      valueS=value;
-      codeString=Utils.padString(valueS, 4);
+      valueN = Number(value);
+      valueS = value;
+      codeString = Utils.padString(valueS, 4);
     }
     this.productconfigService.productconfigAnnouncement(this.step, null, valueN);
     this.productcodeService.productcodeAnnouncement(codeString, this.currentStep);
 
   }
 
+  calculateStepValue(step: StepModel) {
+    if (step.stepindex == 7) {
+
+      return this.getKeyValueModelFromStep(3, 'section');
+    }
+    if (step.stepindex == 8) {
+      return 1;
+    }
+  }
+
+  calculateMinValue(step: StepModel) {
+    if (step.stepindex == 7) {
+
+      return this.calculateStepValue(step);
+    }
+    let totalMinLength = 100;
+    if (step.stepindex == 8) {
+      let model: ModelChosenStep = this.productconfigService.productConfiguration.getModelChosenFromStep(7);
+      let modelMountingEndCaps: ModelChosenStep = this.productconfigService.productConfiguration.getModelChosenFromStep(6);
+      let ledstripLength: number = Number(model.modelValue);
+      let totalMargins: number = 0;
+      if (modelMountingEndCaps.chosenModel.margins) {
+        totalMargins = modelMountingEndCaps.chosenModel.margins.left + modelMountingEndCaps.chosenModel.margins.right;
+      }
+      totalMinLength = ledstripLength + Number(totalMargins);
+    }
+    return totalMinLength;
+  }
 
   tabClick() {
 
-    console.info(this.selectedModel);
     if (this.selectedModel == undefined) {
 
       this.changeTab(null);
@@ -190,13 +218,13 @@ export class MenustepitemComponent implements OnInit {
   }
 
   changedTabSelection(event: MdTabChangeEvent) {
-    console.info(event);
+
 
     this.changeTab(event);
   }
 
   private changeTab(tabEvent: MdTabChangeEvent) {
-    console.info(this.filteredModels);
+
     if (tabEvent) {
 
       this.selectedModel = this.filteredModels[tabEvent.index];
@@ -216,13 +244,15 @@ export class MenustepitemComponent implements OnInit {
   getKeyValueModelFromStep(stepIndex: number, propkey: string): string {
     let model: Model = this.productconfigService.productConfiguration.getModelFromStep(stepIndex);
 
-    if (model.properties) {
-      for (let prop of model.properties) {
+    if (model) {
+      if (model.properties) {
+        for (let prop of model.properties) {
 
-        if (prop.name == propkey) {
-          return prop.value;
+          if (prop.name == propkey) {
+            return prop.value;
+          }
+
         }
-
       }
     }
   }

@@ -19,39 +19,16 @@ public class ComposedProduct extends RealModel {
 
     }
 
-    @XmlMixed
-    private List<Part> products = new ArrayList<Part>();
-
-    @JsonIgnore
-    private Set<ModelResult> modelResults = new HashSet<ModelResult>();
 
     public ComposedProduct(Integer totalWidth, Integer totalHeight) {
         this.getDimension().setWidth(totalWidth);
         this.getDimension().setHeight(totalHeight);
     }
 
-    public void addProduct(Part model) {
-        products.add(model);
-    }
-
-    public List<Part> getProducts() {
-        return products;
-    }
 
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this);
     }
 
-    public void addModelResult(ModelResult modelResult) {
-        this.modelResults.add(modelResult);
-    }
-
-    public Set<ModelResult> getModelResults() {
-        return modelResults;
-    }
-
-    public void setModelResults(Set<ModelResult> modelResults) {
-        this.modelResults = modelResults;
-    }
 }

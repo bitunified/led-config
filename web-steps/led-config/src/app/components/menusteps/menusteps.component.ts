@@ -1,6 +1,5 @@
-import {Component, OnInit, Input} from "@angular/core";
-import {MdSnackBar} from "@angular/material";
-import {NotificationComponent} from "../notification/notification.component";
+import {Component, OnInit, Input, Output} from "@angular/core";
+
 import {StepsModel} from "../../domain/StepsModel";
 import {ProductconfigurationService} from "../../services/productconfiguration.service";
 import {Subscription} from "rxjs/Subscription";
@@ -8,6 +7,9 @@ import {ProductConfiguration} from "../../domain/ProductConfiguration";
 import {Relations} from "../../domain/relations/Relations";
 import {Observable} from "rxjs/Rx";
 import {PriceCalculation} from "../../domain/server/PriceCalculation";
+import {NotificationService} from "../../services/notificationservice.service";
+import {ErrorNotificationState} from "../../domain/internal/ErrorNotificationState";
+import {NotificationMessage} from "../../domain/internal/NotificationMessage";
 
 @Component({
   selector: 'menusteps',
@@ -28,6 +30,8 @@ export class MenustepsComponent implements OnInit {
   @Input()
   maxSteps: number;
 
+  @Output()
+  isProcessing: boolean = false;
 
   stepsall: StepsModel;
 
@@ -37,12 +41,13 @@ export class MenustepsComponent implements OnInit {
 
   private productconfig: ProductConfiguration;
 
-  constructor(public snackBar: MdSnackBar, private productConfigService: ProductconfigurationService) {
+  constructor( private productConfigService: ProductconfigurationService,private notificationService:NotificationService) {
     this.productConfigSubscription = productConfigService.productconfigSource$.subscribe(
       res => {
         this.productconfig = res;
       });
     this.productconfig = productConfigService.productConfiguration;
+
 
   }
 
@@ -59,26 +64,28 @@ export class MenustepsComponent implements OnInit {
     });
   }
 
-  openSnackBar() {
-    this.snackBar.openFromComponent(NotificationComponent, null);
-  }
 
   nextStep() {
     console.info(this.productconfig);
     if (this.productconfig.containsStep(this.currentStep)) {
       if (this.currentStep < this.stepsall.steps.length) {
         this.currentStep++;
+
         return;
       }
-      if (this.currentStep==this.stepsall.steps.length){
+      if (this.currentStep == this.stepsall.steps.length) {
         console.info('finish');
-        let subscriptionProductPrice=this.productConfigService.sendProductConfigToServer();
-        subscriptionProductPrice.subscribe((productPrice)=>{
-          let productPriceCalculated:PriceCalculation=productPrice;
-          console.info(productPriceCalculated);
+        this.isProcessing=true;
+        let subscriptionProductPrice = this.productConfigService.sendProductConfigToServer();
+        subscriptionProductPrice.subscribe((productPrice)=> {
+          let productPriceCalculated: PriceCalculation = productPrice;
+          this.notificationService.notificationMessageAnnouncement(new NotificationMessage("Price calculation received",ErrorNotificationState.INFO));
+          this.isProcessing=false;
         });
       }
+      return;
     }
+    this.notificationService.notificationMessageAnnouncement(new NotificationMessage("Select an option to click the product-item.",ErrorNotificationState.INFO));
 
   }
 

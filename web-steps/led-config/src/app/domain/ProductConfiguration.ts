@@ -22,6 +22,20 @@ export class ProductConfiguration {
     return found;
   }
 
+  getModelChosenFromStep(step: number):ModelChosenStep {
+    if (step) {
+      for(let ms of this.modelsForSteps) {
+
+        if (ms.step && ms.step.stepindex == step) {
+          return ms;
+        }
+      }
+
+    }
+
+    return null;
+  }
+
   getModelFromStep(step: number):Model {
     if (step) {
       for(let ms of this.modelsForSteps) {

@@ -19,12 +19,23 @@
               </div>
             </ng-template>
             <md-list dense>
-              <md-list-item *ngIf="getTabColor(m).message!=null">
+              <md-list-item *ngIf="getTabColor(m).message!=null && getTabColor(m).relationState=='ALLOWEDWITHWARNING'">
                 <md-chip-list class="mat-chip-list-stacked">
                   <md-chip class="warningChip"
                            selected="true"
                            color="warn">
                     Warning: {{displayRelation.message}}
+                  </md-chip>
+                </md-chip-list>
+
+
+              </md-list-item>
+              <md-list-item *ngIf="getTabColor(m).message!=null && getTabColor(m).relationState=='ALLOWEDWITHINFO'">
+                <md-chip-list class="mat-chip-list-stacked">
+                  <md-chip class="warningChip"
+                           selected="true"
+                           color="primary">
+                    Comment: {{displayRelation.message}}
                   </md-chip>
                 </md-chip-list>
 
@@ -47,12 +58,12 @@
         </div>
       <div *ngIf="isStepTypeNumber(step)  && !skip">
 
-
+Click on line to select a length.<br/>
           Width:
           <md-slider class="mat-slider-horizontal"
                      max="4000"
-                     min="{{getKeyValueModelFromStep(3,'section')}}"
-                     step="{{getKeyValueModelFromStep(3,'section')}}"
+                     min="{{calculateMinValue(step)}}"
+                     step="{{calculateStepValue(step)}}"
                      thumb-label="true" [(ngModel)]="step.modelValue" name="inputValue"
                      (ngModelChange)="onInputChange($event)">
           </md-slider>

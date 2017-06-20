@@ -5,8 +5,10 @@ import com.bitunified.ledconfig.domain.I18N.Locale;
 import com.bitunified.ledconfig.domain.modeltypes.ConfigurationModel;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
+import com.bitunified.ledconfig.domain.product.cable.Cable;
 import com.bitunified.ledconfig.domain.product.cover.types.Cap;
 import com.bitunified.ledconfig.domain.product.cover.types.Resin;
+import com.bitunified.ledconfig.domain.product.mounting.Mounting;
 import com.bitunified.ledconfig.domain.product.profile.Profile;
 import com.bitunified.ledconfig.domain.relation.RelationDefinition;
 import com.bitunified.ledconfig.parts.Relatable;
@@ -26,10 +28,7 @@ import java.util.*;
         property = "typeClass")
 @JsonSubTypes({
         @JsonSubTypes.Type(value = RealModel.class),
-        @JsonSubTypes.Type(value = Profile.class),
-        @JsonSubTypes.Type(value = Cap.class),
-        @JsonSubTypes.Type(value = Resin.class),
-        @JsonSubTypes.Type(value = LedStrip.class)
+        @JsonSubTypes.Type(value = ConfigurationModel.class)
 })
 public class Model extends Relatable implements StepConfig, Serializable {
 

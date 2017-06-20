@@ -4,12 +4,18 @@ import {ModelTranslation} from "./ModelTranslation";
 import { serialize,deserialize,deserializeAs,serializeAs } from 'cerialize';
 import {ModelMargin} from "./ModelMargin";
 import {ModelPropertyValue} from "./ModelPropertyValue";
+import {BaseClass} from "./BaseClass";
 
-export class Model {
+export class Model extends BaseClass {
 
   @serialize
   @deserialize
   typeClass:string;
+
+
+  @serializeAs(ModelMargin)
+  @deserializeAs(ModelMargin)
+  margins: ModelMargin;
 
   @serialize
   @deserialize

@@ -16,9 +16,9 @@ import { PricecalculationComponent } from './components/pricecalculation/priceca
     AppComponent,
     MenustepsComponent,
     MenustepitemComponent,
-    NotificationComponent,
     FilterModel,
-    PricecalculationComponent
+    PricecalculationComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +30,8 @@ import { PricecalculationComponent } from './components/pricecalculation/priceca
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[
+    NotificationComponent]
 })
 export class AppModule { }

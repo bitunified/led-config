@@ -5,12 +5,11 @@ import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.domain.Property;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 import com.bitunified.ledconfig.domain.product.cover.types.Cap;
-import com.bitunified.ledconfig.domain.product.cover.types.NoCovering;
 import com.bitunified.ledconfig.domain.product.cover.types.Resin;
 
 import javax.xml.bind.annotation.XmlSeeAlso;
 
-@XmlSeeAlso({Resin.class,Cap.class, NoCovering.class})
+@XmlSeeAlso({Resin.class,Cap.class})
 public class Covering extends RealModel{
     public static final String TRANSLUCENCY_S = "translucency";
     public static final Property TRANSLUCENCY = new Property(TRANSLUCENCY_S,"");

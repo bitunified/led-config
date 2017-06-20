@@ -86,10 +86,6 @@ public class LedConfig {
         ksession.setGlobal("partCountList",partCountList);
 
         Map<Integer, List<Message>> messageMap = new HashMap<>();
-        List<Part> partList= new ArrayList<>();
-
-
-        Map<Integer,ModelResult> modelResults=new HashMap<>();
 
 
         ksession.setGlobal("messageMap", messageMap);
@@ -99,8 +95,7 @@ public class LedConfig {
         for (Part part:parser.getParts()){
             parts.put(part.getId(),part);
         }
-        ksession.setGlobal("parts",
-                parts);
+        ksession.setGlobal("parts",parts);
         // The application can also setup listeners
         ksession.addEventListener(new DebugAgendaEventListener());
         ksession.addEventListener(new DebugRuleRuntimeEventListener());
@@ -151,9 +146,6 @@ public class LedConfig {
 
             if (model instanceof Part) {
                 System.out.println("Part:  " + ((Part) model).getProduct());
-            }
-            if (model instanceof ComposedProduct){
-                partList.addAll(((ComposedProduct) model).getProducts());
             }
 
         }
