@@ -21,13 +21,14 @@ import {NotificationService} from "./services/notificationservice.service";
 import {NotificationComponent} from "./components/notification/notification.component";
 import {MdSnackBar} from "@angular/material";
 import {ErrorNotificationState} from "./domain/internal/ErrorNotificationState";
+import {PartService} from "./services/partservice.service";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   encapsulation: ViewEncapsulation.None,
   providers: [
-    NotificationComponent,NotificationService,ModelMargin,ModelDimension,ModelTranslation,RelationService,ModelserviceService,StepsService,ProductcodeService,Model,StepsModel,StepModel,ProductCodeComposition,ProductconfigurationService,ProductConfiguration,ModelChosenStep]
+    PartService,NotificationComponent,NotificationService,ModelMargin,ModelDimension,ModelTranslation,RelationService,ModelserviceService,StepsService,ProductcodeService,Model,StepsModel,StepModel,ProductCodeComposition,ProductconfigurationService,ProductConfiguration,ModelChosenStep]
 })
 export class AppComponent implements OnInit,OnDestroy {
 

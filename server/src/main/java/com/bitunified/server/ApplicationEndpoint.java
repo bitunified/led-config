@@ -4,11 +4,14 @@ import com.bitunified.ledconfig.ProductConfigResult;
 import com.bitunified.ledconfig.LedConfig;
 import com.bitunified.ledconfig.PriceCalculator;
 import com.bitunified.ledconfig.configuration.parser.steps.Parser;
+import com.bitunified.ledconfig.domain.Model;
+import com.bitunified.ledconfig.parts.Part;
 import com.bitunified.ledconfig.productconfiguration.Models;
 import com.bitunified.ledconfig.productconfiguration.PriceList;
 import com.bitunified.ledconfig.productconfiguration.ProductConfiguration;
 import com.bitunified.ledconfig.productconfiguration.Relations;
 import com.bitunified.ledconfig.productconfiguration.price.PriceCount;
+import com.bitunified.server.service.PriceService;
 import com.bitunified.server.service.StepService;
 import com.bitunified.ledconfig.productconfiguration.steps.Steps;
 
@@ -35,9 +38,9 @@ public class ApplicationEndpoint {
     @Path("/steps")
     @Produces(MediaType.APPLICATION_JSON)
     public Steps getAllStepss() {
-        StepService stepService = new StepService();
+        StepService stepService = new StepService(parser);
 
-        return stepService.getSteps(parser);
+        return stepService.getSteps();
     }
 
     @GET
@@ -86,5 +89,13 @@ public class ApplicationEndpoint {
         return priceList;
     }
 
+    @POST
+    @Path("/part")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Part getPart(Model model) {
+        PriceService priceService = new PriceService(parser);
+       return priceService.getPart(model);
 
+    }
 }

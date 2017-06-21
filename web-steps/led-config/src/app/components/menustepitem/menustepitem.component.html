@@ -49,6 +49,10 @@
               <md-list-item *ngIf="m.dimension!=null && m.dimension.width!=null">
                 Width: {{m.dimension==null?'':m.dimension.width}} mm
               </md-list-item>
+              <md-divider></md-divider>
+              <md-list-item *ngIf="currentPart && currentPart.price">
+                Price: {{currentPart.price | currency:'EUR':true}}
+              </md-list-item>
             </md-list>
           </md-tab>
         </md-tab-group>

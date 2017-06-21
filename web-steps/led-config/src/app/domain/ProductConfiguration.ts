@@ -68,6 +68,7 @@ export class ProductConfiguration {
         if (i.step && i.step.stepindex == step.stepindex) {
           if (model != null) {
             i.chosenModel = model;
+            i.modelValue=value;
           } else {
             i.skipped=false;
             if (model==null && value == null){
@@ -82,6 +83,7 @@ export class ProductConfiguration {
         let mc = new ModelChosenStep();
         if (model != null) {
           mc.chosenModel = model;
+          mc.modelValue=value;
         } else {
           mc.skipped=false;
           if (model==null && value == null){

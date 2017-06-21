@@ -109,7 +109,10 @@ public class LedConfig {
 
         // The application can insert facts into the session
 
+
+
         for (ModelChosenStep m: productConfiguration.getModelsForSteps()){
+
             ksession.insert(m.getChosenModel());
         }
 

@@ -11,6 +11,8 @@ import {RelationState} from "../../domain/relations/RelationState";
 import {DisplayRelation} from "../../domain/internal/DisplayRelation";
 import {StepType} from "../../domain/StepType";
 import {ModelChosenStep} from "../../domain/ModelChosenStep";
+import {PartService} from "../../services/partservice.service";
+import {Part} from "../../domain/server/Part";
 @Component({
   selector: 'menustepitem',
   templateUrl: './menustepitem.component.html',
@@ -46,7 +48,9 @@ export class MenustepitemComponent implements OnInit {
 
   skip: boolean;
 
-  constructor(private productcodeService: ProductcodeService, private productconfigService: ProductconfigurationService) {
+  currentPart: Part;
+
+  constructor(private productcodeService: ProductcodeService, private productconfigService: ProductconfigurationService, private partService: PartService) {
 
   }
 
@@ -169,7 +173,12 @@ export class MenustepitemComponent implements OnInit {
       valueS = value;
       codeString = Utils.padString(valueS, 4);
     }
-    this.productconfigService.productconfigAnnouncement(this.step, null, valueN);
+    let modelToSet=null;
+    if (this.step.models.length>0){
+      modelToSet=this.step.models[0];
+    }
+    console.info(modelToSet);
+    this.productconfigService.productconfigAnnouncement(this.step, modelToSet, valueN);
     this.productcodeService.productcodeAnnouncement(codeString, this.currentStep);
 
   }
@@ -238,7 +247,7 @@ export class MenustepitemComponent implements OnInit {
 
     this.productconfigService.productconfigAnnouncement(this.step, this.selectedModel, null);
     this.productcodeService.productcodeAnnouncement(this.selectedModel.code, this.currentStep);
-
+    this.getPart(this.selectedModel);
   }
 
   getKeyValueModelFromStep(stepIndex: number, propkey: string): string {
@@ -257,5 +266,14 @@ export class MenustepitemComponent implements OnInit {
     }
   }
 
+  getPart(model: Model) {
+     this.partService.getPart(model).subscribe((res:Part) => {
+      let serverresponse:Part=res;
+      this.currentPart=serverresponse;
+      console.info(serverresponse);
+    }
+  ,
+    error=>console.info('error'));
+  }
 
 }

@@ -13,9 +13,11 @@ export class Model extends BaseClass {
   typeClass:string;
 
 
+  // --------- Part of Mounting ----------------
   @serializeAs(ModelMargin)
   @deserializeAs(ModelMargin)
   margins: ModelMargin;
+  //--------------------------------------------
 
   @serialize
   @deserialize
@@ -49,6 +51,7 @@ export class Model extends BaseClass {
   @deserializeAs(ModelTranslation)
   translations: ModelTranslation;
 
+  // ------------------ Part of RealModel ---------------
   @serializeAs(ModelDimension)
   @deserializeAs(ModelDimension)
   dimension: ModelDimension;
@@ -60,6 +63,8 @@ export class Model extends BaseClass {
   @serializeAs(ModelMargin)
   @deserializeAs(ModelMargin)
   margin: ModelMargin;
+  //---------------------
+
 
   @serializeAs(ModelDimension)
   @deserializeAs(ModelDimension)

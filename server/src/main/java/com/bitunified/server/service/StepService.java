@@ -1,5 +1,6 @@
 package com.bitunified.server.service;
 
+import com.bitunified.ledconfig.composedproduct.ComposedProduct;
 import com.bitunified.ledconfig.configuration.parser.steps.Parser;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
@@ -15,7 +16,13 @@ import java.util.stream.Collectors;
 
 public class StepService {
 
-    public Steps getSteps(Parser parser) {
+    private final Parser parser;
+
+    public StepService(Parser parser){
+        this.parser=parser;
+    }
+
+    public Steps getSteps() {
 
         Steps steps = new Steps();
 
@@ -24,7 +31,9 @@ public class StepService {
         List<Step> stepListValues = groupedModels.entrySet().stream().filter(f -> f.getKey() <= 6 ).map(t -> new Step(t.getKey(), t.getKey() == null ? "" : "Step " + t.getKey().toString(), t.getValue())).collect(Collectors.toList());
         List<Step> stepListNumbers = new ArrayList<>();
         stepListNumbers.add(new Step(7, "Step 7", new ArrayList<>(), StepType.NUMBER,false));
-        stepListNumbers.add(new Step(8, "Step 8", new ArrayList<>(), StepType.NUMBER,true));
+        List<Model> composedProduct=new ArrayList<>();
+        composedProduct.add(new ComposedProduct());
+        stepListNumbers.add(new Step(8, "Step 8", composedProduct, StepType.NUMBER,true));
 
         List<Step> stepAccessoires = groupedModels.entrySet().stream().filter(f -> f.getKey() ==9 ).map(t -> new Step(t.getKey(), t.getKey() == null ? "" : "Step " + t.getKey().toString(), t.getValue(),StepType.VALUES,true)).collect(Collectors.toList());
 

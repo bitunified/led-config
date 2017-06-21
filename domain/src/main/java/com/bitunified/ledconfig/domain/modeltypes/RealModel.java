@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
         @JsonSubTypes.Type(value = Cable.class),
         @JsonSubTypes.Type(value = Accessoire.class),
         @JsonSubTypes.Type(value = EndCap.class),
+        @JsonSubTypes.Type(value = ComposedProduct.class),
         @JsonSubTypes.Type(value = Covering.class)
 })
 public class RealModel extends Model {
