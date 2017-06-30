@@ -22,6 +22,7 @@ import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.instruction.InstructionMessage;
 import com.bitunified.ledconfig.domain.message.Message;
 import com.bitunified.ledconfig.domain.product.ModelResult;
+import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 import com.bitunified.ledconfig.parts.NotExistingPart;
 import com.bitunified.ledconfig.parts.Part;
 import com.bitunified.ledconfig.productconfiguration.ModelChosenStep;
@@ -44,7 +45,7 @@ import java.util.*;
 public class LedConfig {
 
     public final void main(final String[] args) {
-        rules(null,null);
+        rules(null, null);
     }
 
     public final ProductConfigResult rules(final ProductConfiguration productConfigration, Parser parser) {
@@ -62,7 +63,7 @@ public class LedConfig {
         KnowledgeBuilder kBuilder =
                 KnowledgeBuilderFactory.newKnowledgeBuilder(kbConfig);
 
-        return execute(kc, productConfigration,parser);
+        return execute(kc, productConfigration, parser);
 
     }
 
@@ -82,8 +83,8 @@ public class LedConfig {
         List<InstructionMessage> instructions = new ArrayList<>();
         ksession.setGlobal("instructions", instructions);
 
-        Map<Part,Double> partCountList = new HashMap<>();
-        ksession.setGlobal("partCountList",partCountList);
+        Map<Part, Double> partCountList = new HashMap<>();
+        ksession.setGlobal("partCountList", partCountList);
 
         Map<Integer, List<Message>> messageMap = new HashMap<>();
 
@@ -91,11 +92,11 @@ public class LedConfig {
         ksession.setGlobal("messageMap", messageMap);
 
 
-        Map<String,Part> parts = new HashMap<>();
-        for (Part part:parser.getParts()){
-            parts.put(part.getId(),part);
+        Map<String, Part> parts = new HashMap<>();
+        for (Part part : parser.getParts()) {
+            parts.put(part.getId(), part);
         }
-        ksession.setGlobal("parts",parts);
+        ksession.setGlobal("parts", parts);
         // The application can also setup listeners
         ksession.addEventListener(new DebugAgendaEventListener());
         ksession.addEventListener(new DebugRuleRuntimeEventListener());
@@ -110,18 +111,23 @@ public class LedConfig {
         // The application can insert facts into the session
 
 
+        for (ModelChosenStep m : productConfiguration.getModelsForSteps()) {
+            if (m.getStep().getStepindex() == 8) {
+                if (m.getChosenModel() instanceof ComposedProduct) {
+                    ((ComposedProduct) m.getChosenModel()).getDimension().setWidth(m.getModelValue());
+                }
+            }
+            if (m.getStep().getStepindex() == 7) {
 
-        for (ModelChosenStep m: productConfiguration.getModelsForSteps()){
-
+                if (m.getChosenModel()!=null && m.getChosenModel().getClass().isAssignableFrom(LedStrip.class)) {
+                    ((LedStrip) m.getChosenModel()).getDimension().setWidth(m.getModelValue());
+                }
+            }
             ksession.insert(m.getChosenModel());
         }
 
 
-
         ksession.fireAllRules();
-
-
-
 
 
         Collection<Model> sortedModels = (Collection<Model>) ksession.getObjects();
@@ -129,9 +135,9 @@ public class LedConfig {
         for (Object model : sortedModels) {
             if (model instanceof Model && !(model instanceof ComposedProduct)) {
                 Model m = (Model) model;
-                if (m.getStep() != null && m.getName() != null && messageMap.get(m.getStep())!=null) {
+                if (m.getStep() != null && m.getName() != null && messageMap.get(m.getStep()) != null) {
                     messageMap.get(m.getStep()).add(new Message(m));
-                    for (Part p:parts.values()){
+                    for (Part p : parts.values()) {
 
                         if (!(p instanceof NotExistingPart)) {
                             if (p.getProduct() != null && p.getProduct().equals(m)) {
@@ -153,13 +159,13 @@ public class LedConfig {
 
         }
 
-        for (Map.Entry<Part,Double> pl:partCountList.entrySet()){
-            if (pl!=null) {
+        for (Map.Entry<Part, Double> pl : partCountList.entrySet()) {
+            if (pl != null) {
                 System.out.println("Part from partlist: " + pl.getValue() + " aantal: " + pl.getKey());
             }
         }
         for (Message msg : messages) {
-            if (msg.getStep() != null && messageMap.get(msg.getStep())!=null) {
+            if (msg.getStep() != null && messageMap.get(msg.getStep()) != null) {
                 messageMap.get(msg.getStep()).add(msg);
 
             }
@@ -173,7 +179,7 @@ public class LedConfig {
         ksession.dispose();
         ksession.destroy();
 
-        return new ProductConfigResult(new ArrayList<>(),messages, messageMap, ksession.getObjects(),partCountList,instructions);
+        return new ProductConfigResult(new ArrayList<>(), messages, messageMap, ksession.getObjects(), partCountList, instructions);
 
     }
 

@@ -21,7 +21,13 @@ import javax.xml.bind.annotation.XmlSeeAlso;
         property = "typeClass")
 @JsonSubTypes({
         @JsonSubTypes.Type(value = EndCapBothSidesMounting.class),
-        @JsonSubTypes.Type(value = EndCapLeftMounting.class)
+        @JsonSubTypes.Type(value = EndCapLeftMounting.class),
+        @JsonSubTypes.Type(value = NoEndCapsMounting.class),
+        @JsonSubTypes.Type(value = HighEndCapRightMounting.class),
+        @JsonSubTypes.Type(value = HighEndCapBothCableChannelMounting.class),
+        @JsonSubTypes.Type(value = HighEndCapLeftMounting.class),
+        @JsonSubTypes.Type(value = HighEndCapRightMounting.class),
+        @JsonSubTypes.Type(value = EndCapRightMounting.class)
 })
 public class Mounting extends ConfigurationModel {
 

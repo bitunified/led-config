@@ -709,6 +709,7 @@ public class Parser {
         cable.setCode("S");
         models.add(cable);
         relationDefinitionRGBCable.addModel(cable);
+
         part = new Part(cable);
         part.setId("60005s");
         part.setPrice(BigDecimal.valueOf(8.2));
@@ -936,8 +937,7 @@ public class Parser {
         models.add(ledStrip);
 
         part = new Part(ledStrip);
-        part.setPrice(BigDecimal.valueOf(36.96
-        ));
+        part.setPrice(BigDecimal.valueOf(36.96));
         part.setId("12182");
         part.setDescription("liniLED PCB Rood D");
         part.setType("MTR");
@@ -962,9 +962,8 @@ public class Parser {
 
         relationDefinitionRGBNotDiffuus.addModel(profileH20,profileH30,profileL20,profileL30,resinClear,capClear);
 
-        part = new Part(ledStrip);
-        part.setPrice(BigDecimal.valueOf(69.52
-        ));
+        part = new Part(ledStripRGB);
+        part.setPrice(BigDecimal.valueOf(69.52));
         part.setId("12187");
         part.setType("MTR");
         part.setDescription("liniLED PCB RGB 160");

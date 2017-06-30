@@ -48,7 +48,8 @@ import java.util.TreeMap
 import com.bitunified.ledconfig.domain.Orientation
 import com.bitunified.ledconfig.helpers.PartMatchHelper
 import com.bitunified.ledconfig.domain.product.cover.Covering
-import com.bitunified.ledconfig.helpers.PartListHelper;
+import com.bitunified.ledconfig.helpers.PartListHelper
+import com.bitunified.ledconfig.helpers.PartModelHelper;
 global java.util.Set<Message> messages
 global java.util.Map<String,Part> parts
 global java.util.Map<Integer,List<Message>> messageMap
@@ -292,35 +293,71 @@ rule "Actie: Profiel L20 lengte"
 
             exists(Profile(name matches ".*L20.*"));
            composedproduct:ComposedProduct(dimension.getWidth()!=null)
-           profile:Profile(castingLength:lengthForCasting.width)
-           mountingLeft:Mounting(leftMountingLength:margins.left,margins!=null,leftMountingLength!=null)
-           mountingRight:Mounting(rightMountingLength:margins.right,margins!=null,margins.right!=null)
+           profile:Profile()
+           mountingLeft:Mounting(leftMountingLength:margins.getLeft(),margins!=null)
+           mountingRight:Mounting(rightMountingLength:margins.getRight(),margins!=null)
        then
          //Profiel lengte
          double length=(((composedproduct.getDimension().getWidth()-((int)mountingLeft.getMargins().getLeft()))+profile.getLengthForCasting().getWidth())/4000d);
-         Part part=SerializationUtils.clone((Part)parts.get("10713"));
+         Part foundPart=PartModelHelper.getPart(parts,profile.getClass(),"L20");
+         Part part=SerializationUtils.clone(foundPart);
          PartListHelper.addToPartCountList(partCountList,part,length);
          System.out.println("Profiel lengte L20:"+length);
        end
+rule "Profiel H20 lengte"
+  no-loop true
+       when
+            exists(Profile(name matches ".*H20.*"));
+         composedproduct:ComposedProduct(dimension.getWidth()!=null)
+                  profile:Profile()
+                  mountingLeft:Mounting(leftMountingLength:margins.getLeft(),margins!=null)
+                  mountingRight:Mounting(rightMountingLength:margins.getRight(),margins!=null)
+       then
+         //Profiel lengte
+         int length=-1*Math.floorDiv(-1*(composedproduct.getDimension().getWidth()-((int)mountingLeft.getMargins().getLeft()))+profile.getLengthForCasting().getWidth(),4000);
+ Part foundPart=PartModelHelper.getPart(parts,profile.getClass(),"H20");
+            Part part=SerializationUtils.clone(foundPart);
+            PartListHelper.addToPartCountList(partCountList,part,Double.valueOf(length));
+
+         System.out.println("Profiel lengte H20:"+length);
+       end
+
 rule "Profiel L30 lengte"
   no-loop true
        when
             exists(Profile(name matches ".*L30.*"));
-           (composedproduct:ComposedProduct(totalLength:dimension.getWidth()))
-
-           profile:Profile(castingLength:lengthForCasting.width)
-           mountingLeft:Mounting(leftMountingLength:margins.left,margins!=null,leftMountingLength!=null)
-           mountingRight:Mounting(rightMountingLength:margins.right,margins!=null,margins.right!=null)
+         composedproduct:ComposedProduct(dimension.getWidth()!=null)
+                  profile:Profile()
+                  mountingLeft:Mounting(leftMountingLength:margins.getLeft(),margins!=null)
+                  mountingRight:Mounting(rightMountingLength:margins.getRight(),margins!=null)
        then
          //Profiel lengte
          int length=-1*Math.floorDiv(-1*(composedproduct.getDimension().getWidth()-((int)mountingLeft.getMargins().getLeft()))+profile.getLengthForCasting().getWidth(),4000);
 
-            Part part=SerializationUtils.clone((Part)parts.get("10717"));
+     Part foundPart=PartModelHelper.getPart(parts,profile.getClass(),"L30");
+            Part part=SerializationUtils.clone(foundPart);
             PartListHelper.addToPartCountList(partCountList,part,Double.valueOf(length));
 
          System.out.println("Profiel lengte L30:"+length);
        end
 
+       rule "Profiel H30 lengte"
+         no-loop true
+              when
+                   exists(Profile(name matches ".*H30.*"));
+                composedproduct:ComposedProduct(dimension.getWidth()!=null)
+                         profile:Profile()
+                         mountingLeft:Mounting(leftMountingLength:margins.getLeft(),margins!=null)
+                         mountingRight:Mounting(rightMountingLength:margins.getRight(),margins!=null)
+              then
+                //Profiel lengte
+                int length=-1*Math.floorDiv(-1*(composedproduct.getDimension().getWidth()-((int)mountingLeft.getMargins().getLeft()))+profile.getLengthForCasting().getWidth(),4000);
+            Part foundPart=PartModelHelper.getPart(parts,profile.getClass(),"H30");
+                   Part part=SerializationUtils.clone(foundPart);
+                   PartListHelper.addToPartCountList(partCountList,part,Double.valueOf(length));
+
+                System.out.println("Profiel lengte H30:"+length);
+              end
 
        rule "Geen eindkappen montage icm kabeleinde via linker uitgang niet mogelijk"
          no-loop true
@@ -382,21 +419,28 @@ rule "Profiel L30 lengte"
 
 rule "Actie: Ledstrip toevoegen"
     when
-     ledstrip:LedStrip( sect:getProperty(LedStrip.SECTION_WIDTH),sect!=null,ledstripLengte:dimension.getWidth())
+     ledstrip:LedStrip(ledstripLengte:dimension.getWidth())
 
     then
-    Part part=null;
-    for (Object p:parts.values()){
-    if (((Part)p).getProduct()!=null && (((Part)p).getProduct()) instanceof LedStrip){
-    LedStrip ls=(LedStrip) (((Part)p).getProduct());
-    if (ls.getCode().equals(ledstrip.getCode())){
+
+     Part foundPart=PartModelHelper.getPart(parts,ledstrip.getClass(),ledstrip);
+     if (foundPart!=null && ledstripLengte!=null){
+      Part part=SerializationUtils.clone(foundPart);
+      System.out.println(ledstripLengte);
        double length=((Integer)ledstripLengte)/1000d;
-         part=SerializationUtils.clone((Part)p);
-         PartListHelper.addToPartCountList(partCountList,part,length);
-          System.out.println("Ledstrip toegevoegd,lengte: "+length+": "+part);
-          }
-        }
-    }
+       PartListHelper.addToPartCountList(partCountList,part,length);
+       }
+//    for (Object p:parts.values()){
+//    if (((Part)p).getProduct()!=null && (((Part)p).getProduct()) instanceof LedStrip){
+//    LedStrip ls=(LedStrip) (((Part)p).getProduct());
+//    if (ls.getCode().equals(ledstrip.getCode())){
+//       double length=((Integer)ledstripLengte)/1000d;
+//         part=SerializationUtils.clone((Part)p);
+//         PartListHelper.addToPartCountList(partCountList,part,length);
+//          System.out.println("Ledstrip toegevoegd,lengte: "+length+": "+part);
+//          }
+//        }
+//    }
 
 
 end
@@ -509,7 +553,7 @@ no-loop true
     when
 
        not(exists(HighPowerLedStrip()))
-       ledstrip:LedStrip()
+       ledstrip:LedStrip(dimension.getWidth()!=null)
        composedproduct:ComposedProduct(dimension.getWidth()!=null)
     then
        double length=ledstrip.getDimension().getWidth()/50000d;

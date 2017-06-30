@@ -30,6 +30,7 @@ public class StepService {
 
         List<Step> stepListValues = groupedModels.entrySet().stream().filter(f -> f.getKey() <= 6 ).map(t -> new Step(t.getKey(), t.getKey() == null ? "" : "Step " + t.getKey().toString(), t.getValue())).collect(Collectors.toList());
         List<Step> stepListNumbers = new ArrayList<>();
+
         stepListNumbers.add(new Step(7, "Step 7", new ArrayList<>(), StepType.NUMBER,false));
         List<Model> composedProduct=new ArrayList<>();
         composedProduct.add(new ComposedProduct());

@@ -5,9 +5,16 @@ import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.Property;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
+import com.bitunified.ledconfig.domain.product.PCB.types.*;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "typeClass")
 public class Cable extends RealModel {
 
     public Cable(){
