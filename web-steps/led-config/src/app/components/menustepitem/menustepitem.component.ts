@@ -1,7 +1,8 @@
-import {Component, OnInit, Input, ViewEncapsulation} from "@angular/core";
+import {Component, OnInit, Input, ViewEncapsulation, Output, EventEmitter} from "@angular/core";
 import {ModelserviceService} from "../../services/modelservice.service";
 import {ProductcodeService} from "../../services/productcode.service";
 import {MdTabChangeEvent, MdCheckboxChange} from "@angular/material";
+import {Subscription} from "rxjs/Subscription";
 import {StepModel} from "../../domain/StepModel";
 import {Model} from "../../domain/Model";
 import {ProductconfigurationService} from "../../services/productconfiguration.service";
@@ -27,7 +28,6 @@ export class MenustepitemComponent implements OnInit {
   @Input()
   set step(step: StepModel) {
     this._step = step;
-    this.filter(step.models);
   }
 
   get step() {
@@ -37,37 +37,64 @@ export class MenustepitemComponent implements OnInit {
   @Input()
   currentStep: number;
 
+  @Output()
+  nextStep: EventEmitter<number> = new EventEmitter<number>();
+
 
   @Input()
   selectedModel: Model;
 
-  tabIndex: number;
-
   filteredModels: Array<Model> = [];
   displayRelation: DisplayRelation;
 
-  skip: boolean;
+  skip: boolean=false;
 
+  checked:boolean=false;
   currentPart: Part;
 
-  constructor(private productcodeService: ProductcodeService, private productconfigService: ProductconfigurationService, private partService: PartService) {
+  @Input()
+  m: Model;
 
+
+  private productcodeServiceSubscription: Subscription;
+
+  constructor(private productcodeService: ProductcodeService, private productconfigService: ProductconfigurationService, private partService: PartService) {
+    this.productcodeServiceSubscription = productcodeService.productcodeSource$.subscribe(
+      res => {
+        if (res.currentStep == this._step.stepindex) {
+          this.reset();
+        }
+        console.info(res);
+        this.currentStep = res.currentStep;
+      });
+
+
+  }
+
+  ngOnDestroy() {
+    this.productcodeServiceSubscription.unsubscribe();
   }
 
   ngOnInit() {
+    this.reset();
+  }
+
+  onCheckBoxChange(skip){
+    console.info(skip);
+    this.skip=skip;
   }
 
   skipThisStep(value: MdCheckboxChange) {
+    //this.skip = value.checked;
     console.info(value);
-    this.skip = value.checked;
     console.info(this.skip);
     if (value.checked) {
 
       this.selectedModel = null;
-      this.onInputChange(null);
+
 
     }
-
+    this.onInputChange(null);
   }
 
   isStepTypeValues(step: StepModel) {
@@ -85,82 +112,113 @@ export class MenustepitemComponent implements OnInit {
   }
 
   getModelTitle(): string {
-    if (this.step.type == StepType.VALUES) {
-      return this.selectedModel ? this.selectedModel.name : '';
+    let modelC: ModelChosenStep = this.productconfigService.productConfiguration.getModelChosenFromStep(this.step.stepindex);
+    let modl = modelC.chosenModel;
+    if (modelC && modl) {
+
+
+      if (this.step.type == StepType.VALUES) {
+        return modl ? modl.name : '';
+      }
+      return '' + (this.step.modelValue ? this.step.modelValue : '') + ' mm';
     }
-    return '' + (this.step.modelValue ? this.step.modelValue : '') + ' mm';
+    return '';
   }
 
   filter(models: Model[]) {
     let mls: Array<Model> = [];
+    let dp:DisplayRelation=new DisplayRelation();
     for (let model of models) {
-      let rl = this.getTabColor(model).relationState;
+      let rl = this.determineRelationState(dp,model).relationState;
       if (rl == RelationState.ALLOWED || rl == RelationState.ALLOWEDWITHWARNING || rl == RelationState.ALLOWEDWITHINFO) {
         mls.push(model);
       }
     }
     this.filteredModels = mls;
+
     return mls;
   }
 
-  getTabColor(m: Model): DisplayRelation {
-    this.displayRelation = new DisplayRelation();
-    let prevModels: Array<Model> = this.productconfigService.productConfiguration.prevModels(this.currentStep);
+  getTabColor(m: Model):DisplayRelation {
+
+
+
+    this.displayRelation=this.determineRelationState(new DisplayRelation(),m);
+    return this.displayRelation;
+  }
+
+  determineRelationState(displayRelation:DisplayRelation,m:Model){
+    let additional=1;
+if (this.currentStep==1){
+  additional=0;
+}
+    let prevModels: Array<Model> = this.productconfigService.productConfiguration.prevModels(this.currentStep+additional);
 
     if (prevModels.length > 0 && m) {
+
       let relations: Array<RelationDefinition> = Model.relatedRelations(m, prevModels);
 
-      //console.info('m',m,'rel',relations);
+
       let allowed: boolean = false;
       let allowedWithWarning: boolean = false;
       for (let rel of relations) {
         if (rel.relationState == RelationState.ALLOWEDWITHWARNING) {
           allowedWithWarning = true;
-          this.displayRelation.message = rel.allowedWithMessage;
+          displayRelation.message = rel.allowedWithMessage;
           break;
         }
       }
       if (allowedWithWarning) {
-        this.displayRelation.relationState = RelationState.ALLOWEDWITHWARNING;
-        this.displayRelation.color = "orange";
-        return this.displayRelation;
+        displayRelation.relationState = RelationState.ALLOWEDWITHWARNING;
+        displayRelation.color = "orange";
+        return displayRelation;
       }
       let allowedWithInfo: boolean = false;
       for (let rel of relations) {
         if (rel.relationState == RelationState.ALLOWEDWITHINFO) {
           allowedWithInfo = true;
-          this.displayRelation.message = rel.allowedWithMessage;
+          displayRelation.message = rel.allowedWithMessage;
           break;
         }
       }
       if (allowedWithInfo) {
-        this.displayRelation.relationState = RelationState.ALLOWEDWITHINFO;
-        this.displayRelation.color = "black";
-        return this.displayRelation;
+        displayRelation.relationState = RelationState.ALLOWEDWITHINFO;
+        displayRelation.color = "black";
+        return displayRelation;
       }
       for (let rel of relations) {
         if (RelationState.ALLOWED == rel.relationState) {
           allowed = true;
+          break;
         }
       }
-
-
       if (allowed) {
 
-        this.displayRelation.relationState = RelationState.ALLOWED;
-        this.displayRelation.color = "black";
-
-        return this.displayRelation;
+        displayRelation.relationState = RelationState.ALLOWED;
+        displayRelation.color = "black";
+        return displayRelation;
       }
-      this.displayRelation.relationState = null;
-      this.displayRelation.color = "red";
-      return this.displayRelation;
+      displayRelation.relationState = null;
+      displayRelation.color = "red";
+      return displayRelation;
     } else {
-      this.displayRelation.relationState = RelationState.ALLOWED;
-      this.displayRelation.color = "black";
-      return this.displayRelation;
+      displayRelation.relationState = RelationState.ALLOWED;
+      displayRelation.color = "black";
+      return displayRelation;
     }
   }
+
+  reset() {
+    this.skip = false;
+    this.selectedModel = null;
+  }
+
+  prevStepItems() {
+
+    this.productcodeService.productcodeRecall(this.step.stepindex);
+
+  }
+
 
   onInputChange(value: string) {
     console.info(value);
@@ -173,14 +231,13 @@ export class MenustepitemComponent implements OnInit {
       valueS = value;
       codeString = Utils.padString(valueS, 4);
     }
-    let modelToSet=null;
-    if (this.step.models.length>0){
-      modelToSet=this.step.models[0];
+    let modelToSet = null;
+    if (this.step.models.length > 0) {
+      modelToSet = this.step.models[0];
     }
-    console.info(modelToSet);
     this.productconfigService.productconfigAnnouncement(this.step, modelToSet, valueN);
-    this.productcodeService.productcodeAnnouncement(codeString, this.currentStep);
-
+    this.productcodeService.productcodeAnnouncement(codeString, this.step.stepindex);
+    this.nextStepProcessing();
   }
 
   calculateStepValue(step: StepModel) {
@@ -193,9 +250,14 @@ export class MenustepitemComponent implements OnInit {
     }
   }
 
+  changeSelect(event: Event) {
+    this.selectedModel = this.m;
+
+    this.changeSelection();
+  }
+
   calculateMinValue(step: StepModel) {
     if (step.stepindex == 7) {
-
       return this.calculateStepValue(step);
     }
     let totalMinLength = 100;
@@ -212,43 +274,28 @@ export class MenustepitemComponent implements OnInit {
     return totalMinLength;
   }
 
-  tabClick() {
-
-    if (this.selectedModel == undefined) {
-
-      this.changeTab(null);
-    }
-  }
 
   public stepDiff(current) {
 
-    return current.stepindex - this.currentStep;
+    return current.stepindex - this.currentStep - 1;
 
   }
 
-  changedTabSelection(event: MdTabChangeEvent) {
 
+  private changeSelection() {
 
-    this.changeTab(event);
-  }
-
-  private changeTab(tabEvent: MdTabChangeEvent) {
-
-    if (tabEvent) {
-
-      this.selectedModel = this.filteredModels[tabEvent.index];
-
-
-      this.tabIndex = tabEvent.index;
-    } else {
-      this.selectedModel = this.filteredModels[0];
-      this.tabIndex = 0;
-    }
-
-    this.productconfigService.productconfigAnnouncement(this.step, this.selectedModel, null);
-    this.productcodeService.productcodeAnnouncement(this.selectedModel.code, this.currentStep);
+    this.selectedModel = this.m;
     this.getPart(this.selectedModel);
+    this.productconfigService.productconfigAnnouncement(this.step, this.selectedModel, null);
+
+    this.productcodeService.productcodeAnnouncement(this.selectedModel.code, this.step.stepindex);
+
+    this.getTabColor(this.m);
+    this.nextStepProcessing();
+
   }
+
+
 
   getKeyValueModelFromStep(stepIndex: number, propkey: string): string {
     let model: Model = this.productconfigService.productConfiguration.getModelFromStep(stepIndex);
@@ -267,13 +314,16 @@ export class MenustepitemComponent implements OnInit {
   }
 
   getPart(model: Model) {
-     this.partService.getPart(model).subscribe((res:Part) => {
-      let serverresponse:Part=res;
-      this.currentPart=serverresponse;
-      console.info(serverresponse);
-    }
-  ,
-    error=>console.info('error'));
+    this.partService.getPart(model).subscribe((res: Part) => {
+        let serverresponse: Part = res;
+        this.currentPart = serverresponse;
+        console.info(serverresponse);
+      }
+      ,
+      error=>console.info('error'));
   }
 
+  private nextStepProcessing() {
+  this.nextStep.emit(this.step.stepindex);
+  }
 }

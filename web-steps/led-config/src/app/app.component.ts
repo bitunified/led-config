@@ -84,6 +84,7 @@ export class AppComponent implements OnInit,OnDestroy {
 
   backToConfig(){
     this.priceCalculation=null;
+    window.location.reload();
   }
 
 }

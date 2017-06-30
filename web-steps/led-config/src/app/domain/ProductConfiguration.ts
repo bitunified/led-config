@@ -57,7 +57,6 @@ export class ProductConfiguration {
         models.push(modelStep.chosenModel);
       }
     }
-
     return models;
   }
 

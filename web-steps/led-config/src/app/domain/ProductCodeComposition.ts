@@ -1,6 +1,8 @@
 export class ProductCodeComposition {
   codes: Array<string> = [];
 
+  currentStep:number=0;
+
   public constructor() {
 
   }

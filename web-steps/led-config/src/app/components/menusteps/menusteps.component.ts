@@ -10,6 +10,7 @@ import {PriceCalculation} from "../../domain/server/PriceCalculation";
 import {NotificationService} from "../../services/notificationservice.service";
 import {ErrorNotificationState} from "../../domain/internal/ErrorNotificationState";
 import {NotificationMessage} from "../../domain/internal/NotificationMessage";
+import {ProductcodeService} from "../../services/productcode.service";
 
 @Component({
   selector: 'menusteps',
@@ -39,9 +40,12 @@ export class MenustepsComponent implements OnInit {
 
   private productConfigSubscription: Subscription;
 
+
+  private productCondeSubscription: Subscription;
+
   private productconfig: ProductConfiguration;
 
-  constructor( private productConfigService: ProductconfigurationService,private notificationService:NotificationService) {
+  constructor( private productcodeService: ProductcodeService,private productConfigService: ProductconfigurationService,private notificationService:NotificationService) {
     this.productConfigSubscription = productConfigService.productconfigSource$.subscribe(
       res => {
         this.productconfig = res;
@@ -49,10 +53,14 @@ export class MenustepsComponent implements OnInit {
     this.productconfig = productConfigService.productConfiguration;
 
 
+    this.productCondeSubscription = productcodeService.productcodeSource$.subscribe(res=>{
+      console.info(res);
+      //this.currentStep=res.currentStep;
+    });
   }
 
   ngOnInit() {
-    this.currentStep = 1;
+    this.currentStep = 0;
 
     const combineRelationSteps: Observable<{rels: Relations,steps: StepsModel}> = Observable.combineLatest(this.relations, this.steps, (rels: Relations, steps: StepsModel)=> {
       return {rels: rels, steps: steps};
@@ -65,15 +73,17 @@ export class MenustepsComponent implements OnInit {
   }
 
 
-  nextStep() {
-    console.info(this.productconfig);
-    if (this.productconfig.containsStep(this.currentStep)) {
-      if (this.currentStep < this.stepsall.steps.length) {
-        this.currentStep++;
-
-        return;
-      }
-      if (this.currentStep == this.stepsall.steps.length) {
+  nextStepItem(event) {
+    console.info(event);
+    console.info(this.stepsall.steps.length);
+    console.info(this.currentStep);
+    if (this.productconfig.containsStep(event)) {
+      // if (this.currentStep < this.stepsall.steps.length) {
+      //   this.currentStep++;
+      //
+      //   return;
+      // }
+      if (event == this.stepsall.steps.length) {
         console.info('finish');
         this.isProcessing=true;
         let subscriptionProductPrice = this.productConfigService.sendProductConfigToServer();
@@ -85,7 +95,7 @@ export class MenustepsComponent implements OnInit {
       }
       return;
     }
-    this.notificationService.notificationMessageAnnouncement(new NotificationMessage("Select an option to click the product-item.",ErrorNotificationState.INFO));
+    // this.notificationService.notificationMessageAnnouncement(new NotificationMessage("Select an option to click the product-item.",ErrorNotificationState.INFO));
 
   }
 
@@ -104,10 +114,15 @@ export class MenustepsComponent implements OnInit {
   }
 
   prevStep() {
-    if (this.currentStep > 1) {
-      this.currentStep--;
-    }
+    console.info('parent prev');
+    //if (this.currentStep > 1) {
+    //  this.currentStep--;
+    //}
 
+  }
+
+  ngOnDestroy(){
+    this.productCondeSubscription.unsubscribe();
   }
 
 

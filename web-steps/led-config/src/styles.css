@@ -8,5 +8,5 @@
   margin: 0 auto 0 auto;
   bottom: 10px;
   width: 90%;
-  position: absolute;
+  position: fixed;
 }

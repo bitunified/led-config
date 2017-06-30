@@ -1,87 +1,148 @@
 <form>
 
-
-  <div *ngIf="stepDiff(step)<0">
-    <h4>{{step.description}}: {{getModelTitle()}}</h4>
-  </div>
-  <div *ngIf="stepDiff(step)==0">
-    <h3>{{step.description}}: {{getModelTitle()}}</h3>
-    <div *ngIf="step.skip"><md-checkbox  (change)="skipThisStep($event)" [(ngModel)]="skip" [ngModelOptions]="{standalone: true}">Optional step, skip it.</md-checkbox></div>
-    <div>
-      <div *ngIf="isStepTypeValues(step) && filter(step.models).length>0 && !skip">
-
-        <md-tab-group (selectChange)="changedTabSelection($event)" [selectedIndex]="tabIndex">
-          <md-tab *ngFor="let m of filter(step.models);let i=index;">
-            <ng-template md-tab-label>
-              <div class="labelTab" (click)="tabClick()" [style.color]="getTabColor(m).color">
-
-                {{m.name}}
-              </div>
-            </ng-template>
-            <md-list dense>
-              <md-list-item *ngIf="getTabColor(m).message!=null && getTabColor(m).relationState=='ALLOWEDWITHWARNING'">
-                <md-chip-list class="mat-chip-list-stacked">
-                  <md-chip class="warningChip"
-                           selected="true"
-                           color="warn">
-                    Warning: {{displayRelation.message}}
-                  </md-chip>
-                </md-chip-list>
+  <div class="gridContainer">
+    <div *ngIf="stepDiff(step)<=-2 ">
 
 
-              </md-list-item>
-              <md-list-item *ngIf="getTabColor(m).message!=null && getTabColor(m).relationState=='ALLOWEDWITHINFO'">
-                <md-chip-list class="mat-chip-list-stacked">
-                  <md-chip class="warningChip"
-                           selected="true"
-                           color="primary">
-                    Comment: {{displayRelation.message}}
-                  </md-chip>
-                </md-chip-list>
+      <div class="stepPrevCard">
+        <md-card >
+          <md-card-header>
+            <md-card-title>
+              <md-chip-list>
+                <md-chip>{{step.description}} {{getModelTitle()}}</md-chip>
 
+              </md-chip-list>
+            </md-card-title>
+            <md-card-subtitle></md-card-subtitle>
+          </md-card-header>
+          <md-card-content>
 
-              </md-list-item>
-              <md-list-item>
-                Description: {{m.name}}
-
-              </md-list-item>
-              <md-divider></md-divider>
-              <md-list-item *ngIf="m.dimension!=null && m.dimension.width!=null">
-                Width: {{m.dimension==null?'':m.dimension.width}} mm
-              </md-list-item>
-              <md-divider></md-divider>
-              <md-list-item *ngIf="currentPart && currentPart.price">
-                Price: {{currentPart.price | currency:'EUR':true}}
-              </md-list-item>
-            </md-list>
-          </md-tab>
-        </md-tab-group>
+          </md-card-content>
+        </md-card>
       </div>
-      <div *ngIf="isStepTypeValues(step) && filter(step.models).length==0 ">
-        No configuration possible. Go to previous step and choose another option.
-        </div>
-      <div *ngIf="isStepTypeNumber(step)  && !skip">
 
-Click on line to select a length.<br/>
-          Width:
-          <md-slider class="mat-slider-horizontal"
-                     max="4000"
-                     min="{{calculateMinValue(step)}}"
-                     step="{{calculateStepValue(step)}}"
-                     thumb-label="true" [(ngModel)]="step.modelValue" name="inputValue"
-                     (ngModelChange)="onInputChange($event)">
-          </md-slider>
-          mm.
-
-
-      </div>
     </div>
 
-  </div>
-  <div *ngIf="stepDiff(step)==1">
-    <h4>{{step.description}}</h4>
-  </div>
-  <div *ngIf="stepDiff(step)>1">
-    <h5>{{step.description}}</h5>
+    <div *ngIf="stepDiff(step)<=0 && stepDiff(step)>-2" class="itemModel">
+      <div class="stepCurrentCard">
+        <md-card class="stepCard">
+          <md-card-header>
+            <md-card-title>
+              <md-chip-list>
+                <md-chip>{{step.description}}</md-chip>
+                <button *ngIf="stepDiff(step)==-1 && currentStep>1" md-icon-button (click)="prevStepItems()">
+                  <md-icon>arrow_upwards</md-icon>
+                </button>
+
+              </md-chip-list>
+            </md-card-title>
+            <md-card-subtitle></md-card-subtitle>
+          </md-card-header>
+          <md-card-content>
+            <div *ngIf="step.skip">
+              <md-checkbox (change)="skipThisStep($event)" [(ngModel)]="checked" [ngModelOptions]="{standalone: true}" (ngModelChange)="onCheckBoxChange(skip)">
+                Optional
+                step, skip it.
+              </md-checkbox>
+
+            </div>
+            <div class="selectionPanel">
+              <div *ngIf="isStepTypeValues(step) && filter(step.models).length>0 && !skip" class="propContainer">
+                <div class="selectContainer">
+                  <md-select placeholder="Select a configuration part" (onClose)="changeSelect($event)" [(ngModel)]="m"
+                             [ngModelOptions]="{standalone: true}"
+                             floatPlaceholder="never" class="selectBoxContainer" overlayDir="bottom">
+                    <md-option *ngFor="let m of filter(step.models);let i=index;" [value]="m" class="selectOption">
+                      <div>{{ m.name }}</div>
+
+                    </md-option>
+                  </md-select>
+
+                </div>
+
+
+              </div>
+              <div *ngIf="isStepTypeValues(step) && filter(step.models).length==0">
+                No configuration possible. Go to previous step and choose another option.
+              </div>
+              <div *ngIf="isStepTypeNumber(step) && !checked">
+
+                Click on line to select a length.<br/>
+                Width:
+                <md-slider class="mat-slider-horizontal"
+                           max="4000"
+                           min="{{calculateMinValue(step)}}"
+                           step="{{calculateStepValue(step)}}"
+                           thumb-label="true" [(ngModel)]="step.modelValue" name="inputValue"
+                           (ngModelChange)="onInputChange($event)">
+                </md-slider>
+                mm.
+
+
+              </div>
+            </div>
+          </md-card-content>
+        </md-card>
+
+
+      </div>
+
+      <div *ngIf="m && stepDiff(step)==-1">
+        <md-card class="infoCard">
+
+          <md-card-content>
+            <div *ngIf="m">
+              <md-list dense class="listProperties">
+                <md-list-item
+                  *ngIf="displayRelation.message!=null && displayRelation.relationState=='ALLOWEDWITHWARNING'">
+                  <md-chip-list class="mat-chip-list-stacked">
+                    <md-chip class="warningChip"
+                             selected="true"
+                             color="warn" i18n>
+                      Warning: {{displayRelation.message}}
+                    </md-chip>
+                  </md-chip-list>
+
+
+                </md-list-item>
+                <md-list-item *ngIf="displayRelation.message!=null && displayRelation.relationState=='ALLOWEDWITHINFO'">
+                  <md-chip-list class="mat-chip-list-stacked">
+                    <md-chip class="warningChip"
+                             selected="true"
+                             color="primary" i18n>
+                      Information: {{displayRelation.message}}
+                    </md-chip>
+                  </md-chip-list>
+
+
+                </md-list-item>
+                <md-list-item i18n>
+                  Description: {{m.name}}
+
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item *ngIf="m.dimension!=null && m.dimension.width!=null" i18n>
+                  Width: {{m.dimension==null?'':m.dimension.width}} mm
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item *ngIf="currentPart && currentPart.price">
+                  Price: {{currentPart.price | currency:'EUR':true}} ({{currentPart.description}})
+                </md-list-item>
+              </md-list>
+            </div>
+          </md-card-content>
+        </md-card>
+
+      </div>
+
+    </div>
+
+
+    <div *ngIf="stepDiff(step)==1">
+      <h4>{{step.description}}</h4>
+    </div>
+    <div *ngIf="stepDiff(step)>1">
+      <h5>{{step.description}}</h5>
+    </div>
   </div>
 </form>

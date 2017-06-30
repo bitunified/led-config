@@ -15,3 +15,52 @@
     background-color: orange;
 
 }
+.gridContainer{
+  grid-template-columns: 500px 500px;
+  grid-template-rows: repeat( 4, 350px);
+}
+
+.stepPrevCard .mat-card{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  display: flex;
+  width:400px;
+}
+.stepCurrentCard .mat-card{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  display: flex;
+  width:400px;
+}
+.infoCard{
+  grid-column-start: 2;
+  grid-column-end: 3;
+  display: flex;
+}
+
+.f2{
+  grid-column: 1 ;
+  grid-row: 3;
+}
+
+.listProperties{
+
+}
+.selectionPanel{
+
+}
+
+.itemModel{
+  display: flex;
+}
+
+
+.propContainer{
+}
+.selectContainer{
+
+  /*display: inline-grid;*/
+}
+.selectOption{
+  /*display: table;*/
+}
