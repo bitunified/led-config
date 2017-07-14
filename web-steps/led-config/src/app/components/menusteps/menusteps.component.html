@@ -1,5 +1,5 @@
 <div *ngIf="stepsall">
   <menustepitem *ngFor="let step of stepsall.steps; let i = index" [step]="step" [currentStep]="currentStep" (nextStep)="nextStepItem($event)">
-
   </menustepitem>
+  <button *ngIf="checkFinish(currentStep)" md-raised-button  (click)="finish()">Finish</button>
 </div>

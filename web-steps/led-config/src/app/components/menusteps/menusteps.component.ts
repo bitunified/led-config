@@ -44,6 +44,7 @@ export class MenustepsComponent implements OnInit {
   private productCondeSubscription: Subscription;
 
   private productconfig: ProductConfiguration;
+  enableFinishButton:boolean;
 
   constructor( private productcodeService: ProductcodeService,private productConfigService: ProductconfigurationService,private notificationService:NotificationService) {
     this.productConfigSubscription = productConfigService.productconfigSource$.subscribe(
@@ -55,7 +56,7 @@ export class MenustepsComponent implements OnInit {
 
     this.productCondeSubscription = productcodeService.productcodeSource$.subscribe(res=>{
       console.info(res);
-      //this.currentStep=res.currentStep;
+      this.currentStep=res.currentStep;
     });
   }
 
@@ -74,9 +75,14 @@ export class MenustepsComponent implements OnInit {
 
 
   nextStepItem(event) {
+
+  }
+
+  checkFinish(event){
     console.info(event);
     console.info(this.stepsall.steps.length);
     console.info(this.currentStep);
+    this.enableFinishButton=false;
     if (this.productconfig.containsStep(event)) {
       // if (this.currentStep < this.stepsall.steps.length) {
       //   this.currentStep++;
@@ -84,21 +90,26 @@ export class MenustepsComponent implements OnInit {
       //   return;
       // }
       if (event == this.stepsall.steps.length) {
-        console.info('finish');
-        this.isProcessing=true;
-        let subscriptionProductPrice = this.productConfigService.sendProductConfigToServer();
-        subscriptionProductPrice.subscribe((productPrice)=> {
-          let productPriceCalculated: PriceCalculation = productPrice;
-          this.notificationService.notificationMessageAnnouncement(new NotificationMessage("Price calculation received",ErrorNotificationState.INFO));
-          this.isProcessing=false;
-        });
+        this.enableFinishButton=true;
+        return true;
       }
-      return;
+
     }
     // this.notificationService.notificationMessageAnnouncement(new NotificationMessage("Select an option to click the product-item.",ErrorNotificationState.INFO));
 
+    return false;
   }
 
+  finish(){
+    console.info('finish');
+    this.isProcessing=true;
+    let subscriptionProductPrice = this.productConfigService.sendProductConfigToServer();
+    subscriptionProductPrice.subscribe((productPrice)=> {
+      let productPriceCalculated: PriceCalculation = productPrice;
+      this.notificationService.notificationMessageAnnouncement(new NotificationMessage("Price calculation received",ErrorNotificationState.INFO));
+      this.isProcessing=false;
+    });
+  }
   evaluateRelations() {
     for (let step of this.stepsall.steps) {
       for (let stepModel of step.models) {

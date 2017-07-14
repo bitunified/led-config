@@ -39,6 +39,7 @@ export class ProductconfigurationService {
 
   sendProductConfigToServer() {
 
+    this.preProcessing();
     let serProductConfig = Serialize(this.productConfiguration, ProductConfiguration);
     return this.http.post(this.serverUrl, serProductConfig)
 
@@ -56,5 +57,11 @@ export class ProductconfigurationService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
 
 
+  }
+
+  private preProcessing() {
+    this.productConfiguration.getModelChosenFromStep(3).chosenModel.dimension.width=this.productConfiguration.getModelChosenFromStep(7).modelValue;
+    this.productConfiguration.getModelChosenFromStep(7).chosenModel=this.productConfiguration.getModelChosenFromStep(3).chosenModel;
+    console.info(this.productConfiguration);
   }
 }

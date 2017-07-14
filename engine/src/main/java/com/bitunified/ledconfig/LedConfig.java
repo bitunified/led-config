@@ -21,8 +21,6 @@ import com.bitunified.ledconfig.configuration.parser.steps.Parser;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.instruction.InstructionMessage;
 import com.bitunified.ledconfig.domain.message.Message;
-import com.bitunified.ledconfig.domain.product.ModelResult;
-import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 import com.bitunified.ledconfig.parts.NotExistingPart;
 import com.bitunified.ledconfig.parts.Part;
 import com.bitunified.ledconfig.productconfiguration.ModelChosenStep;
@@ -69,118 +67,117 @@ public class LedConfig {
 
     public ProductConfigResult execute(KieContainer kc, ProductConfiguration productConfiguration, Parser parser) {
 
-
-        // From the container, a session is created based on
-        // its definition and configuration in the META-INF/kmodule.xml file
         KieSession ksession = kc.newKieSession("LedConfigKS");
+        try {
+            // From the container, a session is created based on
+            // its definition and configuration in the META-INF/kmodule.xml file
 
-        // Once the session is created, the application can interact with it
-        // In this case it is setting a global as defined in the
-        // org/drools/examples/helloworld/HelloWorld.drl file
-        Set<Message> messages = new HashSet<>();
-        ksession.setGlobal("messages", messages);
+            // Once the session is created, the application can interact with it
+            // In this case it is setting a global as defined in the
+            // org/drools/examples/helloworld/HelloWorld.drl file
+            Set<Message> messages = new HashSet<>();
+            ksession.setGlobal("messages", messages);
 
-        List<InstructionMessage> instructions = new ArrayList<>();
-        ksession.setGlobal("instructions", instructions);
+            List<InstructionMessage> instructions = new ArrayList<>();
+            ksession.setGlobal("instructions", instructions);
 
-        Map<Part, Double> partCountList = new HashMap<>();
-        ksession.setGlobal("partCountList", partCountList);
+            Map<Part, Double> partCountList = new HashMap<>();
+            ksession.setGlobal("partCountList", partCountList);
 
-        Map<Integer, List<Message>> messageMap = new HashMap<>();
-
-
-        ksession.setGlobal("messageMap", messageMap);
-
-
-        Map<String, Part> parts = new HashMap<>();
-        for (Part part : parser.getParts()) {
-            parts.put(part.getId(), part);
-        }
-        ksession.setGlobal("parts", parts);
-        // The application can also setup listeners
-        ksession.addEventListener(new DebugAgendaEventListener());
-        ksession.addEventListener(new DebugRuleRuntimeEventListener());
-
-        // To setup a file based audit logger, uncomment the next line
-        // KieRuntimeLogger logger = ks.getLoggers().newFileLogger( ksession, "./helloworld" );
-
-        // To setup a ThreadedFileLogger, so that the audit view reflects events whilst debugging,
-        // uncomment the next line
-        // KieRuntimeLogger logger = ks.getLoggers().newThreadedFileLogger( ksession, "./helloworld", 1000 );
-
-        // The application can insert facts into the session
+            Map<Integer, List<Message>> messageMap = new HashMap<>();
 
 
-        for (ModelChosenStep m : productConfiguration.getModelsForSteps()) {
-            if (m.getStep().getStepindex() == 8) {
-                if (m.getChosenModel() instanceof ComposedProduct) {
-                    ((ComposedProduct) m.getChosenModel()).getDimension().setWidth(m.getModelValue());
-                }
+            ksession.setGlobal("messageMap", messageMap);
+
+
+            Map<String, Part> parts = new HashMap<>();
+            for (Part part : parser.getParts()) {
+                parts.put(part.getId(), part);
             }
-            if (m.getStep().getStepindex() == 7) {
+            ksession.setGlobal("parts", parts);
+            // The application can also setup listeners
+            ksession.addEventListener(new DebugAgendaEventListener());
+            ksession.addEventListener(new DebugRuleRuntimeEventListener());
 
-                if (m.getChosenModel()!=null && m.getChosenModel().getClass().isAssignableFrom(LedStrip.class)) {
-                    ((LedStrip) m.getChosenModel()).getDimension().setWidth(m.getModelValue());
-                }
+            // To setup a file based audit logger, uncomment the next line
+            // KieRuntimeLogger logger = ks.getLoggers().newFileLogger( ksession, "./helloworld" );
+
+            // To setup a ThreadedFileLogger, so that the audit view reflects events whilst debugging,
+            // uncomment the next line
+            // KieRuntimeLogger logger = ks.getLoggers().newThreadedFileLogger( ksession, "./helloworld", 1000 );
+
+            // The application can insert facts into the session
+
+
+            for (ModelChosenStep m : productConfiguration.getModelsForSteps()) {
+
+                ksession.insert(m.getChosenModel());
             }
-            ksession.insert(m.getChosenModel());
-        }
 
 
-        ksession.fireAllRules();
+            ksession.fireAllRules();
 
 
-        Collection<Model> sortedModels = (Collection<Model>) ksession.getObjects();
+            Collection<Model> sortedModels = (Collection<Model>) ksession.getObjects();
 
-        for (Object model : sortedModels) {
-            if (model instanceof Model && !(model instanceof ComposedProduct)) {
-                Model m = (Model) model;
-                if (m.getStep() != null && m.getName() != null && messageMap.get(m.getStep()) != null) {
-                    messageMap.get(m.getStep()).add(new Message(m));
-                    for (Part p : parts.values()) {
+            for (Object model : sortedModels) {
+                if (model instanceof Model && !(model instanceof ComposedProduct)) {
+                    Model m = (Model) model;
+                    if (m.getStep() != null && m.getName() != null && messageMap.get(m.getStep()) != null) {
+                        messageMap.get(m.getStep()).add(new Message(m));
+                        for (Part p : parts.values()) {
 
-                        if (!(p instanceof NotExistingPart)) {
-                            if (p.getProduct() != null && p.getProduct().equals(m)) {
-                                //System.out.println("Add to partList: "+p);
-                                //partList.add(p);
-                            }
-                            if (p.getConfigModel() != null && p.getConfigModel().equals(m)) {
-                                //partList.add(p);
+                            if (!(p instanceof NotExistingPart)) {
+                                if (p.getProduct() != null && p.getProduct().equals(m)) {
+                                    //System.out.println("Add to partList: "+p);
+                                    //partList.add(p);
+                                }
+                                if (p.getConfigModel() != null && p.getConfigModel().equals(m)) {
+                                    //partList.add(p);
+                                }
                             }
                         }
                     }
+                    System.out.println("Model: " + model);
                 }
-                System.out.println("Model: " + model);
+
+                if (model instanceof Part) {
+                    System.out.println("Part:  " + ((Part) model).getProduct());
+                }
+
             }
 
-            if (model instanceof Part) {
-                System.out.println("Part:  " + ((Part) model).getProduct());
+            for (Map.Entry<Part, Double> pl : partCountList.entrySet()) {
+                if (pl != null) {
+                    System.out.println("Part from partlist: " + pl.getValue() + " aantal: " + pl.getKey());
+                }
             }
+            for (Message msg : messages) {
+                if (msg.getStep() != null && messageMap.get(msg.getStep()) != null) {
+                    messageMap.get(msg.getStep()).add(msg);
+
+                }
+            }
+
+
+            // Remove comment if using logging
+            // logger.close();
+
+            // and then dispose the session
+            ksession.dispose();
+            ksession.destroy();
+
+            return new ProductConfigResult(new ArrayList<>(), messages, messageMap, ksession.getObjects(), partCountList, instructions);
+        } catch (Exception e) {
+            ksession.dispose();
+            ksession.destroy();
 
         }
-
-        for (Map.Entry<Part, Double> pl : partCountList.entrySet()) {
-            if (pl != null) {
-                System.out.println("Part from partlist: " + pl.getValue() + " aantal: " + pl.getKey());
-            }
+        finally {
+            ksession.dispose();
+            ksession.destroy();
         }
-        for (Message msg : messages) {
-            if (msg.getStep() != null && messageMap.get(msg.getStep()) != null) {
-                messageMap.get(msg.getStep()).add(msg);
-
-            }
-        }
-
-
-        // Remove comment if using logging
-        // logger.close();
-
-        // and then dispose the session
-        ksession.dispose();
-        ksession.destroy();
-
-        return new ProductConfigResult(new ArrayList<>(), messages, messageMap, ksession.getObjects(), partCountList, instructions);
-
+        return null;
     }
 
     public void dispose() {

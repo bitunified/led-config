@@ -50,33 +50,45 @@ import com.bitunified.ledconfig.helpers.PartMatchHelper
 import com.bitunified.ledconfig.domain.product.cover.Covering
 import com.bitunified.ledconfig.helpers.PartListHelper
 import com.bitunified.ledconfig.helpers.PartModelHelper;
-global java.util.Set<Message> messages
-global java.util.Map<String,Part> parts
-global java.util.Map<Integer,List<Message>> messageMap
+global java.util.Set<Message> messages;
+global java.util.Map<String,Part> parts;
+global java.util.Map<Integer,List<Message>> messageMap;
 global java.util.List<InstructionMessage> instructions;
 global java.util.Map<Part,Double> partCountList;
 //Rule with higher priority.
 
 
-//rule "Totale lengte berekening" salience 1
-//    when
-//
-//       Mounting(mountingLeft:margins.left!=null, mountingRight:margins.right!=null)
-//       CableEntry(cableEntryLeft:margins.left!=null,cableEntryRight:margins.right!=null)
-//       LedStrip(ledstripLength:dimension.getWidth()!=null)
-//       cp:ComposedProduct(dimension.getWidth()==null)
-//
-//    then
-//        int totalLength=(int)mountingLeft+(int)mountingRight+(int)ledstripLength+(int)cableEntryLeft+(int)cableEntryRight;
-//
-//        //Dit activeert andere regels die op basis van de productlengte berekeningen maken.
-//        modify(cp){
-//            getDimension().getWidth()=totalLength
-//        }
-//
-//        messages.add(new Message("Totale lengte automatisch berekend: "+totalLength+" mm.",8,MessageStatus.INFO));
-//        System.out.println("Totale lengte automatisch berekend"+totalLength);
-//end
+rule "Totale lengte berekening" salience 1
+no-loop true
+    when
+
+       mt:Mounting()
+       ce:CableEntry()
+       ls:LedStrip()
+       cp:ComposedProduct()
+
+
+    then
+    int totalLength=0;
+        System.out.println(ls);
+        if (ls.getDimension().getWidth()!=null && mt.getMargins().getLeft()!=null && ce.getMargins().getLeft()!=null){
+            int ledstripLength=ls.getDimension().getWidth();
+            int mountingLeft=mt.getMargins().getLeft();
+            int mountingRight=mt.getMargins().getRight();
+            int cableEntryLeft=ce.getMargins().getLeft();
+            int cableEntryRight=ce.getMargins().getRight();
+            totalLength=(int)mountingLeft+(int)mountingRight+(int)ledstripLength+(int)cableEntryLeft+(int)cableEntryRight;
+            System.out.println(cp);
+            //Dit activeert andere regels die op basis van de productlengte berekeningen maken.
+            modify(cp){
+               getDimension().setWidth(totalLength)
+            }
+        }
+
+
+        messages.add(new Message("Totale lengte automatisch berekend: "+totalLength+" mm.",8,MessageStatus.INFO));
+        System.out.println("Totale lengte automatisch berekend"+totalLength);
+end
 
 rule "Totale lengte minimaal"
     when

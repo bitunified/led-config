@@ -65,6 +65,7 @@ public class ApplicationEndpoint {
     @POST
     @Path("/submitconfig")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public PriceList submitConfiguration(ProductConfiguration config) {
 
         LedConfig ledConfig = new LedConfig();
