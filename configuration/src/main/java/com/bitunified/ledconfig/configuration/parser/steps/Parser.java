@@ -60,6 +60,7 @@ public class Parser {
         profileL20.getDimension().setWidth(4000);
         profileL20.setName("liniLED Aeris Profiel L20");
         profileL20.setMaxDimension(new Dimension(2750));
+        profileL20.setImageLocation("assets/images/profileL20.jpg");
         Margin margin = new Margin(400, null);
         profileL20.setMargin(margin);
         profileL20.setLengthForCasting(new Dimension(25));
@@ -88,6 +89,7 @@ public class Parser {
         partL20.setPrice(BigDecimal.valueOf(36.09));
         partL20.setId("10713");
         partL20.setDescription("liniLED Aeris Profiel L20 4 m");
+
         parts.add(partL20);
 
 
@@ -114,6 +116,7 @@ public class Parser {
         profileH20.setLengthForCasting(new Dimension(25));
         profileH20.setMaxDimension(new Dimension(2750));
         profileH20.setCode("E");
+        profileH20.setImageLocation("assets/images/profileL20.jpg");
         models.add(profileH20);
 
         relationDefinitionH20.addModel(profileH20);
@@ -279,6 +282,7 @@ public class Parser {
         profileH30.setLengthForCasting(new Dimension(25));
         profileH30.setMaxDimension(new Dimension(2750));
         profileH30.setCode("G");
+        profileH30.setImageLocation("assets/images/profileL20.jpg");
         models.add(profileH30);
 
 
@@ -2049,7 +2053,7 @@ public class Parser {
         verpakking.setDescription("Verpakking");
         verpakking.setPrice(BigDecimal.valueOf(0.50));
         verpakking.setType("ST");
-        parts.add(verpakking);
+        //parts.add(verpakking);
 
         composedProduct = new ComposedProduct(null, null);
         composedProduct.setName("Product lengte");

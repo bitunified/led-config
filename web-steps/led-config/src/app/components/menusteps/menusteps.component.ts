@@ -79,9 +79,7 @@ export class MenustepsComponent implements OnInit {
   }
 
   checkFinish(event){
-    console.info(event);
-    console.info(this.stepsall.steps.length);
-    console.info(this.currentStep);
+
     this.enableFinishButton=false;
     if (this.productconfig.containsStep(event)) {
       // if (this.currentStep < this.stepsall.steps.length) {
@@ -101,7 +99,7 @@ export class MenustepsComponent implements OnInit {
   }
 
   finish(){
-    console.info('finish');
+
     this.isProcessing=true;
     let subscriptionProductPrice = this.productConfigService.sendProductConfigToServer();
     subscriptionProductPrice.subscribe((productPrice)=> {

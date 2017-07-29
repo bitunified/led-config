@@ -251,9 +251,13 @@ if (this.currentStep==1){
   }
 
   changeSelect(event: Event) {
-    this.selectedModel = this.m;
+    console.info(event);
+    console.info(this.m);
+    if (this.m!=undefined) {
+      this.selectedModel = this.m;
 
-    this.changeSelection();
+      this.changeSelection();
+    }
   }
 
   calculateMinValue(step: StepModel) {
@@ -284,6 +288,8 @@ if (this.currentStep==1){
 
   private changeSelection() {
 
+    console.info(this.m);
+    console.info(this.selectedModel);
     this.selectedModel = this.m;
     this.getPart(this.selectedModel);
     this.productconfigService.productconfigAnnouncement(this.step, this.selectedModel, null);

@@ -438,21 +438,10 @@ rule "Actie: Ledstrip toevoegen"
      Part foundPart=PartModelHelper.getPart(parts,ledstrip.getClass(),ledstrip);
      if (foundPart!=null && ledstripLengte!=null){
       Part part=SerializationUtils.clone(foundPart);
-      System.out.println(ledstripLengte);
+      System.out.println("Ledstrip lengte:"+ledstripLengte);
        double length=((Integer)ledstripLengte)/1000d;
        PartListHelper.addToPartCountList(partCountList,part,length);
        }
-//    for (Object p:parts.values()){
-//    if (((Part)p).getProduct()!=null && (((Part)p).getProduct()) instanceof LedStrip){
-//    LedStrip ls=(LedStrip) (((Part)p).getProduct());
-//    if (ls.getCode().equals(ledstrip.getCode())){
-//       double length=((Integer)ledstripLengte)/1000d;
-//         part=SerializationUtils.clone((Part)p);
-//         PartListHelper.addToPartCountList(partCountList,part,length);
-//          System.out.println("Ledstrip toegevoegd,lengte: "+length+": "+part);
-//          }
-//        }
-//    }
 
 
 end
@@ -538,7 +527,45 @@ no-loop true
 
 end
 
+rule "Actie: kap toevoegen"
+no-loop true
+    when
+       cap:Cap()
 
+    then
+
+        if (cap!=null ){
+       Part foundPart=PartModelHelper.getPart(parts,cap.getClass(),cap);
+        if (foundPart!=null){
+          Part part=SerializationUtils.clone(foundPart);
+                   PartListHelper.addToPartCountList(partCountList,part,1d);
+                   System.out.println("Kap toegevoegd:"+part);
+        }
+
+        }
+
+
+end
+
+rule "Actie: ingieten toevoegen"
+no-loop true
+    when
+       resin:Resin()
+
+    then
+
+        if (resin!=null ){
+       Part foundPart=PartModelHelper.getPart(parts,resin.getClass(),resin);
+        if (foundPart!=null){
+          Part part=SerializationUtils.clone(foundPart);
+                   PartListHelper.addToPartCountList(partCountList,part,1d);
+                   System.out.println("Ingieten toegevoegd:"+part);
+        }
+
+        }
+
+
+end
 
 rule "Actie: Ingieten"
 no-loop true
@@ -603,39 +630,39 @@ no-loop true
         System.out.println("Tube kabel door aluminium wit toegevoegd.");
 end
 
-rule "Actie: Arbeidsminuten toevoegen"
-  no-loop true
-       when
-            eval(true)
-       then
-            Part part=SerializationUtils.clone((Part)parts.get("ARBEID"));
-            PartListHelper.addToPartCountList(partCountList,part,15d);
-            System.out.println("Arbeid toevoegd.");
-end
+//rule "Actie: Arbeidsminuten toevoegen"
+//  no-loop true
+//       when
+//            eval(true)
+//       then
+//            Part part=SerializationUtils.clone((Part)parts.get("ARBEID"));
+//            PartListHelper.addToPartCountList(partCountList,part,15d);
+//            System.out.println("Arbeid toevoegd.");
+//end
 
-rule "Actie: Handleiding toevoegen"
-  no-loop true
-       when
-            eval(true)
-       then
-            Part part=SerializationUtils.clone((Part)parts.get("HANDLEIDING"));
-            PartListHelper.addToPartCountList(partCountList,part,1d);
-            System.out.println("Handleiding toevoegd.");
-end
+//rule "Actie: Handleiding toevoegen"
+//  no-loop true
+//       when
+//            eval(true)
+//       then
+//            Part part=SerializationUtils.clone((Part)parts.get("HANDLEIDING"));
+//            PartListHelper.addToPartCountList(partCountList,part,1d);
+//            System.out.println("Handleiding toevoegd.");
+//end
 
 
-rule "Actie: Verpakking toevoegen"
-  no-loop true
-       when
-            eval(true)
-            composedproduct:ComposedProduct(dimension.getWidth()!=null)
-
-       then
-        double length=(composedproduct.getDimension().getWidth()/1000d)+0.25d;
-        Part part=SerializationUtils.clone((Part)parts.get("VERPAKKING"));
-        PartListHelper.addToPartCountList(partCountList,part,length);
-        System.out.println("Verpakking toevoegd.");
-end
+//rule "Actie: Verpakking toevoegen"
+//  no-loop true
+//       when
+//            eval(true)
+//            composedproduct:ComposedProduct(dimension.getWidth()!=null)
+//
+//       then
+//        double length=(composedproduct.getDimension().getWidth()/1000d)+0.25d;
+//        Part part=SerializationUtils.clone((Part)parts.get("VERPAKKING"));
+//        PartListHelper.addToPartCountList(partCountList,part,length);
+//        System.out.println("Verpakking toevoegd.");
+//end
 
 rule "Instructie: Zaaglengte profiel"
 no-loop true

@@ -43,6 +43,10 @@ export class Model extends BaseClass {
   @deserialize
   step:number;
 
+  @serialize
+  @deserialize
+  imageLocation:string;
+
   @serializeAs(ModelPropertyValue)
   @deserializeAs(ModelPropertyValue)
   properties:Array<ModelPropertyValue>;

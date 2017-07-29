@@ -90,6 +90,13 @@
       <div *ngIf="m && stepDiff(step)==-1">
         <md-card class="infoCard">
 
+          <md-card-header>
+
+            <div  md-card-avatar *ngIf="m.imageLocation"  class="detailedImage"  [style.background]="'url(' + m.imageLocation+ ')'" style="background-size:cover;width:130px;height:130px"></div>
+
+
+          </md-card-header>
+
           <md-card-content>
             <div *ngIf="m">
               <md-list dense class="listProperties">
@@ -116,6 +123,7 @@
 
 
                 </md-list-item>
+
                 <md-list-item i18n>
                   Description: {{m.name}}
 

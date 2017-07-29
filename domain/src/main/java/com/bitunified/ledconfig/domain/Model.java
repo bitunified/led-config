@@ -40,6 +40,7 @@ public class Model extends Relatable implements StepConfig, Serializable {
     private Integer step;
 
 
+    private String imageLocation;
 
     private List<Property> properties = new ArrayList<Property>();
 
@@ -109,8 +110,7 @@ public class Model extends Relatable implements StepConfig, Serializable {
 
         if (name != null ? !name.equals(model.name) : model.name != null) return false;
         if (code != null ? !code.equals(model.code) : model.code != null) return false;
-        if (step != null ? !step.equals(model.step) : model.step != null) return false;
-        return properties != null ? properties.equals(model.properties) : model.properties == null;
+        return step != null ? step.equals(model.step) : model.step == null;
 
     }
 
@@ -119,7 +119,7 @@ public class Model extends Relatable implements StepConfig, Serializable {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (code != null ? code.hashCode() : 0);
         result = 31 * result + (step != null ? step.hashCode() : 0);
-        result = 31 * result + (properties != null ? properties.hashCode() : 0);
+        //result = 31 * result + (properties != null ? properties.hashCode() : 0);
         return result;
     }
 
@@ -156,5 +156,13 @@ public class Model extends Relatable implements StepConfig, Serializable {
     @XmlTransient
     public void setRelations(List<RelationDefinition> relations) {
         this.relations = relations;
+    }
+
+    public String getImageLocation() {
+        return imageLocation;
+    }
+
+    public void setImageLocation(String imageLocation) {
+        this.imageLocation = imageLocation;
     }
 }
