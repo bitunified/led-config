@@ -1,4 +1,3 @@
-
 if [ "$1" != "" ]; then
     export DOCKER_PASSWORD
     DOCKER_PASSWORD=$1
@@ -17,7 +16,7 @@ if [ "$1" != "" ]; then
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
     docker build -t bitunified/led-config-web-steps .
     docker push bitunified/led-config-web-steps
-    ssh root@192.168.16.4 'docker stop $(docker ps -a -q); vedocker pull bitunified/led-config-web-steps; docker run -i -p 8080:8080 bitunified/led-config-web-steps'
+    ssh root@192.168.16.4 'docker stop $(docker ps -a -q); docker pull bitunified/led-config-web-steps; docker run -i -p 8080:8080 bitunified/led-config-web-steps'
 else
     echo "No password"
 fi
