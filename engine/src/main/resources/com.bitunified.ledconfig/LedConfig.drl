@@ -514,7 +514,7 @@ rule "Profiel L30 lengte"
 rule "Actie: Ledstrip toevoegen"
     when
      ledstrip:LedStrip(ledstripLengte:dimension.getWidth())
-
+    cp:ComposedProduct()
     then
 
      Part foundPart=PartModelHelper.getPart(parts,ledstrip.getClass(),ledstrip,null);
@@ -523,6 +523,23 @@ rule "Actie: Ledstrip toevoegen"
       System.out.println("Ledstrip lengte:"+ledstripLengte);
        double length=((Integer)ledstripLengte)/1000d;
        PartListHelper.addToPartCountList(partCountList,part,length);
+       }
+
+
+end
+
+rule "Actie: Ledstrip toevoegen (ongeacht lengte)"
+    when
+     ledstrip:LedStrip()
+
+    then
+
+     Part foundPart=PartModelHelper.getPart(parts,ledstrip.getClass(),ledstrip,null);
+     if (foundPart!=null && ledstrip.getDimension().getWidth()==null){
+      System.out.println("Ledstrip altijd:"+foundPart);
+      Part part=SerializationUtils.clone(foundPart);
+
+       PartListHelper.addToPartCountList(partCountList,part,1.0);
        }
 
 
@@ -547,6 +564,7 @@ salience -1
                exists(Profile(name matches ".*L20.*")) and exists(Clip())
                composedproduct:ComposedProduct(dimension.getWidth()!=null);
            then
+           System.out.println("Clips voor L20");
             int c=(int)composedproduct.getDimension().getWidth()/500;
             if (c<2){
                 c=2;
@@ -632,41 +650,68 @@ end
 rule "Actie: ingieten toevoegen"
 no-loop true
     when
-       resin:ResinDiffuse()
+       resin:Resin()
         profile:Profile()
+
     then
  System.out.println("Ingieten:"+resin);
         if (resin!=null ){
-
-       Part foundPart=PartModelHelper.getPart(parts,resin.getClass(),resin,profile);
-        if (foundPart!=null){
-          Part part=SerializationUtils.clone(foundPart);
-                   PartListHelper.addToPartCountList(partCountList,part,1d);
-                   System.out.println("Ingieten toegevoegd:"+part);
-        }
-
-        }
-
-
-end
-
-rule "Actie: Ingieten"
-no-loop true
-    when
-       profile:(Profile())
-       resin:(Resin())
-       composedproduct:ComposedProduct(dimension.getWidth()!=null)
-    then
-        Map<Orientation,PartMatchHelper.PartMostWanted> result=PartMatchHelper.match(resin.getClass(),null,profile);
-        Part part=null;
+ Map<Orientation,PartMatchHelper.PartMostWanted> result=PartMatchHelper.match(resin.getClass(),null,profile);
+Part part=null;
         if (result.get(Orientation.Left).getCount()==result.get(Orientation.Right).getCount()){
            part=SerializationUtils.clone((Part)result.get(Orientation.Right).getPart());
            PartListHelper.addToPartCountList(partCountList,part,1d);
-           System.out.println("Part Behuizing:"+part+ " "+result);
+           System.out.println("Ingieten toegevoegd:"+part+ " "+result);
+        }
+
+
         }
 
 
 end
+
+rule "Actie: afdekkap toevoegen"
+no-loop true
+    when
+       cap:Cap()
+        profile:Profile()
+
+    then
+ System.out.println("Afdekkap:"+cap);
+        if (cap!=null ){
+ Map<Orientation,PartMatchHelper.PartMostWanted> result=PartMatchHelper.match(cap.getClass(),null,profile);
+Part part=null;
+        if (result.get(Orientation.Left).getCount()==result.get(Orientation.Right).getCount()){
+           part=SerializationUtils.clone((Part)result.get(Orientation.Right).getPart());
+           PartListHelper.addToPartCountList(partCountList,part,1d);
+           System.out.println("Cap toegevoegd:"+part+ " "+result);
+        }
+
+
+        }
+
+
+end
+
+
+
+//rule "Actie: Ingieten"
+//no-loop true
+//    when
+//       profile:(Profile())
+//       resin:(Resin())
+//       composedproduct:ComposedProduct(dimension.getWidth()!=null)
+//    then
+//        Map<Orientation,PartMatchHelper.PartMostWanted> result=PartMatchHelper.match(resin.getClass(),null,profile);
+//        Part part=null;
+//        if (result.get(Orientation.Left).getCount()==result.get(Orientation.Right).getCount()){
+//           part=SerializationUtils.clone((Part)result.get(Orientation.Right).getPart());
+//           PartListHelper.addToPartCountList(partCountList,part,1d);
+//           System.out.println("Part Behuizing:"+part+ " "+result);
+//        }
+//
+//
+//end
 
 
 rule "Actie: Tape toevoegen voor alle ledstrip types behalve HighPower."

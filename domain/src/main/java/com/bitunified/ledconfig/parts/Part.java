@@ -41,6 +41,10 @@ public class Part extends Relatable implements Serializable {
         this.product = product;
     }
 
+    private String imageUrl;
+
+    private String productPage;
+
     public Part() {
 
     }
@@ -129,5 +133,21 @@ public class Part extends Relatable implements Serializable {
     }
     public void setTranslations(Locale locale, String s) {
         translations.put(locale,s);
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = "assets/images/"+imageUrl;
+    }
+
+    public String getProductPage() {
+        return productPage;
+    }
+
+    public void setProductPage(String productPage) {
+        this.productPage = productPage;
     }
 }

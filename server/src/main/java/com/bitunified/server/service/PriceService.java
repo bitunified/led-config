@@ -31,7 +31,7 @@ public class PriceService {
         Optional<ModelChosenStep> lastModelChosenStep = productConfiguration.getModelsForSteps().stream().filter(item -> item.getStep().getStepindex().equals(currentStep)).findFirst();
         Stream<Map.Entry<Part, Double>> matchedModels;
         List<Part> partsMatched = new ArrayList<>();
-        if (lastModelChosenStep.isPresent()) {
+        if (lastModelChosenStep.isPresent() && productConfigResult!=null) {
             matchedModels = productConfigResult.getPartList().entrySet().stream().filter(pr -> pr.getKey().getProduct() != null).filter(modelExists -> modelExists.getKey().getProduct().getId() != null).filter(f -> f.getKey().getProduct().equals(lastModelChosenStep.get().getChosenModel()));
             matchedModels.forEach(en -> partsMatched.add(en.getKey()));
 

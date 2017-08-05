@@ -12,4 +12,10 @@ export class Part {
 
   @deserialize
   type: string;
+
+  @deserialize
+  imageUrl:string;
+
+  @deserialize
+  productPage:string;
 }

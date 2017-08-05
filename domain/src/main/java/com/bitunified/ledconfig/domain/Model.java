@@ -40,7 +40,6 @@ public class Model extends Relatable implements StepConfig, Serializable {
     private Integer step;
 
 
-    private String imageLocation;
 
     private List<Property> properties = new ArrayList<Property>();
 
@@ -158,11 +157,4 @@ public class Model extends Relatable implements StepConfig, Serializable {
         this.relations = relations;
     }
 
-    public String getImageLocation() {
-        return imageLocation;
-    }
-
-    public void setImageLocation(String imageLocation) {
-        this.imageLocation = imageLocation;
-    }
 }

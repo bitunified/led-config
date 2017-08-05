@@ -92,7 +92,7 @@
 
           <md-card-header>
 
-            <div md-card-avatar *ngIf="m.imageLocation"  class="detailedImage"  [style.background-image]="'url(' + m.imageLocation+ ')'" [style.background-size]="cover" [style.width]="'130px'" [style.height]="'130px'">
+            <div md-card-avatar *ngIf="currentPart!=null && currentPart.imageUrl!=null"  class="detailedImage"  [style.background-image]="'url(' + currentPart.imageUrl+ ')'" [style.background-size]="cover" [style.width]="'130px'" [style.height]="'130px'">
 
             </div>
 

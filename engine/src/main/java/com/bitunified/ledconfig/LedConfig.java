@@ -21,6 +21,7 @@ import com.bitunified.ledconfig.configuration.parser.steps.Parser;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.instruction.InstructionMessage;
 import com.bitunified.ledconfig.domain.message.Message;
+import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 import com.bitunified.ledconfig.parts.NotExistingPart;
 import com.bitunified.ledconfig.parts.Part;
 import com.bitunified.ledconfig.productconfiguration.ModelChosenStep;
@@ -35,6 +36,7 @@ import org.kie.internal.builder.KnowledgeBuilderConfiguration;
 import org.kie.internal.builder.KnowledgeBuilderFactory;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 /**
@@ -111,8 +113,16 @@ public class LedConfig {
 
             for (ModelChosenStep m : productConfiguration.getModelsForSteps()) {
 
-                ksession.insert(m.getChosenModel());
+                Model modelToAdd = parser.getModels().stream().filter(ml -> ml.equals(m.getChosenModel())).collect(Collectors.toList()).stream().findFirst().orElse(null);
+                if (ComposedProduct.class.equals(m.getChosenModel().getClass())){
+                    modelToAdd=m.getChosenModel();
+                }
+                if (LedStrip.class.isAssignableFrom(m.getChosenModel().getClass())){
+                    modelToAdd=m.getChosenModel();
+                }
+                ksession.insert(modelToAdd);
             }
+
 
 
             ksession.fireAllRules();

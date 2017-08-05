@@ -56,7 +56,7 @@ public class Relation implements Serializable {
     public void setRelateToRight(Set<Relatable> relateToRight) {
         this.relateToRight = relateToRight;
     }
-    @XmlElementWrapper
+
     public Set<Relatable> getRelateToLeft() {
         return relateToLeft;
     }

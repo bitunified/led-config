@@ -15,7 +15,6 @@ public class PriceCalculator {
 
     public BigDecimal calculate(ProductConfigResult productConfigResult) {
 
-
         List<BigDecimal> counts = productConfigResult.getPartList().entrySet().stream().map(item -> {
             if (item.getKey() != null && item.getValue() != null) {
                 PriceCount pc = new PriceCount();
