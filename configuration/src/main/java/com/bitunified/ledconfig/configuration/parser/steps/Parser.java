@@ -60,7 +60,7 @@ public class Parser {
         profileL20.getDimension().setWidth(4000);
         profileL20.setName("liniLED Aeris Profiel L20");
         profileL20.setMaxDimension(new Dimension(2750));
-        profileL20.setImageLocation("assets/images/profileL20.jpg");
+        profileL20.setImageLocation("assets/images/10710profileL20.jpg");
         Margin margin = new Margin(400, null);
         profileL20.setMargin(margin);
         profileL20.setLengthForCasting(new Dimension(25));
@@ -116,7 +116,7 @@ public class Parser {
         profileH20.setLengthForCasting(new Dimension(25));
         profileH20.setMaxDimension(new Dimension(2750));
         profileH20.setCode("E");
-        profileH20.setImageLocation("assets/images/profileL20.jpg");
+        profileH20.setImageLocation("assets/images/10714profileH20.jpg");
         models.add(profileH20);
 
         relationDefinitionH20.addModel(profileH20);
@@ -251,6 +251,7 @@ public class Parser {
         profileL30.setLengthForCasting(new Dimension(25));
         profileL30.setMaxDimension(new Dimension(2750));
         profileL30.setCode("F");
+        profileL30.setImageLocation("assets/images/10730profileL30.jpg");
         models.add(profileL30);
 
         relationDefinitionL30.addModel(profileL30);
@@ -282,7 +283,8 @@ public class Parser {
         profileH30.setLengthForCasting(new Dimension(25));
         profileH30.setMaxDimension(new Dimension(2750));
         profileH30.setCode("G");
-        profileH30.setImageLocation("assets/images/profileL20.jpg");
+        profileH30.setImageLocation("assets/images/10734profileH30.jpg");
+        profileH30.setProductPage("http://www.liniled.com/product/liniled-aeris-profile-h30");
         models.add(profileH30);
 
 
@@ -849,9 +851,6 @@ public class Parser {
         relationDefinitionH20.addModel(resinDiffuse);
         relationDefinitionH30.addModel(resinDiffuse);
 
-        part = new NotExistingPart(resinDiffuse);
-        part.setId("cod1");
-        parts.add(part);
 
         part = new Part(resinDiffuse);
         part.setId("95001");

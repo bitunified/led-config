@@ -17,12 +17,20 @@ public class PartModelHelper {
         }
         return null;
     }
-    public static Part getPart(java.util.Map<String, Part> parts, Class<? extends Model> clazz, Model modelToFind) {
+
+    public static Part getPart(java.util.Map<String, Part> parts, Class<? extends Model> clazz, Model modelToFind, Model modelMatch) {
         for (Part part : parts.values()) {
             Model model = part.getProduct();
             if (model != null && model.getClass().isAssignableFrom(clazz)) {
-                if (model.getCode().equals(modelToFind.getCode())) {
-                    return part;
+                if (modelMatch != null) {
+                    if (model.equals(modelToFind) && model.equals(modelMatch)) {
+                        return part;
+                    }
+                } else {
+                    if (model.equals(modelToFind)) {
+                        return part;
+                    }
+
                 }
             }
         }

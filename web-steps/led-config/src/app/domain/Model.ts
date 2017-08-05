@@ -47,6 +47,10 @@ export class Model extends BaseClass {
   @deserialize
   imageLocation:string;
 
+  @serialize
+  @deserialize
+  productPage:string;
+
   @serializeAs(ModelPropertyValue)
   @deserializeAs(ModelPropertyValue)
   properties:Array<ModelPropertyValue>;

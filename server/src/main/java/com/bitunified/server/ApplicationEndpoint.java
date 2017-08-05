@@ -1,8 +1,8 @@
 package com.bitunified.server;
 
-import com.bitunified.ledconfig.ProductConfigResult;
 import com.bitunified.ledconfig.LedConfig;
 import com.bitunified.ledconfig.PriceCalculator;
+import com.bitunified.ledconfig.ProductConfigResult;
 import com.bitunified.ledconfig.configuration.parser.steps.Parser;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.parts.Part;
@@ -11,9 +11,9 @@ import com.bitunified.ledconfig.productconfiguration.PriceList;
 import com.bitunified.ledconfig.productconfiguration.ProductConfiguration;
 import com.bitunified.ledconfig.productconfiguration.Relations;
 import com.bitunified.ledconfig.productconfiguration.price.PriceCount;
+import com.bitunified.ledconfig.productconfiguration.steps.Steps;
 import com.bitunified.server.service.PriceService;
 import com.bitunified.server.service.StepService;
-import com.bitunified.ledconfig.productconfiguration.steps.Steps;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -74,7 +74,7 @@ public class ApplicationEndpoint {
         PriceList priceList = new PriceList();
 
         PriceCalculator priceCalculator = new PriceCalculator();
-        BigDecimal price=priceCalculator.calculate(productConfigResult);
+        BigDecimal price = priceCalculator.calculate(productConfigResult);
         List<PriceCount> prices = productConfigResult.getPartList().entrySet().stream().map(item -> {
             if (item.getKey() != null && item.getValue() != null) {
                 PriceCount pc = new PriceCount();
@@ -94,9 +94,9 @@ public class ApplicationEndpoint {
     @Path("/part")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Part getPart(Model model) {
+    public Part getPart(ProductConfiguration config,@QueryParam("currentStep") Integer currentStep) {
         PriceService priceService = new PriceService(parser);
-       return priceService.getPart(model);
+        return priceService.getPart(config,currentStep);
 
     }
 }

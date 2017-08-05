@@ -40,6 +40,7 @@ public class RealModel extends Model {
     private Dimension maxDimension=new Dimension();
 
     private Margin margin = new Margin();
+    private String productPage;
 
     public RealModel() {
 
@@ -82,4 +83,11 @@ public class RealModel extends Model {
     }
 
 
+    public void setProductPage(String productPage) {
+        this.productPage = productPage;
+    }
+
+    public String getProductPage() {
+        return productPage;
+    }
 }

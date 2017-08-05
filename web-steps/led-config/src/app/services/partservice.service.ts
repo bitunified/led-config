@@ -5,7 +5,8 @@ import {environment} from "../../environments/environment";
 import {Part} from "../domain/server/Part";
 import {Model} from "../domain/Model";
 import {Serialize,Deserialize} from 'cerialize';
-
+import {ProductConfiguration} from "../domain/ProductConfiguration";
+import { URLSearchParams } from "@angular/http"
 @Injectable()
 export class PartService {
 
@@ -14,8 +15,10 @@ export class PartService {
 
   private partServerUrl = environment.contextroot + '/server/rest/engine/part';
 
-  public getPart(model: Model):Observable<Part> {
-    return this.http.post(this.partServerUrl, Serialize(model, Model))
+  public getPart(model: Model,productConfig:ProductConfiguration,currentStep:number):Observable<Part> {
+    let params: URLSearchParams = new URLSearchParams();
+    params.append("currentStep", String(currentStep));
+    return this.http.post(this.partServerUrl,Serialize(productConfig,ProductConfiguration),{search:params})
 
       .map(res => {
 

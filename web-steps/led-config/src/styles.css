@@ -48,5 +48,7 @@
 }
 .detailedImage{
   background-size: cover;
-  background-attachment: fixed;
+width:130px;
+height:130px;
+  z-index: 0;
 }

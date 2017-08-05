@@ -35,6 +35,7 @@ export class ProductconfigurationService {
 
 
     this.productconfigSource.next(this.productConfiguration);
+    return this.productConfiguration;
   }
 
   sendProductConfigToServer() {

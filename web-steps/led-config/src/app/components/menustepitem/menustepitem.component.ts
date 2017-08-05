@@ -14,6 +14,7 @@ import {StepType} from "../../domain/StepType";
 import {ModelChosenStep} from "../../domain/ModelChosenStep";
 import {PartService} from "../../services/partservice.service";
 import {Part} from "../../domain/server/Part";
+import {ProductConfiguration} from "../../domain/ProductConfiguration";
 @Component({
   selector: 'menustepitem',
   templateUrl: './menustepitem.component.html',
@@ -291,8 +292,12 @@ if (this.currentStep==1){
     console.info(this.m);
     console.info(this.selectedModel);
     this.selectedModel = this.m;
-    this.getPart(this.selectedModel);
-    this.productconfigService.productconfigAnnouncement(this.step, this.selectedModel, null);
+    let productConfig =this.productconfigService.productconfigAnnouncement(this.step, this.selectedModel, null);
+    let curStep=this.step.stepindex;
+    if (curStep==0){
+      curStep=1;
+    }
+    this.getPart(this.selectedModel,productConfig,curStep);
 
     this.productcodeService.productcodeAnnouncement(this.selectedModel.code, this.step.stepindex);
 
@@ -319,8 +324,8 @@ if (this.currentStep==1){
     }
   }
 
-  getPart(model: Model) {
-    this.partService.getPart(model).subscribe((res: Part) => {
+  getPart(model: Model, productConfig:ProductConfiguration,currentStep:number) {
+    this.partService.getPart(model,productConfig,currentStep).subscribe((res: Part) => {
         let serverresponse: Part = res;
         this.currentPart = serverresponse;
         console.info(serverresponse);

@@ -316,6 +316,88 @@ rule "Actie: Profiel L20 lengte"
          PartListHelper.addToPartCountList(partCountList,part,length);
          System.out.println("Profiel lengte L20:"+length);
        end
+
+
+rule "Actie: Profiel L20 toevoegen"
+  no-loop true
+       when
+
+            exists(Profile(name matches ".*L20.*"));
+            profile:Profile()
+       then
+        System.out.println("Profiel L20 toevoegen");
+         //Profiel lengte
+          Part foundPart=PartModelHelper.getPart(parts,profile.getClass(),"L20");
+          System.out.println("Profiel L20 toegevoegd"+foundPart);
+         if (!partCountList.values().contains(foundPart)){
+            Part part=SerializationUtils.clone(foundPart);
+               PartListHelper.addToPartCountList(partCountList,part,1.0);
+               System.out.println("Profiel L20 toegevoegd");
+         }
+
+
+       end
+
+       rule "Actie: Profiel H20 toevoegen"
+         no-loop true
+              when
+
+                   exists(Profile(name matches ".*H20.*"));
+                   profile:Profile()
+              then
+               System.out.println("Profiel H20 toevoegen");
+                //Profiel lengte
+                 Part foundPart=PartModelHelper.getPart(parts,profile.getClass(),"H20");
+
+                if (!partCountList.values().contains(foundPart)){
+                   Part part=SerializationUtils.clone(foundPart);
+                      PartListHelper.addToPartCountList(partCountList,part,1.0);
+                      System.out.println("Profiel H20 toegevoegd");
+                }
+
+
+              end
+
+       rule "Actie: Profiel L20 toevoegen"
+         no-loop true
+              when
+
+                   exists(Profile(name matches ".*L20.*"));
+                   profile:Profile()
+              then
+               System.out.println("Profiel L20 toevoegen");
+                //Profiel lengte
+                 Part foundPart=PartModelHelper.getPart(parts,profile.getClass(),"L20");
+                 System.out.println("Profiel L20 toegevoegd"+foundPart);
+                if (!partCountList.values().contains(foundPart)){
+                   Part part=SerializationUtils.clone(foundPart);
+                      PartListHelper.addToPartCountList(partCountList,part,1.0);
+                      System.out.println("Profiel L20 toegevoegd");
+                }
+
+
+              end
+
+       rule "Actie: Profiel L30 toevoegen"
+         no-loop true
+              when
+
+                   exists(Profile(name matches ".*L30.*"));
+                   profile:Profile()
+              then
+               System.out.println("Profiel L30 toevoegen");
+                //Profiel lengte
+                 Part foundPart=PartModelHelper.getPart(parts,profile.getClass(),"L30");
+
+                if (!partCountList.values().contains(foundPart)){
+                   Part part=SerializationUtils.clone(foundPart);
+                      PartListHelper.addToPartCountList(partCountList,part,1.0);
+                      System.out.println("Profiel L30 toegevoegd");
+                }
+
+
+              end
+
 rule "Profiel H20 lengte"
   no-loop true
        when
@@ -435,7 +517,7 @@ rule "Actie: Ledstrip toevoegen"
 
     then
 
-     Part foundPart=PartModelHelper.getPart(parts,ledstrip.getClass(),ledstrip);
+     Part foundPart=PartModelHelper.getPart(parts,ledstrip.getClass(),ledstrip,null);
      if (foundPart!=null && ledstripLengte!=null){
       Part part=SerializationUtils.clone(foundPart);
       System.out.println("Ledstrip lengte:"+ledstripLengte);
@@ -531,11 +613,11 @@ rule "Actie: kap toevoegen"
 no-loop true
     when
        cap:Cap()
-
+        profile:Profile()
     then
 
         if (cap!=null ){
-       Part foundPart=PartModelHelper.getPart(parts,cap.getClass(),cap);
+       Part foundPart=PartModelHelper.getPart(parts,cap.getClass(),cap,profile);
         if (foundPart!=null){
           Part part=SerializationUtils.clone(foundPart);
                    PartListHelper.addToPartCountList(partCountList,part,1d);
@@ -551,11 +633,12 @@ rule "Actie: ingieten toevoegen"
 no-loop true
     when
        resin:Resin()
-
+        profile:Profile()
     then
-
+ System.out.println("Ingieten:"+resin);
         if (resin!=null ){
-       Part foundPart=PartModelHelper.getPart(parts,resin.getClass(),resin);
+
+       Part foundPart=PartModelHelper.getPart(parts,resin.getClass(),resin,profile);
         if (foundPart!=null){
           Part part=SerializationUtils.clone(foundPart);
                    PartListHelper.addToPartCountList(partCountList,part,1d);

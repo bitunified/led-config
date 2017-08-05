@@ -9,7 +9,7 @@
           <md-card-header>
             <md-card-title>
               <md-chip-list>
-                <md-chip>{{step.description}} {{getModelTitle()}}</md-chip>
+                <md-chip md-icon-button (onFocus)="prevStepItems()">{{step.description}} {{getModelTitle()}}</md-chip>
 
               </md-chip-list>
             </md-card-title>
@@ -92,8 +92,9 @@
 
           <md-card-header>
 
-            <div  md-card-avatar *ngIf="m.imageLocation"  class="detailedImage"  [style.background]="'url(' + m.imageLocation+ ')'" style="background-size:cover;width:130px;height:130px"></div>
+            <div md-card-avatar *ngIf="m.imageLocation"  class="detailedImage"  [style.background-image]="'url(' + m.imageLocation+ ')'" [style.background-size]="cover" [style.width]="'130px'" [style.height]="'130px'">
 
+            </div>
 
           </md-card-header>
 
@@ -135,6 +136,11 @@
                 <md-divider></md-divider>
                 <md-list-item *ngIf="currentPart && currentPart.price">
                   Price: {{currentPart.price | currency:'EUR':true}} ({{currentPart.description}})
+                </md-list-item>
+
+                <md-list-item i18n *ngIf="m.productPage">
+                  Product page: <a href="{{m.productPage}}">more information</a>
+
                 </md-list-item>
               </md-list>
             </div>
