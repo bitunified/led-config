@@ -358,25 +358,25 @@ rule "Actie: Profiel L20 toevoegen"
 
               end
 
-       rule "Actie: Profiel L20 toevoegen"
-         no-loop true
-              when
+      rule "Actie: Profiel H30 toevoegen"
+          no-loop true
+               when
 
-                   exists(Profile(name matches ".*L20.*"));
-                   profile:Profile()
-              then
-               System.out.println("Profiel L20 toevoegen");
-                //Profiel lengte
-                 Part foundPart=PartModelHelper.getPart(parts,profile.getClass(),"L20");
-                 System.out.println("Profiel L20 toegevoegd"+foundPart);
-                if (!partCountList.values().contains(foundPart)){
-                   Part part=SerializationUtils.clone(foundPart);
-                      PartListHelper.addToPartCountList(partCountList,part,1.0);
-                      System.out.println("Profiel L20 toegevoegd");
-                }
+                    exists(Profile(name matches ".*H30.*"));
+                    profile:Profile()
+               then
+                System.out.println("Profiel H30 toevoegen");
+                 //Profiel lengte
+                  Part foundPart=PartModelHelper.getPart(parts,profile.getClass(),"H30");
+
+                 if (!partCountList.values().contains(foundPart)){
+                    Part part=SerializationUtils.clone(foundPart);
+                       PartListHelper.addToPartCountList(partCountList,part,1.0);
+                       System.out.println("Profiel H30 toegevoegd");
+                 }
 
 
-              end
+               end
 
        rule "Actie: Profiel L30 toevoegen"
          no-loop true
@@ -632,7 +632,7 @@ end
 rule "Actie: ingieten toevoegen"
 no-loop true
     when
-       resin:Resin()
+       resin:ResinDiffuse()
         profile:Profile()
     then
  System.out.println("Ingieten:"+resin);
