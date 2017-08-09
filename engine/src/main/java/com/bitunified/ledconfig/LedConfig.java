@@ -120,7 +120,9 @@ public class LedConfig {
                 if (LedStrip.class.isAssignableFrom(m.getChosenModel().getClass())){
                     modelToAdd=m.getChosenModel();
                 }
-                ksession.insert(modelToAdd);
+                if (modelToAdd!=null) {
+                    ksession.insert(modelToAdd);
+                }
             }
 
 

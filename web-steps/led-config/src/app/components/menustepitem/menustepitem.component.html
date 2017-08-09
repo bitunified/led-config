@@ -49,7 +49,7 @@
             <div class="selectionPanel">
               <div *ngIf="isStepTypeValues(step) && filter(step.models).length>0 && !skip" class="propContainer">
                 <div class="selectContainer">
-                  <md-select placeholder="Select a configuration part" (onClose)="changeSelect($event)" [(ngModel)]="m"
+                  <md-select placeholder="Select {{step.configDescription}}" (onClose)="changeSelect($event)" [(ngModel)]="m"
                              [ngModelOptions]="{standalone: true}"
                              floatPlaceholder="never" class="selectBoxContainer" overlayDir="bottom">
                     <md-option *ngFor="let m of filter(step.models);let i=index;" [value]="m" class="selectOption">
@@ -67,7 +67,7 @@
               </div>
               <div *ngIf="isStepTypeNumber(step) && !checked">
 
-                Click on line to select a length.<br/>
+                Click on line to select {{step.configDescription}}<br/>
                 Width:
                 <md-slider class="mat-slider-horizontal"
                            max="4000"
@@ -102,7 +102,7 @@
             <div *ngIf="m">
               <md-list dense class="listProperties">
                 <md-list-item
-                  *ngIf="displayRelation.message!=null && displayRelation.relationState=='ALLOWEDWITHWARNING'">
+                  *ngIf="displayRelation!=null && displayRelation.message!=null && displayRelation.relationState=='ALLOWEDWITHWARNING'">
                   <md-chip-list class="mat-chip-list-stacked">
                     <md-chip class="warningChip"
                              selected="true"
@@ -131,7 +131,7 @@
                 </md-list-item>
                 <md-divider></md-divider>
                 <md-list-item *ngIf="m.dimension!=null && m.dimension.width!=null" i18n>
-                  Width: {{m.dimension==null?'':m.dimension.width}} mm
+                  Length: {{m.dimension==null?'':m.dimension.width}} mm
                 </md-list-item>
                 <md-divider></md-divider>
                 <md-list-item *ngIf="currentPart && currentPart.price">
@@ -139,7 +139,7 @@
                 </md-list-item>
 
                 <md-list-item i18n *ngIf="m.productPage">
-                  Product page: <a href="{{m.productPage}}">more information</a>
+                  <a href="{{m.productPage}}" target="_blank" md-raised-button md-raised md-warn class="customMoreButton" [style.line-height]="'14px'" target="_blank">more information</a>
 
                 </md-list-item>
               </md-list>

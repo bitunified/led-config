@@ -27,6 +27,7 @@ import com.bitunified.ledconfig.domain.product.mounting.Mounting;
 import com.bitunified.ledconfig.domain.product.mounting.NoEndCapsMounting;
 import com.bitunified.ledconfig.domain.product.mounting.EndCapRightMounting;
 import com.bitunified.ledconfig.domain.product.mounting.HighEndCapRightMounting;
+import com.bitunified.ledconfig.domain.product.accessoires.Accessoire;
 import com.bitunified.ledconfig.domain.Property
 import com.bitunified.ledconfig.domain.product.accessoires.Clip
 import com.bitunified.ledconfig.domain.product.accessoires.CableChannel
@@ -523,6 +524,40 @@ rule "Actie: Ledstrip toevoegen"
       System.out.println("Ledstrip lengte:"+ledstripLengte);
        double length=((Integer)ledstripLengte)/1000d;
        PartListHelper.addToPartCountList(partCountList,part,length);
+       }
+
+
+end
+
+rule "Actie (enkel part): Cable toevoegen"
+    when
+     cable:Cable()
+
+    then
+
+     Part foundPart=PartModelHelper.getPart(parts,cable.getClass(),cable,null);
+     if (foundPart!=null){
+      System.out.println("Cable altijd:"+foundPart);
+      Part part=SerializationUtils.clone(foundPart);
+
+       PartListHelper.addToPartCountList(partCountList,part,1.0);
+       }
+
+
+end
+
+rule "Actie (enkel part): accessoire toevoegen"
+    when
+     accessoire:Accessoire()
+
+    then
+
+     Part foundPart=PartModelHelper.getPart(parts,accessoire.getClass(),accessoire,null);
+     if (foundPart!=null){
+      System.out.println("accessoire altijd:"+foundPart);
+      Part part=SerializationUtils.clone(foundPart);
+
+       PartListHelper.addToPartCountList(partCountList,part,1.0);
        }
 
 

@@ -39,11 +39,46 @@
 // Be sure that you only ever include this mixin once!
 @include mat-core();
 
+$md-mcgpalette0: (
+  50 : #fdeee5,
+  100 : #fad4bd,
+  200 : #f7b891,
+  300 : #f39b65,
+  400 : #f18544,
+  500 : #ee7023,
+  600 : #ec681f,
+  700 : #e95d1a,
+  800 : #e75315,
+  900 : #e2410c,
+  A100 : #ffffff,
+  A200 : #ffe1da,
+  A400 : #ffb9a7,
+  A700 : #ffa58d,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+
+
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
-$candy-app-primary: mat-palette($mat-amber, A400);
-$candy-app-accent:  mat-palette($mat-grey, A400, A200, A400);
+$candy-app-primary: mat-palette($md-mcgpalette0, 500);
+$candy-app-accent:  mat-palette($md-mcgpalette0, 500, A200, A700);
 
 // The warn palette is optional (defaults to red).
 $candy-app-warn:    mat-palette($mat-red);

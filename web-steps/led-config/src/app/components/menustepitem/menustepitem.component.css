@@ -64,3 +64,9 @@
 .selectOption{
   /*display: table;*/
 }
+
+.customMoreButton{
+  height: 24px;
+  font-size: xx-small;
+  line-height: inherit;
+}

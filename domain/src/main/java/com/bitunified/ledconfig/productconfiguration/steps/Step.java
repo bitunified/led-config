@@ -12,24 +12,27 @@ public class Step {
 
     private boolean skip=false;
     private Integer modelValue;
+    private String configDescription;
 
     public Step() {
 
     }
 
-    public Step(Integer stepindex, String description, List<Model> models, StepType type,boolean skip) {
+    public Step(Integer stepindex, String description, List<Model> models, StepType type,boolean skip,String configDescription) {
         this.description = description;
         this.models = models;
         this.type = type;
         this.stepindex = stepindex;
         this.skip=skip;
+        this.configDescription=configDescription;
     }
 
-    public Step(Integer stepindex, String description, List<Model> models) {
+    public Step(Integer stepindex, String description, List<Model> models,String configDescription) {
         this.description = description;
         this.models = models;
         this.type = StepType.VALUES;
         this.stepindex = stepindex;
+        this.configDescription=configDescription;
     }
 
     public List<Model> getModels() {
@@ -78,5 +81,13 @@ public class Step {
 
     public void setSkip(boolean skip) {
         this.skip = skip;
+    }
+
+    public String getConfigDescription() {
+        return configDescription;
+    }
+
+    public void setConfigDescription(String configDescription) {
+        this.configDescription = configDescription;
     }
 }

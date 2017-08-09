@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public class StepService {
@@ -28,15 +29,17 @@ public class StepService {
 
         Map<Integer, List<Model>> groupedModels = parser.getModels().stream().filter(f -> f.getStep() != null).collect(Collectors.groupingBy(Model::getStep));
 
-        List<Step> stepListValues = groupedModels.entrySet().stream().filter(f -> f.getKey() <= 6 ).map(t -> new Step(t.getKey(), t.getKey() == null ? "" : "Step " + t.getKey().toString(), t.getValue())).collect(Collectors.toList());
+        List<String> configDescriptions = Stream.of("Profile","Cover or PU Resin","PCB or LED strip","Cable","Cable Entry","End Cap(s)"," PCB or LED Strip Length").collect(Collectors.toList());
+
+        List<Step> stepListValues = groupedModels.entrySet().stream().filter(f -> f.getKey() <= 6 ).map(t -> new Step(t.getKey(), t.getKey() == null ? "" : "Step " + t.getKey().toString(), t.getValue(),configDescriptions.get(t.getKey()-1))).collect(Collectors.toList());
         List<Step> stepListNumbers = new ArrayList<>();
 
-        stepListNumbers.add(new Step(7, "Step 7", new ArrayList<>(), StepType.NUMBER,false));
+        stepListNumbers.add(new Step(7, "Step 7", new ArrayList<>(), StepType.NUMBER,false,"PCB or LED Strip Length"));
         List<Model> composedProduct=new ArrayList<>();
         composedProduct.add(new ComposedProduct());
-        stepListNumbers.add(new Step(8, "Step 8", composedProduct, StepType.NUMBER,true));
+        stepListNumbers.add(new Step(8, "Step 8", composedProduct, StepType.NUMBER,true,"Total Product length"));
 
-        List<Step> stepAccessoires = groupedModels.entrySet().stream().filter(f -> f.getKey() ==9 ).map(t -> new Step(t.getKey(), t.getKey() == null ? "" : "Step " + t.getKey().toString(), t.getValue(),StepType.VALUES,true)).collect(Collectors.toList());
+        List<Step> stepAccessoires = groupedModels.entrySet().stream().filter(f -> f.getKey() ==9 ).map(t -> new Step(t.getKey(), t.getKey() == null ? "" : "Step " + t.getKey().toString(), t.getValue(),StepType.VALUES,true,"Cable Channel or Clip")).collect(Collectors.toList());
 
         List<Step> allSteps = new ArrayList<>();
         allSteps.addAll(stepListValues);

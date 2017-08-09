@@ -28,4 +28,8 @@ export class StepModel {
   @serialize
   @deserialize
   skip:boolean;
+
+@serialize
+@deserialize
+  configDescription:string;
 }

@@ -84,6 +84,15 @@ public class Parser {
 
         models.add(profileL30);
 
+        Profile profileH20 = new Profile(new Dimension(null));
+        profileH20.setName("liniLED Aeris Profiel H20");
+        profileH20.setLengthForCasting(new Dimension(25));
+        profileH20.setMaxDimension(new Dimension(2750));
+        profileH20.setCode("E");
+
+        models.add(profileH20);
+
+
         Profile profileH30 = new Profile(new Dimension(null));
         profileH30.setName("liniLED Aeris Profiel H30");
         profileH30.setLengthForCasting(new Dimension(25));
@@ -137,13 +146,6 @@ public class Parser {
         parts.add(partEndCapL20);
         profileL20.getRelation().addRelateTo(partEndCapL20, null);
 
-        Profile profileH20 = new Profile(new Dimension(null));
-        profileH20.setName("liniLED Aeris Profiel H20");
-        profileH20.setLengthForCasting(new Dimension(25));
-        profileH20.setMaxDimension(new Dimension(2750));
-        profileH20.setCode("E");
-
-        models.add(profileH20);
 
         relationDefinitionH20.addModel(profileH20);
 
@@ -612,7 +614,7 @@ public class Parser {
         parts.add(part);
 
         CableChannel cableChannel = new CableChannel(new Dimension(null));
-        cableChannel.setName("Cable channel");
+        cableChannel.setName("Cable Channel");
         cableChannel.setCode("b");
         models.add(cableChannel);
         relationDefinitionL30.addModel(cableChannel);
@@ -2023,7 +2025,7 @@ public class Parser {
 
 
         Clip clip = new Clip();
-        clip.setName("Accessoire: Clip");
+        clip.setName("Mounting Clip");
         clip.setCode("a");
         models.add(clip);
         part = new Part(clip);
