@@ -16,13 +16,16 @@ import java.util.Set;
 public class ComposedProduct extends RealModel {
 
     public ComposedProduct() {
-
+        this.setStep(8);
+        this.setName("Composed product");
     }
 
 
     public ComposedProduct(Integer totalWidth, Integer totalHeight) {
+        this();
         this.getDimension().setWidth(totalWidth);
         this.getDimension().setHeight(totalHeight);
+
     }
 
 

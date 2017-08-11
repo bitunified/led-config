@@ -163,6 +163,8 @@ public class Model extends Relatable implements StepConfig, Serializable {
     }
 
     public void setImageUrl(String imageUrl) {
-        this.imageUrl = "assets/images/"+imageUrl;
+        if (imageUrl!=null) {
+            this.imageUrl = "assets/images/" + imageUrl;
+        }
     }
 }

@@ -71,7 +71,7 @@ no-loop true
 
     then
     int totalLength=0;
-        System.out.println(ls);
+        System.out.println(cp);
         if (ls.getDimension().getWidth()!=null && mt.getMargins().getLeft()!=null && ce.getMargins().getLeft()!=null){
             int ledstripLength=ls.getDimension().getWidth();
             int mountingLeft=mt.getMargins().getLeft();
@@ -514,8 +514,8 @@ rule "Profiel L30 lengte"
 
 rule "Actie: Ledstrip toevoegen"
     when
-     ledstrip:LedStrip(ledstripLengte:dimension.getWidth())
-    cp:ComposedProduct()
+     ledstrip:LedStrip(ledstripLengte:dimension.getWidth()!=null)
+
     then
 
      Part foundPart=PartModelHelper.getPart(parts,ledstrip.getClass(),ledstrip,null);
@@ -546,26 +546,10 @@ rule "Actie (enkel part): Cable toevoegen"
 
 end
 
-rule "Actie (enkel part): accessoire toevoegen"
-    when
-     accessoire:Accessoire()
-
-    then
-
-     Part foundPart=PartModelHelper.getPart(parts,accessoire.getClass(),accessoire,null);
-     if (foundPart!=null){
-      System.out.println("accessoire altijd:"+foundPart);
-      Part part=SerializationUtils.clone(foundPart);
-
-       PartListHelper.addToPartCountList(partCountList,part,1.0);
-       }
-
-
-end
 
 rule "Actie: Ledstrip toevoegen (ongeacht lengte)"
     when
-     ledstrip:LedStrip()
+     ledstrip:LedStrip(dimension.getWidth()==null)
 
     then
 
@@ -749,39 +733,39 @@ end
 //end
 
 
-rule "Actie: Tape toevoegen voor alle ledstrip types behalve HighPower."
-salience 1
-no-loop true
-    when
+//rule "Actie: Tape toevoegen voor alle ledstrip types behalve HighPower."
+//salience 1
+//no-loop true
+//    when
+//
+//       not(exists(HighPowerLedStrip()))
+//       ledstrip:LedStrip(dimension.getWidth()!=null)
+//       composedproduct:ComposedProduct(dimension.getWidth()!=null)
+//    then
+//       double length=ledstrip.getDimension().getWidth()/50000d;
+//  Part part=SerializationUtils.clone((Part)parts.get("60000"));
+//                           PartListHelper.addToPartCountList(partCountList,part,length);
+//    System.out.println("Tape length: "+length+" "+ledstrip.getDimension().getWidth());
+//end
 
-       not(exists(HighPowerLedStrip()))
-       ledstrip:LedStrip(dimension.getWidth()!=null)
-       composedproduct:ComposedProduct(dimension.getWidth()!=null)
-    then
-       double length=ledstrip.getDimension().getWidth()/50000d;
-  Part part=SerializationUtils.clone((Part)parts.get("60000"));
-                           PartListHelper.addToPartCountList(partCountList,part,length);
-    System.out.println("Tape length: "+length+" "+ledstrip.getDimension().getWidth());
-end
-
-rule "Actie: Tube door eindkap toevoegen kabel."
-no-loop true
-    when
-       exists(LeftViaEndCapCableEntry())
-    then
-        Part part=SerializationUtils.clone((Part)parts.get("GRIJP_KTULE_EINDKAP"));
-        PartListHelper.addToPartCountList(partCountList,part,1d);
-        System.out.println("Tube kabel door eindkap toegevoegd.");
-end
-rule "Actie: Tube door aluminium zwart toevoegen kabel."
-no-loop true
-    when
-       exists(LeftViaBottomCableEntry())
-    then
-        Part part=SerializationUtils.clone((Part)parts.get("GRIJP_KTULE_ALU_ZWART"));
-        PartListHelper.addToPartCountList(partCountList,part,1d);
-        System.out.println("Tube kabel door aluminium zwart toegevoegd.");
-end
+//rule "Actie: Tube door eindkap toevoegen kabel."
+//no-loop true
+//    when
+//       exists(LeftViaEndCapCableEntry())
+//    then
+//        Part part=SerializationUtils.clone((Part)parts.get("GRIJP_KTULE_EINDKAP"));
+//        PartListHelper.addToPartCountList(partCountList,part,1d);
+//        System.out.println("Tube kabel door eindkap toegevoegd.");
+//end
+//rule "Actie: Tube door aluminium zwart toevoegen kabel."
+//no-loop true
+//    when
+//       exists(LeftViaBottomCableEntry())
+//    then
+//        Part part=SerializationUtils.clone((Part)parts.get("GRIJP_KTULE_ALU_ZWART"));
+//        PartListHelper.addToPartCountList(partCountList,part,1d);
+//        System.out.println("Tube kabel door aluminium zwart toegevoegd.");
+//end
 
 //rule "Actie: Tube door aluminium wit toevoegen kabel."
 //no-loop true

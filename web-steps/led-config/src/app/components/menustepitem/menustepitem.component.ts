@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, ViewEncapsulation, Output, EventEmitter} from "@angular/core";
 import {ModelserviceService} from "../../services/modelservice.service";
 import {ProductcodeService} from "../../services/productcode.service";
-import {MdTabChangeEvent, MdCheckboxChange} from "@angular/material";
+import {MdCheckboxChange} from "@angular/material";
 import {Subscription} from "rxjs/Subscription";
 import {StepModel} from "../../domain/StepModel";
 import {Model} from "../../domain/Model";
@@ -48,9 +48,9 @@ export class MenustepitemComponent implements OnInit {
   filteredModels: Array<Model> = [];
   displayRelation: DisplayRelation;
 
-  skip: boolean=false;
+  skip: boolean = false;
 
-  checked:boolean=false;
+  checked: boolean = false;
   currentPart: Part;
 
   @Input()
@@ -80,9 +80,9 @@ export class MenustepitemComponent implements OnInit {
     this.reset();
   }
 
-  onCheckBoxChange(skip){
+  onCheckBoxChange(skip) {
     console.info(skip);
-    this.skip=skip;
+    this.skip = skip;
   }
 
   skipThisStep(value: MdCheckboxChange) {
@@ -128,9 +128,9 @@ export class MenustepitemComponent implements OnInit {
 
   filter(models: Model[]) {
     let mls: Array<Model> = [];
-    let dp:DisplayRelation=new DisplayRelation();
+    let dp: DisplayRelation = new DisplayRelation();
     for (let model of models) {
-      let rl = this.determineRelationState(dp,model).relationState;
+      let rl = this.determineRelationState(dp, model).relationState;
       if (rl == RelationState.ALLOWED || rl == RelationState.ALLOWEDWITHWARNING || rl == RelationState.ALLOWEDWITHINFO) {
         mls.push(model);
       }
@@ -140,22 +140,20 @@ export class MenustepitemComponent implements OnInit {
     return mls;
   }
 
-  getTabColor(m: Model):DisplayRelation {
+  getTabColor(m: Model): DisplayRelation {
 
 
-
-    this.displayRelation=this.determineRelationState(new DisplayRelation(),m);
+    this.displayRelation = this.determineRelationState(new DisplayRelation(), m);
     return this.displayRelation;
   }
 
-  determineRelationState(displayRelation:DisplayRelation,m:Model){
-    let additional=1;
-if (this.currentStep==1){
-  additional=0;
-}
-    let prevModels: Array<Model> = this.productconfigService.productConfiguration.prevModels(this.currentStep+additional);
+  determineRelationState(displayRelation: DisplayRelation, m: Model) {
+    let additional = 1;
+    if (this.currentStep == 1) {
+      additional = 0;
+    }
+    let prevModels: Array<Model> = this.productconfigService.productConfiguration.prevModels(this.currentStep + additional);
 
-  //console.info(prevModels);
     if (prevModels.length > 0 && m) {
 
       let relations: Array<RelationDefinition> = Model.relatedRelations(m, prevModels);
@@ -255,7 +253,7 @@ if (this.currentStep==1){
   changeSelect(event: Event) {
     console.info(event);
     console.info(this.m);
-    if (this.m!=undefined) {
+    if (this.m != undefined) {
       this.selectedModel = this.m;
 
       this.changeSelection();
@@ -293,12 +291,12 @@ if (this.currentStep==1){
     console.info(this.m);
     console.info(this.selectedModel);
     this.selectedModel = this.m;
-    let productConfig =this.productconfigService.productconfigAnnouncement(this.step, this.selectedModel, null);
-    let curStep=this.step.stepindex;
-    if (curStep==0){
-      curStep=1;
+    let productConfig = this.productconfigService.productconfigAnnouncement(this.step, this.selectedModel, null);
+    let curStep = this.step.stepindex;
+    if (curStep == 0) {
+      curStep = 1;
     }
-    this.getPart(this.selectedModel,productConfig,curStep);
+    this.getPart(this.selectedModel, productConfig, curStep);
 
     this.productcodeService.productcodeAnnouncement(this.selectedModel.code, this.step.stepindex);
 
@@ -308,11 +306,11 @@ if (this.currentStep==1){
   }
 
 
-  getImageUrl(m:Model,currentPart:Part){
-    if (m!=null && m.imageUrl!=null){
+  getImageUrl(m: Model, currentPart: Part) {
+    if (m != null && m.imageUrl != null) {
       return m.imageUrl;
     }
-    if (currentPart!=null && currentPart.imageUrl!=null){
+    if (currentPart != null && currentPart.imageUrl != null) {
       return currentPart.imageUrl;
     }
     return null;
@@ -334,8 +332,8 @@ if (this.currentStep==1){
     }
   }
 
-  getPart(model: Model, productConfig:ProductConfiguration,currentStep:number) {
-    this.partService.getPart(model,productConfig,currentStep).subscribe((res: Part) => {
+  getPart(model: Model, productConfig: ProductConfiguration, currentStep: number) {
+    this.partService.getPart(model, productConfig, currentStep).subscribe((res: Part) => {
         let serverresponse: Part = res;
         this.currentPart = serverresponse;
         console.info(serverresponse);
@@ -345,6 +343,6 @@ if (this.currentStep==1){
   }
 
   private nextStepProcessing() {
-  this.nextStep.emit(this.step.stepindex);
+    this.nextStep.emit(this.step.stepindex);
   }
 }

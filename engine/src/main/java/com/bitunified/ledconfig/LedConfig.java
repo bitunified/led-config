@@ -113,15 +113,19 @@ public class LedConfig {
 
             for (ModelChosenStep m : productConfiguration.getModelsForSteps()) {
 
-                Model modelToAdd = parser.getModels().stream().filter(ml -> ml.equals(m.getChosenModel())).collect(Collectors.toList()).stream().findFirst().orElse(null);
-                if (ComposedProduct.class.equals(m.getChosenModel().getClass())){
-                    modelToAdd=m.getChosenModel();
-                }
-                if (LedStrip.class.isAssignableFrom(m.getChosenModel().getClass())){
-                    modelToAdd=m.getChosenModel();
-                }
-                if (modelToAdd!=null) {
-                    ksession.insert(modelToAdd);
+                if (!m.isSkipped()) {
+                    Model modelToAdd = parser.getModels().stream().filter(ml -> ml.equals(m.getChosenModel())).collect(Collectors.toList()).stream().findFirst().orElse(null);
+                    if (ComposedProduct.class.equals(m.getChosenModel().getClass())) {
+                        modelToAdd = m.getChosenModel();
+                    }
+                    if (LedStrip.class.isAssignableFrom(m.getChosenModel().getClass())) {
+                        modelToAdd = m.getChosenModel();
+                    }
+                    if (modelToAdd != null) {
+
+
+                        ksession.insert(modelToAdd);
+                    }
                 }
             }
 
@@ -129,6 +133,7 @@ public class LedConfig {
 
             ksession.fireAllRules();
 
+            System.out.println("-----------Processed---------------");
 
             Collection<Model> sortedModels = (Collection<Model>) ksession.getObjects();
 
@@ -150,9 +155,9 @@ public class LedConfig {
                             }
                         }
                     }
-                    System.out.println("Model: " + model);
-                }
 
+                }
+                System.out.println("Model: " + model);
                 if (model instanceof Part) {
                     System.out.println("Part:  " + ((Part) model).getProduct());
                 }
@@ -183,6 +188,7 @@ public class LedConfig {
 
             return new ProductConfigResult(new ArrayList<>(), messages, messageMap, ksession.getObjects(), partCountList, instructions);
         } catch (Exception e) {
+            e.printStackTrace();
             ksession.dispose();
             ksession.destroy();
 

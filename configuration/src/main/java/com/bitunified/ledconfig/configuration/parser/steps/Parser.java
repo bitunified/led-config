@@ -120,8 +120,7 @@ public class Parser {
 
         RelationDefinition relationDefinitionRGBCable = createRelationDefinition();
 
-        relationDefinitionRGBCable.addModel(profileH20);
-        relationDefinitionRGBCable.addModel(profileH30);
+
         RelationDefinition relationDefinitionMonoCable = createRelationDefinition();
 
         Part partL20 = new Part(profileL20);
@@ -696,7 +695,7 @@ public class Parser {
         cable.setTranslations(Locale.en, "liniLED connector cable Mono Demo 1 m");
         cable.setCode("K");
         relationDefinitionMonoCable.addModel(cable);
-        relationDefinitionH20.addModel(cable);
+
         models.add(cable);
 
         part = new Part(cable);

@@ -35,12 +35,21 @@ export class ProductconfigurationService {
 
 
     this.productconfigSource.next(this.productConfiguration);
+   this.preProcessing();
     return this.productConfiguration;
+  }
+
+
+  private preProcessing() {
+    if (this.productConfiguration.getModelChosenFromStep(3) && this.productConfiguration.getModelChosenFromStep(7)) {
+      this.productConfiguration.getModelChosenFromStep(3).chosenModel.dimension.width = this.productConfiguration.getModelChosenFromStep(7).modelValue;
+      this.productConfiguration.getModelChosenFromStep(7).chosenModel = this.productConfiguration.getModelChosenFromStep(3).chosenModel;
+      console.info(this.productConfiguration);
+    }
   }
 
   sendProductConfigToServer() {
 
-    this.preProcessing();
     let serProductConfig = Serialize(this.productConfiguration, ProductConfiguration);
     return this.http.post(this.serverUrl, serProductConfig)
 
@@ -60,9 +69,4 @@ export class ProductconfigurationService {
 
   }
 
-  private preProcessing() {
-    this.productConfiguration.getModelChosenFromStep(3).chosenModel.dimension.width=this.productConfiguration.getModelChosenFromStep(7).modelValue;
-    this.productConfiguration.getModelChosenFromStep(7).chosenModel=this.productConfiguration.getModelChosenFromStep(3).chosenModel;
-    console.info(this.productConfiguration);
-  }
 }

@@ -93,7 +93,13 @@ export class Model extends BaseClass {
   static relatedRelations(m: Model, prevModels: Array<Model>): Array<RelationDefinition> {
     let relatedRelations: Array<RelationDefinition> = [];
 
+    //console.info(prevModels);
+    let prevModelInclCurrent:Array<Model>=[];
+
+
+    prevModels.push(m);
     for (let prevModel of prevModels) {
+      prevModelInclCurrent.push(prevModel);
       if (prevModel && prevModel.relations) {
         for (let relation of prevModel.relations) {
           for (let mrel of relation.models) {
@@ -104,29 +110,53 @@ export class Model extends BaseClass {
         }
       }
     }
+
     let foundRelations: Array<RelationDefinition> = [];
     let foundRelationsInfo: Array<RelationDefinition> = [];
+
+
+    let lowPrevModelStep=m.step;
     for (let rl of relatedRelations) {
+      let lowRelStep=Model.determineLowestStep(rl.models);
 
-      if (Model.isModelsTheSameAs(prevModels, rl.models)) {
-        foundRelations.push(rl);
+      //if ( lowPrevModelStep==lowRelStep) {
+      //   console.info("c:"+Model.countSameModels(prevModelInclCurrent, rl.models));
+      //   console.info(rl.models);
+      //   console.info(prevModelInclCurrent);
+      //   console.info(relatedRelations);
+        //console.info(m);
+      let count=Model.countSameModels(prevModelInclCurrent, rl.models);
+        if ((count>=2 && rl.relationState==RelationState.ALLOWED)||(rl.relationState!=RelationState.ALLOWED && count==rl.models.length)) {
+          foundRelations.push(rl);
 
-        if (rl.relationState == RelationState.ALLOWEDWITHINFO) {
-          foundRelationsInfo.push(rl);
+          if (rl.relationState == RelationState.ALLOWEDWITHINFO) {
+            foundRelationsInfo.push(rl);
+          }
         }
-      }
+      //}
     }
-    //console.info(foundRelationsInfo);
+    //console.info(foundRelations);
     return foundRelations;
   }
 
-  private static isModelsTheSameAs(models: Array<Model>, prevModels: Array<Model>) {
-    for (let m of models) {
-      if (!Model.canBeFoundIn(m, prevModels)) {
-        return false;
+  private static determineLowestStep(prevModels: Array<Model>) {
+    let current:number=0;
+    for (let m of prevModels){
+      if (m.step>current){
+        current=m.step;
       }
     }
-    return true;
+    return current;
+  }
+
+  private static countSameModels(models: Array<Model>, prevModels: Array<Model>) {
+    let notFound:number=0;
+    for (let m of models) {
+      if (!Model.canBeFoundIn(m, prevModels)) {
+        notFound++;
+      }
+    }
+    return models.length-notFound;
   }
 
   private static canBeFoundIn(m: Model, prevModels: Array<Model>) {
@@ -141,3 +171,4 @@ export class Model extends BaseClass {
     return false;
   }
 }
+
