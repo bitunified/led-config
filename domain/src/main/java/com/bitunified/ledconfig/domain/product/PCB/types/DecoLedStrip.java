@@ -13,6 +13,7 @@ public class DecoLedStrip extends LedStrip {
     }
     public DecoLedStrip(Dimension dimension){
         super(dimension);
+        this.setProductPage("http://www.liniled.com/products/?parent_id=25022&second_id=25926&third_id=25928");
 
     }
 }

@@ -783,15 +783,15 @@ no-loop true
         System.out.println("Tube kabel door aluminium zwart toegevoegd.");
 end
 
-rule "Actie: Tube door aluminium wit toevoegen kabel."
-no-loop true
-    when
-       not(exists(LeftViaBottomCableEntry()) || exists(LeftViaEndCapCableEntry()))
-    then
-        Part part=SerializationUtils.clone((Part)parts.get("GRIJP_KTULE_ALU_WIT"));
-        PartListHelper.addToPartCountList(partCountList,part,1d);
-        System.out.println("Tube kabel door aluminium wit toegevoegd.");
-end
+//rule "Actie: Tube door aluminium wit toevoegen kabel."
+//no-loop true
+//    when
+//       not(exists(LeftViaBottomCableEntry()) || exists(LeftViaEndCapCableEntry()))
+//    then
+//        Part part=SerializationUtils.clone((Part)parts.get("GRIJP_KTULE_ALU_WIT"));
+//        PartListHelper.addToPartCountList(partCountList,part,1d);
+//        System.out.println("Tube kabel door aluminium wit toegevoegd.");
+//end
 
 //rule "Actie: Arbeidsminuten toevoegen"
 //  no-loop true

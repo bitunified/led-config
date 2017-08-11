@@ -66,6 +66,7 @@ public class Parser {
         profileL20.getDimension().setWidth(4000);
         profileL20.setName("liniLED Aeris Profiel L20");
         profileL20.setMaxDimension(new Dimension(2750));
+        profileL20.setProductPage("http://www.liniled.com/product/liniled-aeris-profile-l20");
 
         Margin margin = new Margin(400, null);
         profileL20.setMargin(margin);
@@ -80,6 +81,7 @@ public class Parser {
         profileL30.setTranslations(Locale.en, "liniLed Aeris Profile L30");
         profileL30.setLengthForCasting(new Dimension(25));
         profileL30.setMaxDimension(new Dimension(2750));
+        profileL30.setProductPage("http://www.liniled.com/product/liniled-aeris-profile-l30");
         profileL30.setCode("F");
 
         models.add(profileL30);
@@ -89,6 +91,7 @@ public class Parser {
         profileH20.setLengthForCasting(new Dimension(25));
         profileH20.setMaxDimension(new Dimension(2750));
         profileH20.setCode("E");
+        profileH20.setProductPage("http://www.liniled.com/product/liniled-aeris-profile-h20");
 
         models.add(profileH20);
 
@@ -117,6 +120,8 @@ public class Parser {
 
         RelationDefinition relationDefinitionRGBCable = createRelationDefinition();
 
+        relationDefinitionRGBCable.addModel(profileH20);
+        relationDefinitionRGBCable.addModel(profileH30);
         RelationDefinition relationDefinitionMonoCable = createRelationDefinition();
 
         Part partL20 = new Part(profileL20);
@@ -214,6 +219,7 @@ public class Parser {
         capDiffuse.setTranslations(Locale.en, "liniLED® Aeris Cap");
         capDiffuse.getProperty(Cap.TRANSLUCENCY_S).setValue("diffuse");
         capDiffuse.setCode("L");
+
         models.add(capDiffuse);
 
         relationDefinitionL20.addModel(capDiffuse);
@@ -387,6 +393,7 @@ public class Parser {
         relationDefinitionH20.addModel(cableEntry);
         cableEntry.setName("Left side via end cap");
         cableEntry.setCode("A");
+        cableEntry.setImageUrl("leftSideViaEndCap.jpg");
         margin = new Margin(10, 5);
         cableEntry.setMargins(margin);
         part = new NotExistingPart(cableEntry);
@@ -396,6 +403,7 @@ public class Parser {
 
         cableEntry = new LeftViaBottomCableEntry();
         cableEntry.setName("Left side via bottom");
+        cableEntry.setImageUrl("leftSideViaBottom.jpg");
         models.add(cableEntry);
         relationDefinitionL20.addModel(cableEntry);
         relationDefinitionL30.addModel(cableEntry);
@@ -411,6 +419,7 @@ public class Parser {
 
         cableEntry = new LeftViaSideCableEntry();
         cableEntry.setName("Left side via side");
+        cableEntry.setImageUrl("leftSideViaSide.jpg");
         models.add(cableEntry);
         relationDefinitionL20.addModel(cableEntry);
         relationDefinitionL30.addModel(cableEntry);
@@ -427,6 +436,7 @@ public class Parser {
 
         cableEntry = new RightViaSideCableEntry();
         cableEntry.setName("Right side via side");
+        cableEntry.setImageUrl("rightSideViaSide.jpg");
         models.add(cableEntry);
         relationDefinitionL20.addModel(cableEntry);
         relationDefinitionL30.addModel(cableEntry);
@@ -442,6 +452,7 @@ public class Parser {
 
         cableEntry = new CenterViaSideCableEntry();
         cableEntry.setName("Center via side");
+        cableEntry.setImageUrl("centerViaSide.jpg");
         models.add(cableEntry);
         relationDefinitionL20.addModel(cableEntry);
         relationDefinitionL30.addModel(cableEntry);
@@ -685,6 +696,7 @@ public class Parser {
         cable.setTranslations(Locale.en, "liniLED connector cable Mono Demo 1 m");
         cable.setCode("K");
         relationDefinitionMonoCable.addModel(cable);
+        relationDefinitionH20.addModel(cable);
         models.add(cable);
 
         part = new Part(cable);
@@ -750,6 +762,7 @@ public class Parser {
         part = new Part(cable);
         part.setId("60005s");
         part.setPrice(BigDecimal.valueOf(8.2));
+        part.setImageUrl("60013liniLEDRGBPUConnectorSet.jpg");
         parts.add(part);
 
 
@@ -762,6 +775,7 @@ public class Parser {
         part = new Part(cable);
         part.setId("60005t");
         part.setPrice(BigDecimal.valueOf(16.4));
+        part.setImageUrl("60013liniLEDRGBPUConnectorSet.jpg");
         parts.add(part);
 
 
@@ -781,10 +795,12 @@ public class Parser {
         cable.setName("Kabel RGB PUR 1 m with open end");
         cable.getProperty(Cable.CABLE_TYPE_S).setValue("RGB");
         cable.setCode("G");
+        relationDefinitionRGBCable.addModel(cable);
         models.add(cable);
         part = new Part(cable);
         part.setId("60007");
         part.setPrice(BigDecimal.valueOf(4.77));
+        part.setImageUrl("60013liniLEDRGBPUConnectorSet.jpg");
         parts.add(part);
 
         cable = new Cable(new Dimension(null));
@@ -795,15 +811,18 @@ public class Parser {
         part = new Part(cable);
         part.setId("60010");
         part.setPrice(BigDecimal.valueOf(5.42));
+        part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
         parts.add(part);
 
         cable = new Cable(new Dimension(null));
         cable.setName("Kabel Mono PUR 4 m with PU connector set");
         cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
         cable.setCode("V");
+        models.add(cable);
         part = new Part(cable);
         part.setId("60011");
         part.setPrice(BigDecimal.valueOf(8.92));
+        part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
         parts.add(part);
 
         cable = new Cable(new Dimension(null));
@@ -813,6 +832,7 @@ public class Parser {
         models.add(cable);
         part = new Part(cable);
         part.setId("60012");
+        part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
         part.setPrice(BigDecimal.valueOf(13.29));
         parts.add(part);
         //60012	Kabel Mono PUR 10 m with PU connector set	W	€ 13,29
@@ -820,19 +840,23 @@ public class Parser {
         cable.setName("Kabel RGB PUR 1 m with PU connector set");
         cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
         cable.setCode("X");
+        relationDefinitionRGBCable.addModel(cable);
         models.add(cable);
         part = new Part(cable);
         part.setId("60013");
         part.setPrice(BigDecimal.valueOf(6.63));
+        part.setImageUrl("60013liniLEDRGBPUConnectorSet.jpg");
         parts.add(part);
         //60013	Kabel RGB PUR 1 m with PU connector set	X	€ 6,63
         cable = new Cable(new Dimension(null));
         cable.setName("Kabel RGB PUR 5 m with PU connector set");
         cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
         cable.setCode("Y");
+        relationDefinitionRGBCable.addModel(cable);
         models.add(cable);
         part = new Part(cable);
         part.setId("60014");
+        part.setImageUrl("60013liniLEDRGBPUConnectorSet.jpg");
         part.setPrice(BigDecimal.valueOf(10.41));
         parts.add(part);
         //60014	Kabel RGB PUR 5 m with PU connector set	Y	€ 10,41
@@ -840,10 +864,12 @@ public class Parser {
         cable.setName("Kabel RGB PUR 10 m with PU connector set");
         cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
         cable.setCode("Z");
+        relationDefinitionRGBCable.addModel(cable);
         models.add(cable);
         part = new Part(cable);
         part.setId("60015");
         part.setPrice(BigDecimal.valueOf(15.68));
+        part.setImageUrl("60013liniLEDRGBPUConnectorSet.jpg");
         parts.add(part);
         //60015	Kabel RGB PUR 10 m with PU connector set	Z	€ 15,68
 
@@ -855,6 +881,7 @@ public class Parser {
         resinClear.setName("Ingieten Helder");
         resinClear.setCode("C");
         resinClear.setStep(2);
+        resinClear.setImageUrl("resinClear.jpg");
         models.add(resinClear);
         relationDefinitionL20.addModel(resinClear);
         relationDefinitionL30.addModel(resinClear);
@@ -875,6 +902,7 @@ public class Parser {
         ResinDiffuse resinDiffuse = new ResinDiffuse(null);
         resinDiffuse.setName("Ingieten Diffuus");
         resinDiffuse.setCode("D");
+        resinDiffuse.setImageUrl("resinDiffuse.jpg");
         models.add(resinDiffuse);
 
         relationDefinitionL20.addModel(resinDiffuse);
@@ -990,7 +1018,7 @@ public class Parser {
         relationDefinitionH30.addModel(ledStripRGB);
         relationDefinitionRGBCable.addModel(ledStripRGB);
 
-        relationDefinitionRGBDiffuus1.addModel(profileH20, profileH30, ledStripRGB);
+        relationDefinitionRGBDiffuus1.addModel(profileH20, profileH30, resinDiffuse,ledStripRGB);
         relationDefinitionRGBDiffuus2.addModel(profileH20, profileH30, resinDiffuse, capDiffuse, ledStripRGB);
         relationDefinitionRGBDiffuus3.addModel(profileL20, profileL30, capDiffuse, ledStripRGB);
 
@@ -1152,9 +1180,9 @@ public class Parser {
         ledStrip.setCode("RQ");
         models.add(ledStrip);
         relationDefinitionMonoCable.addModel(ledStrip);
-        relationDefinitionRGBDiffuus1.addModel(profileH20, profileH30);
-        relationDefinitionRGBDiffuus2.addModel(profileH20, profileH30, resinDiffuse, capDiffuse);
-        relationDefinitionRGBDiffuus3.addModel(profileL20, profileL30, capDiffuse);
+//        relationDefinitionRGBDiffuus1.addModel(profileH20, profileH30);
+//        relationDefinitionRGBDiffuus2.addModel(profileH20, profileH30, resinDiffuse, capDiffuse);
+//        relationDefinitionRGBDiffuus3.addModel(profileL20, profileL30, capDiffuse);
 
         relationDefinitionRGBNotDiffuus.addModel(profileH20, profileH30, profileL20, profileL30, resinClear, capClear);
         part = new Part(ledStrip);
@@ -2027,6 +2055,7 @@ public class Parser {
         Clip clip = new Clip();
         clip.setName("Mounting Clip");
         clip.setCode("a");
+
         models.add(clip);
         part = new Part(clip);
         part.setId("10890");

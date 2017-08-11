@@ -5,7 +5,7 @@
 
 
       <div class="stepPrevCard">
-        <md-card >
+        <md-card>
           <md-card-header>
             <md-card-title>
               <md-chip-list>
@@ -40,7 +40,8 @@
           </md-card-header>
           <md-card-content>
             <div *ngIf="step.skip">
-              <md-checkbox (change)="skipThisStep($event)" [(ngModel)]="checked" [ngModelOptions]="{standalone: true}" (ngModelChange)="onCheckBoxChange(skip)">
+              <md-checkbox (change)="skipThisStep($event)" [(ngModel)]="checked" [ngModelOptions]="{standalone: true}"
+                           (ngModelChange)="onCheckBoxChange(skip)">
                 Optional
                 step, skip it.
               </md-checkbox>
@@ -49,7 +50,8 @@
             <div class="selectionPanel">
               <div *ngIf="isStepTypeValues(step) && filter(step.models).length>0 && !skip" class="propContainer">
                 <div class="selectContainer">
-                  <md-select placeholder="Select {{step.configDescription}}" (onClose)="changeSelect($event)" [(ngModel)]="m"
+                  <md-select placeholder="Select {{step.configDescription}}" (onClose)="changeSelect($event)"
+                             [(ngModel)]="m"
                              [ngModelOptions]="{standalone: true}"
                              floatPlaceholder="never" class="selectBoxContainer" overlayDir="bottom">
                     <md-option *ngFor="let m of filter(step.models);let i=index;" [value]="m" class="selectOption">
@@ -92,7 +94,9 @@
 
           <md-card-header>
 
-            <div md-card-avatar *ngIf="currentPart!=null && currentPart.imageUrl!=null"  class="detailedImage"  [style.background-image]="'url(' + currentPart.imageUrl+ ')'" [style.background-size]="cover" [style.width]="'130px'" [style.height]="'130px'">
+            <div md-card-avatar *ngIf="getImageUrl(m,currentPart)!=null" class="detailedImage"
+                 [style.background-image]="'url(' + getImageUrl(m,currentPart)+ ')'" [style.background-size]="cover"
+                 [style.width]="'130px'" [style.height]="'130px'">
 
             </div>
 
@@ -139,7 +143,8 @@
                 </md-list-item>
 
                 <md-list-item i18n *ngIf="m.productPage">
-                  <a href="{{m.productPage}}" target="_blank" md-raised-button md-raised md-warn class="customMoreButton" [style.line-height]="'14px'" target="_blank">more information</a>
+                  <a href="{{m.productPage}}" target="_blank" md-raised-button md-raised md-warn
+                     class="customMoreButton" [style.line-height]="'14px'" target="_blank">more information</a>
 
                 </md-list-item>
               </md-list>

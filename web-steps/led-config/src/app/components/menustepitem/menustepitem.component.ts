@@ -155,6 +155,7 @@ if (this.currentStep==1){
 }
     let prevModels: Array<Model> = this.productconfigService.productConfiguration.prevModels(this.currentStep+additional);
 
+  //console.info(prevModels);
     if (prevModels.length > 0 && m) {
 
       let relations: Array<RelationDefinition> = Model.relatedRelations(m, prevModels);
@@ -307,6 +308,15 @@ if (this.currentStep==1){
   }
 
 
+  getImageUrl(m:Model,currentPart:Part){
+    if (m!=null && m.imageUrl!=null){
+      return m.imageUrl;
+    }
+    if (currentPart!=null && currentPart.imageUrl!=null){
+      return currentPart.imageUrl;
+    }
+    return null;
+  }
 
   getKeyValueModelFromStep(stepIndex: number, propkey: string): string {
     let model: Model = this.productconfigService.productConfiguration.getModelFromStep(stepIndex);

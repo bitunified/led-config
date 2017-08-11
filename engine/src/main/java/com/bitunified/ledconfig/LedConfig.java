@@ -168,7 +168,9 @@ public class LedConfig {
                 if (msg.getStep() != null && messageMap.get(msg.getStep()) != null) {
                     messageMap.get(msg.getStep()).add(msg);
 
+
                 }
+                System.out.println(msg.getMessage());
             }
 
 
