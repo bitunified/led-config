@@ -53,9 +53,7 @@ export class MenustepsComponent implements OnInit {
       });
     this.productconfig = productConfigService.productConfiguration;
 
-
     this.productCondeSubscription = productcodeService.productcodeSource$.subscribe(res=>{
-      console.info(res);
       this.currentStep=res.currentStep;
     });
   }

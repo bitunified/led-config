@@ -60,7 +60,6 @@ export class AppComponent implements OnInit,OnDestroy {
           duration=15000;
         }
         this.snackBar.open(res.message, 'Close',{duration:duration});
-        console.info(res);
       });
 
     translate.addLangs(["en", "nl"]);
@@ -91,7 +90,6 @@ export class AppComponent implements OnInit,OnDestroy {
 
   backToConfig(){
     this.priceCalculation=null;
-    window.location.reload();
   }
 
 }

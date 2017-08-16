@@ -44,16 +44,6 @@ public class Parser {
 
     private ComposedProduct composedProduct;
 
-
-    /**
-     * "ARBEID-MIN","Arbeidsminuut intern magazijn","0.59","MINUUT","","10"
-     * "GRIJP","Kabeltule t.b.v. eindkap","0.07","ST","","10"
-     * "GRIJP","Kabeltule t.b.v. ALU zwart","0.07","ST","","10"
-     * "GRIJP","Kabeltule t.b.v. ALU wit","0.11","ST","","10"
-     * "GRIJP","Productsticker","0.25","ST","","10"
-     * "GRIJP","Handleiding","0.70","ST","","10"
-     * "GRIJP","Verpakking (per meter)","0.50","ST","","10"
-     **/
     public void createParts() {
 
 
@@ -64,8 +54,8 @@ public class Parser {
 
         ProfileL20 profileL20 = new ProfileL20(new Dimension(null));
         profileL20.getDimension().setWidth(4000);
-        profileL20.setName("liniLED Aeris Profiel L20");
-        profileL20.setTranslations(Locale.en, "liniLED Aeris Profile L20");
+        profileL20.setName("liniLED® Aeris Profiel L20");
+        profileL20.setTranslations(Locale.en, "liniLED® Aeris Profile L20");
         profileL20.setMaxDimension(new Dimension(2750));
         profileL20.setProductPage("http://www.liniled.com/product/liniled-aeris-profile-l20");
 
@@ -77,9 +67,9 @@ public class Parser {
         models.add(profileL20);
 
         Profile profileL30 = new Profile(new Dimension(null));
-        profileL30.setName("liniLED Aeris Profiel L30");
+        profileL30.setName("liniLED® Aeris Profiel L30");
         profileL30.setTranslations(Locale.nl, profileL30.getName());
-        profileL30.setTranslations(Locale.en, "liniLed Aeris Profile L30");
+        profileL30.setTranslations(Locale.en, "liniLED® Aeris Profile L30");
         profileL30.setLengthForCasting(new Dimension(25));
         profileL30.setMaxDimension(new Dimension(2750));
         profileL30.setProductPage("http://www.liniled.com/product/liniled-aeris-profile-l30");
@@ -88,10 +78,10 @@ public class Parser {
         models.add(profileL30);
 
         Profile profileH20 = new Profile(new Dimension(null));
-        profileH20.setName("liniLED Aeris Profiel H20");
+        profileH20.setName("liniLED® Aeris Profiel H20");
         profileH20.setLengthForCasting(new Dimension(25));
         profileH20.setMaxDimension(new Dimension(2750));
-        profileH20.setTranslations(Locale.en, "liniLED Aeris Profile H20");
+        profileH20.setTranslations(Locale.en, "liniLED® Aeris Profile H20");
         profileH20.setCode("E");
         profileH20.setProductPage("http://www.liniled.com/product/liniled-aeris-profile-h20");
 
@@ -99,10 +89,10 @@ public class Parser {
 
 
         Profile profileH30 = new Profile(new Dimension(null));
-        profileH30.setName("liniLED Aeris Profiel H30");
+        profileH30.setName("liniLED® Aeris Profiel H30");
         profileH30.setLengthForCasting(new Dimension(25));
         profileH30.setMaxDimension(new Dimension(2750));
-        profileH30.setTranslations(Locale.en, "liniLED Aeris Profile H30");
+        profileH30.setTranslations(Locale.en, "liniLED® Aeris Profile H30");
         profileH30.setCode("G");
 
         profileH30.setProductPage("http://www.liniled.com/product/liniled-aeris-profile-h30");
@@ -116,20 +106,23 @@ public class Parser {
         relationDefinitionL20.addModel(profileL20);
 
 
-        RelationDefinition relationDefinitionRGBNotDiffuus = createRelationDefinition(RelationState.ALLOWEDWITHWARNING, "Product becomes not diffuse.");
-        RelationDefinition relationDefinitionRGBDiffuus1 = createRelationDefinition(RelationState.ALLOWEDWITHINFO, "Product becomes diffuse");
-        RelationDefinition relationDefinitionRGBDiffuus2 = createRelationDefinition(RelationState.ALLOWEDWITHINFO, "Product becomes diffuse");
-        RelationDefinition relationDefinitionRGBDiffuus3 = createRelationDefinition(RelationState.ALLOWEDWITHINFO, "Product becomes diffuse");
+        RelationDefinition relationDefinitionNotDiffuus = createRelationDefinition(RelationState.ALLOWEDWITHWARNING, "Product becomes not diffuse.");
+        RelationDefinition relationDefinitionDiffuus1 = createRelationDefinition(RelationState.ALLOWEDWITHINFO, "Product becomes diffuse");
+
 
         RelationDefinition relationDefinitionRGBCable = createRelationDefinition();
 
 
         RelationDefinition relationDefinitionMonoCable = createRelationDefinition();
 
+        relationDefinitionDiffuus1.addModel(profileH20,profileH30);
+
+        relationDefinitionNotDiffuus.addModel(profileL20,profileL30);
+
         Part partL20 = new Part(profileL20);
         partL20.setPrice(BigDecimal.valueOf(36.09));
         partL20.setId("10713");
-        partL20.setDescription("liniLED Aeris Profiel L20 4 m");
+        partL20.setDescription("liniLED® Aeris Profiel L20 4 m");
 
         partL20.setImageUrl("10710profileL20.jpg");
         parts.add(partL20);
@@ -141,7 +134,7 @@ public class Parser {
         Part partEndCapLC20 = new Part(endCap);
         partEndCapLC20.setPrice(BigDecimal.valueOf(8.22));
         partEndCapLC20.setId("10902");
-        partEndCapLC20.setDescription("liniLED Aeris Eindkap LC20");
+        partEndCapLC20.setDescription("liniLED® Aeris Eindkap LC20");
         parts.add(partEndCapLC20);
         profileL20.getRelation().addRelateTo(partEndCapLC20, null);
 
@@ -149,7 +142,7 @@ public class Parser {
         Part partEndCapL20 = new Part(endCap);
         partEndCapL20.setPrice(BigDecimal.valueOf(7.84));
         partEndCapL20.setId("10900");
-        partEndCapL20.setDescription("liniLED Aeris Eindkap L20");
+        partEndCapL20.setDescription("liniLED® Aeris Eindkap L20");
         parts.add(partEndCapL20);
         profileL20.getRelation().addRelateTo(partEndCapL20, null);
 
@@ -160,7 +153,7 @@ public class Parser {
         Part partProfielH20 = new Part(profileH20);
         partProfielH20.setPrice(BigDecimal.valueOf(63.39));
         partProfielH20.setId("10717");
-        partProfielH20.setDescription("liniLED Aeris Profiel H20 4 m");
+        partProfielH20.setDescription("liniLED® Aeris Profiel H20 4 m");
         partProfielH20.setImageUrl("10714profileH20.jpg");
         parts.add(partProfielH20);
 
@@ -168,14 +161,14 @@ public class Parser {
         Part partEndCapH20 = new Part(endCap);
         partEndCapH20.setPrice(BigDecimal.valueOf(8.43));
         partEndCapH20.setId("10904");
-        partEndCapH20.setDescription("liniLED Aeris Eindkap H20");
+        partEndCapH20.setDescription("liniLED® Aeris Eindkap H20");
         parts.add(partEndCapH20);
         profileH20.getRelation().addRelateTo(partEndCapH20, null);
 
         Part partEndCapHC20 = new Part(endCap);
         partEndCapHC20.setPrice(BigDecimal.valueOf(8.53));
         partEndCapHC20.setId("10906");
-        partEndCapHC20.setDescription("liniLED Aeris Eindkap HC20");
+        partEndCapHC20.setDescription("liniLED® Aeris Eindkap HC20");
         parts.add(partEndCapHC20);
         profileH20.getRelation().addRelateTo(partEndCapHC20, null);
 
@@ -183,7 +176,7 @@ public class Parser {
         Part partEndCapC20 = new Part(endCap);
         partEndCapC20.setPrice(BigDecimal.valueOf(7.63));
         partEndCapC20.setId("10908");
-        partEndCapC20.setDescription("liniLED Aeris Eindkap C20");
+        partEndCapC20.setDescription("liniLED® Aeris Eindkap C20");
         parts.add(partEndCapC20);
         profileH20.getRelation().addRelateTo(partEndCapC20, null);
         profileL20.getRelation().addRelateTo(partEndCapC20, null);
@@ -191,47 +184,49 @@ public class Parser {
         Part part = new Part(endCap);
         part.setPrice(BigDecimal.valueOf(8.32));
         part.setId("10903");
-        part.setDescription("liniLED Aeris Eindkap LC20 O");
+        part.setDescription("liniLED® Aeris Eindkap LC20 O");
         parts.add(part);
 
 
         Part partEndCapL20Open = new Part(endCap);
         partEndCapL20Open.setPrice(BigDecimal.valueOf(8.00));
         partEndCapL20Open.setId("10901");
-        partEndCapL20Open.setDescription("liniLED Aeris Eindkap L20 O");
+        partEndCapL20Open.setDescription("liniLED® Aeris Eindkap L20 O");
         parts.add(partEndCapL20Open);
 
         part = new Part(endCap);
         part.setPrice(BigDecimal.valueOf(8.53));
         part.setId("10905");
-        part.setDescription("liniLED Aeris Eindkap H20 O");
+        part.setDescription("liniLED® Aeris Eindkap H20 O");
         parts.add(part);
 
 
         part = new Part(endCap);
         part.setPrice(BigDecimal.valueOf(8.64));
         part.setId("10907");
-        part.setDescription("liniLED Aeris Eindkap HC20 O");
+        part.setDescription("liniLED® Aeris Eindkap HC20 O");
         parts.add(part);
 
 
         Cap capDiffuse = new CapDiffuse();
         capDiffuse.setName("liniLED® Aeris Afdekkap Diffuus");
-        capDiffuse.setTranslations(Locale.en, "liniLED® Aeris Cap");
+        capDiffuse.setTranslations(Locale.en, "liniLED® Aeris Cover Diffuse");
         capDiffuse.getProperty(Cap.TRANSLUCENCY_S).setValue("diffuse");
         capDiffuse.setCode("L");
-
         models.add(capDiffuse);
 
         relationDefinitionL20.addModel(capDiffuse);
         relationDefinitionL30.addModel(capDiffuse);
         relationDefinitionH20.addModel(capDiffuse);
         relationDefinitionH30.addModel(capDiffuse);
+        relationDefinitionDiffuus1.addModel(capDiffuse);
+        relationDefinitionNotDiffuus.addModel(capDiffuse);
 
         Part partCapL20 = new Part(capDiffuse);
         partCapL20.setPrice(BigDecimal.valueOf(40.92));
         partCapL20.setId("10803");
         partCapL20.setDescription("liniLED® Aeris Kap D L20 4 m");
+        partCapL20.setTranslations(Locale.en,"liniLED® Aeris Cover D L20 4 m");
         partCapL20.setImageUrl("10800coverDiffuseL20.jpg");
         profileL20.getRelation().addRelateTo(partCapL20,null);
         parts.add(partCapL20);
@@ -245,8 +240,6 @@ public class Parser {
         models.add(capClear);
         relationDefinitionL20.addModel(capClear);
         relationDefinitionL30.addModel(capClear);
-        relationDefinitionH20.addModel(capClear);
-        relationDefinitionH30.addModel(capClear);
 
         partCapL20 = new Part(capClear);
         partCapL20.setPrice(BigDecimal.valueOf(35.62));
@@ -304,14 +297,14 @@ public class Parser {
 
         partProfielL30.setPrice(BigDecimal.valueOf(49.29));
         partProfielL30.setId("10733");
-        partProfielL30.setDescription("liniLED Aeris Profiel L30 4 m");
+        partProfielL30.setDescription("liniLED® Aeris Profiel L30 4 m");
         partProfielL30.setImageUrl("10730profileL30.jpg");
         parts.add(partProfielL30);
 
         Part partEndCapL30 = new Part(endCap);
         partEndCapL30.setPrice(BigDecimal.valueOf(8.00));
         partEndCapL30.setId("10920");
-        partEndCapL30.setDescription("liniLED Aeris Eindkap L30");
+        partEndCapL30.setDescription("liniLED® Aeris Eindkap L30");
         parts.add(partEndCapL30);
         partProfielL30.getRelation().addRelateTo(partEndCapL30, null);
 
@@ -319,7 +312,7 @@ public class Parser {
         Part partEndCapLC30 = new Part(endCap);
         partEndCapLC30.setPrice(BigDecimal.valueOf(8.43));
         partEndCapLC30.setId("10922");
-        partEndCapLC30.setDescription("liniLED Aeris Eindkap LC30");
+        partEndCapLC30.setDescription("liniLED® Aeris Eindkap LC30");
         parts.add(partEndCapLC30);
         partProfielL30.getRelation().addRelateTo(partEndCapLC30, null);
 
@@ -327,7 +320,7 @@ public class Parser {
         Part partProfielH30 = new Part(profileH30);
         partProfielH30.setPrice(BigDecimal.valueOf(76.69));
         partProfielH30.setId("10737");
-        partProfielH30.setDescription("liniLED Aeris Profiel H30 4 m");
+        partProfielH30.setDescription("liniLED® Aeris Profiel H30 4 m");
         partProfielH30.setImageUrl("10734profileH30.jpg");
         parts.add(partProfielH30);
 
@@ -335,7 +328,7 @@ public class Parser {
         Part partEndCapH30 = new Part(endCap);
         partEndCapH30.setPrice(BigDecimal.valueOf(8.43));
         partEndCapH30.setId("10924");
-        partEndCapH30.setDescription("liniLED Aeris Eindkap H30");
+        partEndCapH30.setDescription("liniLED® Aeris Eindkap H30");
         parts.add(partEndCapH30);
         profileH30.getRelation().addRelateTo(partEndCapH30, null);
 
@@ -343,7 +336,7 @@ public class Parser {
         Part partEndCapHC30 = new Part(endCap);
         partEndCapHC30.setPrice(BigDecimal.valueOf(8.53));
         partEndCapHC30.setId("10926");
-        partEndCapHC30.setDescription("liniLED Aeris Eindkap HC30");
+        partEndCapHC30.setDescription("liniLED® Aeris Eindkap HC30");
         parts.add(partEndCapHC30);
         profileH30.getRelation().addRelateTo(partEndCapHC30, null);
 
@@ -351,37 +344,37 @@ public class Parser {
         Part partEndCapC30 = new Part(endCap);
         partEndCapC30.setPrice(BigDecimal.valueOf(7.90));
         partEndCapC30.setId("10928");
-        partEndCapC30.setDescription("liniLED Aeris Eindkap C30");
+        partEndCapC30.setDescription("liniLED® Aeris Eindkap C30");
         parts.add(partEndCapC30);
         profileH30.getRelation().addRelateTo(partEndCapC30, null);
 
         part = new Part(endCap);
         part.setPrice(BigDecimal.valueOf(8.11));
         part.setId("10921");
-        part.setDescription("liniLED Aeris Eindkap L30 O");
+        part.setDescription("liniLED® Aeris Eindkap L30 O");
         parts.add(part);
 
 
         part = new Part(endCap);
         part.setPrice(BigDecimal.valueOf(8.53));
         part.setId("10923");
-        part.setDescription("liniLED Aeris Eindkap LC30 O");
+        part.setDescription("liniLED® Aeris Eindkap LC30 O");
         parts.add(part);
 
 
         part = new Part(endCap);
         part.setPrice(BigDecimal.valueOf(8.53));
         part.setId("10925");
-        part.setDescription("liniLED Aeris Eindkap H30 O");
+        part.setDescription("liniLED® Aeris Eindkap H30 O");
         parts.add(part);
 
 
         part = new Part();
         part.setPrice(BigDecimal.valueOf(8.64));
         part.setId("10927");
-        part.setDescription("liniLED Aeris Eindkap HC30 O");
+        part.setDescription("liniLED® Aeris Eindkap HC30 O");
         part.setTranslations(Locale.nl, part.getDescription());
-        part.setTranslations(Locale.en, "liniLED Aeris Endcap HC30 O");
+        part.setTranslations(Locale.en, "liniLED® Aeris Endcap HC30 O");
         parts.add(part);
 
 
@@ -548,6 +541,7 @@ public class Parser {
 
         mounting = new HighEndCapRightMounting();
         mounting.setName("Hoge eindkap aan de rechter zijde");
+        mounting.setTranslations(Locale.en,"High endcap right side");
         margin = new Margin(0, 2);
         mounting.setCode("E");
         mounting.setMargins(margin);
@@ -567,6 +561,7 @@ public class Parser {
 
         mounting = new HighEndCapLeftMounting();
         mounting.setName("Hoge eindkap aan de linker zijde");
+        mounting.setTranslations(Locale.en,"High endcap left side");
         margin = new Margin(2, 0);
         mounting.setCode("F");
         mounting.setMargins(margin);
@@ -586,6 +581,7 @@ public class Parser {
 
         mounting = new HighEndCapBothMounting();
         mounting.setName("Hoge eindkap aan beide zijdes");
+        mounting.setTranslations(Locale.en,"High endcaps both sides");
         margin = new Margin(2, 2);
         mounting.setCode("G");
         mounting.setMargins(margin);
@@ -605,6 +601,7 @@ public class Parser {
 
         mounting = new HighEndCapBothCableChannelMounting();
         mounting.setName("Hoge eindkap aan beide zijdes van kabelgoot");
+        mounting.setTranslations(Locale.en,"High endcap both sides of cable channel");
         margin = new Margin(2, 2);
         mounting.setCode("H");
         mounting.setMargins(margin);
@@ -635,63 +632,63 @@ public class Parser {
         part = new Part(cableChannel);
         part.setPrice(BigDecimal.valueOf(7.16));
         part.setId("10750");
-        part.setDescription("liniLED Aeris Kabelgoot 20 1 m");
+        part.setDescription("liniLED® Aeris Kabelgoot 20 1 m");
         part.setImageUrl("10754cableChannel30.jpg");
         parts.add(part);
 
         part = new Part(cableChannel);
         part.setPrice(BigDecimal.valueOf(14.36));
         part.setId("10751");
-        part.setDescription("liniLED Aeris Kabelgoot 20 2 m");
+        part.setDescription("liniLED® Aeris Kabelgoot 20 2 m");
         part.setImageUrl("10754cableChannel30.jpg");
         parts.add(part);
 
         part = new Part();
         part.setPrice(BigDecimal.valueOf(21.52));
         part.setId("10752");
-        part.setDescription("liniLED Aeris Kabelgoot 20 3 m");
+        part.setDescription("liniLED® Aeris Kabelgoot 20 3 m");
         part.setImageUrl("10754cableChannel30.jpg");
         parts.add(part);
 
         part = new Part();
         part.setPrice(BigDecimal.valueOf(28.73));
         part.setId("10753");
-        part.setDescription("liniLED Aeris Kabelgoot 20 4 m");
+        part.setDescription("liniLED® Aeris Kabelgoot 20 4 m");
         part.setImageUrl("10754cableChannel30.jpg");
         parts.add(part);
 
         part = new Part();
         part.setPrice(BigDecimal.valueOf(9.86));
         part.setId("10754");
-        part.setDescription("liniLED Aeris Kabelgoot 30 1 m");
+        part.setDescription("liniLED® Aeris Kabelgoot 30 1 m");
         part.setImageUrl("10754cableChannel30.jpg");
         parts.add(part);
 
         part = new Part();
         part.setPrice(BigDecimal.valueOf(19.66));
         part.setId("10755");
-        part.setDescription("liniLED Aeris Kabelgoot 30 2 m");
+        part.setDescription("liniLED® Aeris Kabelgoot 30 2 m");
         part.setImageUrl("10754cableChannel30.jpg");
         parts.add(part);
 
         part = new Part();
         part.setPrice(BigDecimal.valueOf(29.52));
         part.setId("10756");
-        part.setDescription("liniLED Aeris Kabelgoot 30 3 m");
+        part.setDescription("liniLED® Aeris Kabelgoot 30 3 m");
         part.setImageUrl("10754cableChannel30.jpg");
         parts.add(part);
 
         part = new Part();
         part.setPrice(BigDecimal.valueOf(39.38));
         part.setId("10757");
-        part.setDescription("liniLED Aeris Kabelgoot 30 4 m");
+        part.setDescription("liniLED® Aeris Kabelgoot 30 4 m");
         part.setImageUrl("10754cableChannel30.jpg");
         parts.add(part);
 
         Cable cable = new Cable(new Dimension(null));
-        cable.setName("liniLED Aansluitkabel Mono Demo 1 m");
+        cable.setName("liniLED® Aansluitkabel Mono Demo 1 m");
         cable.getProperty(Cable.CABLE_TYPE_S).setValue("mono");
-        cable.setTranslations(Locale.en, "liniLED connector cable Mono Demo 1 m");
+        cable.setTranslations(Locale.en, "liniLED® Connectorcable Mono Demo 1 m");
         cable.setCode("K");
         relationDefinitionMonoCable.addModel(cable);
 
@@ -700,12 +697,13 @@ public class Parser {
         part = new Part(cable);
         part.setPrice(BigDecimal.valueOf(13.99));
         part.setId("11214");
-        part.setDescription("liniLED Aansluitkabel Mono Demo 1 m");
+        part.setDescription("liniLED® Aansluitkabel Mono Demo 1 m");
         part.setType("MTR");
         parts.add(part);
 
         cable = new Cable(new Dimension(null));
-        cable.setName("Kabel Mono Wit 1 m with open end");
+        cable.setName("Kabel Mono Wit 1 m met open eind");
+        cable.setTranslations(Locale.en,"Cable Mono white 1 m with open end");
         cable.getProperty(Cable.CABLE_TYPE_S).setValue("mono");
         cable.setCode("A");
         relationDefinitionMonoCable.addModel(cable);
@@ -716,7 +714,8 @@ public class Parser {
         parts.add(part);
 
         cable = new Cable(new Dimension(null));
-        cable.setName("Kabel Mono Wit 5 m with open end");
+        cable.setName("Kabel Mono Wit 5 m with open eind");
+        cable.setTranslations(Locale.en,"Cable Mono white 5m with open end");
         cable.getProperty(Cable.CABLE_TYPE_S).setValue("mono");
         cable.setCode("B");
         relationDefinitionMonoCable.addModel(cable);
@@ -729,7 +728,8 @@ public class Parser {
 
 
         cable = new Cable(new Dimension(null));
-        cable.setName("Kabel Mono Wit 10 m with open end");
+        cable.setName("Kabel Mono Wit 10 m met open eind");
+        cable.setTranslations(Locale.en,"Cable Mono white 10 m with open end");
         cable.getProperty(Cable.CABLE_TYPE_S).setValue("mono");
         cable.setCode("C");
         relationDefinitionMonoCable.addModel(cable);
@@ -740,7 +740,8 @@ public class Parser {
         parts.add(part);
 
         cable = new Cable(new Dimension(null));
-        cable.setName("Kabel RGB Wit 1 m with open end");
+        cable.setName("Kabel RGB Wit 1 m met open eind");
+        cable.setTranslations(Locale.en,"Cable RGB white 1 m with open end");
         cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
         cable.setCode("R");
         models.add(cable);
@@ -751,7 +752,8 @@ public class Parser {
         parts.add(part);
 
         cable = new Cable(new Dimension(null));
-        cable.setName("Kabel RGB Wit 5 m with open end");
+        cable.setName("Kabel RGB Wit 5 m met open eind");
+        cable.setTranslations(Locale.en,"Cable RGB white 5 m with open end");
         cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
         cable.setCode("S");
         models.add(cable);
@@ -765,7 +767,8 @@ public class Parser {
 
 
         cable = new Cable(new Dimension(null));
-        cable.setName("Kabel RGB Wit 10 m with open end");
+        cable.setName("Kabel RGB Wit 10 m met open eind");
+        cable.setTranslations(Locale.en,"Cable RGB white 10 m with open end");
         cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
         cable.setCode("T");
         models.add(cable);
@@ -778,7 +781,8 @@ public class Parser {
 
 
         cable = new Cable(new Dimension(null));
-        cable.setName("Kabel Mono PUR 1 m with open end");
+        cable.setName("Kabel Mono PUR 1 m met open eind");
+        cable.setTranslations(Locale.en,"Cable Mono PUR 1 m with open end");
         cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
         cable.setCode("D");
         models.add(cable);
@@ -790,7 +794,8 @@ public class Parser {
 
 
         cable = new Cable(new Dimension(null));
-        cable.setName("Kabel RGB PUR 1 m with open end");
+        cable.setName("Kabel RGB PUR 1 m met open eind");
+        cable.setTranslations(Locale.en,"Cable RGB PUR 1 m with open end");
         cable.getProperty(Cable.CABLE_TYPE_S).setValue("RGB");
         cable.setCode("G");
         relationDefinitionRGBCable.addModel(cable);
@@ -802,7 +807,8 @@ public class Parser {
         parts.add(part);
 
         cable = new Cable(new Dimension(null));
-        cable.setName("Kabel Mono PUR 1 m with PU connector set");
+        cable.setName("Kabel Mono PUR 1 m met PU connector set");
+        cable.setTranslations(Locale.en,"Cable Mono PUR 1 m with PU connector set");
         cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
         cable.setCode("U");
         models.add(cable);
@@ -813,7 +819,8 @@ public class Parser {
         parts.add(part);
 
         cable = new Cable(new Dimension(null));
-        cable.setName("Kabel Mono PUR 4 m with PU connector set");
+        cable.setName("Kabel Mono PUR 4 m met PU connector set");
+        cable.setTranslations(Locale.en,"Cable Mono PUR 4 m with PU connector set");
         cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
         cable.setCode("V");
         models.add(cable);
@@ -824,7 +831,8 @@ public class Parser {
         parts.add(part);
 
         cable = new Cable(new Dimension(null));
-        cable.setName("Kabel Mono PUR 10 m with PU connector set");
+        cable.setName("Kabel Mono PUR 10 m met PU connector set");
+        cable.setTranslations(Locale.en,"Cable Mono PUR 10 m with PU connector set");
         cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
         cable.setCode("W");
         models.add(cable);
@@ -835,7 +843,8 @@ public class Parser {
         parts.add(part);
         //60012	Kabel Mono PUR 10 m with PU connector set	W	€ 13,29
         cable = new Cable(new Dimension(null));
-        cable.setName("Kabel RGB PUR 1 m with PU connector set");
+        cable.setName("Kabel RGB PUR 1 m met PU connector set");
+        cable.setTranslations(Locale.en,"Cable RGB PUR 1 m with PU connector set");
         cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
         cable.setCode("X");
         relationDefinitionRGBCable.addModel(cable);
@@ -847,7 +856,8 @@ public class Parser {
         parts.add(part);
         //60013	Kabel RGB PUR 1 m with PU connector set	X	€ 6,63
         cable = new Cable(new Dimension(null));
-        cable.setName("Kabel RGB PUR 5 m with PU connector set");
+        cable.setName("Kabel RGB PUR 5 m met PU connector set");
+        cable.setTranslations(Locale.en,"Cable RGB PUR 5 m with PU connector set");
         cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
         cable.setCode("Y");
         relationDefinitionRGBCable.addModel(cable);
@@ -876,7 +886,8 @@ public class Parser {
 
 
         ResinClear resinClear = new ResinClear(null);
-        resinClear.setName("Ingieten Helder");
+        resinClear.setName("liniLED® Helder Ingieten");
+        resinClear.setTranslations(Locale.en,"liniLED® Clear Resin");
         resinClear.setCode("C");
         resinClear.setStep(2);
         resinClear.setImageUrl("resinClear.jpg");
@@ -889,16 +900,18 @@ public class Parser {
 
         part = new Part(resinClear);
         part.setId("95000");
-        part.setDescription("Ingieten liniLED L20 Helder");
+        part.setDescription("liniLED® L20 Helder Ingieten");
+        part.setTranslations(Locale.en,"liniLED® L20 Clear Resin");
         part.setPrice(BigDecimal.valueOf(43.13));
         part.setImageUrl("10824coverClearL30.jpg");
         part.setType("MTR");
         parts.add(part);
         profileL20.getRelation().addRelateTo(part, null);
-        //        "95000","Ingieten liniLED L20 Helder","11.50","MTR","","10"
+        //        "95000","Ingieten liniLED® L20 Helder","11.50","MTR","","10"
 
         ResinDiffuse resinDiffuse = new ResinDiffuse(null);
-        resinDiffuse.setName("Ingieten Diffuus");
+        resinDiffuse.setName("liniLED® Diffuus Ingieten");
+        resinDiffuse.setTranslations(Locale.en,"liniLED® Diffuse Resin");
         resinDiffuse.setCode("D");
         resinDiffuse.setImageUrl("resinDiffuse.jpg");
         models.add(resinDiffuse);
@@ -907,22 +920,23 @@ public class Parser {
         relationDefinitionL30.addModel(resinDiffuse);
         relationDefinitionH20.addModel(resinDiffuse);
         relationDefinitionH30.addModel(resinDiffuse);
-
-
+        relationDefinitionNotDiffuus.addModel(resinDiffuse);
+        relationDefinitionDiffuus1.addModel(resinDiffuse);
         part = new Part(resinDiffuse);
         part.setId("95001");
-        part.setPrice(BigDecimal.valueOf(43.13
-        ));
-        part.setDescription("Ingieten liniLED L20 Diffuus");
+        part.setPrice(BigDecimal.valueOf(43.13));
+        part.setDescription("liniLED® L20 Diffuus Ingieten");
+        part.setTranslations(Locale.en,"liniLED® L20 Diffuse Resin");
         part.setType("MTR");
         parts.add(part);
         profileL20.getRelation().addRelateTo(part, null);
 
-//        "95001","Ingieten liniLED L20 Diffuus","11.50","MTR","","10"
+//        "95001","Ingieten liniLED® L20 Diffuus","11.50","MTR","","10"
 
 
         part = new Part(resinClear);
-        part.setDescription("Ingieten liniLED L30 Helder");
+        part.setDescription("liniLED® L30 Helder Ingieten");
+        part.setTranslations(Locale.en,"liniLED® L30 Clear Resin");
         part.setPrice(BigDecimal.valueOf(86.25));
         part.setType("MTR");
         part.setId("95003");
@@ -930,64 +944,68 @@ public class Parser {
         profileL30.getRelation().addRelateTo(part, null);
         parts.add(part);
 
-        //        "95003","Ingieten liniLED L30 Helder","17.25","MTR","","10"
+        //        "95003","Ingieten liniLED® L30 Helder","17.25","MTR","","10"
 
 
         part = new Part(resinDiffuse);
-        part.setDescription("Ingieten liniLED L30 Diffuus");
+        part.setDescription("liniLED® L30 Diffuus Ingieten");
+        part.setTranslations(Locale.en,"liniLED® L30 Diffuse Resin");
         part.setId("95004");
         part.setPrice(BigDecimal.valueOf(86.25));
         part.setType("MTR");
         profileL30.getRelation().addRelateTo(part, null);
         parts.add(part);
-        //        "95004","Ingieten liniLED L30 Diffuus","17.25","MTR","","10"
+        //        "95004","Ingieten liniLED® L30 Diffuus","17.25","MTR","","10"
 
 
         part = new Part(resinClear);
         part.setPrice(BigDecimal.valueOf(23));
         part.setId("95010");
-        part.setDescription("Ingieten liniLED H20 Helder");
+        part.setDescription("Ingieten liniLED® H20 Helder");
+        part.setTranslations(Locale.en,"Resin liniLED® H20 Clear");
         part.setType("MTR");
-        part.setPrice(BigDecimal.valueOf(86.25
-        ));
+        part.setPrice(BigDecimal.valueOf(86.25));
         parts.add(part);
         profileH20.getRelation().addRelateTo(part, null);
-//        "95010","Ingieten liniLED H20 Helder","23.00","MTR","","10"
+//        "95010","Ingieten liniLED® H20 Helder","23.00","MTR","","10"
 
 
         part = new Part(resinDiffuse);
         part.setPrice(BigDecimal.valueOf(23));
         part.setId("95011");
-        part.setDescription("Ingieten liniLED H20 Diffuus");
+        part.setDescription("Ingieten liniLED® H20 Diffuus");
+        part.setTranslations(Locale.en,"Resin liniLED® H20 Diffuse");
         part.setType("MTR");
         part.setPrice(BigDecimal.valueOf(86.25
         ));
         parts.add(part);
         profileH20.getRelation().addRelateTo(part, null);
-        //        "95011","Ingieten liniLED H20 Diffuus","23.00","MTR","","10"
+        //        "95011","Ingieten liniLED® H20 Diffuus","23.00","MTR","","10"
 
 
         part = new Part(resinClear);
         part.setPrice(BigDecimal.valueOf(174.37));
         part.setId("95013");
-        part.setDescription("Ingieten liniLED H30 Helder");
+        part.setDescription("Ingieten liniLED® H30 Helder");
+        part.setTranslations(Locale.en,"Resin liniLED® H30 Clear");
         part.setType("MTR");
         parts.add(part);
         profileH30.getRelation().addRelateTo(part, null);
-//        "95013","Ingieten liniLED H30 Helder","46.50","MTR","","10"
+//        "95013","Ingieten liniLED® H30 Helder","46.50","MTR","","10"
 
         part = new Part(resinDiffuse);
         part.setPrice(BigDecimal.valueOf(174.37));
         part.setId("95014");
-        part.setDescription("Ingieten liniLED H30 Diffuus");
+        part.setDescription("Ingieten liniLED® H30 Diffuus");
         part.setType("MTR");
         parts.add(part);
         profileH30.getRelation().addRelateTo(part, null);
-//        "95014","Ingieten liniLED H30 Diffuus","46.50","MTR","","10"
+//        "95014","Ingieten liniLED® H30 Diffuus","46.50","MTR","","10"
 
 
         LedStrip ledStrip = new DecoLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED Deco rood");
+        ledStrip.setName("iniLED® PCB Deco rood");
+        ledStrip.setTranslations(Locale.en,"iniLED® PCB Deco rood");
         ledStrip.setMaxDimension(new Dimension(2600));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(LedStrip.COLOR_TYPE).setValue("rood");
@@ -998,13 +1016,13 @@ public class Parser {
         part = new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(36.96));
         part.setId("12182");
-        part.setDescription("liniLED PCB Rood D");
+        part.setDescription("liniLED® PCB Rood D");
         part.setType("MTR");
         part.setImageUrl("12182-PCB-Red-Deco.jpg");
         parts.add(part);
 
         LedStrip ledStripRGB = new RGBLedStrip(new Dimension(null));
-        ledStripRGB.setName("liniLED RGB Deco");
+        ledStripRGB.setName("liniLED® RGB Deco");
         ledStripRGB.setMaxDimension(new Dimension(2600));
         ledStripRGB.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStripRGB.getProperty(LedStrip.COLOR_TYPE).setValue("rgb");
@@ -1016,23 +1034,20 @@ public class Parser {
         relationDefinitionH30.addModel(ledStripRGB);
         relationDefinitionRGBCable.addModel(ledStripRGB);
 
-        relationDefinitionRGBDiffuus1.addModel(profileH20, profileH30, resinDiffuse,ledStripRGB);
-        relationDefinitionRGBDiffuus2.addModel(profileH20, profileH30, resinDiffuse, capDiffuse, ledStripRGB);
-        relationDefinitionRGBDiffuus3.addModel(profileL20, profileL30, capDiffuse, ledStripRGB);
 
-        relationDefinitionRGBNotDiffuus.addModel(profileH20, profileH30, profileL20, profileL30, resinClear, capClear);
+
 
         part = new Part(ledStripRGB);
         part.setPrice(BigDecimal.valueOf(69.52));
         part.setId("12187");
         part.setType("MTR");
-        part.setDescription("liniLED PCB RGB 160");
+        part.setDescription("liniLED® PCB RGB 160");
         part.setImageUrl("12182-PCB-Red-Deco.jpg");
         parts.add(part);
-        //"21002","liniLED PCB RGB D","15.00","MTR","","10"
+        //"21002","liniLED® PCB RGB D","15.00","MTR","","10"
 
         ledStrip = new DecoLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED Deco groen");
+        ledStrip.setName("liniLED® Deco groen");
         ledStrip.setMaxDimension(new Dimension(2600));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(100);
         ledStrip.getProperty(LedStrip.COLOR_TYPE).setValue("groen");
@@ -1048,13 +1063,13 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(48.40));
         part.setId("12183");
         part.setType("MTR");
-        part.setDescription("liniLED PCB Groen D");
+        part.setDescription("liniLED® PCB Groen D");
         part.setImageUrl("12182-PCB-Red-Deco.jpg");
         parts.add(part);
-        //"21005","liniLED PCB Groen D","10.50","MTR","","10"
+        //"21005","liniLED® PCB Groen D","10.50","MTR","","10"
 
         ledStrip = new DecoLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED Deco blauw");
+        ledStrip.setName("liniLED® Deco blauw");
         ledStrip.setMaxDimension(new Dimension(2600));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(100);
         ledStrip.getProperty(LedStrip.COLOR_TYPE).setValue("blauw");
@@ -1069,14 +1084,14 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(48.4));
         part.setId("21006");
         part.setType("MTR");
-        part.setDescription("liniLED PCB Blauw D");
+        part.setDescription("liniLED® PCB Blauw D");
         part.setImageUrl("12182-PCB-Red-Deco.jpg");
         parts.add(part);
-        //"21006","liniLED PCB Blauw D","10.50","MTR","","10"
+        //"21006","liniLED® PCB Blauw D","10.50","MTR","","10"
 
 
         ledStrip = new DecoLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED Deco amber");
+        ledStrip.setName("liniLED® Deco amber");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(100);
         ledStrip.getProperty(LedStrip.COLOR_TYPE).setValue("amber");
@@ -1093,12 +1108,12 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(36.96));
         part.setId("12181");
         part.setType("MTR");
-        part.setDescription("liniLED PCB Amber D");
+        part.setDescription("liniLED® PCB Amber D");
         part.setImageUrl("12182-PCB-Red-Deco.jpg");
         parts.add(part);
 
         ledStrip = new DecoLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB NW 3000K D");
+        ledStrip.setName("liniLED® PCB NW 3000K D");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(100);
         ledStrip.getProperty(LedStrip.COLOR_TYPE).setValue("white");
@@ -1117,14 +1132,14 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(51.04));
         part.setId("12141");
         part.setType("MTR");
-        part.setDescription("liniLED PCB NW 3000K D");
+        part.setDescription("liniLED® PCB NW 3000K D");
         part.setImageUrl("12197PCB-UWW-2400K-Deco.jpg");
 
         parts.add(part);
 
 
         ledStrip = new DecoLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB NW 4000K D");
+        ledStrip.setName("liniLED® PCB NW 4000K D");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(100);
         ledStrip.getProperty(LedStrip.COLOR_TYPE).setValue("white");
@@ -1143,12 +1158,12 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(51.04));
         part.setId("12142");
         part.setType("MTR");
-        part.setDescription("liniLED PCB NW 3000K D");
+        part.setDescription("liniLED® PCB NW 3000K D");
         part.setImageUrl("12182-PCB-Red-Deco.jpg");
         parts.add(part);
 
         ledStrip = new DecoLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB KW 6500K D");
+        ledStrip.setName("liniLED® PCB KW 6500K D");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(100);
         ledStrip.getProperty(LedStrip.COLOR_TYPE).setValue("white");
@@ -1166,33 +1181,30 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(51.04));
         part.setId("12143");
         part.setType("MTR");
-        part.setDescription("liniLED PCB KW 6500K D");
+        part.setDescription("liniLED® PCB KW 6500K D");
         part.setImageUrl("12182-PCB-Red-Deco.jpg");
         parts.add(part);
 
 
         ledStrip = new RGBLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED Power RGB 240");
+        ledStrip.setName("liniLED® Power RGB 240");
         ledStrip.setMaxDimension(new Dimension(2600));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(100);
         ledStrip.setCode("RQ");
         models.add(ledStrip);
         relationDefinitionMonoCable.addModel(ledStrip);
-//        relationDefinitionRGBDiffuus1.addModel(profileH20, profileH30);
-//        relationDefinitionRGBDiffuus2.addModel(profileH20, profileH30, resinDiffuse, capDiffuse);
-//        relationDefinitionRGBDiffuus3.addModel(profileL20, profileL30, capDiffuse);
 
-        relationDefinitionRGBNotDiffuus.addModel(profileH20, profileH30, profileL20, profileL30, resinClear, capClear);
+
         part = new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(77.95));
         part.setId("12139");
         part.setType("MTR");
-        part.setDescription("liniLED PCB RGB 240 P");
+        part.setDescription("liniLED® PCB RGB 240 P");
         part.setImageUrl("12182-PCB-Red-Deco.jpg");
         parts.add(part);
 
         ledStrip = new PowerLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED Power Orange");
+        ledStrip.setName("liniLED® Power Orange");
         ledStrip.setMaxDimension(new Dimension(2600));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(100);
         ledStrip.setCode("PO");
@@ -1208,16 +1220,16 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(69.52));
         part.setId("12175");
         part.setType("MTR");
-        part.setDescription("liniLED PCB Oranje P");
+        part.setDescription("liniLED® PCB Oranje P");
         part.setImageUrl("12182-PCB-Red-Deco.jpg");
         parts.add(part);
 
 
-        //"21017","liniLED PCB RGB P","38.60","MTR","","10"
+        //"21017","liniLED® PCB RGB P","38.60","MTR","","10"
 
 
         ledStrip = new PowerLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED Power rood");
+        ledStrip.setName("liniLED® Power rood");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(100);
         ledStrip.getProperty(PowerLedStrip.COLOR_TYPE).setValue("rood");
@@ -1233,15 +1245,15 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(69.52));
         part.setId("12176");
         part.setType("MTR");
-        part.setDescription("liniLED PCB Rood P");
+        part.setDescription("liniLED® PCB Rood P");
         part.setImageUrl("12182-PCB-Red-Deco.jpg");
         parts.add(part);
 
-        //"21018","liniLED PCB Rood P","16.00","MTR","","10"
+        //"21018","liniLED® PCB Rood P","16.00","MTR","","10"
 
 
         ledStrip = new PowerLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED Power groen");
+        ledStrip.setName("liniLED® Power groen");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(PowerLedStrip.COLOR_TYPE).setValue("groen");
@@ -1257,15 +1269,15 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(69.52));
         part.setId("12178");
         part.setType("MTR");
-        part.setDescription("liniLED PCB Groen P");
+        part.setDescription("liniLED® PCB Groen P");
         part.setImageUrl("12182-PCB-Red-Deco.jpg");
         parts.add(part);
 
-        //"21020","liniLED PCB Groen P","19.00","MTR","","10"
+        //"21020","liniLED® PCB Groen P","19.00","MTR","","10"
 
 
         ledStrip = new PowerLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED Power blauw");
+        ledStrip.setName("liniLED® Power blauw");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.setCode("PB");
@@ -1280,13 +1292,13 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(69.52));
         part.setId("12177");
         part.setType("MTR");
-        part.setDescription("liniLED PCB Blauw P");
+        part.setDescription("liniLED® PCB Blauw P");
         part.setImageUrl("12182-PCB-Red-Deco.jpg");
         parts.add(part);
-        //"21019","liniLED PCB Blauw P","19.00","MTR","","10"
+        //"21019","liniLED® PCB Blauw P","19.00","MTR","","10"
 
         ledStrip = new PowerLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED Power amber");
+        ledStrip.setName("liniLED® Power amber");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.setCode("PA");
@@ -1301,15 +1313,15 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(69.52));
         part.setId("12179");
         part.setType("MTR");
-        part.setDescription("liniLED PCB amber P");
+        part.setDescription("liniLED® PCB amber P");
         part.setImageUrl("12182-PCB-Red-Deco.jpg");
         parts.add(part);
 
-        //"21021","liniLED PCB Amber","16.00","MTR","","10"
+        //"21021","liniLED® PCB Amber","16.00","MTR","","10"
 
 
         ledStrip = new PowerLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB EWW 2700K P");
+        ledStrip.setName("liniLED® PCB EWW 2700K P");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2700");
@@ -1325,12 +1337,12 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(63.36));
         part.setId("12188");
         part.setType("MTR");
-        part.setDescription("liniLED PCB EWW 2700K P");
+        part.setDescription("liniLED® PCB EWW 2700K P");
         part.setImageUrl("12182-PCB-Red-Deco.jpg");
         parts.add(part);
 
         ledStrip = new PowerLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB WW 3000K P");
+        ledStrip.setName("liniLED® PCB WW 3000K P");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("3000");
@@ -1346,12 +1358,12 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(63.36));
         part.setId("12189");
         part.setType("MTR");
-        part.setDescription("liniLED PCB WW 3000K P");
+        part.setDescription("liniLED® PCB WW 3000K P");
         part.setImageUrl("12182-PCB-Red-Deco.jpg");
         parts.add(part);
 
         ledStrip = new PowerLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB NW 4000K P");
+        ledStrip.setName("liniLED® PCB NW 4000K P");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("4000");
@@ -1367,12 +1379,12 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(63.36));
         part.setId("12190");
         part.setType("MTR");
-        part.setDescription("liniLED PCB NW 4000K P");
+        part.setDescription("liniLED® PCB NW 4000K P");
         part.setImageUrl("12182-PCB-Red-Deco.jpg");
         parts.add(part);
 
         ledStrip = new PowerLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB KW 6500K P");
+        ledStrip.setName("liniLED® PCB KW 6500K P");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("6500");
@@ -1388,12 +1400,12 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(63.36));
         part.setId("12191");
         part.setType("MTR");
-        part.setDescription("liniLED PCB KW 6500K P");
+        part.setDescription("liniLED® PCB KW 6500K P");
         parts.add(part);
 
 
         ledStrip = new HighPowerLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED HP 2400K UWW (PSP)");
+        ledStrip.setName("liniLED® HP 2400K UWW (PSP)");
         ledStrip.setMaxDimension(new Dimension(2670));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2400");
@@ -1410,13 +1422,13 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(127.77));
         part.setId("12199");
         part.setType("MTR");
-        part.setDescription("liniLED PCB EWW 2700K HP (PSP)");
+        part.setDescription("liniLED® PCB EWW 2700K HP (PSP)");
 
         parts.add(part);
 
 
         ledStrip = new HighPowerLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED HP 2700K EWW");
+        ledStrip.setName("liniLED® HP 2700K EWW");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2700");
@@ -1432,12 +1444,12 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(127.77));
         part.setId("12192");
         part.setType("MTR");
-        part.setDescription("liniLED PCB EWW 2700K HP (PSP)");
+        part.setDescription("liniLED® PCB EWW 2700K HP (PSP)");
         parts.add(part);
 
 
         ledStrip = new HighPowerLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED HP 3000K WW");
+        ledStrip.setName("liniLED® HP 3000K WW");
         ledStrip.setMaxDimension(new Dimension(2670));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("3000");
@@ -1453,11 +1465,11 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(127.77));
         part.setId("12193");
         part.setType("MTR");
-        part.setDescription("liniLED PCB WW 3000K HP (PSP)");
+        part.setDescription("liniLED® PCB WW 3000K HP (PSP)");
         parts.add(part);
 
         ledStrip = new HighPowerLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED HP 4000K WW");
+        ledStrip.setName("liniLED® HP 4000K WW");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("4000");
@@ -1473,11 +1485,11 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(19));
         part.setId("12194");
         part.setType("MTR");
-        part.setDescription("liniLED PCB NW 4000K HP (PSP)");
+        part.setDescription("liniLED® PCB NW 4000K HP (PSP)");
         parts.add(part);
 
         ledStrip = new HighPowerLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED HP 6500K KW");
+        ledStrip.setName("liniLED® HP 6500K KW");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("6500");
@@ -1493,12 +1505,12 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(19));
         part.setId("12195");
         part.setType("MTR");
-        part.setDescription("liniLED PCB KW 6500K HP (PSP)");
+        part.setDescription("liniLED® PCB KW 6500K HP (PSP)");
         parts.add(part);
 
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB FW 2000K Photon");
+        ledStrip.setName("liniLED® PCB FW 2000K Photon");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2000");
@@ -1514,11 +1526,11 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(127.77));
         part.setId("12147");
         part.setType("MTR");
-        part.setDescription("liniLED PCB FW 2000K Photon 1200");
+        part.setDescription("liniLED® PCB FW 2000K Photon 1200");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB UWW 2400K Photon");
+        ledStrip.setName("liniLED® PCB UWW 2400K Photon");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2400");
@@ -1535,11 +1547,11 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(127.77));
         part.setId("12148");
         part.setType("MTR");
-        part.setDescription("liniLED PCB UWW 2400K Photon 1200");
+        part.setDescription("liniLED® PCB UWW 2400K Photon 1200");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB EWW 2700K Photon 1200");
+        ledStrip.setName("liniLED® PCB EWW 2700K Photon 1200");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2700");
@@ -1555,11 +1567,11 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(127.77));
         part.setId("12149");
         part.setType("MTR");
-        part.setDescription("liniLED PCB EWW 2700K Photon 1200");
+        part.setDescription("liniLED® PCB EWW 2700K Photon 1200");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB WW 3000K Photon 1200");
+        ledStrip.setName("liniLED® PCB WW 3000K Photon 1200");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("3000");
@@ -1575,12 +1587,12 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(127.77));
         part.setId("12150");
         part.setType("MTR");
-        part.setDescription("liniLED PCB WW 3000K Photon 1200");
+        part.setDescription("liniLED® PCB WW 3000K Photon 1200");
         parts.add(part);
 
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB NW 4000K Photon 1200");
+        ledStrip.setName("liniLED® PCB NW 4000K Photon 1200");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("4000");
@@ -1596,11 +1608,11 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(127.77));
         part.setId("12151");
         part.setType("MTR");
-        part.setDescription("liniLED PCB NW 4000K Photon 1200");
+        part.setDescription("liniLED® PCB NW 4000K Photon 1200");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB KW 6500K Photon 1200");
+        ledStrip.setName("liniLED® PCB KW 6500K Photon 1200");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("6500");
@@ -1616,11 +1628,11 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(127.77));
         part.setId("12152");
         part.setType("MTR");
-        part.setDescription("liniLED PCB KW 6500K Photon 1200");
+        part.setDescription("liniLED® PCB KW 6500K Photon 1200");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB FW 2000K Photon 1700");
+        ledStrip.setName("liniLED® PCB FW 2000K Photon 1700");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("6500");
@@ -1636,11 +1648,11 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(130.56));
         part.setId("12153");
         part.setType("MTR");
-        part.setDescription("liniLED PCB FW 2000K Photon 1700");
+        part.setDescription("liniLED® PCB FW 2000K Photon 1700");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB UWW 2400K Photon 1700");
+        ledStrip.setName("liniLED® PCB UWW 2400K Photon 1700");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2400");
@@ -1656,11 +1668,11 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(130.56));
         part.setId("12154");
         part.setType("MTR");
-        part.setDescription("liniLED PCB UWW 2400K Photon 1700");
+        part.setDescription("liniLED® PCB UWW 2400K Photon 1700");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB EWW 2700K Photon 1700");
+        ledStrip.setName("liniLED® PCB EWW 2700K Photon 1700");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2700");
@@ -1676,11 +1688,11 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(130.56));
         part.setId("12155");
         part.setType("MTR");
-        part.setDescription("liniLED PCB UWW 2400K Photon 1700");
+        part.setDescription("liniLED® PCB UWW 2400K Photon 1700");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB WW 3000K Photon 1700");
+        ledStrip.setName("liniLED® PCB WW 3000K Photon 1700");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("3000");
@@ -1696,11 +1708,11 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(130.56));
         part.setId("12156");
         part.setType("MTR");
-        part.setDescription("liniLED PCB WW 3000K Photon 1700");
+        part.setDescription("liniLED® PCB WW 3000K Photon 1700");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB NW 4000K Photon 1700");
+        ledStrip.setName("liniLED® PCB NW 4000K Photon 1700");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("4000");
@@ -1719,7 +1731,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB KW 6500K Photon 1700");
+        ledStrip.setName("liniLED® PCB KW 6500K Photon 1700");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("4000");
@@ -1738,7 +1750,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB FW 2000K Photon 2500");
+        ledStrip.setName("liniLED® PCB FW 2000K Photon 2500");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2000");
@@ -1757,7 +1769,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB UWW 2400K Photon 2500");
+        ledStrip.setName("liniLED® PCB UWW 2400K Photon 2500");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2400");
@@ -1776,7 +1788,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB EWW 2700K Photon 2500");
+        ledStrip.setName("liniLED® PCB EWW 2700K Photon 2500");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2700");
@@ -1795,7 +1807,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB WW 3000K Photon 2500");
+        ledStrip.setName("liniLED® PCB WW 3000K Photon 2500");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("3000");
@@ -1814,7 +1826,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB NW 4000K Photon 2500");
+        ledStrip.setName("liniLED® PCB NW 4000K Photon 2500");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("4000");
@@ -1833,7 +1845,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB KW 6500K Photon 2500");
+        ledStrip.setName("liniLED® PCB KW 6500K Photon 2500");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("6500");
@@ -1852,7 +1864,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB FW 2000K Photon 3300");
+        ledStrip.setName("liniLED® PCB FW 2000K Photon 3300");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2000");
@@ -1871,7 +1883,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB UWW 2400K Photon 3300");
+        ledStrip.setName("liniLED® PCB UWW 2400K Photon 3300");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2400");
@@ -1891,7 +1903,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB EWW 2700K Photon 3300");
+        ledStrip.setName("liniLED® PCB EWW 2700K Photon 3300");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2400");
@@ -1910,7 +1922,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB WW 3000K Photon 3300");
+        ledStrip.setName("liniLED® PCB WW 3000K Photon 3300");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("3000");
@@ -1930,7 +1942,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB NW 4000K Photon 3300");
+        ledStrip.setName("liniLED® PCB NW 4000K Photon 3300");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("4000");
@@ -1949,7 +1961,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB KW 6500K Photon 3300");
+        ledStrip.setName("liniLED® PCB KW 6500K Photon 3300");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("6500");
@@ -1969,7 +1981,7 @@ public class Parser {
 
 
         ledStrip = new TunnableLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB TW 2700K-6500K 1700");
+        ledStrip.setName("liniLED® PCB TW 2700K-6500K 1700");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2700");
@@ -1988,7 +2000,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new TunnableLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB TW 2700K-6500K 2500");
+        ledStrip.setName("liniLED® PCB TW 2700K-6500K 2500");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2700");
@@ -2006,7 +2018,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new TunnableLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB TW 2700K-6500K 3300");
+        ledStrip.setName("liniLED® PCB TW 2700K-6500K 3300");
         ledStrip.setMaxDimension(new Dimension(2100));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2700");
@@ -2025,7 +2037,7 @@ public class Parser {
 
 
         ledStrip = new TunnableLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED PCB TW 2700K-6500K 1200");
+        ledStrip.setName("liniLED® PCB TW 2700K-6500K 1200");
         ledStrip.setMaxDimension(new Dimension(2100));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2700");

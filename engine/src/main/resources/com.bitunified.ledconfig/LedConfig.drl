@@ -319,13 +319,14 @@ rule "Actie: Profiel L20 lengte"
        end
 
 
-rule "Actie: Profiel L20 toevoegen"
+rule "Actie: (enkel) Profiel L20 toevoegen"
   no-loop true
        when
 
             exists(Profile(name matches ".*L20.*"));
             profile:Profile()
-             composedproduct:ComposedProduct(dimension.getWidth()==null)
+            (not(exists(ComposedProduct())) || ComposedProduct(dimension.getWidth()==null))
+
        then
         System.out.println("Profiel L20 toevoegen");
          //Profiel lengte
@@ -340,13 +341,13 @@ rule "Actie: Profiel L20 toevoegen"
 
        end
 
-       rule "Actie: Profiel H20 toevoegen"
+       rule "Actie (enkel): Profiel H20 toevoegen"
          no-loop true
               when
 
                    exists(Profile(name matches ".*H20.*"));
                    profile:Profile()
-                   composedproduct:ComposedProduct(dimension.getWidth()==null)
+                    (not(exists(ComposedProduct())) || ComposedProduct(dimension.getWidth()==null))
               then
                System.out.println("Profiel H20 toevoegen");
                 //Profiel lengte
@@ -361,13 +362,13 @@ rule "Actie: Profiel L20 toevoegen"
 
               end
 
-      rule "Actie: Profiel H30 toevoegen"
+      rule "Actie (enkel): Profiel H30 toevoegen"
           no-loop true
                when
 
                     exists(Profile(name matches ".*H30.*"));
                     profile:Profile()
-                    composedproduct:ComposedProduct(dimension.getWidth()==null)
+                     (not(exists(ComposedProduct())) || ComposedProduct(dimension.getWidth()==null))
                then
                 System.out.println("Profiel H30 toevoegen");
                  //Profiel lengte
@@ -382,18 +383,17 @@ rule "Actie: Profiel L20 toevoegen"
 
                end
 
-       rule "Actie: Profiel L30 toevoegen"
+       rule "Actie (enkel): Profiel L30 toevoegen"
          no-loop true
               when
 
                    exists(Profile(name matches ".*L30.*"));
                    profile:Profile()
-                   composedproduct:ComposedProduct(dimension.getWidth()==null)
+                   (not(exists(ComposedProduct())) || ComposedProduct(dimension.getWidth()==null))
               then
                System.out.println("Profiel L30 toevoegen");
                 //Profiel lengte
                  Part foundPart=PartModelHelper.getPart(parts,profile.getClass(),"L30");
-
                 if (!partCountList.values().contains(foundPart)){
                    Part part=SerializationUtils.clone(foundPart);
                       PartListHelper.addToPartCountList(partCountList,part,1.0);
@@ -517,14 +517,14 @@ rule "Profiel L30 lengte"
         end
 
 rule "Actie: Ledstrip toevoegen"
-no-loop
+no-loop true
     when
      ledstrip:LedStrip(ledstripLengte:dimension.getWidth()!=null)
 
     then
 
      Part foundPart=PartModelHelper.getPart(parts,ledstrip.getClass(),ledstrip,null);
-     if (foundPart!=null && ledstripLengte!=null){
+     if (foundPart!=null && ledstripLengte!=null && !PartListHelper.isModelInPartList(partCountList,foundPart)){
       Part part=SerializationUtils.clone(foundPart);
       System.out.println("Ledstrip lengte:"+ledstripLengte);
        double length=((Integer)ledstripLengte)/1000d;
@@ -534,10 +534,10 @@ no-loop
 
 end
 
-rule "Actie (enkel part): Cable toevoegen"
+rule "Actie (enkel): Cable toevoegen"
     when
      cable:Cable()
-composedproduct:ComposedProduct(dimension.getWidth()==null)
+       (not(exists(ComposedProduct())) || ComposedProduct(dimension.getWidth()==null))
     then
 
      Part foundPart=PartModelHelper.getPart(parts,cable.getClass(),cable,null);
@@ -552,10 +552,10 @@ composedproduct:ComposedProduct(dimension.getWidth()==null)
 end
 
 
-rule "Actie: Ledstrip toevoegen (ongeacht lengte)"
+rule "Actie (enkel): Ledstrip toevoegen (ongeacht lengte)"
     when
      ledstrip:LedStrip(dimension.getWidth()==null)
-composedproduct:ComposedProduct(dimension.getWidth()==null)
+    (not(exists(ComposedProduct())) || ComposedProduct(dimension.getWidth()==null))
     then
 
      Part foundPart=PartModelHelper.getPart(parts,ledstrip.getClass(),ledstrip,null);
@@ -701,11 +701,12 @@ no-loop true
         profile:Profile()
 
     then
- System.out.println("Afdekkap:"+cap);
+
         if (cap!=null ){
  Map<Orientation,PartMatchHelper.PartMostWanted> result=PartMatchHelper.match(cap.getClass(),null,profile);
 Part part=null;
         if (result.get(Orientation.Left).getCount()==result.get(Orientation.Right).getCount()){
+        System.out.println("Afdekkap:"+result);
            part=SerializationUtils.clone((Part)result.get(Orientation.Right).getPart());
            PartListHelper.addToPartCountList(partCountList,part,1d);
            System.out.println("Cap toegevoegd:"+part+ " "+result);

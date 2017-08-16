@@ -90,20 +90,20 @@ export class Model extends BaseClass {
 
   relations: Array<RelationDefinition> = [];
 
-  static relatedRelations(m: Model, prevModels: Array<Model>): Array<RelationDefinition> {
+  static relatedRelations(m: Model, prevModels: Array<Model>, currentStep:number): Array<RelationDefinition> {
     let relatedRelations: Array<RelationDefinition> = [];
 
-    //console.info(prevModels);
+    let currentStepModel=m;
     let prevModelInclCurrent:Array<Model>=[];
 
 
-    prevModels.push(m);
+    //prevModels.push(m);
     for (let prevModel of prevModels) {
       prevModelInclCurrent.push(prevModel);
       if (prevModel && prevModel.relations) {
         for (let relation of prevModel.relations) {
           for (let mrel of relation.models) {
-            if (mrel.uuid === m.uuid) {
+            if (mrel.uuid === currentStepModel.uuid) {
               relatedRelations.push(relation);
             }
           }
@@ -115,26 +115,25 @@ export class Model extends BaseClass {
     let foundRelationsInfo: Array<RelationDefinition> = [];
 
 
-    let lowPrevModelStep=m.step;
+    let lowPrevModelStep=currentStepModel.step;
     for (let rl of relatedRelations) {
       let lowRelStep=Model.determineLowestStep(rl.models);
 
-      //if ( lowPrevModelStep==lowRelStep) {
-      //   console.info("c:"+Model.countSameModels(prevModelInclCurrent, rl.models));
-      //   console.info(rl.models);
-      //   console.info(prevModelInclCurrent);
-      //   console.info(relatedRelations);
-        //console.info(m);
-      let count=Model.countSameModels(prevModelInclCurrent, rl.models);
-        if ((count>=2 && rl.relationState==RelationState.ALLOWED)||(rl.relationState!=RelationState.ALLOWED && count==rl.models.length)) {
+        let count=Model.countSameModels(prevModelInclCurrent, rl.models);
+
+        if (((count>=2)||( count==rl.models.length)) || (currentStep<=0 && count==1)) {
           foundRelations.push(rl);
 
           if (rl.relationState == RelationState.ALLOWEDWITHINFO) {
             foundRelationsInfo.push(rl);
           }
         }
-      //}
+
     }
+    //console.info(m);
+    //console.info(currentStepModel);
+    //console.info(relatedRelations);
+    //console.info(prevModels);
     //console.info(foundRelations);
     return foundRelations;
   }

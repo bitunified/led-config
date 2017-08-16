@@ -86,13 +86,9 @@ export class MenustepitemComponent implements OnInit {
   }
 
   skipThisStep(value: MdCheckboxChange) {
-    //this.skip = value.checked;
-    console.info(value);
-    console.info(this.skip);
+
     if (value.checked) {
-
       this.selectedModel = null;
-
 
     }
     this.onInputChange(null);
@@ -130,7 +126,7 @@ export class MenustepitemComponent implements OnInit {
     let mls: Array<Model> = [];
     let dp: DisplayRelation = new DisplayRelation();
     for (let model of models) {
-      let rl = this.determineRelationState(dp, model).relationState;
+      let rl = this.filterRelationStateForNextModel(dp, model).relationState;
       if (rl == RelationState.ALLOWED || rl == RelationState.ALLOWEDWITHWARNING || rl == RelationState.ALLOWEDWITHINFO) {
         mls.push(model);
       }
@@ -147,6 +143,36 @@ export class MenustepitemComponent implements OnInit {
     return this.displayRelation;
   }
 
+  filterRelationStateForNextModel(displayRelation: DisplayRelation, m: Model) {
+    let additional = 1;
+    if (this.currentStep == 1) {
+      additional = 0;
+    }
+
+    let prevModels: Array<Model> = this.productconfigService.productConfiguration.prevModels(this.currentStep + additional);
+
+    prevModels.push(m);
+    if (prevModels.length > 0 && m) {
+      let relations: Array<RelationDefinition> = Model.relatedRelations(m, prevModels, this.currentStep - 1);
+      let allowed: boolean = false;
+      for (let rel of relations) {
+        if (RelationState.ALLOWED == rel.relationState) {
+          allowed = true;
+          break;
+        }
+      }
+      if (allowed) {
+
+        displayRelation.relationState = RelationState.ALLOWED;
+        displayRelation.color = "black";
+        return displayRelation;
+      }
+      displayRelation.relationState = null;
+      displayRelation.color = "red";
+      return displayRelation;
+    }
+  }
+
   determineRelationState(displayRelation: DisplayRelation, m: Model) {
     let additional = 1;
     if (this.currentStep == 1) {
@@ -156,8 +182,7 @@ export class MenustepitemComponent implements OnInit {
 
     if (prevModels.length > 0 && m) {
 
-      let relations: Array<RelationDefinition> = Model.relatedRelations(m, prevModels);
-
+      let relations: Array<RelationDefinition> = Model.relatedRelations(m, prevModels, this.currentStep - 1);
 
       let allowed: boolean = false;
       let allowedWithWarning: boolean = false;
@@ -251,11 +276,8 @@ export class MenustepitemComponent implements OnInit {
   }
 
   changeSelect(event: Event) {
-    console.info(event);
-    console.info(this.m);
     if (this.m != undefined) {
       this.selectedModel = this.m;
-
       this.changeSelection();
     }
   }
@@ -306,10 +328,11 @@ export class MenustepitemComponent implements OnInit {
   }
 
 
-  getModelName(m:Model){
-    if (m.translations){
-      if (m.translations.en)
-      {return m.translations.en;}
+  getModelName(m: Model) {
+    if (m.translations) {
+      if (m.translations.en) {
+        return m.translations.en;
+      }
     }
     return m.translations.nl;
   }
@@ -344,7 +367,6 @@ export class MenustepitemComponent implements OnInit {
     this.partService.getPart(model, productConfig, currentStep).subscribe((res: Part) => {
         let serverresponse: Part = res;
         this.currentPart = serverresponse;
-        console.info(serverresponse);
       }
       ,
       error=>console.info('error'));

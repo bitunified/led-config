@@ -1,13 +1,29 @@
 package com.bitunified.ledconfig.helpers;
 
 
+import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.parts.Part;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Map;
+import java.util.stream.Stream;
 
 public class PartListHelper {
+
+    public static boolean isModelInPartList(Map<Part,Double> partDoubleMap,Part part){
+        Stream<Part> ff = partDoubleMap.keySet().stream().filter(f -> {
+            if (f.getProduct() != null && part.getProduct()!=null) {
+                return f.getProduct().equals(part.getProduct());
+            } else {
+                if (f.getConfigModel() != null && part.getConfigModel()!=null) {
+                    return f.getConfigModel().equals(part.getConfigModel());
+                }
+            }
+            return false;
+        });
+        return ff.count() > 0;
+    }
 
     public static void addToPartCountList(Map<Part,Double> partDoubleMap,Part part, Double add){
         if (part!=null) {

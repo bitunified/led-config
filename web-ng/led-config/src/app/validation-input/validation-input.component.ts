@@ -37,16 +37,12 @@ export class ValidationInputComponent implements  OnDestroy,ControlValueAccessor
   private subscription: Subscription;
   constructor(private productcodeService: ProductcodeService,validationService:ValidationServiceService ){
     this.subscription = this.productcodeService.notifyObservable$.subscribe((data) => {
-      console.info(data);
       validationService.validateCode(data).subscribe((res:Serverresponse) => {
         let serverresponse:Serverresponse=res;
 
-        console.info(serverresponse);
       }
         ,
         error=>console.info('error'))
-
-
     });
   }
 

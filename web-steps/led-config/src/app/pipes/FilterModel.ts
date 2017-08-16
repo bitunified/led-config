@@ -7,8 +7,6 @@ import {DisplayRelation} from "../domain/internal/DisplayRelation";
 })
 export class FilterModel implements PipeTransform {
   transform(items: Model[], filter: DisplayRelation): any {
-    console.info('filter',filter);
-    console.info('items',items);
     if (!items || !filter) {
       return items;
     }
