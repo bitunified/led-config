@@ -65,6 +65,7 @@ public class Parser {
         ProfileL20 profileL20 = new ProfileL20(new Dimension(null));
         profileL20.getDimension().setWidth(4000);
         profileL20.setName("liniLED Aeris Profiel L20");
+        profileL20.setTranslations(Locale.en, "liniLED Aeris Profile L20");
         profileL20.setMaxDimension(new Dimension(2750));
         profileL20.setProductPage("http://www.liniled.com/product/liniled-aeris-profile-l20");
 
@@ -90,6 +91,7 @@ public class Parser {
         profileH20.setName("liniLED Aeris Profiel H20");
         profileH20.setLengthForCasting(new Dimension(25));
         profileH20.setMaxDimension(new Dimension(2750));
+        profileH20.setTranslations(Locale.en, "liniLED Aeris Profile H20");
         profileH20.setCode("E");
         profileH20.setProductPage("http://www.liniled.com/product/liniled-aeris-profile-h20");
 
@@ -100,6 +102,7 @@ public class Parser {
         profileH30.setName("liniLED Aeris Profiel H30");
         profileH30.setLengthForCasting(new Dimension(25));
         profileH30.setMaxDimension(new Dimension(2750));
+        profileH30.setTranslations(Locale.en, "liniLED Aeris Profile H30");
         profileH30.setCode("G");
 
         profileH30.setProductPage("http://www.liniled.com/product/liniled-aeris-profile-h30");
@@ -214,7 +217,6 @@ public class Parser {
 
         Cap capDiffuse = new CapDiffuse();
         capDiffuse.setName("liniLED® Aeris Afdekkap Diffuus");
-        capDiffuse.setTranslations(Locale.nl, capDiffuse.getName());
         capDiffuse.setTranslations(Locale.en, "liniLED® Aeris Cap");
         capDiffuse.getProperty(Cap.TRANSLUCENCY_S).setValue("diffuse");
         capDiffuse.setCode("L");
@@ -237,8 +239,7 @@ public class Parser {
 
         Cap capClear = new CapClear(new Dimension(null));
         capClear.setName("liniLED® Aeris Afdekkap Helder");
-        capClear.setTranslations(Locale.nl, capClear.getName());
-        capClear.setTranslations(Locale.en, "liniLED® Aeris Cap");
+        capClear.setTranslations(Locale.en, "liniLED® Aeris Cap Clear");
         capClear.getDimension().setWidth(100);
         capClear.setCode("R");
         models.add(capClear);
@@ -488,7 +489,6 @@ public class Parser {
 
         mounting = new EndCapRightMounting();
         mounting.setName("Eindkap aan de rechter zijde");
-        mounting.setTranslations(Locale.nl, mounting.getName());
         mounting.setTranslations(Locale.en, "Endcap right side");
         margin = new Margin(0, 2);
         mounting.setCode("B");
@@ -507,7 +507,6 @@ public class Parser {
 
         mounting = new EndCapLeftMounting();
         mounting.setName("Eindkap aan linkerzijde");
-        mounting.setTranslations(Locale.nl, mounting.getName());
         mounting.setTranslations(Locale.en, "Endcap left side");
         margin = new Margin(2, 0);
         mounting.setCode("C");

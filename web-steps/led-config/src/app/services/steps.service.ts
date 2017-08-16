@@ -19,10 +19,11 @@ export class StepsService {
     return this.http.get(this.stepsServerUrl)
     // ...and calling .json() on the response to return data
       .map(res => {
+        console.info(res.json());
         return Deserialize(res.json(), StepsModel);
 
       })
-      .do(data => console.log(data))
+
       //...errors if any
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
 

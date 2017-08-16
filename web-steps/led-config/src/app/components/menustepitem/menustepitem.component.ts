@@ -306,6 +306,14 @@ export class MenustepitemComponent implements OnInit {
   }
 
 
+  getModelName(m:Model){
+    if (m.translations){
+      if (m.translations.en)
+      {return m.translations.en;}
+    }
+    return m.translations.nl;
+  }
+
   getImageUrl(m: Model, currentPart: Part) {
     if (m != null && m.imageUrl != null) {
       return m.imageUrl;

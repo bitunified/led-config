@@ -55,7 +55,7 @@
                              [ngModelOptions]="{standalone: true}"
                              floatPlaceholder="never" class="selectBoxContainer" overlayDir="bottom">
                     <md-option *ngFor="let m of filter(step.models);let i=index;" [value]="m" class="selectOption">
-                      <div>{{ m.name }}</div>
+                      <div>{{ getModelName(m) }}</div>
 
                     </md-option>
                   </md-select>
@@ -130,7 +130,7 @@
                 </md-list-item>
 
                 <md-list-item i18n>
-                  Description: {{m.name}}
+                  Description: {{getModelName(m)}}
 
                 </md-list-item>
                 <md-divider></md-divider>

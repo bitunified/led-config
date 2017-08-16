@@ -71,6 +71,7 @@ export class MenustepsComponent implements OnInit {
       this.relationsAll = combinedRelStep.rels;
       this.evaluateRelations();
     });
+
   }
 
 

@@ -18,7 +18,6 @@ export class RelationService {
     return this.http.get(this.relationsServerUrl)
     // ...and calling .json() on the response to return data
       .map(res => <Relations>res.json())
-      .do(data => console.log(data))
       //...errors if any
       .catch((error:any) => Observable.throw( 'Server error'));
 

@@ -42,6 +42,7 @@ public class Model extends Relatable implements StepConfig, Serializable {
     private String imageUrl;
 
 
+
     private List<Property> properties = new ArrayList<Property>();
 
     private Map<Locale, String> translations = new HashMap<Locale, String>();
@@ -65,6 +66,7 @@ public class Model extends Relatable implements StepConfig, Serializable {
 
     public void setName(String name) {
         this.name = name;
+        this.setTranslations(Locale.nl,name);
     }
 
     @XmlTransient

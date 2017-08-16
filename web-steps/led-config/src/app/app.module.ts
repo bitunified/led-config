@@ -11,6 +11,8 @@ import { MenustepitemComponent } from './components/menustepitem/menustepitem.co
 import { NotificationComponent } from './components/notification/notification.component';
 import {FilterModel} from "./pipes/FilterModel";
 import { PricecalculationComponent } from './components/pricecalculation/pricecalculation.component';
+import {TranslateModule} from '@ngx-translate/core';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,8 @@ import { PricecalculationComponent } from './components/pricecalculation/priceca
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
-    MdwidgetmoduleModule
+    MdwidgetmoduleModule,
+    TranslateModule.forRoot()
 
   ],
   providers: [],

@@ -325,6 +325,7 @@ rule "Actie: Profiel L20 toevoegen"
 
             exists(Profile(name matches ".*L20.*"));
             profile:Profile()
+             composedproduct:ComposedProduct(dimension.getWidth()==null)
        then
         System.out.println("Profiel L20 toevoegen");
          //Profiel lengte
@@ -345,6 +346,7 @@ rule "Actie: Profiel L20 toevoegen"
 
                    exists(Profile(name matches ".*H20.*"));
                    profile:Profile()
+                   composedproduct:ComposedProduct(dimension.getWidth()==null)
               then
                System.out.println("Profiel H20 toevoegen");
                 //Profiel lengte
@@ -365,6 +367,7 @@ rule "Actie: Profiel L20 toevoegen"
 
                     exists(Profile(name matches ".*H30.*"));
                     profile:Profile()
+                    composedproduct:ComposedProduct(dimension.getWidth()==null)
                then
                 System.out.println("Profiel H30 toevoegen");
                  //Profiel lengte
@@ -385,6 +388,7 @@ rule "Actie: Profiel L20 toevoegen"
 
                    exists(Profile(name matches ".*L30.*"));
                    profile:Profile()
+                   composedproduct:ComposedProduct(dimension.getWidth()==null)
               then
                System.out.println("Profiel L30 toevoegen");
                 //Profiel lengte
@@ -513,6 +517,7 @@ rule "Profiel L30 lengte"
         end
 
 rule "Actie: Ledstrip toevoegen"
+no-loop
     when
      ledstrip:LedStrip(ledstripLengte:dimension.getWidth()!=null)
 
@@ -532,7 +537,7 @@ end
 rule "Actie (enkel part): Cable toevoegen"
     when
      cable:Cable()
-
+composedproduct:ComposedProduct(dimension.getWidth()==null)
     then
 
      Part foundPart=PartModelHelper.getPart(parts,cable.getClass(),cable,null);
@@ -550,7 +555,7 @@ end
 rule "Actie: Ledstrip toevoegen (ongeacht lengte)"
     when
      ledstrip:LedStrip(dimension.getWidth()==null)
-
+composedproduct:ComposedProduct(dimension.getWidth()==null)
     then
 
      Part foundPart=PartModelHelper.getPart(parts,ledstrip.getClass(),ledstrip,null);

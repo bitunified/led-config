@@ -22,6 +22,7 @@ import {NotificationComponent} from "./components/notification/notification.comp
 import {MdSnackBar} from "@angular/material";
 import {ErrorNotificationState} from "./domain/internal/ErrorNotificationState";
 import {PartService} from "./services/partservice.service";
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -40,7 +41,7 @@ export class AppComponent implements OnInit,OnDestroy {
   relations:Observable<Relations>;
   priceCalculation:PriceCalculation;
   notificationMessage:string;
-  constructor(public snackBar: MdSnackBar,private notificationMessageService:NotificationService,private modelService:ModelserviceService,private stepService:StepsService,productcodeService:ProductcodeService,private relationsService:RelationService,private productConfiguration:ProductconfigurationService) {
+  constructor(public translate: TranslateService,public snackBar: MdSnackBar,private notificationMessageService:NotificationService,private modelService:ModelserviceService,private stepService:StepsService,productcodeService:ProductcodeService,private relationsService:RelationService,private productConfiguration:ProductconfigurationService) {
     this.subscription = productcodeService.productcodeSource$.subscribe(
       res => {
         this.productcode = res.getCode();
@@ -62,19 +63,25 @@ export class AppComponent implements OnInit,OnDestroy {
         console.info(res);
       });
 
+    translate.addLangs(["en", "nl"]);
+    translate.setDefaultLang('en');
+
+    let browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/en|nl/) ? browserLang : 'en');
+
+
   }
 
   ngOnInit() {
     this.modelService.getModels().subscribe((res:any) => {
         let serverresponse:any=res;
 
-        console.info(serverresponse);
       }
-      ,
-      error=>console.info('error'));
+     );
 
     this.steps=this.stepService.getSteps();
     this.relations=this.relationsService.getRelations();
+    console.info(this.translate.getBrowserLang());
 
   }
   ngOnDestroy() {

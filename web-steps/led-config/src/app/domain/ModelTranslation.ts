@@ -1,5 +1,10 @@
+import {serialize, deserialize} from "cerialize";
 export class ModelTranslation {
 
-  en:string;
-  nl:string;
+  @deserialize
+  @serialize
+  en: string;
+  @deserialize
+  @serialize
+  nl: string;
 }
