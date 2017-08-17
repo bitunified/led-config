@@ -15,6 +15,7 @@ import {ModelChosenStep} from "../../domain/ModelChosenStep";
 import {PartService} from "../../services/partservice.service";
 import {Part} from "../../domain/server/Part";
 import {ProductConfiguration} from "../../domain/ProductConfiguration";
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'menustepitem',
   templateUrl: './menustepitem.component.html',
@@ -59,7 +60,7 @@ export class MenustepitemComponent implements OnInit {
 
   private productcodeServiceSubscription: Subscription;
 
-  constructor(private productcodeService: ProductcodeService, private productconfigService: ProductconfigurationService, private partService: PartService) {
+  constructor(public translate: TranslateService,private productcodeService: ProductcodeService, private productconfigService: ProductconfigurationService, private partService: PartService) {
     this.productcodeServiceSubscription = productcodeService.productcodeSource$.subscribe(
       res => {
         if (res.currentStep == this._step.stepindex) {
@@ -120,14 +121,18 @@ export class MenustepitemComponent implements OnInit {
     return false;
   }
 
+  getDescriptionFromPart(part:Part){
+    return part.getNameTranslated(this.translate.defaultLang);
+  }
+
   getModelTitle(): string {
     let modelC: ModelChosenStep = this.productconfigService.productConfiguration.getModelChosenFromStep(this.step.stepindex);
-    let modl = modelC.chosenModel;
+    let modl:Model = modelC.chosenModel;
     if (modelC && modl) {
 
 
       if (this.step.type == StepType.VALUES) {
-        return modl ? modl.name : '';
+       return modl.getNameTranslated(this.translate.defaultLang);
       }
       return '' + (this.step.modelValue ? this.step.modelValue : '') + ' mm';
     }
@@ -347,12 +352,7 @@ export class MenustepitemComponent implements OnInit {
 
 
   getModelName(m: Model) {
-    if (m.translations) {
-      if (m.translations.en) {
-        return m.translations.en;
-      }
-    }
-    return m.translations.nl;
+    return m.getNameTranslated(this.translate.defaultLang);
   }
 
   getImageUrl(m: Model, currentPart: Part) {

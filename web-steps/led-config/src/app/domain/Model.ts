@@ -34,7 +34,7 @@ export class Model extends BaseClass {
 
   @serialize
   @deserialize
-  name: string;
+  public name: string;
 
   @serialize
   @deserialize
@@ -58,7 +58,7 @@ export class Model extends BaseClass {
 
   @serializeAs(ModelTranslation)
   @deserializeAs(ModelTranslation)
-  translations: ModelTranslation;
+  public translations: ModelTranslation;
 
   // ------------------ Part of RealModel ---------------
   @serializeAs(ModelDimension)
@@ -146,6 +146,21 @@ export class Model extends BaseClass {
       }
     }
     return false;
+  }
+
+  public getNameTranslated(defaultLang:string){
+
+      let name: string = "";
+      if (defaultLang == "nl") {
+        name = this.translations.nl != undefined ? this.translations.nl : '';
+      } else {
+        name = this.translations.en != undefined ? this.translations.en : '';
+      }
+      if (name == "" && this.name != undefined && this.name != null) {
+        name = this.name;
+      }
+      return name;
+
   }
 }
 

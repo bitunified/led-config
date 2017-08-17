@@ -9,7 +9,7 @@
           <md-card-header>
             <md-card-title>
               <md-chip-list>
-                <md-chip md-icon-button (onFocus)="prevStepItems()">{{step.description}} {{getModelTitle()}}</md-chip>
+                <md-chip md-icon-button (onFocus)="prevStepItems()">{{step.description}} -  {{getModelTitle()}}</md-chip>
 
               </md-chip-list>
             </md-card-title>
@@ -39,16 +39,18 @@
             <md-card-subtitle></md-card-subtitle>
           </md-card-header>
           <md-card-content>
-            <div *ngIf="step.skip">
+
+            <div *ngIf="step.skip" class="optionalChecker">
               <md-checkbox (change)="skipThisStep($event)" [(ngModel)]="checked" [ngModelOptions]="{standalone: true}"
                            (ngModelChange)="onCheckBoxChange(skip)">
-                Optional
-                step, skip it.
+                Optional step, skip it.
               </md-checkbox>
 
             </div>
+
             <div class="selectionPanel">
               <div *ngIf="isStepTypeValues(step) && filter(step.models).length>0 && !skip" class="propContainer">
+
                 <div class="selectContainer">
                   <md-select placeholder="Select {{step.configDescription}}" (onClose)="changeSelect($event)"
                              [(ngModel)]="m"
@@ -90,7 +92,7 @@
       </div>
 
       <div *ngIf="m && stepDiff(step)==-1">
-        <md-card class="infoCard">
+        <md-card class="infoCard" *ngIf="!skip">
 
           <md-card-header>
 
@@ -139,12 +141,12 @@
                 </md-list-item>
                 <md-divider></md-divider>
                 <md-list-item *ngIf="currentPart && currentPart.price">
-                  Price: {{currentPart.price | currency:'EUR':true}} ({{currentPart.description}})
+                  Price: {{currentPart.price | currency:'EUR':true}} ({{getDescriptionFromPart(currentPart)}})
                 </md-list-item>
 
                 <md-list-item i18n *ngIf="m.productPage">
                   <a href="{{m.productPage}}" target="_blank" md-raised-button md-raised md-warn
-                     class="customMoreButton" [style.line-height]="'14px'" target="_blank">more information</a>
+                     class="customMoreButton" [style.line-height]="'22px'" target="_blank">more information</a>
 
                 </md-list-item>
               </md-list>

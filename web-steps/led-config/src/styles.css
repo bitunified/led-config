@@ -42,8 +42,8 @@
   font-family: Arial, serif;
   display: block;
   margin: 0 auto 0 auto;
-  bottom: 10px;
-  width: 90%;
+  right: 10px;
+  bottom:10px;
   position: fixed;
 }
 .detailedImage{
