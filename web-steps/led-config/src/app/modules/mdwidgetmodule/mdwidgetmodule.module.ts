@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MdCheckboxModule,MdGridListModule,MdChipsModule,MdSnackBarModule,MdSliderModule,MdListModule,MdTabsModule,MdSidenavModule,MdToolbarModule,MdInputModule,MdMenuModule,MdSelectModule,MdIconModule,MdButtonModule,MdCardModule} from '@angular/material';
+import {MdDialogModule,MdCheckboxModule,MdGridListModule,MdChipsModule,MdSnackBarModule,MdSliderModule,MdListModule,MdTabsModule,MdSidenavModule,MdToolbarModule,MdInputModule,MdMenuModule,MdSelectModule,MdIconModule,MdButtonModule,MdCardModule} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -19,8 +19,10 @@ import {MdCheckboxModule,MdGridListModule,MdChipsModule,MdSnackBarModule,MdSlide
     MdSnackBarModule,
     MdGridListModule,
     MdChipsModule,
-    MdCheckboxModule
-  ],
+    MdCheckboxModule,
+    MdDialogModule
+
+],
   exports:[MdToolbarModule,
     MdInputModule,
     MdMenuModule,
@@ -33,7 +35,8 @@ import {MdCheckboxModule,MdGridListModule,MdChipsModule,MdSnackBarModule,MdSlide
   MdSliderModule,MdSnackBarModule,
     MdGridListModule,
     MdChipsModule,
-    MdCheckboxModule
+    MdCheckboxModule,
+    MdDialogModule
   ],
   declarations: []
 })

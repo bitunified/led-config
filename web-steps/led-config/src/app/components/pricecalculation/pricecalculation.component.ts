@@ -1,5 +1,6 @@
-import { Component, OnInit,Input } from '@angular/core';
+import {Component, OnInit, Inject, Optional} from "@angular/core";
 import {PriceCalculation} from "../../domain/server/PriceCalculation";
+import {MdDialogRef, MD_DIALOG_DATA} from "@angular/material";
 
 @Component({
   selector: 'pricecalculation',
@@ -8,12 +9,14 @@ import {PriceCalculation} from "../../domain/server/PriceCalculation";
 })
 export class PricecalculationComponent implements OnInit {
 
-  @Input()
-  priceCalculation:PriceCalculation;
+  priceCalculation: PriceCalculation;
 
-  constructor() { }
+  constructor(@Optional() @Inject(MD_DIALOG_DATA) public data: any, public dialogRef: MdDialogRef<PricecalculationComponent>) {
+  }
+
 
   ngOnInit() {
+    this.priceCalculation = this.data;
   }
 
 }

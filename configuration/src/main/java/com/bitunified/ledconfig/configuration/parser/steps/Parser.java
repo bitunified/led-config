@@ -111,7 +111,7 @@ public class Parser {
 
 
         RelationDefinition relationDefinitionRGBCable = createRelationDefinition();
-
+        RelationDefinition relationDefinitionTWCable = createRelationDefinition();
 
         RelationDefinition relationDefinitionMonoCable = createRelationDefinition();
 
@@ -643,42 +643,42 @@ public class Parser {
         part.setImageUrl("10754cableChannel30.jpg");
         parts.add(part);
 
-        part = new Part();
+        part = new Part(cableChannel);
         part.setPrice(BigDecimal.valueOf(21.52));
         part.setId("10752");
         part.setDescription("liniLED® Aeris Kabelgoot 20 3 m");
         part.setImageUrl("10754cableChannel30.jpg");
         parts.add(part);
 
-        part = new Part();
+        part = new Part(cableChannel);
         part.setPrice(BigDecimal.valueOf(28.73));
         part.setId("10753");
         part.setDescription("liniLED® Aeris Kabelgoot 20 4 m");
         part.setImageUrl("10754cableChannel30.jpg");
         parts.add(part);
 
-        part = new Part();
+        part = new Part(cableChannel);
         part.setPrice(BigDecimal.valueOf(9.86));
         part.setId("10754");
         part.setDescription("liniLED® Aeris Kabelgoot 30 1 m");
         part.setImageUrl("10754cableChannel30.jpg");
         parts.add(part);
 
-        part = new Part();
+        part = new Part(cableChannel);
         part.setPrice(BigDecimal.valueOf(19.66));
         part.setId("10755");
         part.setDescription("liniLED® Aeris Kabelgoot 30 2 m");
         part.setImageUrl("10754cableChannel30.jpg");
         parts.add(part);
 
-        part = new Part();
+        part = new Part(cableChannel);
         part.setPrice(BigDecimal.valueOf(29.52));
         part.setId("10756");
         part.setDescription("liniLED® Aeris Kabelgoot 30 3 m");
         part.setImageUrl("10754cableChannel30.jpg");
         parts.add(part);
 
-        part = new Part();
+        part = new Part(cableChannel);
         part.setPrice(BigDecimal.valueOf(39.38));
         part.setId("10757");
         part.setDescription("liniLED® Aeris Kabelgoot 30 4 m");
@@ -780,18 +780,6 @@ public class Parser {
         parts.add(part);
 
 
-        cable = new Cable(new Dimension(null));
-        cable.setName("Kabel Mono PUR 1 m met open eind");
-        cable.setTranslations(Locale.en,"Cable Mono PUR 1 m with open end");
-        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
-        cable.setCode("D");
-        models.add(cable);
-
-        part = new Part(cable);
-        part.setId("60006");
-        part.setPrice(BigDecimal.valueOf(4.13));
-        parts.add(part);
-
 
         cable = new Cable(new Dimension(null));
         cable.setName("Kabel RGB PUR 1 m met open eind");
@@ -806,42 +794,7 @@ public class Parser {
         part.setImageUrl("60013liniLEDRGBPUConnectorSet.jpg");
         parts.add(part);
 
-        cable = new Cable(new Dimension(null));
-        cable.setName("Kabel Mono PUR 1 m met PU connector set");
-        cable.setTranslations(Locale.en,"Cable Mono PUR 1 m with PU connector set");
-        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
-        cable.setCode("U");
-        models.add(cable);
-        part = new Part(cable);
-        part.setId("60010");
-        part.setPrice(BigDecimal.valueOf(5.42));
-        part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
-        parts.add(part);
 
-        cable = new Cable(new Dimension(null));
-        cable.setName("Kabel Mono PUR 4 m met PU connector set");
-        cable.setTranslations(Locale.en,"Cable Mono PUR 4 m with PU connector set");
-        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
-        cable.setCode("V");
-        models.add(cable);
-        part = new Part(cable);
-        part.setId("60011");
-        part.setPrice(BigDecimal.valueOf(8.92));
-        part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
-        parts.add(part);
-
-        cable = new Cable(new Dimension(null));
-        cable.setName("Kabel Mono PUR 10 m met PU connector set");
-        cable.setTranslations(Locale.en,"Cable Mono PUR 10 m with PU connector set");
-        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
-        cable.setCode("W");
-        models.add(cable);
-        part = new Part(cable);
-        part.setId("60012");
-        part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
-        part.setPrice(BigDecimal.valueOf(13.29));
-        parts.add(part);
-        //60012	Kabel Mono PUR 10 m with PU connector set	W	€ 13,29
         cable = new Cable(new Dimension(null));
         cable.setName("Kabel RGB PUR 1 m met PU connector set");
         cable.setTranslations(Locale.en,"Cable RGB PUR 1 m with PU connector set");
@@ -882,7 +835,164 @@ public class Parser {
         //60015	Kabel RGB PUR 10 m with PU connector set	Z	€ 15,68
 
 
-        //(GABHPQRSTUV){1}
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("Kabel Mono PUR 1 m met open eind");
+        cable.setTranslations(Locale.en,"Cable Mono PUR 1 m with open end");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
+        cable.setCode("D");
+        models.add(cable);
+
+        part = new Part(cable);
+        part.setId("60006");
+        part.setPrice(BigDecimal.valueOf(4.13));
+        parts.add(part);
+
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("Kabel Mono PUR 1 m met PU connector set");
+        cable.setTranslations(Locale.en,"Cable Mono PUR 1 m with PU connector set");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
+        cable.setCode("U");
+        models.add(cable);
+        part = new Part(cable);
+        part.setId("60010");
+        part.setPrice(BigDecimal.valueOf(5.42));
+        part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
+        parts.add(part);
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("Kabel Mono PUR 4 m met PU connector set");
+        cable.setTranslations(Locale.en,"Cable Mono PUR 4 m with PU connector set");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
+        cable.setCode("V");
+        models.add(cable);
+        part = new Part(cable);
+        part.setId("60011");
+        part.setPrice(BigDecimal.valueOf(8.92));
+        part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
+        parts.add(part);
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("Kabel Mono PUR 10 m met PU connector set");
+        cable.setTranslations(Locale.en,"Cable Mono PUR 10 m with PU connector set");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
+        cable.setCode("W");
+        models.add(cable);
+        part = new Part(cable);
+        part.setId("60012");
+        part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
+        part.setPrice(BigDecimal.valueOf(13.29));
+        parts.add(part);
+        //60012	Kabel Mono PUR 10 m with PU connector set	W	€ 13,29
+
+
+
+
+
+        //-----------------------------TW cables -----------------------------
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("Kabel TW Wit 1 m met open eind");
+        cable.setTranslations(Locale.en,"Cable TW white 1 m with open end");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
+        cable.setCode("TR");
+        models.add(cable);
+        relationDefinitionTWCable.addModel(cable);
+        part = new Part(cable);
+        part.setId("60005tw");
+        part.setPrice(BigDecimal.valueOf(1.64));
+        parts.add(part);
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("Kabel TW Wit 5 m met open eind");
+        cable.setTranslations(Locale.en,"Cable TW white 5 m with open end");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
+        cable.setCode("TS");
+        models.add(cable);
+        relationDefinitionTWCable.addModel(cable);
+
+        part = new Part(cable);
+        part.setId("60005stw");
+        part.setPrice(BigDecimal.valueOf(8.2));
+        part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
+        parts.add(part);
+
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("Kabel TW Wit 10 m met open eind");
+        cable.setTranslations(Locale.en,"Cable TW white 10 m with open end");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
+        cable.setCode("TT");
+        models.add(cable);
+        relationDefinitionTWCable.addModel(cable);
+        part = new Part(cable);
+        part.setId("60005tw");
+        part.setPrice(BigDecimal.valueOf(16.4));
+        part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
+        parts.add(part);
+
+
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("Kabel TW PUR 1 m met open eind");
+        cable.setTranslations(Locale.en,"Cable TW PUR 1 m with open end");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("TW");
+        cable.setCode("TG");
+        relationDefinitionTWCable.addModel(cable);
+        models.add(cable);
+        part = new Part(cable);
+        part.setId("60007tw");
+        part.setPrice(BigDecimal.valueOf(4.77));
+        part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
+        parts.add(part);
+
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("Kabel TW PUR 1 m met PU connector set");
+        cable.setTranslations(Locale.en,"Cable TW PUR 1 m with PU connector set");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
+        cable.setCode("TX");
+        relationDefinitionTWCable.addModel(cable);
+        models.add(cable);
+        part = new Part(cable);
+        part.setId("60013tw");
+        part.setPrice(BigDecimal.valueOf(6.63));
+        part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
+        parts.add(part);
+        //60013	Kabel TW PUR 1 m with PU connector set	X	€ 6,63
+        cable = new Cable(new Dimension(null));
+        cable.setName("Kabel TW PUR 5 m met PU connector set");
+        cable.setTranslations(Locale.en,"Cable TW PUR 5 m with PU connector set");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
+        cable.setCode("TY");
+        relationDefinitionTWCable.addModel(cable);
+        models.add(cable);
+        part = new Part(cable);
+        part.setId("60014tw");
+        part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
+        part.setPrice(BigDecimal.valueOf(10.41));
+        parts.add(part);
+        //60014	Kabel TW PUR 5 m with PU connector set	Y	€ 10,41
+        cable = new Cable(new Dimension(null));
+        cable.setName("Kabel TW PUR 10 m with PU connector set");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
+        cable.setCode("TZ");
+        relationDefinitionTWCable.addModel(cable);
+        models.add(cable);
+        part = new Part(cable);
+        part.setId("60015tw");
+        part.setPrice(BigDecimal.valueOf(15.68));
+        part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
+        parts.add(part);
+        //60015	Kabel TW PUR 10 m with PU connector set	Z	€ 15,68
+
+
+
+        //----------------------------END TW Cables----------------------------------
+
+
+
 
 
         ResinClear resinClear = new ResinClear(null);
@@ -1527,6 +1637,7 @@ public class Parser {
         part.setId("12147");
         part.setType("MTR");
         part.setDescription("liniLED® PCB FW 2000K Photon 1200");
+        part.setImageUrl("liniLED-PCB-Photon.jpg");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
@@ -1548,6 +1659,7 @@ public class Parser {
         part.setId("12148");
         part.setType("MTR");
         part.setDescription("liniLED® PCB UWW 2400K Photon 1200");
+        part.setImageUrl("liniLED-PCB-Photon.jpg");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
@@ -1568,6 +1680,7 @@ public class Parser {
         part.setId("12149");
         part.setType("MTR");
         part.setDescription("liniLED® PCB EWW 2700K Photon 1200");
+        part.setImageUrl("liniLED-PCB-Photon.jpg");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
@@ -1609,6 +1722,7 @@ public class Parser {
         part.setId("12151");
         part.setType("MTR");
         part.setDescription("liniLED® PCB NW 4000K Photon 1200");
+        part.setImageUrl("liniLED-PCB-Photon.jpg");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
@@ -1629,6 +1743,7 @@ public class Parser {
         part.setId("12152");
         part.setType("MTR");
         part.setDescription("liniLED® PCB KW 6500K Photon 1200");
+        part.setImageUrl("liniLED-PCB-Photon.jpg");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
@@ -1649,6 +1764,7 @@ public class Parser {
         part.setId("12153");
         part.setType("MTR");
         part.setDescription("liniLED® PCB FW 2000K Photon 1700");
+        part.setImageUrl("liniLED-PCB-Photon.jpg");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
@@ -1669,6 +1785,7 @@ public class Parser {
         part.setId("12154");
         part.setType("MTR");
         part.setDescription("liniLED® PCB UWW 2400K Photon 1700");
+        part.setImageUrl("liniLED-PCB-Photon.jpg");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
@@ -1689,6 +1806,7 @@ public class Parser {
         part.setId("12155");
         part.setType("MTR");
         part.setDescription("liniLED® PCB UWW 2400K Photon 1700");
+        part.setImageUrl("liniLED-PCB-Photon.jpg");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
@@ -1709,6 +1827,7 @@ public class Parser {
         part.setId("12156");
         part.setType("MTR");
         part.setDescription("liniLED® PCB WW 3000K Photon 1700");
+        part.setImageUrl("liniLED-PCB-Photon.jpg");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
@@ -1747,6 +1866,7 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(130.56));
         part.setId("12158");
         part.setType("MTR");
+        part.setImageUrl("liniLED-PCB-Photon.jpg");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
@@ -1766,6 +1886,7 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(130.56));
         part.setId("12159");
         part.setType("MTR");
+        part.setImageUrl("liniLED-PCB-Photon.jpg");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
@@ -1785,6 +1906,7 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(146.48));
         part.setId("12160");
         part.setType("MTR");
+        part.setImageUrl("liniLED-PCB-Photon.jpg");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
@@ -1804,6 +1926,7 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(146.48));
         part.setId("12161");
         part.setType("MTR");
+        part.setImageUrl("liniLED-PCB-Photon.jpg");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
@@ -1823,6 +1946,7 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(146.48));
         part.setId("12162");
         part.setType("MTR");
+        part.setImageUrl("liniLED-PCB-Photon.jpg");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
@@ -1861,6 +1985,7 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(146.48));
         part.setId("12164");
         part.setType("MTR");
+        part.setImageUrl("liniLED-PCB-Photon.jpg");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
@@ -1880,6 +2005,7 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(179.38));
         part.setId("12165");
         part.setType("MTR");
+        part.setImageUrl("liniLED-PCB-Photon.jpg");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
@@ -1900,6 +2026,7 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(179.38));
         part.setId("12166");
         part.setType("MTR");
+        part.setImageUrl("liniLED-PCB-Photon.jpg");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
@@ -1919,6 +2046,7 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(179.38));
         part.setId("12167");
         part.setType("MTR");
+        part.setImageUrl("liniLED-PCB-Photon.jpg");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
@@ -1939,6 +2067,7 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(179.38));
         part.setId("12168");
         part.setType("MTR");
+        part.setImageUrl("liniLED-PCB-Photon.jpg");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
@@ -1958,6 +2087,7 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(179.38));
         part.setId("12169");
         part.setType("MTR");
+        part.setImageUrl("liniLED-PCB-Photon.jpg");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
@@ -1977,6 +2107,7 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(179.38));
         part.setId("12170");
         part.setType("MTR");
+        part.setImageUrl("liniLED-PCB-Photon.jpg");
         parts.add(part);
 
 
@@ -1988,6 +2119,7 @@ public class Parser {
         ledStrip.setCode("QZ");
         models.add(ledStrip);
 
+        relationDefinitionTWCable.addModel(ledStrip);
         relationDefinitionL30.addModel(ledStrip);
         relationDefinitionL20.addModel(ledStrip);
         relationDefinitionH30.addModel(ledStrip);
@@ -1997,6 +2129,7 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(152.49));
         part.setId("12144");
         part.setType("MTR");
+        part.setImageUrl("liniLEDTW.jpg");
         parts.add(part);
 
         ledStrip = new TunnableLedStrip(new Dimension(null));
@@ -2005,16 +2138,19 @@ public class Parser {
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2700");
         ledStrip.setCode("WZ");
+
         models.add(ledStrip);
         relationDefinitionL30.addModel(ledStrip);
         relationDefinitionL20.addModel(ledStrip);
         relationDefinitionH30.addModel(ledStrip);
         relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionTWCable.addModel(ledStrip);
 
         part = new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(195.83));
         part.setId("12145");
         part.setType("MTR");
+        part.setImageUrl("liniLEDTW.jpg");
         parts.add(part);
 
         ledStrip = new TunnableLedStrip(new Dimension(null));
@@ -2028,11 +2164,13 @@ public class Parser {
         relationDefinitionL20.addModel(ledStrip);
         relationDefinitionH30.addModel(ledStrip);
         relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionTWCable.addModel(ledStrip);
 
         part = new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(219.73));
         part.setId("12146");
         part.setType("MTR");
+        part.setImageUrl("liniLEDTW.jpg");
         parts.add(part);
 
 
@@ -2047,10 +2185,13 @@ public class Parser {
         relationDefinitionL20.addModel(ledStrip);
         relationDefinitionH30.addModel(ledStrip);
         relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionTWCable.addModel(ledStrip);
+
         part = new Part(ledStrip);
         part.setPrice(BigDecimal.valueOf(139.70));
         part.setId("12173");
         part.setType("MTR");
+        part.setImageUrl("liniLEDTW.jpg");
         parts.add(part);
 
 

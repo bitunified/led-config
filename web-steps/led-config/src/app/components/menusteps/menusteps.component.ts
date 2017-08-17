@@ -1,16 +1,16 @@
 import {Component, OnInit, Input, Output} from "@angular/core";
-
 import {StepsModel} from "../../domain/StepsModel";
 import {ProductconfigurationService} from "../../services/productconfiguration.service";
 import {Subscription} from "rxjs/Subscription";
 import {ProductConfiguration} from "../../domain/ProductConfiguration";
 import {Relations} from "../../domain/relations/Relations";
 import {Observable} from "rxjs/Rx";
-import {PriceCalculation} from "../../domain/server/PriceCalculation";
 import {NotificationService} from "../../services/notificationservice.service";
+import {ProductcodeService} from "../../services/productcode.service";
+import {EventEmitter} from '@angular/core';
 import {ErrorNotificationState} from "../../domain/internal/ErrorNotificationState";
 import {NotificationMessage} from "../../domain/internal/NotificationMessage";
-import {ProductcodeService} from "../../services/productcode.service";
+import {PriceCalculation} from "../../domain/server/PriceCalculation";
 
 @Component({
   selector: 'menusteps',
@@ -34,6 +34,9 @@ export class MenustepsComponent implements OnInit {
   @Output()
   isProcessing: boolean = false;
 
+  @Output('finished')
+  finishEvent = new EventEmitter<PriceCalculation>();
+
   stepsall: StepsModel;
 
   currentStep: number;
@@ -44,17 +47,17 @@ export class MenustepsComponent implements OnInit {
   private productCondeSubscription: Subscription;
 
   private productconfig: ProductConfiguration;
-  enableFinishButton:boolean;
+  enableFinishButton: boolean;
 
-  constructor( private productcodeService: ProductcodeService,private productConfigService: ProductconfigurationService,private notificationService:NotificationService) {
+  constructor(private productcodeService: ProductcodeService, private productConfigService: ProductconfigurationService, private notificationService: NotificationService) {
     this.productConfigSubscription = productConfigService.productconfigSource$.subscribe(
       res => {
         this.productconfig = res;
       });
     this.productconfig = productConfigService.productConfiguration;
 
-    this.productCondeSubscription = productcodeService.productcodeSource$.subscribe(res=>{
-      this.currentStep=res.currentStep;
+    this.productCondeSubscription = productcodeService.productcodeSource$.subscribe(res=> {
+      this.currentStep = res.currentStep;
     });
   }
 
@@ -77,9 +80,9 @@ export class MenustepsComponent implements OnInit {
 
   }
 
-  checkFinish(event){
+  checkFinish(event) {
 
-    this.enableFinishButton=false;
+    this.enableFinishButton = false;
     if (this.productconfig.containsStep(event)) {
       // if (this.currentStep < this.stepsall.steps.length) {
       //   this.currentStep++;
@@ -87,7 +90,7 @@ export class MenustepsComponent implements OnInit {
       //   return;
       // }
       if (event == this.stepsall.steps.length) {
-        this.enableFinishButton=true;
+        this.enableFinishButton = true;
         return true;
       }
 
@@ -97,16 +100,18 @@ export class MenustepsComponent implements OnInit {
     return false;
   }
 
-  finish(){
+  finish() {
 
-    this.isProcessing=true;
-    let subscriptionProductPrice = this.productConfigService.sendProductConfigToServer();
+    this.isProcessing = true;
+    let subscriptionProductPrice= this.productConfigService.sendProductConfigToServer();
     subscriptionProductPrice.subscribe((productPrice)=> {
       let productPriceCalculated: PriceCalculation = productPrice;
       this.notificationService.notificationMessageAnnouncement(new NotificationMessage("Price calculation received",ErrorNotificationState.INFO));
       this.isProcessing=false;
+      this.finishEvent.emit(productPrice);
     });
   }
+
   evaluateRelations() {
     for (let step of this.stepsall.steps) {
       for (let stepModel of step.models) {
@@ -129,7 +134,7 @@ export class MenustepsComponent implements OnInit {
 
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.productCondeSubscription.unsubscribe();
   }
 

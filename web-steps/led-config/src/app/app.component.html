@@ -17,12 +17,8 @@
   </md-toolbar>
 
   <div class="app-content">
-    <md-card *ngIf="priceCalculation==null">
-      <menusteps [steps]="steps" [relations]="relations"></menusteps>
-    </md-card>
-    <md-card *ngIf="priceCalculation!=null">
-     <pricecalculation [priceCalculation]="priceCalculation"></pricecalculation>
-      <button md-raised-button (click)="backToConfig()">Back</button>
+    <md-card>
+      <menusteps [steps]="steps" [relations]="relations" (finished)="finished($event)"></menusteps>
     </md-card>
   </div>
 

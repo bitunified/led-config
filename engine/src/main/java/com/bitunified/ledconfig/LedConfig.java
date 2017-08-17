@@ -101,26 +101,22 @@ public class LedConfig {
             ksession.addEventListener(new DebugAgendaEventListener());
             ksession.addEventListener(new DebugRuleRuntimeEventListener());
 
-            // To setup a file based audit logger, uncomment the next line
-            // KieRuntimeLogger logger = ks.getLoggers().newFileLogger( ksession, "./helloworld" );
-
-            // To setup a ThreadedFileLogger, so that the audit view reflects events whilst debugging,
-            // uncomment the next line
-            // KieRuntimeLogger logger = ks.getLoggers().newThreadedFileLogger( ksession, "./helloworld", 1000 );
-
-            // The application can insert facts into the session
-
-
             for (ModelChosenStep m : productConfiguration.getModelsForSteps()) {
 
-                if (!m.isSkipped()) {
                     Model modelToAdd = parser.getModels().stream().filter(ml -> ml.equals(m.getChosenModel())).collect(Collectors.toList()).stream().findFirst().orElse(null);
-                    if (ComposedProduct.class.equals(m.getChosenModel().getClass())) {
-                        modelToAdd = m.getChosenModel();
-                    }
-                    if (LedStrip.class.isAssignableFrom(m.getChosenModel().getClass())) {
-                        modelToAdd = m.getChosenModel();
-                    }
+                if (ComposedProduct.class.equals(m.getChosenModel().getClass())) {
+                    modelToAdd = m.getChosenModel();
+                    ksession.insert(modelToAdd);
+                    continue;
+                }
+                if (LedStrip.class.isAssignableFrom(m.getChosenModel().getClass())) {
+                    modelToAdd = m.getChosenModel();
+                    ksession.insert(modelToAdd);
+                    continue;
+                }
+                if (!m.isSkipped()) {
+
+
                     if (modelToAdd != null) {
 
 

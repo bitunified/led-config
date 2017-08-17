@@ -206,7 +206,6 @@ end
        when
             exists(Cable(code!=null,code=="2"))
            exists(DecoLedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"==color.value));
-           composedproduct:ComposedProduct()
        then
          Part part=SerializationUtils.clone((Part)parts.get("60005"));
          PartListHelper.addToPartCountList(partCountList,part,5d);
@@ -620,7 +619,24 @@ end
                 System.out.println("Clip toegevoegd voor L30");
            end
 
+    rule "Actie: Aantal clips is evenredig aan lengte H20"
+           no-loop false
+               when
 
+                   exists(Profile(name matches ".*H20.*"));
+                   exists(Clip())
+                   composedproduct:ComposedProduct(dimension.getWidth()!=null);
+
+               then
+ int c=(int)composedproduct.getDimension().getWidth()/500;
+            if (c<2){
+                c=2;
+            }
+
+                Part part=SerializationUtils.clone((Part)parts.get("10891"));
+                PartListHelper.addToPartCountList(partCountList,part,Double.valueOf(c));
+                System.out.println("Clip toegevoegd voor H20");
+           end
 
 rule "Actie: Kabelgoot op maat voor L20/H20"
 no-loop true

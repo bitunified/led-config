@@ -64,7 +64,7 @@ export class ProductconfigurationService {
 
       })
       .do(data => console.log(data))
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+      .catch((error: any) => Observable.throw('Server error'));
 
 
   }

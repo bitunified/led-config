@@ -35,6 +35,7 @@ import {TranslateModule} from '@ngx-translate/core';
   providers: [],
   bootstrap: [AppComponent],
   entryComponents:[
-    NotificationComponent]
+    NotificationComponent,
+  PricecalculationComponent]
 })
 export class AppModule { }

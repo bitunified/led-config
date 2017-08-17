@@ -1,40 +1,47 @@
-<div>
-  Total: € {{priceCalculation.totalPrice}}
-</div>
-<div>
+<h2 md-dialog-title>Price overview</h2>
+<md-dialog-content>
 
-  <md-grid-list cols="3" rowHeight="25px">
-    <md-grid-tile>
-      <h4>Id</h4>
-    </md-grid-tile>
-    <md-grid-tile>
-      <h4>Description</h4>
-    </md-grid-tile>
-    <md-grid-tile>
-      <h4>Amount</h4>
-    </md-grid-tile>
-    <div *ngFor="let priceCount of priceCalculation.prices">
-      <md-grid-tile [colspan]="1">
-        <md-list>
-          <md-list-item>
-            <h3 md-line> {{priceCount.part.id}} </h3>
-          </md-list-item>
-        </md-list>
+  <div>
+
+    <md-grid-list cols="3" rowHeight="25px">
+      <md-grid-tile>
+        <h4>Id</h4>
       </md-grid-tile>
-      <md-grid-tile [colspan]="1">
-        <md-list>
-          <md-list-item>
-            <p md-line> {{priceCount.part.description}} </p>
-          </md-list-item>
-        </md-list>
+      <md-grid-tile>
+        <h4>Description</h4>
       </md-grid-tile>
-      <md-grid-tile [colspan]="1">
-        <md-list>
-          <md-list-item>
-            <p md-line> {{priceCount.count}} </p>
-          </md-list-item>
-        </md-list>
+      <md-grid-tile>
+        <h4>Amount</h4>
       </md-grid-tile>
-    </div>
-  </md-grid-list>
-</div>
+      <div *ngFor="let priceCount of priceCalculation.prices">
+        <md-grid-tile [colspan]="1">
+          <md-list>
+            <md-list-item>
+              <h3 md-line> {{priceCount.part.id}} </h3>
+            </md-list-item>
+          </md-list>
+        </md-grid-tile>
+        <md-grid-tile [colspan]="1">
+          <md-list>
+            <md-list-item>
+              <p md-line> {{priceCount.part.description}} </p>
+            </md-list-item>
+          </md-list>
+        </md-grid-tile>
+        <md-grid-tile [colspan]="1">
+          <md-list>
+            <md-list-item>
+              <p md-line> {{priceCount.count}} </p>
+            </md-list-item>
+          </md-list>
+        </md-grid-tile>
+      </div>
+    </md-grid-list>
+  </div>
+  <div>
+    Total: € {{priceCalculation.totalPrice}}
+  </div>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-raised-button md-raised md-dialog-close>Close</button>
+</md-dialog-actions>

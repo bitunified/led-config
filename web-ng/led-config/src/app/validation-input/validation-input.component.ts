@@ -24,7 +24,6 @@ export class ValidationInputComponent implements  OnDestroy,ControlValueAccessor
   productCode="";
 
   set productcode(val) {
-    console.info(val);
     this.productcode = val;
     this.productcodeChange.emit(this.productCode);
   }

@@ -81,17 +81,29 @@ export class MenustepitemComponent implements OnInit {
   }
 
   onCheckBoxChange(skip) {
-    console.info(skip);
-    this.skip = skip;
+
   }
 
   skipThisStep(value: MdCheckboxChange) {
+    console.info("Skip"+value.checked);
+    console.info(this._step);
+    this.onInputChange(null);
+    this.skip = value.checked;
+    if (this._step.skip) {
+      let modelC: ModelChosenStep = this.productconfigService.productConfiguration.getModelChosenFromStep(this._step.stepindex);
+      console.info(modelC);
+      if (modelC) {
+        modelC.skipped = value.checked;
+      }
+    }
 
+
+    console.info(value);
     if (value.checked) {
       this.selectedModel = null;
 
     }
-    this.onInputChange(null);
+
   }
 
   isStepTypeValues(step: StepModel) {
@@ -144,17 +156,23 @@ export class MenustepitemComponent implements OnInit {
   }
 
   filterRelationStateForNextModel(displayRelation: DisplayRelation, m: Model) {
-    let additional = 1;
-    if (this.currentStep == 1) {
-      additional = 0;
-    }
 
-    let prevModels: Array<Model> = this.productconfigService.productConfiguration.prevModels(this.currentStep + additional);
+    let prevModels: Array<Model> = this.productconfigService.productConfiguration.prevModels(this.currentStep +1);
 
     prevModels.push(m);
+    let allowed: boolean = false;
     if (prevModels.length > 0 && m) {
-      let relations: Array<RelationDefinition> = Model.relatedRelations(m, prevModels, this.currentStep - 1);
-      let allowed: boolean = false;
+      let relations: Array<RelationDefinition>=[];
+      if (this.currentStep==0) {
+       allowed=true;
+      }else{
+        if (this.currentStep==1 && m.step==1){
+          allowed=true;
+        }else{
+          relations = Model.relatedRelations(m, prevModels, this.currentStep+1);
+
+        }
+      }
       for (let rel of relations) {
         if (RelationState.ALLOWED == rel.relationState) {
           allowed = true;

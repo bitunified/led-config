@@ -23,6 +23,9 @@ import {MdSnackBar} from "@angular/material";
 import {ErrorNotificationState} from "./domain/internal/ErrorNotificationState";
 import {PartService} from "./services/partservice.service";
 import { TranslateService } from '@ngx-translate/core';
+import {MdDialog} from '@angular/material';
+import {PricecalculationComponent} from "./components/pricecalculation/pricecalculation.component";
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -41,7 +44,8 @@ export class AppComponent implements OnInit,OnDestroy {
   relations:Observable<Relations>;
   priceCalculation:PriceCalculation;
   notificationMessage:string;
-  constructor(public translate: TranslateService,public snackBar: MdSnackBar,private notificationMessageService:NotificationService,private modelService:ModelserviceService,private stepService:StepsService,productcodeService:ProductcodeService,private relationsService:RelationService,private productConfiguration:ProductconfigurationService) {
+
+  constructor(public dialog: MdDialog,public translate: TranslateService,public snackBar: MdSnackBar,private notificationMessageService:NotificationService,private modelService:ModelserviceService,private stepService:StepsService,productcodeService:ProductcodeService,private relationsService:RelationService,private productConfiguration:ProductconfigurationService) {
     this.subscription = productcodeService.productcodeSource$.subscribe(
       res => {
         this.productcode = res.getCode();
@@ -50,6 +54,7 @@ export class AppComponent implements OnInit,OnDestroy {
     this.subscriptionPriceCalcution = productConfiguration.priceCalcSource$.subscribe(
       res => {
         this.priceCalculation=res;
+
       });
 
     this.subscriptionNotificationMessage = notificationMessageService.notificationMessageSource$.subscribe(
@@ -62,6 +67,7 @@ export class AppComponent implements OnInit,OnDestroy {
         this.snackBar.open(res.message, 'Close',{duration:duration});
       });
 
+
     translate.addLangs(["en", "nl"]);
     translate.setDefaultLang('en');
 
@@ -70,14 +76,19 @@ export class AppComponent implements OnInit,OnDestroy {
 
 
   }
+  finished(event:PriceCalculation){
+    console.info(event);
+    this.openDialogWithPrice(event);
+  }
+
+  openDialogWithPrice(priceOverview:PriceCalculation){
+    let dialogRef = this.dialog.open(PricecalculationComponent,{data:priceOverview,height:'40%',width:'60%'});
+    dialogRef.afterClosed().subscribe(result => {
+      console.info(result);
+    });
+  }
 
   ngOnInit() {
-    this.modelService.getModels().subscribe((res:any) => {
-        let serverresponse:any=res;
-
-      }
-     );
-
     this.steps=this.stepService.getSteps();
     this.relations=this.relationsService.getRelations();
     console.info(this.translate.getBrowserLang());
@@ -86,6 +97,7 @@ export class AppComponent implements OnInit,OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
     this.subscriptionPriceCalcution.unsubscribe();
+    this.subscriptionNotificationMessage.unsubscribe();
   }
 
   backToConfig(){

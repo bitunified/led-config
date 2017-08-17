@@ -96,8 +96,6 @@ export class Model extends BaseClass {
     let currentStepModel=m;
     let prevModelInclCurrent:Array<Model>=[];
 
-
-    //prevModels.push(m);
     for (let prevModel of prevModels) {
       prevModelInclCurrent.push(prevModel);
       if (prevModel && prevModel.relations) {
@@ -112,41 +110,21 @@ export class Model extends BaseClass {
     }
 
     let foundRelations: Array<RelationDefinition> = [];
-    let foundRelationsInfo: Array<RelationDefinition> = [];
 
-
-    let lowPrevModelStep=currentStepModel.step;
     for (let rl of relatedRelations) {
-      let lowRelStep=Model.determineLowestStep(rl.models);
 
         let count=Model.countSameModels(prevModelInclCurrent, rl.models);
 
-        if (((count>=2)||( count==rl.models.length)) || (currentStep<=0 && count==1)) {
+        if (((count>=2)||( count==rl.models.length)) || (currentStep<=1 && count>=2)) {
           foundRelations.push(rl);
 
-          if (rl.relationState == RelationState.ALLOWEDWITHINFO) {
-            foundRelationsInfo.push(rl);
-          }
+
         }
 
     }
-    //console.info(m);
-    //console.info(currentStepModel);
-    //console.info(relatedRelations);
-    //console.info(prevModels);
-    //console.info(foundRelations);
     return foundRelations;
   }
 
-  private static determineLowestStep(prevModels: Array<Model>) {
-    let current:number=0;
-    for (let m of prevModels){
-      if (m.step>current){
-        current=m.step;
-      }
-    }
-    return current;
-  }
 
   private static countSameModels(models: Array<Model>, prevModels: Array<Model>) {
     let notFound:number=0;

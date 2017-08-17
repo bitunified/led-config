@@ -7,6 +7,7 @@ public class TunnableLedStrip extends PowerLedStrip {
 
     public TunnableLedStrip(){
         super();
+        this.setImageUrl("liniLEDTW.jpg");
     }
     public TunnableLedStrip(Dimension dimension){
         super(dimension);
