@@ -175,129 +175,146 @@ no-loop true
         messages.add(new Message("Deco,Power, HP ledstrip niet mogelijk voor ingieten.",2,MessageStatus.WARNING));
 end
 
-  rule "Actie: RGB kabel toevoegen"
+
+rule "Actie: Kabel toevoegen"
   no-loop true
        when
-            exists(Cable(code!=null,code=="1"))
-           exists(LedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"==color.value))
+            exists(Cable())
+            cable:Cable()
         then
 
-         Part part=SerializationUtils.clone((Part)parts.get("60005"));
+   Part foundPart=PartModelHelper.getPart(parts,cable.getClass(),cable,null);
+     if (foundPart!=null && !PartListHelper.isModelInPartList(partCountList,foundPart)){
+
+         Part part=SerializationUtils.clone(foundPart);
          PartListHelper.addToPartCountList(partCountList,part,1d);
-        System.out.println("Actie RGB voor type kabel."+part);
+        System.out.println("Actie kabel toegevoegd."+part);
+        }
        end
 
-
-
-  rule "Actie: Andere kabel toevoegen type 1"
-  no-loop true
-       when
-            exists(Cable(code!=null,code=="1"))
-           exists(LedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"!=color.value));
-       then
-         Part part=SerializationUtils.clone((Part)parts.get("60004"));
-         PartListHelper.addToPartCountList(partCountList,part,1d);
-         System.out.println("Actie ander type kabel 1:"+part);
-       end
-
-
-  rule "Actie: RGB kabel toevoegen typ 2"
-  no-loop true
-       when
-            exists(Cable(code!=null,code=="2"))
-           exists(DecoLedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"==color.value));
-       then
-         Part part=SerializationUtils.clone((Part)parts.get("60005"));
-         PartListHelper.addToPartCountList(partCountList,part,5d);
-         System.out.println("Actie RGB voor type kabel 2");
-       end
-
-
-
-  rule "Actie: Andere kabel toevoegen type 2"
-  no-loop true
-       when
-            exists(Cable("2"==code))
-           exists(DecoLedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"!=color.value));
-       then
-            Part part=SerializationUtils.clone((Part)parts.get("60004"));
-             PartListHelper.addToPartCountList(partCountList,part,5d);
-         System.out.println("Actie ander type 2");
-       end
- rule "Actie: RGB kabel toevoegen typ 3"
-  no-loop true
-       when
-            exists(Cable(code!=null,code=="3"))
-           exists(DecoLedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"==color.value));
-
-       then
-         Part part=SerializationUtils.clone((Part)parts.get("60005"));
-         PartListHelper.addToPartCountList(partCountList,part,5d);
-         System.out.println("Actie RGB voor type 3 10x ");
-       end
-
-
-
-  rule "Actie: Andere kabel toevoegen type 3"
-  no-loop true
-       when
-           exists(Cable("3"==code))
-           exists(DecoLedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"!=color.value));
-       then
-
-            Part part=SerializationUtils.clone((Part)parts.get("60004"));
-           PartListHelper.addToPartCountList(partCountList,part,10d);
-         System.out.println("Actie ander type 3 10x");
-       end
-
-
-  rule "Actie: Andere kabel toevoegen type 4 RGB"
-  no-loop true
-       when
-            exists(Cable("4"==code))
-           exists(DecoLedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"==color.value));
-       then
-         Part part=SerializationUtils.clone((Part)parts.get("60007"));
-        PartListHelper.addToPartCountList(partCountList,part,1d);
-         System.out.println("Actie ander type 4 RGB");
-       end
-rule "Actie: Andere kabel toevoegen type 4 Niet RGB"
-  no-loop true
-       when
-            exists(Cable("4"==code))
-           exists(DecoLedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"!=color.value));
-       then
-         Part part=SerializationUtils.clone((Part)parts.get("60006"));
-         PartListHelper.addToPartCountList(partCountList,part,1d);
-
-         System.out.println("Actie ander type 4 Niet RGB");
-       end
-
-  rule "Actie: Andere kabel toevoegen type 5 RGB"
-  no-loop true
-       when
-            exists(Cable("5"==code))
-           exists(DecoLedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"==color.value))
-
-       then
-
-            Part part=SerializationUtils.clone((Part)parts.get("60007"));
-            PartListHelper.addToPartCountList(partCountList,part,5d);
-         System.out.println("Actie ander type 5 kabel RGB");
-       end
-
-rule "Actie: Andere kabel toevoegen type 5 Niet RGB"
-  no-loop true
-       when
-            exists(Cable("5"==code))
-           exists(DecoLedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"!=color.value))
-
-       then
-
-            Part part=SerializationUtils.clone((Part)parts.get("60006"));
-            PartListHelper.addToPartCountList(partCountList,part,5d);
-        System.out.println("Actie ander type 5 kabel Niet RGB");
-end
+//  rule "Actie: RGB kabel toevoegen"
+//  no-loop true
+//       when
+//            exists(Cable(code!=null,code=="1"))
+//           exists(LedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"==color.value))
+//        then
+//
+//         Part part=SerializationUtils.clone((Part)parts.get("60005"));
+//         PartListHelper.addToPartCountList(partCountList,part,1d);
+//        System.out.println("Actie RGB voor type kabel."+part);
+//       end
+//
+//
+//
+//  rule "Actie: Andere kabel toevoegen type 1"
+//  no-loop true
+//       when
+//            exists(Cable(code!=null,code=="1"))
+//           exists(LedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"!=color.value));
+//       then
+//         Part part=SerializationUtils.clone((Part)parts.get("60004"));
+//         PartListHelper.addToPartCountList(partCountList,part,1d);
+//         System.out.println("Actie ander type kabel 1:"+part);
+//       end
+//
+//
+//  rule "Actie: RGB kabel toevoegen typ 2"
+//  no-loop true
+//       when
+//            exists(Cable(code!=null,code=="2"))
+//           exists(DecoLedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"==color.value));
+//       then
+//         Part part=SerializationUtils.clone((Part)parts.get("60005"));
+//         PartListHelper.addToPartCountList(partCountList,part,5d);
+//         System.out.println("Actie RGB voor type kabel 2");
+//       end
+//
+//
+//
+//  rule "Actie: Andere kabel toevoegen type 2"
+//  no-loop true
+//       when
+//            exists(Cable("2"==code))
+//           exists(DecoLedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"!=color.value));
+//       then
+//            Part part=SerializationUtils.clone((Part)parts.get("60004"));
+//             PartListHelper.addToPartCountList(partCountList,part,5d);
+//         System.out.println("Actie ander type 2");
+//       end
+// rule "Actie: RGB kabel toevoegen typ 3"
+//  no-loop true
+//       when
+//            exists(Cable(code!=null,code=="3"))
+//           exists(DecoLedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"==color.value));
+//
+//       then
+//         Part part=SerializationUtils.clone((Part)parts.get("60005"));
+//         PartListHelper.addToPartCountList(partCountList,part,5d);
+//         System.out.println("Actie RGB voor type 3 10x ");
+//       end
+//
+//
+//
+//  rule "Actie: Andere kabel toevoegen type 3"
+//  no-loop true
+//       when
+//           exists(Cable("3"==code))
+//           exists(DecoLedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"!=color.value));
+//       then
+//
+//            Part part=SerializationUtils.clone((Part)parts.get("60004"));
+//           PartListHelper.addToPartCountList(partCountList,part,10d);
+//         System.out.println("Actie ander type 3 10x");
+//       end
+//
+//
+//  rule "Actie: Andere kabel toevoegen type 4 RGB"
+//  no-loop true
+//       when
+//            exists(Cable("4"==code))
+//           exists(DecoLedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"==color.value));
+//       then
+//         Part part=SerializationUtils.clone((Part)parts.get("60007"));
+//        PartListHelper.addToPartCountList(partCountList,part,1d);
+//         System.out.println("Actie ander type 4 RGB");
+//       end
+//rule "Actie: Andere kabel toevoegen type 4 Niet RGB"
+//  no-loop true
+//       when
+//            exists(Cable("4"==code))
+//           exists(DecoLedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"!=color.value));
+//       then
+//         Part part=SerializationUtils.clone((Part)parts.get("60006"));
+//         PartListHelper.addToPartCountList(partCountList,part,1d);
+//
+//         System.out.println("Actie ander type 4 Niet RGB");
+//       end
+//
+//  rule "Actie: Andere kabel toevoegen type 5 RGB"
+//  no-loop true
+//       when
+//            exists(Cable("5"==code))
+//           exists(DecoLedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"==color.value))
+//
+//       then
+//
+//            Part part=SerializationUtils.clone((Part)parts.get("60007"));
+//            PartListHelper.addToPartCountList(partCountList,part,5d);
+//         System.out.println("Actie ander type 5 kabel RGB");
+//       end
+//
+//rule "Actie: Andere kabel toevoegen type 5 Niet RGB"
+//  no-loop true
+//       when
+//            exists(Cable("5"==code))
+//           exists(DecoLedStrip(color:getProperty(LedStrip.COLOR_TYPE),color!=null,"rgb"!=color.value))
+//
+//       then
+//
+//            Part part=SerializationUtils.clone((Part)parts.get("60006"));
+//            PartListHelper.addToPartCountList(partCountList,part,5d);
+//        System.out.println("Actie ander type 5 kabel Niet RGB");
+//end
 
 rule "Actie: Profiel L20 lengte"
   no-loop true
@@ -470,6 +487,7 @@ rule "Profiel L30 lengte"
          no-loop true
               when
                   profile:Profile()
+                   not(exists(NoEndCapsMounting()))
                   not(LeftViaEndCapCableEntry())
                   mounting:Mounting()
 
@@ -505,12 +523,33 @@ rule "Profiel L30 lengte"
          no-loop true
               when
                   profile:Profile()
+                  not(exists(NoEndCapsMounting()))
                   exists(LeftViaEndCapCableEntry())
                   mounting:Mounting()
                then
             System.out.println("Matching, Left side End Cap:");
+            Part part=null;
              Map<Orientation,PartMatchHelper.PartMostWanted> result=PartMatchHelper.match(EndCap.class,null,profile,mounting);
-
+ if (result.get(Orientation.Left).getCount()==result.get(Orientation.Right).getCount()){
+                        part=SerializationUtils.clone((Part)result.get(Orientation.Right).getPart());
+                        PartListHelper.addToPartCountList(partCountList,part,1d);
+                        System.out.println("Part Eindkap:"+part);
+                        part=SerializationUtils.clone((Part)result.get(Orientation.Left).getPart());
+                        PartListHelper.addToPartCountList(partCountList,part,1d);
+                        System.out.println("Part Eindkap:"+part);
+                }else{
+                    if (result.get(Orientation.Left).getCount()>result.get(Orientation.Right
+                    ).getCount()){
+                        part=SerializationUtils.clone((Part)result.get(Orientation.Left).getPart());
+                        PartListHelper.addToPartCountList(partCountList,part,1d);
+                        System.out.println("Part Eindkap:"+part);
+                    }
+                    else{
+                        part=SerializationUtils.clone((Part)result.get(Orientation.Right).getPart());
+                        PartListHelper.addToPartCountList(partCountList,part,1d);
+                        System.out.println("Part Eindkap:"+part);
+                    }
+                }
             System.out.println(result);
 
         end

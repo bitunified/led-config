@@ -115,6 +115,8 @@ public class Parser {
 
         RelationDefinition relationDefinitionMonoCable = createRelationDefinition();
 
+        RelationDefinition relationDefinitionNoEndCap = createRelationDefinition();
+
         relationDefinitionDiffuus1.addModel(profileH20,profileH30);
 
         relationDefinitionNotDiffuus.addModel(profileL20,profileL30);
@@ -201,6 +203,7 @@ public class Parser {
         partEndCapL20Open.setDescription("liniLED® Aeris Eindkap L20 O");
         partEndCapL20Open.setTranslations(Locale.en,"liniLED® Aeris End Cap L20 O");
         parts.add(partEndCapL20Open);
+        profileL20.getRelation().addRelateTo(partEndCapL20Open, null);
 
         part = new Part(endCap);
         part.setPrice(BigDecimal.valueOf(8.53));
@@ -208,15 +211,15 @@ public class Parser {
         part.setDescription("liniLED® Aeris Eindkap H20 O");
         part.setTranslations(Locale.en,"liniLED® Aeris End Cap H20 O");
         parts.add(part);
+        profileH20.getRelation().addRelateTo(part, null);
 
-
-        part = new Part(endCap);
-        part.setPrice(BigDecimal.valueOf(8.64));
-        part.setId("10907");
-        part.setDescription("liniLED® Aeris Eindkap HC20 O");
-        part.setTranslations(Locale.en,"liniLED® Aeris End Cap HC20 O");
-        parts.add(part);
-
+        Part partHC20O = new Part(endCap);
+        partHC20O.setPrice(BigDecimal.valueOf(8.64));
+        partHC20O.setId("10907");
+        partHC20O.setDescription("liniLED® Aeris Eindkap HC20 O");
+        partHC20O.setTranslations(Locale.en,"liniLED® Aeris End Cap HC20 O");
+        parts.add(partHC20O);
+        profileH20.getRelation().addRelateTo(partHC20O, null);
 
         Cap capDiffuse = new CapDiffuse();
         capDiffuse.setName("liniLED® Aeris Afdekkap Diffuus");
@@ -272,35 +275,35 @@ public class Parser {
         parts.add(partCapL20);
 
 
-        partCapL20 = new Part(capDiffuse);
-        partCapL20.setPrice(BigDecimal.valueOf(43.46));
-        partCapL20.setId("10823");
-        partCapL20.setImageUrl("10800coverDiffuseL20.jpg");
-        partCapL20.setDescription("liniLED® Aeris Kap D L30 4 m");
-        partCapL20.setTranslations(Locale.en,"liniLED® Aeris Cover D L30 4 m");
-        profileL30.getRelation().addRelateTo(partCapL20,null);
-        parts.add(partCapL20);
+        Part partCapL30D = new Part(capDiffuse);
+        partCapL30D.setPrice(BigDecimal.valueOf(43.46));
+        partCapL30D.setId("10823");
+        partCapL30D.setImageUrl("10800coverDiffuseL20.jpg");
+        partCapL30D.setDescription("liniLED® Aeris Kap D L30 4 m");
+        partCapL30D.setTranslations(Locale.en,"liniLED® Aeris Cover D L30 4 m");
+        profileL30.getRelation().addRelateTo(partCapL30D,null);
+        parts.add(partCapL30D);
 
 
-        partCapL20 = new Part(capClear);
-        partCapL20.setPrice(BigDecimal.valueOf(37.74));
-        partCapL20.setId("10827");
-        partCapL20.setDescription("liniLED® Aeris Kap C L30 4 m");
-        partCapL20.setTranslations(Locale.en,"liniLED® Aeris Cover C L30 4 m");
-        partCapL20.setImageUrl("10824coverClearL30.jpg");
-        profileL30.getRelation().addRelateTo(partCapL20,null);
-        parts.add(partCapL20);
+        Part partCapL30 = new Part(capClear);
+        partCapL30.setPrice(BigDecimal.valueOf(37.74));
+        partCapL30.setId("10827");
+        partCapL30.setDescription("liniLED® Aeris Kap C L30 4 m");
+        partCapL30.setTranslations(Locale.en,"liniLED® Aeris Cover C L30 4 m");
+        partCapL30.setImageUrl("10824coverClearL30.jpg");
+        profileL30.getRelation().addRelateTo(partCapL30,null);
+        parts.add(partCapL30);
 
 
-        partCapL20 = new Part(capDiffuse);
-        partCapL20.setPrice(BigDecimal.valueOf(55.76));
-        partCapL20.setId("10831");
-        partCapL20.setDescription("liniLED® Aeris Kap D H30 4 m");
-        partCapL20.setTranslations(Locale.en,"liniLED® Aeris Cover D H30 4 m");
-        partCapL20.setImageUrl("10828coverDiffuseH30.jpg");
-        partCapL20.setProductPage("http://www.liniled.nl/product/liniled-aeris-kap-d-h20/");
-        profileH30.getRelation().addRelateTo(partCapL20,null);
-        parts.add(partCapL20);
+        Part partCapH30 = new Part(capDiffuse);
+        partCapH30.setPrice(BigDecimal.valueOf(55.76));
+        partCapH30.setId("10831");
+        partCapH30.setDescription("liniLED® Aeris Kap D H30 4 m");
+        partCapH30.setTranslations(Locale.en,"liniLED® Aeris Cover D H30 4 m");
+        partCapH30.setImageUrl("10828coverDiffuseH30.jpg");
+        partCapH30.setProductPage("http://www.liniled.nl/product/liniled-aeris-kap-d-h20/");
+        profileH30.getRelation().addRelateTo(partCapH30,null);
+        parts.add(partCapH30);
 
 
 
@@ -323,7 +326,7 @@ public class Parser {
         partEndCapL30.setDescription("liniLED® Aeris Eindkap L30");
         partEndCapL30.setTranslations(Locale.en,"liniLED® Aeris End Cap L30");
         parts.add(partEndCapL30);
-        partProfielL30.getRelation().addRelateTo(partEndCapL30, null);
+        profileL30.getRelation().addRelateTo(partEndCapL30, null);
 
 
         Part partEndCapLC30 = new Part(endCap);
@@ -332,7 +335,7 @@ public class Parser {
         partEndCapLC30.setDescription("liniLED® Aeris Eindkap LC30");
         partEndCapLC30.setTranslations(Locale.en,"liniLED® Aeris End Cap LC30");
         parts.add(partEndCapLC30);
-        partProfielL30.getRelation().addRelateTo(partEndCapLC30, null);
+        profileL30.getRelation().addRelateTo(partEndCapLC30, null);
 
 
         Part partProfielH30 = new Part(profileH30);
@@ -366,41 +369,44 @@ public class Parser {
         partEndCapC30.setPrice(BigDecimal.valueOf(7.90));
         partEndCapC30.setId("10928");
         partEndCapC30.setDescription("liniLED® Aeris Eindkap C30");
-        partEndCapC30.setTranslations(Locale.en,"liniLED® Aeris End Cap C0");
+        partEndCapC30.setTranslations(Locale.en,"liniLED® Aeris End Cap C30");
         parts.add(partEndCapC30);
         profileH30.getRelation().addRelateTo(partEndCapC30, null);
 
-        part = new Part(endCap);
-        part.setPrice(BigDecimal.valueOf(8.11));
-        part.setId("10921");
-        part.setDescription("liniLED® Aeris Eindkap L30 O");
-        part.setTranslations(Locale.en,"liniLED® Aeris End Cap L30 O");
-        parts.add(part);
+        Part partL30O = new Part(endCap);
+        partL30O.setPrice(BigDecimal.valueOf(8.11));
+        partL30O.setId("10921");
+        partL30O.setDescription("liniLED® Aeris Eindkap L30 O");
+        partL30O.setTranslations(Locale.en,"liniLED® Aeris End Cap L30 O");
+        parts.add(partL30O);
+        profileL30.getRelation().addRelateTo(partL30O, null);
 
 
-        part = new Part(endCap);
-        part.setPrice(BigDecimal.valueOf(8.53));
-        part.setId("10923");
-        part.setDescription("liniLED® Aeris Eindkap LC30 O");
-        part.setTranslations(Locale.en,"liniLED® Aeris End Cap LC30 O");
-        parts.add(part);
+        Part partLC30O = new Part(endCap);
+        partLC30O.setPrice(BigDecimal.valueOf(8.53));
+        partLC30O.setId("10923");
+        partLC30O.setDescription("liniLED® Aeris Eindkap LC30 O");
+        partLC30O.setTranslations(Locale.en,"liniLED® Aeris End Cap LC30 O");
+        parts.add(partLC30O);
 
+        profileL30.getRelation().addRelateTo(partLC30O, null);
 
-        part = new Part(endCap);
-        part.setPrice(BigDecimal.valueOf(8.53));
-        part.setId("10925");
-        part.setDescription("liniLED® Aeris Eindkap H30 O");
-        part.setTranslations(Locale.en,"liniLED® Aeris End Cap H30 O");
-        parts.add(part);
+        Part partH30O = new Part(endCap);
+        partH30O.setPrice(BigDecimal.valueOf(8.53));
+        partH30O.setId("10925");
+        partH30O.setDescription("liniLED® Aeris Eindkap H30 O");
+        partH30O.setTranslations(Locale.en,"liniLED® Aeris End Cap H30 O");
+        parts.add(partH30O);
 
+        profileH30.getRelation().addRelateTo(partH30O, null);
 
-        part = new Part();
-        part.setPrice(BigDecimal.valueOf(8.64));
-        part.setId("10927");
-        part.setDescription("liniLED® Aeris Eindkap HC30 O");
-        part.setTranslations(Locale.nl, part.getDescription());
-        part.setTranslations(Locale.en, "liniLED® Aeris End Cap HC30 O");
-        parts.add(part);
+        Part partHC30O = new Part();
+        partHC30O.setPrice(BigDecimal.valueOf(8.64));
+        partHC30O.setId("10927");
+        partHC30O.setDescription("liniLED® Aeris Eindkap HC30 O");
+        partHC30O.setTranslations(Locale.en, "liniLED® Aeris End Cap HC30 O");
+        parts.add(partHC30O);
+        profileH30.getRelation().addRelateTo(partHC30O, null);
 
 
         CableEntry cableEntry = new LeftViaEndCapCableEntry();
@@ -409,9 +415,13 @@ public class Parser {
         relationDefinitionL30.addModel(cableEntry);
         relationDefinitionH30.addModel(cableEntry);
         relationDefinitionH20.addModel(cableEntry);
+
         cableEntry.setName("Left side via end cap");
         cableEntry.setCode("A");
         cableEntry.setImageUrl("leftSideViaEndCap.jpg");
+        cableEntry.getRelation().addRelateTo(partL30O,Orientation.Left);
+        cableEntry.getRelation().addRelateTo(partHC30O,Orientation.Left);
+        cableEntry.getRelation().addRelateTo(partH30O,Orientation.Left);
         margin = new Margin(10, 5);
         cableEntry.setMargins(margin);
         part = new NotExistingPart(cableEntry);
@@ -427,7 +437,7 @@ public class Parser {
         relationDefinitionL30.addModel(cableEntry);
         relationDefinitionH30.addModel(cableEntry);
         relationDefinitionH20.addModel(cableEntry);
-
+        relationDefinitionNoEndCap.addModel(cableEntry);
         margin = new Margin(15, 5);
         cableEntry.setMargins(margin);
         cableEntry.setCode("B");
@@ -443,7 +453,7 @@ public class Parser {
         relationDefinitionL30.addModel(cableEntry);
         relationDefinitionH30.addModel(cableEntry);
         relationDefinitionH20.addModel(cableEntry);
-
+        relationDefinitionNoEndCap.addModel(cableEntry);
         margin = new Margin(15, 5);
         cableEntry.setMargins(margin);
         cableEntry.setCode("C");
@@ -460,7 +470,7 @@ public class Parser {
         relationDefinitionL30.addModel(cableEntry);
         relationDefinitionH30.addModel(cableEntry);
         relationDefinitionH20.addModel(cableEntry);
-
+        relationDefinitionNoEndCap.addModel(cableEntry);
         margin = new Margin(5, 15);
         cableEntry.setMargins(margin);
         cableEntry.setCode("D");
@@ -476,7 +486,7 @@ public class Parser {
         relationDefinitionL30.addModel(cableEntry);
         relationDefinitionH30.addModel(cableEntry);
         relationDefinitionH20.addModel(cableEntry);
-
+        relationDefinitionNoEndCap.addModel(cableEntry);
         margin = new Margin(5, 5);
         cableEntry.setMargins(margin);
         cableEntry.setCode("E");
@@ -490,10 +500,7 @@ public class Parser {
         mounting.setTranslations(Locale.en, "No endcaps");
         mounting.setCode("A");
 
-        relationDefinitionL20.addModel(mounting);
-        relationDefinitionL30.addModel(mounting);
-        relationDefinitionH20.addModel(mounting);
-        relationDefinitionH30.addModel(mounting);
+        relationDefinitionNoEndCap.addModel(mounting);
         models.add(mounting);
 
         margin = new Margin(2, 2);
@@ -637,10 +644,10 @@ public class Parser {
         relationDefinitionH30.addModel(mounting);
 
         part = new NotExistingPart(mounting);
-        mounting.getRelation().addRelateTo(partEndCapL20, null);
-        mounting.getRelation().addRelateTo(partEndCapC20, null);
-        mounting.getRelation().addRelateTo(partEndCapL30, null);
-        mounting.getRelation().addRelateTo(partEndCapC30, null);
+        mounting.getRelation().addRelateTo(partEndCapLC20, null);
+        mounting.getRelation().addRelateTo(partEndCapHC20, null);
+        mounting.getRelation().addRelateTo(partEndCapLC30, null);
+        mounting.getRelation().addRelateTo(partEndCapHC30, null);
         part.setId("m8");
         parts.add(part);
 
@@ -732,6 +739,7 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(13.99));
         part.setId("11214");
         part.setDescription("liniLED® Aansluitkabel Mono Demo 1 m");
+        part.setTranslations(Locale.en, "liniLED® Connectorcable Mono Demo 1 m");
         part.setType("MTR");
         parts.add(part);
 
@@ -746,6 +754,7 @@ public class Parser {
         part = new Part(cable);
         part.setId("60004");
         part.setPrice(BigDecimal.valueOf(1.43));
+        part.setTranslations(Locale.en,"Cable Mono white 1 m with open end");
         parts.add(part);
 
         cable = new Cable(new Dimension(null));
@@ -760,6 +769,7 @@ public class Parser {
         part = new Part(cable);
         part.setId("60004b");
         part.setPrice(BigDecimal.valueOf(7.15));
+        part.setTranslations(Locale.en,"Cable Mono white 5m with open end");
         parts.add(part);
 
 
@@ -774,6 +784,7 @@ public class Parser {
         part = new Part(cable);
         part.setId("60004c");
         part.setPrice(BigDecimal.valueOf(14.30));
+        part.setTranslations(Locale.en,"Cable Mono white 10 m with open end");
         parts.add(part);
 
         cable = new Cable(new Dimension(null));
@@ -786,6 +797,7 @@ public class Parser {
         part = new Part(cable);
         part.setId("60005");
         part.setPrice(BigDecimal.valueOf(1.64));
+        part.setTranslations(Locale.en,"Cable RGB white 1 m with open end");
         parts.add(part);
 
         cable = new Cable(new Dimension(null));
@@ -800,6 +812,7 @@ public class Parser {
         part.setId("60005s");
         part.setPrice(BigDecimal.valueOf(8.2));
         part.setImageUrl("60013liniLEDRGBPUConnectorSet.jpg");
+        part.setTranslations(Locale.en,"Cable RGB white 5 m with open end");
         parts.add(part);
 
 
@@ -814,6 +827,7 @@ public class Parser {
         part.setId("60005t");
         part.setPrice(BigDecimal.valueOf(16.4));
         part.setImageUrl("60013liniLEDRGBPUConnectorSet.jpg");
+        part.setTranslations(Locale.en,"Cable RGB white 10 m with open end");
         parts.add(part);
 
 
@@ -829,6 +843,7 @@ public class Parser {
         part.setId("60007");
         part.setPrice(BigDecimal.valueOf(4.77));
         part.setImageUrl("60013liniLEDRGBPUConnectorSet.jpg");
+        part.setTranslations(Locale.en,"Cable RGB PUR 1 m with open end");
         parts.add(part);
 
 
@@ -843,6 +858,7 @@ public class Parser {
         part.setId("60013");
         part.setPrice(BigDecimal.valueOf(6.63));
         part.setImageUrl("60013liniLEDRGBPUConnectorSet.jpg");
+        part.setTranslations(Locale.en,"Cable RGB PUR 1 m with PU connector set");
         parts.add(part);
         //60013	Kabel RGB PUR 1 m with PU connector set	X	€ 6,63
         cable = new Cable(new Dimension(null));
@@ -1406,6 +1422,7 @@ public class Parser {
         part.setId("12176");
         part.setType("MTR");
         part.setDescription("liniLED® PCB Rood P");
+        part.setTranslations(Locale.en,"liniLED® PCB Red P");
         part.setImageUrl("12182-PCB-Red-Deco.jpg");
         parts.add(part);
 
@@ -1417,6 +1434,7 @@ public class Parser {
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(PowerLedStrip.COLOR_TYPE).setValue("groen");
+        ledStrip.setTranslations(Locale.en,"liniLED® PCB Green P");
         ledStrip.setCode("PG");
         models.add(ledStrip);
         relationDefinitionMonoCable.addModel(ledStrip);
@@ -1430,6 +1448,7 @@ public class Parser {
         part.setId("12178");
         part.setType("MTR");
         part.setDescription("liniLED® PCB Groen P");
+        part.setTranslations(Locale.en,"liniLED® PCB Green P");
         part.setImageUrl("12182-PCB-Red-Deco.jpg");
         parts.add(part);
 
@@ -1440,6 +1459,7 @@ public class Parser {
         ledStrip.setName("liniLED® Power blauw");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
+        ledStrip.setTranslations(Locale.en,"liniLED® PCB Blue P");
         ledStrip.setCode("PB");
         models.add(ledStrip);
         relationDefinitionMonoCable.addModel(ledStrip);
@@ -1453,6 +1473,7 @@ public class Parser {
         part.setId("12177");
         part.setType("MTR");
         part.setDescription("liniLED® PCB Blauw P");
+        part.setTranslations(Locale.en,"liniLED® PCB Blue P");
         part.setImageUrl("12182-PCB-Red-Deco.jpg");
         parts.add(part);
         //"21019","liniLED® PCB Blauw P","19.00","MTR","","10"
@@ -1473,7 +1494,8 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(69.52));
         part.setId("12179");
         part.setType("MTR");
-        part.setDescription("liniLED® PCB amber P");
+        part.setDescription("liniLED® PCB Amber P");
+        part.setTranslations(Locale.en,"liniLED® PCB Amber P");
         part.setImageUrl("12182-PCB-Red-Deco.jpg");
         parts.add(part);
 

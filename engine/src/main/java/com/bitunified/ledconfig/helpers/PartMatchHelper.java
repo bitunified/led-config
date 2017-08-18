@@ -21,7 +21,6 @@ public class PartMatchHelper {
             }
             for (Relatable relation : relations) {
                 if (relation instanceof Part) {
-                    System.out.println("Product: " + ((Part) relation).getProduct());
                     if (((Part) relation).getProduct() != null) {
                         if (modelClass != null) {
                             if ((((Part) relation).getProduct().getClass().equals(modelClass))){
