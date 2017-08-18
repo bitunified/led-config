@@ -1,46 +1,86 @@
 <h2 md-dialog-title>Price overview</h2>
 <md-dialog-content>
 
-  <div>
+  <!--<div>-->
 
-    <md-grid-list cols="3" rowHeight="25px">
-      <md-grid-tile>
-        <h4>Id</h4>
-      </md-grid-tile>
-      <md-grid-tile>
-        <h4>Description</h4>
-      </md-grid-tile>
-      <md-grid-tile>
-        <h4>Amount</h4>
-      </md-grid-tile>
-      <div *ngFor="let priceCount of priceCalculation.prices">
-        <md-grid-tile [colspan]="1">
-          <md-list>
-            <md-list-item>
-              <h3 md-line> {{priceCount.part.id}} </h3>
-            </md-list-item>
-          </md-list>
-        </md-grid-tile>
-        <md-grid-tile [colspan]="1">
-          <md-list>
-            <md-list-item>
-              <p md-line> {{getTranslatedDescription(priceCount.part)}} </p>
-            </md-list-item>
-          </md-list>
-        </md-grid-tile>
-        <md-grid-tile [colspan]="1">
-          <md-list>
-            <md-list-item>
-              <p md-line> {{priceCount.count}} </p>
-            </md-list-item>
-          </md-list>
-        </md-grid-tile>
+  <!--<md-grid-list cols="3" rowHeight="25px">-->
+  <!--<md-grid-tile>-->
+  <!--<h4>Id</h4>-->
+  <!--</md-grid-tile>-->
+  <!--<md-grid-tile>-->
+  <!--<h4>Description</h4>-->
+  <!--</md-grid-tile>-->
+  <!--<md-grid-tile>-->
+  <!--<h4>Amount</h4>-->
+  <!--</md-grid-tile>-->
+  <!--<div *ngFor="let priceCount of priceCalculation.prices">-->
+  <!--<md-grid-tile [colspan]="1">-->
+  <!--<md-list>-->
+  <!--<md-list-item>-->
+  <!--<h3 md-line> {{priceCount.part.id}} </h3>-->
+  <!--</md-list-item>-->
+  <!--</md-list>-->
+  <!--</md-grid-tile>-->
+  <!--<md-grid-tile [colspan]="1">-->
+  <!--<md-list>-->
+  <!--<md-list-item>-->
+  <!--<p md-line> {{getTranslatedDescription(priceCount.part)}} </p>-->
+  <!--</md-list-item>-->
+  <!--</md-list>-->
+  <!--</md-grid-tile>-->
+  <!--<md-grid-tile [colspan]="1">-->
+  <!--<md-list>-->
+  <!--<md-list-item>-->
+  <!--<p md-line> {{priceCount.count}} </p>-->
+  <!--</md-list-item>-->
+  <!--</md-list>-->
+  <!--</md-grid-tile>-->
+  <!--</div>-->
+  <!--</md-grid-list>-->
+  <!--</div>-->
+  <md-card class="priceTable">
+
+    <md-card-header>
+      <md-card-title>
+      </md-card-title>
+    </md-card-header>
+    <md-card-content>
+      <div>
+        Total: € {{priceCalculation.totalPrice}}
       </div>
-    </md-grid-list>
-  </div>
-  <div>
-    Total: € {{priceCalculation.totalPrice}}
-  </div>
+
+
+      <div>
+        <md-table #table [dataSource]="dataSource">
+
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+          <!-- ID Column -->
+          <ng-container cdkColumnDef="id">
+            <md-header-cell *cdkHeaderCellDef> ID</md-header-cell>
+            <md-cell *cdkCellDef="let row"> {{row.id}}</md-cell>
+          </ng-container>
+
+          <!-- Progress Column -->
+          <ng-container cdkColumnDef="description">
+            <md-header-cell *cdkHeaderCellDef> Description</md-header-cell>
+            <md-cell *cdkCellDef="let row"> {{row.description}}</md-cell>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container cdkColumnDef="amount">
+            <md-header-cell *cdkHeaderCellDef> Amount</md-header-cell>
+            <md-cell *cdkCellDef="let row"> {{row.amount}}</md-cell>
+          </ng-container>
+
+          <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+          <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
+        </md-table>
+
+      </div>
+    </md-card-content>
+  </md-card>
 </md-dialog-content>
 <md-dialog-actions align="end">
   <button md-raised-button md-raised md-dialog-close>Close</button>

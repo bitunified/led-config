@@ -82,7 +82,7 @@ export class AppComponent implements OnInit,OnDestroy {
   }
 
   openDialogWithPrice(priceOverview:PriceCalculation){
-    let dialogRef = this.dialog.open(PricecalculationComponent,{data:priceOverview,height:'40%',width:'60%'});
+    let dialogRef = this.dialog.open(PricecalculationComponent,{data:priceOverview,height:'60%',width:'60%'});
     dialogRef.afterClosed().subscribe(result => {
       console.info(result);
     });

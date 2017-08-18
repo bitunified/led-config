@@ -1,6 +1,7 @@
 
 import { deserialize,deserializeAs } from 'cerialize';
 import {PriceCount} from "./PriceCount";
+
 export class PriceCalculation{
 
   @deserialize
@@ -8,4 +9,6 @@ export class PriceCalculation{
 
   @deserializeAs(PriceCount)
   prices:Array<PriceCount>;
+
+
 }
