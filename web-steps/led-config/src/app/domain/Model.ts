@@ -90,11 +90,11 @@ export class Model extends BaseClass {
 
   relations: Array<RelationDefinition> = [];
 
-  static relatedRelations(m: Model, prevModels: Array<Model>, currentStep:number): Array<RelationDefinition> {
+  static relatedRelations(m: Model, prevModels: Array<Model>, currentStep: number): Array<RelationDefinition> {
     let relatedRelations: Array<RelationDefinition> = [];
 
-    let currentStepModel=m;
-    let prevModelInclCurrent:Array<Model>=[];
+    let currentStepModel = m;
+    let prevModelInclCurrent: Array<Model> = [];
 
     for (let prevModel of prevModels) {
       prevModelInclCurrent.push(prevModel);
@@ -108,6 +108,7 @@ export class Model extends BaseClass {
         }
       }
     }
+
 
     let foundRelations: Array<RelationDefinition> = [];
 
@@ -126,6 +127,16 @@ export class Model extends BaseClass {
   }
 
 
+  private static containsModelsCurrentStep(models: Array<Model>, currentStep: number) {
+    for (let m of models) {
+      if (m.step == currentStep) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+
   private static countSameModels(models: Array<Model>, prevModels: Array<Model>) {
     let notFound:number=0;
     for (let m of models) {
@@ -137,7 +148,7 @@ export class Model extends BaseClass {
   }
 
   private static canBeFoundIn(m: Model, prevModels: Array<Model>) {
-    if (m!=undefined) {
+    if (m != undefined) {
       for (let pm of prevModels) {
         if (m.uuid === pm.uuid) {
           return true;
@@ -148,18 +159,18 @@ export class Model extends BaseClass {
     return false;
   }
 
-  public getNameTranslated(defaultLang:string){
+  public getNameTranslated(defaultLang: string) {
 
-      let name: string = "";
-      if (defaultLang == "nl") {
-        name = this.translations.nl != undefined ? this.translations.nl : '';
-      } else {
-        name = this.translations.en != undefined ? this.translations.en : '';
-      }
-      if (name == "" && this.name != undefined && this.name != null) {
-        name = this.name;
-      }
-      return name;
+    let name: string = "";
+    if (defaultLang == "nl") {
+      name = this.translations.nl != undefined ? this.translations.nl : '';
+    } else {
+      name = this.translations.en != undefined ? this.translations.en : '';
+    }
+    if (name == "" && this.name != undefined && this.name != null) {
+      name = this.name;
+    }
+    return name;
 
   }
 }

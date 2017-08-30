@@ -197,6 +197,7 @@ export class MenustepitemComponent implements OnInit {
   }
 
   determineRelationState(displayRelation: DisplayRelation, m: Model) {
+    console.info("det");
     let additional = 1;
     if (this.currentStep == 1) {
       additional = 0;
@@ -205,9 +206,14 @@ export class MenustepitemComponent implements OnInit {
 
     if (prevModels.length > 0 && m) {
 
-      let relations: Array<RelationDefinition> = Model.relatedRelations(m, prevModels, this.currentStep - 1);
+      console.info(m);
+      let relations: Array<RelationDefinition> = m.relations;//Model.relatedRelationsForWarning(m, prevModels, this.currentStep - 1);
 
       let allowed: boolean = false;
+      if (this.currentStep<=2){
+        relations=[];
+        allowed=true;
+      }
       let allowedWithWarning: boolean = false;
       for (let rel of relations) {
         if (rel.relationState == RelationState.ALLOWEDWITHWARNING) {
