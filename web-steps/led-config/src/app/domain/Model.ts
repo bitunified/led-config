@@ -126,6 +126,25 @@ export class Model extends BaseClass {
     return foundRelations;
   }
 
+  static relatedRelationsForWarning(m: Model, prevModels: Array<Model>, currentStep: number): Array<RelationDefinition> {
+
+    let foundRelations: Array<RelationDefinition> = [];
+
+    for (let rl of m.relations) {
+
+      let count=Model.countSameModels(prevModels, rl.models);
+
+      if (((count>=currentStep+1))) {
+        foundRelations.push(rl);
+
+
+      }
+
+    }
+    console.info(foundRelations);
+    return foundRelations;
+
+  }
 
   private static containsModelsCurrentStep(models: Array<Model>, currentStep: number) {
     for (let m of models) {

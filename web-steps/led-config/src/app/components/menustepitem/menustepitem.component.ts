@@ -202,7 +202,7 @@ export class MenustepitemComponent implements OnInit {
 
     if (prevModels.length > 0 && m) {
 
-      let relations: Array<RelationDefinition> = m.relations;//Model.relatedRelationsForWarning(m, prevModels, this.currentStep - 1);
+      let relations: Array<RelationDefinition> = Model.relatedRelationsForWarning(m, prevModels, this.currentStep - 1);
 
       let allowed: boolean = false;
       if (this.currentStep<=2){
