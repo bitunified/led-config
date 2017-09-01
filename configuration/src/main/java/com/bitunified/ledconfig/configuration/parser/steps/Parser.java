@@ -1305,8 +1305,71 @@ public class Parser {
         //"21002","liniLED® PCB RGB D","15.00","MTR","","10"
 
 
+
+
         ledStrip = new DecoLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED® PCB NW 3000K D");
+        ledStrip.setName("liniLED® PCB UWW 2400K D");
+        ledStrip.setMaxDimension(new Dimension(2700));
+        ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(100);
+        ledStrip.getProperty(LedStrip.COLOR_TYPE).setValue("white");
+        ledStrip.getProperty(PowerLedStrip.KELVIN_TYPE).setValue("2400");
+
+        ledStrip.setCode("DX");
+
+        models.add(ledStrip);
+        relationDefinitionMonoCable.addModel(ledStrip);
+        relationDefinitionL30.addModel(ledStrip);
+        relationDefinitionL20.addModel(ledStrip);
+        relationDefinitionH30.addModel(ledStrip);
+        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionNotDiffuus.addModel(ledStrip);
+
+        part = new Part(ledStrip);
+        part.setPrice(BigDecimal.valueOf(51.04));
+        part.setId("12141a");
+        part.setType("MTR");
+        part.setDescription("liniLED® PCB UWW 2400K D");
+        part.setImageUrl("12197PCB-UWW-2400K-Deco.jpg");
+
+        parts.add(part);
+
+
+
+
+
+        ledStrip = new DecoLedStrip(new Dimension(null));
+        ledStrip.setName("liniLED® PCB EWW 2700K D");
+        ledStrip.setMaxDimension(new Dimension(2700));
+        ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(100);
+        ledStrip.getProperty(LedStrip.COLOR_TYPE).setValue("white");
+        ledStrip.getProperty(PowerLedStrip.KELVIN_TYPE).setValue("2700");
+
+        ledStrip.setCode("DY");
+
+        models.add(ledStrip);
+        relationDefinitionMonoCable.addModel(ledStrip);
+        relationDefinitionL30.addModel(ledStrip);
+        relationDefinitionL20.addModel(ledStrip);
+        relationDefinitionH30.addModel(ledStrip);
+        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionNotDiffuus.addModel(ledStrip);
+
+        part = new Part(ledStrip);
+        part.setPrice(BigDecimal.valueOf(51.04));
+        part.setId("12141b");
+        part.setType("MTR");
+        part.setDescription("liniLED® PCB EWW 2700K D");
+        part.setImageUrl("12197PCB-UWW-2400K-Deco.jpg");
+
+        parts.add(part);
+
+
+
+
+
+
+        ledStrip = new DecoLedStrip(new Dimension(null));
+        ledStrip.setName("liniLED® PCB WW 3000K D");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(100);
         ledStrip.getProperty(LedStrip.COLOR_TYPE).setValue("white");
@@ -1326,7 +1389,7 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(51.04));
         part.setId("12141");
         part.setType("MTR");
-        part.setDescription("liniLED® PCB NW 3000K D");
+        part.setDescription("liniLED® PCB WW 3000K D");
         part.setImageUrl("12197PCB-UWW-2400K-Deco.jpg");
 
         parts.add(part);
@@ -1353,7 +1416,7 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(51.04));
         part.setId("12142");
         part.setType("MTR");
-        part.setDescription("liniLED® PCB NW 3000K D");
+        part.setDescription("liniLED® PCB NW 4000K D");
         part.setImageUrl("12182-PCB-Red-Deco.jpg");
         parts.add(part);
 
@@ -1853,7 +1916,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED® PCB FW 2000K Photon 1700");
+        ledStrip.setName("liniLED® PCB FW 2000K Photon 2000");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("6500");
@@ -1869,12 +1932,12 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(130.56));
         part.setId("12153");
         part.setType("MTR");
-        part.setDescription("liniLED® PCB FW 2000K Photon 1700");
+        part.setDescription("liniLED® PCB FW 2000K Photon 2000");
         part.setImageUrl("liniLED-PCB-Photon.jpg");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED® PCB UWW 2400K Photon 1700");
+        ledStrip.setName("liniLED® PCB UWW 2400K Photon 2000");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2400");
@@ -1890,12 +1953,12 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(130.56));
         part.setId("12154");
         part.setType("MTR");
-        part.setDescription("liniLED® PCB UWW 2400K Photon 1700");
+        part.setDescription("liniLED® PCB UWW 2400K Photon 2000");
         part.setImageUrl("liniLED-PCB-Photon.jpg");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED® PCB EWW 2700K Photon 1700");
+        ledStrip.setName("liniLED® PCB EWW 2700K Photon 2000");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2700");
@@ -1911,12 +1974,12 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(130.56));
         part.setId("12155");
         part.setType("MTR");
-        part.setDescription("liniLED® PCB UWW 2400K Photon 1700");
+        part.setDescription("liniLED® PCB UWW 2400K Photon 2000");
         part.setImageUrl("liniLED-PCB-Photon.jpg");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED® PCB WW 3000K Photon 1700");
+        ledStrip.setName("liniLED® PCB WW 3000K Photon 2000");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("3000");
@@ -1932,12 +1995,12 @@ public class Parser {
         part.setPrice(BigDecimal.valueOf(130.56));
         part.setId("12156");
         part.setType("MTR");
-        part.setDescription("liniLED® PCB WW 3000K Photon 1700");
+        part.setDescription("liniLED® PCB WW 3000K Photon 2000");
         part.setImageUrl("liniLED-PCB-Photon.jpg");
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED® PCB NW 4000K Photon 1700");
+        ledStrip.setName("liniLED® PCB NW 4000K Photon 2000");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("4000");
@@ -1956,7 +2019,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED® PCB CW 6500K Photon 1700");
+        ledStrip.setName("liniLED® PCB CW 6500K Photon 2000");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("4000");
@@ -1976,7 +2039,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED® PCB FW 2000K Photon 2500");
+        ledStrip.setName("liniLED® PCB FW 2000K Photon 3000");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2000");
@@ -1996,7 +2059,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED® PCB UWW 2400K Photon 2500");
+        ledStrip.setName("liniLED® PCB UWW 2400K Photon 3000");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2400");
@@ -2016,7 +2079,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED® PCB EWW 2700K Photon 2500");
+        ledStrip.setName("liniLED® PCB EWW 2700K Photon 3000");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2700");
@@ -2036,7 +2099,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED® PCB WW 3000K Photon 2500");
+        ledStrip.setName("liniLED® PCB WW 3000K Photon 3000");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("3000");
@@ -2056,7 +2119,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED® PCB NW 4000K Photon 2500");
+        ledStrip.setName("liniLED® PCB NW 4000K Photon 3000");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("4000");
@@ -2075,7 +2138,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED® PCB CW 6500K Photon 2500");
+        ledStrip.setName("liniLED® PCB CW 6500K Photon 3000");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("6500");
@@ -2095,7 +2158,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED® PCB FW 2000K Photon 3300");
+        ledStrip.setName("liniLED® PCB FW 2000K Photon 4000");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2000");
@@ -2115,7 +2178,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED® PCB UWW 2400K Photon 3300");
+        ledStrip.setName("liniLED® PCB UWW 2400K Photon 4000");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2400");
@@ -2136,7 +2199,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED® PCB EWW 2700K Photon 3300");
+        ledStrip.setName("liniLED® PCB EWW 2700K Photon 4000");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2400");
@@ -2156,7 +2219,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED® PCB WW 3000K Photon 3300");
+        ledStrip.setName("liniLED® PCB WW 3000K Photon 4000");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("3000");
@@ -2177,7 +2240,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED® PCB NW 4000K Photon 3300");
+        ledStrip.setName("liniLED® PCB NW 4000K Photon 4000");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("4000");
@@ -2197,7 +2260,7 @@ public class Parser {
         parts.add(part);
 
         ledStrip = new PhotonLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED® PCB CW 6500K Photon 3300");
+        ledStrip.setName("liniLED® PCB CW 6500K Photon 4000");
         ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("6500");
