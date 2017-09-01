@@ -66,7 +66,6 @@ export class MenustepitemComponent implements OnInit {
         if (res.currentStep == this._step.stepindex) {
           this.reset();
         }
-        console.info(res);
         this.currentStep = res.currentStep;
       });
 
@@ -86,20 +85,18 @@ export class MenustepitemComponent implements OnInit {
   }
 
   skipThisStep(value: MdCheckboxChange) {
-    console.info("Skip"+value.checked);
-    console.info(this._step);
+
     this.onInputChange(null);
     this.skip = value.checked;
     if (this._step.skip) {
       let modelC: ModelChosenStep = this.productconfigService.productConfiguration.getModelChosenFromStep(this._step.stepindex);
-      console.info(modelC);
+
       if (modelC) {
         modelC.skipped = value.checked;
       }
     }
 
 
-    console.info(value);
     if (value.checked) {
       this.selectedModel = null;
 
@@ -197,8 +194,7 @@ export class MenustepitemComponent implements OnInit {
   }
 
   determineRelationState(displayRelation: DisplayRelation, m: Model) {
-    console.info("det");
-    let additional = 1;
+  let additional = 1;
     if (this.currentStep == 1) {
       additional = 0;
     }
@@ -206,7 +202,6 @@ export class MenustepitemComponent implements OnInit {
 
     if (prevModels.length > 0 && m) {
 
-      console.info(m);
       let relations: Array<RelationDefinition> = m.relations;//Model.relatedRelationsForWarning(m, prevModels, this.currentStep - 1);
 
       let allowed: boolean = false;
@@ -275,7 +270,7 @@ export class MenustepitemComponent implements OnInit {
 
 
   onInputChange(value: string) {
-    console.info(value);
+
     this.step.modelValue = value;
     let valueN = null;
     let valueS = null;
@@ -339,8 +334,6 @@ export class MenustepitemComponent implements OnInit {
 
   private changeSelection() {
 
-    console.info(this.m);
-    console.info(this.selectedModel);
     this.selectedModel = this.m;
     let productConfig = this.productconfigService.productconfigAnnouncement(this.step, this.selectedModel, null);
     let curStep = this.step.stepindex;

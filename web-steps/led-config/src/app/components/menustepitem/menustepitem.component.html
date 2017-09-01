@@ -136,8 +136,8 @@
 
                 </md-list-item>
                 <md-divider></md-divider>
-                <md-list-item *ngIf="m.dimension!=null && m.dimension.width!=null" i18n>
-                  Length: {{m.dimension==null?'':m.dimension.width}} mm
+                <md-list-item *ngIf="m.maxDimension!=null && m.maxDimension.width!=null" i18n>
+                  Max. length: {{m.maxDimension==null?'':m.maxDimension.width}} mm
                 </md-list-item>
                 <md-divider></md-divider>
                 <md-list-item *ngIf="currentPart && currentPart.price">

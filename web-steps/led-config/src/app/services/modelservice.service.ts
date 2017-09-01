@@ -27,7 +27,6 @@ export class ModelserviceService {
 
         let m = Deserialize(res.json(), Models);
 
-        console.info(m);
         return m;
 
       })

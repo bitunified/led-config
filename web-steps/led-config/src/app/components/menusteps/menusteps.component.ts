@@ -127,7 +127,6 @@ export class MenustepsComponent implements OnInit {
   }
 
   prevStep() {
-    console.info('parent prev');
     //if (this.currentStep > 1) {
     //  this.currentStep--;
     //}
