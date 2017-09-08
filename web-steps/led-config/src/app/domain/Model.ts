@@ -5,7 +5,6 @@ import {serialize, deserialize, deserializeAs, serializeAs} from "cerialize";
 import {ModelMargin} from "./ModelMargin";
 import {ModelPropertyValue} from "./ModelPropertyValue";
 import {BaseClass} from "./BaseClass";
-import {RelationState} from "./relations/RelationState";
 
 export class Model extends BaseClass {
 
@@ -114,56 +113,63 @@ export class Model extends BaseClass {
 
     for (let rl of relatedRelations) {
 
-        let count=Model.countSameModels(prevModelInclCurrent, rl.models);
+      let count = Model.countSameModels(prevModelInclCurrent, rl.models);
 
-        if (((count>=2)||( count==rl.models.length)) || (currentStep<=1 && count>=2)) {
-          foundRelations.push(rl);
-
-
-        }
-
-    }
-    return foundRelations;
-  }
-
-  static relatedRelationsForWarning(m: Model, prevModels: Array<Model>, currentStep: number): Array<RelationDefinition> {
-
-    let foundRelations: Array<RelationDefinition> = [];
-
-    for (let rl of m.relations) {
-
-      let count=Model.countSameModels(prevModels, rl.models);
-
-      if (((count>=currentStep+1))) {
+      if (((count >= 2) || ( count == rl.models.length)) || (currentStep <= 1 && count >= 2)) {
         foundRelations.push(rl);
 
 
       }
 
     }
-    console.info(foundRelations);
     return foundRelations;
-
   }
 
-  private static containsModelsCurrentStep(models: Array<Model>, currentStep: number) {
-    for (let m of models) {
-      if (m.step == currentStep) {
+  static relatedRelationsForWarning(m: Model, prevModels: Array<Model>, currentStep: number): Array<RelationDefinition> {
+    let foundRelations: Array<RelationDefinition> = [];
+    for (let rl of m.relations) {
+      let count = Model.countSameModels(prevModels, rl.models);
+      let stepCount=this.countModelsCurrentStep(rl.models);
+
+      if (((count >= currentStep + 1))||(stepCount==count)) {
+        foundRelations.push(rl);
+      }
+    }
+    return foundRelations;
+  }
+
+  private static containsNumber(steps: Array<number>,step:number) {
+
+    for (let s of steps){
+      if (s==step){
         return true;
       }
     }
     return false;
   }
+  private static countModelsCurrentStep(models: Array<Model>):number {
+    let steps:Array<number>=[];
+    if (models.length>0){
+      steps.push(models[0].step);
+    }
+
+    for (let m of models) {
+      if (!this.containsNumber(steps,m.step)){
+        steps.push(m.step);
+      }
+    }
+    return steps.length;
+  }
 
 
   private static countSameModels(models: Array<Model>, prevModels: Array<Model>) {
-    let notFound:number=0;
+    let notFound: number = 0;
     for (let m of models) {
       if (!Model.canBeFoundIn(m, prevModels)) {
         notFound++;
       }
     }
-    return models.length-notFound;
+    return models.length - notFound;
   }
 
   private static canBeFoundIn(m: Model, prevModels: Array<Model>) {

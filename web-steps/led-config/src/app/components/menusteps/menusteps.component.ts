@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output} from "@angular/core";
+import {Component, OnInit, Input, Output, EventEmitter} from "@angular/core";
 import {StepsModel} from "../../domain/StepsModel";
 import {ProductconfigurationService} from "../../services/productconfiguration.service";
 import {Subscription} from "rxjs/Subscription";
@@ -7,10 +7,10 @@ import {Relations} from "../../domain/relations/Relations";
 import {Observable} from "rxjs/Rx";
 import {NotificationService} from "../../services/notificationservice.service";
 import {ProductcodeService} from "../../services/productcode.service";
-import {EventEmitter} from '@angular/core';
 import {ErrorNotificationState} from "../../domain/internal/ErrorNotificationState";
 import {NotificationMessage} from "../../domain/internal/NotificationMessage";
 import {PriceCalculation} from "../../domain/server/PriceCalculation";
+import {ClipboardModule} from "ngx-clipboard";
 
 @Component({
   selector: 'menusteps',
@@ -49,6 +49,8 @@ export class MenustepsComponent implements OnInit {
   private productconfig: ProductConfiguration;
   enableFinishButton: boolean;
 
+  productcode: String;
+
   constructor(private productcodeService: ProductcodeService, private productConfigService: ProductconfigurationService, private notificationService: NotificationService) {
     this.productConfigSubscription = productConfigService.productconfigSource$.subscribe(
       res => {
@@ -58,6 +60,7 @@ export class MenustepsComponent implements OnInit {
 
     this.productCondeSubscription = productcodeService.productcodeSource$.subscribe(res=> {
       this.currentStep = res.currentStep;
+      this.productcode = res.getCode();
     });
   }
 
@@ -103,11 +106,11 @@ export class MenustepsComponent implements OnInit {
   finish() {
 
     this.isProcessing = true;
-    let subscriptionProductPrice= this.productConfigService.sendProductConfigToServer();
+    let subscriptionProductPrice = this.productConfigService.sendProductConfigToServer();
     subscriptionProductPrice.subscribe((productPrice)=> {
       let productPriceCalculated: PriceCalculation = productPrice;
-      this.notificationService.notificationMessageAnnouncement(new NotificationMessage("Price calculation received",ErrorNotificationState.INFO));
-      this.isProcessing=false;
+      this.notificationService.notificationMessageAnnouncement(new NotificationMessage("Price calculation received", ErrorNotificationState.INFO));
+      this.isProcessing = false;
       this.finishEvent.emit(productPrice);
     });
   }

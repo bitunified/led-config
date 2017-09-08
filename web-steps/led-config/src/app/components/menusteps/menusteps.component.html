@@ -1,5 +1,8 @@
 <div *ngIf="stepsall">
   <menustepitem *ngFor="let step of stepsall.steps; let i = index" [step]="step" [currentStep]="currentStep" (nextStep)="nextStepItem($event)">
   </menustepitem>
-  <button *ngIf="checkFinish(currentStep)" md-raised-button  (click)="finish()">Finish</button>
+  <div *ngIf="checkFinish(currentStep)" class="finishButtons">
+  <button  md-raised-button  (click)="finish()">Price overview</button>
+  <button md-raised-button ngxClipboard [cbContent]="productcode">Copy {{productcode}} to clipboard</button>
+  </div>
 </div>

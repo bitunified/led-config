@@ -74,7 +74,7 @@
                 Click on line to select {{step.configDescription}}<br/>
                 Width:
                 <md-slider class="mat-slider-horizontal"
-                           max="4000"
+                           max="2000"
                            min="{{calculateMinValue(step)}}"
                            step="{{calculateStepValue(step)}}"
                            thumb-label="true" [(ngModel)]="step.modelValue" name="inputValue"
@@ -98,7 +98,7 @@
 
             <div md-card-avatar *ngIf="getImageUrl(m,currentPart)!=null" class="detailedImage"
                  [style.background-image]="'url(' + getImageUrl(m,currentPart)+ ')'" [style.background-size]="cover"
-                 [style.width]="'130px'" [style.height]="'130px'">
+                 [style.width]="'230px'" [style.height]="'230px'">
 
             </div>
 
