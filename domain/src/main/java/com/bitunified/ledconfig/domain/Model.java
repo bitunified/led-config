@@ -47,7 +47,7 @@ public class Model extends Relatable implements StepConfig, Serializable {
 
     private Map<Locale, String> translations = new HashMap<Locale, String>();
 
-    @XmlTransient
+
     private List<RelationDefinition> relations=new ArrayList<RelationDefinition>();
 
     public Model() {

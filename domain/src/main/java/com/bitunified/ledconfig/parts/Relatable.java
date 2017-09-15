@@ -4,9 +4,11 @@ package com.bitunified.ledconfig.parts;
 import com.bitunified.ledconfig.domain.Orientation;
 import com.bitunified.ledconfig.domain.Relation;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
 
 @XmlSeeAlso({RealModel.class,Part.class})
 public class Relatable {
@@ -18,6 +20,8 @@ public class Relatable {
 
     private Orientation orientation;
 
+ @JsonIgnore
+ @XmlTransient
     public Relation getRelation() {
         return relates;
     }

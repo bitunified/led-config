@@ -71,17 +71,14 @@ export class MenustepsComponent implements OnInit {
       return {rels: rels, steps: steps};
     });
     combineRelationSteps.subscribe((combinedRelStep)=> {
+      this.evaluateRelations(combinedRelStep.steps,combinedRelStep.rels);
       this.stepsall = combinedRelStep.steps;
       this.relationsAll = combinedRelStep.rels;
-      this.evaluateRelations();
+
     });
 
   }
 
-
-  nextStepItem(event) {
-
-  }
 
   checkFinish(event) {
 
@@ -115,10 +112,10 @@ export class MenustepsComponent implements OnInit {
     });
   }
 
-  evaluateRelations() {
-    for (let step of this.stepsall.steps) {
+  evaluateRelations(steps:StepsModel,relations:Relations) {
+    for (let step of steps.steps) {
       for (let stepModel of step.models) {
-        for (let relation of this.relationsAll.relations) {
+        for (let relation of relations.relations) {
           for (let model of relation.models) {
             if (model.uuid == stepModel.uuid) {
               stepModel.relations.push(relation);
@@ -129,12 +126,6 @@ export class MenustepsComponent implements OnInit {
     }
   }
 
-  prevStep() {
-    //if (this.currentStep > 1) {
-    //  this.currentStep--;
-    //}
-
-  }
 
   ngOnDestroy() {
     this.productCondeSubscription.unsubscribe();

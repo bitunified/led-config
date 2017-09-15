@@ -89,6 +89,40 @@ export class Model extends BaseClass {
 
   relations: Array<RelationDefinition> = [];
 
+  static relatedRelations2(m: Model, prevModels: Array<Model>): Array<RelationDefinition> {
+    let relatedRelations: Array<RelationDefinition> = [];
+
+    let currentStepModel = m;
+    let prevModelInclCurrent: Array<Model> = [];
+
+    for (let prevModel of prevModels) {
+      prevModelInclCurrent.push(prevModel);
+      if (prevModel && prevModel.relations) {
+        for (let relation of prevModel.relations) {
+          for (let mrel of relation.models) {
+            if (mrel.uuid === currentStepModel.uuid) {
+              relatedRelations.push(relation);
+            }
+          }
+        }
+      }
+    }
+
+
+    let foundRelations: Array<RelationDefinition> = [];
+
+    for (let rl of relatedRelations) {
+
+
+         foundRelations.push(rl);
+
+
+
+    }
+    return foundRelations;
+  }
+
+
   static relatedRelations(m: Model, prevModels: Array<Model>, currentStep: number): Array<RelationDefinition> {
     let relatedRelations: Array<RelationDefinition> = [];
 

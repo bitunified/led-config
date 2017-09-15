@@ -15,7 +15,7 @@ export class ProductcodeService {
     if (this.productCodeComposition.codes!==undefined) {
       this.productCodeComposition.codes[step] = code;
     }else{
-      this.productCodeComposition.codes=[""];
+      this.productCodeComposition.codes=["-"];
     }
     if (this.productCodeComposition.currentStep-step==-1) {
       this.productCodeComposition.currentStep = this.productCodeComposition.currentStep +1;

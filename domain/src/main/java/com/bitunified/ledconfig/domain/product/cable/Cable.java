@@ -18,13 +18,13 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 public class Cable extends RealModel {
 
     public Cable(){
-
+        setStep(4);
     }
     public static final String CABLE_TYPE_S = "cable_type";
     public static final String CABLE_END_S = "cable_end";
 
-    public  final Property CABLE_TYPE=new Property(CABLE_TYPE_S,"");
-    public  final Property CABLE_END=new Property(CABLE_END_S,"");
+    public static final Property CABLE_TYPE=new Property(CABLE_TYPE_S,"");
+    public static final Property CABLE_END=new Property(CABLE_END_S,"");
     public Cable(Dimension dimension) {
         super(dimension);
         setStep(4);
