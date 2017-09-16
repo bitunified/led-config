@@ -39,6 +39,15 @@ export class ProductconfigurationService {
     return this.productConfiguration;
   }
 
+  deleteModelStep(step: StepModel) {
+
+    this.productConfiguration.deleteModel(step);
+
+
+    this.productconfigSource.next(this.productConfiguration);
+    this.preProcessing();
+    return this.productConfiguration;
+  }
 
   private preProcessing() {
     if (this.productConfiguration.getModelChosenFromStep(3) && this.productConfiguration.getModelChosenFromStep(7)) {

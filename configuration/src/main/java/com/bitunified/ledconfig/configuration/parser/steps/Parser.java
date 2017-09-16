@@ -104,6 +104,11 @@ public class Parser {
 
         relationDefinitionL20.addModel(profileL20);
 
+        RelationDefinition relationDefinitionL = createRelationDefinition();
+        relationDefinitionL.addModel(profileL20,profileL30);
+
+        RelationDefinition relationDefinitionH = createRelationDefinition();
+        relationDefinitionH.addModel(profileH20,profileH30);
 
         RelationDefinition relationDefinitionNotDiffuus = createRelationDefinition(RelationState.ALLOWEDWITHWARNING, "Product will not be diffuse.");
         RelationDefinition relationDefinitionNotDiffuusTW = createRelationDefinition(RelationState.ALLOWEDWITHWARNING, "Product will not be diffuse.");
@@ -235,6 +240,8 @@ public class Parser {
         relationDefinitionH30.addModel(capDiffuse);
         relationDefinitionDiffuus1.addModel(capDiffuse);
         relationDefinitionNotDiffuus.addModel(capDiffuse);
+        relationDefinitionH.addModel(capDiffuse);
+        relationDefinitionL.addModel(capDiffuse);
 
         Part partCapL20 = new Part(capDiffuse);
         partCapL20.setPrice(BigDecimal.valueOf(40.92));
@@ -254,6 +261,7 @@ public class Parser {
         models.add(capClear);
         relationDefinitionL20.addModel(capClear);
         relationDefinitionL30.addModel(capClear);
+        relationDefinitionL.addModel(capClear);
 
         partCapL20 = new Part(capClear);
         partCapL20.setPrice(BigDecimal.valueOf(35.62));
@@ -1057,7 +1065,7 @@ public class Parser {
         relationDefinitionL30.addModel(resinClear);
         relationDefinitionH20.addModel(resinClear);
         relationDefinitionH30.addModel(resinClear);
-
+        relationDefinitionL.addModel(resinClear);
 
         part = new Part(resinClear);
         part.setId("95000");
@@ -1083,6 +1091,9 @@ public class Parser {
         relationDefinitionH30.addModel(resinDiffuse);
         relationDefinitionNotDiffuus.addModel(resinDiffuse);
         relationDefinitionDiffuus1.addModel(resinDiffuse);
+        relationDefinitionH.addModel(resinDiffuse);
+        relationDefinitionL.addModel(resinDiffuse);
+
         part = new Part(resinDiffuse);
         part.setId("95001");
         part.setPrice(BigDecimal.valueOf(43.13));
@@ -1448,22 +1459,22 @@ public class Parser {
         parts.add(part);
 
 
-        ledStrip = new RGBLedStrip(new Dimension(null));
-        ledStrip.setName("liniLED® PCB RGB 240");
-        ledStrip.setMaxDimension(new Dimension(2600));
-        ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(100);
-        ledStrip.setCode("RQ");
-        models.add(ledStrip);
-        relationDefinitionRGBCable.addModel(ledStrip);
-
-
-        part = new Part(ledStrip);
-        part.setPrice(BigDecimal.valueOf(77.95));
-        part.setId("12139");
-        part.setType("MTR");
-        part.setDescription("liniLED® PCB RGB 240");
-        part.setImageUrl("12182-PCB-Red-Deco.jpg");
-        parts.add(part);
+//        ledStrip = new RGBLedStrip(new Dimension(null));
+//        ledStrip.setName("liniLED® PCB RGB 240");
+//        ledStrip.setMaxDimension(new Dimension(2600));
+//        ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(100);
+//        ledStrip.setCode("RQ");
+//        models.add(ledStrip);
+//        relationDefinitionRGBCable.addModel(ledStrip);
+//
+//
+//        part = new Part(ledStrip);
+//        part.setPrice(BigDecimal.valueOf(77.95));
+//        part.setId("12139");
+//        part.setType("MTR");
+//        part.setDescription("liniLED® PCB RGB 240");
+//        part.setImageUrl("12182-PCB-Red-Deco.jpg");
+//        parts.add(part);
 
 //        ledStrip = new PowerLedStrip(new Dimension(null));
 //        ledStrip.setName("liniLED® Power Orange");

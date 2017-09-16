@@ -60,6 +60,22 @@ export class ProductConfiguration {
     return models;
   }
 
+  deleteModel(step:StepModel){
+    if (this.modelsForSteps != undefined) {
+      let mix=null;
+      for (let i of this.modelsForSteps) {
+        if (i.step && i.step.stepindex == step.stepindex) {
+
+          mix=i;
+          break;
+        }
+      }
+      if (mix){
+        this.modelsForSteps=this.modelsForSteps.filter(obj => obj !== mix);
+      }
+    }
+  }
+
   assignModel(step: StepModel, model: Model, value: number) {
     let found: ModelChosenStep = null;
     if (this.modelsForSteps != undefined) {

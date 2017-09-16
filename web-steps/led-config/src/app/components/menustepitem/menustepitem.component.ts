@@ -82,17 +82,17 @@ export class MenustepitemComponent implements OnInit {
           }
         });
 
-        console.info(selectedModels);
-        let filteredModels = this.filter2(this._step.models, selectedModels,this._step.stepindex);
+        console.info(res);
+        let filteredModels = this.filter2(this._step.models, this.selectedModel, selectedModels, this._step.stepindex);
         console.info(this._step);
         if (filteredModels.length > 0) {
           this.filteredModels = filteredModels;
-          console.info(filteredModels);
+          console.info(this.selectedModel);
         } else {
 
           this.filteredModels = this._step.models;
         }
-        if ((selectedModels.length==1 && selectedModels[0].step==this._step.stepindex)){
+        if ((selectedModels.length == 1 && selectedModels[0].step == this._step.stepindex)) {
           this.filteredModels = this._step.models;
         }
 
@@ -110,6 +110,12 @@ export class MenustepitemComponent implements OnInit {
     this.filteredModels = this._step.models;
   }
 
+
+  resetModel() {
+    this.m = null;
+    this.reset();
+    this.productconfigService.deleteModelStep(this._step);
+  }
 
   skipThisStep(value: MdCheckboxChange) {
 
@@ -167,27 +173,77 @@ export class MenustepitemComponent implements OnInit {
     return '';
   }
 
-  filter2(models: Model[], selectedModels: Model[],currentStepIndex:number) {
-    let mls: Array<Model> = [];
+  filter2(models: Model[], currentModel: Model, selectedModels: Model[], currentStepIndex: number) {
+    let mls: Model[] = [];
+    let gatheredModels: Model[] = [];
 
+    console.info('begin');
+    console.info(models);
+    console.info(currentModel);
+    console.info(selectedModels);
+    let mcount: Map<Model, number> = new Map<Model,number>();
     if (models && selectedModels) {
-      for (let model of models) {
-        let relations = Model.relatedRelations2(model, selectedModels);
-        relations.forEach((rel)=> {
-          rel.models.forEach((ml)=> {
+      for (let model of selectedModels) {
+        if ((currentModel != null || currentModel != undefined) && model.uuid == currentModel.uuid) {
+          continue;
+        }
+        console.info(model);
+        for (let modelRel of model.relations) {
+          if (modelRel.relationState == RelationState.ALLOWED) {
+            for (let modelOfRel of modelRel.models) {
+              //optimize by currentStepIndex
+              gatheredModels.push(modelOfRel);
 
-            if (model.uuid!==ml.uuid && ml.step==currentStepIndex){
-            mls.push(ml);
 
             }
+          }
+        }
 
-          })
-        })
+      }
+      console.info(gatheredModels);
+
+      //mcount.set(gatheredModels[0].uuid,1);
+      for (let m of gatheredModels) {
+
+        for (let ml of models) {
+          if (ml.uuid == m.uuid) {
+
+
+            mls.push(ml);
+
+            if (mcount.has(ml)) {
+              mcount.set(ml, mcount.get(ml) + 1);
+            } else {
+              mcount.set(ml, 1)
+            }
+            break;
+          }
+        }
       }
 
+
     }
-    return mls;
+
+    console.info(mcount);
+    let max: number = 0;
+    for (let p of mcount.values()) {
+      if (p > max) {
+        max = p;
+      }
+    }
+    let fmls: Array<Model> = [];
+    mcount.forEach((v, k)=> {
+      if (v == max) {
+        fmls.push(k);
+      }
+    });
+
+
+    console.info(fmls);
+    console.info('end');
+    return fmls;
   }
+
 
   filter(models: Model[]) {
     let mls: Array<Model> = [];
@@ -313,6 +369,7 @@ export class MenustepitemComponent implements OnInit {
   reset() {
     this.skip = false;
     this.selectedModel = null;
+
   }
 
   prevStepItems() {
