@@ -11,7 +11,7 @@ export class ProductConfiguration {
     let found: boolean = false;
     if (step) {
       for (let i of this.modelsForSteps) {
-        if ((i.step && i.step.stepindex == step) || (i.skipped && i.step.skip)) {
+        if ((i.step && i.step.stepindex == step) || (i.skipped && i.step.skippable)) {
           found = true;
           break;
         }

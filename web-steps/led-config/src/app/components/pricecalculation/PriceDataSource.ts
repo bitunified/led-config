@@ -1,6 +1,5 @@
-import {PriceCalculation} from "../../domain/server/PriceCalculation";
-import {DataSource} from '@angular/cdk';
-import {Observable} from 'rxjs/Observable';
+import {DataSource} from "@angular/cdk";
+import {Observable} from "rxjs/Observable";
 import {PriceAmountItem} from "./PriceAmountItem";
 import {PriceDatabase} from "./PriceDatabase";
 export class PriceDataSource extends DataSource<any> {

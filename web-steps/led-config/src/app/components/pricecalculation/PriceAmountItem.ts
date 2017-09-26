@@ -4,5 +4,7 @@ export interface PriceAmountItem{
 
   description:string;
 
+  price:string;
+
   amount:string;
 }

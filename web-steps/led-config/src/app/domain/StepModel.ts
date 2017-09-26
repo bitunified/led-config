@@ -27,7 +27,7 @@ export class StepModel {
 
   @serialize
   @deserialize
-  skip:boolean;
+  skippable:boolean;
 
   @serialize
   @deserialize

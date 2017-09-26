@@ -18,16 +18,16 @@
           </md-card-header>
           <md-card-content>
 
-            <div *ngIf="step.skip" class="optionalChecker">
+         <!--   <div *ngIf="step.skippable" class="optionalChecker">
               <md-checkbox (change)="skipThisStep($event)" [(ngModel)]="checked" [ngModelOptions]="{standalone: true}"
-                           (ngModelChange)="onCheckBoxChange(skip)">
-                Optional step, skip it.
+                           (ngModelChange)="onCheckBoxChange(skippable)">
+                Optional step, skippable it.
               </md-checkbox>
 
-            </div>
+            </div>-->
 
             <div class="selectionPanel">
-              <div *ngIf="isStepTypeValues(step) && !skip" class="propContainer">
+              <div *ngIf="isStepTypeValues(step) && !skippable" class="propContainer">
 
                 <div class="selectContainer">
                   <md-select placeholder="Select {{step.configDescription}}" (onClose)="changeSelect($event)"
@@ -39,14 +39,14 @@
 
                     </md-option>
                   </md-select>
-                  <button md-raised (click)="resetModel()">Reset</button>
+                  <div *ngIf="checkResetButton()">
+                  <button md-raised-button (click)="resetModel()">Reset</button>
+                  </div>
                 </div>
 
 
               </div>
-              <div *ngIf="isStepTypeValues(step) && filter2(step.models).length==0">
-                No configuration possible. Go to previous step and choose another option.
-              </div>
+
               <div *ngIf="isStepTypeNumber(step) && !checked">
 
                 Click on line to select {{step.configDescription}}<br/>
@@ -69,8 +69,8 @@
 
       </div>
 
-      <div *ngIf="true">
-        <md-card class="infoCard" *ngIf="!skip">
+      <div *ngIf="m">
+        <md-card class="infoCard" *ngIf="!skippable">
 
           <md-card-header>
 

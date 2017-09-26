@@ -12,7 +12,7 @@ export class PriceDatabase {
 
     let prices: Array<PriceAmountItem> = [];
     for (let p of priceCalculation.prices) {
-      let priceItem:PriceAmountItem = {id: p.part.id, description: p.part.getNameTranslated('en'), amount: String(p.count)};
+      let priceItem:PriceAmountItem = {id: p.part.id, description: p.part.getNameTranslated('en'),price: String(p.part.price),amount: String(p.count)};
       prices.push(priceItem);
 
     }

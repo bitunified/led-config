@@ -82,22 +82,18 @@ export class MenustepsComponent implements OnInit {
 
   checkFinish(event) {
 
-    this.enableFinishButton = false;
-    if (this.productconfig.containsStep(event)) {
-      // if (this.currentStep < this.stepsall.steps.length) {
-      //   this.currentStep++;
-      //
-      //   return;
-      // }
-      if (event == this.stepsall.steps.length) {
-        this.enableFinishButton = true;
-        return true;
+
+    console.info(this.productconfig);
+
+    for (let stepI of this.stepsall.steps){
+      if (!(stepI.skippable || this.productconfig.containsStep(stepI.stepindex))){
+        this.enableFinishButton = false;
+        return false;
       }
-
     }
-    // this.notificationService.notificationMessageAnnouncement(new NotificationMessage("Select an option to click the product-item.",ErrorNotificationState.INFO));
+    this.enableFinishButton = true;
 
-    return false;
+    return true;
   }
 
   finish() {

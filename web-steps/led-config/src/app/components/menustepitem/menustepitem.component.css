@@ -58,7 +58,7 @@
 .propContainer{
 }
 .selectContainer{
-
+  width:120%
   /*display: inline-grid;*/
 }
 .selectOption{

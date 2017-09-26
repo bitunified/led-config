@@ -82,14 +82,10 @@ export class MenustepitemComponent implements OnInit {
           }
         });
 
-        console.info(res);
         let filteredModels = this.filter2(this._step.models, this.selectedModel, selectedModels, this._step.stepindex);
-        console.info(this._step);
         if (filteredModels.length > 0) {
           this.filteredModels = filteredModels;
-          console.info(this.selectedModel);
         } else {
-
           this.filteredModels = this._step.models;
         }
         if ((selectedModels.length == 1 && selectedModels[0].step == this._step.stepindex)) {
@@ -110,6 +106,12 @@ export class MenustepitemComponent implements OnInit {
     this.filteredModels = this._step.models;
   }
 
+  checkResetButton(){
+    if (this.m){
+      return true;
+    }
+    return false;
+  }
 
   resetModel() {
     this.m = null;
@@ -121,7 +123,7 @@ export class MenustepitemComponent implements OnInit {
 
     this.onInputChange(null);
     this.skip = value.checked;
-    if (this._step.skip) {
+    if (this._step.skippable) {
       let modelC: ModelChosenStep = this.productconfigService.productConfiguration.getModelChosenFromStep(this._step.stepindex);
 
       if (modelC) {
@@ -200,7 +202,6 @@ export class MenustepitemComponent implements OnInit {
         }
 
       }
-      console.info(gatheredModels);
 
       //mcount.set(gatheredModels[0].uuid,1);
       for (let m of gatheredModels) {
@@ -224,7 +225,6 @@ export class MenustepitemComponent implements OnInit {
 
     }
 
-    console.info(mcount);
     let max: number = 0;
     for (let p of mcount.values()) {
       if (p > max) {
@@ -239,8 +239,6 @@ export class MenustepitemComponent implements OnInit {
     });
 
 
-    console.info(fmls);
-    console.info('end');
     return fmls;
   }
 
@@ -369,6 +367,7 @@ export class MenustepitemComponent implements OnInit {
   reset() {
     this.skip = false;
     this.selectedModel = null;
+    this.currentPart=null;
 
   }
 

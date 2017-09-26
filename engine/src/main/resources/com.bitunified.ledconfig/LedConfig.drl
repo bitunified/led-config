@@ -710,11 +710,10 @@ rule "Actie: kap toevoegen"
 no-loop true
     when
        cap:Cap()
-        profile:Profile()
     then
 
         if (cap!=null ){
-       Part foundPart=PartModelHelper.getPart(parts,cap.getClass(),cap,profile);
+       Part foundPart=PartModelHelper.getPart(parts,cap.getClass(),cap,null);
         if (foundPart!=null){
           Part part=SerializationUtils.clone(foundPart);
                    PartListHelper.addToPartCountList(partCountList,part,1d);
@@ -752,7 +751,7 @@ end
 rule "Actie: afdekkap toevoegen"
 no-loop true
     when
-       cap:Cap()
+       cap:EndCap()
         profile:Profile()
 
     then
