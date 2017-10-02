@@ -15,7 +15,7 @@ export class PricecalculationComponent implements OnInit {
   priceCalculation: PriceCalculation;
   dataSource: PriceDataSource | null;
 
-  displayedColumns:Array<string>=["id","description","price","amount"];
+  displayedColumns:Array<string>=["id","description","pricc","amount"];
   constructor(@Optional() @Inject(MD_DIALOG_DATA) public data: any, public dialogRef: MdDialogRef<PricecalculationComponent>,public translate:TranslateService) {
 
   }
