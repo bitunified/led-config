@@ -16,6 +16,8 @@ import {PartService} from "../../services/partservice.service";
 import {Part} from "../../domain/server/Part";
 import {ProductConfiguration} from "../../domain/ProductConfiguration";
 import {TranslateService} from "@ngx-translate/core";
+import { Observable } from 'rxjs/Rx';
+
 @Component({
   selector: 'menustepitem',
   templateUrl: './menustepitem.component.html',
@@ -52,7 +54,15 @@ export class MenustepitemComponent implements OnInit {
   skip: boolean = false;
 
   checked: boolean = false;
-  currentPart: Part;
+
+
+
+  currentPart: Observable<Part>;
+
+
+  currentImageUrl:string;
+
+
 
   @Input()
   m: Model;
@@ -64,12 +74,16 @@ export class MenustepitemComponent implements OnInit {
 
 
   constructor(public translate: TranslateService, private productcodeService: ProductcodeService, private productconfigService: ProductconfigurationService, private partService: PartService) {
+
     this.productcodeServiceSubscription = productcodeService.productcodeSource$.subscribe(
       res => {
+
         if (res.currentStep == this._step.stepindex) {
           this.reset();
+
         }
         this.currentStep = res.currentStep;
+
       });
 
     this.productConfigSubscription = productconfigService.productconfigSource$.subscribe(
@@ -94,6 +108,7 @@ export class MenustepitemComponent implements OnInit {
 
 
       });
+
   }
 
   ngOnDestroy() {
@@ -104,6 +119,10 @@ export class MenustepitemComponent implements OnInit {
   ngOnInit() {
     this.reset();
     this.filteredModels = this._step.models;
+  }
+
+  subscribePart(model: Model, productConfig: ProductConfiguration, currentStep: number) {
+    this.currentPart=this.partService.getPart(model, productConfig, currentStep);
   }
 
   checkResetButton(){
@@ -117,6 +136,7 @@ export class MenustepitemComponent implements OnInit {
     this.m = null;
     this.reset();
     this.productconfigService.deleteModelStep(this._step);
+
   }
 
   skipThisStep(value: MdCheckboxChange) {
@@ -154,7 +174,17 @@ export class MenustepitemComponent implements OnInit {
   }
 
   getDescriptionFromPart(part: Part) {
+    if (part!=null){
+
     return part.getNameTranslated(this.translate.defaultLang);
+    }
+    return "";
+  }
+  evaluatePrice(part:Part){
+    if (part!=null){
+      return part.price;
+    }
+    return 0;
   }
 
   getModelTitle(): string {
@@ -367,7 +397,7 @@ export class MenustepitemComponent implements OnInit {
   reset() {
     this.skip = false;
     this.selectedModel = null;
-    this.currentPart=null;
+    //this.currentPart=null;
 
   }
 
@@ -412,6 +442,8 @@ export class MenustepitemComponent implements OnInit {
     if (this.m != undefined) {
       this.selectedModel = this.m;
       this.changeSelection();
+      this.subscribePart(this.m, this.productconfigService.productConfiguration, this.step.stepindex);
+
     }
   }
 
@@ -437,9 +469,7 @@ export class MenustepitemComponent implements OnInit {
 
 
   public stepDiff(current) {
-
     return current.stepindex - this.currentStep - 1;
-
   }
 
 
@@ -447,12 +477,10 @@ export class MenustepitemComponent implements OnInit {
 
     this.selectedModel = this.m;
     let productConfig = this.productconfigService.productconfigAnnouncement(this.step, this.selectedModel, null);
-    console.info(productConfig);
     let curStep = this.step.stepindex;
     if (curStep == 0) {
       curStep = 1;
     }
-    this.getPart(this.selectedModel, productConfig, curStep);
 
     this.productcodeService.productcodeAnnouncement(this.selectedModel.code, this.step.stepindex);
 
@@ -470,11 +498,14 @@ export class MenustepitemComponent implements OnInit {
     return "";
   }
 
-  getImageUrl(m: Model, currentPart: Part) {
+  getImageUrl(m: Model, currentPart:Part) {
     if (m != null && m.imageUrl != null) {
+      this.currentImageUrl=m.imageUrl;
       return m.imageUrl;
     }
     if (currentPart != null && currentPart.imageUrl != null) {
+      this.currentImageUrl=currentPart.imageUrl;
+
       return currentPart.imageUrl;
     }
     return null;
@@ -482,28 +513,18 @@ export class MenustepitemComponent implements OnInit {
 
   getKeyValueModelFromStep(stepIndex: number, propkey: string): string {
     let model: Model = this.productconfigService.productConfiguration.getModelFromStep(stepIndex);
-
     if (model) {
       if (model.properties) {
         for (let prop of model.properties) {
-
           if (prop.name == propkey) {
             return prop.value;
           }
-
         }
       }
     }
   }
 
-  getPart(model: Model, productConfig: ProductConfiguration, currentStep: number) {
-    this.partService.getPart(model, productConfig, currentStep).subscribe((res: Part) => {
-        let serverresponse: Part = res;
-        this.currentPart = serverresponse;
-      }
-      ,
-      error=>console.info('error'));
-  }
+
 
   private nextStepProcessing() {
     this.nextStep.emit(this.step.stepindex);

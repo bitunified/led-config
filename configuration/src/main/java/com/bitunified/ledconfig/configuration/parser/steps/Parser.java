@@ -887,7 +887,117 @@ public class Parser {
         part.setImageUrl("60013liniLEDRGBPUConnectorSet.jpg");
         part.setPrice(BigDecimal.valueOf(10.41));
         parts.add(part);
-        //60014	Kabel RGB PUR 5 m with PU connector set	Y	€ 10,41
+
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("Cable X RGB PUR White 1 m with open end");
+        cable.setTranslations(Locale.en, "Cable X RGB PUR White 1 m with open end");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("RGB");
+        cable.setCode("G");
+        relationDefinitionRGBCable.addModel(cable);
+        models.add(cable);
+        part = new Part(cable);
+        part.setId("60020");
+        part.setImageUrl("60013liniLEDRGBPUConnectorSet.jpg");
+        part.setPrice(BigDecimal.valueOf(6.25));
+        parts.add(part);
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("Cable X RGB PUR White 5 m with open end");
+        cable.setTranslations(Locale.en, "Cable X RGB PUR White 5 m with open end");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("RGB");
+        cable.setCode("H");
+        relationDefinitionRGBCable.addModel(cable);
+        models.add(cable);
+        part = new Part(cable);
+        part.setId("60020b");
+        part.setImageUrl("60013liniLEDRGBPUConnectorSet.jpg");
+        part.setPrice(BigDecimal.valueOf(31.25));
+        parts.add(part);
+
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("Cable X RGB PUR White 10 m with open end");
+        cable.setTranslations(Locale.en, "Cable X RGB PUR White 10 m with open end");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("RGB");
+        cable.setCode("J");
+        relationDefinitionRGBCable.addModel(cable);
+        models.add(cable);
+        part = new Part(cable);
+        part.setId("60020");
+        part.setImageUrl("60013liniLEDRGBPUConnectorSet.jpg");
+        part.setPrice(BigDecimal.valueOf(62.5));
+        parts.add(part);
+
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("Cable IV RGB PVC Black 1 m with open end");
+        cable.setTranslations(Locale.en, "Cable IV RGB PVC Black 1 m with open end");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("RGB");
+        cable.setCode("R");
+        relationDefinitionRGBCable.addModel(cable);
+        models.add(cable);
+        part = new Part(cable);
+        part.setId("60022");
+        part.setImageUrl("60013liniLEDRGBPUConnectorSet.jpg");
+        part.setPrice(BigDecimal.valueOf(2.28));
+        parts.add(part);
+
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("Cable IV RGB PVC Black 5 m with open end");
+        cable.setTranslations(Locale.en, "Cable IV RGB PVC Black 5 m with open end");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("RGB");
+        cable.setCode("S");
+        relationDefinitionRGBCable.addModel(cable);
+        models.add(cable);
+        part = new Part(cable);
+        part.setId("60022b");
+        part.setImageUrl("60013liniLEDRGBPUConnectorSet.jpg");
+        part.setPrice(BigDecimal.valueOf(11.4));
+        parts.add(part);
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("Cable IV RGB PVC Black 10 m with open end");
+        cable.setTranslations(Locale.en, "Cable IV RGB PVC Black 10 m with open end");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("RGB");
+        cable.setCode("T");
+        relationDefinitionRGBCable.addModel(cable);
+        models.add(cable);
+        part = new Part(cable);
+        part.setId("60022c");
+        part.setImageUrl("60013liniLEDRGBPUConnectorSet.jpg");
+        part.setPrice(BigDecimal.valueOf(22.8));
+        parts.add(part);
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("Cable RGB PUR 5 m with PU connector set");
+        cable.setTranslations(Locale.en, "Cable RGB PUR 5 m with PU connector set");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("RGB");
+        cable.setCode("Y");
+        relationDefinitionRGBCable.addModel(cable);
+        models.add(cable);
+        part = new Part(cable);
+        part.setId("60014");
+        part.setImageUrl("60013liniLEDRGBPUConnectorSet.jpg");
+        part.setPrice(BigDecimal.valueOf(10.41));
+        parts.add(part);
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("Cable RGB PUR 10 m with PU connector set");
+        cable.setTranslations(Locale.en, "Cable RGB PUR 10 m with PU connector set");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("RGB");
+        cable.setCode("Z");
+        relationDefinitionRGBCable.addModel(cable);
+        models.add(cable);
+        part = new Part(cable);
+        part.setId("60015");
+        part.setImageUrl("60013liniLEDRGBPUConnectorSet.jpg");
+        part.setPrice(BigDecimal.valueOf(15.68));
+        parts.add(part);
+
+
+                //60014	Kabel RGB PUR 5 m with PU connector set	Y	€ 10,41
         cable = new Cable(new Dimension(null));
         cable.setName("Kabel RGB PUR 10 m with PU connector set");
         cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
@@ -955,100 +1065,144 @@ public class Parser {
 
         //-----------------------------TW cables -----------------------------
 
-        cable = new Cable(new Dimension(null));
-        cable.setName("Kabel TW Wit 1 m met open eind");
-        cable.setTranslations(Locale.en, "Cable TW white 1 m with open end");
-        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
-        cable.setCode("TR");
-        models.add(cable);
-        relationDefinitionTWCable.addModel(cable);
-        part = new Part(cable);
-        part.setId("60005tw");
-        part.setPrice(BigDecimal.valueOf(1.64));
-        parts.add(part);
+//        cable = new Cable(new Dimension(null));
+//        cable.setName("Kabel TW Wit 1 m met open eind");
+//        cable.setTranslations(Locale.en, "Cable TW white 1 m with open end");
+//        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
+//        cable.setCode("TR");
+//        models.add(cable);
+//        relationDefinitionTWCable.addModel(cable);
+//        part = new Part(cable);
+//        part.setId("60005tw");
+//        part.setPrice(BigDecimal.valueOf(1.64));
+//        parts.add(part);
+//
+//        cable = new Cable(new Dimension(null));
+//        cable.setName("Kabel TW Wit 5 m met open eind");
+//        cable.setTranslations(Locale.en, "Cable TW white 5 m with open end");
+//        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
+//        cable.setCode("TS");
+//        models.add(cable);
+//        relationDefinitionTWCable.addModel(cable);
+//
+//        part = new Part(cable);
+//        part.setId("60005stw");
+//        part.setPrice(BigDecimal.valueOf(8.2));
+//        part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
+//        parts.add(part);
+//
+//
+//        cable = new Cable(new Dimension(null));
+//        cable.setName("Kabel TW Wit 10 m met open eind");
+//        cable.setTranslations(Locale.en, "Cable TW white 10 m with open end");
+//        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
+//        cable.setCode("TT");
+//        models.add(cable);
+//        relationDefinitionTWCable.addModel(cable);
+//        part = new Part(cable);
+//        part.setId("60005tw");
+//        part.setPrice(BigDecimal.valueOf(16.4));
+//        part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
+//        parts.add(part);
+//
+//
+//        cable = new Cable(new Dimension(null));
+//        cable.setName("Kabel TW PUR 1 m met open eind");
+//        cable.setTranslations(Locale.en, "Cable TW PUR 1 m with open end");
+//        cable.getProperty(Cable.CABLE_TYPE_S).setValue("TW");
+//        cable.setCode("TG");
+//        relationDefinitionTWCable.addModel(cable);
+//        models.add(cable);
+//        part = new Part(cable);
+//        part.setId("60007tw");
+//        part.setPrice(BigDecimal.valueOf(4.77));
+//        part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
+//        parts.add(part);
+//
+//
+//        cable = new Cable(new Dimension(null));
+//        cable.setName("Kabel TW PUR 1 m met PU connector set");
+//        cable.setTranslations(Locale.en, "Cable TW PUR 1 m with PU connector set");
+//        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
+//        cable.setCode("TX");
+//        relationDefinitionTWCable.addModel(cable);
+//        models.add(cable);
+//        part = new Part(cable);
+//        part.setId("60013tw");
+//        part.setPrice(BigDecimal.valueOf(6.63));
+//        part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
+//        parts.add(part);
+//        //60013	Kabel TW PUR 1 m with PU connector set	X	€ 6,63
+//        cable = new Cable(new Dimension(null));
+//        cable.setName("Kabel TW PUR 5 m met PU connector set");
+//        cable.setTranslations(Locale.en, "Cable TW PUR 5 m with PU connector set");
+//        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
+//        cable.setCode("TY");
+//        relationDefinitionTWCable.addModel(cable);
+//        models.add(cable);
+//        part = new Part(cable);
+//        part.setId("60014tw");
+//        part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
+//        part.setPrice(BigDecimal.valueOf(10.41));
+//        parts.add(part);
+//        //60014	Kabel TW PUR 5 m with PU connector set	Y	€ 10,41
+//        cable = new Cable(new Dimension(null));
+//        cable.setName("Kabel TW PUR 10 m met PU connector set");
+//        cable.setTranslations(Locale.en, "Cable TW PUR 10m with PU connector set");
+//        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
+//        cable.setCode("TZ");
+//        relationDefinitionTWCable.addModel(cable);
+//        models.add(cable);
+//        part = new Part(cable);
+//        part.setId("60015tw");
+//        part.setPrice(BigDecimal.valueOf(15.68));
+//        part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
+//        parts.add(part);
+//        //60015	Kabel TW PUR 10 m with PU connector set	Z	€ 15,68
+
 
         cable = new Cable(new Dimension(null));
-        cable.setName("Kabel TW Wit 5 m met open eind");
-        cable.setTranslations(Locale.en, "Cable TW white 5 m with open end");
-        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
-        cable.setCode("TS");
-        models.add(cable);
-        relationDefinitionTWCable.addModel(cable);
-
-        part = new Part(cable);
-        part.setId("60005stw");
-        part.setPrice(BigDecimal.valueOf(8.2));
-        part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
-        parts.add(part);
-
-
-        cable = new Cable(new Dimension(null));
-        cable.setName("Kabel TW Wit 10 m met open eind");
-        cable.setTranslations(Locale.en, "Cable TW white 10 m with open end");
-        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
-        cable.setCode("TT");
-        models.add(cable);
-        relationDefinitionTWCable.addModel(cable);
-        part = new Part(cable);
-        part.setId("60005tw");
-        part.setPrice(BigDecimal.valueOf(16.4));
-        part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
-        parts.add(part);
-
-
-        cable = new Cable(new Dimension(null));
-        cable.setName("Kabel TW PUR 1 m met open eind");
-        cable.setTranslations(Locale.en, "Cable TW PUR 1 m with open end");
+        cable.setName("Cable V TW PVC White 1 m with open end");
+        cable.setTranslations(Locale.en, "Cable V TW PVC White 1 m with open end");
         cable.getProperty(Cable.CABLE_TYPE_S).setValue("TW");
-        cable.setCode("TG");
+        cable.setCode("N");
         relationDefinitionTWCable.addModel(cable);
         models.add(cable);
         part = new Part(cable);
-        part.setId("60007tw");
-        part.setPrice(BigDecimal.valueOf(4.77));
+        part.setId("60023");
+        part.setPrice(BigDecimal.valueOf(4.24));
+        part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
+        parts.add(part);
+
+        cable = new Cable(new Dimension(null));
+        cable.setName("Cable V TW PVC White 5 m with open end");
+        cable.setTranslations(Locale.en, "Cable V TW PVC White 5 m with open end");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("TW");
+        cable.setCode("P");
+        relationDefinitionTWCable.addModel(cable);
+        models.add(cable);
+        part = new Part(cable);
+        part.setId("60023b");
+        part.setPrice(BigDecimal.valueOf(21.2));
         part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
         parts.add(part);
 
 
         cable = new Cable(new Dimension(null));
-        cable.setName("Kabel TW PUR 1 m met PU connector set");
-        cable.setTranslations(Locale.en, "Cable TW PUR 1 m with PU connector set");
-        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
-        cable.setCode("TX");
+        cable.setName("Cable V TW PVC White 10 m with open end");
+        cable.setTranslations(Locale.en, "Cable V TW PVC White 10 m with open end");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("TW");
+        cable.setCode("Q");
         relationDefinitionTWCable.addModel(cable);
         models.add(cable);
         part = new Part(cable);
-        part.setId("60013tw");
-        part.setPrice(BigDecimal.valueOf(6.63));
+        part.setId("60023c");
+        part.setPrice(BigDecimal.valueOf(42.4));
         part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
         parts.add(part);
-        //60013	Kabel TW PUR 1 m with PU connector set	X	€ 6,63
-        cable = new Cable(new Dimension(null));
-        cable.setName("Kabel TW PUR 5 m met PU connector set");
-        cable.setTranslations(Locale.en, "Cable TW PUR 5 m with PU connector set");
-        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
-        cable.setCode("TY");
-        relationDefinitionTWCable.addModel(cable);
-        models.add(cable);
-        part = new Part(cable);
-        part.setId("60014tw");
-        part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
-        part.setPrice(BigDecimal.valueOf(10.41));
-        parts.add(part);
-        //60014	Kabel TW PUR 5 m with PU connector set	Y	€ 10,41
-        cable = new Cable(new Dimension(null));
-        cable.setName("Kabel TW PUR 10 m met PU connector set");
-        cable.setTranslations(Locale.en, "Cable TW PUR 10m with PU connector set");
-        cable.getProperty(Cable.CABLE_TYPE_S).setValue("PU");
-        cable.setCode("TZ");
-        relationDefinitionTWCable.addModel(cable);
-        models.add(cable);
-        part = new Part(cable);
-        part.setId("60015tw");
-        part.setPrice(BigDecimal.valueOf(15.68));
-        part.setImageUrl("60010liniLEDPUConnectorSet.jpg");
-        parts.add(part);
-        //60015	Kabel TW PUR 10 m with PU connector set	Z	€ 15,68
+
+
+
 
 
         //----------------------------END TW Cables----------------------------------

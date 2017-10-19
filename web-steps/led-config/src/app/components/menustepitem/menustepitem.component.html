@@ -1,3 +1,4 @@
+<script src="menustepitem.component.ts"></script>
 <form>
 
   <div class="gridContainer">
@@ -74,9 +75,9 @@
 
           <md-card-header>
 
-            <div md-card-avatar *ngIf="getImageUrl(m,currentPart)!=null" class="detailedImage"
-                 [style.background-image]="'url(' + getImageUrl(m,currentPart)+ ')'" [style.background-size]="cover"
-                 [style.width]="'230px'" [style.height]="'230px'">
+            <div md-card-avatar *ngIf="getImageUrl(m,currentPart | async)!=null" class="detailedImage"
+                 [style.background-image]="'url(' + getImageUrl(m,currentPart | async) + ')'" [style.background-size]="cover"
+                 [style.width]="'220px'" [style.height]="'220px'">
 
             </div>
 
@@ -118,8 +119,8 @@
                   Max. length: {{m.maxDimension==null?'':m.maxDimension.width}} mm
                 </md-list-item>
                 <md-divider></md-divider>
-                <md-list-item *ngIf="currentPart && currentPart.price">
-                  Price: {{currentPart.price | currency:'EUR':true}} ({{getDescriptionFromPart(currentPart)}})
+                <md-list-item *ngIf="(currentPart | async) != null">
+                  Price: {{((evaluatePrice(currentPart | async))) | currency:'EUR':true}} ({{getDescriptionFromPart(currentPart | async)}})
                 </md-list-item>
 
                 <md-list-item i18n *ngIf="m.productPage">
