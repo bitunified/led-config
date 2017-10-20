@@ -47,6 +47,7 @@ export class MenustepsComponent implements OnInit {
   private productCondeSubscription: Subscription;
 
   private productconfig: ProductConfiguration;
+
   enableFinishButton: boolean;
 
   productcode: String;
@@ -62,6 +63,8 @@ export class MenustepsComponent implements OnInit {
       this.currentStep = res.currentStep;
       this.productcode = res.getCode();
     });
+
+
   }
 
   ngOnInit() {
@@ -71,7 +74,7 @@ export class MenustepsComponent implements OnInit {
       return {rels: rels, steps: steps};
     });
     combineRelationSteps.subscribe((combinedRelStep)=> {
-      this.evaluateRelations(combinedRelStep.steps,combinedRelStep.rels);
+      this.evaluateRelations(combinedRelStep.steps, combinedRelStep.rels);
       this.stepsall = combinedRelStep.steps;
       this.relationsAll = combinedRelStep.rels;
 
@@ -83,10 +86,8 @@ export class MenustepsComponent implements OnInit {
   checkFinish(event) {
 
 
-    console.info(this.productconfig);
-
-    for (let stepI of this.stepsall.steps){
-      if (!(stepI.skippable || this.productconfig.containsStep(stepI.stepindex))){
+    for (let stepI of this.stepsall.steps) {
+      if (!(stepI.skippable || this.productconfig.containsStep(stepI.stepindex))) {
         this.enableFinishButton = false;
         return false;
       }
@@ -108,7 +109,7 @@ export class MenustepsComponent implements OnInit {
     });
   }
 
-  evaluateRelations(steps:StepsModel,relations:Relations) {
+  evaluateRelations(steps: StepsModel, relations: Relations) {
     for (let step of steps.steps) {
       for (let stepModel of step.models) {
         for (let relation of relations.relations) {

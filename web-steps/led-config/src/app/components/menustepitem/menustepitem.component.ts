@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, ViewEncapsulation, Output, EventEmitter} from "@angular/core";
+import {Component, OnInit, Input, ViewEncapsulation} from "@angular/core";
 import {ModelserviceService} from "../../services/modelservice.service";
 import {ProductcodeService} from "../../services/productcode.service";
 import {MdCheckboxChange} from "@angular/material";
@@ -16,7 +16,8 @@ import {PartService} from "../../services/partservice.service";
 import {Part} from "../../domain/server/Part";
 import {ProductConfiguration} from "../../domain/ProductConfiguration";
 import {TranslateService} from "@ngx-translate/core";
-import { Observable } from 'rxjs/Rx';
+import {Observable} from "rxjs/Rx";
+import {ProductWarningService} from "../../services/productwarning.service";
 
 @Component({
   selector: 'menustepitem',
@@ -27,7 +28,7 @@ import { Observable } from 'rxjs/Rx';
 })
 export class MenustepitemComponent implements OnInit {
 
-  _step: StepModel;
+
 
   @Input()
   set step(step: StepModel) {
@@ -38,11 +39,11 @@ export class MenustepitemComponent implements OnInit {
     return this._step;
   }
 
+
+  _step: StepModel;
+
   @Input()
   currentStep: number;
-
-  @Output()
-  nextStep: EventEmitter<number> = new EventEmitter<number>();
 
   @Input()
   selectedModel: Model;
@@ -56,12 +57,10 @@ export class MenustepitemComponent implements OnInit {
   checked: boolean = false;
 
 
-
   currentPart: Observable<Part>;
 
 
-  currentImageUrl:string;
-
+  currentImageUrl: string;
 
 
   @Input()
@@ -73,7 +72,7 @@ export class MenustepitemComponent implements OnInit {
   private productConfigSubscription: Subscription;
 
 
-  constructor(public translate: TranslateService, private productcodeService: ProductcodeService, private productconfigService: ProductconfigurationService, private partService: PartService) {
+  constructor(private productWarningService: ProductWarningService, public translate: TranslateService, private productcodeService: ProductcodeService, private productconfigService: ProductconfigurationService, private partService: PartService) {
 
     this.productcodeServiceSubscription = productcodeService.productcodeSource$.subscribe(
       res => {
@@ -88,7 +87,6 @@ export class MenustepitemComponent implements OnInit {
 
     this.productConfigSubscription = productconfigService.productconfigSource$.subscribe(
       res => {
-        console.info(this._step.stepindex);
         let selectedModels: Array<Model> = [];
         res.modelsForSteps.forEach((f) => {
           if (f.chosenModel) {
@@ -109,6 +107,7 @@ export class MenustepitemComponent implements OnInit {
 
       });
 
+
   }
 
   ngOnDestroy() {
@@ -117,16 +116,16 @@ export class MenustepitemComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.reset();
+    //this.reset();
     this.filteredModels = this._step.models;
   }
 
   subscribePart(model: Model, productConfig: ProductConfiguration, currentStep: number) {
-    this.currentPart=this.partService.getPart(model, productConfig, currentStep);
+    this.currentPart = this.partService.getPart(model, productConfig, currentStep);
   }
 
-  checkResetButton(){
-    if (this.m){
+  checkResetButton() {
+    if (this.m) {
       return true;
     }
     return false;
@@ -135,7 +134,7 @@ export class MenustepitemComponent implements OnInit {
   resetModel() {
     this.m = null;
     this.reset();
-    this.productconfigService.deleteModelStep(this._step);
+
 
   }
 
@@ -174,14 +173,15 @@ export class MenustepitemComponent implements OnInit {
   }
 
   getDescriptionFromPart(part: Part) {
-    if (part!=null){
+    if (part != null) {
 
-    return part.getNameTranslated(this.translate.defaultLang);
+      return part.getNameTranslated(this.translate.defaultLang);
     }
     return "";
   }
-  evaluatePrice(part:Part){
-    if (part!=null){
+
+  evaluatePrice(part: Part) {
+    if (part != null) {
       return part.price;
     }
     return 0;
@@ -225,23 +225,16 @@ export class MenustepitemComponent implements OnInit {
             for (let modelOfRel of modelRel.models) {
               //optimize by currentStepIndex
               gatheredModels.push(modelOfRel);
-
-
             }
           }
         }
 
       }
 
-      //mcount.set(gatheredModels[0].uuid,1);
       for (let m of gatheredModels) {
-
         for (let ml of models) {
           if (ml.uuid == m.uuid) {
-
-
             mls.push(ml);
-
             if (mcount.has(ml)) {
               mcount.set(ml, mcount.get(ml) + 1);
             } else {
@@ -251,8 +244,6 @@ export class MenustepitemComponent implements OnInit {
           }
         }
       }
-
-
     }
 
     let max: number = 0;
@@ -267,8 +258,6 @@ export class MenustepitemComponent implements OnInit {
         fmls.push(k);
       }
     });
-
-
     return fmls;
   }
 
@@ -283,14 +272,12 @@ export class MenustepitemComponent implements OnInit {
       }
     }
     this.filteredModels = mls;
-
     return mls;
   }
 
   getTabColor(m: Model): DisplayRelation {
-
-
     this.displayRelation = this.determineRelationState(new DisplayRelation(), m);
+    this.productWarningService.productWarningAnnouncement(this.displayRelation);
     return this.displayRelation;
   }
 
@@ -336,7 +323,7 @@ export class MenustepitemComponent implements OnInit {
       additional = 0;
     }
     let prevModels: Array<Model> = this.productconfigService.productConfiguration.prevModels(this.currentStep + additional);
-
+    console.info(prevModels);
     if (prevModels.length > 0 && m) {
 
       let relations: Array<RelationDefinition> = Model.relatedRelationsForWarning(m, prevModels, this.currentStep - 1);
@@ -397,7 +384,24 @@ export class MenustepitemComponent implements OnInit {
   reset() {
     this.skip = false;
     this.selectedModel = null;
-    //this.currentPart=null;
+    this.currentPart = null;
+   //this.announceModel();
+
+  }
+
+  announceModel() {
+    this.productconfigService.deleteModelStep(this._step);
+
+    // let productConfig = this.productconfigService.productconfigAnnouncement(this._step, this.selectedModel, null);
+    // let curStep = this._step.stepindex;
+    // if (curStep == 0) {
+    //   curStep = 1;
+    // }
+    let code: string = null;
+    if (this.selectedModel != null) {
+      code = this.selectedModel.code;
+    }
+    this.productcodeService.productcodeAnnouncement(code, this.step.stepindex);
 
   }
 
@@ -425,7 +429,6 @@ export class MenustepitemComponent implements OnInit {
     }
     this.productconfigService.productconfigAnnouncement(this.step, modelToSet, valueN);
     this.productcodeService.productcodeAnnouncement(codeString, this.step.stepindex);
-    this.nextStepProcessing();
   }
 
   calculateStepValue(step: StepModel) {
@@ -485,7 +488,6 @@ export class MenustepitemComponent implements OnInit {
     this.productcodeService.productcodeAnnouncement(this.selectedModel.code, this.step.stepindex);
 
     this.getTabColor(this.m);
-    this.nextStepProcessing();
 
   }
 
@@ -498,13 +500,13 @@ export class MenustepitemComponent implements OnInit {
     return "";
   }
 
-  getImageUrl(m: Model, currentPart:Part) {
+  getImageUrl(m: Model, currentPart: Part) {
     if (m != null && m.imageUrl != null) {
-      this.currentImageUrl=m.imageUrl;
+      this.currentImageUrl = m.imageUrl;
       return m.imageUrl;
     }
     if (currentPart != null && currentPart.imageUrl != null) {
-      this.currentImageUrl=currentPart.imageUrl;
+      this.currentImageUrl = currentPart.imageUrl;
 
       return currentPart.imageUrl;
     }
@@ -524,9 +526,4 @@ export class MenustepitemComponent implements OnInit {
     }
   }
 
-
-
-  private nextStepProcessing() {
-    this.nextStep.emit(this.step.stepindex);
-  }
 }

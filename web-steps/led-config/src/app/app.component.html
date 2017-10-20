@@ -13,7 +13,31 @@
     Aeris Configurator 3.0 - Step by step
     <div class="small-product-code" *ngIf="productcode">Productcode: {{productcode}}</div>
     <span class="app-toolbar-filler"></span>
+    <md-list dense class="listProperties">
+      <md-list-item
+        *ngIf="productWarning!=null && productWarning.message!=null && productWarning.relationState=='ALLOWEDWITHWARNING'">
+        <md-chip-list class="mat-chip-list-stacked">
+          <md-chip class="warningChip"
+                   selected="true"
+                   color="warn" i18n>
+            Warning: {{productWarning.message}}
+          </md-chip>
+        </md-chip-list>
 
+
+      </md-list-item>
+      <md-list-item *ngIf="productWarning!=null && productWarning.message!=null && productWarning.relationState=='ALLOWEDWITHINFO'">
+        <md-chip-list class="mat-chip-list-stacked">
+          <md-chip class="warningChip"
+                   selected="true"
+                   color="primary" i18n>
+            Information: {{productWarning.message}}
+          </md-chip>
+        </md-chip-list>
+
+
+      </md-list-item>
+    </md-list>
   </md-toolbar>
 
   <div class="app-content">

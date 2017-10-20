@@ -1,9 +1,9 @@
-import {Component, ViewEncapsulation, OnInit,OnDestroy } from "@angular/core";
+import {Component, ViewEncapsulation, OnInit, OnDestroy} from "@angular/core";
 import {ModelserviceService} from "./services/modelservice.service";
 import {StepsService} from "./services/steps.service";
 import {Observable} from "rxjs/Rx";
 import {ProductcodeService} from "./services/productcode.service";
-import { Subscription }   from 'rxjs/Subscription';
+import {Subscription} from "rxjs/Subscription";
 import {StepsModel} from "./domain/StepsModel";
 import {ProductCodeComposition} from "./domain/ProductCodeComposition";
 import {Model} from "./domain/Model";
@@ -19,12 +19,13 @@ import {ModelTranslation} from "./domain/ModelTranslation";
 import {PriceCalculation} from "./domain/server/PriceCalculation";
 import {NotificationService} from "./services/notificationservice.service";
 import {NotificationComponent} from "./components/notification/notification.component";
-import {MdSnackBar} from "@angular/material";
+import {MdSnackBar, MdDialog} from "@angular/material";
 import {ErrorNotificationState} from "./domain/internal/ErrorNotificationState";
 import {PartService} from "./services/partservice.service";
-import { TranslateService } from '@ngx-translate/core';
-import {MdDialog} from '@angular/material';
+import {TranslateService} from "@ngx-translate/core";
 import {PricecalculationComponent} from "./components/pricecalculation/pricecalculation.component";
+import {ProductWarningService} from "./services/productwarning.service";
+import {DisplayRelation} from "./domain/internal/DisplayRelation";
 
 @Component({
   selector: 'app-root',
@@ -32,20 +33,21 @@ import {PricecalculationComponent} from "./components/pricecalculation/pricecalc
   styleUrls: ['./app.component.css'],
   encapsulation: ViewEncapsulation.None,
   providers: [
-    PartService,NotificationComponent,NotificationService,ModelMargin,ModelDimension,ModelTranslation,RelationService,ModelserviceService,StepsService,ProductcodeService,Model,StepsModel,StepModel,ProductCodeComposition,ProductconfigurationService,ProductConfiguration,ModelChosenStep]
+    ProductWarningService, PartService, NotificationComponent, NotificationService, ModelMargin, ModelDimension, ModelTranslation, RelationService, ModelserviceService, StepsService, ProductcodeService, Model, StepsModel, StepModel, ProductCodeComposition, ProductconfigurationService, ProductConfiguration, ModelChosenStep]
 })
 export class AppComponent implements OnInit,OnDestroy {
 
-  steps:Observable<StepsModel>;
-  productcode:string;
+  steps: Observable<StepsModel>;
+  productcode: string;
   subscription: Subscription;
   subscriptionPriceCalcution: Subscription;
-  subscriptionNotificationMessage:Subscription;
-  relations:Observable<Relations>;
-  priceCalculation:PriceCalculation;
-  notificationMessage:string;
+  subscriptionNotificationMessage: Subscription;
+  relations: Observable<Relations>;
+  priceCalculation: PriceCalculation;
+  notificationMessage: string;
+  productWarning: DisplayRelation;
 
-  constructor(public dialog: MdDialog,public translate: TranslateService,public snackBar: MdSnackBar,private notificationMessageService:NotificationService,private modelService:ModelserviceService,private stepService:StepsService,productcodeService:ProductcodeService,private relationsService:RelationService,private productConfiguration:ProductconfigurationService) {
+  constructor(private productWarningService: ProductWarningService, public dialog: MdDialog, public translate: TranslateService, public snackBar: MdSnackBar, private notificationMessageService: NotificationService, private modelService: ModelserviceService, private stepService: StepsService, productcodeService: ProductcodeService, private relationsService: RelationService, private productConfiguration: ProductconfigurationService) {
     this.subscription = productcodeService.productcodeSource$.subscribe(
       res => {
         this.productcode = res.getCode();
@@ -53,21 +55,23 @@ export class AppComponent implements OnInit,OnDestroy {
 
     this.subscriptionPriceCalcution = productConfiguration.priceCalcSource$.subscribe(
       res => {
-        this.priceCalculation=res;
+        this.priceCalculation = res;
 
       });
 
     this.subscriptionNotificationMessage = notificationMessageService.notificationMessageSource$.subscribe(
       res => {
         this.notificationMessage = res.message;
-        let duration:number=3000;
-        if (res.state==ErrorNotificationState.ERROR){
-          duration=15000;
+        let duration: number = 3000;
+        if (res.state == ErrorNotificationState.ERROR) {
+          duration = 15000;
         }
-        this.snackBar.open(res.message, 'Close',{duration:duration});
+        this.snackBar.open(res.message, 'Close', {duration: duration});
       });
 
-
+    productWarningService.productWarningSource$.subscribe((res)=> {
+      this.productWarning = res;
+    });
     translate.addLangs(["en", "nl"]);
     translate.setDefaultLang('en');
 
@@ -76,32 +80,34 @@ export class AppComponent implements OnInit,OnDestroy {
 
 
   }
-  finished(event:PriceCalculation){
-    console.info(event);
+
+  finished(event: PriceCalculation) {
+
     this.openDialogWithPrice(event);
   }
 
-  openDialogWithPrice(priceOverview:PriceCalculation){
-    let dialogRef = this.dialog.open(PricecalculationComponent,{data:priceOverview,height:'60%',width:'60%'});
+  openDialogWithPrice(priceOverview: PriceCalculation) {
+    let dialogRef = this.dialog.open(PricecalculationComponent, {data: priceOverview, height: '60%', width: '60%'});
     dialogRef.afterClosed().subscribe(result => {
       console.info(result);
     });
   }
 
   ngOnInit() {
-    this.steps=this.stepService.getSteps();
-    this.relations=this.relationsService.getRelations();
+    this.steps = this.stepService.getSteps();
+    this.relations = this.relationsService.getRelations();
     console.info(this.translate.getBrowserLang());
 
   }
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
     this.subscriptionPriceCalcution.unsubscribe();
     this.subscriptionNotificationMessage.unsubscribe();
   }
 
-  backToConfig(){
-    this.priceCalculation=null;
+  backToConfig() {
+    this.priceCalculation = null;
   }
 
 }
