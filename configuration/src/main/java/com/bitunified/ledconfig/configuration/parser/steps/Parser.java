@@ -741,22 +741,23 @@ public class Parser {
         parts.add(part);
 
 
-//        cable.setName("liniLED® Aansluitkabel Mono Demo 1 m");
-//        cable.getProperty(Cable.CABLE_TYPE_S).setValue("mono");
-//        cable.setTranslations(Locale.en, "liniLED® Connectorcable Mono Demo 1 m");
-//        cable.setImageUrl("mono.jpg");
-//        cable.setCode("K");
-//        relationDefinitionMonoCable.addModel(cable);
-//
-//        models.add(cable);
-//
-//        part = new Part(cable);
-//        part.setPrice(BigDecimal.valueOf(13.99));
-//        part.setId("11214");
-//        part.setDescription("liniLED® Aansluitkabel Mono Demo 1 m");
-//        part.setTranslations(Locale.en, "liniLED® Connectorcable Mono Demo 1 m");
-//        part.setType("MTR");
-//        parts.add(part);
+        Cable cable =new Cable(new Dimension(null));
+        cable.setName("Cable Mono Demo 1 m");
+        cable.getProperty(Cable.CABLE_TYPE_S).setValue("mono");
+        cable.setTranslations(Locale.en, "Cable Mono Demo 1 m");
+        cable.setImageUrl("mono.jpg");
+        cable.setCode("K");
+        relationDefinitionNOTRGBTW.addModel(cable);
+
+        models.add(cable);
+
+        part = new Part(cable);
+        part.setPrice(BigDecimal.valueOf(13.99));
+        part.setId("11214");
+        part.setDescription("liniLED® Aansluitkabel Mono Demo 1 m");
+        part.setTranslations(Locale.en, "liniLED® Connectorcable Mono Demo 1 m");
+        part.setType("MTR");
+        parts.add(part);
 
 //        cable = new Cable(new Dimension(null));
 //        cable.setName("Kabel Mono Wit 1 m met open eind");
@@ -802,7 +803,7 @@ public class Parser {
 //        part.setTranslations(Locale.en, "Cable Mono white 10 m with open end");
 //        parts.add(part);
 
-        Cable cable = new Cable(new Dimension(null));
+        //Cable cable = new Cable(new Dimension(null));
         cable.setName("Kabel RGB Wit 1 m met open eind");
         cable.setTranslations(Locale.en, "Cable RGB white 1 m with open end");
         cable.getProperty(Cable.CABLE_TYPE_S).setValue("PVCopenend");
