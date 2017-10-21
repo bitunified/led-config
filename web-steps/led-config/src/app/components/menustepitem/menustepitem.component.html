@@ -2,8 +2,6 @@
 <form>
 
   <div class="gridContainer">
-
-
     <div *ngIf="true" class="itemModel">
       <div class="stepCurrentCard">
         <md-card class="stepCard">
@@ -18,15 +16,6 @@
             <md-card-subtitle></md-card-subtitle>
           </md-card-header>
           <md-card-content>
-
-         <!--   <div *ngIf="step.skippable" class="optionalChecker">
-              <md-checkbox (change)="skipThisStep($event)" [(ngModel)]="checked" [ngModelOptions]="{standalone: true}"
-                           (ngModelChange)="onCheckBoxChange(skippable)">
-                Optional step, skippable it.
-              </md-checkbox>
-
-            </div>-->
-
             <div class="selectionPanel">
               <div *ngIf="isStepTypeValues(step) && !skippable" class="propContainer">
 
@@ -41,7 +30,7 @@
                     </md-option>
                   </md-select>
                   <div *ngIf="checkResetButton()">
-                  <button md-raised-button (click)="resetModel()">Reset</button>
+                  <button md-raised-button (click)="reset()">Reset</button>
                   </div>
                 </div>
 
@@ -73,43 +62,24 @@
       <div *ngIf="m">
         <md-card class="infoCard" *ngIf="!skippable">
 
-          <md-card-header>
+          <md-card-header *ngIf="currentPart | async; let part; else loading">
 
-            <div md-card-avatar *ngIf="getImageUrl(m,currentPart | async)!=null" class="detailedImage"
-                 [style.background-image]="'url(' + getImageUrl(m,currentPart | async) + ')'" [style.background-size]="cover"
+            <div md-card-avatar *ngIf="getImageUrl(m,part)!=null" class="detailedImage"
+                 [style.background-image]="'url(' + getImageUrl(m,part) + ')'" [style.background-size]="cover"
                  [style.width]="'220px'" [style.height]="'220px'">
 
             </div>
 
           </md-card-header>
+          <ng-template #loading>  <md-list dense class="listProperties"> <md-list-item i18n>
+            Loading part data...
+          </md-list-item></md-list></ng-template>
+
 
           <md-card-content>
             <div *ngIf="m">
               <md-list dense class="listProperties">
-               <!-- <md-list-item
-                  *ngIf="displayRelation!=null && displayRelation.message!=null && displayRelation.relationState=='ALLOWEDWITHWARNING'">
-                  <md-chip-list class="mat-chip-list-stacked">
-                    <md-chip class="warningChip"
-                             selected="true"
-                             color="warn" i18n>
-                      Warning: {{displayRelation.message}}
-                    </md-chip>
-                  </md-chip-list>
 
-
-                </md-list-item>
-                <md-list-item *ngIf="displayRelation!=null && displayRelation.message!=null && displayRelation.relationState=='ALLOWEDWITHINFO'">
-                  <md-chip-list class="mat-chip-list-stacked">
-                    <md-chip class="warningChip"
-                             selected="true"
-                             color="primary" i18n>
-                      Information: {{displayRelation.message}}
-                    </md-chip>
-                  </md-chip-list>
-
-
-                </md-list-item>
--->
                 <md-list-item i18n>
                   Description: {{getModelName(m)}}
 
@@ -119,9 +89,12 @@
                   Max. length: {{m.maxDimension==null?'':m.maxDimension.width}} mm
                 </md-list-item>
                 <md-divider></md-divider>
-                <md-list-item *ngIf="(currentPart | async) != null">
-                  Price: {{((evaluatePrice(currentPart | async))) | currency:'EUR':true}} ({{getDescriptionFromPart(currentPart | async)}})
+                <md-list-item *ngIf="(currentPart | async); let part; else (loadingPrice)">
+                  <div *ngIf="part.price">
+                  Price: {{((evaluatePrice(part))) | currency:'EUR':true}} ({{getDescriptionFromPart(part)}})
+                  </div>
                 </md-list-item>
+                <ng-template #loadingPrice>  Loading price information...</ng-template>
 
                 <md-list-item i18n *ngIf="m.productPage">
                   <a href="{{m.productPage}}" target="_blank" md-raised-button md-raised md-warn
@@ -137,13 +110,5 @@
 
     </div>
 
-<!--
-    <div *ngIf="stepDiff(step)==1">
-      <h4>{{step.description}}</h4>
-    </div>
-    <div *ngIf="stepDiff(step)>1">
-      <h5>{{step.description}}</h5>
-    </div>
-    -->
   </div>
 </form>

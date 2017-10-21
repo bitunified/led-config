@@ -50,7 +50,7 @@ export class ProductConfiguration {
     return null;
   }
 
-  prevModels(stepMax: number) {
+  prevModels() {
     let models: Array<Model> = [];
     for (let modelStep of this.modelsForSteps) {
       if ((!modelStep.skipped) && modelStep.chosenModel!=null) {

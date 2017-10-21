@@ -29,7 +29,6 @@ import {ProductWarningService} from "../../services/productwarning.service";
 export class MenustepitemComponent implements OnInit {
 
 
-
   @Input()
   set step(step: StepModel) {
     this._step = step;
@@ -74,16 +73,16 @@ export class MenustepitemComponent implements OnInit {
 
   constructor(private productWarningService: ProductWarningService, public translate: TranslateService, private productcodeService: ProductcodeService, private productconfigService: ProductconfigurationService, private partService: PartService) {
 
-    this.productcodeServiceSubscription = productcodeService.productcodeSource$.subscribe(
-      res => {
-
-        if (res.currentStep == this._step.stepindex) {
-          this.reset();
-
-        }
-        this.currentStep = res.currentStep;
-
-      });
+    // this.productcodeServiceSubscription = productcodeService.productcodeSource$.subscribe(
+    //   res => {
+    //
+    //     if (res.currentStep == this._step.stepindex) {
+    //       this.reset();
+    //
+    //     }
+    //     this.currentStep = res.currentStep;
+    //
+    //   });
 
     this.productConfigSubscription = productconfigService.productconfigSource$.subscribe(
       res => {
@@ -94,7 +93,8 @@ export class MenustepitemComponent implements OnInit {
           }
         });
 
-        let filteredModels = this.filter2(this._step.models, this.selectedModel, selectedModels, this._step.stepindex);
+        let filteredModels = this.filter2(this._step.models, this.selectedModel, selectedModels);
+        console.info('change filt');
         if (filteredModels.length > 0) {
           this.filteredModels = filteredModels;
         } else {
@@ -104,6 +104,7 @@ export class MenustepitemComponent implements OnInit {
           this.filteredModels = this._step.models;
         }
 
+        console.info(this.filteredModels);
 
       });
 
@@ -116,7 +117,6 @@ export class MenustepitemComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.reset();
     this.filteredModels = this._step.models;
   }
 
@@ -131,12 +131,6 @@ export class MenustepitemComponent implements OnInit {
     return false;
   }
 
-  resetModel() {
-    this.m = null;
-    this.reset();
-
-
-  }
 
   skipThisStep(value: MdCheckboxChange) {
 
@@ -205,14 +199,10 @@ export class MenustepitemComponent implements OnInit {
     return '';
   }
 
-  filter2(models: Model[], currentModel: Model, selectedModels: Model[], currentStepIndex: number) {
+  filter2(models: Model[], currentModel: Model, selectedModels: Model[]) {
     let mls: Model[] = [];
     let gatheredModels: Model[] = [];
 
-    console.info('begin');
-    console.info(models);
-    console.info(currentModel);
-    console.info(selectedModels);
     let mcount: Map<Model, number> = new Map<Model,number>();
     if (models && selectedModels) {
       for (let model of selectedModels) {
@@ -283,7 +273,7 @@ export class MenustepitemComponent implements OnInit {
 
   filterRelationStateForNextModel(displayRelation: DisplayRelation, m: Model) {
 
-    let prevModels: Array<Model> = this.productconfigService.productConfiguration.prevModels(this.currentStep + 1);
+    let prevModels: Array<Model> = this.productconfigService.productConfiguration.prevModels();
 
     prevModels.push(m);
     let allowed: boolean = false;
@@ -318,11 +308,8 @@ export class MenustepitemComponent implements OnInit {
   }
 
   determineRelationState(displayRelation: DisplayRelation, m: Model) {
-    let additional = 1;
-    if (this.currentStep == 1) {
-      additional = 0;
-    }
-    let prevModels: Array<Model> = this.productconfigService.productConfiguration.prevModels(this.currentStep + additional);
+
+    let prevModels: Array<Model> = this.productconfigService.productConfiguration.prevModels();
     console.info(prevModels);
     if (prevModels.length > 0 && m) {
 
@@ -382,21 +369,18 @@ export class MenustepitemComponent implements OnInit {
   }
 
   reset() {
+    console.info('reset');
+    this.m = null;
     this.skip = false;
     this.selectedModel = null;
-    this.currentPart = null;
-   //this.announceModel();
+    //this.filteredModels=null;
+    //this.currentPart = null;
+    this.deannounceModel();
 
   }
 
-  announceModel() {
+  deannounceModel() {
     this.productconfigService.deleteModelStep(this._step);
-
-    // let productConfig = this.productconfigService.productconfigAnnouncement(this._step, this.selectedModel, null);
-    // let curStep = this._step.stepindex;
-    // if (curStep == 0) {
-    //   curStep = 1;
-    // }
     let code: string = null;
     if (this.selectedModel != null) {
       code = this.selectedModel.code;
@@ -405,15 +389,7 @@ export class MenustepitemComponent implements OnInit {
 
   }
 
-  prevStepItems() {
-
-    this.productcodeService.productcodeRecall(this.step.stepindex);
-
-  }
-
-
   onInputChange(value: string) {
-
     this.step.modelValue = value;
     let valueN = null;
     let valueS = null;
@@ -446,7 +422,6 @@ export class MenustepitemComponent implements OnInit {
       this.selectedModel = this.m;
       this.changeSelection();
       this.subscribePart(this.m, this.productconfigService.productConfiguration, this.step.stepindex);
-
     }
   }
 
@@ -470,23 +445,14 @@ export class MenustepitemComponent implements OnInit {
     return totalMinLength;
   }
 
-
-  public stepDiff(current) {
-    return current.stepindex - this.currentStep - 1;
-  }
-
-
   private changeSelection() {
-
     this.selectedModel = this.m;
     let productConfig = this.productconfigService.productconfigAnnouncement(this.step, this.selectedModel, null);
     let curStep = this.step.stepindex;
     if (curStep == 0) {
       curStep = 1;
     }
-
     this.productcodeService.productcodeAnnouncement(this.selectedModel.code, this.step.stepindex);
-
     this.getTabColor(this.m);
 
   }
@@ -502,11 +468,9 @@ export class MenustepitemComponent implements OnInit {
 
   getImageUrl(m: Model, currentPart: Part) {
     if (m != null && m.imageUrl != null) {
-      this.currentImageUrl = m.imageUrl;
       return m.imageUrl;
     }
     if (currentPart != null && currentPart.imageUrl != null) {
-      this.currentImageUrl = currentPart.imageUrl;
 
       return currentPart.imageUrl;
     }

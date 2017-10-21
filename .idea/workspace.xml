@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="17b1b8a5-9f51-4e67-9d02-85c073d61d7f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-steps/led-config/src/app/services/productwarning.service.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-steps/led-config/src/assets/images/company_logo.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/Parser.java" afterPath="$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/Parser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-steps/led-config/src/app/app.component.html" afterPath="$PROJECT_DIR$/web-steps/led-config/src/app/app.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-steps/led-config/src/app/app.component.ts" afterPath="$PROJECT_DIR$/web-steps/led-config/src/app/app.component.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-steps/led-config/src/app/components/menustepitem/menustepitem.component.html" afterPath="$PROJECT_DIR$/web-steps/led-config/src/app/components/menustepitem/menustepitem.component.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-steps/led-config/src/app/components/menustepitem/menustepitem.component.ts" afterPath="$PROJECT_DIR$/web-steps/led-config/src/app/components/menustepitem/menustepitem.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-steps/led-config/src/app/components/menusteps/menusteps.component.ts" afterPath="$PROJECT_DIR$/web-steps/led-config/src/app/components/menusteps/menusteps.component.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-steps/led-config/src/app/domain/ProductConfiguration.ts" afterPath="$PROJECT_DIR$/web-steps/led-config/src/app/domain/ProductConfiguration.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-steps/led-config/src/app/services/partservice.service.ts" afterPath="$PROJECT_DIR$/web-steps/led-config/src/app/services/partservice.service.ts" />
     </list>
     <list id="a1668ff0-0ffa-4d2f-b8a7-c7015dd69167" name="New changelist" comment="" />
     <list id="a89c1188-e9c5-4775-87c7-8b920e3c7f09" name="jj" comment="" />
@@ -65,8 +62,8 @@
       <file leaf-file-name="menustepitem.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web-steps/led-config/src/app/components/menustepitem/menustepitem.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1309">
-              <caret line="96" column="20" selection-start-line="96" selection-start-column="12" selection-end-line="96" selection-end-column="20" />
+            <state relative-caret-position="1657">
+              <caret line="171" column="18" selection-start-line="171" selection-start-column="13" selection-end-line="171" selection-end-column="18" />
               <folding>
                 <element signature="e#0#74#0" expanded="true" />
               </folding>
@@ -74,11 +71,53 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProductConfiguration.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-steps/led-config/src/app/domain/ProductConfiguration.ts">
+      <file leaf-file-name="partservice.service.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-steps/led-config/src/app/services/partservice.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="884">
-              <caret line="55" column="39" selection-start-line="55" selection-start-column="39" selection-end-line="55" selection-end-column="39" />
+            <state relative-caret-position="381">
+              <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LedConfig.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/engine/src/main/java/com/bitunified/ledconfig/LedConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="186" column="0" selection-start-line="186" selection-start-column="0" selection-end-line="186" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ApplicationEndpoint.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/com/bitunified/server/ApplicationEndpoint.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="346">
+              <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PriceService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/com/bitunified/server/service/PriceService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Part.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-steps/led-config/src/app/domain/server/Part.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -90,18 +129,6 @@
             <state relative-caret-position="102">
               <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="productwarning.service.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-steps/led-config/src/app/services/productwarning.service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="16" column="51" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -119,42 +146,8 @@
       <file leaf-file-name="app.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web-steps/led-config/src/app/app.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
+            <state relative-caret-position="292">
               <caret line="39" column="14" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-steps/led-config/src/app/app.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1326">
-              <caret line="105" column="55" selection-start-line="105" selection-start-column="55" selection-end-line="105" selection-end-column="55" />
-              <folding>
-                <element signature="e#0#78#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="productconfiguration.service.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-steps/led-config/src/app/services/productconfiguration.service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/Parser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-501">
-              <caret line="2654" column="29" selection-start-line="2654" selection-start-column="29" selection-end-line="2654" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -163,8 +156,8 @@
       <file leaf-file-name="menustepitem.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web-steps/led-config/src/app/components/menustepitem/menustepitem.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1870">
-              <caret line="110" column="31" selection-start-line="87" selection-start-column="14" selection-end-line="110" selection-end-column="31" />
+            <state relative-caret-position="195">
+              <caret line="92" column="40" selection-start-line="92" selection-start-column="40" selection-end-line="92" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -245,17 +238,17 @@
         <option value="$PROJECT_DIR$/web-steps/led-config/src/app/components/pricecalculation/PriceDataSource.ts" />
         <option value="$PROJECT_DIR$/web-steps/led-config/src/app/components/pricecalculation/pricecalculation.component.ts" />
         <option value="$PROJECT_DIR$/web-steps/led-config/src/app/components/menustepitem/menustepitem.component.css" />
-        <option value="$PROJECT_DIR$/web-steps/led-config/src/app/services/partservice.service.ts" />
         <option value="$PROJECT_DIR$/web-steps/led-config/src/app/services/productconfiguration.service.ts" />
-        <option value="$PROJECT_DIR$/web-steps/led-config/src/app/components/menustepitem/menustepitem.component.html" />
         <option value="$PROJECT_DIR$/web-steps/led-config/src/app/services/productwarning.service.ts" />
-        <option value="$PROJECT_DIR$/web-steps/led-config/src/app/domain/ProductConfiguration.ts" />
         <option value="$PROJECT_DIR$/web-steps/led-config/src/app/app.component.html" />
         <option value="$PROJECT_DIR$/web-steps/led-config/src/app/app.component.ts" />
         <option value="$PROJECT_DIR$/web-steps/led-config/src/app/components/menusteps/menusteps.component.ts" />
         <option value="$PROJECT_DIR$/web-steps/led-config/src/app/components/menusteps/menusteps.component.html" />
-        <option value="$PROJECT_DIR$/web-steps/led-config/src/app/components/menustepitem/menustepitem.component.ts" />
         <option value="$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/Parser.java" />
+        <option value="$PROJECT_DIR$/web-steps/led-config/src/app/domain/ProductConfiguration.ts" />
+        <option value="$PROJECT_DIR$/web-steps/led-config/src/app/components/menustepitem/menustepitem.component.ts" />
+        <option value="$PROJECT_DIR$/web-steps/led-config/src/app/components/menustepitem/menustepitem.component.html" />
+        <option value="$PROJECT_DIR$/web-steps/led-config/src/app/services/partservice.service.ts" />
       </list>
     </option>
   </component>
@@ -353,6 +346,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -422,6 +418,62 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="led-config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="led-config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-steps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="led-config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="led-config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="led-config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-steps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="led-config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1331,9 +1383,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1360,13 +1409,6 @@
     <property name="editor.config.accepted" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.bitunified.server.models" />
-      <recent name="com.bitunified.server.steps" />
-      <recent name="com.bitunified.ledconfig.domain.relation" />
-      <recent name="com.bitunified.ledconfig.domain.message" />
-      <recent name="com.bitunified.ledconfig.parts" />
-    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.bitunified.ledconfig.configuration.csvimport" />
       <recent name="com.bitunified.ledconfig" />
@@ -1379,6 +1421,13 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.bitunified.ledconfig.configuration.parser.steps" />
       <recent name="com.bitunified.ledconfig" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\data\projects\led-config\web-steps\led-config\src\assets\images" />
+      <recent name="C:\data\projects\led-config\web-steps\led-config\src\assets" />
+      <recent name="C:\data\projects\led-config\web-steps\led-config\src\i18n" />
+      <recent name="C:\data\projects\led-config\web-steps\led-config\src\app\components\notification" />
+      <recent name="C:\data\projects\led-config\web-steps\led-config\src\app\components" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\data\projects\led-config\web-steps\led-config\src\app\services" />
@@ -1394,12 +1443,12 @@
       <recent name="com.bitunified.ledconfig.domain.product.mounting" />
       <recent name="com.bitunified.ledconfig.domain.product.cable.cableconfig" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\data\projects\led-config\web-steps\led-config\src\assets" />
-      <recent name="C:\data\projects\led-config\web-steps\led-config\src\i18n" />
-      <recent name="C:\data\projects\led-config\web-steps\led-config\src\app\components\notification" />
-      <recent name="C:\data\projects\led-config\web-steps\led-config\src\app\components" />
-      <recent name="C:\data\projects\led-config\web-steps\led-config\src\app\modules" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.bitunified.server.models" />
+      <recent name="com.bitunified.server.steps" />
+      <recent name="com.bitunified.ledconfig.domain.relation" />
+      <recent name="com.bitunified.ledconfig.domain.message" />
+      <recent name="com.bitunified.ledconfig.parts" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat server">
@@ -2384,21 +2433,10 @@
       <workItem from="1506932016974" duration="2219000" />
       <workItem from="1508149998658" duration="16093000" />
       <workItem from="1508484506059" duration="9255000" />
-      <workItem from="1508495469255" duration="261000" />
-    </task>
-    <task id="LOCAL-00056" summary="Created services and components.">
-      <created>1494535452678</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1494535452678</updated>
-    </task>
-    <task id="LOCAL-00057" summary="Stappen op basis van dependencies">
-      <created>1495663493830</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1495663493831</updated>
+      <workItem from="1508495469255" duration="674000" />
+      <workItem from="1508496181527" duration="141000" />
+      <workItem from="1508586115474" duration="135000" />
+      <workItem from="1508586328717" duration="4899000" />
     </task>
     <task id="LOCAL-00058" summary="Model en relations get method endpoints">
       <created>1495728030918</created>
@@ -2729,7 +2767,21 @@
       <option name="project" value="LOCAL" />
       <updated>1508446136424</updated>
     </task>
-    <option name="localTasksCounter" value="105" />
+    <task id="LOCAL-00105" summary="Nieuwe kabels">
+      <created>1508495752536</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1508495752536</updated>
+    </task>
+    <task id="LOCAL-00106" summary="Nieuwe kabels">
+      <created>1508496305856</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1508496305856</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -2765,7 +2817,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1024879000" />
+    <option name="totallyTimeSpent" value="1030467000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2781,37 +2833,37 @@
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.49573562" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281768" sideWeight="0.4956943" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.49786323" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24561404" sideWeight="0.6282051" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.48504272" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3223684" sideWeight="0.56036323" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.48290598" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18643162" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24561404" sideWeight="0.37179488" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33586133" sideWeight="0.46908316" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29605263" sideWeight="0.4903846" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24946581" sideWeight="0.49399656" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17937702" sideWeight="0.50600344" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40350878" sideWeight="0.517094" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40350878" sideWeight="0.508547" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.49573562" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281768" sideWeight="0.4956943" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3256579" sideWeight="0.48931623" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.49786323" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33586133" sideWeight="0.46908316" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24561404" sideWeight="0.36858973" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29605263" sideWeight="0.48397437" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24946581" sideWeight="0.49399656" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17937702" sideWeight="0.50600344" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3223684" sideWeight="0.43963677" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.49784714" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3256579" sideWeight="0.48931623" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32286024" sideWeight="0.44136462" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -2847,7 +2899,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Themes AngularJS &amp; plaatjes toegevoegd.&#10;Bug: part finder." />
     <MESSAGE value="Deployment" />
     <MESSAGE value=" - Plaatje opgelost&#10; - Part bepaling opgelost" />
     <MESSAGE value="H30 bugje" />
@@ -2872,7 +2923,8 @@
     <MESSAGE value="Working with independent steps." />
     <MESSAGE value="Price per item" />
     <MESSAGE value="Async current part" />
-    <option name="LAST_COMMIT_MESSAGE" value="Async current part" />
+    <MESSAGE value="Nieuwe kabels" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nieuwe kabels" />
     <option name="PRESELECT_EXISTING_CHANGELIST" value="false" />
   </component>
   <component name="XDebuggerManager">
@@ -2929,24 +2981,13 @@
       </breakpoints>
       <option name="time" value="249" />
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
-        <watch expression="parts" />
-      </configuration>
-    </watches-manager>
+    <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/product/PCB/LedStrip.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/domain/src/main/java/com/bitunified/ledconfig/domain/product/profile/Profile.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -3038,13 +3079,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-steps/led-config/src/app/domain/server/Part.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" column="14" selection-start-line="2" selection-start-column="7" selection-end-line="7" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web-steps/led-config/src/app/components/menustepitem/ModelCount.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -3056,14 +3090,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/bitunified/server/ApplicationEndpoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="98" column="31" selection-start-line="98" selection-start-column="31" selection-end-line="98" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3107,21 +3133,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/bitunified/server/service/PriceService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/src/main/java/com/bitunified/ledconfig/LedConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="191" column="17" selection-start-line="191" selection-start-column="17" selection-end-line="191" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3223,13 +3234,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-steps/led-config/src/app/services/partservice.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web-steps/led-config/src/app/services/relationservice.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -3242,24 +3246,8 @@
         <state relative-caret-position="238">
           <caret line="16" column="51" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-steps/led-config/src/app/domain/ProductConfiguration.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="55" column="39" selection-start-line="55" selection-start-column="39" selection-end-line="55" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-steps/led-config/src/app/app.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="14" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3268,15 +3256,33 @@
         <state relative-caret-position="1326">
           <caret line="105" column="55" selection-start-line="105" selection-start-column="55" selection-end-line="105" selection-end-column="55" />
           <folding>
-            <element signature="e#0#78#0" expanded="true" />
+            <element signature="e#0#78#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-steps/led-config/src/app/components/menustepitem/menustepitem.component.html">
+    <entry file="file://$PROJECT_DIR$/web-steps/led-config/src/app/services/productconfiguration.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1870">
-          <caret line="110" column="31" selection-start-line="87" selection-start-column="14" selection-end-line="110" selection-end-column="31" />
+        <state relative-caret-position="136">
+          <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/Parser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="805" column="10" selection-start-line="805" selection-start-column="10" selection-end-line="805" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-steps/led-config/src/app/domain/ProductConfiguration.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="52" column="13" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -3289,6 +3295,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web-steps/led-config/src/app/app.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="39" column="14" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web-steps/led-config/src/app/components/menusteps/menusteps.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -3297,30 +3311,70 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web-steps/led-config/src/app/domain/server/Part.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-steps/led-config/src/app/domain/ModelTranslation.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web-steps/led-config/src/app/components/menustepitem/menustepitem.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1309">
-          <caret line="96" column="20" selection-start-line="96" selection-start-column="12" selection-end-line="96" selection-end-column="20" />
+        <state relative-caret-position="1657">
+          <caret line="171" column="18" selection-start-line="171" selection-start-column="13" selection-end-line="171" selection-end-column="18" />
           <folding>
             <element signature="e#0#74#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-steps/led-config/src/app/services/productconfiguration.service.ts">
+    <entry file="file://$PROJECT_DIR$/web-steps/led-config/src/app/components/menustepitem/menustepitem.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
+        <state relative-caret-position="195">
+          <caret line="92" column="40" selection-start-line="92" selection-start-column="40" selection-end-line="92" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-steps/led-config/src/app/services/partservice.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/configuration/src/main/java/com/bitunified/ledconfig/configuration/parser/steps/Parser.java">
+    <entry file="file://$PROJECT_DIR$/engine/src/main/java/com/bitunified/ledconfig/LedConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-501">
-          <caret line="2654" column="29" selection-start-line="2654" selection-start-column="29" selection-end-line="2654" selection-end-column="29" />
+        <state relative-caret-position="165">
+          <caret line="186" column="0" selection-start-line="186" selection-start-column="0" selection-end-line="186" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/bitunified/server/ApplicationEndpoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/bitunified/server/service/PriceService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
           <folding />
         </state>
       </provider>
