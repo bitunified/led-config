@@ -15,7 +15,7 @@ export class PartService {
 
   private partServerUrl = environment.contextroot + '/server/rest/engine/part';
 
-  public getPart(model: Model, productConfig: ProductConfiguration, currentStep: number): Observable<Part> {
+  public getPart(productConfig: ProductConfiguration, currentStep: number): Observable<Part> {
     let params: URLSearchParams = new URLSearchParams();
     params.append("currentStep", String(currentStep));
     return this.http.post(this.partServerUrl, Serialize(productConfig, ProductConfiguration), {search: params})
@@ -27,10 +27,10 @@ export class PartService {
         }
         if (res.status===204){
           let part:Part= new Part();
-          part.imageUrl='assets/images/company_logo.jpg';
+          part.imageUrl='assets/images/favicon.png';
           part.translations=new ModelTranslation();
           part.translations.en="";
-          console.info('test');
+          part.description="Could not be resolved in this stage.";
           return part;
         }
       })

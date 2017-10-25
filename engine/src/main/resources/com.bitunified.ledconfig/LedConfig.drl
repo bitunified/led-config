@@ -618,6 +618,25 @@ rule "Led strip section modulo"
     messages.add(new Message("Ledstrip lengte "+ledstrip.getDimension().getWidth()+" moet een veelvoud zijn van sectielengte: "+ledstrip.getProperty(LedStrip.SECTION_WIDTH).getValue(),7,MessageStatus.ERROR));
 
 end
+
+rule "Actie: Altijd clips toevoegen"
+salience -1
+       no-loop true
+           when
+
+               not(exists(Profile()) and exists(Clip()))
+               composedproduct:ComposedProduct(dimension.getWidth()==null);
+           then
+           System.out.println("Clips altijd");
+
+
+                Part part=SerializationUtils.clone((Part)parts.get("10890"));
+                PartListHelper.addToPartCountList(partCountList,part,Double.valueOf(1));
+                System.out.println("Clip toegevoegd");
+
+
+end
+
 rule "Actie: Aantal clips is evenredig aan lengte L20"
 salience -1
        no-loop true

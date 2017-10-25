@@ -21,7 +21,9 @@ import com.bitunified.ledconfig.configuration.parser.steps.Parser;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.instruction.InstructionMessage;
 import com.bitunified.ledconfig.domain.message.Message;
+import com.bitunified.ledconfig.domain.modeltypes.RealModel;
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
+import com.bitunified.ledconfig.domain.product.PCB.types.DecoLedStrip;
 import com.bitunified.ledconfig.parts.NotExistingPart;
 import com.bitunified.ledconfig.parts.Part;
 import com.bitunified.ledconfig.productconfiguration.ModelChosenStep;
@@ -103,10 +105,12 @@ public class LedConfig {
 
             for (ModelChosenStep m : productConfiguration.getModelsForSteps()) {
 
-                    Model modelToAdd = parser.getModels().stream().filter(ml -> ml.equals(m.getChosenModel())).collect(Collectors.toList()).stream().findFirst().orElse(null);
-                if (ComposedProduct.class.equals(m.getChosenModel().getClass())) {
-                    modelToAdd = m.getChosenModel();
-                    ksession.insert(modelToAdd);
+
+                Model modelToAdd = parser.getModels().stream().filter(ml -> ml.equals(m.getChosenModel())).collect(Collectors.toList()).stream().findFirst().orElse(null);
+                if (m.getChosenModel()==null && m.getStep().getStepindex()==7){
+                    RealModel realModelToAdd = (RealModel) parser.getModels().stream().filter(ml -> ml.getClass().equals(DecoLedStrip.class)).collect(Collectors.toList()).stream().findFirst().orElse(null);
+                    realModelToAdd.getDimension().setWidth(m.getModelValue());
+                    ksession.insert(realModelToAdd);
                     continue;
                 }
                 if (LedStrip.class.isAssignableFrom(m.getChosenModel().getClass())) {
@@ -114,18 +118,17 @@ public class LedConfig {
                     ksession.insert(modelToAdd);
                     continue;
                 }
+                if (ComposedProduct.class.equals(m.getChosenModel().getClass())) {
+                    modelToAdd = m.getChosenModel();
+                    ksession.insert(modelToAdd);
+                    continue;
+                }
                 if (!m.isSkipped()) {
-
-
                     if (modelToAdd != null) {
-
-
                         ksession.insert(modelToAdd);
                     }
                 }
             }
-
-
 
             ksession.fireAllRules();
 

@@ -121,7 +121,7 @@ export class MenustepitemComponent implements OnInit {
   }
 
   subscribePart(model: Model, productConfig: ProductConfiguration, currentStep: number) {
-    this.currentPart = this.partService.getPart(model, productConfig, currentStep);
+    this.currentPart = this.partService.getPart(productConfig, currentStep);
   }
 
   checkResetButton() {
@@ -421,7 +421,7 @@ export class MenustepitemComponent implements OnInit {
     if (this.m != undefined) {
       this.selectedModel = this.m;
       this.changeSelection();
-      this.subscribePart(this.m, this.productconfigService.productConfiguration, this.step.stepindex);
+      this.subscribePart(this.m, this.productconfigService.productConfiguration, this.selectedModel.step);
     }
   }
 
@@ -460,8 +460,8 @@ export class MenustepitemComponent implements OnInit {
 
   getModelName(m: Model) {
     if (m) {
-      //return m.getNameTranslated(this.translate.defaultLang);
-      return m.name;
+      return m.getNameTranslated(this.translate.defaultLang);
+      //return m.name;
     }
     return "";
   }
