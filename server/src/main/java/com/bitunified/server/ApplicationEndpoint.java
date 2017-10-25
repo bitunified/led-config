@@ -12,6 +12,7 @@ import com.bitunified.ledconfig.productconfiguration.ProductConfiguration;
 import com.bitunified.ledconfig.productconfiguration.Relations;
 import com.bitunified.ledconfig.productconfiguration.price.PriceCount;
 import com.bitunified.ledconfig.productconfiguration.steps.Steps;
+import com.bitunified.server.models.PartResult;
 import com.bitunified.server.service.PriceService;
 import com.bitunified.server.service.StepService;
 
@@ -94,7 +95,7 @@ public class ApplicationEndpoint {
     @Path("/part")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Part getPart(ProductConfiguration config,@QueryParam("currentStep") Integer currentStep) {
+    public PartResult getPart(ProductConfiguration config, @QueryParam("currentStep") Integer currentStep) {
         PriceService priceService = new PriceService(parser);
         return priceService.getPart(config,currentStep);
 

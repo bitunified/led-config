@@ -90,9 +90,12 @@
                 </md-list-item>
                 <md-divider></md-divider>
                 <md-list-item *ngIf="(currentPart | async); let part; else (loadingPrice)">
-                  <div *ngIf="part.price">
+                  <div *ngIf="part.price; else contentNoPrice">
                   Price: {{((evaluatePrice(part))) | currency:'EUR':true}} ({{getDescriptionFromPart(part)}})
                   </div>
+                  <ng-template #contentNoPrice>
+                    No price information available.
+                    </ng-template>
                 </md-list-item>
                 <ng-template #loadingPrice>  Loading price information...</ng-template>
 

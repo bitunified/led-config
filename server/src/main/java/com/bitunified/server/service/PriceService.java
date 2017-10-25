@@ -7,6 +7,7 @@ import com.bitunified.ledconfig.configuration.parser.steps.Parser;
 import com.bitunified.ledconfig.parts.Part;
 import com.bitunified.ledconfig.productconfiguration.ModelChosenStep;
 import com.bitunified.ledconfig.productconfiguration.ProductConfiguration;
+import com.bitunified.server.models.PartResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,9 @@ public class PriceService {
         this.parser = parser;
     }
 
-    public Part getPart(ProductConfiguration productConfiguration, Integer currentStep) {
+
+
+    public PartResult getPart(ProductConfiguration productConfiguration, Integer currentStep) {
 
         LedConfig ledConfig = new LedConfig();
         ProductConfigResult productConfigResult = ledConfig.rules(productConfiguration, parser);
@@ -36,14 +39,15 @@ public class PriceService {
             matchedModels.forEach(en -> partsMatched.add(en.getKey()));
 
         } else {
-            return null;
+            return new PartResult(null,"not_possible");
         }
         if (partsMatched.size() > 0) {
-            return partsMatched.stream().filter(p -> p.getProduct() != null).filter(p -> p.getProduct().equals(lastModelChosenStep.get().getChosenModel())).collect(Collectors.toList()).get(0);
+            Part part= partsMatched.stream().filter(p -> p.getProduct() != null).filter(p -> p.getProduct().equals(lastModelChosenStep.get().getChosenModel())).collect(Collectors.toList()).get(0);
+            return new PartResult(part,"found");
         }
 
 
-        return null;
+        return new PartResult(null,"not_found");
 
     }
 }
