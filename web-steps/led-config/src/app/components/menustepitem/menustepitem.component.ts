@@ -94,7 +94,7 @@ export class MenustepitemComponent implements OnInit {
         });
 
         let filteredModels = this.filter2(this._step.models, this.selectedModel, selectedModels);
-        console.info('change filt');
+
         if (filteredModels.length > 0) {
           this.filteredModels = filteredModels;
         } else {
@@ -104,7 +104,6 @@ export class MenustepitemComponent implements OnInit {
           this.filteredModels = this._step.models;
         }
 
-        console.info(this.filteredModels);
 
       });
 
@@ -234,10 +233,9 @@ export class MenustepitemComponent implements OnInit {
         }
       }
     }
-    console.info(mcount);
 
     let max: number = 0;
-    for (let p of mcount.values()) {
+    for (let p of Array.from(mcount.values())) {
       if (p > max) {
         max = p;
       }
@@ -248,7 +246,6 @@ export class MenustepitemComponent implements OnInit {
         fmls.push(k);
       }
     });
-    console.info(fmls);
     return fmls;
   }
 
@@ -370,7 +367,6 @@ export class MenustepitemComponent implements OnInit {
   }
 
   reset() {
-    console.info('reset');
     this.m = null;
     this.skip = false;
     this.selectedModel = null;

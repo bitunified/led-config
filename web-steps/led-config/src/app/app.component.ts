@@ -26,6 +26,7 @@ import {TranslateService} from "@ngx-translate/core";
 import {PricecalculationComponent} from "./components/pricecalculation/pricecalculation.component";
 import {ProductWarningService} from "./services/productwarning.service";
 import {DisplayRelation} from "./domain/internal/DisplayRelation";
+import {RelationState} from "./domain/relations/RelationState";
 
 @Component({
   selector: 'app-root',
@@ -46,6 +47,8 @@ export class AppComponent implements OnInit,OnDestroy {
   priceCalculation: PriceCalculation;
   notificationMessage: string;
   productWarning: DisplayRelation;
+  AllowedWithWarning: RelationState = RelationState.ALLOWEDWITHWARNING;
+  AllowedWithInfo: RelationState = RelationState.ALLOWEDWITHINFO;
 
   constructor(private productWarningService: ProductWarningService, public dialog: MdDialog, public translate: TranslateService, public snackBar: MdSnackBar, private notificationMessageService: NotificationService, private modelService: ModelserviceService, private stepService: StepsService, productcodeService: ProductcodeService, private relationsService: RelationService, private productConfiguration: ProductconfigurationService) {
     this.subscription = productcodeService.productcodeSource$.subscribe(
@@ -88,15 +91,14 @@ export class AppComponent implements OnInit,OnDestroy {
 
   openDialogWithPrice(priceOverview: PriceCalculation) {
     let dialogRef = this.dialog.open(PricecalculationComponent, {data: priceOverview, height: '60%', width: '60%'});
-    dialogRef.afterClosed().subscribe(result => {
-      console.info(result);
-    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //
+    // });
   }
 
   ngOnInit() {
     this.steps = this.stepService.getSteps();
     this.relations = this.relationsService.getRelations();
-    console.info(this.translate.getBrowserLang());
 
   }
 

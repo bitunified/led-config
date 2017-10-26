@@ -15,7 +15,7 @@
     <span class="app-toolbar-filler"></span>
     <md-list dense class="listProperties">
       <md-list-item
-        *ngIf="productWarning!=null && productWarning.message!=null && productWarning.relationState=='ALLOWEDWITHWARNING'">
+        *ngIf="productWarning!=null && productWarning.message!=null && productWarning.relationState==AllowedWithWarning">
         <md-chip-list class="mat-chip-list-stacked">
           <md-chip class="warningChip"
                    selected="true"
@@ -26,7 +26,7 @@
 
 
       </md-list-item>
-      <md-list-item *ngIf="productWarning!=null && productWarning.message!=null && productWarning.relationState=='ALLOWEDWITHINFO'">
+      <md-list-item *ngIf="productWarning!=null && productWarning.message!=null && productWarning.relationState==AllowedWithInfo">
         <md-chip-list class="mat-chip-list-stacked">
           <md-chip class="warningChip"
                    selected="true"

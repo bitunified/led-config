@@ -33,6 +33,7 @@ import {ClipboardModule} from "ngx-clipboard";
     TranslateModule.forRoot()
 
   ],
+  exports:[ClipboardModule],
   providers: [],
   bootstrap: [AppComponent],
   entryComponents:[

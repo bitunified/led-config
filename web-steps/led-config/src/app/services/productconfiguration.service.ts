@@ -53,7 +53,7 @@ export class ProductconfigurationService {
     if (this.productConfiguration.getModelChosenFromStep(3) && this.productConfiguration.getModelChosenFromStep(7)) {
       this.productConfiguration.getModelChosenFromStep(3).chosenModel.dimension.width = this.productConfiguration.getModelChosenFromStep(7).modelValue;
       this.productConfiguration.getModelChosenFromStep(7).chosenModel = this.productConfiguration.getModelChosenFromStep(3).chosenModel;
-      console.info(this.productConfiguration);
+
     }
   }
 
