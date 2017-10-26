@@ -209,7 +209,6 @@ export class MenustepitemComponent implements OnInit {
         if ((currentModel != null || currentModel != undefined) && model.uuid == currentModel.uuid) {
           continue;
         }
-        console.info(model);
         for (let modelRel of model.relations) {
           if (modelRel.relationState == RelationState.ALLOWED) {
             for (let modelOfRel of modelRel.models) {
@@ -235,6 +234,7 @@ export class MenustepitemComponent implements OnInit {
         }
       }
     }
+    console.info(mcount);
 
     let max: number = 0;
     for (let p of mcount.values()) {
@@ -248,6 +248,7 @@ export class MenustepitemComponent implements OnInit {
         fmls.push(k);
       }
     });
+    console.info(fmls);
     return fmls;
   }
 

@@ -5,16 +5,20 @@
     <div *ngIf="true" class="itemModel">
       <div class="stepCurrentCard">
         <md-card class="stepCard">
-         <md-card-header>
+          <md-card-header>
             <md-card-title>
               <md-chip-list>
-                <md-chip>{{step.description}}</md-chip>
+                <md-chip class="stepchip">{{step.description}}
+                  <div *ngIf="step.skippable"> - optional</div>
+
+                </md-chip>
 
 
               </md-chip-list>
             </md-card-title>
             <md-card-subtitle></md-card-subtitle>
           </md-card-header>
+
           <md-card-content>
             <div class="selectionPanel">
               <div *ngIf="isStepTypeValues(step) && !skippable" class="propContainer">
@@ -29,15 +33,15 @@
 
                     </md-option>
                   </md-select>
-                  <div *ngIf="checkResetButton()">
-                  <button md-raised-button (click)="reset()">Reset</button>
-                  </div>
-                </div>
 
+                </div>
+                <div *ngIf="checkResetButton()" class="stepButtonReset">
+                  <button md-raised-button (click)="reset()">Reset</button>
+                </div>
 
               </div>
 
-              <div *ngIf="isStepTypeNumber(step) && !checked">
+              <div *ngIf="isStepTypeNumber(step)">
 
                 Click on line to select {{step.configDescription}}<br/>
                 Width:
@@ -49,7 +53,6 @@
                            (ngModelChange)="onInputChange($event)">
                 </md-slider>
                 mm.
-
 
               </div>
             </div>
@@ -71,9 +74,13 @@
             </div>
 
           </md-card-header>
-          <ng-template #loading>  <md-list dense class="listProperties"> <md-list-item i18n>
-            Loading part data...
-          </md-list-item></md-list></ng-template>
+          <ng-template #loading>
+            <md-list dense class="listProperties">
+              <md-list-item i18n>
+                Loading part data...
+              </md-list-item>
+            </md-list>
+          </ng-template>
 
 
           <md-card-content>
@@ -91,13 +98,13 @@
                 <md-divider></md-divider>
                 <md-list-item *ngIf="(currentPart | async); let part; else (loadingPrice)">
                   <div *ngIf="part.price; else contentNoPrice">
-                  Price: {{((evaluatePrice(part))) | currency:'EUR':true}} ({{getDescriptionFromPart(part)}})
+                    Price: {{((evaluatePrice(part))) | currency:'EUR':true}} ({{getDescriptionFromPart(part)}})
                   </div>
                   <ng-template #contentNoPrice>
                     No price information available.
-                    </ng-template>
+                  </ng-template>
                 </md-list-item>
-                <ng-template #loadingPrice>  Loading price information...</ng-template>
+                <ng-template #loadingPrice> Loading price information...</ng-template>
 
                 <md-list-item i18n *ngIf="m.productPage">
                   <a href="{{m.productPage}}" target="_blank" md-raised-button md-raised md-warn

@@ -47,10 +47,8 @@ public class Parser {
     public void createParts() {
 
 
-        RelationDefinition relationDefinitionL20 = createRelationDefinition();
-        RelationDefinition relationDefinitionH20 = createRelationDefinition();
-        RelationDefinition relationDefinitionL30 = createRelationDefinition();
-        RelationDefinition relationDefinitionH30 = createRelationDefinition();
+        RelationDefinition relationDefinitionL = createRelationDefinition();
+        RelationDefinition relationDefinitionH = createRelationDefinition();
 
         ProfileL20 profileL20 = new ProfileL20(new Dimension(null));
         profileL20.getDimension().setWidth(4000);
@@ -99,15 +97,8 @@ public class Parser {
         models.add(profileH30);
 
 
-        relationDefinitionH30.addModel(profileH30);
-
-
-        relationDefinitionL20.addModel(profileL20);
-
-        RelationDefinition relationDefinitionL = createRelationDefinition();
         relationDefinitionL.addModel(profileL20,profileL30);
 
-        RelationDefinition relationDefinitionH = createRelationDefinition();
         relationDefinitionH.addModel(profileH20,profileH30);
 
         RelationDefinition relationDefinitionNotDiffuus = createRelationDefinition(RelationState.ALLOWEDWITHWARNING, "Product will not be diffuse.");
@@ -156,8 +147,6 @@ public class Parser {
         parts.add(partEndCapL20);
         profileL20.getRelation().addRelateTo(partEndCapL20, null);
 
-
-        relationDefinitionH20.addModel(profileH20);
 
 
         Part partProfielH20 = new Part(profileH20);
@@ -234,14 +223,11 @@ public class Parser {
         capDiffuse.setCode("L");
         models.add(capDiffuse);
 
-        relationDefinitionL20.addModel(capDiffuse);
-        relationDefinitionL30.addModel(capDiffuse);
-        relationDefinitionH20.addModel(capDiffuse);
-        relationDefinitionH30.addModel(capDiffuse);
+        relationDefinitionL.addModel(capDiffuse);
+        relationDefinitionH.addModel(capDiffuse);
         relationDefinitionDiffuus1.addModel(capDiffuse);
         relationDefinitionNotDiffuus.addModel(capDiffuse);
-        relationDefinitionH.addModel(capDiffuse);
-        relationDefinitionL.addModel(capDiffuse);
+
 
         Part partCapL20 = new Part(capDiffuse);
         partCapL20.setPrice(BigDecimal.valueOf(40.92));
@@ -259,8 +245,6 @@ public class Parser {
         capClear.getDimension().setWidth(100);
         capClear.setCode("R");
         models.add(capClear);
-        relationDefinitionL20.addModel(capClear);
-        relationDefinitionL30.addModel(capClear);
         relationDefinitionL.addModel(capClear);
 
         partCapL20 = new Part(capClear);
@@ -313,9 +297,6 @@ public class Parser {
         partCapH30.setProductPage("http://www.liniled.nl/product/liniled-aeris-kap-d-h20/");
         profileH30.getRelation().addRelateTo(partCapH30, null);
         parts.add(partCapH30);
-
-
-        relationDefinitionL30.addModel(profileL30);
 
         Part partProfielL30 = new Part(profileL30);
 
@@ -426,10 +407,6 @@ public class Parser {
 
         CableEntry cableEntry = new LeftViaEndCapCableEntry();
         models.add(cableEntry);
-        relationDefinitionL20.addModel(cableEntry);
-        relationDefinitionL30.addModel(cableEntry);
-        relationDefinitionH30.addModel(cableEntry);
-        relationDefinitionH20.addModel(cableEntry);
 
         cableEntry.setName("Left side via end cap");
         cableEntry.setCode("A");
@@ -448,10 +425,6 @@ public class Parser {
         cableEntry.setName("Left side via bottom");
         cableEntry.setImageUrl("leftSideViaBottom.jpg");
         models.add(cableEntry);
-        relationDefinitionL20.addModel(cableEntry);
-        relationDefinitionL30.addModel(cableEntry);
-        relationDefinitionH30.addModel(cableEntry);
-        relationDefinitionH20.addModel(cableEntry);
         relationDefinitionNoEndCap.addModel(cableEntry);
         margin = new Margin(15, 5);
         cableEntry.setMargins(margin);
@@ -464,10 +437,6 @@ public class Parser {
         cableEntry.setName("Left side via side");
         cableEntry.setImageUrl("leftSideViaSide.jpg");
         models.add(cableEntry);
-        relationDefinitionL20.addModel(cableEntry);
-        relationDefinitionL30.addModel(cableEntry);
-        relationDefinitionH30.addModel(cableEntry);
-        relationDefinitionH20.addModel(cableEntry);
         relationDefinitionNoEndCap.addModel(cableEntry);
         margin = new Margin(15, 5);
         cableEntry.setMargins(margin);
@@ -481,10 +450,6 @@ public class Parser {
         cableEntry.setName("Right side via side");
         cableEntry.setImageUrl("rightSideViaSide.jpg");
         models.add(cableEntry);
-        relationDefinitionL20.addModel(cableEntry);
-        relationDefinitionL30.addModel(cableEntry);
-        relationDefinitionH30.addModel(cableEntry);
-        relationDefinitionH20.addModel(cableEntry);
         relationDefinitionNoEndCap.addModel(cableEntry);
         margin = new Margin(5, 15);
         cableEntry.setMargins(margin);
@@ -497,10 +462,6 @@ public class Parser {
         cableEntry.setName("Center via side");
         cableEntry.setImageUrl("centerViaSide.jpg");
         models.add(cableEntry);
-        relationDefinitionL20.addModel(cableEntry);
-        relationDefinitionL30.addModel(cableEntry);
-        relationDefinitionH30.addModel(cableEntry);
-        relationDefinitionH20.addModel(cableEntry);
         relationDefinitionNoEndCap.addModel(cableEntry);
         margin = new Margin(5, 5);
         cableEntry.setMargins(margin);
@@ -534,10 +495,7 @@ public class Parser {
         mounting.setCode("B");
         mounting.setMargins(margin);
         models.add(mounting);
-        relationDefinitionL20.addModel(mounting);
-        relationDefinitionL30.addModel(mounting);
-        relationDefinitionH20.addModel(mounting);
-        relationDefinitionH30.addModel(mounting);
+
 
         part = new NotExistingPart(mounting);
         mounting.getRelation().addRelateTo(partEndCapL20, Orientation.Right);
@@ -552,10 +510,6 @@ public class Parser {
         mounting.setCode("C");
         mounting.setMargins(margin);
         models.add(mounting);
-        relationDefinitionL20.addModel(mounting);
-        relationDefinitionL30.addModel(mounting);
-        relationDefinitionH20.addModel(mounting);
-        relationDefinitionH30.addModel(mounting);
 
         part = new NotExistingPart(mounting);
         mounting.getRelation().addRelateTo(partEndCapL20, Orientation.Left);
@@ -572,10 +526,6 @@ public class Parser {
         mounting.setCode("D");
         mounting.setMargins(margin);
         models.add(mounting);
-        relationDefinitionL20.addModel(mounting);
-        relationDefinitionL30.addModel(mounting);
-        relationDefinitionH20.addModel(mounting);
-        relationDefinitionH30.addModel(mounting);
 
         part = new NotExistingPart(mounting);
         mounting.getRelation().addRelateTo(partEndCapL20, null);
@@ -593,10 +543,6 @@ public class Parser {
         mounting.setCode("E");
         mounting.setMargins(margin);
         models.add(mounting);
-        relationDefinitionL20.addModel(mounting);
-        relationDefinitionL30.addModel(mounting);
-        relationDefinitionH20.addModel(mounting);
-        relationDefinitionH30.addModel(mounting);
 
         part = new NotExistingPart(mounting);
         mounting.getRelation().addRelateTo(partEndCapLC20, Orientation.Right);
@@ -613,10 +559,6 @@ public class Parser {
         mounting.setCode("F");
         mounting.setMargins(margin);
         models.add(mounting);
-        relationDefinitionL20.addModel(mounting);
-        relationDefinitionL30.addModel(mounting);
-        relationDefinitionH20.addModel(mounting);
-        relationDefinitionH30.addModel(mounting);
 
         part = new NotExistingPart(mounting);
         mounting.getRelation().addRelateTo(partEndCapLC20, Orientation.Left);
@@ -633,10 +575,6 @@ public class Parser {
         mounting.setCode("G");
         mounting.setMargins(margin);
         models.add(mounting);
-        relationDefinitionL20.addModel(mounting);
-        relationDefinitionL30.addModel(mounting);
-        relationDefinitionH20.addModel(mounting);
-        relationDefinitionH30.addModel(mounting);
 
         part = new NotExistingPart(mounting);
         mounting.getRelation().addRelateTo(partEndCapLC20, null);
@@ -653,10 +591,6 @@ public class Parser {
         mounting.setCode("H");
         mounting.setMargins(margin);
         models.add(mounting);
-        relationDefinitionL20.addModel(mounting);
-        relationDefinitionL30.addModel(mounting);
-        relationDefinitionH20.addModel(mounting);
-        relationDefinitionH30.addModel(mounting);
 
         part = new NotExistingPart(mounting);
         mounting.getRelation().addRelateTo(partEndCapLC20, null);
@@ -670,11 +604,6 @@ public class Parser {
         cableChannel.setName("Cable Channel");
         cableChannel.setCode("b");
         models.add(cableChannel);
-        relationDefinitionL30.addModel(cableChannel);
-        relationDefinitionL20.addModel(cableChannel);
-        relationDefinitionH30.addModel(cableChannel);
-        relationDefinitionH20.addModel(cableChannel);
-
 
         part = new Part(cableChannel);
         part.setPrice(BigDecimal.valueOf(7.16));
@@ -1389,10 +1318,7 @@ public class Parser {
         resinClear.setStep(2);
         resinClear.setImageUrl("resinClear.jpg");
         models.add(resinClear);
-        relationDefinitionL20.addModel(resinClear);
-        relationDefinitionL30.addModel(resinClear);
-        relationDefinitionH20.addModel(resinClear);
-        relationDefinitionH30.addModel(resinClear);
+        relationDefinitionH.addModel(resinClear);
         relationDefinitionL.addModel(resinClear);
 
         part = new Part(resinClear);
@@ -1413,14 +1339,10 @@ public class Parser {
         resinDiffuse.setImageUrl("resinDiffuse.jpg");
         models.add(resinDiffuse);
 
-        relationDefinitionL20.addModel(resinDiffuse);
-        relationDefinitionL30.addModel(resinDiffuse);
-        relationDefinitionH20.addModel(resinDiffuse);
-        relationDefinitionH30.addModel(resinDiffuse);
+        relationDefinitionL.addModel(resinDiffuse);
+        relationDefinitionH.addModel(resinDiffuse);
         relationDefinitionNotDiffuus.addModel(resinDiffuse);
         relationDefinitionDiffuus1.addModel(resinDiffuse);
-        relationDefinitionH.addModel(resinDiffuse);
-        relationDefinitionL.addModel(resinDiffuse);
 
         part = new Part(resinDiffuse);
         part.setId("95001");
@@ -1513,10 +1435,8 @@ public class Parser {
         ledStrip.setTranslations(Locale.en, "liniLED® PCB Red D");
         ledStrip.setCode("DR");
 
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNotDiffuus.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
         models.add(ledStrip);
@@ -1539,10 +1459,8 @@ public class Parser {
         ledStrip.setCode("DG");
         ledStrip.setTranslations(Locale.en, "liniLED® PCB Green D");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNotDiffuus.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
@@ -1564,10 +1482,8 @@ public class Parser {
         ledStrip.setTranslations(Locale.en, "liniLED® PCB Blue D");
         ledStrip.setCode("DB");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNotDiffuus.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
@@ -1591,10 +1507,8 @@ public class Parser {
         ledStrip.setCode("DA");
 
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNotDiffuus.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
@@ -1616,10 +1530,8 @@ public class Parser {
         ledStripRGB.setCode("RD");
         ledStripRGB.setTranslations(Locale.en, "liniLED® PCB RGB 160");
         models.add(ledStripRGB);
-        relationDefinitionL20.addModel(ledStripRGB);
-        relationDefinitionH20.addModel(ledStripRGB);
-        relationDefinitionL30.addModel(ledStripRGB);
-        relationDefinitionH30.addModel(ledStripRGB);
+        relationDefinitionL.addModel(ledStripRGB);
+        relationDefinitionH.addModel(ledStripRGB);
         relationDefinitionRGBCable.addModel(ledStripRGB);
 
         part = new Part(ledStripRGB);
@@ -1639,10 +1551,8 @@ public class Parser {
         ledStripRGB.setCode("RQ");
         ledStripRGB.setTranslations(Locale.en, "liniLED® PCB RGB 240");
         models.add(ledStripRGB);
-        relationDefinitionL20.addModel(ledStripRGB);
-        relationDefinitionH20.addModel(ledStripRGB);
-        relationDefinitionL30.addModel(ledStripRGB);
-        relationDefinitionH30.addModel(ledStripRGB);
+        relationDefinitionL.addModel(ledStripRGB);
+        relationDefinitionH.addModel(ledStripRGB);
         relationDefinitionRGBCable.addModel(ledStripRGB);
 
         part = new Part(ledStripRGB);
@@ -1666,10 +1576,8 @@ public class Parser {
         ledStrip.setCode("DX");
 
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNotDiffuus.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
@@ -1693,10 +1601,8 @@ public class Parser {
         ledStrip.setCode("DY");
 
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNotDiffuus.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
@@ -1720,10 +1626,8 @@ public class Parser {
         ledStrip.setCode("DW");
 
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNotDiffuus.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
@@ -1747,10 +1651,8 @@ public class Parser {
 
 
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNotDiffuus.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
@@ -1771,10 +1673,8 @@ public class Parser {
         ledStrip.setCode("DC");
 
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNotDiffuus.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
@@ -1814,8 +1714,8 @@ public class Parser {
 //        models.add(ledStrip);
 //        relationDefinitionMonoCable.addModel(ledStrip);
 //        relationDefinitionL30.addModel(ledStrip);
-//        relationDefinitionL20.addModel(ledStrip);
-//        relationDefinitionH30.addModel(ledStrip);
+//        relationDefinitionL.addModel(ledStrip);
+//        relationDefinitionH.addModel(ledStrip);
 //        relationDefinitionH20.addModel(ledStrip);
 //        relationDefinitionNotDiffuus.addModel(ledStrip);
 //
@@ -1841,10 +1741,8 @@ public class Parser {
         ledStrip.setCode("PR");
 
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNotDiffuus.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
@@ -1868,10 +1766,8 @@ public class Parser {
         ledStrip.setTranslations(Locale.en, "liniLED® PCB Green P");
         ledStrip.setCode("PG");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNotDiffuus.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
@@ -1894,10 +1790,8 @@ public class Parser {
         ledStrip.setTranslations(Locale.en, "liniLED® PCB Blue P");
         ledStrip.setCode("PB");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNotDiffuus.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
@@ -1918,10 +1812,8 @@ public class Parser {
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.setCode("PA");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNotDiffuus.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
@@ -1943,10 +1835,8 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2400");
         ledStrip.setCode("PU");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNotDiffuus.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
@@ -1966,10 +1856,8 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2700");
         ledStrip.setCode("PE");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNotDiffuus.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
@@ -1988,10 +1876,8 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("3000");
         ledStrip.setCode("PW");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNotDiffuus.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
@@ -2010,10 +1896,8 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("4000");
         ledStrip.setCode("PN");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNotDiffuus.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
@@ -2032,10 +1916,8 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("6500");
         ledStrip.setCode("PC");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNotDiffuus.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
@@ -2055,10 +1937,8 @@ public class Parser {
         ledStrip.setCode("HU");
 
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2077,10 +1957,8 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2700");
         ledStrip.setCode("HE");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2098,10 +1976,8 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("3000");
         ledStrip.setCode("HW");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2118,10 +1994,8 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("4000");
         ledStrip.setCode("HN");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2138,10 +2012,8 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("6500");
         ledStrip.setCode("HC");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2159,10 +2031,8 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2000");
         ledStrip.setCode("NF");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2181,10 +2051,8 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("6500");
         ledStrip.setCode("QF");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2203,10 +2071,8 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2000");
         ledStrip.setCode("WF");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2223,10 +2089,8 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2000");
         ledStrip.setCode("XF");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2245,10 +2109,8 @@ public class Parser {
         ledStrip.setCode("NU");
 
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2267,10 +2129,8 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2400");
         ledStrip.setCode("QU");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2289,10 +2149,10 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2400");
         ledStrip.setCode("WU");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
+
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2311,10 +2171,10 @@ public class Parser {
         ledStrip.setCode("XU");
 
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
+
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2333,10 +2193,10 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2700");
         ledStrip.setCode("NE");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
+
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2355,10 +2215,10 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2700");
         ledStrip.setCode("QE");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
+
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2377,10 +2237,10 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2700");
         ledStrip.setCode("WE");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
+
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2399,10 +2259,10 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2400");
         ledStrip.setCode("XE");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
+
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2421,10 +2281,10 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("3000");
         ledStrip.setCode("NW");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
+
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2442,10 +2302,10 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("3000");
         ledStrip.setCode("QW");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
+
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2464,10 +2324,10 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("3000");
         ledStrip.setCode("WW");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
+
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2486,10 +2346,10 @@ public class Parser {
         ledStrip.setCode("XW");
 
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
+
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2507,10 +2367,10 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("4000");
         ledStrip.setCode("NN");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
+
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2529,10 +2389,10 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("4000");
         ledStrip.setCode("QN");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
+
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2549,10 +2409,10 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("4000");
         ledStrip.setCode("WN");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
+
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2569,10 +2429,10 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("4000");
         ledStrip.setCode("XN");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
+
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2590,10 +2450,10 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("6500");
         ledStrip.setCode("NC");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
+
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2612,10 +2472,10 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("4000");
         ledStrip.setCode("QC");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
+
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2633,10 +2493,10 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("6500");
         ledStrip.setCode("WC");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
+
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2654,10 +2514,10 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("6500");
         ledStrip.setCode("XC");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
+
         relationDefinitionNOTRGBTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2675,10 +2535,10 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2700");
         ledStrip.setCode("NZ");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
+
         relationDefinitionTWCable.addModel(ledStrip);
         relationDefinitionNotDiffuusTW.addModel(ledStrip);
 
@@ -2700,10 +2560,10 @@ public class Parser {
         models.add(ledStrip);
 
         relationDefinitionTWCable.addModel(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
+
         relationDefinitionNotDiffuusTW.addModel(ledStrip);
 
         part = new Part(ledStrip);
@@ -2722,10 +2582,10 @@ public class Parser {
         ledStrip.setCode("WZ");
 
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
+
         relationDefinitionTWCable.addModel(ledStrip);
         relationDefinitionNotDiffuusTW.addModel(ledStrip);
 
@@ -2743,10 +2603,10 @@ public class Parser {
         ledStrip.getProperty(HighPowerLedStrip.KELVIN_TYPE).setValue("2700");
         ledStrip.setCode("XZ");
         models.add(ledStrip);
-        relationDefinitionL30.addModel(ledStrip);
-        relationDefinitionL20.addModel(ledStrip);
-        relationDefinitionH30.addModel(ledStrip);
-        relationDefinitionH20.addModel(ledStrip);
+
+        relationDefinitionL.addModel(ledStrip);
+        relationDefinitionH.addModel(ledStrip);
+
         relationDefinitionTWCable.addModel(ledStrip);
         relationDefinitionNotDiffuusTW.addModel(ledStrip);
 
@@ -2787,10 +2647,8 @@ public class Parser {
         parts.add(part);
 
 
-        relationDefinitionL30.addModel(clip);
-        relationDefinitionL20.addModel(clip);
-        relationDefinitionH30.addModel(clip);
-        relationDefinitionH20.addModel(clip);
+        relationDefinitionL.addModel(clip);
+        relationDefinitionH.addModel(clip);
 
         part = new NotExistingPart(clip);
         part.setId("clip");

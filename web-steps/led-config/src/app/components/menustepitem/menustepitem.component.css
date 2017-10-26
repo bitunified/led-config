@@ -29,9 +29,17 @@
 .stepCurrentCard .mat-card{
   grid-column-start: 1;
   grid-column-end: 2;
-  display: flex;
-  width:400px;
+  display: table;
+  max-width:308px;
   height:200px
+}
+.stepButtonReset
+{
+  display:grid;
+  margin-top:20px;
+}
+.stepchip{
+  margin-left: 75px;
 }
 .infoCard{
   grid-column-start: 2;
@@ -52,6 +60,9 @@
 .selectionPanel{
 
 }
+.selectBoxContainer{
+  min-width: 250px;
+}
 
 .itemModel{
   display: flex;
@@ -61,7 +72,8 @@
 .propContainer{
 }
 .selectContainer{
-  width:120%
+  width:120%;
+  margin-top:20px;
   /*display: inline-grid;*/
 }
 .selectOption{
