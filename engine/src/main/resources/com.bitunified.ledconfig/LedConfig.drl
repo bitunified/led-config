@@ -177,6 +177,7 @@ end
 
 
 rule "Actie: Kabel toevoegen"
+salience -10
   no-loop true
        when
             exists(Cable())
@@ -189,6 +190,25 @@ rule "Actie: Kabel toevoegen"
          Part part=SerializationUtils.clone(foundPart);
          PartListHelper.addToPartCountList(partCountList,part,1d);
         System.out.println("Actie kabel toegevoegd."+part);
+        }
+       end
+
+
+rule "Actie: Kabel channel altijd toevoegen"
+salience -10
+  no-loop true
+       when
+            exists(CableChannel())
+              not(exists(Profile()))
+            cable:CableChannel()
+        then
+
+   Part foundPart=PartModelHelper.getPart(parts,cable.getClass(),cable,null);
+     if (foundPart!=null && !PartListHelper.isModelInPartList(partCountList,foundPart)){
+
+         Part part=SerializationUtils.clone(foundPart);
+         PartListHelper.addToPartCountList(partCountList,part,1d);
+        System.out.println("Actie kabel channel altijd."+part);
         }
        end
 
@@ -620,19 +640,16 @@ rule "Led strip section modulo"
 end
 
 rule "Actie: Altijd clips toevoegen"
-salience -1
+salience -10
        no-loop true
            when
 
                not(exists(Profile()) and exists(Clip()))
                composedproduct:ComposedProduct(dimension.getWidth()==null);
            then
-           System.out.println("Clips altijd");
-
 
                 Part part=SerializationUtils.clone((Part)parts.get("10890"));
                 PartListHelper.addToPartCountList(partCountList,part,Double.valueOf(1));
-                System.out.println("Clip toegevoegd");
 
 
 end

@@ -422,6 +422,18 @@ export class MenustepitemComponent implements OnInit {
     }
   }
 
+  calculateMaxValue(step: StepModel):number{
+    let totalMaxLength:number = 2000;
+    if (step.stepindex == 7) {
+
+      let modelResinCover: ModelChosenStep = this.productconfigService.productConfiguration.getModelChosenFromStep(2);
+      if (modelResinCover && modelResinCover.chosenModel && modelResinCover.chosenModel.maxDimension && modelResinCover.chosenModel.maxDimension.width){
+        totalMaxLength=modelResinCover.chosenModel.maxDimension.width;
+      }
+      console.info(modelResinCover);
+    }
+    return totalMaxLength;
+  }
   calculateMinValue(step: StepModel) {
     if (step.stepindex == 7) {
       return this.calculateStepValue(step);

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {CdkTableModule} from '@angular/cdk'
-import {MdTableModule,MdDialogModule,MdCheckboxModule,MdGridListModule,MdChipsModule,MdSnackBarModule,MdSliderModule,MdListModule,MdTabsModule,MdSidenavModule,MdToolbarModule,MdInputModule,MdMenuModule,MdSelectModule,MdIconModule,MdButtonModule,MdCardModule} from '@angular/material';
+import {MdProgressSpinnerModule,MdTableModule,MdDialogModule,MdCheckboxModule,MdGridListModule,MdChipsModule,MdSnackBarModule,MdSliderModule,MdListModule,MdTabsModule,MdSidenavModule,MdToolbarModule,MdInputModule,MdMenuModule,MdSelectModule,MdIconModule,MdButtonModule,MdCardModule} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -23,7 +23,8 @@ import {MdTableModule,MdDialogModule,MdCheckboxModule,MdGridListModule,MdChipsMo
     MdCheckboxModule,
     MdDialogModule,
     MdTableModule,
-    CdkTableModule
+    CdkTableModule,
+    MdProgressSpinnerModule
 
 ],
   exports:[MdToolbarModule,
@@ -41,7 +42,8 @@ import {MdTableModule,MdDialogModule,MdCheckboxModule,MdGridListModule,MdChipsMo
     MdCheckboxModule,
     MdDialogModule,
     MdTableModule,
-    CdkTableModule
+    CdkTableModule,
+    MdProgressSpinnerModule
   ],
   declarations: []
 })

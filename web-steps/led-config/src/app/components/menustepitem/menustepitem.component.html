@@ -8,8 +8,8 @@
           <md-card-header>
             <md-card-title>
               <md-chip-list>
-                <md-chip class="stepchip">{{step.description}}
-                  <div *ngIf="step.skippable"> - optional</div>
+                <md-chip class="stepchip">{{step.description}} {{step.skippable?" - optional":""}}
+
 
                 </md-chip>
 
@@ -46,7 +46,7 @@
                 Click on line to select {{step.configDescription}}<br/>
                 Width:
                 <md-slider class="mat-slider-horizontal"
-                           max="2000"
+                           max="{{calculateMaxValue(step)}}"
                            min="{{calculateMinValue(step)}}"
                            step="{{calculateStepValue(step)}}"
                            thumb-label="true" [(ngModel)]="step.modelValue" name="inputValue"
@@ -62,14 +62,14 @@
 
       </div>
 
-      <div *ngIf="m">
+      <div class="descriptionPanel" *ngIf="m">
         <md-card class="infoCard" *ngIf="!skippable">
 
           <md-card-header *ngIf="currentPart | async; let part; else loading">
 
             <div md-card-avatar *ngIf="getImageUrl(m,part)!=null" class="detailedImage"
                  [style.background-image]="'url(' + getImageUrl(m,part) + ')'" [style.background-size]="cover"
-                 [style.width]="'220px'" [style.height]="'220px'">
+                 [style.width]="'150px'" [style.height]="'150px'">
 
             </div>
 
@@ -77,7 +77,7 @@
           <ng-template #loading>
             <md-list dense class="listProperties">
               <md-list-item i18n>
-                Loading part data...
+                <md-spinner></md-spinner>
               </md-list-item>
             </md-list>
           </ng-template>
@@ -104,7 +104,7 @@
                     No price information available.
                   </ng-template>
                 </md-list-item>
-                <ng-template #loadingPrice> Loading price information...</ng-template>
+                <ng-template #loadingPrice><mat-progress-spinner class="loadingSpinner" diameter="100"></mat-progress-spinner></ng-template>
 
                 <md-list-item i18n *ngIf="m.productPage">
                   <a href="{{m.productPage}}" target="_blank" md-raised-button md-raised md-warn
