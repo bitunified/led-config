@@ -10,6 +10,6 @@ public class DownloadTest {
     @Test
     public void test() throws IOException {
         Download download = new Download();
-        OutputStream outputStream = download.getParserDataFile();
+        OutputStream outputStream = download.getParserDataFile("ParserData");
     }
 }

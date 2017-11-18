@@ -29,14 +29,19 @@ import com.bitunified.ledconfig.parts.Part;
 import com.bitunified.ledconfig.productconfiguration.ModelChosenStep;
 import com.bitunified.ledconfig.productconfiguration.ProductConfiguration;
 import org.kie.api.KieServices;
+import org.kie.api.builder.KieBuilder;
+import org.kie.api.builder.KieFileSystem;
 import org.kie.api.event.rule.DebugAgendaEventListener;
 import org.kie.api.event.rule.DebugRuleRuntimeEventListener;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
-import org.kie.internal.builder.KnowledgeBuilder;
 import org.kie.internal.builder.KnowledgeBuilderConfiguration;
 import org.kie.internal.builder.KnowledgeBuilderFactory;
+import org.kie.internal.io.ResourceFactory;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -50,35 +55,55 @@ public class LedConfig {
         rules(null, null);
     }
 
-    public final ProductConfigResult rules(final ProductConfiguration productConfigration, Parser parser) {
-        // KieServices is the factory for all KIE services 
-        KieServices ks = KieServices.Factory.get();
+    public final ProductConfigResult rules(final ProductConfiguration productConfigration, Parser parser)  {
+        KieServices kieServices = KieServices.Factory.get();
+        KieFileSystem kfs = kieServices.newKieFileSystem();
+        KieSession ksession;
+        try {
+            File rulesFile = getTempFile("LedConfig.drl");
+            kfs.write(ResourceFactory.newFileResource(rulesFile));
+            KieBuilder kieBuilder = kieServices.newKieBuilder(kfs).buildAll();
+            if (kieBuilder.getResults().hasMessages(org.kie.api.builder.Message.Level.ERROR)) {
+                throw new RuntimeException("Build Errors:\n" + kieBuilder.getResults().toString());
+            }
+            KieContainer kieContainer = kieServices.newKieContainer(kieServices.getRepository().getDefaultReleaseId());
+            ksession = kieContainer.newKieSession();
 
-        // From the kie services, a container is created from the classpath
-        KieContainer kc = ks.getKieClasspathContainer();
+        } catch (FileNotFoundException e){
+            ksession = fallingBack(kieServices, e);
 
-        KnowledgeBuilderConfiguration kbConfig =
-                KnowledgeBuilderFactory.newKnowledgeBuilderConfiguration();
+        } catch (IOException e) {
+            ksession = fallingBack(kieServices, e);
+        }
 
+        KnowledgeBuilderConfiguration kbConfig = KnowledgeBuilderFactory.newKnowledgeBuilderConfiguration();
         kbConfig.setProperty("drools.dialect.mvel.strict", "false");
 
-        KnowledgeBuilder kBuilder =
-                KnowledgeBuilderFactory.newKnowledgeBuilder(kbConfig);
-
-        return execute(kc, productConfigration, parser);
+        return execute(ksession, productConfigration, parser);
 
     }
 
-    public ProductConfigResult execute(KieContainer kc, ProductConfiguration productConfiguration, Parser parser) {
+    private KieSession fallingBack(KieServices kieServices, IOException e) {
+        KieSession ksession;//Falling back to default
+        System.out.print(e);
+        System.out.print("Falling back to default LedConfig.drl");
+        KieContainer kc = kieServices.getKieClasspathContainer();
+        ksession=kc.newKieSession("LedConfigKS");
+        return ksession;
+    }
 
-        KieSession ksession = kc.newKieSession("LedConfigKS");
+    private File getTempFile(String name) throws IOException {
+        File baseDir = new File(System.getProperty("java.io.tmpdir"));
+
+        File tempFile = new File(baseDir, name);
+        return tempFile;
+    }
+
+    public ProductConfigResult execute(KieSession ksession, ProductConfiguration productConfiguration, Parser parser) {
+
         try {
             // From the container, a session is created based on
             // its definition and configuration in the META-INF/kmodule.xml file
-
-            // Once the session is created, the application can interact with it
-            // In this case it is setting a global as defined in the
-            // org/drools/examples/helloworld/HelloWorld.drl file
             Set<Message> messages = new HashSet<>();
             ksession.setGlobal("messages", messages);
 
@@ -107,7 +132,7 @@ public class LedConfig {
 
 
                 Model modelToAdd = parser.getModels().stream().filter(ml -> ml.equals(m.getChosenModel())).collect(Collectors.toList()).stream().findFirst().orElse(null);
-                if (m.getChosenModel()==null && m.getStep().getStepindex()==7){
+                if (m.getChosenModel() == null && m.getStep().getStepindex() == 7) {
                     RealModel realModelToAdd = (RealModel) parser.getModels().stream().filter(ml -> ml.getClass().equals(DecoLedStrip.class)).collect(Collectors.toList()).stream().findFirst().orElse(null);
                     realModelToAdd.getDimension().setWidth(m.getModelValue());
                     ksession.insert(realModelToAdd);
@@ -191,8 +216,7 @@ public class LedConfig {
             ksession.dispose();
             ksession.destroy();
 
-        }
-        finally {
+        } finally {
             ksession.dispose();
             ksession.destroy();
         }

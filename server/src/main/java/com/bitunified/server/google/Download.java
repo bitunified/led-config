@@ -133,7 +133,7 @@ public class Download {
     }
 
 
-    public OutputStream getParserDataFile() throws IOException {
+    public OutputStream getParserDataFile(String fileNameStart) throws IOException {
         // Build a new authorized API client service.
         Drive service = getDriveService();
 
@@ -175,7 +175,7 @@ public class Download {
         } else {
             System.out.println("Files:");
             for (com.google.api.services.drive.model.File f : files) {
-                if (f.getOriginalFilename().startsWith("ParserData")){
+                if (f.getOriginalFilename().startsWith(fileNameStart)){
                     System.out.printf("%s (%s)\n", f.getTitle(), f.getId());
                     return downloadFile(service,f);
 

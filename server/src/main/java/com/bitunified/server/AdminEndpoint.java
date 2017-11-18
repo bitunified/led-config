@@ -10,8 +10,8 @@ public class AdminEndpoint extends ConfigApplication {
 
 
     @POST
-    @Path("/start")
-    public Response submitConfiguration() throws IOException {
+    @Path("/data")
+    public Response submitData() throws IOException {
 
         String message = updateData();
 
@@ -19,6 +19,15 @@ public class AdminEndpoint extends ConfigApplication {
                 .entity(message)
                 .build();
     }
+    @POST
+    @Path("/rules")
+    public Response submitRules() throws IOException {
 
+        String message = updateRules();
+
+        return Response.status(200)
+                .entity(message)
+                .build();
+    }
 
 }
