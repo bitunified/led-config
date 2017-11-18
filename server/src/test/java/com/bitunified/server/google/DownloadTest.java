@@ -1,5 +1,6 @@
 package com.bitunified.server.google;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.servlet.RequestDispatcher;
@@ -16,6 +17,7 @@ import java.util.Set;
 
 public class DownloadTest {
 
+    @Ignore
     @Test
     public void test() throws IOException {
         ServletContext context=new ServletContext() {
@@ -144,6 +146,8 @@ public class DownloadTest {
                 return null;
             }
         };
+
+
         Download download = new Download(context);
         OutputStream outputStream = download.getParserDataFile("ParserData");
     }

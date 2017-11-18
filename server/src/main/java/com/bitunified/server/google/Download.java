@@ -35,7 +35,7 @@ public class Download {
     private static final java.io.File DATA_STORE_DIR = new java.io.File(
             System.getProperty("user.home"), ".credentials/drive-java-quickstart");
 
-    private static final java.io.File PKCS8KEY = new java.io.File(
+    public static java.io.File PKCS8KEY = new java.io.File(
             System.getProperty("java.io.tmpdir"), "pkcs8_key");
     /**
      * Global instance of the {@link FileDataStoreFactory}.

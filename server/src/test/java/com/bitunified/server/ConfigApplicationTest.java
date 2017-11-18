@@ -1,5 +1,7 @@
 package com.bitunified.server;
 
+import com.bitunified.server.google.Download;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.servlet.RequestDispatcher;
@@ -21,6 +23,7 @@ import static org.junit.Assert.assertTrue;
 public class ConfigApplicationTest {
 
 
+    @Ignore
     @Test
     public void testRules() throws IOException {
         ConfigApplication configApplication = new ConfigApplication();
@@ -154,6 +157,8 @@ public class ConfigApplicationTest {
                 return null;
             }
         };
+
+
         String result=configApplication.updateRules(servletContext);
 
         assertEquals(result,"Rules updates have been successfully applied!");
