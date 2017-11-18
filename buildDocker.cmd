@@ -16,7 +16,8 @@ if [ "$1" != "" ]; then
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
     docker build -t bitunified/led-config-web-steps .
     docker push bitunified/led-config-web-steps
-    ssh root@192.168.16.4 'docker stop $(docker ps -a -q); docker pull bitunified/led-config-web-steps; docker run -i -p 8080:8080 bitunified/led-config-web-steps'
+    ssh root@192.168.16.4 'docker stop $(docker ps -a -q); docker pull bitunified/led-config-web-steps; docker run -i -p 8080:8080 bitunified/led-config-web-steps; ntpd -d -q -n -p pool.ntp.org'
+
 else
     echo "No password"
 fi
