@@ -19,13 +19,19 @@ import com.bitunified.ledconfig.domain.relation.RelationDefinition;
 import com.bitunified.ledconfig.domain.relation.RelationState;
 import com.bitunified.ledconfig.parts.NotExistingPart;
 import com.bitunified.ledconfig.parts.Part;
+import com.bitunified.ledconfig.configuration.config.Executor;
+import com.bitunified.ledconfig.configuration.parser.steps.ParserDataResult;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class ParserData {
 
+
+public class ExecImpl implements Executor{ 
+  
 
     public RelationDefinition createRelationDefinition(List<RelationDefinition> relationDefinitions) {
         RelationDefinition relationDefinition = new RelationDefinition();
@@ -41,7 +47,11 @@ public class ParserData {
         return relationDefinition;
     }
 
-    public void createParts(List<Model> models, List<RelationDefinition> relationDefinitions, Set<Part> parts) {
+    public ParserDataResult createParts() {
+        List<Model> models=new ArrayList<Model>();
+        List<RelationDefinition> relationDefinitions = new ArrayList<RelationDefinition>();
+        Set<Part> parts = new HashSet<Part>();
+
         RelationDefinition relationDefinitionL = createRelationDefinition(relationDefinitions);
         RelationDefinition relationDefinitionH = createRelationDefinition(relationDefinitions);
 
@@ -2398,8 +2408,13 @@ public class ParserData {
         handleiding.setPrice(BigDecimal.valueOf(0.70));
         handleiding.setType("ST");
         parts.add(handleiding);
+        ParserDataResult result = new ParserDataResult( models, relationDefinitions, parts);
+        return result;
 
     }
 
+public ParserDataResult execute(){
+return createParts();
 
+ }
 }

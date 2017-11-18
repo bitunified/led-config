@@ -140,7 +140,11 @@ public class Part extends Relatable implements Serializable {
     }
 
     public void setImageUrl(String imageUrl) {
-        this.imageUrl = "assets/images/"+imageUrl;
+        if (imageUrl.startsWith("http")){
+            this.imageUrl=imageUrl;
+        }else {
+            this.imageUrl = "assets/images/" + imageUrl;
+        }
     }
 
     public String getProductPage() {

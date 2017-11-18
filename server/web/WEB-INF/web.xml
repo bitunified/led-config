@@ -64,7 +64,7 @@
             <web-resource-name>
 
             </web-resource-name>
-            <url-pattern>/admin</url-pattern>
+            <url-pattern>/we</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>admin</role-name>
@@ -74,7 +74,7 @@
 
     <login-config>
         <auth-method>BASIC</auth-method>
-        <realm-name>administration</realm-name>
+        <realm-name>admin</realm-name>
     </login-config>
 
 

@@ -3,9 +3,7 @@ package com.bitunified.server;
 import com.bitunified.ledconfig.LedConfig;
 import com.bitunified.ledconfig.PriceCalculator;
 import com.bitunified.ledconfig.ProductConfigResult;
-import com.bitunified.ledconfig.configuration.parser.steps.Parser;
-import com.bitunified.ledconfig.domain.Model;
-import com.bitunified.ledconfig.parts.Part;
+import com.bitunified.ledconfig.configuration.parser.steps.Data;
 import com.bitunified.ledconfig.productconfiguration.Models;
 import com.bitunified.ledconfig.productconfiguration.PriceList;
 import com.bitunified.ledconfig.productconfiguration.ProductConfiguration;
@@ -18,28 +16,27 @@ import com.bitunified.server.service.StepService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Path("/engine")
-public class ApplicationEndpoint {
-    static Parser parser = null;
+public class ApplicationEndpoint extends ConfigApplication {
 
-    public ApplicationEndpoint() {
-
-        if (parser == null) {
-            parser = new Parser();
-            parser.createParts();
-
+    public ApplicationEndpoint() throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        if (!(Data.parser!=null && Data.parser.getModels().size()>10)) {
+            updateData();
         }
+
     }
 
     @GET
     @Path("/steps")
     @Produces(MediaType.APPLICATION_JSON)
     public Steps getAllStepss() {
-        StepService stepService = new StepService(parser);
+        StepService stepService = new StepService();
 
         return stepService.getSteps();
     }
@@ -49,7 +46,7 @@ public class ApplicationEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Models getAllModels() {
         Models models = new Models();
-        models.setModels(parser.getModels());
+        models.setModels(Data.parser.getModels());
         return models;
     }
 
@@ -58,7 +55,7 @@ public class ApplicationEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Relations getAllRelations() {
         Relations relations = new Relations();
-        relations.setRelations(parser.getRelationDefinitions());
+        relations.setRelations(Data.parser.getRelationDefinitions());
         return relations;
     }
 
@@ -70,7 +67,7 @@ public class ApplicationEndpoint {
     public PriceList submitConfiguration(ProductConfiguration config) {
 
         LedConfig ledConfig = new LedConfig();
-        ProductConfigResult productConfigResult = ledConfig.rules(config, parser);
+        ProductConfigResult productConfigResult = ledConfig.rules(config, Data.parser);
 
         PriceList priceList = new PriceList();
 
@@ -96,8 +93,8 @@ public class ApplicationEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public PartResult getPart(ProductConfiguration config, @QueryParam("currentStep") Integer currentStep) {
-        PriceService priceService = new PriceService(parser);
-        return priceService.getPart(config,currentStep);
+        PriceService priceService = new PriceService();
+        return priceService.getPart(config, currentStep);
 
     }
 }

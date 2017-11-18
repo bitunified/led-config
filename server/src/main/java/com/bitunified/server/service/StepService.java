@@ -1,6 +1,7 @@
 package com.bitunified.server.service;
 
 import com.bitunified.ledconfig.composedproduct.ComposedProduct;
+import com.bitunified.ledconfig.configuration.parser.steps.Data;
 import com.bitunified.ledconfig.configuration.parser.steps.Parser;
 import com.bitunified.ledconfig.domain.Model;
 import com.bitunified.ledconfig.domain.modeltypes.RealModel;
@@ -17,17 +18,16 @@ import java.util.stream.Stream;
 
 public class StepService {
 
-    private final Parser parser;
 
-    public StepService(Parser parser){
-        this.parser=parser;
+    public StepService(){
+
     }
 
     public Steps getSteps() {
 
         Steps steps = new Steps();
 
-        Map<Integer, List<Model>> groupedModels = parser.getModels().stream().filter(f -> f.getStep() != null).collect(Collectors.groupingBy(Model::getStep));
+        Map<Integer, List<Model>> groupedModels = Data.parser.getModels().stream().filter(f -> f.getStep() != null).collect(Collectors.groupingBy(Model::getStep));
 
         List<String> configDescriptions = Stream.of("Profile","Cover or PU Resin","PCB or LED strip","Cable","Cable Entry","End Cap(s)"," PCB or LED Strip Length").collect(Collectors.toList());
 

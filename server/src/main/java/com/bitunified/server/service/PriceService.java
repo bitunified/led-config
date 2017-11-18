@@ -3,6 +3,7 @@ package com.bitunified.server.service;
 
 import com.bitunified.ledconfig.LedConfig;
 import com.bitunified.ledconfig.ProductConfigResult;
+import com.bitunified.ledconfig.configuration.parser.steps.Data;
 import com.bitunified.ledconfig.configuration.parser.steps.Parser;
 import com.bitunified.ledconfig.parts.Part;
 import com.bitunified.ledconfig.productconfiguration.ModelChosenStep;
@@ -18,18 +19,12 @@ import java.util.stream.Stream;
 
 public class PriceService {
 
-    private Parser parser;
-
-    public PriceService(Parser parser) {
-        this.parser = parser;
-    }
-
 
 
     public PartResult getPart(ProductConfiguration productConfiguration, Integer currentStep) {
 
         LedConfig ledConfig = new LedConfig();
-        ProductConfigResult productConfigResult = ledConfig.rules(productConfiguration, parser);
+        ProductConfigResult productConfigResult = ledConfig.rules(productConfiguration, Data.parser);
 
         Optional<ModelChosenStep> lastModelChosenStep = productConfiguration.getModelsForSteps().stream().filter(item -> item.getStep().getStepindex().equals(currentStep)).findFirst();
         Stream<Map.Entry<Part, Double>> matchedModels;
