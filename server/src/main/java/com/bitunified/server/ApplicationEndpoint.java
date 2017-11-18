@@ -14,7 +14,9 @@ import com.bitunified.server.models.PartResult;
 import com.bitunified.server.service.PriceService;
 import com.bitunified.server.service.StepService;
 
+import javax.servlet.ServletContext;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -25,9 +27,12 @@ import java.util.stream.Collectors;
 @Path("/engine")
 public class ApplicationEndpoint extends ConfigApplication {
 
+    @Context
+    ServletContext context;
+
     public ApplicationEndpoint() throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-        if (!(Data.parser!=null && Data.parser.getModels().size()>10)) {
-            updateData();
+        if (!(Data.parser != null && Data.parser.getModels().size() > 10)) {
+            updateData(context);
         }
 
     }

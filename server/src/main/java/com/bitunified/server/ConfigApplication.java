@@ -6,20 +6,18 @@ import com.bitunified.ledconfig.configuration.parser.steps.Parser;
 import com.bitunified.ledconfig.configuration.parser.steps.ParserDataResult;
 import com.bitunified.server.google.Download;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.OutputStream;
+import javax.servlet.ServletContext;
+import java.io.*;
 
 
 public class ConfigApplication {
 
-    public String updateData() {
+    public String updateData(ServletContext context) {
         String fileNameStart = "ParserData";
         String message;
         StringBuilder sb = new StringBuilder();
 
-        Download download = new Download();
+        Download download = new Download(context);
         GroovyCompiler groovyCompiler = new GroovyCompiler();
 
         try {
@@ -40,12 +38,12 @@ public class ConfigApplication {
         return message;
     }
 
-    public String updateRules() {
+    public String updateRules(ServletContext context) {
         String message;
         StringBuilder sb = new StringBuilder();
-        Download download = new Download();
+        Download download = new Download(context);
         try {
-            OutputStream outputStream = download.getParserDataFile("LedConfig");
+            ByteArrayOutputStream outputStream = download.getParserDataFile("LedConfig");
             createTempDir("LedConfig.drl", outputStream);
         } catch (Exception e) {
             System.out.print(e);
@@ -59,14 +57,14 @@ public class ConfigApplication {
         return message;
     }
 
-    private void createTempDir(String name, OutputStream outputStream) throws IOException {
+    private void createTempDir(String name, ByteArrayOutputStream outputStream) throws IOException {
         File baseDir = new File(System.getProperty("java.io.tmpdir"));
 
         File tempFile = new File(baseDir, name);
 
         try {
             FileWriter f2 = new FileWriter(tempFile, false);
-            f2.write(outputStream.toString());
+            f2.write(outputStream.toString("UTF-8"));
             f2.close();
         } catch (IOException e) {
             e.printStackTrace();

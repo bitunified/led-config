@@ -10,6 +10,7 @@ COPY web-steps/led-config/dist/ $CATALINA_HOME/webapps/ROOT/
 RUN ls
 COPY server/settings.xml $M2_HOME/settings.xml
 RUN ls
+COPY server/pkcs8_key $CATALINA_BASE/temp/pkcs8_key
 WORKDIR /usr
 RUN mkdir led-config
 WORKDIR led-config

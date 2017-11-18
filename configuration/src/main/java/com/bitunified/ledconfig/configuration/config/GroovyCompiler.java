@@ -3,6 +3,7 @@ package com.bitunified.ledconfig.configuration.config;
 import com.bitunified.ledconfig.configuration.parser.steps.ParserDataResult;
 import groovy.lang.GroovyClassLoader;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.InvocationTargetException;
@@ -10,7 +11,7 @@ import java.lang.reflect.InvocationTargetException;
 
 public class GroovyCompiler {
 
-    public ParserDataResult compile(OutputStream outputStream) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException, IOException {
+    public ParserDataResult compile(ByteArrayOutputStream outputStream) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException, IOException {
         String script = getStringFromStream(outputStream);
         GroovyClassLoader groovyClassLoader = new GroovyClassLoader();
         Executor executor;
@@ -22,8 +23,8 @@ public class GroovyCompiler {
         return null;
     }
 
-    private String getStringFromStream(OutputStream outputStream) throws IOException {
-        String data = outputStream.toString();
+    private String getStringFromStream(ByteArrayOutputStream outputStream) throws IOException {
+        String data = outputStream.toString("UTF-8");
         System.out.print(data);
         return data;
     }

@@ -64,7 +64,7 @@ public class LedConfig {
             kfs.write(ResourceFactory.newFileResource(rulesFile));
             KieBuilder kieBuilder = kieServices.newKieBuilder(kfs).buildAll();
             if (kieBuilder.getResults().hasMessages(org.kie.api.builder.Message.Level.ERROR)) {
-                throw new RuntimeException("Build Errors:\n" + kieBuilder.getResults().toString());
+                throw new BuilderConfigException("Build Errors:\n" + kieBuilder.getResults().toString());
             }
             KieContainer kieContainer = kieServices.newKieContainer(kieServices.getRepository().getDefaultReleaseId());
             ksession = kieContainer.newKieSession();
@@ -75,7 +75,12 @@ public class LedConfig {
         } catch (IOException e) {
             ksession = fallingBack(kieServices, e);
         }
-
+        catch (BuilderConfigException e) {
+            ksession = fallingBack(kieServices, e);
+        }
+        catch (RuntimeException e) {
+            ksession = fallingBack(kieServices, e);
+        }
         KnowledgeBuilderConfiguration kbConfig = KnowledgeBuilderFactory.newKnowledgeBuilderConfiguration();
         kbConfig.setProperty("drools.dialect.mvel.strict", "false");
 
@@ -83,7 +88,7 @@ public class LedConfig {
 
     }
 
-    private KieSession fallingBack(KieServices kieServices, IOException e) {
+    private KieSession fallingBack(KieServices kieServices, Exception e) {
         KieSession ksession;//Falling back to default
         System.out.print(e);
         System.out.print("Falling back to default LedConfig.drl");

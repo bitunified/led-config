@@ -9,10 +9,10 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
-import com.google.api.services.drive.model.*;
+import com.google.api.services.drive.model.FileList;
 
+import javax.servlet.ServletContext;
 import java.io.*;
-import java.io.File;
 import java.security.KeyFactory;
 import java.security.PrivateKey;
 import java.security.interfaces.RSAPrivateKey;
@@ -35,6 +35,8 @@ public class Download {
     private static final java.io.File DATA_STORE_DIR = new java.io.File(
             System.getProperty("user.home"), ".credentials/drive-java-quickstart");
 
+    private static final java.io.File PKCS8KEY = new java.io.File(
+            System.getProperty("java.io.tmpdir"), "pkcs8_key");
     /**
      * Global instance of the {@link FileDataStoreFactory}.
      */
@@ -70,19 +72,22 @@ public class Download {
         }
     }
 
+    private final ServletContext context;
+
+    public Download(ServletContext context) {
+        this.context = context;
+    }
 
 
     private PrivateKey stringToPK() throws Exception {
 
-        BufferedInputStream bis = null;
-        String keyPath = "C:\\Users\\BertLenovo\\Downloads\\pkcs8_key";
-        File privKeyFile = new File(keyPath);
+        BufferedInputStream bis;
         try {
-            bis = new BufferedInputStream(new FileInputStream(privKeyFile));
-        } catch(FileNotFoundException e) {
-            throw new Exception("Could not locate keyfile at '" + keyPath + "'", e);
+            bis = new BufferedInputStream(new FileInputStream(PKCS8KEY));
+        } catch (FileNotFoundException e) {
+            throw new Exception("Could not locate keyfile at ", e);
         }
-        byte[] privKeyBytes = new byte[(int)privKeyFile.length()];
+        byte[] privKeyBytes = new byte[(int) PKCS8KEY.length()];
         bis.read(privKeyBytes);
         bis.close();
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
@@ -116,8 +121,6 @@ public class Download {
     }
 
 
-
-
     /**
      * Build and return an authorized Drive client service.
      *
@@ -133,7 +136,7 @@ public class Download {
     }
 
 
-    public OutputStream getParserDataFile(String fileNameStart) throws IOException {
+    public ByteArrayOutputStream getParserDataFile(String fileNameStart) throws IOException {
         // Build a new authorized API client service.
         Drive service = getDriveService();
 
@@ -175,9 +178,9 @@ public class Download {
         } else {
             System.out.println("Files:");
             for (com.google.api.services.drive.model.File f : files) {
-                if (f.getOriginalFilename().startsWith(fileNameStart)){
+                if (f.getOriginalFilename() != null && f.getOriginalFilename().startsWith(fileNameStart)) {
                     System.out.printf("%s (%s)\n", f.getTitle(), f.getId());
-                    return downloadFile(service,f);
+                    return downloadFile(service, f);
 
                 }
                 System.out.printf("%s (%s)\n", f.getTitle(), f.getId());
@@ -186,10 +189,10 @@ public class Download {
         return null;
     }
 
-    private OutputStream downloadFile(Drive service, com.google.api.services.drive.model.File f) throws IOException {
+    private ByteArrayOutputStream downloadFile(Drive service, com.google.api.services.drive.model.File f) throws IOException {
 
         String fileId = f.getId();
-        OutputStream outputStream = new ByteArrayOutputStream();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         service.files().get(fileId)
                 .executeMediaAndDownloadTo(outputStream);
         return outputStream;
