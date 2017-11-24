@@ -30,8 +30,8 @@ import java.util.Set;
 
 
 
-public class ExecImpl implements Executor{ 
-  
+public class ExecImpl implements Executor{
+
 
     public RelationDefinition createRelationDefinition(List<RelationDefinition> relationDefinitions) {
         RelationDefinition relationDefinition = new RelationDefinition();
@@ -225,7 +225,7 @@ public class ExecImpl implements Executor{
 
         Cap capDiffuse = new CapDiffuse();
         capDiffuse.setName("liniLED® Aeris Afdekkap Diffuus");
-        capDiffuse.setTranslations(Locale.en, "liniLED® Aeris Cover Diffuse");
+        capDiffuse.setTranslations(Locale.en, "liniLED® Aeris Cover Diffuse IP40");
         capDiffuse.getProperty(Cap.TRANSLUCENCY_S).setValue("diffuse");
         capDiffuse.setCode("L");
         capDiffuse.setMaxDimension(new Dimension(4000));
@@ -254,7 +254,7 @@ public class ExecImpl implements Executor{
         capClear.setMaxDimension(new Dimension(4000));
         capClear.setCode("R");
         models.add(capClear);
-        relationDefinitionL.addModel(capClear);
+
         relationDefinitionCover.addModel(capClear);
         partCapL20 = new Part(capClear);
         partCapL20.setPrice(BigDecimal.valueOf(35.62));
@@ -1099,7 +1099,7 @@ public class ExecImpl implements Executor{
 
         ResinDiffuse resinDiffuse = new ResinDiffuse(null);
         resinDiffuse.setName("liniLED® Diffuus Ingieten");
-        resinDiffuse.setTranslations(Locale.en, "liniLED® Diffuse Resin");
+        resinDiffuse.setTranslations(Locale.en, "liniLED® Diffuse Resin IP40");
         resinDiffuse.setCode("D");
         resinDiffuse.setImageUrl("resinDiffuse.jpg");
         models.add(resinDiffuse);
@@ -1194,7 +1194,6 @@ public class ExecImpl implements Executor{
         LedStrip ledStrip = new DecoLedStrip(new Dimension(null));
         ledStrip.setName("iniLED® PCB Deco rood");
         ledStrip.setTranslations(Locale.en, "iniLED® PCB Red D");
-        ledStrip.setMaxDimension(new Dimension(2600));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStrip.getProperty(LedStrip.COLOR_TYPE).setValue("rood");
         ledStrip.setTranslations(Locale.en, "liniLED® PCB Red D");
@@ -1218,7 +1217,6 @@ public class ExecImpl implements Executor{
 
         ledStrip = new DecoLedStrip(new Dimension(null));
         ledStrip.setName("liniLED® PCB Groen Deco");
-        ledStrip.setMaxDimension(new Dimension(2600));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(100);
         ledStrip.getProperty(LedStrip.COLOR_TYPE).setValue("groen");
         ledStrip.setCode("DG");
@@ -1241,7 +1239,6 @@ public class ExecImpl implements Executor{
 
         ledStrip = new DecoLedStrip(new Dimension(null));
         ledStrip.setName("liniLED® Deco blauw");
-        ledStrip.setMaxDimension(new Dimension(2600));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(100);
         ledStrip.getProperty(LedStrip.COLOR_TYPE).setValue("blauw");
         ledStrip.setTranslations(Locale.en, "liniLED® PCB Blue D");
@@ -1265,7 +1262,6 @@ public class ExecImpl implements Executor{
 
         ledStrip = new DecoLedStrip(new Dimension(null));
         ledStrip.setName("liniLED® Deco amber");
-        ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(100);
         ledStrip.getProperty(LedStrip.COLOR_TYPE).setValue("amber");
         ledStrip.setTranslations(Locale.en, "liniLED® PCB Amber D");
@@ -1289,7 +1285,6 @@ public class ExecImpl implements Executor{
 
         LedStrip ledStripRGB = new RGBLedStrip(new Dimension(null));
         ledStripRGB.setName("liniLED® PCB RGB 160");
-        ledStripRGB.setMaxDimension(new Dimension(2600));
         ledStripRGB.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStripRGB.getProperty(LedStrip.COLOR_TYPE).setValue("rgb");
         ledStripRGB.setCode("RD");
@@ -1310,7 +1305,6 @@ public class ExecImpl implements Executor{
 
         ledStripRGB = new RGBLedStrip(new Dimension(null));
         ledStripRGB.setName("liniLED® PCB RGB 240");
-        ledStripRGB.setMaxDimension(new Dimension(2600));
         ledStripRGB.getProperty(LedStrip.SECTION_WIDTH).setValue(200);
         ledStripRGB.getProperty(LedStrip.COLOR_TYPE).setValue("rgb");
         ledStripRGB.setCode("RQ");
@@ -1333,7 +1327,6 @@ public class ExecImpl implements Executor{
 
         ledStrip = new DecoLedStrip(new Dimension(null));
         ledStrip.setName("liniLED® PCB UWW 2400K D");
-        ledStrip.setMaxDimension(new Dimension(2700));
         ledStrip.getProperty(LedStrip.SECTION_WIDTH).setValue(100);
         ledStrip.getProperty(LedStrip.COLOR_TYPE).setValue("white");
         ledStrip.getProperty(PowerLedStrip.KELVIN_TYPE).setValue("2400");
@@ -2413,8 +2406,8 @@ public class ExecImpl implements Executor{
 
     }
 
-public ParserDataResult execute(){
-return createParts();
+    public ParserDataResult execute(){
+        return createParts();
 
- }
+    }
 }
