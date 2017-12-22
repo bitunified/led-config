@@ -18,7 +18,7 @@ import {ProductConfiguration} from "../../domain/ProductConfiguration";
 import {TranslateService} from "@ngx-translate/core";
 import {Observable} from "rxjs/Rx";
 import {ProductWarningService} from "../../services/productwarning.service";
-
+import {environment} from "../../../environments/environment";
 @Component({
   selector: 'menustepitem',
   templateUrl: './menustepitem.component.html',
@@ -178,6 +178,13 @@ export class MenustepitemComponent implements OnInit {
       return part.price;
     }
     return 0;
+  }
+
+  showPrice(): boolean {
+    if (environment.application.show_price) {
+      return true;
+    }
+    return false;
   }
 
   getModelTitle(): string {
@@ -422,18 +429,18 @@ export class MenustepitemComponent implements OnInit {
     }
   }
 
-  calculateMaxValue(step: StepModel):number{
-    let totalMaxLength:number = 2000;
+  calculateMaxValue(step: StepModel): number {
+    let totalMaxLength: number = 2000;
     if (step.stepindex == 7) {
 
       let modelResinCover: ModelChosenStep = this.productconfigService.productConfiguration.getModelChosenFromStep(2);
-      if (modelResinCover && modelResinCover.chosenModel && modelResinCover.chosenModel.maxDimension && modelResinCover.chosenModel.maxDimension.width){
-        totalMaxLength=modelResinCover.chosenModel.maxDimension.width;
+      if (modelResinCover && modelResinCover.chosenModel && modelResinCover.chosenModel.maxDimension && modelResinCover.chosenModel.maxDimension.width) {
+        totalMaxLength = modelResinCover.chosenModel.maxDimension.width;
       }
-      console.info(modelResinCover);
     }
     return totalMaxLength;
   }
+
   calculateMinValue(step: StepModel) {
     if (step.stepindex == 7) {
       return this.calculateStepValue(step);

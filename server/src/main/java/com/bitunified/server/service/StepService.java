@@ -39,7 +39,7 @@ public class StepService {
         composedProduct.add(new ComposedProduct());
         stepListNumbers.add(new Step(8, "Step 8", composedProduct, StepType.NUMBER,true,"Total Product length"));
 
-        List<Step> stepAccessoires = groupedModels.entrySet().stream().filter(f -> f.getKey() ==9 ).map(t -> new Step(t.getKey(), t.getKey() == null ? "" : "Step " + t.getKey().toString(), t.getValue(),StepType.VALUES,true,"Cable Channel or Clip")).collect(Collectors.toList());
+        List<Step> stepAccessoires = groupedModels.entrySet().stream().filter(f -> f.getKey() ==9 ).map(t -> new Step(t.getKey(), t.getKey() == null ? "" : "Step " + t.getKey().toString(), t.getValue(),StepType.VALUES,true,"Accessoires")).collect(Collectors.toList());
 
         List<Step> allSteps = new ArrayList<>();
         allSteps.addAll(stepListValues);

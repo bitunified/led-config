@@ -38,8 +38,8 @@
   <role rolename="tomcat"/>
   <role rolename="manager"/>
   <role rolename="admin"/>
+  <role rolename="configuser"/>
   <role rolename="manager-gui"/>
-  <user username="tomcat" password="tomcat" roles="tomcat"/>
-  <user username="admin" password="admin" roles="admin"/>
+  <user username="configuser" password="triolight2017" roles="configuser"/>
 
 </tomcat-users>

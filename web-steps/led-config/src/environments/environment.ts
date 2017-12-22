@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  contextroot:'http://localhost:8080'
+  contextroot:'http://localhost:8080',
+  application:{show_price:true}
 };

@@ -11,6 +11,7 @@ import {ErrorNotificationState} from "../../domain/internal/ErrorNotificationSta
 import {NotificationMessage} from "../../domain/internal/NotificationMessage";
 import {PriceCalculation} from "../../domain/server/PriceCalculation";
 import {ClipboardModule} from "ngx-clipboard";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'menusteps',
@@ -96,7 +97,12 @@ export class MenustepsComponent implements OnInit {
 
     return true;
   }
-
+  showPrice(): boolean {
+    if (environment.application.show_price) {
+      return true;
+    }
+    return false;
+  }
   finish() {
 
     this.isProcessing = true;

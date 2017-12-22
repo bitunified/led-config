@@ -1,36 +1,27 @@
-package com.bitunified.ledconfig.configuration.parser.steps;
+package com.bitunified.ledconfig.configuration.parser.steps
 
-import com.bitunified.ledconfig.domain.Dimension;
-import com.bitunified.ledconfig.domain.I18N.Locale;
-import com.bitunified.ledconfig.domain.Margin;
-import com.bitunified.ledconfig.domain.Model;
-import com.bitunified.ledconfig.domain.Orientation;
-import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
-import com.bitunified.ledconfig.domain.product.PCB.types.*;
-import com.bitunified.ledconfig.domain.product.accessoires.CableChannel;
-import com.bitunified.ledconfig.domain.product.accessoires.Clip;
-import com.bitunified.ledconfig.domain.product.cable.Cable;
-import com.bitunified.ledconfig.domain.product.cable.cableconfig.*;
-import com.bitunified.ledconfig.domain.product.cover.types.*;
-import com.bitunified.ledconfig.domain.product.mounting.*;
-import com.bitunified.ledconfig.domain.product.profile.Profile;
-import com.bitunified.ledconfig.domain.product.profile.ProfileL20;
-import com.bitunified.ledconfig.domain.relation.RelationDefinition;
-import com.bitunified.ledconfig.domain.relation.RelationState;
-import com.bitunified.ledconfig.parts.NotExistingPart;
-import com.bitunified.ledconfig.parts.Part;
-import com.bitunified.ledconfig.configuration.config.Executor;
-import com.bitunified.ledconfig.configuration.parser.steps.ParserDataResult;
+import com.bitunified.ledconfig.configuration.config.Executor
+import com.bitunified.ledconfig.domain.Dimension
+import com.bitunified.ledconfig.domain.I18N.Locale
+import com.bitunified.ledconfig.domain.Margin
+import com.bitunified.ledconfig.domain.Model
+import com.bitunified.ledconfig.domain.Orientation
+import com.bitunified.ledconfig.domain.product.PCB.LedStrip
+import com.bitunified.ledconfig.domain.product.PCB.types.*
+import com.bitunified.ledconfig.domain.product.accessoires.CableChannel
+import com.bitunified.ledconfig.domain.product.accessoires.Clip
+import com.bitunified.ledconfig.domain.product.cable.Cable
+import com.bitunified.ledconfig.domain.product.cable.cableconfig.*
+import com.bitunified.ledconfig.domain.product.cover.types.*
+import com.bitunified.ledconfig.domain.product.mounting.*
+import com.bitunified.ledconfig.domain.product.profile.Profile
+import com.bitunified.ledconfig.domain.product.profile.ProfileL20
+import com.bitunified.ledconfig.domain.relation.RelationDefinition
+import com.bitunified.ledconfig.domain.relation.RelationState
+import com.bitunified.ledconfig.parts.NotExistingPart
+import com.bitunified.ledconfig.parts.Part
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-
-
-public class ExecImpl implements Executor{
+public class ExecImpl implements Executor {
 
 
     public RelationDefinition createRelationDefinition(List<RelationDefinition> relationDefinitions) {
@@ -48,7 +39,7 @@ public class ExecImpl implements Executor{
     }
 
     public ParserDataResult createParts() {
-        List<Model> models=new ArrayList<Model>();
+        List<Model> models = new ArrayList<Model>();
         List<RelationDefinition> relationDefinitions = new ArrayList<RelationDefinition>();
         Set<Part> parts = new HashSet<Part>();
 
@@ -886,7 +877,6 @@ public class ExecImpl implements Executor{
         parts.add(part);
         //60012	Kabel Mono PUR 10 m with PU connector set	W	€ 13,29
 
-
         //-----------------------------TW cables -----------------------------
 
 
@@ -980,7 +970,6 @@ public class ExecImpl implements Executor{
 
         //----------------------------END TW Cables----------------------------------
 
-
         //-----------------NOT FOR RGB OR TW CABLES -----------
 
 
@@ -1071,7 +1060,6 @@ public class ExecImpl implements Executor{
         part.setPrice(BigDecimal.valueOf(46.1));
         part.setImageUrl("cableIandIII.jpg");
         parts.add(part);
-
 
         //----- END --NOT FOR RGB OR TW CABLES --------------
 
@@ -2408,12 +2396,12 @@ public class ExecImpl implements Executor{
         handleiding.setPrice(BigDecimal.valueOf(0.70));
         handleiding.setType("ST");
         parts.add(handleiding);
-        ParserDataResult result = new ParserDataResult( models, relationDefinitions, parts);
+        ParserDataResult result = new ParserDataResult(models, relationDefinitions, parts);
         return result;
 
     }
 
-    public ParserDataResult execute(){
+    public ParserDataResult execute() {
         return createParts();
 
     }

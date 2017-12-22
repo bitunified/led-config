@@ -72,6 +72,19 @@ $md-mcgpalette0: (
   )
 );
 
+@mixin select-smaller($theme) {
+
+  .mat-option{
+
+    height: 18px;
+    line-height:18px;
+
+  }
+  .md-option{
+    height: 18px;
+    line-height:18px;
+  }
+}
 
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
@@ -90,3 +103,4 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($candy-app-theme);
+@include select-smaller($candy-app-theme);

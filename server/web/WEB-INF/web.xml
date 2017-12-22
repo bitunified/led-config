@@ -40,41 +40,29 @@
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>validatepage</servlet-name>
-        <jsp-file>/index.html</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>validatepage</servlet-name>
-        <url-pattern>/validate</url-pattern>
-    </servlet-mapping>
-
-
-
-
-
 
     <security-role>
-        <role-name>admin</role-name>
+        <role-name>configuser</role-name>
     </security-role>
 
 
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>
-
+            Admin area
             </web-resource-name>
-            <url-pattern>/we</url-pattern>
+            <url-pattern>/admin</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
         </web-resource-collection>
         <auth-constraint>
-            <role-name>admin</role-name>
+            <role-name>configuser</role-name>
 
         </auth-constraint>
     </security-constraint>
 
     <login-config>
         <auth-method>BASIC</auth-method>
-        <realm-name>admin</realm-name>
     </login-config>
 
 

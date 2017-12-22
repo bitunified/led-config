@@ -96,6 +96,7 @@
                   Max. length: {{m.maxDimension==null?'':m.maxDimension.width}} mm
                 </md-list-item>
                 <md-divider></md-divider>
+                <div *ngIf="showPrice()">
                 <md-list-item *ngIf="(currentPart | async); let part; else (loadingPrice)">
                   <div *ngIf="part.price; else contentNoPrice">
                     Price: {{((evaluatePrice(part))) | currency:'EUR':true}} ({{getDescriptionFromPart(part)}})
@@ -104,6 +105,7 @@
                     No price information available.
                   </ng-template>
                 </md-list-item>
+                  </div>
                 <ng-template #loadingPrice><mat-progress-spinner class="loadingSpinner" diameter="100"></mat-progress-spinner></ng-template>
 
                 <md-list-item i18n *ngIf="m.productPage">

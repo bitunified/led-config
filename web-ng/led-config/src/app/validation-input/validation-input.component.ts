@@ -35,14 +35,7 @@ export class ValidationInputComponent implements  OnDestroy,ControlValueAccessor
 
   private subscription: Subscription;
   constructor(private productcodeService: ProductcodeService,validationService:ValidationServiceService ){
-    this.subscription = this.productcodeService.notifyObservable$.subscribe((data) => {
-      validationService.validateCode(data).subscribe((res:Serverresponse) => {
-        let serverresponse:Serverresponse=res;
 
-      }
-        ,
-        error=>console.info('error'))
-    });
   }
 
   ngOnDestroy() {
