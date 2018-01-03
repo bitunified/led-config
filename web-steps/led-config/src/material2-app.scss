@@ -86,6 +86,14 @@ $md-mcgpalette0: (
   }
 }
 
+@mixin steps-smaller($theme){
+  .mat-card .stepCard {
+  padding: 14px;
+  }
+  .mat-card .infoCard {
+    padding: 14px;
+  }
+}
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
@@ -104,3 +112,4 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
 // that you are using.
 @include angular-material-theme($candy-app-theme);
 @include select-smaller($candy-app-theme);
+@include steps-smaller($candy-app-theme);

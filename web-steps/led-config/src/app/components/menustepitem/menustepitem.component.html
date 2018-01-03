@@ -5,7 +5,7 @@
     <div *ngIf="true" class="itemModel">
       <div class="stepCurrentCard">
         <md-card class="stepCard">
-          <md-card-header>
+       <!--   <md-card-header>
             <md-card-title>
               <md-chip-list>
                 <md-chip class="stepchip">{{step.description}} {{step.skippable?" - optional":""}}
@@ -18,13 +18,13 @@
             </md-card-title>
             <md-card-subtitle></md-card-subtitle>
           </md-card-header>
-
+-->
           <md-card-content>
             <div class="selectionPanel">
               <div *ngIf="isStepTypeValues(step) && !skippable" class="propContainer">
 
                 <div class="selectContainer">
-                  <md-select placeholder="Select {{step.configDescription}}" (onClose)="changeSelect($event)"
+                  <md-select placeholder="Select {{step.configDescription}} {{step.skippable?' optional':''}}" (onClose)="changeSelect($event)"
                              [(ngModel)]="m"
                              [ngModelOptions]="{standalone: true}"
                              floatPlaceholder="never" class="selectBoxContainer" overlayDir="bottom">
