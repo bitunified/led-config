@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, ViewEncapsulation} from "@angular/core";
 import {ModelserviceService} from "../../services/modelservice.service";
 import {ProductcodeService} from "../../services/productcode.service";
-import {MdCheckboxChange} from "@angular/material";
+import {MatCheckboxChange} from "@angular/material";
 import {Subscription} from "rxjs/Subscription";
 import {StepModel} from "../../domain/StepModel";
 import {Model} from "../../domain/Model";
@@ -131,7 +131,7 @@ export class MenustepitemComponent implements OnInit {
   }
 
 
-  skipThisStep(value: MdCheckboxChange) {
+  skipThisStep(value: MatCheckboxChange) {
 
     this.onInputChange(null);
     this.skip = value.checked;

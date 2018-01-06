@@ -19,7 +19,7 @@ import {ModelTranslation} from "./domain/ModelTranslation";
 import {PriceCalculation} from "./domain/server/PriceCalculation";
 import {NotificationService} from "./services/notificationservice.service";
 import {NotificationComponent} from "./components/notification/notification.component";
-import {MdSnackBar, MdDialog} from "@angular/material";
+import {MatSnackBar, MatDialog} from "@angular/material";
 import {ErrorNotificationState} from "./domain/internal/ErrorNotificationState";
 import {PartService} from "./services/partservice.service";
 import {TranslateService} from "@ngx-translate/core";
@@ -50,7 +50,7 @@ export class AppComponent implements OnInit,OnDestroy {
   AllowedWithWarning: RelationState = RelationState.ALLOWEDWITHWARNING;
   AllowedWithInfo: RelationState = RelationState.ALLOWEDWITHINFO;
 
-  constructor(private productWarningService: ProductWarningService, public dialog: MdDialog, public translate: TranslateService, public snackBar: MdSnackBar, private notificationMessageService: NotificationService, private modelService: ModelserviceService, private stepService: StepsService, productcodeService: ProductcodeService, private relationsService: RelationService, private productConfiguration: ProductconfigurationService) {
+  constructor(private productWarningService: ProductWarningService, public dialog: MatDialog, public translate: TranslateService, public snackBar: MatSnackBar, private notificationMessageService: NotificationService, private modelService: ModelserviceService, private stepService: StepsService, productcodeService: ProductcodeService, private relationsService: RelationService, private productConfiguration: ProductconfigurationService) {
     this.subscription = productcodeService.productcodeSource$.subscribe(
       res => {
         this.productcode = res.getCode();

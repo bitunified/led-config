@@ -4,19 +4,19 @@
 
 //@include mat-core();
 //
-//$primary: md-palette($md-deep-purple);
-//$accent:  md-palette($md-amber, A200, A100, A400);
+//$primary: mat-palette($mat-deep-purple);
+//$accent:  mat-palette($mat-amber, A200, A100, A400);
 //
-//$theme: md-light-theme($primary, $accent);
+//$theme: mat-light-theme($primary, $accent);
 //
 //@include angular-material-theme($theme);
 //
 //.m2app-dark {
-//  $dark-primary: md-palette($md-pink, 700, 500, 900);
-//  $dark-accent:  md-palette($md-blue-grey, A200, A100, A400);
-//  $dark-warn:    md-palette($md-deep-orange);
+//  $dark-primary: mat-palette($mat-pink, 700, 500, 900);
+//  $dark-accent:  mat-palette($mat-blue-grey, A200, A100, A400);
+//  $dark-warn:    mat-palette($mat-deep-orange);
 //
-//  $dark-theme: md-dark-theme($dark-primary, $dark-accent, $dark-warn);
+//  $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 //
 //  @include angular-material-theme($dark-theme);
 //}
@@ -39,7 +39,7 @@
 // Be sure that you only ever include this mixin once!
 @include mat-core();
 
-$md-mcgpalette0: (
+$mat-mcgpalette0: (
   50 : #fdeee5,
   100 : #fad4bd,
   200 : #f7b891,
@@ -80,7 +80,7 @@ $md-mcgpalette0: (
     line-height:18px;
 
   }
-  .md-option{
+  .mat-option{
     height: 18px;
     line-height:18px;
   }
@@ -98,8 +98,8 @@ $md-mcgpalette0: (
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
-$candy-app-primary: mat-palette($md-mcgpalette0, 500);
-$candy-app-accent:  mat-palette($md-mcgpalette0, 500, A200, A700);
+$candy-app-primary: mat-palette($mat-mcgpalette0, 500);
+$candy-app-accent:  mat-palette($mat-mcgpalette0, 500, A200, A700);
 
 // The warn palette is optional (defaults to red).
 $candy-app-warn:    mat-palette($mat-red);

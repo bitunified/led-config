@@ -1,49 +1,49 @@
-<md-sidenav-container>
+<mat-sidenav-container>
 
-  <md-sidenav #sidenav mode="side" class="app-sidenav" style="width:10%">
-    <md-list>
-      <md-list-item> Productcode</md-list-item>
-      <md-list-item><h4>{{productcode}}</h4></md-list-item>
+  <mat-sidenav #sidenav mode="side" class="app-sidenav" style="width:10%">
+    <mat-list>
+      <mat-list-item> Productcode</mat-list-item>
+      <mat-list-item><h4>{{productcode}}</h4></mat-list-item>
 
-    </md-list>
-  </md-sidenav>
+    </mat-list>
+  </mat-sidenav>
 
-  <md-toolbar color="primary">
+  <mat-toolbar color="primary">
 
     Aeris Configurator - step by step
     <div class="small-product-code" *ngIf="productcode">Productcode: {{productcode}}</div>
     <span class="app-toolbar-filler"></span>
-    <md-list dense class="listProperties">
-      <md-list-item
+    <mat-list dense class="listProperties">
+      <mat-list-item
         *ngIf="productWarning!=null && productWarning.message!=null && productWarning.relationState==AllowedWithWarning">
-        <md-chip-list class="mat-chip-list-stacked">
-          <md-chip class="warningChip"
+        <mat-chip-list class="mat-chip-list-stacked">
+          <mat-chip class="warningChip"
                    selected="true"
                    color="warn" i18n>
             Warning: {{productWarning.message}}
-          </md-chip>
-        </md-chip-list>
+          </mat-chip>
+        </mat-chip-list>
 
 
-      </md-list-item>
-      <md-list-item *ngIf="productWarning!=null && productWarning.message!=null && productWarning.relationState==AllowedWithInfo">
-        <md-chip-list class="mat-chip-list-stacked">
-          <md-chip class="warningChip"
+      </mat-list-item>
+      <mat-list-item *ngIf="productWarning!=null && productWarning.message!=null && productWarning.relationState==AllowedWithInfo">
+        <mat-chip-list class="mat-chip-list-stacked">
+          <mat-chip class="warningChip"
                    selected="true"
                    color="primary" i18n>
             Information: {{productWarning.message}}
-          </md-chip>
-        </md-chip-list>
+          </mat-chip>
+        </mat-chip-list>
 
 
-      </md-list-item>
-    </md-list>
-  </md-toolbar>
+      </mat-list-item>
+    </mat-list>
+  </mat-toolbar>
 
   <div class="app-content">
-    <md-card>
+    <mat-card>
       <menusteps [steps]="steps" [relations]="relations" (finished)="finished($event)"></menusteps>
-    </md-card>
+    </mat-card>
   </div>
 
-</md-sidenav-container>
+</mat-sidenav-container>

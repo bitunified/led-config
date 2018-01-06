@@ -1,49 +1,50 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {CdkTableModule} from '@angular/cdk'
-import {MdProgressSpinnerModule,MdTableModule,MdDialogModule,MdCheckboxModule,MdGridListModule,MdChipsModule,MdSnackBarModule,MdSliderModule,MdListModule,MdTabsModule,MdSidenavModule,MdToolbarModule,MdInputModule,MdMenuModule,MdSelectModule,MdIconModule,MdButtonModule,MdCardModule} from '@angular/material';
+import {CdkTableModule} from '@angular/cdk/table';
+import {MatProgressSpinnerModule,MatTableModule,MatDialogModule,MatCheckboxModule,MatGridListModule,MatChipsModule,MatSnackBarModule,MatSliderModule,MatListModule,MatTabsModule,MatSidenavModule,MatInputModule,MatMenuModule,MatSelectModule,MatIconModule,MatButtonModule,MatCardModule} from '@angular/material';
+import {MatToolbarModule} from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
-    MdToolbarModule,
-    MdInputModule,
-    MdMenuModule,
-    MdSidenavModule,
-    MdSelectModule,
-    MdIconModule,
-    MdButtonModule,
-    MdCardModule,
-    MdTabsModule,
-    MdListModule,
-    MdSliderModule,
-    MdSnackBarModule,
-    MdGridListModule,
-    MdChipsModule,
-    MdCheckboxModule,
-    MdDialogModule,
-    MdTableModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatSelectModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatTabsModule,
+    MatListModule,
+    MatSliderModule,
+    MatSnackBarModule,
+    MatGridListModule,
+    MatChipsModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    MatTableModule,
     CdkTableModule,
-    MdProgressSpinnerModule
+    MatProgressSpinnerModule
 
 ],
-  exports:[MdToolbarModule,
-    MdInputModule,
-    MdMenuModule,
-    MdSidenavModule,
-    MdSelectModule,
-    MdIconModule,
-    MdButtonModule,
-    MdCardModule,
-  MdTabsModule, MdListModule,
-  MdSliderModule,MdSnackBarModule,
-    MdGridListModule,
-    MdChipsModule,
-    MdCheckboxModule,
-    MdDialogModule,
-    MdTableModule,
+  exports:[MatToolbarModule,
+    MatInputModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatSelectModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+  MatTabsModule, MatListModule,
+  MatSliderModule,MatSnackBarModule,
+    MatGridListModule,
+    MatChipsModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    MatTableModule,
     CdkTableModule,
-    MdProgressSpinnerModule
+    MatProgressSpinnerModule
   ],
   declarations: []
 })

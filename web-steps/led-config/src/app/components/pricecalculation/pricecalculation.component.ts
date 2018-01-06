@@ -1,6 +1,6 @@
 import {Component, OnInit, Inject, Optional} from "@angular/core";
 import {PriceCalculation} from "../../domain/server/PriceCalculation";
-import {MdDialogRef, MD_DIALOG_DATA} from "@angular/material";
+import {MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
 import {Part} from "../../domain/server/Part";
 import { TranslateService } from '@ngx-translate/core';
 import {PriceDataSource} from "./PriceDataSource";
@@ -16,7 +16,7 @@ export class PricecalculationComponent implements OnInit {
   dataSource: PriceDataSource | null;
 
   displayedColumns:Array<string>=["id","description","price","amount"];
-  constructor(@Optional() @Inject(MD_DIALOG_DATA) public data: any, public dialogRef: MdDialogRef<PricecalculationComponent>,public translate:TranslateService) {
+  constructor(@Optional() @Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<PricecalculationComponent>,public translate:TranslateService) {
 
   }
 

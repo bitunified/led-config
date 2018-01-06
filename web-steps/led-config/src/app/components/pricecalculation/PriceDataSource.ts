@@ -1,4 +1,4 @@
-import {DataSource} from "@angular/cdk";
+import {DataSource} from "@angular/cdk/collections";
 import {Observable} from "rxjs/Observable";
 import {PriceAmountItem} from "./PriceAmountItem";
 import {PriceDatabase} from "./PriceDatabase";

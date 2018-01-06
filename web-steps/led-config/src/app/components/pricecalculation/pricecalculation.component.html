@@ -1,55 +1,55 @@
-<h2 md-dialog-title>Price overview</h2>
-<md-dialog-content>
+<h2 mat-dialog-title>Price overview</h2>
+<mat-dialog-content>
 
-  <md-card class="priceTable">
+  <mat-card class="priceTable">
 
-    <md-card-header>
-      <md-card-title>
-      </md-card-title>
-    </md-card-header>
-    <md-card-content>
+    <mat-card-header>
+      <mat-card-title>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
       <div>
         Total: € {{priceCalculation.totalPrice}}
       </div>
 
 
       <div>
-        <md-table #table [dataSource]="dataSource">
+        <mat-table #table [dataSource]="dataSource">
 
           <!--- Note that these columns can be defined in any order.
                 The actual rendered columns are set as a property on the row definition" -->
 
           <!-- ID Column -->
           <ng-container cdkColumnDef="id">
-            <md-header-cell *cdkHeaderCellDef>Art. number</md-header-cell>
-            <md-cell *cdkCellDef="let row"> {{row.id}}</md-cell>
+            <mat-header-cell *cdkHeaderCellDef>Art. number</mat-header-cell>
+            <mat-cell *cdkCellDef="let row"> {{row.id}}</mat-cell>
           </ng-container>
 
           <!-- Progress Column -->
           <ng-container cdkColumnDef="description">
-            <md-header-cell *cdkHeaderCellDef>Description</md-header-cell>
-            <md-cell *cdkCellDef="let row"> {{row.description}}</md-cell>
+            <mat-header-cell *cdkHeaderCellDef>Description</mat-header-cell>
+            <mat-cell *cdkCellDef="let row"> {{row.description}}</mat-cell>
           </ng-container>
 
           <ng-container cdkColumnDef="price">
-            <md-header-cell *cdkHeaderCellDef>Unit price</md-header-cell>
-            <md-cell *cdkCellDef="let row"> {{row.price}}</md-cell>
+            <mat-header-cell *cdkHeaderCellDef>Unit price</mat-header-cell>
+            <mat-cell *cdkCellDef="let row"> {{row.price}}</mat-cell>
           </ng-container>
 
           <!-- Name Column -->
           <ng-container cdkColumnDef="amount">
-            <md-header-cell *cdkHeaderCellDef>Amount</md-header-cell>
-            <md-cell *cdkCellDef="let row"> {{row.amount}}</md-cell>
+            <mat-header-cell *cdkHeaderCellDef>Amount</mat-header-cell>
+            <mat-cell *cdkCellDef="let row"> {{row.amount}}</mat-cell>
           </ng-container>
 
-          <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
-          <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
-        </md-table>
+          <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
 
       </div>
-    </md-card-content>
-  </md-card>
-</md-dialog-content>
-<md-dialog-actions align="end">
-  <button md-raised-button md-raised md-dialog-close>Close</button>
-</md-dialog-actions>
+    </mat-card-content>
+  </mat-card>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-raised mat-dialog-close>Close</button>
+</mat-dialog-actions>

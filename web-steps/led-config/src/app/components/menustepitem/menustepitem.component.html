@@ -4,39 +4,39 @@
   <div class="gridContainer">
     <div *ngIf="true" class="itemModel">
       <div class="stepCurrentCard">
-        <md-card class="stepCard">
-       <!--   <md-card-header>
-            <md-card-title>
-              <md-chip-list>
-                <md-chip class="stepchip">{{step.description}} {{step.skippable?" - optional":""}}
+        <mat-card class="stepCard">
+       <!--   <mat-card-header>
+            <mat-card-title>
+              <mat-chip-list>
+                <mat-chip class="stepchip">{{step.description}} {{step.skippable?" - optional":""}}
 
 
-                </md-chip>
+                </mat-chip>
 
 
-              </md-chip-list>
-            </md-card-title>
-            <md-card-subtitle></md-card-subtitle>
-          </md-card-header>
+              </mat-chip-list>
+            </mat-card-title>
+            <mat-card-subtitle></mat-card-subtitle>
+          </mat-card-header>
 -->
-          <md-card-content>
+          <mat-card-content>
             <div class="selectionPanel">
               <div *ngIf="isStepTypeValues(step) && !skippable" class="propContainer">
 
-                <div class="selectContainer">
-                  <md-select placeholder="Select {{step.configDescription}} {{step.skippable?' optional':''}}" (onClose)="changeSelect($event)"
+                <div >
+                  <mat-select placeholder="Select {{step.configDescription}} {{step.skippable?' optional':''}}" (onClose)="changeSelect($event)"
                              [(ngModel)]="m"
                              [ngModelOptions]="{standalone: true}"
                              floatPlaceholder="never" class="selectBoxContainer" overlayDir="bottom">
-                    <md-option *ngFor="let m of filteredModels;let i=index;" [value]="m" class="selectOption">
+                    <mat-option *ngFor="let m of filteredModels;let i=index;" [value]="m" class="selectOption">
                       <div>{{ getModelName(m) }}</div>
 
-                    </md-option>
-                  </md-select>
+                    </mat-option>
+                  </mat-select>
 
                 </div>
                 <div *ngIf="checkResetButton()" class="stepButtonReset">
-                  <button md-raised-button (click)="reset()">Reset</button>
+                  <button mat-raised-button (click)="reset()">Reset</button>
                 </div>
 
               </div>
@@ -45,78 +45,78 @@
 
                 Click on line to select {{step.configDescription}}<br/>
                 Width:
-                <md-slider class="mat-slider-horizontal"
+                <mat-slider class="mat-slider-horizontal"
                            max="{{calculateMaxValue(step)}}"
                            min="{{calculateMinValue(step)}}"
                            step="{{calculateStepValue(step)}}"
                            thumb-label="true" [(ngModel)]="step.modelValue" name="inputValue"
                            (ngModelChange)="onInputChange($event)">
-                </md-slider>
+                </mat-slider>
                 mm.
 
               </div>
             </div>
-          </md-card-content>
-        </md-card>
+          </mat-card-content>
+        </mat-card>
 
 
       </div>
 
       <div class="descriptionPanel" *ngIf="m">
-        <md-card class="infoCard" *ngIf="!skippable">
+        <mat-card class="infoCard" *ngIf="!skippable">
 
-          <md-card-header *ngIf="currentPart | async; let part; else loading">
+          <mat-card-header *ngIf="currentPart | async; let part; else loading">
 
-            <div md-card-avatar *ngIf="getImageUrl(m,part)!=null" class="detailedImage"
+            <div mat-card-avatar *ngIf="getImageUrl(m,part)!=null" class="detailedImage"
                  [style.background-image]="'url(' + getImageUrl(m,part) + ')'" [style.background-size]="cover"
                  [style.width]="'150px'" [style.height]="'150px'">
 
             </div>
 
-          </md-card-header>
+          </mat-card-header>
           <ng-template #loading>
-            <md-list dense class="listProperties">
-              <md-list-item i18n>
-                <md-spinner></md-spinner>
-              </md-list-item>
-            </md-list>
+            <mat-list dense class="listProperties">
+              <mat-list-item i18n>
+                <mat-spinner></mat-spinner>
+              </mat-list-item>
+            </mat-list>
           </ng-template>
 
 
-          <md-card-content>
+          <mat-card-content>
             <div *ngIf="m">
-              <md-list dense class="listProperties">
+              <mat-list dense>
 
-                <md-list-item i18n>
+                <mat-list-item i18n>
                   Description: {{getModelName(m)}}
 
-                </md-list-item>
-                <md-divider></md-divider>
-                <md-list-item *ngIf="m.maxDimension!=null && m.maxDimension.width!=null" i18n>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item *ngIf="m.maxDimension!=null && m.maxDimension.width!=null" i18n>
                   Max. length: {{m.maxDimension==null?'':m.maxDimension.width}} mm
-                </md-list-item>
-                <md-divider></md-divider>
+                </mat-list-item>
+                <mat-divider></mat-divider>
                 <div *ngIf="showPrice()">
-                <md-list-item *ngIf="(currentPart | async); let part; else (loadingPrice)">
+                <mat-list-item *ngIf="(currentPart | async); let part; else (loadingPrice)">
                   <div *ngIf="part.price; else contentNoPrice">
                     Price: {{((evaluatePrice(part))) | currency:'EUR':true}} ({{getDescriptionFromPart(part)}})
                   </div>
                   <ng-template #contentNoPrice>
                     No price information available.
                   </ng-template>
-                </md-list-item>
+                </mat-list-item>
                   </div>
                 <ng-template #loadingPrice><mat-progress-spinner class="loadingSpinner" diameter="100"></mat-progress-spinner></ng-template>
 
-                <md-list-item i18n *ngIf="m.productPage">
-                  <a href="{{m.productPage}}" target="_blank" md-raised-button md-raised md-warn
+                <mat-list-item i18n *ngIf="m.productPage">
+                  <a href="{{m.productPage}}" target="_blank" mat-raised-button mat-raised mat-warn
                      class="customMoreButton" [style.line-height]="'22px'" target="_blank">more information</a>
 
-                </md-list-item>
-              </md-list>
+                </mat-list-item>
+              </mat-list>
             </div>
-          </md-card-content>
-        </md-card>
+          </mat-card-content>
+        </mat-card>
 
       </div>
 
