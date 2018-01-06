@@ -8,3 +8,6 @@
   font-size: small;
   margin:10px 10px 10px 10px;
 }
+.mainCard.mat-card {
+  padding-bottom: 50px;
+}
