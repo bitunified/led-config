@@ -73,18 +73,7 @@ export class MenustepitemComponent implements OnInit {
 
   constructor(private productWarningService: ProductWarningService, public translate: TranslateService, private productcodeService: ProductcodeService, private productconfigService: ProductconfigurationService, private partService: PartService) {
 
-    // this.productcodeServiceSubscription = productcodeService.productcodeSource$.subscribe(
-    //   res => {
-    //
-    //     if (res.currentStep == this._step.stepindex) {
-    //       this.reset();
-    //
-    //     }
-    //     this.currentStep = res.currentStep;
-    //
-    //   });
-
-    this.productConfigSubscription = productconfigService.productconfigSource$.subscribe(
+     this.productConfigSubscription = productconfigService.productconfigSource$.subscribe(
       res => {
         let selectedModels: Array<Model> = [];
         res.modelsForSteps.forEach((f) => {
@@ -315,7 +304,7 @@ export class MenustepitemComponent implements OnInit {
   determineRelationState(displayRelation: DisplayRelation, m: Model) {
 
     let prevModels: Array<Model> = this.productconfigService.productConfiguration.prevModels();
-    console.info(prevModels);
+
     if (prevModels.length > 0 && m) {
 
       let relations: Array<RelationDefinition> = Model.relatedRelationsForWarning(m, prevModels, this.currentStep - 1);
@@ -403,6 +392,7 @@ export class MenustepitemComponent implements OnInit {
       valueS = value;
       codeString = Utils.padString(valueS, 4);
     }
+
     let modelToSet = null;
     if (this.step.models.length > 0) {
       modelToSet = this.step.models[0];
@@ -431,12 +421,45 @@ export class MenustepitemComponent implements OnInit {
 
   calculateMaxValue(step: StepModel): number {
     let totalMaxLength: number = 2000;
-    if (step.stepindex == 7) {
 
+    if (step.stepindex == 8) {
       let modelResinCover: ModelChosenStep = this.productconfigService.productConfiguration.getModelChosenFromStep(2);
+
       if (modelResinCover && modelResinCover.chosenModel && modelResinCover.chosenModel.maxDimension && modelResinCover.chosenModel.maxDimension.width) {
         totalMaxLength = modelResinCover.chosenModel.maxDimension.width;
+        if (step.modelValue > totalMaxLength) {
+          step.modelValue = totalMaxLength;
+
+        }
       }
+    }
+    let totalMaxLengthPCB: number = 0;
+    let totalMaxLengthR: number = 0;
+    if (step.stepindex == 7) {
+      let modelPCB: ModelChosenStep = this.productconfigService.productConfiguration.getModelChosenFromStep(3);
+      let modelResinCover: ModelChosenStep = this.productconfigService.productConfiguration.getModelChosenFromStep(2);
+
+      if (modelPCB && modelPCB.chosenModel && modelPCB.chosenModel.maxDimension && modelPCB.chosenModel.maxDimension.width) {
+        totalMaxLengthPCB = modelPCB.chosenModel.maxDimension.width;
+        totalMaxLength=totalMaxLengthPCB;
+        if (step.modelValue > totalMaxLength) {
+          step.modelValue = totalMaxLength;
+        }
+      }
+      if (modelResinCover && modelResinCover.chosenModel && modelResinCover.chosenModel.maxDimension && modelResinCover.chosenModel.maxDimension.width) {
+        totalMaxLengthR = modelResinCover.chosenModel.maxDimension.width;
+        totalMaxLength=totalMaxLengthR;
+        if (step.modelValue > totalMaxLength) {
+          step.modelValue = totalMaxLength;
+        }
+      }
+      if (totalMaxLengthPCB>0 && totalMaxLengthPCB<totalMaxLengthR){
+        totalMaxLength=totalMaxLengthPCB;
+        if (step.modelValue > totalMaxLength) {
+          step.modelValue = totalMaxLength;
+        }
+      }
+
     }
     return totalMaxLength;
   }

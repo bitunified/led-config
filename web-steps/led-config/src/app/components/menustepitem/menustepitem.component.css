@@ -49,7 +49,7 @@
   width: 550px;
 }
 .stepCard {
-  width:250px;
+  width:300px;
   padding: 10px;
 }
 
@@ -59,20 +59,21 @@
 }
 
 .selectBoxContainer{
-  min-width: 250px;
+  min-width: 300px;
 }
 
 .itemModel{
   display: flex;
 }
+
 .mat-input-flex {
-  min-width: 250px;
+  min-width: 300px;
 }
 .mat-input-wrapper{
-  min-width: 250px;
+  min-width: 300px;
 }
 .selectContainer{
-  min-width:220px;
+  min-width:300px;
 }
 
 .customMoreButton{
@@ -82,4 +83,8 @@
 }
 .optionalChecker{
   margin-bottom: 15px;
+}
+
+.mat-select-panel .widthPanel {
+  min-width: 300px;
 }

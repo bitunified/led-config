@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from "@angular/core";
+import {Component, OnInit, Input, Output, EventEmitter,ViewEncapsulation} from "@angular/core";
 import {StepsModel} from "../../domain/StepsModel";
 import {ProductconfigurationService} from "../../services/productconfiguration.service";
 import {Subscription} from "rxjs/Subscription";
@@ -16,7 +16,8 @@ import {environment} from "../../../environments/environment";
 @Component({
   selector: 'menusteps',
   templateUrl: './menusteps.component.html',
-  styleUrls: ['./menusteps.component.css']
+  styleUrls: ['./menusteps.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MenustepsComponent implements OnInit {
 

@@ -23,9 +23,9 @@
           <div>
             <div *ngIf="isStepTypeValues(step) && !skippable">
 
-              <div>
+
                 <mat-form-field>
-                  <mat-select class="selectContainer" placeholder="Select {{step.configDescription}} {{step.skippable?' optional':''}}"
+                  <mat-select class="selectContainer" panelClass="widthPanel" placeholder="Select {{step.configDescription}} {{step.skippable?' optional':''}}"
                               (onClose)="changeSelect($event)"
                               [(ngModel)]="m"
                               [ngModelOptions]="{standalone: true}"
@@ -36,7 +36,7 @@
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
-              </div>
+
               <div *ngIf="checkResetButton()" class="stepButtonReset">
                 <button mat-raised-button (click)="reset()">Reset</button>
               </div>
@@ -48,9 +48,9 @@
               Click on line to select {{step.configDescription}}<br/>
               Width:
               <mat-slider class="mat-slider-horizontal"
-                          max="{{calculateMaxValue(step)}}"
-                          min="{{calculateMinValue(step)}}"
-                          step="{{calculateStepValue(step)}}"
+                          [max]="calculateMaxValue(step)"
+                          [min]="calculateMinValue(step)"
+                          [step]="calculateStepValue(step)"
                           thumb-label="true" [(ngModel)]="step.modelValue" name="inputValue"
                           (ngModelChange)="onInputChange($event)">
               </mat-slider>

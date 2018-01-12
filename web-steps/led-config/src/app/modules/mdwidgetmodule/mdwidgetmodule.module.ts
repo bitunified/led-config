@@ -48,4 +48,6 @@ import {MatToolbarModule} from '@angular/material';
   ],
   declarations: []
 })
-export class MdwidgetmoduleModule { }
+export class MdwidgetmoduleModule {
+
+}
