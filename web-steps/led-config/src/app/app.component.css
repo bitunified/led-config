@@ -11,3 +11,21 @@
 .mainCard.mat-card {
   padding-bottom: 50px;
 }
+.mainTitle{
+  font-family: 'Pontano Sans', sans-serif;
+  font-size: x-large;
+  font-weight: bold;
+}
+.mat-toolbar .mat-toolbar-row .mainTitle{
+  background: none;
+}
+.mat-toolbar{
+  background: none;
+}
+.imageHeader{
+  width:10%;
+  margin-left:20px;
+}
+.small-product-code{
+  color: #ec7224;
+}

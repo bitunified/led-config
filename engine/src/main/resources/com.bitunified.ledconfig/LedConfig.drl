@@ -7,6 +7,7 @@ package com.bitunified.ledconfig;
  
 import com.bitunified.ledconfig.domain.product.PCB.LedStrip;
 
+import com.bitunified.ledconfig.meta.Fired;
 import com.bitunified.ledconfig.domain.Dimension;
 import com.bitunified.ledconfig.composedproduct.ComposedProduct;
 import com.bitunified.ledconfig.domain.message.Message
@@ -683,6 +684,24 @@ Part part=null;
         }
 
 
+end
+
+
+rule "Actie: Arbeidsminuten toevoegen"
+  no-loop true
+  lock-on-active true
+       when
+	   not Fired(rule == "Actie: Arbeidsminuten toevoegen")
+	   pcb:LedStrip()
+
+       then
+            Part part=SerializationUtils.clone((Part)parts.get("ARBEID"));
+            Double totalWidth=(Double.valueOf(pcb.getDimension().getWidth()))/1000d;
+			Double minutesWork=((6d*totalWidth)+12d);
+            PartListHelper.addToPartCountList(partCountList,part,minutesWork);
+
+            System.out.println("Arbeid toevoegd."+minutesWork);
+			insert (new Fired("Actie: Arbeidsminuten toevoegen"));
 end
 
 

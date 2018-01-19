@@ -12,6 +12,19 @@
   url(assets/fonts/MaterialIcons-Regular.ttf) format('truetype');
 }
 
+@font-face {
+  font-family: 'Pontano Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Pontano+Sans'), local('Pontano Sans'), url(assets/fonts/PontanoSans-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('PT+Sans'), local('PT Sans'), url(assets/fonts/PT_Sans-Web-Regular.ttf) format('truetype');
+}
+
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;

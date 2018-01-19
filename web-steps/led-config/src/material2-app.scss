@@ -97,6 +97,22 @@ $mat-mcgpalette0: (
     padding: 14px;
   }
 }
+//@import url('https://fonts.googleapis.com/css?family=PT+Sans|PT+Sans+Narrow');
+//@import url('/assets/fonts/css?family=Pontano+Sans');
+// Define a custom typography config that overrides the font-family as well as the
+// `headlines` and `body-1` levels.
+$custom-typography: mat-typography-config(
+$font-family: 'PT Sans, sans-serif'
+);
+
+// Override typography CSS classes (e.g., mat-h1, mat-display-1, mat-typography, etc.).
+@include mat-base-typography($custom-typography);
+
+// Override typography for a specific Angular Material components.
+@include mat-checkbox-typography($custom-typography);
+
+// Override typography for all Angular Material, including mat-base-typography and all components.
+@include angular-material-typography($custom-typography);
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
