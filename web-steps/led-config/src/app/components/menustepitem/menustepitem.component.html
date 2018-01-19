@@ -67,7 +67,7 @@
     <div class="descriptionPanel" *ngIf="m">
       <mat-card class="infoCard" *ngIf="!skippable">
 
-        <mat-card-header *ngIf="currentPart | async; let part; else loading">
+        <mat-card-header *ngIf="(currentPart | async); let part; else loading">
 
           <div mat-card-avatar *ngIf="getImageUrl(m,part)!=null" class="detailedImage"
                [style.background-image]="'url(' + getImageUrl(m,part) + ')'" [style.background-size]="cover"
