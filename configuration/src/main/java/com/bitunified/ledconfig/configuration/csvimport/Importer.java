@@ -9,13 +9,14 @@ import javax.xml.namespace.QName;
 import java.io.*;
 import java.lang.reflect.Array;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.Collection;
 
 public class Importer {
 
 
     public Reader fileReader() throws IOException {
-        File tempFile = File.createTempFile("tmp", "ddr");
+        File tempFile = Files.createTempFile("tmp","ddr").toFile();
         URL url = new URL("http://localhost:8080/server/dataPartsImport.xml");
         FileUtils.copyURLToFile(url, tempFile);
         return new FileReader(tempFile);
